@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>员工管理系统 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="员工管理系统">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E5%91%98%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="一、问题的描述^skip给出问题描述和需求开发一个员工管理系统，实现对员工信息的添加、查询、修改、删除、排序和保存等操作。员工信息包括编号、姓名、性别、出生年月、学历、职务、电话和住址等内容，并且需要能够从CSV文件读取员工数据并保存更新后的数据到CSV文件。二、解决方案给出问题的解决方案添加员工：录入新员工">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">员工管理系统</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.138Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="一、问题的描述-skip"><a href="#一、问题的描述-skip" class="headerlink" title="一、问题的描述^skip"></a>一、问题的描述^skip</h1><p>给出问题描述和需求<br>开发一个员工管理系统，实现对员工信息的添加、查询、修改、删除、排序和保存等操作。员工信息包括编号、姓名、性别、出生年月、学历、职务、电话和住址等内容，并且需要能够从 CSV 文件读取员工数据并保存更新后的数据到 CSV 文件。</p>
+<h1 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h1><p>给出问题的解决方案</p>
+<ol>
+<li><strong>添加员工</strong>：录入新员工信息，检查编号是否唯一。</li>
+<li><strong>查询员工</strong>：支持通过姓名、学历、职务、电话、住址和编号等字段查询员工信息。</li>
+<li><strong>修改员工信息</strong>：能够更新员工的所有信息字段。</li>
+<li><strong>删除员工</strong>：通过编号删除指定员工。</li>
+<li><strong>排序员工</strong>：按照员工编号对员工列表进行排序。</li>
+<li><strong>保存数据</strong>：将员工信息保存到 CSV 文件中。</li>
+<li><strong>读取数据</strong>：从 CSV 文件中读取员工信息。</li>
+<li><strong>用户交互</strong>：通过控制台菜单操作，实现上述所有功能。</li>
+</ol>
+<h1 id="三、程序代码"><a href="#三、程序代码" class="headerlink" title="三、程序代码"></a>三、程序代码</h1><h2 id="1-一-Employee类"><a href="#1-一-Employee类" class="headerlink" title="1. (一) Employee类"></a>1. (一) Employee类</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>方法/属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Employee</td>
+<td>构造函数，初始化员工对象的所有属性</td>
+</tr>
+<tr>
+<td>2</td>
+<td>getId</td>
+<td>获取员工编号</td>
+</tr>
+<tr>
+<td>3</td>
+<td>setId</td>
+<td>设置员工编号</td>
+</tr>
+<tr>
+<td>4</td>
+<td>getName</td>
+<td>获取员工姓名</td>
+</tr>
+<tr>
+<td>5</td>
+<td>setName</td>
+<td>设置员工姓名</td>
+</tr>
+<tr>
+<td>6</td>
+<td>getGender</td>
+<td>获取员工性别</td>
+</tr>
+<tr>
+<td>7</td>
+<td>setGender</td>
+<td>设置员工性别</td>
+</tr>
+<tr>
+<td>8</td>
+<td>getBirthDate</td>
+<td>获取员工出生日期</td>
+</tr>
+<tr>
+<td>9</td>
+<td>setBirthDate</td>
+<td>设置员工出生日期</td>
+</tr>
+<tr>
+<td>10</td>
+<td>getEducation</td>
+<td>获取员工学历</td>
+</tr>
+<tr>
+<td>11</td>
+<td>setEducation</td>
+<td>设置员工学历</td>
+</tr>
+<tr>
+<td>12</td>
+<td>getPosition</td>
+<td>获取员工职位</td>
+</tr>
+<tr>
+<td>13</td>
+<td>setPosition</td>
+<td>设置员工职位</td>
+</tr>
+<tr>
+<td>14</td>
+<td>getPhone</td>
+<td>获取员工电话</td>
+</tr>
+<tr>
+<td>15</td>
+<td>setPhone</td>
+<td>设置员工电话</td>
+</tr>
+<tr>
+<td>16</td>
+<td>getAddress</td>
+<td>获取员工住址</td>
+</tr>
+<tr>
+<td>17</td>
+<td>setAddress</td>
+<td>设置员工住址</td>
+</tr>
+<tr>
+<td>18</td>
+<td>toString</td>
+<td>生成并返回员工信息的字符串表示形式</td>
+</tr>
+<tr>
+<td>19</td>
+<td>isComplete</td>
+<td>检查员工信息是否完整</td>
+</tr>
+<tr>
+<td>20</td>
+<td>updateDetails</td>
+<td>更新员工的各项详细信息</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.time.LocalDate;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> id;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String gender;<br>    <span class="hljs-keyword">private</span> LocalDate birthDate;<br>    <span class="hljs-keyword">private</span> String education;<br>    <span class="hljs-keyword">private</span> String position;<br>    <span class="hljs-keyword">private</span> String phone;<br>    <span class="hljs-keyword">private</span> String address;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 构造函数，初始化员工信息。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> id        员工编号</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> name      员工姓名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> gender    员工性别</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> birthDate 出生日期</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> education 学历</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> position  职位</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> phone     电话</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> address   住址</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Employee</span><span class="hljs-params">(<span class="hljs-type">int</span> id, String name, String gender, LocalDate birthDate, String education, String position, String phone, String address)</span> &#123;<br>        <span class="hljs-built_in">this</span>.id = id;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.gender = gender;<br>        <span class="hljs-built_in">this</span>.birthDate = birthDate;<br>        <span class="hljs-built_in">this</span>.education = education;<br>        <span class="hljs-built_in">this</span>.position = position;<br>        <span class="hljs-built_in">this</span>.phone = phone;<br>        <span class="hljs-built_in">this</span>.address = address;<br>    &#125;<br><br>    <span class="hljs-comment">// Getters 和 Setters 方法</span><br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取员工编号。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工编号</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getId</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> id;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置员工编号。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> id 员工编号</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setId</span><span class="hljs-params">(<span class="hljs-type">int</span> id)</span> &#123;<br>        <span class="hljs-built_in">this</span>.id = id;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取员工姓名。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工姓名</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置员工姓名。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> name 员工姓名</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取员工性别。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工性别</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getGender</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> gender;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置员工性别。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> gender 员工性别</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setGender</span><span class="hljs-params">(String gender)</span> &#123;<br>        <span class="hljs-built_in">this</span>.gender = gender;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取员工出生日期。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工出生日期</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> LocalDate <span class="hljs-title function_">getBirthDate</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> birthDate;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置员工出生日期。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> birthDate 员工出生日期</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setBirthDate</span><span class="hljs-params">(LocalDate birthDate)</span> &#123;<br>        <span class="hljs-built_in">this</span>.birthDate = birthDate;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取员工学历。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工学历</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEducation</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> education;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置员工学历。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> education 员工学历</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setEducation</span><span class="hljs-params">(String education)</span> &#123;<br>        <span class="hljs-built_in">this</span>.education = education;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取员工职位。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工职位</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPosition</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> position;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置员工职位。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> position 员工职位</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPosition</span><span class="hljs-params">(String position)</span> &#123;<br>        <span class="hljs-built_in">this</span>.position = position;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取员工电话。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工电话</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPhone</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> phone;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置员工电话。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> phone 员工电话</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPhone</span><span class="hljs-params">(String phone)</span> &#123;<br>        <span class="hljs-built_in">this</span>.phone = phone;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取员工住址。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工住址</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getAddress</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> address;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置员工住址。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> address 员工住址</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAddress</span><span class="hljs-params">(String address)</span> &#123;<br>        <span class="hljs-built_in">this</span>.address = address;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 生成员工信息的字符串表示形式。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工信息字符串</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Employee&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;id=&quot;</span> + id +<br>                <span class="hljs-string">&quot;, name=&#x27;&quot;</span> + name + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, gender=&#x27;&quot;</span> + gender + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, birthDate=&quot;</span> + birthDate +<br>                <span class="hljs-string">&quot;, education=&#x27;&quot;</span> + education + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, position=&#x27;&quot;</span> + position + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, phone=&#x27;&quot;</span> + phone + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, address=&#x27;&quot;</span> + address + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 检查员工信息是否完整。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 如果所有字段都不为空或为默认值，则返回 true；否则返回 false。</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isComplete</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> id &gt; <span class="hljs-number">0</span> &amp;&amp; name != <span class="hljs-literal">null</span> &amp;&amp; !name.isBlank() &amp;&amp;<br>                gender != <span class="hljs-literal">null</span> &amp;&amp; !gender.isBlank() &amp;&amp;<br>                birthDate != <span class="hljs-literal">null</span> &amp;&amp;<br>                education != <span class="hljs-literal">null</span> &amp;&amp; !education.isBlank() &amp;&amp;<br>                position != <span class="hljs-literal">null</span> &amp;&amp; !position.isBlank() &amp;&amp;<br>                phone != <span class="hljs-literal">null</span> &amp;&amp; !phone.isBlank() &amp;&amp;<br>                address != <span class="hljs-literal">null</span> &amp;&amp; !address.isBlank();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 更新员工信息。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> name      新姓名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> gender    新性别</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> birthDate 新出生日期</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> education 新学历</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> position  新职位</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> phone     新电话</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> address   新住址</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateDetails</span><span class="hljs-params">(String name, String gender, LocalDate birthDate, String education, String position, String phone, String address)</span> &#123;<br>        <span class="hljs-keyword">if</span> (name != <span class="hljs-literal">null</span> &amp;&amp; !name.isBlank()) &#123;<br>            <span class="hljs-built_in">this</span>.name = name;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (gender != <span class="hljs-literal">null</span> &amp;&amp; !gender.isBlank()) &#123;<br>            <span class="hljs-built_in">this</span>.gender = gender;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (birthDate != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-built_in">this</span>.birthDate = birthDate;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (education != <span class="hljs-literal">null</span> &amp;&amp; !education.isBlank()) &#123;<br>            <span class="hljs-built_in">this</span>.education = education;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (position != <span class="hljs-literal">null</span> &amp;&amp; !position.isBlank()) &#123;<br>            <span class="hljs-built_in">this</span>.position = position;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (phone != <span class="hljs-literal">null</span> &amp;&amp; !phone.isBlank()) &#123;<br>            <span class="hljs-built_in">this</span>.phone = phone;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (address != <span class="hljs-literal">null</span> &amp;&amp; !address.isBlank()) &#123;<br>            <span class="hljs-built_in">this</span>.address = address;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="2-二-EmployeeManager类"><a href="#2-二-EmployeeManager类" class="headerlink" title="2. (二) EmployeeManager类"></a>2. (二) EmployeeManager类</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>方法/属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>EmployeeManager</td>
+<td>构造函数，初始化员工管理器，创建一个空的员工列表</td>
+</tr>
+<tr>
+<td>2</td>
+<td>addEmployee</td>
+<td>添加一个新员工</td>
+</tr>
+<tr>
+<td>3</td>
+<td>updateEmployee</td>
+<td>更新指定ID的员工信息</td>
+</tr>
+<tr>
+<td>4</td>
+<td>deleteEmployee</td>
+<td>删除指定ID的员工</td>
+</tr>
+<tr>
+<td>5</td>
+<td>searchEmployeesByName</td>
+<td>按姓名关键字搜索员工</td>
+</tr>
+<tr>
+<td>6</td>
+<td>searchEmployeesByEducation</td>
+<td>按学历关键字搜索员工</td>
+</tr>
+<tr>
+<td>7</td>
+<td>searchEmployeesByPosition</td>
+<td>按职位关键字搜索员工</td>
+</tr>
+<tr>
+<td>8</td>
+<td>searchEmployeesByPhone</td>
+<td>按电话关键字搜索员工</td>
+</tr>
+<tr>
+<td>9</td>
+<td>searchEmployeesByAddress</td>
+<td>按地址关键字搜索员工</td>
+</tr>
+<tr>
+<td>10</td>
+<td>searchEmployeesByBirthDateRange</td>
+<td>按出生日期范围搜索员工</td>
+</tr>
+<tr>
+<td>11</td>
+<td>getEmployeeById</td>
+<td>获取指定ID的员工</td>
+</tr>
+<tr>
+<td>12</td>
+<td>getAllEmployees</td>
+<td>获取所有员工列表</td>
+</tr>
+<tr>
+<td>13</td>
+<td>getEmployeeCount</td>
+<td>获取员工总数</td>
+</tr>
+<tr>
+<td>14</td>
+<td>getEmployeesByPosition</td>
+<td>获取指定职位的员工列表</td>
+</tr>
+<tr>
+<td>15</td>
+<td>sortEmployees</td>
+<td>对员工列表进行排序</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.Comparator;<br><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-keyword">import</span> java.util.Optional;<br><span class="hljs-keyword">import</span> java.util.stream.Collectors;<br><span class="hljs-keyword">import</span> java.time.LocalDate;<br><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">EmployeeManager</span> &#123;<br>    <span class="hljs-keyword">private</span> List&lt;Employee&gt; employees;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 构造函数，初始化员工管理器。</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">EmployeeManager</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-built_in">this</span>.employees = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 添加一个新员工。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> employee 新员工对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addEmployee</span><span class="hljs-params">(Employee employee)</span> &#123;<br>        employees.add(employee);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 更新指定ID的员工信息。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> id             员工ID</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> updatedEmployee 更新后的员工对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateEmployee</span><span class="hljs-params">(<span class="hljs-type">int</span> id, Employee updatedEmployee)</span> &#123;<br>        <span class="hljs-keyword">for</span> (Employee employee : employees) &#123;<br>            <span class="hljs-keyword">if</span> (employee.getId() == id) &#123;<br>                employee.setName(updatedEmployee.getName());<br>                employee.setGender(updatedEmployee.getGender());<br>                employee.setBirthDate(updatedEmployee.getBirthDate());<br>                employee.setEducation(updatedEmployee.getEducation());<br>                employee.setPosition(updatedEmployee.getPosition());<br>                employee.setPhone(updatedEmployee.getPhone());<br>                employee.setAddress(updatedEmployee.getAddress());<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 删除指定ID的员工。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> id 员工ID</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteEmployee</span><span class="hljs-params">(<span class="hljs-type">int</span> id)</span> &#123;<br>        employees.removeIf(employee -&gt; employee.getId() == id);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 按姓名搜索员工。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> keyword 姓名关键字</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 匹配的员工列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> List&lt;Employee&gt; <span class="hljs-title function_">searchEmployeesByName</span><span class="hljs-params">(String keyword)</span> &#123;<br>        <span class="hljs-keyword">return</span> employees.stream()<br>                .filter(employee -&gt; employee.getName().contains(keyword))<br>                .collect(Collectors.toList());<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 按学历搜索员工。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> keyword 学历关键字</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 匹配的员工列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> List&lt;Employee&gt; <span class="hljs-title function_">searchEmployeesByEducation</span><span class="hljs-params">(String keyword)</span> &#123;<br>        <span class="hljs-keyword">return</span> employees.stream()<br>                .filter(employee -&gt; employee.getEducation().contains(keyword))<br>                .collect(Collectors.toList());<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 按职位搜索员工。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> keyword 职位关键字</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 匹配的员工列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> List&lt;Employee&gt; <span class="hljs-title function_">searchEmployeesByPosition</span><span class="hljs-params">(String keyword)</span> &#123;<br>        <span class="hljs-keyword">return</span> employees.stream()<br>                .filter(employee -&gt; employee.getPosition().contains(keyword))<br>                .collect(Collectors.toList());<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 按电话搜索员工。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> keyword 电话关键字</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 匹配的员工列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> List&lt;Employee&gt; <span class="hljs-title function_">searchEmployeesByPhone</span><span class="hljs-params">(String keyword)</span> &#123;<br>        <span class="hljs-keyword">return</span> employees.stream()<br>                .filter(employee -&gt; employee.getPhone().contains(keyword))<br>                .collect(Collectors.toList());<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 按地址搜索员工。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> keyword 地址关键字</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 匹配的员工列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> List&lt;Employee&gt; <span class="hljs-title function_">searchEmployeesByAddress</span><span class="hljs-params">(String keyword)</span> &#123;<br>        <span class="hljs-keyword">return</span> employees.stream()<br>                .filter(employee -&gt; employee.getAddress().contains(keyword))<br>                .collect(Collectors.toList());<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取指定ID的员工。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> id 员工ID</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工对象的Optional</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> Optional&lt;Employee&gt; <span class="hljs-title function_">getEmployeeById</span><span class="hljs-params">(<span class="hljs-type">int</span> id)</span> &#123;<br>        <span class="hljs-keyword">return</span> employees.stream().filter(employee -&gt; employee.getId() == id).findFirst();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 对员工列表进行排序。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> comparator 比较器</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sortEmployees</span><span class="hljs-params">(Comparator&lt;Employee&gt; comparator)</span> &#123;<br>        employees.sort(comparator);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取所有员工列表。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> List&lt;Employee&gt; <span class="hljs-title function_">getAllEmployees</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> employees;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 按出生日期范围搜索员工。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> start 开始日期</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> end 结束日期</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 匹配的员工列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> List&lt;Employee&gt; <span class="hljs-title function_">searchEmployeesByBirthDateRange</span><span class="hljs-params">(LocalDate start, LocalDate end)</span> &#123;<br>        <span class="hljs-keyword">return</span> employees.stream()<br>                .filter(employee -&gt; !employee.getBirthDate().isBefore(start) &amp;&amp; !employee.getBirthDate().isAfter(end))<br>                .collect(Collectors.toList());<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取员工总数。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 员工总数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getEmployeeCount</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> employees.size();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取指定职位的员工列表。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> position 职位</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 匹配的员工列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> List&lt;Employee&gt; <span class="hljs-title function_">getEmployeesByPosition</span><span class="hljs-params">(String position)</span> &#123;<br>        <span class="hljs-keyword">return</span> employees.stream()<br>                .filter(employee -&gt; employee.getPosition().equalsIgnoreCase(position))<br>                .collect(Collectors.toList());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="3-三-Main类"><a href="#3-三-Main类" class="headerlink" title="3. (三) Main类"></a>3. (三) Main类</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>方法/属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>main(String[] args)</td>
+<td>程序的入口点，初始化EmployeeManager，从CSV文件加载员工数据，并提供一个循环的命令行菜单来管理员工</td>
+</tr>
+<tr>
+<td>2</td>
+<td>displayMenu</td>
+<td>显示主菜单，供用户选择操作</td>
+</tr>
+<tr>
+<td>3</td>
+<td>loadEmployeesFromCSV</td>
+<td>从CSV文件加载员工数据并添加到EmployeeManager</td>
+</tr>
+<tr>
+<td>4</td>
+<td>saveEmployeesToCSV</td>
+<td>将当前的员工数据保存到CSV文件</td>
+</tr>
+<tr>
+<td>5</td>
+<td>displayAllEmployees</td>
+<td>显示所有员工的详细信息</td>
+</tr>
+<tr>
+<td>6</td>
+<td>searchEmployee</td>
+<td>提供一个菜单，允许用户选择不同的搜索方式</td>
+</tr>
+<tr>
+<td>7</td>
+<td>displaySearchMenu</td>
+<td>显示搜索菜单，供用户选择搜索方式</td>
+</tr>
+<tr>
+<td>8</td>
+<td>searchEmployeeByName</td>
+<td>按姓名搜索员工</td>
+</tr>
+<tr>
+<td>9</td>
+<td>searchEmployeeByEducation</td>
+<td>按学历搜索员工</td>
+</tr>
+<tr>
+<td>10</td>
+<td>searchEmployeeByPosition</td>
+<td>按职位搜索员工</td>
+</tr>
+<tr>
+<td>11</td>
+<td>searchEmployeeByPhone</td>
+<td>按电话搜索员工</td>
+</tr>
+<tr>
+<td>12</td>
+<td>searchEmployeeByAddress</td>
+<td>按地址搜索员工</td>
+</tr>
+<tr>
+<td>13</td>
+<td>searchEmployeeById</td>
+<td>按员工编号搜索员工</td>
+</tr>
+<tr>
+<td>14</td>
+<td>displayEmployees</td>
+<td>格式化并显示员工信息</td>
+</tr>
+<tr>
+<td>15</td>
+<td>addEmployee</td>
+<td>添加新员工</td>
+</tr>
+<tr>
+<td>16</td>
+<td>deleteEmployee</td>
+<td>删除指定编号的员工</td>
+</tr>
+<tr>
+<td>17</td>
+<td>updateEmployee</td>
+<td>更新指定编号的员工信息</td>
+</tr>
+<tr>
+<td>18</td>
+<td>displayUpdateMenu</td>
+<td>显示更新员工信息的查询方式菜单</td>
+</tr>
+<tr>
+<td>19</td>
+<td>getEmployeesByOption</td>
+<td>根据用户选择的查询方式，获取匹配的员工列表</td>
+</tr>
+<tr>
+<td>20</td>
+<td>updateEmployeeDetails</td>
+<td>更新员工的详细信息</td>
+</tr>
+<tr>
+<td>21</td>
+<td>sortEmployees</td>
+<td>按员工编号对员工进行排序</td>
+</tr>
+<tr>
+<td>22</td>
+<td>readInt</td>
+<td>从控制台读取一个整数值，并处理无效输入</td>
+</tr>
+<tr>
+<td>23</td>
+<td>readDate</td>
+<td>从控制台读取一个日期，并处理无效输入</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;<br><span class="hljs-keyword">import</span> java.io.FileReader;<br><span class="hljs-keyword">import</span> java.io.FileWriter;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.time.LocalDate;<br><span class="hljs-keyword">import</span> java.time.format.DateTimeParseException;<br><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-keyword">import</span> java.util.Optional;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><span class="hljs-keyword">import</span> java.util.Comparator;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">CSV_FILE</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;employees.csv&quot;</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">EmployeeManager</span> <span class="hljs-variable">manager</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">EmployeeManager</span>();<br>        loadEmployeesFromCSV(manager);<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            displayMenu();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">choice</span> <span class="hljs-operator">=</span> readInt(scanner);<br><br>            <span class="hljs-keyword">switch</span> (choice) &#123;<br>                <span class="hljs-keyword">case</span> <span class="hljs-number">1</span> -&gt; displayAllEmployees(manager);<br>                <span class="hljs-keyword">case</span> <span class="hljs-number">2</span> -&gt; addEmployee(manager, scanner);<br>                <span class="hljs-keyword">case</span> <span class="hljs-number">3</span> -&gt; searchEmployee(manager, scanner);<br>                <span class="hljs-keyword">case</span> <span class="hljs-number">4</span> -&gt; deleteEmployee(manager, scanner);<br>                <span class="hljs-keyword">case</span> <span class="hljs-number">5</span> -&gt; updateEmployee(manager, scanner);<br>                <span class="hljs-keyword">case</span> <span class="hljs-number">6</span> -&gt; sortEmployees(manager);<br>                <span class="hljs-keyword">case</span> <span class="hljs-number">0</span> -&gt; &#123;<br>                    saveEmployeesToCSV(manager);<br>                    System.out.println(<span class="hljs-string">&quot;退出系统。&quot;</span>);<br>                    <span class="hljs-keyword">return</span>;<br>                &#125;<br>                <span class="hljs-keyword">default</span> -&gt; System.out.println(<span class="hljs-string">&quot;无效的选择,请重新选择。&quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">displayMenu</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;1. 显示全部记录&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;2. 添加员工&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;3. 查询员工&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;4. 删除员工&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;5. 更新员工信息&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;6. 按编号排序&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;0. 退出&quot;</span>);<br>        System.out.print(<span class="hljs-string">&quot;请选择您需要的功能: &quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">loadEmployeesFromCSV</span><span class="hljs-params">(EmployeeManager manager)</span> &#123;<br>        <span class="hljs-keyword">try</span> (<span class="hljs-type">BufferedReader</span> <span class="hljs-variable">reader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>(CSV_FILE))) &#123;<br>            String line;<br>            reader.readLine(); <span class="hljs-comment">// 跳过标题行</span><br>            <span class="hljs-keyword">while</span> ((line = reader.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>                String[] fields = line.split(<span class="hljs-string">&quot;,&quot;</span>);<br>                <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> Integer.parseInt(fields[<span class="hljs-number">0</span>]);<br>                <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> fields[<span class="hljs-number">1</span>];<br>                <span class="hljs-type">String</span> <span class="hljs-variable">gender</span> <span class="hljs-operator">=</span> fields[<span class="hljs-number">2</span>];<br>                <span class="hljs-type">LocalDate</span> <span class="hljs-variable">birthDate</span> <span class="hljs-operator">=</span> LocalDate.parse(fields[<span class="hljs-number">3</span>]);<br>                <span class="hljs-type">String</span> <span class="hljs-variable">education</span> <span class="hljs-operator">=</span> fields[<span class="hljs-number">4</span>];<br>                <span class="hljs-type">String</span> <span class="hljs-variable">position</span> <span class="hljs-operator">=</span> fields[<span class="hljs-number">5</span>];<br>                <span class="hljs-type">String</span> <span class="hljs-variable">phone</span> <span class="hljs-operator">=</span> fields[<span class="hljs-number">6</span>];<br>                <span class="hljs-type">String</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> fields[<span class="hljs-number">7</span>];<br>                <span class="hljs-type">Employee</span> <span class="hljs-variable">employee</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Employee</span>(id, name, gender, birthDate, education, position, phone, address);<br>                manager.addEmployee(employee);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;读取CSV文件时出错: &quot;</span> + e.getMessage());<br>        &#125; <span class="hljs-keyword">catch</span> (DateTimeParseException e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;日期格式错误: &quot;</span> + e.getMessage());<br>        &#125; <span class="hljs-keyword">catch</span> (NumberFormatException e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;编号格式错误: &quot;</span> + e.getMessage());<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;加载员工数据时出错: &quot;</span> + e.getMessage());<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">saveEmployeesToCSV</span><span class="hljs-params">(EmployeeManager manager)</span> &#123;<br>        <span class="hljs-keyword">try</span> (<span class="hljs-type">FileWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(CSV_FILE)) &#123;<br>            writer.write(<span class="hljs-string">&quot;编号,姓名,性别,出生年月,学历,职务,电话,住址\n&quot;</span>);<br>            List&lt;Employee&gt; employees = manager.getAllEmployees();<br>            <span class="hljs-keyword">for</span> (Employee employee : employees) &#123;<br>                writer.write(employee.getId() + <span class="hljs-string">&quot;,&quot;</span> +<br>                        employee.getName() + <span class="hljs-string">&quot;,&quot;</span> +<br>                        employee.getGender() + <span class="hljs-string">&quot;,&quot;</span> +<br>                        employee.getBirthDate() + <span class="hljs-string">&quot;,&quot;</span> +<br>                        employee.getEducation() + <span class="hljs-string">&quot;,&quot;</span> +<br>                        employee.getPosition() + <span class="hljs-string">&quot;,&quot;</span> +<br>                        employee.getPhone() + <span class="hljs-string">&quot;,&quot;</span> +<br>                        employee.getAddress() + <span class="hljs-string">&quot;\n&quot;</span>);<br>            &#125;<br>            System.out.println(<span class="hljs-string">&quot;员工信息已保存到CSV文件。&quot;</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;写入CSV文件时出错: &quot;</span> + e.getMessage());<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">displayAllEmployees</span><span class="hljs-params">(EmployeeManager manager)</span> &#123;<br>        List&lt;Employee&gt; employees = manager.getAllEmployees();<br>        <span class="hljs-keyword">if</span> (employees.isEmpty()) &#123;<br>            System.out.println(<span class="hljs-string">&quot;没有员工记录。&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            displayEmployees(employees);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">searchEmployee</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            displaySearchMenu();<br><br>            <span class="hljs-type">String</span> <span class="hljs-variable">option</span> <span class="hljs-operator">=</span> scanner.nextLine().toLowerCase();<br><br>            <span class="hljs-keyword">if</span> (option.equals(<span class="hljs-string">&quot;0&quot;</span>)) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br><br>            <span class="hljs-keyword">switch</span> (option) &#123;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;a&quot;</span> -&gt; searchEmployeeByName(manager, scanner);<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;b&quot;</span> -&gt; searchEmployeeByEducation(manager, scanner);<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;c&quot;</span> -&gt; searchEmployeeByPosition(manager, scanner);<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;d&quot;</span> -&gt; searchEmployeeByPhone(manager, scanner);<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;e&quot;</span> -&gt; searchEmployeeByAddress(manager, scanner);<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;f&quot;</span> -&gt; searchEmployeeById(manager, scanner);<br>                <span class="hljs-keyword">default</span> -&gt; System.out.println(<span class="hljs-string">&quot;无效的选择,请重新输入。&quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">displaySearchMenu</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;请选择查询方式:&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\ta. 按姓名查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\tb. 按学历查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\tc. 按职位查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\td. 按电话查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\te. 按地址查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\tf. 按员工编号查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\t0. 返回上一级菜单&quot;</span>);<br>        System.out.print(<span class="hljs-string">&quot;请输入选项: &quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">searchEmployeeByName</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        System.out.print(<span class="hljs-string">&quot;输入员工姓名: &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        List&lt;Employee&gt; employees = manager.searchEmployeesByName(name);<br>        displayEmployees(employees);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">searchEmployeeByEducation</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        System.out.print(<span class="hljs-string">&quot;输入员工学历: &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">education</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        List&lt;Employee&gt; employees = manager.searchEmployeesByEducation(education);<br>        displayEmployees(employees);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">searchEmployeeByPosition</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        System.out.print(<span class="hljs-string">&quot;输入员工职位: &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">position</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        List&lt;Employee&gt; employees = manager.searchEmployeesByPosition(position);<br>        displayEmployees(employees);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">searchEmployeeByPhone</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        System.out.print(<span class="hljs-string">&quot;输入员工电话: &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">phone</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        List&lt;Employee&gt; employees = manager.searchEmployeesByPhone(phone);<br>        displayEmployees(employees);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">searchEmployeeByAddress</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        System.out.print(<span class="hljs-string">&quot;输入员工地址: &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        List&lt;Employee&gt; employees = manager.searchEmployeesByAddress(address);<br>        displayEmployees(employees);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">searchEmployeeById</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        System.out.print(<span class="hljs-string">&quot;输入员工编号: &quot;</span>);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> readInt(scanner);<br>        Optional&lt;Employee&gt; employee = manager.getEmployeeById(id);<br>        employee.ifPresentOrElse(<br>                System.out::println,<br>                () -&gt; System.out.println(<span class="hljs-string">&quot;没有找到编号为 &quot;</span> + id + <span class="hljs-string">&quot; 的员工。&quot;</span>)<br>        );<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">displayEmployees</span><span class="hljs-params">(List&lt;Employee&gt; employees)</span> &#123;<br>        <span class="hljs-keyword">if</span> (employees.isEmpty()) &#123;<br>            System.out.println(<span class="hljs-string">&quot;没有找到匹配的员工记录。&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">format</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;| %-4s | %-10s | %-6s | %-10s | %-10s | %-10s | %-12s | %-20s |\n&quot;</span>;<br>            System.out.format(<span class="hljs-string">&quot;+------+------------+--------+------------+------------+------------+--------------+----------------------+\n&quot;</span>);<br>            System.out.format(<span class="hljs-string">&quot;| 编号 | 姓名       | 性别   | 出生年月   | 学历       | 职务       | 电话         | 住址                 |\n&quot;</span>);<br>            System.out.format(<span class="hljs-string">&quot;+------+------------+--------+------------+------------+------------+--------------+----------------------+\n&quot;</span>);<br>            <span class="hljs-keyword">for</span> (Employee employee : employees) &#123;<br>                System.out.format(format, employee.getId(), employee.getName(), employee.getGender(),<br>                        employee.getBirthDate(), employee.getEducation(), employee.getPosition(),<br>                        employee.getPhone(), employee.getAddress());<br>            &#125;<br>            System.out.format(<span class="hljs-string">&quot;+------+------------+--------+------------+------------+------------+--------------+----------------------+\n&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addEmployee</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.print(<span class="hljs-string">&quot;输入员工编号: &quot;</span>);<br>            <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> readInt(scanner);<br><br>            <span class="hljs-comment">// 检查编号是否已存在</span><br>            <span class="hljs-keyword">if</span> (manager.getEmployeeById(id).isPresent()) &#123;<br>                System.out.println(<span class="hljs-string">&quot;编号为 &quot;</span> + id + <span class="hljs-string">&quot; 的员工已存在,请输入其他编号。&quot;</span>);<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br><br>            System.out.print(<span class="hljs-string">&quot;输入员工姓名: &quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> scanner.nextLine();<br><br>            System.out.print(<span class="hljs-string">&quot;输入员工性别: &quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">gender</span> <span class="hljs-operator">=</span> scanner.nextLine();<br><br>            System.out.print(<span class="hljs-string">&quot;输入员工出生年月 (yyyy-MM-dd): &quot;</span>);<br>            <span class="hljs-type">LocalDate</span> <span class="hljs-variable">birthDate</span> <span class="hljs-operator">=</span> readDate(scanner);<br><br>            System.out.print(<span class="hljs-string">&quot;输入员工学历: &quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">education</span> <span class="hljs-operator">=</span> scanner.nextLine();<br><br>            System.out.print(<span class="hljs-string">&quot;输入员工职务: &quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">position</span> <span class="hljs-operator">=</span> scanner.nextLine();<br><br>            System.out.print(<span class="hljs-string">&quot;输入员工电话: &quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">phone</span> <span class="hljs-operator">=</span> scanner.nextLine();<br><br>            System.out.print(<span class="hljs-string">&quot;输入员工住址: &quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> scanner.nextLine();<br><br>            <span class="hljs-type">Employee</span> <span class="hljs-variable">employee</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Employee</span>(id, name, gender, birthDate, education, position, phone, address);<br>            manager.addEmployee(employee);<br>            System.out.println(<span class="hljs-string">&quot;员工添加成功。&quot;</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (IllegalArgumentException e) &#123;<br>            System.out.println(e.getMessage());<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;输入错误,请重新输入。&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteEmployee</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.print(<span class="hljs-string">&quot;输入要删除的员工编号: &quot;</span>);<br>            <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> readInt(scanner);<br><br>            manager.deleteEmployee(id);<br>            System.out.println(<span class="hljs-string">&quot;员工删除成功。&quot;</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;输入错误,请重新输入。&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateEmployee</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner)</span> &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            displayUpdateMenu();<br><br>            <span class="hljs-type">String</span> <span class="hljs-variable">option</span> <span class="hljs-operator">=</span> scanner.nextLine().toLowerCase();<br><br>            <span class="hljs-keyword">if</span> (option.equals(<span class="hljs-string">&quot;0&quot;</span>)) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br><br>            List&lt;Employee&gt; employees = getEmployeesByOption(manager, scanner, option);<br><br>            <span class="hljs-keyword">if</span> (employees != <span class="hljs-literal">null</span> &amp;&amp; !employees.isEmpty()) &#123;<br>                displayEmployees(employees);<br>                System.out.print(<span class="hljs-string">&quot;输入要更新的员工编号: &quot;</span>);<br>                <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> readInt(scanner);<br><br>                Optional&lt;Employee&gt; employeeOpt = manager.getEmployeeById(id);<br>                <span class="hljs-keyword">if</span> (employeeOpt.isEmpty()) &#123;<br>                    System.out.println(<span class="hljs-string">&quot;没有找到编号为 &quot;</span> + id + <span class="hljs-string">&quot; 的员工。&quot;</span>);<br>                    <span class="hljs-keyword">return</span>;<br>                &#125;<br><br>                <span class="hljs-type">Employee</span> <span class="hljs-variable">employee</span> <span class="hljs-operator">=</span> employeeOpt.get();<br><br>                updateEmployeeDetails(scanner, employee);<br>                manager.updateEmployee(id, employee);<br>                System.out.println(<span class="hljs-string">&quot;员工更新成功。&quot;</span>);<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">displayUpdateMenu</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;请选择查询方式以找到需要更新的员工:&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\ta. 按姓名查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\tb. 按学历查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\tc. 按职位查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\td. 按电话查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\te. 按地址查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\tf. 按员工编号查找&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;\t0. 返回上一级菜单&quot;</span>);<br>        System.out.print(<span class="hljs-string">&quot;请输入选项: &quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;Employee&gt; <span class="hljs-title function_">getEmployeesByOption</span><span class="hljs-params">(EmployeeManager manager, Scanner scanner, String option)</span> &#123;<br>        List&lt;Employee&gt; employees = <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">switch</span> (option) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;a&quot;</span> -&gt; &#123;<br>                System.out.print(<span class="hljs-string">&quot;输入员工姓名: &quot;</span>);<br>                <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>                employees = manager.searchEmployeesByName(name);<br>            &#125;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;b&quot;</span> -&gt; &#123;<br>                System.out.print(<span class="hljs-string">&quot;输入员工学历: &quot;</span>);<br>                <span class="hljs-type">String</span> <span class="hljs-variable">education</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>                employees = manager.searchEmployeesByEducation(education);<br>            &#125;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;c&quot;</span> -&gt; &#123;<br>                System.out.print(<span class="hljs-string">&quot;输入员工职位: &quot;</span>);<br>                <span class="hljs-type">String</span> <span class="hljs-variable">position</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>                employees = manager.searchEmployeesByPosition(position);<br>            &#125;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;d&quot;</span> -&gt; &#123;<br>                System.out.print(<span class="hljs-string">&quot;输入员工电话: &quot;</span>);<br>                <span class="hljs-type">String</span> <span class="hljs-variable">phone</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>                employees = manager.searchEmployeesByPhone(phone);<br>            &#125;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;e&quot;</span> -&gt; &#123;<br>                System.out.print(<span class="hljs-string">&quot;输入员工地址: &quot;</span>);<br>                <span class="hljs-type">String</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>                employees = manager.searchEmployeesByAddress(address);<br>            &#125;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;f&quot;</span> -&gt; &#123;<br>                System.out.print(<span class="hljs-string">&quot;输入员工编号: &quot;</span>);<br>                <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> readInt(scanner);<br>                Optional&lt;Employee&gt; employee = manager.getEmployeeById(id);<br>                <span class="hljs-keyword">if</span> (employee.isPresent()) &#123;<br>                    employees = List.of(employee.get());<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    System.out.println(<span class="hljs-string">&quot;没有找到编号为 &quot;</span> + id + <span class="hljs-string">&quot; 的员工。&quot;</span>);<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">default</span> -&gt; System.out.println(<span class="hljs-string">&quot;无效的选择,请重新输入。&quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> employees;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateEmployeeDetails</span><span class="hljs-params">(Scanner scanner, Employee employee)</span> &#123;<br>        System.out.print(<span class="hljs-string">&quot;输入员工新姓名 (当前: &quot;</span> + employee.getName() + <span class="hljs-string">&quot;): &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        <span class="hljs-keyword">if</span> (!name.isBlank()) &#123;<br>            employee.setName(name);<br>        &#125;<br><br>        System.out.print(<span class="hljs-string">&quot;输入员工新性别 (当前: &quot;</span> + employee.getGender() + <span class="hljs-string">&quot;): &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">gender</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        <span class="hljs-keyword">if</span> (!gender.isBlank()) &#123;<br>            employee.setGender(gender);<br>        &#125;<br><br>        System.out.print(<span class="hljs-string">&quot;输入员工新出生年月 (yyyy-MM-dd) (当前: &quot;</span> + employee.getBirthDate() + <span class="hljs-string">&quot;): &quot;</span>);<br>        <span class="hljs-type">LocalDate</span> <span class="hljs-variable">birthDate</span> <span class="hljs-operator">=</span> readDate(scanner);<br>        <span class="hljs-keyword">if</span> (birthDate != <span class="hljs-literal">null</span>) &#123;<br>            employee.setBirthDate(birthDate);<br>        &#125;<br><br>        System.out.print(<span class="hljs-string">&quot;输入员工新学历 (当前: &quot;</span> + employee.getEducation() + <span class="hljs-string">&quot;): &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">education</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        <span class="hljs-keyword">if</span> (!education.isBlank()) &#123;<br>            employee.setEducation(education);<br>        &#125;<br><br>        System.out.print(<span class="hljs-string">&quot;输入员工新职务 (当前: &quot;</span> + employee.getPosition() + <span class="hljs-string">&quot;): &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">position</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        <span class="hljs-keyword">if</span> (!position.isBlank()) &#123;<br>            employee.setPosition(position);<br>        &#125;<br><br>        System.out.print(<span class="hljs-string">&quot;输入员工新电话 (当前: &quot;</span> + employee.getPhone() + <span class="hljs-string">&quot;): &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">phone</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        <span class="hljs-keyword">if</span> (!phone.isBlank()) &#123;<br>            employee.setPhone(phone);<br>        &#125;<br><br>        System.out.print(<span class="hljs-string">&quot;输入员工新住址 (当前: &quot;</span> + employee.getAddress() + <span class="hljs-string">&quot;): &quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>        <span class="hljs-keyword">if</span> (!address.isBlank()) &#123;<br>            employee.setAddress(address);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sortEmployees</span><span class="hljs-params">(EmployeeManager manager)</span> &#123;<br>        manager.sortEmployees(Comparator.comparing(Employee::getId));<br>        System.out.println(<span class="hljs-string">&quot;员工按编号排序成功。&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">readInt</span><span class="hljs-params">(Scanner scanner)</span> &#123;<br>        <span class="hljs-keyword">while</span> (!scanner.hasNextInt()) &#123;<br>            System.out.println(<span class="hljs-string">&quot;无效的输入,请输入一个数字。&quot;</span>);<br>            scanner.next(); <span class="hljs-comment">// 消耗无效输入</span><br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> scanner.nextInt();<br>        scanner.nextLine(); <span class="hljs-comment">// 消耗换行符</span><br>        <span class="hljs-keyword">return</span> value;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> LocalDate <span class="hljs-title function_">readDate</span><span class="hljs-params">(Scanner scanner)</span> &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-type">String</span> <span class="hljs-variable">dateString</span> <span class="hljs-operator">=</span> scanner.nextLine();<br>                <span class="hljs-keyword">return</span> LocalDate.parse(dateString);<br>            &#125; <span class="hljs-keyword">catch</span> (DateTimeParseException e) &#123;<br>                System.out.println(<span class="hljs-string">&quot;无效的日期格式,请使用 yyyy-MM-dd 格式重新输入。&quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="四、运行结果"><a href="#四、运行结果" class="headerlink" title="四、运行结果"></a>四、运行结果</h1><p>给出测试运行结果</p>
+<h2 id="1-添加员工："><a href="#1-添加员工：" class="headerlink" title="1. 添加员工："></a>1. 添加员工：</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">2</span><br>输入员工编号: <span class="hljs-number">101</span><br>输入员工姓名: 张三<br>输入员工性别: 男<br>输入员工出生年月 (yyyy<span class="hljs-literal">-MM-dd</span>): <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span><br>输入员工学历: 本科<br>输入员工职务: 运维<br>输入员工电话: <span class="hljs-number">1234567890</span><br>输入员工住址: 火星<br>员工添加成功。<br></code></pre></td></tr></table></figure>
+<h2 id="2-查询员工："><a href="#2-查询员工：" class="headerlink" title="2. 查询员工："></a>2. 查询员工：</h2><h3 id="2-1-（1）按姓名查找"><a href="#2-1-（1）按姓名查找" class="headerlink" title="2.1. （1）按姓名查找"></a>2.1. （1）按姓名查找</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">3</span><br>请选择查询方式:<br>	a. 按姓名查找<br>	b. 按学历查找<br>	c. 按职位查找<br>	d. 按电话查找<br>	e. 按地址查找<br>	f. 按员工编号查找<br>	<span class="hljs-number">0</span>. 返回上一级菜单<br>请输入选项: a<br>输入员工姓名: 张三<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| 编号 | 姓名       | 性别   | 出生年月   | 学历       | 职务       | 电话         | 住址                 |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| <span class="hljs-number">101</span>  | 张三         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span> | 本科         | 运维         | <span class="hljs-number">1234567890</span>   | 火星                   |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br></code></pre></td></tr></table></figure>
+<h3 id="2-2-（2）按学历查询"><a href="#2-2-（2）按学历查询" class="headerlink" title="2.2. （2）按学历查询"></a>2.2. （2）按学历查询</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">请选择查询方式:<br>	a. 按姓名查找<br>	b. 按学历查找<br>	c. 按职位查找<br>	d. 按电话查找<br>	e. 按地址查找<br>	f. 按员工编号查找<br>	<span class="hljs-number">0</span>. 返回上一级菜单<br>请输入选项: b<br>输入员工学历: 本科<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| 编号 | 姓名       | 性别   | 出生年月   | 学历       | 职务       | 电话         | 住址                 |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| <span class="hljs-number">101</span>  | 张三         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span> | 本科         | 运维         | <span class="hljs-number">1234567890</span>   | 火星                   |<br>| <span class="hljs-number">102</span>  | 王五         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-12-12</span> | 本科         | 开发         | <span class="hljs-number">3456789012</span>   | 月球                   |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br></code></pre></td></tr></table></figure>
+<h2 id="3-按职位、电话、地址、员工编号和上面情况类似"><a href="#3-按职位、电话、地址、员工编号和上面情况类似" class="headerlink" title="3. 按职位、电话、地址、员工编号和上面情况类似"></a>3. 按职位、电话、地址、员工编号和上面情况类似</h2><h3 id="3-1-3-显示全部信息"><a href="#3-1-3-显示全部信息" class="headerlink" title="3.1. 3.显示全部信息"></a>3.1. 3.显示全部信息</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">1</span><br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| 编号 | 姓名       | 性别   | 出生年月   | 学历       | 职务       | 电话         | 住址                 |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| <span class="hljs-number">101</span>  | 张三         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span> | 本科         | 运维         | <span class="hljs-number">1234567890</span>   | 火星                   |<br>| <span class="hljs-number">102</span>  | 王五         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-12-12</span> | 本科         | 开发         | <span class="hljs-number">3456789012</span>   | 月球                   |<br>| <span class="hljs-number">103</span>  | 李四         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-11-11</span> | 硕士         | 经理         | <span class="hljs-number">2345678901</span>   | 地球                   |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br></code></pre></td></tr></table></figure>
+<h2 id="4-删除员工"><a href="#4-删除员工" class="headerlink" title="4. 删除员工"></a>4. 删除员工</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">4</span><br>输入要删除的员工编号: <span class="hljs-number">103</span><br>员工删除成功。<br><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">1</span><br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| 编号 | 姓名       | 性别   | 出生年月   | 学历       | 职务       | 电话         | 住址                 |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| <span class="hljs-number">101</span>  | 张三         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span> | 本科         | 运维         | <span class="hljs-number">1234567890</span>   | 火星                   |<br>| <span class="hljs-number">102</span>  | 王五         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-12-12</span> | 本科         | 开发         | <span class="hljs-number">3456789012</span>   | 月球                   |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br></code></pre></td></tr></table></figure>
+<h2 id="5-更新员工信息"><a href="#5-更新员工信息" class="headerlink" title="5. 更新员工信息"></a>5. 更新员工信息</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">5</span><br>请选择查询方式以找到需要更新的员工:<br>	a. 按姓名查找<br>	b. 按学历查找<br>	c. 按职位查找<br>	d. 按电话查找<br>	e. 按地址查找<br>	f. 按员工编号查找<br>	<span class="hljs-number">0</span>. 返回上一级菜单<br>请输入选项: a<br>输入员工姓名: 张三<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| 编号 | 姓名       | 性别   | 出生年月   | 学历       | 职务       | 电话         | 住址                 |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| <span class="hljs-number">101</span>  | 张三         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span> | 本科         | 运维         | <span class="hljs-number">1234567890</span>   | 火星                   |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>输入要更新的员工编号: <span class="hljs-number">101</span><br>输入员工新姓名 (当前: 张三): 张三<br>输入员工新性别 (当前: 男): 男<br>输入员工新出生年月 (yyyy<span class="hljs-literal">-MM-dd</span>) (当前: <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span>): <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span><br>输入员工新学历 (当前: 本科): 硕士<br>输入员工新职务 (当前: 运维): 运维<br>输入员工新电话 (当前: <span class="hljs-number">1234567890</span>): <span class="hljs-number">1234567890</span><br>输入员工新住址 (当前: 火星): 火星<br>员工更新成功。<br><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">1</span><br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| 编号 | 姓名       | 性别   | 出生年月   | 学历       | 职务       | 电话         | 住址                 |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| <span class="hljs-number">101</span>  | 张三         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span> | 硕士         | 运维         | <span class="hljs-number">1234567890</span>   | 火星                   |<br>| <span class="hljs-number">102</span>  | 王五         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-12-12</span> | 本科         | 开发         | <span class="hljs-number">3456789012</span>   | 月球                   |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br></code></pre></td></tr></table></figure>
+<h2 id="6-按编号排序"><a href="#6-按编号排序" class="headerlink" title="6. 按编号排序"></a>6. 按编号排序</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">1</span><br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| 编号 | 姓名       | 性别   | 出生年月   | 学历       | 职务       | 电话         | 住址                 |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| <span class="hljs-number">101</span>  | 张三         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span> | 本科         | 运维         | <span class="hljs-number">1234567890</span>   | 火星                   |<br>| <span class="hljs-number">103</span>  | 李四         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-11-11</span> | 硕士         | 经理         | <span class="hljs-number">2345678901</span>   | 地球                   |<br>| <span class="hljs-number">102</span>  | 王五         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-12-12</span> | 本科         | 开发         | <span class="hljs-number">3456789012</span>   | 月球                   |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">6</span><br>员工按编号排序成功。<br><span class="hljs-number">1</span>. 显示全部记录<br><span class="hljs-number">2</span>. 添加员工<br><span class="hljs-number">3</span>. 查询员工<br><span class="hljs-number">4</span>. 删除员工<br><span class="hljs-number">5</span>. 更新员工信息<br><span class="hljs-number">6</span>. 按编号排序<br><span class="hljs-number">0</span>. 退出<br>请选择您需要的功能: <span class="hljs-number">1</span><br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| 编号 | 姓名       | 性别   | 出生年月   | 学历       | 职务       | 电话         | 住址                 |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br>| <span class="hljs-number">101</span>  | 张三         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-01-10</span> | 本科         | 运维         | <span class="hljs-number">1234567890</span>   | 火星                   |<br>| <span class="hljs-number">102</span>  | 王五         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-12-12</span> | 本科         | 开发         | <span class="hljs-number">3456789012</span>   | 月球                   |<br>| <span class="hljs-number">103</span>  | 李四         | 男      | <span class="hljs-number">2000</span><span class="hljs-literal">-11-11</span> | 硕士         | 经理         | <span class="hljs-number">2345678901</span>   | 地球                   |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">------------</span>+<span class="hljs-literal">--------------</span>+<span class="hljs-literal">----------------------</span>+<br></code></pre></td></tr></table></figure>
+<h1 id="五、总结与体会"><a href="#五、总结与体会" class="headerlink" title="五、总结与体会"></a>五、总结与体会</h1><p>给出课程设计的收获和体会</p>
+<p>通过这次课程设计，我学到了以下几点：</p>
+<ol>
+<li><strong>面向对象编程思想</strong>：通过设计类和方法，将复杂的员工管理系统拆分成可管理的模块，使代码更易读、易维护。</li>
+<li><strong>文件操作</strong>：学习了如何读写 CSV 文件，理解了文件操作在数据持久化中的重要性。</li>
+<li><strong>异常处理</strong>：在文件操作和用户输入中，通过异常处理机制提高了程序的健壮性和用户体验。</li>
+<li><strong>用户交互</strong>：通过命令行菜单的设计，实现了用户与程序的友好交互。</li>
+<li><strong>数据结构和算法</strong>：通过列表和排序算法的使用，巩固了对基本数据结构和算法的理解。</li>
+</ol>
+<p>这次课程设计不仅让我掌握了更多的编程技巧，还提高了我解决实际问题的能力。这些技能和经验将对我未来的学习和工作大有裨益。</p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>员工管理系统</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E5%9F%BA%E4%BA%8E%E5%AE%A2%E6%88%B7%E7%BB%86%E5%88%86%E7%9A%84%E5%9C%A8%E7%BA%BF%E9%9B%B6%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%8A%E8%90%A5%E9%94%80%E7%AD%96%E7%95%A5/">基于客户细分的在线零售数据分析及营销策略</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Foracle/">图书馆管理系统oracle</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%97%AE%E9%A2%98%E7%9A%84%E6%8F%8F%E8%BF%B0-skip"><span class="toc-number">1.</span> <span class="toc-text">一、问题的描述^skip</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">二、解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">三、程序代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%80-Employee%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">1. (一) Employee类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BA%8C-EmployeeManager%E7%B1%BB"><span class="toc-number">3.2.</span> <span class="toc-text">2. (二) EmployeeManager类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%89-Main%E7%B1%BB"><span class="toc-number">3.3.</span> <span class="toc-text">3. (三) Main类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">四、运行结果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B7%BB%E5%8A%A0%E5%91%98%E5%B7%A5%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">1. 添加员工：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9F%A5%E8%AF%A2%E5%91%98%E5%B7%A5%EF%BC%9A"><span class="toc-number">4.2.</span> <span class="toc-text">2. 查询员工：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%EF%BC%881%EF%BC%89%E6%8C%89%E5%A7%93%E5%90%8D%E6%9F%A5%E6%89%BE"><span class="toc-number">4.2.1.</span> <span class="toc-text">2.1. （1）按姓名查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%EF%BC%882%EF%BC%89%E6%8C%89%E5%AD%A6%E5%8E%86%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.2.2.</span> <span class="toc-text">2.2. （2）按学历查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8C%89%E8%81%8C%E4%BD%8D%E3%80%81%E7%94%B5%E8%AF%9D%E3%80%81%E5%9C%B0%E5%9D%80%E3%80%81%E5%91%98%E5%B7%A5%E7%BC%96%E5%8F%B7%E5%92%8C%E4%B8%8A%E9%9D%A2%E6%83%85%E5%86%B5%E7%B1%BB%E4%BC%BC"><span class="toc-number">4.3.</span> <span class="toc-text">3. 按职位、电话、地址、员工编号和上面情况类似</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-%E6%98%BE%E7%A4%BA%E5%85%A8%E9%83%A8%E4%BF%A1%E6%81%AF"><span class="toc-number">4.3.1.</span> <span class="toc-text">3.1. 3.显示全部信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4%E5%91%98%E5%B7%A5"><span class="toc-number">4.4.</span> <span class="toc-text">4. 删除员工</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%9B%B4%E6%96%B0%E5%91%98%E5%B7%A5%E4%BF%A1%E6%81%AF"><span class="toc-number">4.5.</span> <span class="toc-text">5. 更新员工信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%8C%89%E7%BC%96%E5%8F%B7%E6%8E%92%E5%BA%8F"><span class="toc-number">4.6.</span> <span class="toc-text">6. 按编号排序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93%E4%B8%8E%E4%BD%93%E4%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">五、总结与体会</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

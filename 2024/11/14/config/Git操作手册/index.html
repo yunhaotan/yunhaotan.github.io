@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>Git操作手册 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="Git操作手册">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/Git%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="要先在github或者gitee上创建一个仓库,然后在git中依次输入下面代码gitinitgitconfig--globaluser.name&amp;quot;tanyunhao&amp;quot;gitconfig--globaluser.email&amp;quot;ytan79634@gmail.com&amp;quot;gits">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">Git操作手册</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.770Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p>要先在github或者gitee上创建一个仓库,然后在git中依次输入下面代码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git init<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;tanyunhao&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> config --global user.email <span class="hljs-string">&quot;ytan79634<span class="hljs-variable">@gmail</span>.com&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git status</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> remote <span class="hljs-keyword">add</span> origin https:<span class="hljs-comment">//github.com/tanyunhao/Obsidian.git</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git remote -v</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver">git <span class="hljs-built_in">add</span> <span class="hljs-comment">--all</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">&quot;log&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">git branch -M <span class="hljs-selector-tag">main</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima">git <span class="hljs-built_in">push</span> -u <span class="hljs-built_in">origin</span> main<br></code></pre></td></tr></table></figure>
+<p>`</p>
+<ol>
+<li><p><code>git init</code>: 这个命令用于在当前目录中初始化一个新的Git仓库。</p>
+</li>
+<li><p><code>git config --global user.name &quot;华科第一深情谭云浩&quot;</code>: 通过这个命令，你设置了Git全局配置中的用户名。</p>
+</li>
+<li><p><code>git config --global user.email &quot;3021841753@qq.com&quot;</code>: 这个命令设置了Git全局配置中的用户邮箱。</p>
+</li>
+<li><p><code>git status</code>: 这个命令用于查看工作区的状态，显示已修改但未提交的文件。</p>
+</li>
+<li><p><code>git remote add origin https://gitee.com/huake-tan-yunhao/program.git</code>: 添加一个远程仓库，这里的<code>origin</code>是远程仓库的别名，后面的URL是远程仓库的地址。</p>
+</li>
+<li><p><code>git remote -v</code>: 显示所有远程仓库的详细信息，包括URL。</p>
+</li>
+<li><p><code>git add --all</code>: 将所有修改的文件添加到暂存区，准备提交。</p>
+</li>
+<li><p><code>git commit -m &quot;log&quot;</code>: 提交暂存区的文件，并附带一条提交信息 “log”。</p>
+</li>
+<li><p><code>git push -u origin master</code>: 将本地的master分支推送到远程仓库origin。 <code>-u</code> 选项用于设置默认的上游分支，以后可以直接使用 <code>git push</code> 不加参数。</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git add .<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">&quot;log&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">git <span class="hljs-built_in">push</span><br></code></pre></td></tr></table></figure>
+<p>强制推送（force push）是一种将本地更改覆盖远程仓库中的更改的操作。这通常在以下几种情况下使用：</p>
+<ul>
+<li>你确定远程仓库的更改可以被丢弃。</li>
+<li>你在本地重写了历史记录（例如，使用了 <code>git rebase</code> 或 <code>git filter-branch</code>）。</li>
+<li>你希望恢复到某个旧的提交状态。</li>
+</ul>
+<p>请注意，强制推送可能会导致数据丢失，因为它会覆盖远程仓库的历史记录。因此，在执行强制推送之前，请确保你的团队成员都了解这一操作，并且已经备份了他们的工作。</p>
+<h3 id="0-1-1-强制推送的命令"><a href="#0-1-1-强制推送的命令" class="headerlink" title="0.1.1. 强制推送的命令"></a>0.1.1. 强制推送的命令</h3><p>要强制推送本地分支到远程仓库，你可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git push --force origin master<br></code></pre></td></tr></table></figure>
+<p>如果你只想更新最近的几次提交而不影响更早的历史记录，可以使用 <code>--force-with-lease</code> 选项，这是一个更安全的选择，因为它会在强制推送前检查远程分支是否有新的提交：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git push --force-with-lease origin master<br></code></pre></td></tr></table></figure>
+<h3 id="0-1-2-具体步骤"><a href="#0-1-2-具体步骤" class="headerlink" title="0.1.2. 具体步骤"></a>0.1.2. 具体步骤</h3><ol>
+<li><p><strong>确保你的工作目录是干净的</strong>：<br>如果你有未提交的更改，先进行提交或暂存。</p>
+</li>
+<li><p><strong>添加并提交更改</strong>：<br>如果你还没有提交更改，请先提交：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git add .<br>git commit -m <span class="hljs-string">&quot;描述你的更改&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>强制推送</strong>：<br>使用 <code>--force</code> 或 <code>--force-with-lease</code> 选项来强制推送：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git push --force origin master<br></code></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git push --force-with-lease origin master<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="0-1-3-注意事项"><a href="#0-1-3-注意事项" class="headerlink" title="0.1.3. 注意事项"></a>0.1.3. 注意事项</h3><ul>
+<li><strong>通知团队成员</strong>：如果你在一个共享的远程仓库中工作，务必通知所有团队成员你将进行强制推送，以避免他们丢失工作。</li>
+<li><strong>备份</strong>：在执行强制推送之前，建议备份远程仓库的状态，以防需要回滚。</li>
+<li><strong>使用 <code>--force-with-lease</code></strong>：尽量使用 <code>--force-with-lease</code> 选项，因为它提供了额外的安全性，防止意外覆盖其他人的提交。</li>
+</ul>
+<h3 id="0-1-4-示例"><a href="#0-1-4-示例" class="headerlink" title="0.1.4. 示例"></a>0.1.4. 示例</h3><p>假设你已经解决了所有的冲突，并且希望强制推送你的本地 <code>master</code> 分支到远程仓库，可以按照以下步骤操作：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 确保工作目录是干净的</span><br>git status<br><br><span class="hljs-comment"># 添加并提交所有更改</span><br>git add .<br>git commit -m <span class="hljs-string">&quot;解决冲突并更新文件&quot;</span><br><br><span class="hljs-comment"># 强制推送本地分支到远程仓库</span><br>git push --force-with-lease origin master<br></code></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>Git操作手册</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/Obsidian%E4%B8%8A%E4%BC%A0%E5%88%B0%E8%AF%AD%E9%9B%80/">Obsidian上传到语雀</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/Eclipse%20For%20C++%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE(Ubuntu%E3%80%81Windows)/">Eclipse For C++安装和配置(Ubuntu、Windows)</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1-1-%E5%BC%BA%E5%88%B6%E6%8E%A8%E9%80%81%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">0.1.1. 强制推送的命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1-2-%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">0.1.2. 具体步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1-3-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">0.1.3. 注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1-4-%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text">0.1.4. 示例</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

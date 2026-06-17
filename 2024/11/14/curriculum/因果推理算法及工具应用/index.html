@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>因果推理算法及工具应用 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="因果推理算法及工具应用">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E7%90%86%E7%AE%97%E6%B3%95%E5%8F%8A%E5%B7%A5%E5%85%B7%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="实验二因果推理算法及工具应用1、实验目的（1）学习“NOTEARS/PC/GraN-DAG”等因果发现算法在python中的使用与实现；（2）学习AMOS软件，计算因果效应（3）学会用GridSearch/BOHB等方法或工具进行超参数调优（4）通过多项指标比较比较算法效果（5）结果可视化与展示。2、实验准备">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">因果推理算法及工具应用</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.899Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <div style="text-align: center;">
+    <span style="font-size: 32px;">实验二 因果推理算法及工具应用</span>
+</div>
+
+
+<h2 id="1、实验目的"><a href="#1、实验目的" class="headerlink" title="1、实验目的"></a>1、实验目的</h2><p>（1）  学习“NOTEARS/ PC/GraN-DAG”等因果发现算法在python中的使用与实现；</p>
+<p>（2）  学习AMOS软件，计算因果效应</p>
+<p>（3）  学会用Grid Search/BOHB等方法或工具进行超参数调优</p>
+<p>（4）  通过多项指标比较比较算法效果</p>
+<p>（5）  结果可视化与展示。</p>
+<h2 id="2、实验准备"><a href="#2、实验准备" class="headerlink" title="2、实验准备"></a>2、实验准备</h2><p>1、准备好python环境和编译器软件（PyCharm或Visual Studio Code）；</p>
+<p>2、自行在网络资源中找到“NOTEARS/ PC/GraN-DAG”对应的python代码（推荐渠道：</p>
+<p>1.NOTEARS官方项目<a target="_blank" rel="noopener" href="https://github.com/xunzheng/notears；">https://github.com/xunzheng/notears；</a></p>
+<p>2.GraN-DAG官方项目<a target="_blank" rel="noopener" href="https://github.com/lihebi/GraN-DAG-nodata；">https://github.com/lihebi/GraN-DAG-nodata；</a></p>
+<p>3.华为诺亚实验室集成工具库</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle），并完成算法所需要python库的安装；">https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle），并完成算法所需要python库的安装；</a></p>
+<p>注：上课演示以NOTEARS为例，先保证该算法配置完成</p>
+<p>3、根据教程安装好AMOS软件<a target="_blank" rel="noopener" href="https://blog.csdn.net/2303_81888702/article/details/135410867；">https://blog.csdn.net/2303_81888702/article/details/135410867；</a></p>
+<p>4、提前熟悉实验材料（及其中涉及的概念）和所对应的算法代码，可借助大模型平台（如：ChatGPT/通义千问等）。</p>
+<p>NOTEARS的官方资源和AMOS安装文件已分别打包为“notears-master.zip”、“Amos28.zip”。</p>
+<h2 id="3、实验原理"><a href="#3、实验原理" class="headerlink" title="3、实验原理"></a>3、实验原理</h2><p><strong>一、因果发现：</strong></p>
+<p>因果发现，即<strong>从纯观测数据中发现并获取因果关系</strong>。</p>
+<p>因果模型本质是反应变量之间的因果关系，比如我们有两个变量“吃饭”与“饱足”，我们知道二者是相关的，那么我们如何描述两个变量间的因果关系呢？其实通过一种有向的描述即可，我们会发现：吃饭会导致饱足，但是饱足不会导致吃饭。因此吃饭是饱足的因。我们可以表述为“吃饭—&gt;饱足”，所以我们可以发现，这本质上是一个有向无环的图模型（DAG）。所以如果我们可以通过一组变量写出其对应的DAG（专业术语是马尔可夫相容），那么我们就可以表达变量间的因果关系。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240526143229535.png" alt="image-20240526143229535"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​                       </p>
+<p>因果发现是一种统计学和机器学习的分支，旨在识别哪些变量是其他变量的原因，哪些是结果。由于直接观察因果关系通常是困难的，尤其是在自然和社会科学中，因果发现方法利用统计依赖性、干预数据（如果有的话）、背景知识以及特定的算法和技术来估计这些关系。</p>
+<p>当前主要有四种因果结构发现的方法：基于约束的方法、基于分数的方法、利用结构不对称性的方法和利用各种形式的干预的方法。每种方法可进一步被分为通过基于组合/搜索的算法和通过基于连续优化的算法。这些方法也可以被分为局部（local）即每次测试一条边，和全局（global）即测试整张图。</p>
+<p><strong>二、**</strong>PC**</p>
+<p>PC (Hoyer等人(2008))使用加性噪声模型进行因果发现，并提供了线性非高斯因果发现框架的推广，以处理变量具有加性噪声的非线性函数依赖。它提到非线性因果关系通常有助于打破观察变量之间的对称性，并有助于确定因果方向。PC假设观测变量的数据生成过程如下面的公式所示，其中变量xi是其父变量的函数，而噪声项ei是独立的加性噪声。</p>
+<p> <img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240526143303372.png" alt="image-20240526143303372"></p>
+<p><strong>三、**</strong>NOTEARS**</p>
+<p>NOTEARS (Zheng et al .(2018))是第一个将组合图搜索问题重建为连续优化问题的，并且许多方法改造了该方法的主要贡献即无环性惩罚。强制无环性的函数/惩罚 h 为：</p>
+<p> <img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240526143322203.png" alt="image-20240526143322203"></p>
+<p>将传统的组合优化问题（左）转化为连续程序（右）</p>
+<p> <img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240526143336620.png" alt="image-20240526143336620"></p>
+<p>使用增广拉格朗日的标准机制，转换为无约束问题</p>
+<p> <img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240526143350425.png" alt="image-20240526143350425"></p>
+<p><strong>四、**</strong>GraN-DAG**</p>
+<p>基于梯度的神经DAG学习(GraN-DAG)是一种基于分数的结构学习方法，它使用神经网络(nn)来处理非线性因果关系(Lachapelle et al .(2019))。它使用随机梯度方法来训练神经网络，以提高可扩展性并允许隐式正则化。它基于NOTEARS为神经网络制定了一种新的非周期性表征(Zheng et al .(2018))。为了确保非线性模型中的非周期性，它使用了一个类似于NOTEARS的参数，并首先在神经网络路径级别应用它，然后在图路径级别应用它。对于正则化，GraN-DAG使用一个称为初步邻居选择(PNS)的过程来为每个变量选择一组潜在的父变量。它使用最后的修剪步骤来去除假边。该算法主要适用于非线性高斯加性噪声模型。</p>
+<p><strong>五、结构因果模型：</strong></p>
+<p>结构因果模型由 Pearl 提出，其将所有考虑的变量组织成一个有向无环图，也称作因果图 (causal graph)，记作 G = (V,E) ，每个节点代表一个变量，一条由X 指向Y 的边代表X对Y有直接的因果作用。</p>
+<p> <img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240526143404196.png" alt="image-20240526143404196"></p>
+<p>节点的值由外生变量 (exogenous variable) 和所有直接父节点变量通过结构方程 (structural equations) 唯一确定。</p>
+<p> <img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240526143419218.png" alt="image-20240526143419218"></p>
+<p><strong>六、超参数调优</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/590823641">https://zhuanlan.zhihu.com/p/590823641</a></strong></p>
+<p><strong>模型参数</strong>：这些是由模型从给定的数据中估计出来的参数。例如，一个深度神经网络的权重。</p>
+<p><strong>模型超参数</strong>：这些是不能由模型从给定数据中估计的参数，超参数被用来估计模型的参数，例如，深度神经网络的学习率。</p>
+<p>超参数调优的主要方法：</p>
+<p><strong>手动超参数调优</strong>：包括通过手动方式来实验不同的超参数集。</p>
+<p><strong>随机搜索（**</strong>Random Search<strong>**）</strong>：在随机搜索方法中，我们为超参数创建了拥有很多可能值的网格。每次迭代都从这个网格中尝试随机的超参数组合，记录性能，最后得到最佳性能的超参数组合。</p>
+<p><strong>网格搜索（**</strong>Grid Search<strong>**）：</strong>在网格搜索法中，我们为超参数创建了一个可能值的网格。每次迭代都以特定的顺序尝试超参数的组合。它在每一个可能的超参数组合上拟合模型并记录模型的性能。最后，它返回具有最佳超参数的最佳模型。</p>
+<p><strong>贝叶斯优化</strong>：为模型调整和寻找合适的超参数是一种优化问题。我们希望通过改变模型参数来最小化我们模型的损失函数。贝叶斯优化帮助我们通过最少的步骤中找到最小的点。贝叶斯优化还使用了采集函数（Acquisition Funtion），将采样引向有可能比当前最佳观察结果更好的区域。</p>
+<h2 id="4、实验内容"><a href="#4、实验内容" class="headerlink" title="4、实验内容"></a>4、实验内容</h2><p>1、在python上实现NOTEARS，并通过生成数据对算法进行调参，之后将调优后的算法应用到给定数据，最后得到学习到的DAG。</p>
+<p>exp<em>linear/graph00000_data00000_X </em>.csv</p>
+<p>其中给定数据的已知信息如下：</p>
+<p>真实DAG的边缘数量为14-18</p>
+<p>graph_type = ‘ER’；sem_type = ‘gauss’；w_ranges = ((-2.0, -0.5), (0.5, 2.0))；  noise_scale = np.ones(d)</p>
+<p>2、将学习到的DAG应用到AMOS中进行计算因果效应，观察拟合指标是否达标，若不达标说明算法从数据中学习到的DAG与实际不符，需要重新进行步骤1。要求最终的AMOS指标处于合理范围。</p>
+<p>3、基于分组给定三组不同分布的数据（包含三个文件），此时已知真实DAG。要求分别在三组数据上应用三个算法，并通过评价指标比较算法性能。</p>
+<p>数据文件的具体分配参照“数据集分配.xlsx”</p>
+<p>要用的数据文件格式如下：</p>
+<p>exp_nonlinear1/ graph0000x_W_true .csv</p>
+<p>exp_nonlinear1/graph0000x_data0000y_X .csv</p>
+<p>exp_nonlinear2/ graph0000x_W_true .csv</p>
+<p>exp_nonlinear2/graph0000x_data0000y_X .csv</p>
+<p>exp_nonlinear3/ graph0000x_W_true .csv</p>
+<p>exp_nonlinear3/graph0000x_data0000y_X .csv</p>
+<p>其中x,y的值为0或1</p>
+<h2 id="5、实验要求"><a href="#5、实验要求" class="headerlink" title="5、实验要求"></a>5、实验要求</h2><p>1.通过python实现PC/NOTEARS/GraN-DAG算法的运行。</p>
+<p>2.通过使用超参数调优策略（网格搜索或贝叶斯策略或其它工具，如BOHB）参数调整理解优化算法中各个参数的意义。</p>
+<p>3.通过NOTEARS学习未知真实DAG数据集中的DAG，并应用AMOS软件计算因果效应.</p>
+<p>4.提交NOTEARS最后的超参数、因果图以及各路径的因果效应。</p>
+<h2 id="6、实验过程"><a href="#6、实验过程" class="headerlink" title="6、实验过程"></a>6、实验过程</h2><p>展示主要的实验过程（整体流程+具体进行设计的地方+实验测试过程）</p>
+<p>文字+图片（如：代码截图）</p>
+<h3 id="6-1-A-未知真实DAG数据集："><a href="#6-1-A-未知真实DAG数据集：" class="headerlink" title="6.1. A 未知真实DAG数据集："></a>6.1. A 未知真实DAG数据集：</h3><p>主要体现两部分内容：</p>
+<h4 id="6-1-1-（1）超参数调优代码设计"><a href="#6-1-1-（1）超参数调优代码设计" class="headerlink" title="6.1.1. （1）超参数调优代码设计"></a>6.1.1. （1）超参数调优代码设计</h4><p>数据生成：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> notears <span class="hljs-keyword">import</span> linear, utils<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><span class="hljs-keyword">import</span> os<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    utils.set_random_seed(<span class="hljs-number">123</span>)<br>    <span class="hljs-comment"># 生成图的数量</span><br>    num_graph = <span class="hljs-number">2</span><br>    <span class="hljs-comment"># 每个图对应生成数据集的份数</span><br>    num_data_per_graph = <span class="hljs-number">2</span><br>    <span class="hljs-comment"># 生成数据的保存地址</span><br>    save_data_path = <span class="hljs-string">r&quot;data&quot;</span><br>    <span class="hljs-comment"># n-生成的数据量，多少条数据；d-生成图/生成数据的维度，几个变量；s0-生成图的边数；</span><br>    <span class="hljs-comment"># graph_type-生成图的类型（ER, SF, BP）；sem_type-生成数据的分布类型（线性：gauss, exp, gumbel, uniform, logistic, poisson/非线性：mlp, mim, gp, gp-add）</span><br>    n, d, s0, graph_type, sem_type = <span class="hljs-number">200</span>, <span class="hljs-number">7</span>, <span class="hljs-number">14</span>, <span class="hljs-string">&#x27;ER&#x27;</span>, <span class="hljs-string">&#x27;gauss&#x27;</span><br>    n1, d1, s1, graph_type1, sem_type1 = <span class="hljs-number">30</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;SF&#x27;</span>, <span class="hljs-string">&#x27;mlp&#x27;</span><br><br>    <span class="hljs-comment"># 线性数据例子</span><br>    <span class="hljs-comment"># w_ranges-参数的数据范围</span><br>    w_ranges = ((-<span class="hljs-number">2.0</span>, -<span class="hljs-number">0.5</span>), (<span class="hljs-number">0.5</span>, <span class="hljs-number">2.0</span>))<br>    <span class="hljs-comment"># noise_scale-加性噪声的范围</span><br>    noise_scale = np.ones(d)<br>    <span class="hljs-comment"># 生成数据存放文件夹的名称</span><br>    expt_name = <span class="hljs-string">&#x27;equal_var&#x27;</span><br>    run_expt(save_data_path, num_graph, num_data_per_graph, n, d, s0, graph_type, sem_type, w_ranges, noise_scale, expt_name)<br><br>    <span class="hljs-comment"># 非线性数据例子</span><br>    w_ranges = ((-<span class="hljs-number">2.0</span>, -<span class="hljs-number">1.1</span>), (<span class="hljs-number">1.1</span>, <span class="hljs-number">2.0</span>))<br>    noise_scale1 = [<span class="hljs-number">1.</span>, <span class="hljs-number">0.15</span>, <span class="hljs-number">0.2</span>]<br>    expt_name = <span class="hljs-string">&#x27;large_a&#x27;</span><br>    <span class="hljs-comment">#run_expt_(save_data_path, num_graph, num_data_per_graph, n1, d1, s1, graph_type1, sem_type1, w_ranges, noise_scale1, expt_name)</span><br><br><span class="hljs-comment"># 线性</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">run_expt</span>(<span class="hljs-params">save_data_path, num_graph, num_data_per_graph, n, d, s0, graph_type, sem_type, w_ranges, noise_scale, expt_name</span>):<br>    <span class="hljs-comment"># os.mkdir(expt_name)</span><br>    <span class="hljs-comment"># os.chmod(expt_name, 0o777)</span><br>    <span class="hljs-comment"># perf = defaultdict(list)</span><br>    noise_scale  =np.array(noise_scale)<br>    <span class="hljs-keyword">for</span> ii <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(num_graph)):<br>        <span class="hljs-comment"># B_true-生成因果图的0-1邻接矩阵</span><br>        B_true = utils.simulate_dag(d, s0, graph_type)<br>        W_true = utils.simulate_parameter(B_true, w_ranges=w_ranges)<br>        B_true_fn = os.path.join(save_data_path, expt_name, <span class="hljs-string">f&#x27;graph<span class="hljs-subst">&#123;ii:05&#125;</span>_W_true.csv&#x27;</span>)<br>        np.savetxt(B_true_fn, B_true, delimiter=<span class="hljs-string">&#x27;,&#x27;</span>)<br>        <span class="hljs-keyword">for</span> jj <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_data_per_graph):<br>            <span class="hljs-comment"># X = utils.simulate_linear_sem(W_true, n, sem_type, noise_scale=noise_scale)</span><br>            X = utils.simulate_linear_sem(W_true, n, sem_type, noise_scale=noise_scale)<br>            X_fn = os.path.join(save_data_path, expt_name, <span class="hljs-string">f&#x27;graph<span class="hljs-subst">&#123;ii:05&#125;</span>_data<span class="hljs-subst">&#123;jj:05&#125;</span>_X.csv&#x27;</span>)<br>            np.savetxt(X_fn, X, delimiter=<span class="hljs-string">&#x27;,&#x27;</span>)<br><br><span class="hljs-comment"># 非线性</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">run_expt_</span>(<span class="hljs-params">save_data_path, num_graph, num_data_per_graph, n, d, s0, graph_type, sem_type, noise_scale, expt_name</span>):<br>    noise_scale = np.array(noise_scale)<br>    <span class="hljs-keyword">for</span> ii <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(num_graph)):<br>        B_true = utils.simulate_dag(d, s0, graph_type)<br>        B_true_fn = os.path.join(save_data_path, expt_name, <span class="hljs-string">f&#x27;graph<span class="hljs-subst">&#123;ii:05&#125;</span>_W_true.csv&#x27;</span>)<br>        np.savetxt(B_true_fn, B_true, delimiter=<span class="hljs-string">&#x27;,&#x27;</span>)<br>        <span class="hljs-keyword">for</span> jj <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_data_per_graph):<br>            X = utils.simulate_nonlinear_sem(B_true, n, sem_type, noise_scale=noise_scale)<br>            X_fn = os.path.join(save_data_path, expt_name, <span class="hljs-string">f&#x27;graph<span class="hljs-subst">&#123;ii:05&#125;</span>_data<span class="hljs-subst">&#123;jj:05&#125;</span>_X.csv&#x27;</span>)<br>            np.savetxt(X_fn, X, delimiter=<span class="hljs-string">&#x27;,&#x27;</span>)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+<p>网格搜索代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> notears <span class="hljs-keyword">import</span> linear, nonlinear, utils<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\notears-master\data\equal_var\graph00001_W_true.csv&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    line = f.readline()<br>    data_array = []<br>    <span class="hljs-keyword">while</span> line:<br>        num = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">float</span>, line.split(<span class="hljs-string">&#x27;,&#x27;</span>)))<br>        data_array.append(num)<br>        line = f.readline()<br>    B_true = np.array(data_array)<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\notears-master\data\equal_var\graph00001_data00001_X.csv&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    line = f.readline()<br>    data_array = []<br>    <span class="hljs-keyword">while</span> line:<br>        num = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">float</span>, line.split(<span class="hljs-string">&#x27;,&#x27;</span>)))<br>        data_array.append(num)<br>        line = f.readline()<br>    X = np.array(data_array)<br><br>param_dist = &#123;<br>              <span class="hljs-comment"># &quot;max_iter&quot;:[100, 200, 300, 400, 500],</span><br>              <span class="hljs-string">&quot;w_threshold&quot;</span>:[<span class="hljs-number">0.05</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">0.15</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.25</span>, <span class="hljs-number">0.3</span>, <span class="hljs-number">0.35</span>, <span class="hljs-number">0.4</span>, <span class="hljs-number">0.45</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.55</span>, <span class="hljs-number">0.6</span>, <span class="hljs-number">0.65</span>, <span class="hljs-number">0.7</span>, <span class="hljs-number">0.75</span>, <span class="hljs-number">0.8</span>, <span class="hljs-number">0.85</span>, <span class="hljs-number">0.9</span>, <span class="hljs-number">0.95</span>],<br>              <span class="hljs-comment"># &quot;lambda0&quot;:[0.001,  0.003, 0.004, 0.005,  0.007, 0.009, 0.011, 0.013, 0.015, 0.017, 0.019, 0.021, 0.023, 0.025],</span><br>              <span class="hljs-string">&quot;lambda1&quot;</span>:[<span class="hljs-number">0.01</span>,  <span class="hljs-number">0.02</span>, <span class="hljs-number">0.03</span>, <span class="hljs-number">0.04</span>,  <span class="hljs-number">0.05</span>, <span class="hljs-number">0.06</span>, <span class="hljs-number">0.07</span>, <span class="hljs-number">0.08</span>, <span class="hljs-number">0.09</span>, <span class="hljs-number">0.1</span>],<br>              &#125;<br><br><span class="hljs-comment"># MI = param_dist.get(&quot;max_iter&quot;)</span><br>WT = param_dist.get(<span class="hljs-string">&quot;w_threshold&quot;</span>)<br>L1 = param_dist.get(<span class="hljs-string">&quot;lambda1&quot;</span>)<br><br>result = []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(L1)):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(WT)):<br>        <span class="hljs-comment">#notears</span><br>        lambda1 = L1[i]<br>        w_threshold = WT[j]<br>        W_notears = linear.notears_linear(X, lambda1=lambda1, loss_type=<span class="hljs-string">&#x27;l2&#x27;</span>,max_iter=<span class="hljs-number">300</span>,<br>                                          w_threshold=w_threshold)<br><br>        <span class="hljs-keyword">assert</span> utils.is_dag(W_notears)<br>        <span class="hljs-comment">#eval</span><br>        B_notears = (W_notears !=<span class="hljs-number">0</span>)<br>        acc = utils.count_accuracy(B_true, B_notears)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;----------------------------------&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;lambda1:&quot;</span>,L1[i],<span class="hljs-string">&quot;w_threshold:&quot;</span>,WT[j])<br>        ret = [L1[i],WT[j]]<br><br>        v_met = <span class="hljs-built_in">list</span>(acc.values())<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;fdr|tpr|shd|nnz&quot;</span>)<br>        <span class="hljs-built_in">print</span>(v_met)<br>        ret += v_met<br>        result.append(ret)<br><br><span class="hljs-keyword">import</span> csv<br><br><span class="hljs-comment"># 创建csv writer对象</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">r&#x27;data\equal_var\res_save\r_l11.csv&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, newline=<span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">as</span> file1:<br>    writer1 = csv.writer(file1)<br><br>    <span class="hljs-comment"># 写入数据</span><br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> result:<br>        writer1.writerow(row)<br><br><span class="hljs-comment"># 数据</span><br>data = [[<span class="hljs-string">&quot;lambda1:&quot;</span>,<span class="hljs-string">&quot;w_threshold:&quot;</span>] + <span class="hljs-built_in">list</span>(acc.keys())]+result<br><br><span class="hljs-comment"># 创建csv writer对象</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">r&#x27;data\equal_var\res_save\d_l11.csv&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, newline=<span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">as</span> file2:<br>    writer2 = csv.writer(file2)<br><br>    <span class="hljs-comment"># 写入数据</span><br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> data:<br>        writer2.writerow(row)<br></code></pre></td></tr></table></figure>
+<h4 id="6-1-2-（2）测试过程"><a href="#6-1-2-（2）测试过程" class="headerlink" title="6.1.2. （2）测试过程"></a>6.1.2. （2）测试过程</h4><p>体现测试的过程，至少将两次测试不成功（即：应用AMOS计算因果效应时，拟合指标不达标，学习到的因果图不准确）的例子进行呈现——此时预设的边的数量，超参数，结果图（因果图+AMOS计算结果）</p>
+<p> 试验过程：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Lambda1:0.01  w_threshold:0.2</strong><br />  <strong>边的数量：**</strong>16**</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240525202150037.png" alt="image-20240525202150037" style="zoom:50%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Lambda1:0.01  w_threshold:0.2</strong><br />  <strong>边的数量：**</strong>15</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240525202250520.png" alt="image-20240525202250520" style="zoom:50%;" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> 最优解:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>最优：</strong>Lambda1:0.05  w_threshold:0.1<br />边的数量：16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/clip_image014.jpg" alt="img" style="zoom:50%;" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="6-2-B-已知真实DAG数据集："><a href="#6-2-B-已知真实DAG数据集：" class="headerlink" title="6.2. B 已知真实DAG数据集："></a>6.2. B 已知真实DAG数据集：</h3><p>主要体现不同算法在不同数据集上的超参数调优过程及对比过程</p>
+<p>要求对最后的比较结果作分析和评述</p>
+<h4 id="6-2-1-NOTEARS"><a href="#6-2-1-NOTEARS" class="headerlink" title="6.2.1. NOTEARS"></a>6.2.1. NOTEARS</h4><p>网格搜索超参数优化：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> csv<br><span class="hljs-keyword">from</span> notears.locally_connected <span class="hljs-keyword">import</span> LocallyConnected<br><span class="hljs-keyword">from</span> notears.lbfgsb_scipy <span class="hljs-keyword">import</span> LBFGSBScipy<br><span class="hljs-keyword">from</span> notears.trace_expm <span class="hljs-keyword">import</span> trace_expm<br><span class="hljs-keyword">import</span> notears.utils <span class="hljs-keyword">as</span> ut<br><span class="hljs-keyword">from</span> notears <span class="hljs-keyword">import</span> linear, nonlinear, utils<br><br><br><span class="hljs-comment"># Define NotearsMLP and NotearsSobolev classes here (as provided)</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">squared_loss</span>(<span class="hljs-params">output, target</span>):<br>    n = target.shape[<span class="hljs-number">0</span>]<br>    loss = <span class="hljs-number">0.5</span> / n * torch.<span class="hljs-built_in">sum</span>((output - target) ** <span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">return</span> loss<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">dual_ascent_step</span>(<span class="hljs-params">model, X, lambda1, lambda2, rho, alpha, h, rho_max</span>):<br>    h_new = <span class="hljs-literal">None</span><br>    optimizer = LBFGSBScipy(model.parameters())<br>    X_torch = torch.from_numpy(X)<br>    <span class="hljs-keyword">while</span> rho &lt; rho_max:<br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">closure</span>():<br>            optimizer.zero_grad()<br>            X_hat = model(X_torch)<br>            loss = squared_loss(X_hat, X_torch)<br>            h_val = model.h_func()<br>            penalty = <span class="hljs-number">0.5</span> * rho * h_val * h_val + alpha * h_val<br>            l2_reg = <span class="hljs-number">0.5</span> * lambda2 * model.l2_reg()<br>            l1_reg = lambda1 * model.fc1_l1_reg()<br>            primal_obj = loss + penalty + l2_reg + l1_reg<br>            primal_obj.backward()<br>            <span class="hljs-keyword">return</span> primal_obj<br><br>        optimizer.step(closure)<br>        <span class="hljs-keyword">with</span> torch.no_grad():<br>            h_new = model.h_func().item()<br>        <span class="hljs-keyword">if</span> h_new &gt; <span class="hljs-number">0.25</span> * h:<br>            rho *= <span class="hljs-number">10</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">break</span><br>    alpha += rho * h_new<br>    <span class="hljs-keyword">return</span> rho, alpha, h_new<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">notears_nonlinear</span>(<span class="hljs-params">model: nn.Module,</span><br><span class="hljs-params">                      X: np.ndarray,</span><br><span class="hljs-params">                      lambda1: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.</span>,</span><br><span class="hljs-params">                      lambda2: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.</span>,</span><br><span class="hljs-params">                      max_iter: <span class="hljs-built_in">int</span> = <span class="hljs-number">100</span>,</span><br><span class="hljs-params">                      h_tol: <span class="hljs-built_in">float</span> = <span class="hljs-number">1e-8</span>,</span><br><span class="hljs-params">                      rho_max: <span class="hljs-built_in">float</span> = <span class="hljs-number">1e+16</span>,</span><br><span class="hljs-params">                      w_threshold: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.3</span></span>):<br>    rho, alpha, h = <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>, np.inf<br>    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(max_iter):<br>        rho, alpha, h = dual_ascent_step(model, X, lambda1, lambda2,<br>                                         rho, alpha, h, rho_max)<br>        <span class="hljs-keyword">if</span> h &lt;= h_tol <span class="hljs-keyword">or</span> rho &gt;= rho_max:<br>            <span class="hljs-keyword">break</span><br>    W_est = model.fc1_to_adj()<br>    W_est[np.<span class="hljs-built_in">abs</span>(W_est) &lt; w_threshold] = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">return</span> W_est<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    torch.set_default_dtype(torch.double)<br>    np.set_printoptions(precision=<span class="hljs-number">3</span>)<br>    ut.set_random_seed(<span class="hljs-number">123</span>)<br><br>    <span class="hljs-comment"># Load observational data from CSV file</span><br>    X = np.genfromtxt(<br>        <span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\exp_nonlinear_3\graph00001_data00000_X.csv&#x27;</span>,<br>        delimiter=<span class="hljs-string">&#x27;,&#x27;</span>, skip_header=<span class="hljs-number">1</span>)<br>    <span class="hljs-comment"># Load ground truth DAG from CSV file</span><br>    B_true = np.genfromtxt(<br>        <span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\exp_nonlinear_3\graph00001_W_true.csv&#x27;</span>,<br>        delimiter=<span class="hljs-string">&#x27;,&#x27;</span>)<br><br>    d = X.shape[<span class="hljs-number">1</span>]<br><br>    <span class="hljs-comment"># Hyperparameters for grid search</span><br>    param_dist = &#123;<br>        <span class="hljs-string">&quot;w_threshold&quot;</span>: [<span class="hljs-number">0.05</span>,<span class="hljs-number">0.10</span>,<span class="hljs-number">0.15</span>,<span class="hljs-number">0.2</span>, <span class="hljs-number">0.25</span>, <span class="hljs-number">0.3</span>, <span class="hljs-number">0.35</span>, <span class="hljs-number">0.4</span>, <span class="hljs-number">0.45</span>, <span class="hljs-number">0.5</span>],<br>        <span class="hljs-string">&quot;lambda1&quot;</span>: [<span class="hljs-number">0.01</span>, <span class="hljs-number">0.02</span>, <span class="hljs-number">0.03</span>,  <span class="hljs-number">0.04</span>, <span class="hljs-number">0.05</span>],<br>        <span class="hljs-string">&quot;lambda2&quot;</span>: [<span class="hljs-number">0.01</span>, <span class="hljs-number">0.02</span>, <span class="hljs-number">0.03</span>, <span class="hljs-number">0.04</span>, <span class="hljs-number">0.05</span>]<br>    &#125;<br><br>    WT = param_dist[<span class="hljs-string">&quot;w_threshold&quot;</span>]<br>    L1 = param_dist[<span class="hljs-string">&quot;lambda1&quot;</span>]<br>    L2 = param_dist[<span class="hljs-string">&quot;lambda2&quot;</span>]<br><br>    result = []<br>    <span class="hljs-keyword">for</span> lambda1 <span class="hljs-keyword">in</span> L1:<br>        <span class="hljs-keyword">for</span> lambda2 <span class="hljs-keyword">in</span> L2:<br>            <span class="hljs-keyword">for</span> w_threshold <span class="hljs-keyword">in</span> WT:<br>                model = nonlinear.NotearsMLP(dims=[d, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>], bias=<span class="hljs-literal">True</span>)<br>                W_est = notears_nonlinear(model, X, lambda1=lambda1, lambda2=lambda2, w_threshold=w_threshold)<br><br>                <span class="hljs-comment"># Ensure W_est is a DAG</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ut.is_dag(W_est):<br>                    <span class="hljs-keyword">continue</span>  <span class="hljs-comment"># Skip this combination if it&#x27;s not a DAG</span><br><br>                <span class="hljs-comment"># Save results for each combination</span><br>                ret = [lambda1, lambda2, w_threshold]<br>                ret += <span class="hljs-built_in">list</span>(ut.count_accuracy(B_true, W_est != <span class="hljs-number">0</span>).values())<br>                result.append(ret)<br><br>                <span class="hljs-comment"># Print results for debugging</span><br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;lambda1: <span class="hljs-subst">&#123;lambda1&#125;</span>, lambda2: <span class="hljs-subst">&#123;lambda2&#125;</span>, w_threshold: <span class="hljs-subst">&#123;w_threshold&#125;</span>&quot;</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;fdr|tpr|shd|nnz&quot;</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(ut.count_accuracy(B_true, W_est != <span class="hljs-number">0</span>).values()))<br><br>    <span class="hljs-comment"># Save results to CSV files</span><br>    headers = [<span class="hljs-string">&quot;lambda1&quot;</span>, <span class="hljs-string">&quot;lambda2&quot;</span>, <span class="hljs-string">&quot;w_threshold&quot;</span>] + <span class="hljs-built_in">list</span>(ut.count_accuracy(B_true, W_est != <span class="hljs-number">0</span>).keys())<br>    data = [headers] + result<br><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<br>            <span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\exp_nonlinear_3\grid_search_results1.csv&#x27;</span>,<br>            <span class="hljs-string">&#x27;w&#x27;</span>, newline=<span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>        writer = csv.writer(file)<br>        <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> data:<br>            writer.writerow(row)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    main()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;done&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>优化结果：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>lambda1</th>
+<th>lambda2</th>
+<th>w_threshold</th>
+<th>fdr</th>
+<th>tpr</th>
+<th>fpr</th>
+<th>shd</th>
+<th>nnz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exp_nonlinear_1</td>
+<td>0.02</td>
+<td>0.01</td>
+<td>0.35</td>
+<td>0.04</td>
+<td>0.888889</td>
+<td>0.019608</td>
+<td>4</td>
+<td>25</td>
+</tr>
+<tr>
+<td>exp_nonlinear_2</td>
+<td>0.01</td>
+<td>0.02</td>
+<td>0.4</td>
+<td>0.058824</td>
+<td>0.592593</td>
+<td>0.019608</td>
+<td>11</td>
+<td>17</td>
+</tr>
+<tr>
+<td>exp_nonlinear_3</td>
+<td>0.01</td>
+<td>0.02</td>
+<td>0.25</td>
+<td>0.2</td>
+<td>0.888889</td>
+<td>0.117647</td>
+<td>9</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="0-6-2-2-GraN-DAG"><a href="#0-6-2-2-GraN-DAG" class="headerlink" title="0.6.2.2. GraN-DAG"></a>0.6.2.2. GraN-DAG</h4><p>网格搜索超参数优化：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> castle.common <span class="hljs-keyword">import</span> GraphDAG<br><span class="hljs-keyword">from</span> castle.metrics <span class="hljs-keyword">import</span> MetricsDAG<br><span class="hljs-keyword">from</span> castle.algorithms <span class="hljs-keyword">import</span> GraNDAG<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> itertools<br><br><span class="hljs-comment"># Set random seed for reproducibility</span><br>np.random.seed(<span class="hljs-number">42</span>)<br><br><span class="hljs-comment"># Load observational data from CSV file</span><br>X = np.genfromtxt(<br>    <span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\exp_nonlinear_1\graph00001_data00000_X.csv&#x27;</span>,<br>    delimiter=<span class="hljs-string">&#x27;,&#x27;</span>, skip_header=<span class="hljs-number">1</span>)<br><br><span class="hljs-comment"># Load ground truth DAG from CSV file</span><br>B_true = np.genfromtxt(<br>    <span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\exp_nonlinear_1\graph00001_W_true.csv&#x27;</span>,<br>    delimiter=<span class="hljs-string">&#x27;,&#x27;</span>)<br><br><span class="hljs-comment"># Normalize data</span><br>normalize = <span class="hljs-literal">True</span><br><span class="hljs-keyword">if</span> normalize:<br>    X_mean = np.mean(X, axis=<span class="hljs-number">0</span>, keepdims=<span class="hljs-literal">True</span>)<br>    X_std = np.std(X, axis=<span class="hljs-number">0</span>, keepdims=<span class="hljs-literal">True</span>)<br>    X = (X - X_mean) / X_std<br><br><span class="hljs-comment"># Check for NaN values in the data</span><br><span class="hljs-keyword">if</span> np.isnan(X).<span class="hljs-built_in">any</span>():<br>    <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Input data contains NaN values. Please check the data preprocessing steps.&quot;</span>)<br><br><span class="hljs-comment"># Define hyperparameter grid</span><br>param_grid = &#123;<br>    <span class="hljs-string">&#x27;model_name&#x27;</span>: [<span class="hljs-string">&#x27;NonLinGauss&#x27;</span>],<br>    <span class="hljs-string">&#x27;nonlinear&#x27;</span>: [<span class="hljs-string">&#x27;leaky-relu&#x27;</span>],<br>    <span class="hljs-string">&#x27;optimizer&#x27;</span>: [<span class="hljs-string">&#x27;sgd&#x27;</span>],<br>    <span class="hljs-string">&#x27;norm_prod&#x27;</span>: [<span class="hljs-string">&#x27;paths&#x27;</span>],<br>    <span class="hljs-string">&#x27;device_type&#x27;</span>: [<span class="hljs-string">&#x27;cpu&#x27;</span>],<br>    <span class="hljs-string">&#x27;random_seed&#x27;</span>: [<span class="hljs-number">42</span>],<br>    <span class="hljs-string">&#x27;normalize&#x27;</span>: [normalize],<br>    <span class="hljs-string">&#x27;input_dim&#x27;</span>: [X.shape[<span class="hljs-number">1</span>]],<br>    <span class="hljs-string">&#x27;hidden_num&#x27;</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>,<span class="hljs-number">4</span>],<br>    <span class="hljs-string">&#x27;hidden_dim&#x27;</span>: [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>],<br>    <span class="hljs-string">&#x27;batch_size&#x27;</span>: [<span class="hljs-number">64</span>,<span class="hljs-number">128</span>],<br>    <span class="hljs-string">&#x27;lr&#x27;</span>: [<span class="hljs-number">0.0001</span>],<br>    <span class="hljs-string">&#x27;iterations&#x27;</span>: [<span class="hljs-number">1000</span>]<br>&#125;<br><br><span class="hljs-comment"># Create a list to store results</span><br>results = []<br><br><span class="hljs-comment"># Perform grid search</span><br>keys, values = <span class="hljs-built_in">zip</span>(*param_grid.items())<br><span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> itertools.product(*values):<br>    params = <span class="hljs-built_in">dict</span>(<span class="hljs-built_in">zip</span>(keys, v))<br><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-comment"># Create and train GraNDAG instance</span><br>        gnd = GraNDAG(**params)<br>        gnd.learn(data=X)<br><br>        <span class="hljs-comment"># Evaluate the learned DAG</span><br>        mm = MetricsDAG(gnd.causal_matrix, B_true)<br><br>        <span class="hljs-comment"># Store results</span><br>        result = params.copy()<br>        result.update(mm.metrics)<br>        results.append(result)<br><br>        <span class="hljs-comment"># Print current result</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Evaluated params: <span class="hljs-subst">&#123;params&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Metrics: <span class="hljs-subst">&#123;mm.metrics&#125;</span>\n&quot;</span>)<br><br>    <span class="hljs-keyword">except</span> ValueError <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Error with params: <span class="hljs-subst">&#123;params&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(e)<br>        <span class="hljs-keyword">continue</span><br><br><span class="hljs-comment"># Save results to CSV</span><br>results_df = pd.DataFrame(results)<br>results_df.to_csv(<span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\exp_nonlinear_1\pc_results.csv&#x27;</span>,<br>                  index=<span class="hljs-literal">False</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Grid search completed. Results saved to CSV.&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<p>优化结果</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>hidden_num</th>
+<th>hidden_dim</th>
+<th>batch_size</th>
+<th>fdr</th>
+<th>tpr</th>
+<th>fpr</th>
+<th>shd</th>
+<th>nnz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exp_nonlinear_1</td>
+<td>2</td>
+<td>10</td>
+<td>128</td>
+<td>0.5556</td>
+<td>0.1481</td>
+<td>0.098</td>
+<td>28</td>
+<td>9</td>
+</tr>
+<tr>
+<td>exp_nonlinear_2</td>
+<td>4</td>
+<td>10</td>
+<td>64</td>
+<td>0.6667</td>
+<td>0.1481</td>
+<td>0.1569</td>
+<td>28</td>
+<td>12</td>
+</tr>
+<tr>
+<td>exp_nonlinear_3</td>
+<td>3</td>
+<td>20</td>
+<td>64</td>
+<td>0.8</td>
+<td>0.0741</td>
+<td>0.1569</td>
+<td>30</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="0-6-2-3-PC"><a href="#0-6-2-3-PC" class="headerlink" title="0.6.2.3. PC"></a>0.6.2.3. PC</h4><p>贝叶斯搜索超参数优化：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> castle.algorithms <span class="hljs-keyword">import</span> PC<br><span class="hljs-keyword">from</span> castle.metrics <span class="hljs-keyword">import</span> MetricsDAG<br><span class="hljs-keyword">from</span> bayes_opt <span class="hljs-keyword">import</span> BayesianOptimization<br><span class="hljs-keyword">import</span> logging<br><br><span class="hljs-comment"># Set up logging</span><br>logging.basicConfig(level=logging.INFO)<br>logger = logging.getLogger(__name__)<br><br><span class="hljs-comment"># 读取CSV数据文件</span><br>data_path = <span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\exp_nonlinear_3\graph00001_data00000_X.csv&#x27;</span><br>data = pd.read_csv(data_path)<br><br><span class="hljs-comment"># 读取真实的因果图</span><br>true_graph_path = <span class="hljs-string">r&#x27;D:\Desktop\TBFILE\学习\群体智能\群体智能第二次实验\exp_nonlinear_3\graph00001_W_true.csv&#x27;</span><br>true_dag = pd.read_csv(true_graph_path, header=<span class="hljs-literal">None</span>).values<br><br><span class="hljs-comment"># 将数据转换为numpy数组</span><br>X = data.values<br><br><span class="hljs-comment"># 定义目标函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">objective</span>(<span class="hljs-params">alpha</span>):<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-comment"># 设置新的alpha值并初始化PC算法</span><br>        pc = PC(variant=<span class="hljs-string">&#x27;stable&#x27;</span>, alpha=alpha)<br><br>        <span class="hljs-comment"># 学习因果结构</span><br>        pc.learn(X)<br><br>        <span class="hljs-comment"># 评估学习到的因果矩阵</span><br>        met = MetricsDAG(pc.causal_matrix, true_dag)<br><br>        <span class="hljs-comment"># 记录SHD值</span><br>        shd = met.metrics[<span class="hljs-string">&#x27;shd&#x27;</span>]<br>        <br>        logger.info(<span class="hljs-string">f&#x27;Alpha: <span class="hljs-subst">&#123;alpha&#125;</span>, SHD: <span class="hljs-subst">&#123;shd&#125;</span>&#x27;</span>)<br><br>        <span class="hljs-comment"># 返回SHD的负值，因为贝叶斯优化是一个最大化器，我们希望最小化SHD</span><br>        <span class="hljs-keyword">return</span> -shd<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        logger.error(<span class="hljs-string">f&quot;Error with alpha: <span class="hljs-subst">&#123;alpha&#125;</span>&quot;</span>)<br>        logger.error(e)<br>        <span class="hljs-keyword">return</span> -<span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)<br><br><span class="hljs-comment"># 设置贝叶斯优化的参数范围</span><br>pbounds = &#123;<span class="hljs-string">&#x27;alpha&#x27;</span>: (<span class="hljs-number">0.01</span>, <span class="hljs-number">0.1</span>)&#125;<br><br><span class="hljs-comment"># 初始化贝叶斯优化器</span><br>optimizer = BayesianOptimization(<br>    f=objective,<br>    pbounds=pbounds,<br>    random_state=<span class="hljs-number">42</span><br>)<br><br><span class="hljs-comment"># 执行优化过程</span><br>optimizer.maximize(n_iter=<span class="hljs-number">20</span>)<br><br><span class="hljs-comment"># 获取最佳参数</span><br>best_alpha = optimizer.<span class="hljs-built_in">max</span>[<span class="hljs-string">&#x27;params&#x27;</span>][<span class="hljs-string">&#x27;alpha&#x27;</span>]<br>best_shd = -optimizer.<span class="hljs-built_in">max</span>[<span class="hljs-string">&#x27;target&#x27;</span>]<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;\nBest alpha: <span class="hljs-subst">&#123;best_alpha&#125;</span>, with SHD: <span class="hljs-subst">&#123;best_shd&#125;</span>&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+<p>优化结果：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>pc</th>
+<th>alpha</th>
+<th>fdr</th>
+<th>tpr</th>
+<th>fpr</th>
+<th>shd</th>
+<th>nnz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exp_nonlinear_1</td>
+<td>0.04370861069626263</td>
+<td>0.2857</td>
+<td>0.3704</td>
+<td>0.0784</td>
+<td>19</td>
+<td>14</td>
+</tr>
+<tr>
+<td>exp_nonlinear_2</td>
+<td>0.09556428757689246</td>
+<td>0.4118</td>
+<td>0.3704</td>
+<td>0.1373</td>
+<td>20</td>
+<td>17</td>
+</tr>
+<tr>
+<td>exp_nonlinear_3</td>
+<td>0.04370861069626263</td>
+<td>0.3889</td>
+<td>0.4074</td>
+<td>0.1373</td>
+<td>18</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="7、结果展示"><a href="#7、结果展示" class="headerlink" title="7、结果展示"></a>7、结果展示</h2><h3 id="7-1-A-未知真实DAG数据集："><a href="#7-1-A-未知真实DAG数据集：" class="headerlink" title="7.1. A.未知真实DAG数据集："></a>7.1. A.未知真实DAG数据集：</h3><h4 id="7-1-1-（0）超参数优化图-或表格"><a href="#7-1-1-（0）超参数优化图-或表格" class="headerlink" title="7.1.1. （0）超参数优化图/或表格"></a>7.1.1. （0）超参数优化图/或表格</h4><p><strong>体现超参数优化过程</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240525184830992.png" alt="image-20240525184830992" style="zoom: 50%;" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/clip_image008.jpg" alt="img" style="zoom:80%;" /></p>
+<h4 id="7-1-2-（1）因果图："><a href="#7-1-2-（1）因果图：" class="headerlink" title="7.1.2. （1）因果图："></a>7.1.2. （1）因果图：</h4><p><strong>坐标点图、连线图或其他形式，可自行设计</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240525184853909.png" alt="image-20240525184853909"></th>
+<th><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/clip_image012.jpg" alt="img"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="7-1-3-（2）AMOS计算结果图："><a href="#7-1-3-（2）AMOS计算结果图：" class="headerlink" title="7.1.3. （2）AMOS计算结果图："></a>7.1.3. （2）AMOS计算结果图：</h4><p>截图呈现</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>最优：</strong>lambda1:0.05  w_threshold:0.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/clip_image014.jpg" alt="img" style="zoom:80%;" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>路径效应计算结果截图，包含总效应/直接效应/间接效应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240525190241153.png" alt="image-20240525190241153" style="zoom:80%;" /></td>
+</tr>
+<tr>
+<td><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/clip_image018.jpg" alt="img" style="zoom:100%;" /></td>
+</tr>
+<tr>
+<td><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/clip_image020.jpg" alt="img" style="zoom:100%;" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="7-2-B-已知真实DAG数据集："><a href="#7-2-B-已知真实DAG数据集：" class="headerlink" title="7.2. B.已知真实DAG数据集："></a>7.2. B.已知真实DAG数据集：</h3><h4 id="7-2-1-（1）因果图："><a href="#7-2-1-（1）因果图：" class="headerlink" title="7.2.1. （1）因果图："></a>7.2.1. （1）因果图：</h4><p><strong>给出各个算法在不同数据集上学习到的最优</strong>DAG</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20240526024428.png" alt="image.png"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="7-2-2-（2）算法性能比较结果呈现："><a href="#7-2-2-（2）算法性能比较结果呈现：" class="headerlink" title="7.2.2. （2）算法性能比较结果呈现："></a>7.2.2. （2）算法性能比较结果呈现：</h4><p><strong>通过表格呈现比较结果</strong><br>exp_nonlinear_1：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>fdr</strong></th>
+<th><strong>tpr</strong></th>
+<th>fpr</th>
+<th><strong>shd</strong></th>
+<th><strong>nnz</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NOTEARS</strong></td>
+<td>0.04</td>
+<td>0.888889</td>
+<td>0.019608</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>GraN-DAG</strong></td>
+<td>0.5556</td>
+<td>0.1481</td>
+<td>0.098</td>
+<td>28</td>
+<td>9</td>
+</tr>
+<tr>
+<td><strong>PC</strong></td>
+<td>0.4118</td>
+<td>0.3704</td>
+<td>0.1373</td>
+<td>20</td>
+<td>17</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>exp_nonlinear_2：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>fdr</strong></th>
+<th><strong>tpr</strong></th>
+<th>fpr</th>
+<th><strong>shd</strong></th>
+<th><strong>nnz</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NOTEARS</strong></td>
+<td>0.058824</td>
+<td>0.592593</td>
+<td>0.019608</td>
+<td>11</td>
+<td>17</td>
+</tr>
+<tr>
+<td><strong>GraN-DAG</strong></td>
+<td>0.6667</td>
+<td>0.1481</td>
+<td>0.1569</td>
+<td>28</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>PC</strong></td>
+<td>0.4118</td>
+<td>0.3704</td>
+<td>0.1373</td>
+<td>20</td>
+<td>17</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>exp_nonlinear_3：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>fdr</strong></th>
+<th><strong>tpr</strong></th>
+<th>fpr</th>
+<th><strong>shd</strong></th>
+<th><strong>nnz</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NOTEARS</strong></td>
+<td>0.2</td>
+<td>0.888889</td>
+<td>0.117647</td>
+<td>9</td>
+<td>30</td>
+</tr>
+<tr>
+<td><strong>GraN-DAG</strong></td>
+<td>0.8</td>
+<td>0.0741</td>
+<td>0.1569</td>
+<td>30</td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>PC</strong></td>
+<td>0.3889</td>
+<td>0.4074</td>
+<td>0.1373</td>
+<td>18</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>通过上面表格比较可知：</p>
+<p>NOTEARS 算法在所有三个数据集上都表现最佳,SHD 最低,能够更准确地学习到真实的因果关系结构</p>
+<p>而GraN-DAG、PC算法表现不佳的原因可能是因为该数据集不适合这两种算法，从而导致这两种算法不能很好的学习因果关系结构</p>
+<p>代码下载地址：<a target="_blank" rel="noopener" href="https://www.123pan.com/s/WlFzVv-gdRph.html">https://www.123pan.com/s/WlFzVv-gdRph.html</a></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>因果推理算法及工具应用</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C/">数据库操作实验</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/">参数优化方法</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">1、实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%AE%9E%E9%AA%8C%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">2、实验准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">3、实验原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-number">4.</span> <span class="toc-text">4、实验内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="toc-number">5.</span> <span class="toc-text">5、实验要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="toc-number">6.</span> <span class="toc-text">6、实验过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-A-%E6%9C%AA%E7%9F%A5%E7%9C%9F%E5%AE%9EDAG%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%9A"><span class="toc-number">6.1.</span> <span class="toc-text">6.1. A 未知真实DAG数据集：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-1-%EF%BC%881%EF%BC%89%E8%B6%85%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.1.1.</span> <span class="toc-text">6.1.1. （1）超参数调优代码设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-2-%EF%BC%882%EF%BC%89%E6%B5%8B%E8%AF%95%E8%BF%87%E7%A8%8B"><span class="toc-number">6.1.2.</span> <span class="toc-text">6.1.2. （2）测试过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-B-%E5%B7%B2%E7%9F%A5%E7%9C%9F%E5%AE%9EDAG%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%9A"><span class="toc-number">6.2.</span> <span class="toc-text">6.2. B 已知真实DAG数据集：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-1-NOTEARS"><span class="toc-number">6.2.1.</span> <span class="toc-text">6.2.1. NOTEARS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0-6-2-2-GraN-DAG"><span class="toc-number">6.2.2.</span> <span class="toc-text">0.6.2.2. GraN-DAG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0-6-2-3-PC"><span class="toc-number">6.2.3.</span> <span class="toc-text">0.6.2.3. PC</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">7.</span> <span class="toc-text">7、结果展示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-A-%E6%9C%AA%E7%9F%A5%E7%9C%9F%E5%AE%9EDAG%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%9A"><span class="toc-number">7.1.</span> <span class="toc-text">7.1. A.未知真实DAG数据集：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-1-%EF%BC%880%EF%BC%89%E8%B6%85%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96%E5%9B%BE-%E6%88%96%E8%A1%A8%E6%A0%BC"><span class="toc-number">7.1.1.</span> <span class="toc-text">7.1.1. （0）超参数优化图&#x2F;或表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-2-%EF%BC%881%EF%BC%89%E5%9B%A0%E6%9E%9C%E5%9B%BE%EF%BC%9A"><span class="toc-number">7.1.2.</span> <span class="toc-text">7.1.2. （1）因果图：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-3-%EF%BC%882%EF%BC%89AMOS%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E5%9B%BE%EF%BC%9A"><span class="toc-number">7.1.3.</span> <span class="toc-text">7.1.3. （2）AMOS计算结果图：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-B-%E5%B7%B2%E7%9F%A5%E7%9C%9F%E5%AE%9EDAG%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%9A"><span class="toc-number">7.2.</span> <span class="toc-text">7.2. B.已知真实DAG数据集：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-1-%EF%BC%881%EF%BC%89%E5%9B%A0%E6%9E%9C%E5%9B%BE%EF%BC%9A"><span class="toc-number">7.2.1.</span> <span class="toc-text">7.2.1. （1）因果图：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-2-%EF%BC%882%EF%BC%89%E7%AE%97%E6%B3%95%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83%E7%BB%93%E6%9E%9C%E5%91%88%E7%8E%B0%EF%BC%9A"><span class="toc-number">7.2.2.</span> <span class="toc-text">7.2.2. （2）算法性能比较结果呈现：</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

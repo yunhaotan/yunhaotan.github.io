@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>小米路由器3G || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="小米路由器3G">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A83G/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="原厂刷机1解锁ssh1.1下载开发版ROMhttps://www1.miwifi.com/miwifi_download.html1.2下载ssh开启工具https://d.miwifi.com/rom/ssh?userId=27001047761.3刷入开发版固件进入192.168.31.1，输入密码手动升">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">小米路由器3G</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T09:20:30.678Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="原厂刷机"><a href="#原厂刷机" class="headerlink" title="原厂刷机"></a>原厂刷机</h1><h2 id="1-解锁ssh"><a href="#1-解锁ssh" class="headerlink" title="1 解锁ssh"></a>1 解锁ssh</h2><h3 id="1-1-下载开发版ROM"><a href="#1-1-下载开发版ROM" class="headerlink" title="1.1 下载开发版ROM"></a>1.1 下载开发版ROM</h3><p><a target="_blank" rel="noopener" href="https://www1.miwifi.com/miwifi_download.html">https://www1.miwifi.com/miwifi_download.html</a><br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20260611190103726.png" alt="image.png"></p>
+<h3 id="1-2-下载ssh开启工具"><a href="#1-2-下载ssh开启工具" class="headerlink" title="1.2 下载ssh开启工具"></a>1.2 下载ssh开启工具</h3><p><a target="_blank" rel="noopener" href="https://d.miwifi.com/rom/ssh?userId=2700104776">https://d.miwifi.com/rom/ssh?userId=2700104776</a></p>
+<h3 id="1-3-刷入开发版固件"><a href="#1-3-刷入开发版固件" class="headerlink" title="1.3 刷入开发版固件"></a>1.3 刷入开发版固件</h3><p>进入 192.168.31.1，输入密码<br>手动升级固件，选择1.2下载的固件<br>等待升级完成，路由器蓝灯常亮</p>
+<h3 id="1-4-解锁SSH权限"><a href="#1-4-解锁SSH权限" class="headerlink" title="1.4 解锁SSH权限"></a>1.4 解锁SSH权限</h3><p>U盘插入电脑，给U盘格式化为FAT32格式，把ssh解锁工具复制到U盘<br>拔掉电源<br>插入U盘到路由器<br>按住reset<br>插入电源，指示灯黄色闪烁松开，等待路由器蓝灯</p>
+<h2 id="2-刷入breed"><a href="#2-刷入breed" class="headerlink" title="2 刷入breed"></a>2 刷入breed</h2><h3 id="2-1-ssh连接"><a href="#2-1-ssh连接" class="headerlink" title="2.1 ssh连接"></a>2.1 ssh连接</h3><p>用户名：root<br>密码：下载ssh工具得到的</p>
+<h3 id="2-2-上传breed-bin固件到tmp文件夹"><a href="#2-2-上传breed-bin固件到tmp文件夹" class="headerlink" title="2.2 上传breed.bin固件到tmp文件夹"></a>2.2 上传breed.bin固件到tmp文件夹</h3><h1 id="TTL救砖"><a href="#TTL救砖" class="headerlink" title="TTL救砖"></a>TTL救砖</h1><h2 id="一、必备工具"><a href="#一、必备工具" class="headerlink" title="一、必备工具"></a>一、必备工具</h2><ul>
+<li>CH340G/CP2102 USB转TTL模块（3.3V，不要5V）</li>
+<li>杜邦线3根、网线1根、电脑一台</li>
+<li>软件：</li>
+<li>串口工具：PuTTY / Xshell / 串口调试助手</li>
+<li>TFTP服务器：Tftpd64（Windows） </li>
+<li>文件（提前下好）：<br>  Breed： breed-mt7621-xiaomi-r3g.bin （不死U-Boot）<br>  官方固件： miwifi_r3g_xxx.bin （稳定版/开发版）</li>
+</ul>
+<h2 id="二、拆机与TTL接线（关键！接错没输出）"><a href="#二、拆机与TTL接线（关键！接错没输出）" class="headerlink" title="二、拆机与TTL接线（关键！接错没输出）"></a>二、拆机与TTL接线（关键！接错没输出）</h2><ol>
+<li>拧下底部1颗螺丝，沿缝隙撬开后盖。</li>
+<li>主板靠近散热孔处有4针TTL焊盘：<br>排列（从左到右）：VCC(3.3V)、TX、RX、GND</li>
+<li>接线（只接3根，VCC绝对不接！）：</li>
+</ol>
+<ul>
+<li>模块GND ↔ 路由GND</li>
+<li>模块TX ↔ 路由RX</li>
+<li>模块RX ↔ 路由TX<br>（交叉连接，接反乱码/无输出）</li>
+</ul>
+<h2 id="三、电脑设置"><a href="#三、电脑设置" class="headerlink" title="三、电脑设置"></a>三、电脑设置</h2><h3 id="1-网线连电脑-↔-路由器LAN口（WAN口不要插）。"><a href="#1-网线连电脑-↔-路由器LAN口（WAN口不要插）。" class="headerlink" title="1. 网线连电脑 ↔ 路由器LAN口（WAN口不要插）。"></a>1. 网线连电脑 ↔ 路由器LAN口（WAN口不要插）。</h3><h3 id="2-电脑静态IP："><a href="#2-电脑静态IP：" class="headerlink" title="2. 电脑静态IP："></a>2. 电脑静态IP：</h3><ul>
+<li>IP： 192.168.1.2 </li>
+<li>掩码： 255.255.255.0 </li>
+<li>网关： 192.168.1.1  <h3 id="3-打开Tftpd64："><a href="#3-打开Tftpd64：" class="headerlink" title="3. 打开Tftpd64："></a>3. 打开Tftpd64：</h3></li>
+<li>Server interfaces 选  192.168.1.2  网卡</li>
+<li>Current Directory 选放 Breed/固件的文件夹 </li>
+</ul>
+<h2 id="四、串口进U-Boot（波特率115200）"><a href="#四、串口进U-Boot（波特率115200）" class="headerlink" title="四、串口进U-Boot（波特率115200）"></a>四、串口进U-Boot（波特率115200）</h2><ol>
+<li>串口工具参数：</li>
+</ol>
+<ul>
+<li>波特率：115200</li>
+<li>数据位：8，无校验，停止位：1，流控：无</li>
+</ul>
+<ol>
+<li>路由器通电，狂按键盘数字键4，直到出现：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Please choose the operation:<br>1: Load system code to SDRAM via TFTP.<br>2: Load system code then write to Flash via TFTP.<br>3: Boot system code without writing to Flash.<br>4: Enter boot command line interface.<br></code></pre></td></tr></table></figure>
+<p>输入 4 → 回车，进入  mt7621&gt;  命令行。</p>
+<p>常见问题：</p>
+<ul>
+<li>乱码：波特率错（R3G固定115200）</li>
+<li>无输出：GND没接好、TX/RX反了、模块是5V</li>
+<li>按4没反应：多试几次，通电瞬间快速按</li>
+</ul>
+<h2 id="五、TFTP刷Breed（救砖核心）"><a href="#五、TFTP刷Breed（救砖核心）" class="headerlink" title="五、TFTP刷Breed（救砖核心）"></a>五、TFTP刷Breed（救砖核心）</h2><p>在  mt7621&gt;  下执行：</p>
+<p>bash</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 设置TFTP服务器IP（你的电脑IP）</span><br>setenv serverip 192.168.1.2<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 2. 设置路由IP（同网段即可）</span><br>setenv ipaddr 192.168.1.1<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 3. 下载Breed到内存</span><br>tftp 0x80000000 breed-mt7621-xiaomi-r3g.bin<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 4. 写入Flash（bootloader分区）</span><br>erase 0x00000000 0x00080000<br>cp.b 0x80000000 0x00000000 0x00080000<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 5. 重启进入Breed</span><br>reset<br></code></pre></td></tr></table></figure>
+<ul>
+<li>重启后，电脑浏览器访问 192.168.1.1 进入Breed Web恢复页。</li>
+<li>在Breed里可直接刷官方固件或OpenWrt/Padavan。</li>
+</ul>
+<h2 id="六、直接刷回官方固件（不刷Breed）"><a href="#六、直接刷回官方固件（不刷Breed）" class="headerlink" title="六、直接刷回官方固件（不刷Breed）"></a>六、直接刷回官方固件（不刷Breed）</h2><p>若只想恢复官方系统，U-Boot下执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">  <br>setenv serverip 192.168.1.2<br>setenv ipaddr 192.168.1.1<br>tftp 0x80000000 miwifi_r3g_xxx.bin<br>erase 0x00050000 0x007bffff<br>cp.b 0x80000000 0x00050000 0x00770000<br>reset<br></code></pre></td></tr></table></figure>
+<ul>
+<li>刷完自动重启，黄灯→蓝灯即成功。</li>
+</ul>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>小米路由器3G</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/%E7%88%AC%E8%99%AB/">爬虫</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/%E4%BD%BF%E7%94%A8Typora+picgo-core+gitee%E5%AE%9E%E7%8E%B0%E5%9B%BE%E5%BA%8A%E5%8A%9F%E8%83%BD/">使用Typora+picgo-core+gitee实现图床功能</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%8E%82%E5%88%B7%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">原厂刷机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A7%A3%E9%94%81ssh"><span class="toc-number">1.1.</span> <span class="toc-text">1 解锁ssh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%B8%8B%E8%BD%BD%E5%BC%80%E5%8F%91%E7%89%88ROM"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 下载开发版ROM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E4%B8%8B%E8%BD%BDssh%E5%BC%80%E5%90%AF%E5%B7%A5%E5%85%B7"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 下载ssh开启工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%88%B7%E5%85%A5%E5%BC%80%E5%8F%91%E7%89%88%E5%9B%BA%E4%BB%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 刷入开发版固件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E8%A7%A3%E9%94%81SSH%E6%9D%83%E9%99%90"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 解锁SSH权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%B7%E5%85%A5breed"><span class="toc-number">1.2.</span> <span class="toc-text">2 刷入breed</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-ssh%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 ssh连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%B8%8A%E4%BC%A0breed-bin%E5%9B%BA%E4%BB%B6%E5%88%B0tmp%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 上传breed.bin固件到tmp文件夹</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TTL%E6%95%91%E7%A0%96"><span class="toc-number">2.</span> <span class="toc-text">TTL救砖</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BF%85%E5%A4%87%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.</span> <span class="toc-text">一、必备工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8B%86%E6%9C%BA%E4%B8%8ETTL%E6%8E%A5%E7%BA%BF%EF%BC%88%E5%85%B3%E9%94%AE%EF%BC%81%E6%8E%A5%E9%94%99%E6%B2%A1%E8%BE%93%E5%87%BA%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">二、拆机与TTL接线（关键！接错没输出）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%B5%E8%84%91%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.3.</span> <span class="toc-text">三、电脑设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BD%91%E7%BA%BF%E8%BF%9E%E7%94%B5%E8%84%91-%E2%86%94-%E8%B7%AF%E7%94%B1%E5%99%A8LAN%E5%8F%A3%EF%BC%88WAN%E5%8F%A3%E4%B8%8D%E8%A6%81%E6%8F%92%EF%BC%89%E3%80%82"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. 网线连电脑 ↔ 路由器LAN口（WAN口不要插）。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%94%B5%E8%84%91%E9%9D%99%E6%80%81IP%EF%BC%9A"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. 电脑静态IP：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%89%93%E5%BC%80Tftpd64%EF%BC%9A"><span class="toc-number">2.3.3.</span> <span class="toc-text">3. 打开Tftpd64：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%B2%E5%8F%A3%E8%BF%9BU-Boot%EF%BC%88%E6%B3%A2%E7%89%B9%E7%8E%87115200%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">四、串口进U-Boot（波特率115200）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81TFTP%E5%88%B7Breed%EF%BC%88%E6%95%91%E7%A0%96%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">五、TFTP刷Breed（救砖核心）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%9B%B4%E6%8E%A5%E5%88%B7%E5%9B%9E%E5%AE%98%E6%96%B9%E5%9B%BA%E4%BB%B6%EF%BC%88%E4%B8%8D%E5%88%B7Breed%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">六、直接刷回官方固件（不刷Breed）</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

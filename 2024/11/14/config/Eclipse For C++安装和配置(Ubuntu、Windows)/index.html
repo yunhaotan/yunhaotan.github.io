@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>Eclipse For C++安装和配置(Ubuntu、Windows) || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="Eclipse For C++安装和配置(Ubuntu、Windows)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/Eclipse%20For%20C++%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE(Ubuntu%E3%80%81Windows)/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.winodws下安装配置1.1.安装jdk1.2.安装MinGW1.3.安装Eclipse1.4.配置Eclipse点击window-&amp;gt;preferences搜索workspace,改为下面：搜索environment，如下配置CPLUS_INCLUDE_PATH/usr/include/c++/6">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">Eclipse For C++安装和配置(Ubuntu、Windows)</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:34:14.179Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-winodws下安装配置"><a href="#1-winodws下安装配置" class="headerlink" title="1. winodws下安装配置"></a>1. winodws下安装配置</h1><h2 id="1-1-安装jdk"><a href="#1-1-安装jdk" class="headerlink" title="1.1. 安装jdk"></a>1.1. 安装jdk</h2><h2 id="1-2-安装MinGW"><a href="#1-2-安装MinGW" class="headerlink" title="1.2. 安装MinGW"></a>1.2. 安装MinGW</h2><h2 id="1-3-安装Eclipse"><a href="#1-3-安装Eclipse" class="headerlink" title="1.3. 安装Eclipse"></a>1.3. 安装Eclipse</h2><h2 id="1-4-配置Eclipse"><a href="#1-4-配置Eclipse" class="headerlink" title="1.4. 配置Eclipse"></a>1.4. 配置Eclipse</h2><p>点击window-&gt;preferences<br>搜索workspace,改为下面：</p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250810151853505.png" alt="image.png"></p>
+<p>搜索environment，如下配置</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>CPLUS_INCLUDE_PATH</th>
+<th>/usr/include/c++/6.3.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C_INCLUDE_PATH</td>
+<td>/usr/include</td>
+</tr>
+<tr>
+<td>PATH</td>
+<td>C:\MinGW\bin</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250810152007879.png" alt="image.png"><br> 搜索new C/C++ Project Wizard<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250810152126804.png" alt="image.png"></p>
+<h1 id="2-Ubuntu下安装与配置"><a href="#2-Ubuntu下安装与配置" class="headerlink" title="2. Ubuntu下安装与配置"></a>2. Ubuntu下安装与配置</h1><h2 id="2-1-前提条件："><a href="#2-1-前提条件：" class="headerlink" title="2.1. 前提条件："></a>2.1. 前提条件：</h2><ol>
+<li><strong>Linux 系统</strong>：64 位 GTK 环境（适用于 Ubuntu、Fedora 等主流发行版）。</li>
+<li><strong>Java 环境</strong>：Eclipse 需要 Java 11 或更高版本（推荐 OpenJDK）。<h2 id="2-2-安装-Java-环境（如未安装）"><a href="#2-2-安装-Java-环境（如未安装）" class="headerlink" title="2.2. 安装 Java 环境（如未安装）"></a>2.2. 安装 Java 环境（如未安装）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Ubuntu/Debian</span><br><span class="hljs-built_in">sudo</span> apt update<br><span class="hljs-built_in">sudo</span> apt install openjdk-17-jdk  <span class="hljs-comment"># 或 openjdk-11-jdk</span><br><br><span class="hljs-comment"># Fedora/CentOS</span><br><span class="hljs-built_in">sudo</span> dnf install java-17-openjdk-devel  <span class="hljs-comment"># 或 java-11-openjdk-devel</span><br></code></pre></td></tr></table></figure>
+验证安装：<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">java -version  <span class="hljs-comment"># 应显示 Java 11+ 版本</span><br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="2-3-解压安装-Eclipse"><a href="#2-3-解压安装-Eclipse" class="headerlink" title="2.3. 解压安装 Eclipse"></a>2.3. 解压安装 Eclipse</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 进入下载目录（假设文件在 ~/Downloads）</span><br><span class="hljs-built_in">cd</span> ~/Downloads<br><br><span class="hljs-comment"># 解压到 /opt 目录（推荐系统级安装）</span><br><span class="hljs-built_in">sudo</span> tar -xzvf eclipse-cpp-2025-06-R-linux-gtk-x86_64.tar.gz -C /opt<br><br><span class="hljs-comment"># 或解压到用户目录（如 ~/apps）</span><br><span class="hljs-built_in">mkdir</span> -p ~/apps<br>tar -xzvf eclipse-cpp-2025-06-R-linux-gtk-x86_64.tar.gz -C ~/apps<br></code></pre></td></tr></table></figure>
+<h2 id="2-4-创建启动快捷方式"><a href="#2-4-创建启动快捷方式" class="headerlink" title="2.4. 创建启动快捷方式"></a>2.4. 创建启动快捷方式</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建桌面启动器（适用于 GNOME/KDE 等桌面环境）</span><br><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF &gt; ~/.local/share/applications/eclipse.desktop</span><br><span class="hljs-string">[Desktop Entry]</span><br><span class="hljs-string">Name=Eclipse C++ IDE (2025-06-R)</span><br><span class="hljs-string">Type=Application</span><br><span class="hljs-string">Exec=/opt/eclipse/eclipse  # 或 /home/你的用户名/apps/eclipse/eclipse</span><br><span class="hljs-string">Icon=/opt/eclipse/icon.xpm</span><br><span class="hljs-string">Terminal=false</span><br><span class="hljs-string">Categories=Development;IDE;</span><br><span class="hljs-string">Comment=Eclipse for C/C++ Developers</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
+<h2 id="2-5-赋予执行权限"><a href="#2-5-赋予执行权限" class="headerlink" title="2.5. 赋予执行权限"></a>2.5. 赋予执行权限</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> +x /opt/eclipse/eclipse  <span class="hljs-comment"># 或 ~/apps/eclipse/eclipse</span><br></code></pre></td></tr></table></figure>
+<h2 id="2-6-启动-Eclipse"><a href="#2-6-启动-Eclipse" class="headerlink" title="2.6. 启动 Eclipse"></a>2.6. 启动 Eclipse</h2><ul>
+<li><strong>图形界面</strong>：在应用菜单搜索 “Eclipse C++ IDE”。</li>
+<li><strong>终端启动</strong>：<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">/opt/eclipse/eclipse  <span class="hljs-comment"># 或 ~/apps/eclipse/eclipse</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="2-7-常见问题解决："><a href="#2-7-常见问题解决：" class="headerlink" title="2.7. 常见问题解决："></a>2.7. 常见问题解决：</h2><ol>
+<li><p><strong>启动报错 “No JVM found”</strong>：  </p>
+<ul>
+<li>确认已安装 Java 11+。</li>
+<li>在 <code>eclipse.ini</code> 中添加 Java 路径（位于 Eclipse 安装目录）：<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">-vm<br><span class="hljs-regexp">/usr/</span>lib<span class="hljs-regexp">/jvm/</span>java-<span class="hljs-number">17</span>-openjdk-amd64<span class="hljs-regexp">/bin/</span>java  <span class="hljs-comment"># 根据实际路径修改</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>无法创建快捷方式</strong>：  </p>
+<ul>
+<li>手动创建桌面文件：将 <code>.desktop</code> 文件复制到桌面并标记为可执行：<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> ~/.local/share/applications/eclipse.desktop ~/Desktop/<br><span class="hljs-built_in">chmod</span> +x ~/Desktop/eclipse.desktop<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>中文乱码/界面问题</strong>：  </p>
+<ul>
+<li>安装中文字体：<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install fonts-wqy-microhei  <span class="hljs-comment"># Ubuntu</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-8-卸载方法："><a href="#2-8-卸载方法：" class="headerlink" title="2.8. 卸载方法："></a>2.8. 卸载方法：</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 删除安装目录</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">rm</span> -rf /opt/eclipse  <span class="hljs-comment"># 或 rm -rf ~/apps/eclipse</span><br><br><span class="hljs-comment"># 删除快捷方式</span><br><span class="hljs-built_in">rm</span> ~/.local/share/applications/eclipse.desktop<br></code></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>Eclipse For C++安装和配置(Ubuntu、Windows)</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/Git%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/">Git操作手册</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/Diango%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Diango学习笔记</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-winodws%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">1. winodws下安装配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%AE%89%E8%A3%85jdk"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 安装jdk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%AE%89%E8%A3%85MinGW"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 安装MinGW</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%AE%89%E8%A3%85Eclipse"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. 安装Eclipse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E9%85%8D%E7%BD%AEEclipse"><span class="toc-number">1.4.</span> <span class="toc-text">1.4. 配置Eclipse</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">2. Ubuntu下安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 前提条件：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%AE%89%E8%A3%85-Java-%E7%8E%AF%E5%A2%83%EF%BC%88%E5%A6%82%E6%9C%AA%E5%AE%89%E8%A3%85%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 安装 Java 环境（如未安装）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E8%A7%A3%E5%8E%8B%E5%AE%89%E8%A3%85-Eclipse"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 解压安装 Eclipse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">2.4. 创建启动快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E8%B5%8B%E4%BA%88%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="toc-number">2.5.</span> <span class="toc-text">2.5. 赋予执行权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-%E5%90%AF%E5%8A%A8-Eclipse"><span class="toc-number">2.6.</span> <span class="toc-text">2.6. 启动 Eclipse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%9A"><span class="toc-number">2.7.</span> <span class="toc-text">2.7. 常见问题解决：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-%E5%8D%B8%E8%BD%BD%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-number">2.8.</span> <span class="toc-text">2.8. 卸载方法：</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

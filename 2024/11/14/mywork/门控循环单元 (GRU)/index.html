@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>门控循环单元 (GRU) || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="门控循环单元 (GRU)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E9%97%A8%E6%8E%A7%E5%BE%AA%E7%8E%AF%E5%8D%95%E5%85%83%20(GRU)/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.核心概念与代码映射1.1门控循环单元(GRU)代码实现：EfficientGRU类中的torch.nn.GRU层核心机制：GRU通过更新门和重置门控制信息的流动。更新门控制当前输入和过去状态的比例，而重置门则决定过去状态在当前计算中的影响。这使得GRU能够有效地捕捉长期依赖关系，且避免梯度消失问题代码参数">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">门控循环单元 (GRU)</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.229Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h2 id="1-核心概念与代码映射"><a href="#1-核心概念与代码映射" class="headerlink" title="1. 核心概念与代码映射"></a>1. 核心概念与代码映射</h2><h3 id="1-1-门控循环单元-GRU"><a href="#1-1-门控循环单元-GRU" class="headerlink" title="1.1 门控循环单元 (GRU)"></a>1.1 门控循环单元 (GRU)</h3><p><strong>代码实现</strong>：EfficientGRU类中的torch.nn.GRU层</p>
+<ul>
+<li><strong>核心机制</strong>：GRU通过<strong>更新门</strong>和<strong>重置门</strong>控制信息的流动。更新门控制当前输入和过去状态的比例，而重置门则决定过去状态在当前计算中的影响。这使得GRU能够有效地捕捉长期依赖关系，且避免梯度消失问题</li>
+<li><strong>代码参数</strong>：<ul>
+<li><code>batch_first=True</code>：输入格式为 <code>(batch_size, seq_len, input_dim)</code>（适配单时间步处理）。</li>
+<li><code>dropout=0.2</code>：在 GRU 层间应用 Dropout 正则化（对应类初始化参数）。<h3 id="1-2-类别不平衡处理"><a href="#1-2-类别不平衡处理" class="headerlink" title="1.2 类别不平衡处理"></a>1.2 类别不平衡处理</h3><strong>代码逻辑</strong>：</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><strong>SMOTE 过采样</strong>（<code>load_data</code>函数）：<br>用SMOTE（Synthetic Minority Over-sampling Technique）生成新样本以增强某一类别的样本量<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> smote_available:<br>    smote = SMOTE(sampling_strategy=<span class="hljs-string">&#x27;minority&#x27;</span>, random_state=<span class="hljs-number">42</span>)<br>    X, y = smote.fit_resample(X, y)<br></code></pre></td></tr></table></figure></li>
+<li><strong>类别权重计算</strong>：通过 <code>calculate_class_weights</code> 生成权重向量，传入 <code>CrossEntropyLoss</code>（代码中隐含实现）。<h3 id="1-3-特征工程技术"><a href="#1-3-特征工程技术" class="headerlink" title="1.3 特征工程技术"></a>1.3 特征工程技术</h3></li>
+<li><strong>方差阈值筛选</strong>（<code>load_data</code>函数）：<br>移除低方差特征，以减少噪声和过拟合<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.feature_selection <span class="hljs-keyword">import</span> VarianceThreshold<br>selector = VarianceThreshold(threshold=<span class="hljs-number">0.1</span>)<br>X = selector.fit_transform(X)<br></code></pre></td></tr></table></figure></li>
+<li><strong>随机森林特征选择</strong>（<code>select_important_features</code>函数）：基于随机森林 <code>feature_importances_</code> 筛选前 54 个重要特征，代码如下：<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">select_important_features</span>(<span class="hljs-params">X, y, n_features=<span class="hljs-number">54</span></span>):<br>    model = RandomForestClassifier(n_estimators=<span class="hljs-number">100</span>, random_state=<span class="hljs-number">42</span>)<br>    model.fit(X, y)<br>    importances = model.feature_importances_<br>    indices = np.argsort(importances)[::-<span class="hljs-number">1</span>]<br>    <span class="hljs-keyword">return</span> X[:, indices[:n_features]]<br></code></pre></td></tr></table></figure>
+<h2 id="2-模型架构详解（代码逐行解析）"><a href="#2-模型架构详解（代码逐行解析）" class="headerlink" title="2. 模型架构详解（代码逐行解析）"></a>2. 模型架构详解（代码逐行解析）</h2><h3 id="2-1-网络结构定义"><a href="#2-1-网络结构定义" class="headerlink" title="2.1 网络结构定义"></a>2.1 网络结构定义</h3></li>
+</ol>
+<ul>
+<li><strong>GRU层</strong>：使用PyTorch提供的<code>torch.nn.GRU</code>创建一个门控循环单元（GRU）层。<pre><code>  - `input_dim`是输入特征的维度。
+  - `hidden_dim`（默认128）是GRU单元的隐藏层维度。
+  - `num_layers`表示层数，设置为2表示构建两层的GRU。
+  - `batch_first=True`确保输入数据的第一维表示批次大小，这在处理时序数据时更为直观。
+  - `bidirectional=False`表示该GRU层是单向的（如果设置为`True`则代表双向GRU）。
+  - `dropout=dropout`用于在层之间应用Dropout，以减轻过拟合。
+</code></pre></li>
+<li><strong>全连接层与Dropout</strong>：<ul>
+<li><code>self.fc1 = torch.nn.Linear(hidden_dim, 256)</code>定义了一个从隐藏层到256维的全连接层。</li>
+<li><code>self.dropout = torch.nn.Dropout(dropout)</code>应用Dropout，以防止模型过拟合。</li>
+<li><code>self.fc2 = torch.nn.Linear(256, output_dim)</code>定义了一个从256维到输出维度的全连接层，<code>output_dim</code>是任务的类别数，这里设为7。</li>
+</ul>
+</li>
+<li>-<code>forward</code>方法定义了模型的前向传播过程：<ul>
+<li><code>h0</code>：初始化隐状态为零，形状为<code>(num_layers, batch_size, hidden_dim)</code>。这个状态用于GRU单位，存储之前时刻的隐状态。</li>
+<li><code>out, _ = self.gru(x, h0)</code>：将输入x和初始化的隐状态h0传入GRU层，输出为<code>out</code>，形状为<code>(batch_size, seq_len, hidden_dim)</code>。<ul>
+<li>在单时间步的情况下（例如，<code>seq_len=1</code>），<code>out</code>的形状相当于<code>(batch_size, 1, hidden_dim)</code>。</li>
+</ul>
+</li>
+<li><code>out = torch.mean(out, dim=1)</code>：对时间维度进行平均池化。对于单时间步输入，这一步可以视作直接提取特征，而因GRU的输出序列在这里只包含一个时间步。</li>
+<li><code>out = self.fc1(out)</code>：将池化后的输出传递给全连接层fc1。</li>
+<li><code>out = torch.relu(out)</code>：在全连接层之后使用ReLU激活函数引入非线性。</li>
+<li><code>out = self.dropout(out)</code>：将Dropout应用于该层输出。</li>
+<li><code>out = self.fc2(out)</code>：将结果传递至最后的全连接层获得输出。</li>
+<li><code>return out</code>：返回模型预测的输出。<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">EfficientGRU</span>(torch.nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, input_dim, hidden_dim=<span class="hljs-number">128</span>, num_layers=<span class="hljs-number">2</span>, output_dim=<span class="hljs-number">7</span>, dropout=<span class="hljs-number">0.2</span></span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        <span class="hljs-comment"># GRU层：2层，隐藏维度128，启用Dropout</span><br>        <span class="hljs-variable language_">self</span>.gru = torch.nn.GRU(<br>            input_dim, hidden_dim, num_layers=num_layers,<br>            batch_first=<span class="hljs-literal">True</span>, bidirectional=<span class="hljs-literal">False</span>, dropout=dropout<br>        )<br>        <span class="hljs-comment"># 全连接层 + Dropout</span><br>        <span class="hljs-variable language_">self</span>.fc1 = torch.nn.Linear(hidden_dim, <span class="hljs-number">256</span>)<br>        <span class="hljs-variable language_">self</span>.dropout = torch.nn.Dropout(dropout)<br>        <span class="hljs-variable language_">self</span>.fc2 = torch.nn.Linear(<span class="hljs-number">256</span>, output_dim)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        h0 = torch.zeros(<span class="hljs-variable language_">self</span>.gru.num_layers, x.size(<span class="hljs-number">0</span>), <span class="hljs-variable language_">self</span>.gru.hidden_size).to(x.device)<br>        out, _ = <span class="hljs-variable language_">self</span>.gru(x, h0)  <span class="hljs-comment"># (batch_size, 1, hidden_dim)（单时间步）</span><br>        out = torch.mean(out, dim=<span class="hljs-number">1</span>)  <span class="hljs-comment"># 时间维度平均池化</span><br>        out = <span class="hljs-variable language_">self</span>.fc1(out)<br>        out = torch.relu(out)<br>        out = <span class="hljs-variable language_">self</span>.dropout(out)<br>        out = <span class="hljs-variable language_">self</span>.fc2(out)<br>        <span class="hljs-keyword">return</span> out<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-关键设计点"><a href="#2-2-关键设计点" class="headerlink" title="2.2 关键设计点"></a>2.2 关键设计点</h3><ul>
+<li><strong>单时间步适配</strong>：通过 <code>unsqueeze(1)</code> 为静态特征添加 <code>seq_len=1</code>（代码中 <code>preprocess_data</code> 函数实现）。</li>
+<li><strong>池化简化</strong>：因单时间步，<code>torch.mean(out, dim=1)</code> 等价于直接提取特征，简化时序处理。<h2 id="3-数据处理全流程代码解析"><a href="#3-数据处理全流程代码解析" class="headerlink" title="3. 数据处理全流程代码解析"></a>3. 数据处理全流程代码解析</h2><h3 id="3-1-数据加载与清洗（load-data函数）"><a href="#3-1-数据加载与清洗（load-data函数）" class="headerlink" title="3.1 数据加载与清洗（load_data函数）"></a>3.1 数据加载与清洗（<code>load_data</code>函数）</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">load_data</span>(<span class="hljs-params">file_path</span>):<br>    data = pd.read_csv(file_path)<br>    X = data.drop(<span class="hljs-string">&#x27;Cover_Type&#x27;</span>, axis=<span class="hljs-number">1</span>)<br>    y = data[<span class="hljs-string">&#x27;Cover_Type&#x27;</span>]<br>    <span class="hljs-comment"># 移除低方差特征</span><br>    selector = VarianceThreshold(threshold=<span class="hljs-number">0.1</span>)<br>    X = selector.fit_transform(X)<br>    <span class="hljs-comment"># SMOTE过采样（若已安装imblearn）</span><br>    <span class="hljs-keyword">if</span> smote_available:<br>        smote = SMOTE(sampling_strategy=<span class="hljs-string">&#x27;minority&#x27;</span>, random_state=<span class="hljs-number">42</span>)<br>        X, y = smote.fit_resample(X, y)<br>    <span class="hljs-keyword">return</span> X, y<br></code></pre></td></tr></table></figure>
+<h3 id="3-2-数据集划分与预处理（preprocess-data函数）"><a href="#3-2-数据集划分与预处理（preprocess-data函数）" class="headerlink" title="3.2 数据集划分与预处理（preprocess_data函数）"></a>3.2 数据集划分与预处理（<code>preprocess_data</code>函数）</h3></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">preprocess_data</span>(<span class="hljs-params">X, y</span>):<br>    <span class="hljs-comment"># 分层抽样（保持类别分布）</span><br>    sss = StratifiedShuffleSplit(n_splits=<span class="hljs-number">1</span>, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>)<br>    train_idx, temp_idx = <span class="hljs-built_in">next</span>(sss.split(X, y))<br>    sss = StratifiedShuffleSplit(n_splits=<span class="hljs-number">1</span>, test_size=<span class="hljs-number">0.25</span>, random_state=<span class="hljs-number">42</span>)<br>    val_idx, test_idx = <span class="hljs-built_in">next</span>(sss.split(X[temp_idx], y[temp_idx]))<br>    <span class="hljs-comment"># 鲁棒标准化（抗异常值）</span><br>    scaler = RobustScaler()<br>    X_train = scaler.fit_transform(X[train_idx])<br>    X_val = scaler.transform(X[temp_idx[val_idx]])  <span class="hljs-comment"># 修正索引逻辑（原代码可能存在笔误，需按实际数据结构调整）</span><br>    X_test = scaler.transform(X[temp_idx[test_idx]])<br>    <span class="hljs-comment"># 转换为PyTorch张量（添加时间步维度）</span><br>    X_train_t = torch.from_numpy(X_train).unsqueeze(<span class="hljs-number">1</span>).<span class="hljs-built_in">float</span>()<br>    X_val_t = torch.from_numpy(X_val).unsqueeze(<span class="hljs-number">1</span>).<span class="hljs-built_in">float</span>()<br>    X_test_t = torch.from_numpy(X_test).unsqueeze(<span class="hljs-number">1</span>).<span class="hljs-built_in">float</span>()<br>    y_train_t = torch.from_numpy(y[train_idx].values).long()<br>    y_val_t = torch.from_numpy(y[temp_idx[val_idx]].values).long()<br>    y_test_t = torch.from_numpy(y[temp_idx[test_idx]].values).long()<br>    <span class="hljs-keyword">return</span> X_train_t, y_train_t, X_val_t, y_val_t, X_test_t, y_test_t<br></code></pre></td></tr></table></figure>
+<h2 id="4-训练策略代码实现"><a href="#4-训练策略代码实现" class="headerlink" title="4. 训练策略代码实现"></a>4. 训练策略代码实现</h2><h3 id="4-1-混合精度训练（train-model函数片段）"><a href="#4-1-混合精度训练（train-model函数片段）" class="headerlink" title="4.1 混合精度训练（train_model函数片段）"></a>4.1 混合精度训练（<code>train_model</code>函数片段）</h3><p>使用混合精度训练可以加快训练速度并节省内存<br><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_epochs):<br>    model.train()<br>    <span class="hljs-keyword">for</span> inputs, labels <span class="hljs-keyword">in</span> train_loader:<br>        inputs, labels = inputs.to(device), labels.to(device)<br>        <span class="hljs-keyword">with</span> torch.cuda.amp.autocast():  <span class="hljs-comment"># 启用混合精度</span><br>            outputs = model(inputs)<br>            loss = criterion(outputs, labels)<br>        optimizer.zero_grad()<br>        loss.backward()<br>        optimizer.step()<br>    <span class="hljs-comment"># 验证与早停逻辑...</span><br></code></pre></td></tr></table></figure></p>
+<h3 id="4-2-早停机制"><a href="#4-2-早停机制" class="headerlink" title="4.2 早停机制"></a>4.2 早停机制</h3><p>防止模型过拟合，通过在验证集上达到最佳准确率时保存模型<br><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">best_val_acc = <span class="hljs-number">0.0</span><br>early_stop_counter = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_epochs):<br>    <span class="hljs-comment"># 训练...</span><br>    val_acc = evaluate_model(model, val_loader, device)<br>    <span class="hljs-keyword">if</span> val_acc &gt; best_val_acc:<br>        best_val_acc = val_acc<br>        early_stop_counter = <span class="hljs-number">0</span><br>        torch.save(model.state_dict(), <span class="hljs-string">&#x27;best_model.pth&#x27;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        early_stop_counter += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> early_stop_counter &gt;= patience:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Early stopping triggered.&quot;</span>)<br>            <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure></p>
+<h2 id="5-评估指标与可视化"><a href="#5-评估指标与可视化" class="headerlink" title="5. 评估指标与可视化"></a>5. 评估指标与可视化</h2><h3 id="5-1-核心指标计算（evaluate-model函数）"><a href="#5-1-核心指标计算（evaluate-model函数）" class="headerlink" title="5.1 核心指标计算（evaluate_model函数）"></a>5.1 核心指标计算（<code>evaluate_model</code>函数）</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">evaluate_model</span>(<span class="hljs-params">model, data_loader, device</span>):<br>    model.<span class="hljs-built_in">eval</span>()<br>    correct = <span class="hljs-number">0</span><br>    total = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">with</span> torch.no_grad():<br>        <span class="hljs-keyword">for</span> inputs, labels <span class="hljs-keyword">in</span> data_loader:<br>            inputs, labels = inputs.to(device), labels.to(device)<br>            outputs = model(inputs)<br>            _, preds = torch.<span class="hljs-built_in">max</span>(outputs, <span class="hljs-number">1</span>)<br>            total += labels.size(<span class="hljs-number">0</span>)<br>            correct += (preds == labels).<span class="hljs-built_in">sum</span>().item()<br>    accuracy = correct / total<br>    <span class="hljs-comment"># 生成分类报告和混淆矩阵（代码略，需调用sklearn.metrics）</span><br>    <span class="hljs-keyword">return</span> accuracy<br></code></pre></td></tr></table></figure>
+<h3 id="5-2-可视化输出"><a href="#5-2-可视化输出" class="headerlink" title="5.2 可视化输出"></a>5.2 可视化输出</h3><ul>
+<li><strong>热力图</strong>：<code>training_curves.png</code>（损失与准确率随 epoch 变化）。<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250602133721344.png" alt="image.png"></li>
+</ul>
+<ul>
+<li><strong>训练曲线</strong>：<code>training_curves.png</code>（损失与准确率随 epoch 变化）。<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250602132837118.png" alt="image.png"><br>随着epoch的增加，训练和验证的loss逐渐减少，accuracy逐渐增加，最后稳定，模型收敛</li>
+<li><p><strong>特征重要性</strong>：<code>feature_importance.png</code>（随机森林特征排序）。<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250602133010831.png" alt="image.png"></p>
+</li>
+<li><p><strong>混淆矩阵</strong>：<code>confusion_matrix.png</code>（测试集分类结果热力图）。<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250602133022485.png" alt="image.png"></p>
+</li>
+</ul>
+<h2 id="6-代码执行流程图"><a href="#6-代码执行流程图" class="headerlink" title="6. 代码执行流程图"></a>6. 代码执行流程图</h2><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250602022025206.png" alt="image.png"></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>门控循环单元 (GRU)</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/poem/%E4%B8%89%E6%9D%AF/">三杯</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%94%80%E5%94%AE%E7%B3%BB%E7%BB%9F/">计算机销售系统</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%98%A0%E5%B0%84"><span class="toc-number">1.</span> <span class="toc-text">1. 核心概念与代码映射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E9%97%A8%E6%8E%A7%E5%BE%AA%E7%8E%AF%E5%8D%95%E5%85%83-GRU"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 门控循环单元 (GRU)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%B1%BB%E5%88%AB%E4%B8%8D%E5%B9%B3%E8%A1%A1%E5%A4%84%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 类别不平衡处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 特征工程技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BB%A3%E7%A0%81%E9%80%90%E8%A1%8C%E8%A7%A3%E6%9E%90%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">2. 模型架构详解（代码逐行解析）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 网络结构定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%85%B3%E9%94%AE%E8%AE%BE%E8%AE%A1%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 关键设计点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%85%A8%E6%B5%81%E7%A8%8B%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">3. 数据处理全流程代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E4%B8%8E%E6%B8%85%E6%B4%97%EF%BC%88load-data%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 数据加载与清洗（load_data函数）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86%EF%BC%88preprocess-data%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 数据集划分与预处理（preprocess_data函数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">4. 训练策略代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%B7%B7%E5%90%88%E7%B2%BE%E5%BA%A6%E8%AE%AD%E7%BB%83%EF%BC%88train-model%E5%87%BD%E6%95%B0%E7%89%87%E6%AE%B5%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 混合精度训练（train_model函数片段）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%97%A9%E5%81%9C%E6%9C%BA%E5%88%B6"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 早停机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">5. 评估指标与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87%E8%AE%A1%E7%AE%97%EF%BC%88evaluate-model%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 核心指标计算（evaluate_model函数）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%8F%AF%E8%A7%86%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 可视化输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">6.</span> <span class="toc-text">6. 代码执行流程图</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

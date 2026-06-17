@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>选课管理系统 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="选课管理系统">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E9%80%89%E8%AF%BE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="#includeiostream&amp;gt;#includesstream&amp;gt;#includestring&amp;gt;#includectime&amp;gt;#includevector&amp;gt;#includefstream&amp;gt;#includestring&amp;gt;#includeiomanip&amp;gt;usingna">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">选课管理系统</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.221Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;ctime&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iomanip&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">// 教师类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Teacher</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    string id, name, gender, college, hireDate;<br>    <span class="hljs-type">int</span> age;<br><br>    <span class="hljs-built_in">Teacher</span>() = <span class="hljs-keyword">default</span>;<br>    <span class="hljs-built_in">Teacher</span>(string id, string name, string gender, <span class="hljs-type">int</span> age, string college, string hireDate)<br>        : <span class="hljs-built_in">id</span>(id), <span class="hljs-built_in">name</span>(name), <span class="hljs-built_in">gender</span>(gender), <span class="hljs-built_in">age</span>(age), <span class="hljs-built_in">college</span>(college), <span class="hljs-built_in">hireDate</span>(hireDate) &#123;&#125;<br><br>    <span class="hljs-comment">// 输入输出运算符重载</span><br>    <span class="hljs-keyword">friend</span> istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;(istream&amp; in, Teacher&amp; t)<br>    &#123;<br>        in &gt;&gt; t.id &gt;&gt; t.name &gt;&gt; t.gender &gt;&gt; t.age &gt;&gt; t.college &gt;&gt; t.hireDate;<br>        <span class="hljs-keyword">return</span> in;<br>    &#125;<br>    <span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="hljs-type">const</span> Teacher&amp; t)<br>    &#123;<br>        out &lt;&lt; t.id &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; t.name &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; t.gender &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; t.age &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; t.college &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; t.hireDate;<br>        <span class="hljs-keyword">return</span> out;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">display</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span><br><span class="hljs-function">    </span>&#123;<br>        cout &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; id &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; name &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; gender<br>            &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">5</span>) &lt;&lt; age &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>) &lt;&lt; college &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>) &lt;&lt; hireDate &lt;&lt; endl;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// 学生类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    string id, name, gender, category, college, admissionDate;<br>    <span class="hljs-type">int</span> age;<br><br>    <span class="hljs-built_in">Student</span>() = <span class="hljs-keyword">default</span>;<br>    <span class="hljs-built_in">Student</span>(string id, string name, string gender, <span class="hljs-type">int</span> age, string category, string college, string admissionDate)<br>        : <span class="hljs-built_in">id</span>(id), <span class="hljs-built_in">name</span>(name), <span class="hljs-built_in">gender</span>(gender), <span class="hljs-built_in">age</span>(age), <span class="hljs-built_in">category</span>(category), <span class="hljs-built_in">college</span>(college), <span class="hljs-built_in">admissionDate</span>(admissionDate) &#123;&#125;<br><br>    <span class="hljs-keyword">friend</span> istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;(istream&amp; in, Student&amp; s)<br>    &#123;<br>        in &gt;&gt; s.id &gt;&gt; s.name &gt;&gt; s.gender &gt;&gt; s.age &gt;&gt; s.category &gt;&gt; s.college &gt;&gt; s.admissionDate;<br>        <span class="hljs-keyword">return</span> in;<br>    &#125;<br>    <span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="hljs-type">const</span> Student&amp; s)<br>    &#123;<br>        out &lt;&lt; s.id &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; s.name &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; s.gender &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; s.age &lt;&lt; <span class="hljs-string">&quot; &quot;</span><br>            &lt;&lt; s.category &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; s.college &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; s.admissionDate;<br>        <span class="hljs-keyword">return</span> out;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">display</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span><br><span class="hljs-function">    </span>&#123;<br>        cout &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; id &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; name &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; gender<br>            &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">5</span>) &lt;&lt; age &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; category &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>) &lt;&lt; college<br>            &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>) &lt;&lt; admissionDate &lt;&lt; endl;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// 课程类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Course</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    string id, name, category;<br>    <span class="hljs-type">int</span> credits;<br><br>    <span class="hljs-built_in">Course</span>() = <span class="hljs-keyword">default</span>;<br>    <span class="hljs-built_in">Course</span>(string id, string name, <span class="hljs-type">int</span> credits, string category)<br>        : <span class="hljs-built_in">id</span>(id), <span class="hljs-built_in">name</span>(name), <span class="hljs-built_in">credits</span>(credits), <span class="hljs-built_in">category</span>(category) &#123;&#125;<br><br>    <span class="hljs-keyword">friend</span> istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;(istream&amp; in, Course&amp; c)<br>    &#123;<br>        in &gt;&gt; c.id &gt;&gt; c.name &gt;&gt; c.credits &gt;&gt; c.category;<br>        <span class="hljs-keyword">return</span> in;<br>    &#125;<br>    <span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="hljs-type">const</span> Course&amp; c)<br>    &#123;<br>        out &lt;&lt; c.id &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; c.name &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; c.credits &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; c.category;<br>        <span class="hljs-keyword">return</span> out;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">display</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span><br><span class="hljs-function">    </span>&#123;<br>        cout &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; id &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>) &lt;&lt; name &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">5</span>) &lt;&lt; credits<br>            &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>) &lt;&lt; category &lt;&lt; endl;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// 授课信息类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TeachingInfo</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    string id, teacherId, courseCode, startTime;<br><br>    <span class="hljs-built_in">TeachingInfo</span>() = <span class="hljs-keyword">default</span>;<br>    <span class="hljs-built_in">TeachingInfo</span>(string id, string teacherId, string courseCode, string startTime)<br>        : <span class="hljs-built_in">teacherId</span>(teacherId), <span class="hljs-built_in">courseCode</span>(courseCode), <span class="hljs-built_in">startTime</span>(startTime), <span class="hljs-built_in">id</span>(id) &#123;&#125;<br><br>    <span class="hljs-keyword">friend</span> istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;(istream&amp; in, TeachingInfo&amp; t)<br>    &#123;<br>        in &gt;&gt; t.id &gt;&gt; t.teacherId &gt;&gt; t.courseCode &gt;&gt; t.startTime;<br>        <span class="hljs-keyword">return</span> in;<br>    &#125;<br>    <span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="hljs-type">const</span> TeachingInfo&amp; t)<br>    &#123;<br>        out &lt;&lt; t.id &lt;&lt; t.teacherId &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; t.courseCode &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; t.startTime;<br>        <span class="hljs-keyword">return</span> out;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">display</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span><br><span class="hljs-function">    </span>&#123;<br>        cout &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; id &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; teacherId &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; courseCode &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>) &lt;&lt; startTime &lt;&lt; endl;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// 选课信息类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Enrollment</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    string studentId, teacherId, courseCode, enrollTime, id;<br>    <span class="hljs-type">double</span> grade;<br><br>    <span class="hljs-built_in">Enrollment</span>() = <span class="hljs-keyword">default</span>;<br>    <span class="hljs-built_in">Enrollment</span>(string id, string studentId, string teacherId, string courseCode, <span class="hljs-type">double</span> grade, string enrollTime)<br>        : <span class="hljs-built_in">id</span>(id), <span class="hljs-built_in">studentId</span>(studentId), <span class="hljs-built_in">teacherId</span>(teacherId), <span class="hljs-built_in">courseCode</span>(courseCode), <span class="hljs-built_in">grade</span>(grade), <span class="hljs-built_in">enrollTime</span>(enrollTime) &#123;&#125;<br><br>    <span class="hljs-keyword">friend</span> istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;(istream&amp; in, Enrollment&amp; e)<br>    &#123;<br>        in &gt;&gt; e.id &gt;&gt; e.studentId &gt;&gt; e.teacherId &gt;&gt; e.courseCode &gt;&gt; e.grade &gt;&gt; e.enrollTime;<br>        <span class="hljs-keyword">return</span> in;<br>    &#125;<br>    <span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="hljs-type">const</span> Enrollment&amp; e)<br>    &#123;<br>        out &lt;&lt; e.id &lt;&lt; e.studentId &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; e.teacherId &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; e.courseCode &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; e.grade &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; e.enrollTime;<br>        <span class="hljs-keyword">return</span> out;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">display</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span><br><span class="hljs-function">    </span>&#123;<br>        cout &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; id &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; studentId &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; teacherId &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; courseCode<br>            &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">5</span>) &lt;&lt; grade &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>) &lt;&lt; enrollTime &lt;&lt; endl;<br>    &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isLeapYear</span><span class="hljs-params">(<span class="hljs-type">int</span> year)</span> </span>&#123;<br>    <span class="hljs-comment">// 闰年判断：能被4整除且不能被100整除，或者能被400整除</span><br>    <span class="hljs-keyword">return</span> (year % <span class="hljs-number">4</span> == <span class="hljs-number">0</span> &amp;&amp; year % <span class="hljs-number">100</span> != <span class="hljs-number">0</span>) || (year % <span class="hljs-number">400</span> == <span class="hljs-number">0</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">checkDate</span><span class="hljs-params">(string dateStr)</span> </span>&#123;<br>    <span class="hljs-comment">// 格式：YYYY-MM-DD</span><br>    <span class="hljs-keyword">if</span> (dateStr.<span class="hljs-built_in">size</span>() != <span class="hljs-number">10</span> || dateStr[<span class="hljs-number">4</span>] != <span class="hljs-string">&#x27;-&#x27;</span> || dateStr[<span class="hljs-number">7</span>] != <span class="hljs-string">&#x27;-&#x27;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-type">int</span> year, month, day;<br>    <span class="hljs-type">char</span> dash1, dash2;<br><br>    <span class="hljs-function">std::istringstream <span class="hljs-title">iss</span><span class="hljs-params">(dateStr)</span></span>;<br>    iss &gt;&gt; year &gt;&gt; dash1 &gt;&gt; month &gt;&gt; dash2 &gt;&gt; day;<br><br>    <span class="hljs-comment">// 如果格式不正确，或者读取失败，返回false</span><br>    <span class="hljs-keyword">if</span> (iss.<span class="hljs-built_in">fail</span>() || dash1 != <span class="hljs-string">&#x27;-&#x27;</span> || dash2 != <span class="hljs-string">&#x27;-&#x27;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 检查年份是否合理（例如，假设年份范围在 1900 到 9999 之间）</span><br>    <span class="hljs-keyword">if</span> (year &lt; <span class="hljs-number">1900</span> || year &gt; <span class="hljs-number">9999</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 检查月份范围</span><br>    <span class="hljs-keyword">if</span> (month &lt; <span class="hljs-number">1</span> || month &gt; <span class="hljs-number">12</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 每个月天数的最大值</span><br>    <span class="hljs-type">int</span> daysInMonth;<br>    <span class="hljs-keyword">switch</span> (month) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>: <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>: <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>: <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>: <span class="hljs-keyword">case</span> <span class="hljs-number">12</span>:<br>        daysInMonth = <span class="hljs-number">31</span>;<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>: <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>: <span class="hljs-keyword">case</span> <span class="hljs-number">11</span>:<br>        daysInMonth = <span class="hljs-number">30</span>;<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>        daysInMonth = <span class="hljs-built_in">isLeapYear</span>(year) ? <span class="hljs-number">29</span> : <span class="hljs-number">28</span>;<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">default</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 检查日期是否合法</span><br>    <span class="hljs-keyword">if</span> (day &lt; <span class="hljs-number">1</span> || day &gt; daysInMonth) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-comment">// 文件保存与加载</span><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">saveToFile</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; filename, <span class="hljs-type">const</span> vector&lt;T&gt;&amp; data)</span> </span>&#123;<br>    <span class="hljs-function">ofstream <span class="hljs-title">outFile</span><span class="hljs-params">(filename)</span></span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; item : data) outFile &lt;&lt; item &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">loadFromFile</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; filename, vector&lt;T&gt;&amp; data)</span> </span>&#123;<br>    <span class="hljs-function">ifstream <span class="hljs-title">inFile</span><span class="hljs-params">(filename)</span></span>;<br>    <span class="hljs-keyword">if</span> (!inFile) &#123;<br>        cerr &lt;&lt; <span class="hljs-string">&quot;Warning: 未找到文件 &quot;</span> &lt;&lt; filename &lt;&lt; <span class="hljs-string">&quot;，从空白开始！&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    T item;<br>    <span class="hljs-keyword">while</span> (inFile &gt;&gt; item) data.<span class="hljs-built_in">push_back</span>(item);<br>&#125;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">deleteItem</span><span class="hljs-params">(vector&lt;T&gt;&amp; data, <span class="hljs-type">const</span> string&amp; identifier, <span class="hljs-type">const</span> string&amp; filename)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = data.<span class="hljs-built_in">begin</span>(); it != data.<span class="hljs-built_in">end</span>(); ++it) &#123;<br>        <span class="hljs-keyword">if</span> (it-&gt;id == identifier) &#123;  <span class="hljs-comment">// 匹配唯一标识符（如工号、学号等）</span><br>            data.<span class="hljs-built_in">erase</span>(it);<br>            <span class="hljs-built_in">saveToFile</span>(filename, data);<br>            cout &lt;&lt; <span class="hljs-string">&quot;删除成功！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; <span class="hljs-string">&quot;未找到指定项！&quot;</span> &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modifyItem</span><span class="hljs-params">(vector&lt;T&gt;&amp; data, <span class="hljs-type">const</span> string&amp; identifier, <span class="hljs-type">const</span> string&amp; filename)</span> </span>&#123;<br>    <span class="hljs-type">bool</span> found = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; item : data) &#123;<br>        <span class="hljs-keyword">if</span> (item.id == identifier) &#123;  <span class="hljs-comment">// </span><br>            cout &lt;&lt; <span class="hljs-string">&quot;找到项，请输入新的数据(包括编号)：&quot;</span> ;<br>            cin &gt;&gt; item;<br>            found = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (found) &#123;<br>        <span class="hljs-built_in">saveToFile</span>(filename, data);<br>        cout &lt;&lt; <span class="hljs-string">&quot;修改成功！&quot;</span> &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;未找到指定项！&quot;</span> &lt;&lt; endl;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modifyTeacherItem</span><span class="hljs-params">(vector&lt;Teacher&gt;&amp; data, <span class="hljs-type">const</span> string&amp; identifier, <span class="hljs-type">const</span> string&amp; filename)</span> </span>&#123;<br>    <span class="hljs-type">bool</span> found = <span class="hljs-literal">false</span>;<br>    vector&lt;string&gt; collages = &#123; <span class="hljs-string">&quot;计算机学院&quot;</span> ,<span class="hljs-string">&quot;土木学院&quot;</span>,<span class="hljs-string">&quot;经济学院&quot;</span>,<span class="hljs-string">&quot;生化学院&quot;</span>,<span class="hljs-string">&quot;教育学院&quot;</span> &#125;;<br>    vector&lt;string&gt; sexs = &#123; <span class="hljs-string">&quot;男&quot;</span>,<span class="hljs-string">&quot;女&quot;</span> &#125;;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; item : data) &#123;<br>        <span class="hljs-keyword">if</span> (item.id == identifier) &#123;  <span class="hljs-comment">// </span><br>            cout &lt;&lt; <span class="hljs-string">&quot;找到项，请输入新的数据&quot;</span> &lt;&lt; endl;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入姓名:&quot;</span>;<br>            cin &gt;&gt; item.name;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> temp : sexs) &#123;<br>                cout &lt;&lt; temp &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入性别(0:男,1:女):&quot;</span>;<br>            <span class="hljs-type">int</span> ij;<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cin &gt;&gt; ij;<br>                <span class="hljs-keyword">if</span> (ij != <span class="hljs-number">0</span> &amp;&amp; ij != <span class="hljs-number">1</span>) &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;重新输入性别&quot;</span> &lt;&lt; endl;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ij == <span class="hljs-number">0</span>) &#123;<br>                    item.gender = <span class="hljs-string">&quot;男&quot;</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    item.gender = <span class="hljs-string">&quot;女&quot;</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入年龄:&quot;</span>;<br>            cin &gt;&gt; item.age;<br>            <span class="hljs-type">int</span> tt1 = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> temp : collages) &#123;<br>                cout &lt;&lt; tt1 &lt;&lt; <span class="hljs-string">&quot;.&quot;</span> &lt;&lt; temp &lt;&lt; endl;<br>                tt1 += <span class="hljs-number">1</span>;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;选择学院(输入数字):&quot;</span>;<br>            cin &gt;&gt; ij;<br>            item.college = collages[ij];<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入入职时间(yyyy-mm-dd):&quot;</span>;<br>            string time_;<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cin &gt;&gt; time_;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">checkDate</span>(time_)) &#123;<br>                    item.hireDate = time_;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;日期不规范，请重新输入:&quot;</span>;<br>                &#125;<br>            &#125;<br>            found = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (found) &#123;<br>        <span class="hljs-built_in">saveToFile</span>(filename, data);<br>        cout &lt;&lt; <span class="hljs-string">&quot;修改成功！&quot;</span> &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;未找到指定项！&quot;</span> &lt;&lt; endl;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modifyStudentItem</span><span class="hljs-params">(vector&lt;Student&gt;&amp; data, <span class="hljs-type">const</span> string&amp; identifier, <span class="hljs-type">const</span> string&amp; filename)</span> </span>&#123;<br>    <span class="hljs-type">bool</span> found = <span class="hljs-literal">false</span>;<br>    vector&lt;string&gt; collages = &#123; <span class="hljs-string">&quot;计算机学院&quot;</span> ,<span class="hljs-string">&quot;土木学院&quot;</span>,<span class="hljs-string">&quot;经济学院&quot;</span>,<span class="hljs-string">&quot;生化学院&quot;</span>,<span class="hljs-string">&quot;教育学院&quot;</span> &#125;;<br>    vector&lt;string&gt; sexs = &#123; <span class="hljs-string">&quot;男&quot;</span>,<span class="hljs-string">&quot;女&quot;</span> &#125;;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; item : data) &#123;<br>        <span class="hljs-keyword">if</span> (item.id == identifier) &#123;  <span class="hljs-comment">// </span><br>            cout &lt;&lt; <span class="hljs-string">&quot;找到项，请输入新的数据&quot;</span> &lt;&lt; endl;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入姓名:&quot;</span>;<br>            cin &gt;&gt; item.name;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> temp : sexs) &#123;<br>                cout &lt;&lt; temp &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入性别(0:男,1:女):&quot;</span>;<br>            <span class="hljs-type">int</span> ij;<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cin &gt;&gt; ij;<br>                <span class="hljs-keyword">if</span> (ij != <span class="hljs-number">0</span> &amp;&amp; ij != <span class="hljs-number">1</span>) &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;重新输入性别&quot;</span> &lt;&lt; endl;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ij == <span class="hljs-number">0</span>) &#123;<br>                    item.gender = <span class="hljs-string">&quot;男&quot;</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    item.gender = <span class="hljs-string">&quot;女&quot;</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入年龄:&quot;</span>;<br>            cin &gt;&gt; item.age;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入类别:&quot;</span>;<br>            cin &gt;&gt; item.category;<br><br>            <span class="hljs-type">int</span> tt1 = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> temp : collages) &#123;<br>                cout &lt;&lt; tt1 &lt;&lt; <span class="hljs-string">&quot;.&quot;</span> &lt;&lt; temp &lt;&lt; endl;<br>                tt1 += <span class="hljs-number">1</span>;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;选择学院(输入数字):&quot;</span>;<br>            cin &gt;&gt; ij;<br>            item.college = collages[ij];<br><br><br>            cout &lt;&lt; <span class="hljs-string">&quot;输入入学时间(yyyy-mm-dd):&quot;</span>;<br>            string time_;<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cin &gt;&gt; time_;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">checkDate</span>(time_)) &#123;<br>                    item.admissionDate = time_;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;日期不规范，请重新输入:&quot;</span>;<br>                &#125;<br>            &#125;<br>            found = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (found) &#123;<br>        <span class="hljs-built_in">saveToFile</span>(filename, data);<br>        cout &lt;&lt; <span class="hljs-string">&quot;修改成功！&quot;</span> &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;未找到指定项！&quot;</span> &lt;&lt; endl;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 显示主菜单</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showMenu</span><span class="hljs-params">()</span> </span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;****************************&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;*****  1.教师信息      *****&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;*****  2.学生信息      *****&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;*****  3.课程信息      *****&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;*****  4.授课信息      *****&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;*****  5.选课信息      *****&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;*****  6.退出      *****&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;****************************&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;请输入您的选择: &quot;</span>;<br>&#125;<br><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">teacherMenu</span><span class="hljs-params">(vector&lt;Teacher&gt;&amp; teachers)</span> </span>&#123;<br>    <span class="hljs-type">int</span> choice;<br>    vector&lt;string&gt; collages = &#123; <span class="hljs-string">&quot;计算机学院&quot;</span> ,<span class="hljs-string">&quot;土木学院&quot;</span>,<span class="hljs-string">&quot;经济学院&quot;</span>,<span class="hljs-string">&quot;生化学院&quot;</span>,<span class="hljs-string">&quot;教育学院&quot;</span>&#125;;<br>    vector&lt;string&gt; sexs = &#123; <span class="hljs-string">&quot;男&quot;</span>,<span class="hljs-string">&quot;女&quot;</span> &#125;;<br>    <span class="hljs-type">int</span> temp;<br>    <span class="hljs-keyword">do</span> &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;1. 添加教师\n2. 修改教师\n3. 删除教师\n4. 查看所有教师&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;0. 退出\n请输入您的选择: &quot;</span>;<br>        cin &gt;&gt; choice;<br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            Teacher t;<br>            <span class="hljs-comment">//cout &lt;&lt; &quot;输入工号 名称 性别 年龄 学院 入职时间: &quot;;</span><br>            cout &lt;&lt; <span class="hljs-string">&quot;输入工号:&quot;</span>;<br>            cin &gt;&gt; t.id;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入姓名:&quot;</span>;<br>            cin &gt;&gt; t.name;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> temp : sexs) &#123;<br>                cout &lt;&lt; temp &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入性别(0:男,1:女):&quot;</span>;<br>            <span class="hljs-type">int</span> ij;<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cin &gt;&gt; ij;<br>                <span class="hljs-keyword">if</span> (ij != <span class="hljs-number">0</span> &amp;&amp; ij != <span class="hljs-number">1</span>) &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;重新输入性别&quot;</span> &lt;&lt; endl;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ij == <span class="hljs-number">0</span>) &#123;<br>                    t.gender = <span class="hljs-string">&quot;男&quot;</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    t.gender = <span class="hljs-string">&quot;女&quot;</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入年龄:&quot;</span>;<br>            cin &gt;&gt; t.age;<br>            <span class="hljs-type">int</span> tt1 = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> temp : collages) &#123;<br>                cout &lt;&lt; tt1 &lt;&lt;<span class="hljs-string">&quot;.&quot;</span> &lt;&lt; temp &lt;&lt; endl;<br>                tt1 += <span class="hljs-number">1</span>;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;选择学院(输入数字):&quot;</span>;<br>            cin &gt;&gt; ij;<br>            t.college = collages[ij];<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入入职时间(yyyy-mm-dd):&quot;</span>;<br>            string time_;<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cin &gt;&gt; time_;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">checkDate</span>(time_)) &#123;<br>                    t.hireDate = time_;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;日期不规范，请重新输入:&quot;</span>;<br>                &#125;<br>            &#125;<br>            teachers.<span class="hljs-built_in">push_back</span>(t);<br>            <span class="hljs-built_in">saveToFile</span>(<span class="hljs-string">&quot;teachers.txt&quot;</span>, teachers);<br>            cout &lt;&lt; <span class="hljs-string">&quot;添加成功&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: &#123; <span class="hljs-comment">// 修改教师信息</span><br>            string id;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要修改的教师工号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">modifyTeacherItem</span>(teachers, id, <span class="hljs-string">&quot;teachers.txt&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: &#123; <span class="hljs-comment">// 修改教师信息</span><br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            string id;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要删除的教师工号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">deleteItem</span>(teachers, id, <span class="hljs-string">&quot;teachers.txt&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; t : teachers) t.<span class="hljs-built_in">display</span>(); <br>            <span class="hljs-keyword">break</span>; <br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>: cout &lt;&lt; <span class="hljs-string">&quot;退出&quot;</span> &lt;&lt; endl; <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>: cout &lt;&lt; <span class="hljs-string">&quot;输入错误，请重新输入！&quot;</span> &lt;&lt; endl;<br>        &#125;<br>    &#125; <span class="hljs-keyword">while</span> (choice != <span class="hljs-number">0</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">studentMenu</span><span class="hljs-params">(vector&lt;Student&gt;&amp; students)</span> </span>&#123;<br>    <span class="hljs-type">int</span> choice;<br>    vector&lt;string&gt; collages = &#123; <span class="hljs-string">&quot;计算机学院&quot;</span> ,<span class="hljs-string">&quot;土木学院&quot;</span>,<span class="hljs-string">&quot;经济学院&quot;</span>,<span class="hljs-string">&quot;生化学院&quot;</span>,<span class="hljs-string">&quot;教育学院&quot;</span> &#125;;<br>    vector&lt;string&gt; sexs = &#123; <span class="hljs-string">&quot;男&quot;</span>,<span class="hljs-string">&quot;女&quot;</span> &#125;;<br>    <span class="hljs-keyword">do</span> &#123;<br><br>        cout &lt;&lt; <span class="hljs-string">&quot;1. 添加学生\n2. 修改学生\n3. 删除学生\n4. 查看所有学生&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;0. 退出\n请输入您的选择: &quot;</span>;<br>        cin &gt;&gt; choice;<br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            Student s;<br>            <span class="hljs-comment">//cout &lt;&lt; &quot;输入学号 名称 性别 年龄 类别 学院 入学时间: &quot;;</span><br>            cout &lt;&lt; <span class="hljs-string">&quot;输入学号:&quot;</span>;<br>            cin &gt;&gt; s.id;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入姓名:&quot;</span>;<br>            cin &gt;&gt; s.name;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> temp : sexs) &#123;<br>                cout &lt;&lt; temp &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入性别(0:男,1:女):&quot;</span>;<br>            <span class="hljs-type">int</span> ij;<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cin &gt;&gt; ij;<br>                <span class="hljs-keyword">if</span> (ij != <span class="hljs-number">0</span> &amp;&amp; ij != <span class="hljs-number">1</span>) &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;重新输入性别&quot;</span> &lt;&lt; endl;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ij == <span class="hljs-number">0</span>) &#123;<br>                    s.gender = <span class="hljs-string">&quot;男&quot;</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    s.gender = <span class="hljs-string">&quot;女&quot;</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入年龄:&quot;</span>;<br>            cin &gt;&gt; s.age;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入类别:&quot;</span>;<br>            cin &gt;&gt; s.category;<br><br>            <span class="hljs-type">int</span> tt1 = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> temp : collages) &#123;<br>                cout &lt;&lt; tt1 &lt;&lt; <span class="hljs-string">&quot;.&quot;</span> &lt;&lt; temp &lt;&lt; endl;<br>                tt1 += <span class="hljs-number">1</span>;<br>            &#125;<br>            cout &lt;&lt; <span class="hljs-string">&quot;选择学院(输入数字):&quot;</span>;<br>            cin &gt;&gt; ij;<br>            s.college = collages[ij];<br><br><br>            cout &lt;&lt; <span class="hljs-string">&quot;输入入学时间(yyyy-mm-dd):&quot;</span>;<br>            string time_;<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cin &gt;&gt; time_;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">checkDate</span>(time_)) &#123;<br>                    s.admissionDate = time_;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    cout &lt;&lt; <span class="hljs-string">&quot;日期不规范，请重新输入:&quot;</span>;<br>                &#125;<br>            &#125;<br><br>            students.<span class="hljs-built_in">push_back</span>(s);<br>            <span class="hljs-built_in">saveToFile</span>(<span class="hljs-string">&quot;students.txt&quot;</span>, students);<br>            cout &lt;&lt; <span class="hljs-string">&quot;添加成功&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: &#123; <br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            string id;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要修改的学生学号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">modifyStudentItem</span>(students, id, <span class="hljs-string">&quot;students.txt&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: &#123; <br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            string id;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要删除的学生学号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">deleteItem</span>(students, id, <span class="hljs-string">&quot;students.txt&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) s.<span class="hljs-built_in">display</span>(); <br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>: cout &lt;&lt; <span class="hljs-string">&quot;退出系统！&quot;</span> &lt;&lt; endl; <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>: cout &lt;&lt; <span class="hljs-string">&quot;输入错误，请重新输入！&quot;</span> &lt;&lt; endl;<br>        &#125;<br>    &#125; <span class="hljs-keyword">while</span> (choice != <span class="hljs-number">0</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">courseMenu</span><span class="hljs-params">(vector&lt;Course&gt;&amp; courses)</span> </span>&#123;<br>    <span class="hljs-type">int</span> choice;<br>    <span class="hljs-keyword">do</span> &#123;<br><br>        cout &lt;&lt; <span class="hljs-string">&quot;1. 添加课程\n2. 修改课程\n3. 删除课程\n4. 查看所有课程&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;0. 退出\n请输入您的选择:  &quot;</span>;<br>        cin &gt;&gt; choice;<br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            Course c;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入课程编号 名称 学分 类别: &quot;</span>;<br>            cin &gt;&gt; c;<br>            courses.<span class="hljs-built_in">push_back</span>(c);<br>            <span class="hljs-built_in">saveToFile</span>(<span class="hljs-string">&quot;courses.txt&quot;</span>, courses);<br>            cout &lt;&lt; <span class="hljs-string">&quot;添加成功&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: &#123;<br>            string id;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要修改的课程编号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">modifyItem</span>(courses, id, <span class="hljs-string">&quot;courses.txt&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: &#123;<br>            string id;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要删除的课程编号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">deleteItem</span>(courses, id, <span class="hljs-string">&quot;courses.txt&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; c : courses) c.<span class="hljs-built_in">display</span>(); <br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>: cout &lt;&lt; <span class="hljs-string">&quot;退出系统！&quot;</span> &lt;&lt; endl; <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>: cout &lt;&lt; <span class="hljs-string">&quot;输入错误，请重新输入！&quot;</span> &lt;&lt; endl;<br>        &#125;<br>    &#125; <span class="hljs-keyword">while</span> (choice != <span class="hljs-number">0</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">teachInfoMenu</span><span class="hljs-params">(vector&lt;TeachingInfo&gt; teachingInfos)</span> </span>&#123;<br>    <span class="hljs-type">int</span> choice;<br>    <span class="hljs-keyword">do</span> &#123;<br><br>        cout &lt;&lt; <span class="hljs-string">&quot;1. 添加授课信息\n2. 修改授课信息\n3. 删除授课信息\n4. 查看所有授课信息&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;0. 退出\n请输入您的选择: &quot;</span>;<br>        cin &gt;&gt; choice;<br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            TeachingInfo t;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入授课信息编号 教师工号 课程编号 开设时间: &quot;</span>;<br>            cin &gt;&gt; t;<br>            teachingInfos.<span class="hljs-built_in">push_back</span>(t);<br>            <span class="hljs-built_in">saveToFile</span>(<span class="hljs-string">&quot;teaching_info.txt&quot;</span>, teachingInfos);<br>            cout &lt;&lt; <span class="hljs-string">&quot;添加成功&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: &#123; <br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            string id;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要修改的授课信息编号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">modifyItem</span>(teachingInfos, id, <span class="hljs-string">&quot;teaching_info.txt&quot;</span>);<br>            <br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: &#123; <br>            string id;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要删除的授课信息编号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">deleteItem</span>(teachingInfos, id, <span class="hljs-string">&quot;teaching_info.txt&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; t : teachingInfos) t.<span class="hljs-built_in">display</span>(); <br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>: cout &lt;&lt; <span class="hljs-string">&quot;退出系统！&quot;</span> &lt;&lt; endl; <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>: cout &lt;&lt; <span class="hljs-string">&quot;输入错误，请重新输入！&quot;</span> &lt;&lt; endl;<br>        &#125;<br>    &#125; <span class="hljs-keyword">while</span> (choice != <span class="hljs-number">0</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">enrollMenu</span><span class="hljs-params">(vector&lt;Enrollment&gt; enrollments)</span> </span>&#123;<br>    <span class="hljs-type">int</span> choice;<br>    <span class="hljs-keyword">do</span> &#123;<br><br>        cout &lt;&lt; <span class="hljs-string">&quot;1. 添加选课信息\n2. 修改选课信息\n3. 删除选课信息\n4. 查看所有选课信息&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;0. 退出\n请输入您的选择: &quot;</span>;<br>        cin &gt;&gt; choice;<br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: &#123;<br>            Enrollment e;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入选课信息编号 学生学号 教师工号 课程编号 成绩 选修时间: &quot;</span>;<br>            cin &gt;&gt; e;<br>            enrollments.<span class="hljs-built_in">push_back</span>(e);<br>            <span class="hljs-built_in">saveToFile</span>(<span class="hljs-string">&quot;enrollments.txt&quot;</span>, enrollments);<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: &#123; <span class="hljs-comment">// 修改学生信息</span><br>            string id;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要修改的选课信息编号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">modifyItem</span>(enrollments, id, <span class="hljs-string">&quot;enrollments.txt&quot;</span>);<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: &#123; <span class="hljs-comment">// 修改学生信息</span><br>            string id;<br>            cout &lt;&lt; <span class="hljs-string">&quot;输入要修改的选课信息编号: &quot;</span>;<br>            cin &gt;&gt; id;<br>            <span class="hljs-built_in">deleteItem</span>(enrollments, id, <span class="hljs-string">&quot;enrollments.txt&quot;</span>);<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; e : enrollments) e.<span class="hljs-built_in">display</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>: cout &lt;&lt; <span class="hljs-string">&quot;退出系统！&quot;</span> &lt;&lt; endl; <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>: cout &lt;&lt; <span class="hljs-string">&quot;输入错误，请重新输入！&quot;</span> &lt;&lt; endl;<br>        &#125;<br>    &#125; <span class="hljs-keyword">while</span> (choice != <span class="hljs-number">0</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    vector&lt;Teacher&gt; teachers;<br>    vector&lt;Student&gt; students;<br>    vector&lt;Course&gt; courses;<br>    vector&lt;TeachingInfo&gt; teachingInfos;<br>    vector&lt;Enrollment&gt; enrollments;<br><br>    <span class="hljs-comment">// 加载数据</span><br>    <span class="hljs-built_in">loadFromFile</span>(<span class="hljs-string">&quot;teachers.txt&quot;</span>, teachers);<br>    <span class="hljs-built_in">loadFromFile</span>(<span class="hljs-string">&quot;students.txt&quot;</span>, students);<br>    <span class="hljs-built_in">loadFromFile</span>(<span class="hljs-string">&quot;courses.txt&quot;</span>, courses);<br>    <span class="hljs-built_in">loadFromFile</span>(<span class="hljs-string">&quot;teaching_info.txt&quot;</span>, teachingInfos);<br>    <span class="hljs-built_in">loadFromFile</span>(<span class="hljs-string">&quot;enrollments.txt&quot;</span>, enrollments);<br><br>    <span class="hljs-type">int</span> choice;<br>    <span class="hljs-keyword">do</span> &#123;<br>        <span class="hljs-built_in">showMenu</span>();<br>        cin &gt;&gt; choice;<br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-built_in">teacherMenu</span>(teachers);<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-built_in">studentMenu</span>(students);<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-built_in">courseMenu</span>(courses);<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-built_in">teachInfoMenu</span>(teachingInfos);<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>: &#123;<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-built_in">enrollMenu</span>(enrollments);<br>            <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>: cout &lt;&lt; <span class="hljs-string">&quot;退出系统！&quot;</span> &lt;&lt; endl; <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>: cout &lt;&lt; <span class="hljs-string">&quot;输入错误，请重新输入！&quot;</span> &lt;&lt; endl;<br>        &#125;<br>    &#125; <span class="hljs-keyword">while</span> (choice != <span class="hljs-number">6</span>);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>选课管理系统</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/poem/%E5%AF%84%E6%83%85%E4%BA%BA/">寄情人</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/poem/%E4%BB%8E%E4%BB%8A%E8%8B%A5%E8%AE%B8%E9%97%B2%E4%B9%98%E6%9C%88/">从今若许闲乘月</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

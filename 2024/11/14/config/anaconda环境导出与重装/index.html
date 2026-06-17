@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>anaconda环境导出与重装 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="anaconda环境导出与重装">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/anaconda%E7%8E%AF%E5%A2%83%E5%AF%BC%E5%87%BA%E4%B8%8E%E9%87%8D%E8%A3%85/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.导出conda虚拟环境的配置可以通过以下步骤完成：打开终端或命令提示符。使用condaenvexport命令：如果你想导出当前激活的环境，运行：condaenvexport&amp;gt;environment.yml如果你想导出一个非激活的环境，指定环境名称：condaenvexport--nameenv_na">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">anaconda环境导出与重装</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.750Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-导出conda虚拟环境的配置可以通过以下步骤完成："><a href="#1-导出conda虚拟环境的配置可以通过以下步骤完成：" class="headerlink" title="1. 导出conda虚拟环境的配置可以通过以下步骤完成："></a>1. 导出conda虚拟环境的配置可以通过以下步骤完成：</h1><ol>
+<li><strong>打开终端或命令提示符</strong>。</li>
+<li><strong>使用conda env export命令</strong>：<ul>
+<li>如果你想导出当前激活的环境，运行：<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> <span class="hljs-built_in">export</span> &gt; environment.yml<br></code></pre></td></tr></table></figure></li>
+<li>如果你想导出一个非激活的环境，指定环境名称：<figure class="highlight elm"><table><tr><td class="code"><pre><code class="hljs elm"><span class="hljs-title">conda</span> env ex<span class="hljs-keyword">port</span> <span class="hljs-comment">--name env_name &gt; environment.yml</span><br></code></pre></td></tr></table></figure>
+<h1 id="2-重装"><a href="#2-重装" class="headerlink" title="2. 重装"></a>2. 重装</h1></li>
+</ul>
+</li>
+</ol>
+<p>在其他地方重新安装conda虚拟环境，可以通过以下步骤完成：</p>
+<hr>
+<h2 id="2-1-将导出的配置文件传输到目标环境"><a href="#2-1-将导出的配置文件传输到目标环境" class="headerlink" title="2.1. 将导出的配置文件传输到目标环境"></a>2.1. <strong>将导出的配置文件传输到目标环境</strong></h2><ul>
+<li>如果是本地环境，直接复制 <code>environment.yml</code> 文件到目标目录。</li>
+<li>如果是服务器，通过 <code>scp</code>、<code>rsync</code> 或其他文件传输工具将文件上传到服务器。</li>
+</ul>
+<hr>
+<h2 id="2-2-使用conda创建新的虚拟环境"><a href="#2-2-使用conda创建新的虚拟环境" class="headerlink" title="2.2. 使用conda创建新的虚拟环境"></a>2.2. <strong>使用conda创建新的虚拟环境</strong></h2><p>在目标环境中运行以下命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> create -f environment.yml<br></code></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>解释</strong>：<ul>
+<li><code>conda env create</code>：用于从配置文件创建新的conda环境。</li>
+<li><code>-f environment.yml</code>：指定配置文件的路径和文件名。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="2-3-激活新创建的环境"><a href="#2-3-激活新创建的环境" class="headerlink" title="2.3. 激活新创建的环境"></a>2.3. <strong>激活新创建的环境</strong></h2><p>创建完成后，可以通过以下命令激活环境：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">conda activate env_name<br></code></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>注意</strong>：<code>env_name</code> 是你导出的环境名称，可以在 <code>environment.yml</code> 文件中查看。</li>
+</ul>
+<hr>
+<h2 id="2-4-验证环境"><a href="#2-4-验证环境" class="headerlink" title="2.4. 验证环境"></a>2.4. <strong>验证环境</strong></h2><p>在激活环境后，可以通过以下命令验证是否安装了正确的依赖项：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">conda list<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="2-5-注意事项："><a href="#2-5-注意事项：" class="headerlink" title="2.5. 注意事项："></a>2.5. <strong>注意事项</strong>：</h2><ol>
+<li><p><strong>依赖性问题</strong>：</p>
+<ul>
+<li>如果目标环境的操作系统与原始环境不同（如从Linux迁移到Windows），某些包可能无法正常安装。</li>
+<li>建议在相同操作系统的环境中使用导出的配置文件。</li>
+</ul>
+</li>
+<li><p><strong>网络问题</strong>：</p>
+<ul>
+<li>如果目标环境无法访问互联网，可以手动下载依赖包并通过 <code>conda install --offline</code> 安装。</li>
+<li>也可以配置conda的镜像站点（如国内镜像）加速安装。</li>
+</ul>
+</li>
+<li><p><strong>环境名称</strong>：</p>
+<ul>
+<li>如果目标环境中已经存在相同名称的环境，可以通过修改 <code>environment.yml</code> 文件中的 <code>name</code> 字段来更改环境名称。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-6-示例："><a href="#2-6-示例：" class="headerlink" title="2.6. 示例："></a>2.6. <strong>示例</strong>：</h2><p>假设你的 <code>environment.yml</code> 文件内容如下：<br><figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">myenv</span><br><span class="hljs-attr">channels:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">defaults</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">conda-forge</span><br><span class="hljs-attr">dependencies:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">python=3.8</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">numpy=1.20</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">pandas=1.3</span><br></code></pre></td></tr></table></figure></p>
+<p>在目标环境中运行以下命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> create -f environment.yml<br>conda activate myenv<br>conda list<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="2-7-额外提示："><a href="#2-7-额外提示：" class="headerlink" title="2.7. 额外提示："></a>2.7. <strong>额外提示</strong>：</h2><ul>
+<li><p>如果你想在创建环境时指定名称，可以运行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">conda create --name new_env_name -f environment.yml<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>如果你只需要安装依赖项而不创建新环境，可以运行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">conda install --name existing_env_name -f environment.yml<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="3-例如："><a href="#3-例如：" class="headerlink" title="3. 例如："></a>3. 例如：</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">conda activate foundationpose<br><br>conda <span class="hljs-built_in">env</span> <span class="hljs-built_in">export</span> &gt; environment.yml<br><br><span class="hljs-comment">#将environment.yml文件到目标目录</span><br><br>conda <span class="hljs-built_in">env</span> create -f environment.yml<br></code></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>anaconda环境导出与重装</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/debian%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">debian安装教程</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/anaconda%20&%20jupyter%20notebook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">anaconda & jupyter notebook使用技巧</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%AF%BC%E5%87%BAconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E4%BB%A5%E4%B8%8B%E6%AD%A5%E9%AA%A4%E5%AE%8C%E6%88%90%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">1. 导出conda虚拟环境的配置可以通过以下步骤完成：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%87%8D%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">2. 重装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%B0%86%E5%AF%BC%E5%87%BA%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%88%B0%E7%9B%AE%E6%A0%87%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 将导出的配置文件传输到目标环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E4%BD%BF%E7%94%A8conda%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 使用conda创建新的虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%BF%80%E6%B4%BB%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 激活新创建的环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E9%AA%8C%E8%AF%81%E7%8E%AF%E5%A2%83"><span class="toc-number">2.4.</span> <span class="toc-text">2.4. 验证环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%9A"><span class="toc-number">2.5.</span> <span class="toc-text">2.5. 注意事项：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-number">2.6.</span> <span class="toc-text">2.6. 示例：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-%E9%A2%9D%E5%A4%96%E6%8F%90%E7%A4%BA%EF%BC%9A"><span class="toc-number">2.7.</span> <span class="toc-text">2.7. 额外提示：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BE%8B%E5%A6%82%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">3. 例如：</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

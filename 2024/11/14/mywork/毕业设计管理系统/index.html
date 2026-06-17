@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>毕业设计管理系统 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="毕业设计管理系统">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="步骤：新建查询粘贴代码、保存执行建库建表代码SQLserver版本索引和性能优化--为Students表添加索引CREATEINDEXidx_students_nameONStudents(Name);CREATEINDEXidx_students_majorONStudents(Major);--为Inst">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">毕业设计管理系统</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.185Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719286309771-b27e2847-3cc0-43b7-bde9-4b0288d8f2d4.png" alt=""></p>
+<h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>新建查询</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719060303886-374c8b65-55fe-4094-96a1-b8e6b7fba378.png" alt=""></p>
+<p>粘贴代码、保存</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719060356282-95467c86-c265-4f18-8106-e34b6b7c93aa.png" alt=""></p>
+<p>执行</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719060406439-073cd300-e843-45be-9a49-9e52e2cb80bf.png" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719060427275-10322e95-274d-474e-9a57-e1ea927543ab.png" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719060466120-e99277c9-c694-4c3b-a3d7-4f68fc3c4742.png" alt=""></p>
+<h2 id="建库建表代码"><a href="#建库建表代码" class="headerlink" title="建库建表代码"></a>建库建表代码</h2><p>SQL server版本</p>
+<h3 id="索引和性能优化"><a href="#索引和性能优化" class="headerlink" title="索引和性能优化"></a>索引和性能优化</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 为Students表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_students_name <span class="hljs-keyword">ON</span> Students (Name);<br><span class="hljs-keyword">CREATE</span> INDEX idx_students_major <span class="hljs-keyword">ON</span> Students (Major);<br><br><span class="hljs-comment">-- 为Instructors表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_instructors_name <span class="hljs-keyword">ON</span> Instructors (Name);<br><span class="hljs-keyword">CREATE</span> INDEX idx_instructors_department <span class="hljs-keyword">ON</span> Instructors (Department);<br><br><span class="hljs-comment">-- 为ThesisTopics表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_thesistopics_title <span class="hljs-keyword">ON</span> ThesisTopics (Title);<br><span class="hljs-keyword">CREATE</span> INDEX idx_thesistopics_instructorid <span class="hljs-keyword">ON</span> ThesisTopics (InstructorID);<br><br><span class="hljs-comment">-- 为StudentThesis表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_studentthesis_studentid <span class="hljs-keyword">ON</span> StudentThesis (StudentID);<br><span class="hljs-keyword">CREATE</span> INDEX idx_studentthesis_topicid <span class="hljs-keyword">ON</span> StudentThesis (TopicID);<br><br><span class="hljs-comment">-- 为ProgressLogs表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_progresslogs_studentid <span class="hljs-keyword">ON</span> ProgressLogs (StudentID);<br><span class="hljs-keyword">CREATE</span> INDEX idx_progresslogs_topicid <span class="hljs-keyword">ON</span> ProgressLogs (TopicID);<br><br><span class="hljs-comment">-- 为ThesisReviews表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_thesisreviews_studentid <span class="hljs-keyword">ON</span> ThesisReviews (StudentID);<br><br><span class="hljs-comment">-- 为StudentFeedback表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_studentfeedback_studentid <span class="hljs-keyword">ON</span> StudentFeedback (StudentID);<br><span class="hljs-keyword">CREATE</span> INDEX idx_studentfeedback_topicid <span class="hljs-keyword">ON</span> StudentFeedback (TopicID);<br><br></code></pre></td></tr></table></figure>
+<h3 id="用户子模式"><a href="#用户子模式" class="headerlink" title="用户子模式"></a>用户子模式</h3><p>学生视图</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> StudentView <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    s.StudentID, <br>    s.Name, <br>    s.Gender, <br>    s.Major, <br>    s.Class, <br>    s.Phone, <br>    st.TopicID, <br>    tt.Title <span class="hljs-keyword">AS</span> TopicTitle, <br>    st.StartDate, <br>    st.EndDate, <br>    st.CurrentProgress, <br>    r.ReviewComments, <br>    r.ReviewResult, <br>    r.ReviewDate, <br>    f.FeedbackContent, <br>    f.FeedbackDate<br><span class="hljs-keyword">FROM</span> <br>    Students s<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentThesis st <span class="hljs-keyword">ON</span> s.StudentID <span class="hljs-operator">=</span> st.StudentID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisTopics tt <span class="hljs-keyword">ON</span> st.TopicID <span class="hljs-operator">=</span> tt.TopicID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisReviews r <span class="hljs-keyword">ON</span> s.StudentID <span class="hljs-operator">=</span> r.StudentID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentFeedback f <span class="hljs-keyword">ON</span> s.StudentID <span class="hljs-operator">=</span> f.StudentID;<br><br></code></pre></td></tr></table></figure>
+<p>教师视图</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> InstructorView <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    i.InstructorID, <br>    i.Name <span class="hljs-keyword">AS</span> InstructorName, <br>    i.Department, <br>    tt.TopicID, <br>    tt.Title <span class="hljs-keyword">AS</span> TopicTitle, <br>    tt.Description <span class="hljs-keyword">AS</span> TopicDescription, <br>    tt.MaxStudents, <br>    tt.RegistrationDeadline, <br>    tt.Status, <br>    st.StudentID, <br>    s.Name <span class="hljs-keyword">AS</span> StudentName, <br>    st.StartDate, <br>    st.EndDate, <br>    st.CurrentProgress, <br>    p.LogID, <br>    p.ProgressDescription, <br>    p.RecordDate<br><span class="hljs-keyword">FROM</span> <br>    Instructors i<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisTopics tt <span class="hljs-keyword">ON</span> i.InstructorID <span class="hljs-operator">=</span> tt.InstructorID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentThesis st <span class="hljs-keyword">ON</span> tt.TopicID <span class="hljs-operator">=</span> st.TopicID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    Students s <span class="hljs-keyword">ON</span> st.StudentID <span class="hljs-operator">=</span> s.StudentID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ProgressLogs p <span class="hljs-keyword">ON</span> st.StudentID <span class="hljs-operator">=</span> p.StudentID <span class="hljs-keyword">AND</span> st.TopicID <span class="hljs-operator">=</span> p.TopicID;<br><br></code></pre></td></tr></table></figure>
+<p>管理员视图</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> AdminView <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    a.AdminID, <br>    a.Name <span class="hljs-keyword">AS</span> AdminName, <br>    a.Username, <br>    a.PermissionLevel, <br>    s.StudentID, <br>    s.Name <span class="hljs-keyword">AS</span> StudentName, <br>    s.Gender, <br>    s.Major, <br>    s.Class, <br>    s.Phone, <br>    i.InstructorID, <br>    i.Name <span class="hljs-keyword">AS</span> InstructorName, <br>    i.Department, <br>    i.ResearchDirection, <br>    i.Phone <span class="hljs-keyword">AS</span> InstructorPhone, <br>    tt.TopicID, <br>    tt.Title <span class="hljs-keyword">AS</span> TopicTitle, <br>    tt.Description <span class="hljs-keyword">AS</span> TopicDescription, <br>    tt.MaxStudents, <br>    tt.RegistrationDeadline, <br>    tt.Status, <br>    st.StartDate, <br>    st.EndDate, <br>    st.CurrentProgress, <br>    p.LogID, <br>    p.ProgressDescription, <br>    p.RecordDate, <br>    r.ReviewID, <br>    r.ReviewComments, <br>    r.ReviewResult, <br>    r.ReviewDate, <br>    f.FeedbackID, <br>    f.FeedbackContent, <br>    f.FeedbackDate<br><span class="hljs-keyword">FROM</span> <br>    Administrators a<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    Students s <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    Instructors i <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisTopics tt <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentThesis st <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ProgressLogs p <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisReviews r <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentFeedback f <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span>;<br><br></code></pre></td></tr></table></figure>
+<h3 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建数据库</span><br><span class="hljs-keyword">CREATE</span> DATABASE GraduationProjectManagement;<br>GO<br><br><span class="hljs-comment">-- 使用数据库</span><br>USE GraduationProjectManagement;<br>GO<br><br><span class="hljs-comment">-- 创建学生表</span><br><span class="hljs-keyword">CREATE TABLE</span> Students (<br>    StudentID NVARCHAR(<span class="hljs-number">20</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    Name NVARCHAR(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    Gender <span class="hljs-type">CHAR</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">CHECK</span> (Gender <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-string">&#x27;F&#x27;</span>)),<br>    Major NVARCHAR(<span class="hljs-number">50</span>),<br>    Class NVARCHAR(<span class="hljs-number">50</span>),<br>    Phone NVARCHAR(<span class="hljs-number">20</span>)<br>);<br>GO<br><br><span class="hljs-comment">-- 创建指导教师表</span><br><span class="hljs-keyword">CREATE TABLE</span> Instructors (<br>    InstructorID NVARCHAR(<span class="hljs-number">20</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    Name NVARCHAR(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    Department NVARCHAR(<span class="hljs-number">50</span>),<br>    ResearchDirection NVARCHAR(<span class="hljs-number">100</span>),<br>    Phone NVARCHAR(<span class="hljs-number">20</span>)<br>);<br>GO<br><br><span class="hljs-comment">-- 创建管理员信息表</span><br><span class="hljs-keyword">CREATE TABLE</span> Administrators (<br>    AdminID NVARCHAR(<span class="hljs-number">20</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    Name NVARCHAR(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    Username NVARCHAR(<span class="hljs-number">50</span>) <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">NOT NULL</span>,<br>    Password NVARCHAR(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    PermissionLevel <span class="hljs-type">INT</span> <span class="hljs-keyword">CHECK</span> (PermissionLevel <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">10</span>)<br>);<br>GO<br><br><span class="hljs-comment">-- 创建毕业设计题目信息表</span><br><span class="hljs-keyword">CREATE TABLE</span> ThesisTopics (<br>    TopicID NVARCHAR(<span class="hljs-number">20</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    Title NVARCHAR(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    Description NVARCHAR(MAX),<br>    MaxStudents <span class="hljs-type">INT</span> <span class="hljs-keyword">CHECK</span> (MaxStudents <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>),<br>    RegistrationDeadline <span class="hljs-type">DATE</span>,<br>    Status NVARCHAR(<span class="hljs-number">20</span>) <span class="hljs-keyword">CHECK</span> (Status <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;Open&#x27;</span>, <span class="hljs-string">&#x27;Closed&#x27;</span>, <span class="hljs-string">&#x27;Completed&#x27;</span>)),<br>    InstructorID NVARCHAR(<span class="hljs-number">20</span>),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (InstructorID) <span class="hljs-keyword">REFERENCES</span> Instructors(InstructorID)<br>);<br>GO<br><br><span class="hljs-comment">-- 创建学生毕业设计信息表</span><br><span class="hljs-keyword">CREATE TABLE</span> StudentThesis (<br>    StudentID NVARCHAR(<span class="hljs-number">20</span>),<br>    TopicID NVARCHAR(<span class="hljs-number">20</span>),<br>    StartDate <span class="hljs-type">DATE</span>,<br>    EndDate <span class="hljs-type">DATE</span>,<br>    CurrentProgress NVARCHAR(<span class="hljs-number">100</span>),<br>    <span class="hljs-keyword">PRIMARY KEY</span> (StudentID, TopicID),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (StudentID) <span class="hljs-keyword">REFERENCES</span> Students(StudentID),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (TopicID) <span class="hljs-keyword">REFERENCES</span> ThesisTopics(TopicID)<br>);<br>GO<br><br><span class="hljs-comment">-- 创建进度信息表</span><br><span class="hljs-keyword">CREATE TABLE</span> ProgressLogs (<br>    LogID <span class="hljs-type">INT</span> <span class="hljs-keyword">IDENTITY</span>(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    StudentID NVARCHAR(<span class="hljs-number">20</span>),<br>    TopicID NVARCHAR(<span class="hljs-number">20</span>),<br>    ProgressDescription NVARCHAR(MAX),<br>    RecordDate <span class="hljs-type">DATE</span>,<br>    <span class="hljs-keyword">FOREIGN KEY</span> (StudentID) <span class="hljs-keyword">REFERENCES</span> Students(StudentID),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (TopicID) <span class="hljs-keyword">REFERENCES</span> ThesisTopics(TopicID)<br>);<br>GO<br><br><span class="hljs-comment">-- 创建论文审核表</span><br><span class="hljs-keyword">CREATE TABLE</span> ThesisReviews (<br>    ReviewID <span class="hljs-type">INT</span> <span class="hljs-keyword">IDENTITY</span>(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    StudentID NVARCHAR(<span class="hljs-number">20</span>),<br>    ReviewComments NVARCHAR(MAX),<br>    ReviewResult NVARCHAR(<span class="hljs-number">20</span>) <span class="hljs-keyword">CHECK</span> (ReviewResult <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;Pass&#x27;</span>, <span class="hljs-string">&#x27;Fail&#x27;</span>, <span class="hljs-string">&#x27;Pending&#x27;</span>)),<br>    ReviewDate <span class="hljs-type">DATE</span>,<br>    <span class="hljs-keyword">FOREIGN KEY</span> (StudentID) <span class="hljs-keyword">REFERENCES</span> Students(StudentID)<br>);<br>GO<br><br><span class="hljs-comment">-- 创建学生反馈表</span><br><span class="hljs-keyword">CREATE TABLE</span> StudentFeedback (<br>    FeedbackID <span class="hljs-type">INT</span> <span class="hljs-keyword">IDENTITY</span>(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    StudentID NVARCHAR(<span class="hljs-number">20</span>),<br>    TopicID NVARCHAR(<span class="hljs-number">20</span>),<br>    FeedbackContent NVARCHAR(MAX),<br>    FeedbackDate <span class="hljs-type">DATE</span>,<br>    <span class="hljs-keyword">FOREIGN KEY</span> (StudentID) <span class="hljs-keyword">REFERENCES</span> Students(StudentID),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (TopicID) <span class="hljs-keyword">REFERENCES</span> ThesisTopics(TopicID)<br>);<br>GO<br><br><span class="hljs-comment">-- 创建序列用于生成唯一学生编号</span><br><span class="hljs-keyword">CREATE</span> SEQUENCE StudentID_Seq<br>    <span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> <span class="hljs-number">1</span><br>    INCREMENT <span class="hljs-keyword">BY</span> <span class="hljs-number">1</span>;<br>GO<br><br><span class="hljs-comment">-- 创建触发器：插入学生记录时自动生成学生编号</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> trg_InsertStudentID<br><span class="hljs-keyword">ON</span> Students<br>INSTEAD <span class="hljs-keyword">OF</span> <span class="hljs-keyword">INSERT</span><br><span class="hljs-keyword">AS</span><br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">DECLARE</span> <span class="hljs-variable">@NewStudentID</span> NVARCHAR(<span class="hljs-number">20</span>);<br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-variable">@NewStudentID</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;S&#x27;</span> <span class="hljs-operator">+</span> <span class="hljs-keyword">RIGHT</span>(<span class="hljs-string">&#x27;00000&#x27;</span> <span class="hljs-operator">+</span> <span class="hljs-built_in">CAST</span>(NEXT <span class="hljs-keyword">VALUE</span> <span class="hljs-keyword">FOR</span> StudentID_Seq <span class="hljs-keyword">AS</span> NVARCHAR(<span class="hljs-number">5</span>)), <span class="hljs-number">5</span>)<br>    <span class="hljs-keyword">FROM</span> inserted;<br><br>    <span class="hljs-keyword">INSERT INTO</span> Students (StudentID, Name, Gender, Major, Class, Phone)<br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-variable">@NewStudentID</span>, Name, Gender, Major, Class, Phone<br>    <span class="hljs-keyword">FROM</span> inserted;<br><span class="hljs-keyword">END</span>;<br>GO<br><br><span class="hljs-comment">-- 创建触发器：更新学生毕业设计信息时记录日志</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> trg_UpdateStudentThesis<br><span class="hljs-keyword">ON</span> StudentThesis<br>AFTER <span class="hljs-keyword">UPDATE</span><br><span class="hljs-keyword">AS</span><br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">DECLARE</span> <span class="hljs-variable">@StudentID</span> NVARCHAR(<span class="hljs-number">20</span>);<br>    <span class="hljs-keyword">DECLARE</span> <span class="hljs-variable">@TopicID</span> NVARCHAR(<span class="hljs-number">20</span>);<br>    <span class="hljs-keyword">DECLARE</span> <span class="hljs-variable">@CurrentProgress</span> NVARCHAR(<span class="hljs-number">100</span>);<br>    <span class="hljs-keyword">DECLARE</span> <span class="hljs-variable">@ChangeDate</span> DATETIME;<br><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-variable">@StudentID</span> <span class="hljs-operator">=</span> inserted.StudentID,<br>           <span class="hljs-variable">@TopicID</span> <span class="hljs-operator">=</span> inserted.TopicID,<br>           <span class="hljs-variable">@CurrentProgress</span> <span class="hljs-operator">=</span> inserted.CurrentProgress,<br>           <span class="hljs-variable">@ChangeDate</span> <span class="hljs-operator">=</span> GETDATE()<br>    <span class="hljs-keyword">FROM</span> inserted;<br><br>    <span class="hljs-keyword">INSERT INTO</span> ProgressLogs (StudentID, TopicID, ProgressDescription, RecordDate)<br>    <span class="hljs-keyword">VALUES</span> (<span class="hljs-variable">@StudentID</span>, <span class="hljs-variable">@TopicID</span>, <span class="hljs-variable">@CurrentProgress</span>, <span class="hljs-variable">@ChangeDate</span>);<br><span class="hljs-keyword">END</span>;<br>GO<br><br><span class="hljs-comment">-- 创建触发器：删除学生时删除相关联的毕业设计信息</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> trg_DeleteStudent<br><span class="hljs-keyword">ON</span> Students<br>AFTER <span class="hljs-keyword">DELETE</span><br><span class="hljs-keyword">AS</span><br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> StudentThesis<br>    <span class="hljs-keyword">WHERE</span> StudentID <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> StudentID <span class="hljs-keyword">FROM</span> deleted);<br><span class="hljs-keyword">END</span>;<br>GO<br><br><span class="hljs-comment">-- 为Students表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_students_name <span class="hljs-keyword">ON</span> Students (Name);<br><span class="hljs-keyword">CREATE</span> INDEX idx_students_major <span class="hljs-keyword">ON</span> Students (Major);<br>GO<br><br><span class="hljs-comment">-- 为Instructors表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_instructors_name <span class="hljs-keyword">ON</span> Instructors (Name);<br><span class="hljs-keyword">CREATE</span> INDEX idx_instructors_department <span class="hljs-keyword">ON</span> Instructors (Department);<br>GO<br><br><span class="hljs-comment">-- 为ThesisTopics表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_thesistopics_title <span class="hljs-keyword">ON</span> ThesisTopics (Title);<br><span class="hljs-keyword">CREATE</span> INDEX idx_thesistopics_instructorid <span class="hljs-keyword">ON</span> ThesisTopics (InstructorID);<br>GO<br><br><span class="hljs-comment">-- 为StudentThesis表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_studentthesis_studentid <span class="hljs-keyword">ON</span> StudentThesis (StudentID);<br><span class="hljs-keyword">CREATE</span> INDEX idx_studentthesis_topicid <span class="hljs-keyword">ON</span> StudentThesis (TopicID);<br>GO<br><br><span class="hljs-comment">-- 为ProgressLogs表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_progresslogs_studentid <span class="hljs-keyword">ON</span> ProgressLogs (StudentID);<br><span class="hljs-keyword">CREATE</span> INDEX idx_progresslogs_topicid <span class="hljs-keyword">ON</span> ProgressLogs (TopicID);<br>GO<br><br><span class="hljs-comment">-- 为ThesisReviews表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_thesisreviews_studentid <span class="hljs-keyword">ON</span> ThesisReviews (StudentID);<br>GO<br><br><span class="hljs-comment">-- 为StudentFeedback表添加索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_studentfeedback_studentid <span class="hljs-keyword">ON</span> StudentFeedback (StudentID);<br><span class="hljs-keyword">CREATE</span> INDEX idx_studentfeedback_topicid <span class="hljs-keyword">ON</span> StudentFeedback (TopicID);<br>GO<br><br><span class="hljs-comment">-- 创建学生视图</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> StudentView <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    s.StudentID, <br>    s.Name, <br>    s.Gender, <br>    s.Major, <br>    s.Class, <br>    s.Phone, <br>    st.TopicID, <br>    tt.Title <span class="hljs-keyword">AS</span> TopicTitle, <br>    st.StartDate, <br>    st.EndDate, <br>    st.CurrentProgress, <br>    r.ReviewComments, <br>    r.ReviewResult, <br>    r.ReviewDate, <br>    f.FeedbackContent, <br>    f.FeedbackDate<br><span class="hljs-keyword">FROM</span> <br>    Students s<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentThesis st <span class="hljs-keyword">ON</span> s.StudentID <span class="hljs-operator">=</span> st.StudentID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisTopics tt <span class="hljs-keyword">ON</span> st.TopicID <span class="hljs-operator">=</span> tt.TopicID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisReviews r <span class="hljs-keyword">ON</span> s.StudentID <span class="hljs-operator">=</span> r.StudentID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentFeedback f <span class="hljs-keyword">ON</span> s.StudentID <span class="hljs-operator">=</span> f.StudentID;<br>GO<br><br><span class="hljs-comment">-- 创建教师视图</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> InstructorView <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    i.InstructorID, <br>    i.Name <span class="hljs-keyword">AS</span> InstructorName, <br>    i.Department, <br>    tt.TopicID, <br>    tt.Title <span class="hljs-keyword">AS</span> TopicTitle, <br>    tt.Description <span class="hljs-keyword">AS</span> TopicDescription, <br>    tt.MaxStudents, <br>    tt.RegistrationDeadline, <br>    tt.Status, <br>    st.StudentID, <br>    s.Name <span class="hljs-keyword">AS</span> StudentName, <br>    st.StartDate, <br>    st.EndDate, <br>    st.CurrentProgress, <br>    p.LogID, <br>    p.ProgressDescription, <br>    p.RecordDate<br><span class="hljs-keyword">FROM</span> <br>    Instructors i<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisTopics tt <span class="hljs-keyword">ON</span> i.InstructorID <span class="hljs-operator">=</span> tt.InstructorID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentThesis st <span class="hljs-keyword">ON</span> tt.TopicID <span class="hljs-operator">=</span> st.TopicID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    Students s <span class="hljs-keyword">ON</span> st.StudentID <span class="hljs-operator">=</span> s.StudentID<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ProgressLogs p <span class="hljs-keyword">ON</span> st.StudentID <span class="hljs-operator">=</span> p.StudentID <span class="hljs-keyword">AND</span> st.TopicID <span class="hljs-operator">=</span> p.TopicID;<br>GO<br><br><span class="hljs-comment">-- 创建管理员视图</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> AdminView <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    a.AdminID, <br>    a.Name <span class="hljs-keyword">AS</span> AdminName, <br>    a.Username, <br>    a.PermissionLevel, <br>    s.StudentID, <br>    s.Name <span class="hljs-keyword">AS</span> StudentName, <br>    s.Gender, <br>    s.Major, <br>    s.Class, <br>    s.Phone, <br>    i.InstructorID, <br>    i.Name <span class="hljs-keyword">AS</span> InstructorName, <br>    i.Department, <br>    i.ResearchDirection, <br>    i.Phone <span class="hljs-keyword">AS</span> InstructorPhone, <br>    tt.TopicID, <br>    tt.Title <span class="hljs-keyword">AS</span> TopicTitle, <br>    tt.Description <span class="hljs-keyword">AS</span> TopicDescription, <br>    tt.MaxStudents, <br>    tt.RegistrationDeadline, <br>    tt.Status, <br>    st.StartDate, <br>    st.EndDate, <br>    st.CurrentProgress, <br>    p.LogID, <br>    p.ProgressDescription, <br>    p.RecordDate, <br>    r.ReviewID, <br>    r.ReviewComments, <br>    r.ReviewResult, <br>    r.ReviewDate, <br>    f.FeedbackID, <br>    f.FeedbackContent, <br>    f.FeedbackDate<br><span class="hljs-keyword">FROM</span> <br>    Administrators a<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    Students s <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    Instructors i <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisTopics tt <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentThesis st <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ProgressLogs p <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    ThesisReviews r <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    StudentFeedback f <span class="hljs-keyword">ON</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span>;<br>GO<br><br></code></pre></td></tr></table></figure>
+<h2 id="功能测试代码"><a href="#功能测试代码" class="headerlink" title="功能测试代码"></a>功能测试代码</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 插入指导教师数据</span><br><span class="hljs-keyword">INSERT INTO</span> Instructors (InstructorID, Name, Department, ResearchDirection, Phone)<br><span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;T001&#x27;</span>, <span class="hljs-string">&#x27;Dr. Smith&#x27;</span>, <span class="hljs-string">&#x27;Computer Science&#x27;</span>, <span class="hljs-string">&#x27;Artificial Intelligence&#x27;</span>, <span class="hljs-string">&#x27;1234567890&#x27;</span>),<br>(<span class="hljs-string">&#x27;T002&#x27;</span>, <span class="hljs-string">&#x27;Dr. Johnson&#x27;</span>, <span class="hljs-string">&#x27;Mathematics&#x27;</span>, <span class="hljs-string">&#x27;Statistics&#x27;</span>, <span class="hljs-string">&#x27;0987654321&#x27;</span>);<br><br><span class="hljs-comment">-- 插入管理员数据</span><br><span class="hljs-keyword">INSERT INTO</span> Administrators (AdminID, Name, Username, Password, PermissionLevel)<br><span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;A001&#x27;</span>, <span class="hljs-string">&#x27;Admin One&#x27;</span>, <span class="hljs-string">&#x27;admin1&#x27;</span>, <span class="hljs-string">&#x27;password1&#x27;</span>, <span class="hljs-number">5</span>),<br>(<span class="hljs-string">&#x27;A002&#x27;</span>, <span class="hljs-string">&#x27;Admin Two&#x27;</span>, <span class="hljs-string">&#x27;admin2&#x27;</span>, <span class="hljs-string">&#x27;password2&#x27;</span>, <span class="hljs-number">7</span>);<br><br><span class="hljs-comment">-- 插入毕业设计题目数据</span><br><span class="hljs-keyword">INSERT INTO</span> ThesisTopics (TopicID, Title, Description, MaxStudents, RegistrationDeadline, Status, InstructorID)<br><span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;TP001&#x27;</span>, <span class="hljs-string">&#x27;AI in Healthcare&#x27;</span>, <span class="hljs-string">&#x27;Research on AI applications in healthcare.&#x27;</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;2024-08-31&#x27;</span>, <span class="hljs-string">&#x27;Open&#x27;</span>, <span class="hljs-string">&#x27;T001&#x27;</span>),<br>(<span class="hljs-string">&#x27;TP002&#x27;</span>, <span class="hljs-string">&#x27;Statistical Methods in Big Data&#x27;</span>, <span class="hljs-string">&#x27;Exploring statistical methods for big data.&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;2024-09-15&#x27;</span>, <span class="hljs-string">&#x27;Open&#x27;</span>, <span class="hljs-string">&#x27;T002&#x27;</span>);<br><br><span class="hljs-comment">-- 插入学生数据（触发器自动生成StudentID）</span><br><span class="hljs-keyword">INSERT INTO</span> Students (Name, Gender, Major, Class, Phone)<br><span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;John Doe&#x27;</span>, <span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-string">&#x27;Computer Science&#x27;</span>, <span class="hljs-string">&#x27;CS2024&#x27;</span>, <span class="hljs-string">&#x27;1112223333&#x27;</span>),<br>(<span class="hljs-string">&#x27;Jane Doe&#x27;</span>, <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-string">&#x27;Mathematics&#x27;</span>, <span class="hljs-string">&#x27;Math2024&#x27;</span>, <span class="hljs-string">&#x27;4445556666&#x27;</span>);<br><br><span class="hljs-comment">-- 验证指导教师数据插入</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Instructors;<br><br><span class="hljs-comment">-- 验证管理员数据插入</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Administrators;<br><br><span class="hljs-comment">-- 验证毕业设计题目数据插入</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> ThesisTopics;<br><br><span class="hljs-comment">-- 验证学生数据插入</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Students;<br><br><span class="hljs-comment">-- 插入学生毕业设计信息</span><br><span class="hljs-keyword">INSERT INTO</span> StudentThesis (StudentID, TopicID, StartDate, EndDate, CurrentProgress)<br><span class="hljs-keyword">VALUES</span> <br>((<span class="hljs-keyword">SELECT</span> StudentID <span class="hljs-keyword">FROM</span> Students <span class="hljs-keyword">WHERE</span> Name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;John Doe&#x27;</span>), <span class="hljs-string">&#x27;TP001&#x27;</span>, <span class="hljs-string">&#x27;2024-06-01&#x27;</span>, <span class="hljs-string">&#x27;2025-05-31&#x27;</span>, <span class="hljs-string">&#x27;Initial Research&#x27;</span>),<br>((<span class="hljs-keyword">SELECT</span> StudentID <span class="hljs-keyword">FROM</span> Students <span class="hljs-keyword">WHERE</span> Name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Jane Doe&#x27;</span>), <span class="hljs-string">&#x27;TP002&#x27;</span>, <span class="hljs-string">&#x27;2024-06-01&#x27;</span>, <span class="hljs-string">&#x27;2025-05-31&#x27;</span>, <span class="hljs-string">&#x27;Initial Research&#x27;</span>);<br><br><span class="hljs-comment">-- 验证学生毕业设计信息插入</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> StudentThesis;<br><br><span class="hljs-comment">-- 更新学生毕业设计信息</span><br><span class="hljs-keyword">UPDATE</span> StudentThesis<br><span class="hljs-keyword">SET</span> CurrentProgress <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Literature Review&#x27;</span><br><span class="hljs-keyword">WHERE</span> StudentID <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> StudentID <span class="hljs-keyword">FROM</span> Students <span class="hljs-keyword">WHERE</span> Name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;John Doe&#x27;</span>) <span class="hljs-keyword">AND</span> TopicID <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;TP001&#x27;</span>;<br><br><span class="hljs-comment">-- 验证进度日志</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> ProgressLogs;<br><br><span class="hljs-comment">-- 删除学生数据</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> Students <span class="hljs-keyword">WHERE</span> Name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Jane Doe&#x27;</span>;<br><br><span class="hljs-comment">-- 验证学生删除及其相关毕业设计信息删除</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Students;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> StudentThesis <span class="hljs-keyword">WHERE</span> StudentID <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> StudentID <span class="hljs-keyword">FROM</span> Students <span class="hljs-keyword">WHERE</span> Name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Jane Doe&#x27;</span>);<br><br><span class="hljs-comment">-- 插入论文审核数据</span><br><span class="hljs-keyword">INSERT INTO</span> ThesisReviews (StudentID, ReviewComments, ReviewResult, ReviewDate)<br><span class="hljs-keyword">VALUES</span> <br>((<span class="hljs-keyword">SELECT</span> StudentID <span class="hljs-keyword">FROM</span> Students <span class="hljs-keyword">WHERE</span> Name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;John Doe&#x27;</span>), <span class="hljs-string">&#x27;Good progress&#x27;</span>, <span class="hljs-string">&#x27;Pass&#x27;</span>, <span class="hljs-string">&#x27;2024-06-30&#x27;</span>);<br><br><span class="hljs-comment">-- 插入学生反馈数据</span><br><span class="hljs-keyword">INSERT INTO</span> StudentFeedback (StudentID, TopicID, FeedbackContent, FeedbackDate)<br><span class="hljs-keyword">VALUES</span> <br>((<span class="hljs-keyword">SELECT</span> StudentID <span class="hljs-keyword">FROM</span> Students <span class="hljs-keyword">WHERE</span> Name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;John Doe&#x27;</span>), <span class="hljs-string">&#x27;TP001&#x27;</span>, <span class="hljs-string">&#x27;Need more resources&#x27;</span>, <span class="hljs-string">&#x27;2024-06-25&#x27;</span>);<br><br><span class="hljs-comment">-- 验证论文审核数据</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> ThesisReviews;<br><br><span class="hljs-comment">-- 验证学生反馈数据</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> StudentFeedback;<br><br><span class="hljs-comment">-- 更新管理员密码</span><br><span class="hljs-keyword">UPDATE</span> Administrators<br><span class="hljs-keyword">SET</span> Password <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;newpassword1&#x27;</span><br><span class="hljs-keyword">WHERE</span> AdminID <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;A001&#x27;</span>;<br><br><span class="hljs-comment">-- 验证管理员更新</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Administrators <span class="hljs-keyword">WHERE</span> AdminID <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;A001&#x27;</span>;<br><br><span class="hljs-comment">-- 验证所有表的数据</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Students;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Instructors;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Administrators;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> ThesisTopics;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> StudentThesis;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> ProgressLogs;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> ThesisReviews;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> StudentFeedback;<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719070315036-7fdfcd85-1575-4dca-af5a-722dc573c5bf.png" alt=""></p>
+<h2 id="ER图"><a href="#ER图" class="headerlink" title="ER图"></a>ER图</h2><p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1719067988456-d1cb7df4-af9a-4d06-8f0f-e34fe3c4c4b8.jpeg" alt="画板"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719067677162-7f7d80b7-689c-4c31-b1ff-260b43e2b6a6.png" alt=""><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719067745665-b73d97fb-88a6-478a-802a-4c666b2c0b0f.png" alt=""><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719067729723-e55298b4-4d27-4868-ba7c-cc03d4df77e4.png" alt=""><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719067793212-604fe925-0752-4c7e-a11f-34fd28da64dc.png" alt=""><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719067759893-d762b50b-75ed-431d-8879-9426d2bab3cd.png" alt=""><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719068006850-703e06a2-9498-4555-b70b-9d2d88f61e5e.png" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719067698380-e56841c1-a60f-4278-a016-37ede745f511.png" alt=""><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719067713168-39caaa5b-bd33-4022-8591-eb6d8b9c53a2.png" alt=""></p>
+<h2 id="关系模式："><a href="#关系模式：" class="headerlink" title="关系模式："></a>关系模式：</h2><h3 id="Students-学生表"><a href="#Students-学生表" class="headerlink" title="Students (学生表)"></a>Students (学生表)</h3><ul>
+<li>StudentID (主键): NVARCHAR(20)</li>
+<li>Name: NVARCHAR(50)</li>
+<li>Gender: CHAR(1)</li>
+<li>Major: NVARCHAR(50)</li>
+<li>Class: NVARCHAR(50)</li>
+<li>Phone: NVARCHAR(20)</li>
+</ul>
+<h3 id="Instructors-指导教师表"><a href="#Instructors-指导教师表" class="headerlink" title="Instructors (指导教师表)"></a>Instructors (指导教师表)</h3><ul>
+<li>InstructorID (主键): NVARCHAR(20)</li>
+<li>Name: NVARCHAR(50)</li>
+<li>Department: NVARCHAR(50)</li>
+<li>ResearchDirection: NVARCHAR(100)</li>
+<li>Phone: NVARCHAR(20)</li>
+</ul>
+<h3 id="Administrators-管理员信息表"><a href="#Administrators-管理员信息表" class="headerlink" title="Administrators (管理员信息表)"></a>Administrators (管理员信息表)</h3><ul>
+<li>AdminID (主键): NVARCHAR(20)</li>
+<li>Name: NVARCHAR(50)</li>
+<li>Username: NVARCHAR(50) (唯一)</li>
+<li>Password: NVARCHAR(50)</li>
+<li>PermissionLevel: INT</li>
+</ul>
+<h3 id="ThesisTopics-毕业设计题目信息表"><a href="#ThesisTopics-毕业设计题目信息表" class="headerlink" title="ThesisTopics (毕业设计题目信息表)"></a>ThesisTopics (毕业设计题目信息表)</h3><ul>
+<li>TopicID (主键): NVARCHAR(20)</li>
+<li>Title: NVARCHAR(100)</li>
+<li>Description: NVARCHAR(MAX)</li>
+<li>MaxStudents: INT</li>
+<li>RegistrationDeadline: DATE</li>
+<li>Status: NVARCHAR(20)</li>
+<li>InstructorID (外键): NVARCHAR(20)</li>
+</ul>
+<h3 id="StudentThesis-学生毕业设计信息表"><a href="#StudentThesis-学生毕业设计信息表" class="headerlink" title="StudentThesis (学生毕业设计信息表)"></a>StudentThesis (学生毕业设计信息表)</h3><ul>
+<li>StudentID (主键，外键): NVARCHAR(20)</li>
+<li>TopicID (主键，外键): NVARCHAR(20)</li>
+<li>StartDate: DATE</li>
+<li>EndDate: DATE</li>
+<li>CurrentProgress: NVARCHAR(100)</li>
+</ul>
+<h3 id="ProgressLogs-进度信息表"><a href="#ProgressLogs-进度信息表" class="headerlink" title="ProgressLogs (进度信息表)"></a>ProgressLogs (进度信息表)</h3><ul>
+<li>LogID (主键): INT</li>
+<li>StudentID (外键): NVARCHAR(20)</li>
+<li>TopicID (外键): NVARCHAR(20)</li>
+<li>ProgressDescription: NVARCHAR(MAX)</li>
+<li>RecordDate: DATE</li>
+</ul>
+<h3 id="ThesisReviews-论文审核表"><a href="#ThesisReviews-论文审核表" class="headerlink" title="ThesisReviews (论文审核表)"></a>ThesisReviews (论文审核表)</h3><ul>
+<li>ReviewID (主键): INT</li>
+<li>StudentID (外键): NVARCHAR(20)</li>
+<li>ReviewComments: NVARCHAR(MAX)</li>
+<li>ReviewResult: NVARCHAR(20)</li>
+<li>ReviewDate: DATE</li>
+</ul>
+<h3 id="StudentFeedback-学生反馈表"><a href="#StudentFeedback-学生反馈表" class="headerlink" title="StudentFeedback (学生反馈表)"></a>StudentFeedback (学生反馈表)</h3><ul>
+<li>FeedbackID (主键): INT</li>
+<li>StudentID (外键): NVARCHAR(20)</li>
+<li>TopicID (外键): NVARCHAR(20)</li>
+<li>FeedbackContent: NVARCHAR(MAX)</li>
+<li>FeedbackDate: DATE</li>
+</ul>
+<h2 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h2><ol>
+<li><strong><font style="color:rgb(44, 44, 54);">Students</font></strong><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">StudentID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 主键，学生唯一标识，由触发器自动生成。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Name</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(50), 学生姓名，非空。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Gender</font></strong><font style="color:rgb(44, 44, 54);">: CHAR(1), 性别，检查约束限制为’M’或’F’。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Major</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(50), 专业。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Class</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(50), 班级。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Phone</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 联系电话。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgb(44, 44, 54);">Instructors</font></strong><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">InstructorID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 主键，教师唯一标识。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Name</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(50), 教师姓名，非空。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Department</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(50), 所属部门。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">ResearchDirection</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(100), 研究方向。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Phone</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 联系电话。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgb(44, 44, 54);">Administrators</font></strong><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">AdminID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 主键，管理员唯一标识。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Name</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(50), 管理员姓名，非空。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Username</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(50), 用户名，唯一且非空。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Password</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(50), 密码，非空。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">PermissionLevel</font></strong><font style="color:rgb(44, 44, 54);">: INT, 权限级别，检查约束限制在1到10之间。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgb(44, 44, 54);">ThesisTopics</font></strong><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">TopicID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 主键，毕业设计题目ID。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Title</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(100), 题目标题，非空。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Description</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(MAX), 题目描述。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">MaxStudents</font></strong><font style="color:rgb(44, 44, 54);">: INT, 最大可选此题目的学生数，检查约束确保大于0。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">RegistrationDeadline</font></strong><font style="color:rgb(44, 44, 54);">: DATE, 报名截止日期。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">Status</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 题目状态，检查约束限制为’Open’, ‘Closed’, ‘Completed’。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">InstructorID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 外键，关联至Instructors表。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgb(44, 44, 54);">StudentThesis</font></strong><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">StudentID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 组合主键部分，关联至Students表。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">TopicID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 组合主键部分，关联至ThesisTopics表。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">StartDate</font></strong><font style="color:rgb(44, 44, 54);">: DATE, 开始日期。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">EndDate</font></strong><font style="color:rgb(44, 44, 54);">: DATE, 结束日期。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">CurrentProgress</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(100), 当前进度。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgb(44, 44, 54);">ProgressLogs</font></strong><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">LogID</font></strong><font style="color:rgb(44, 44, 54);">: INT, 主键，自增。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">StudentID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 外键，关联至Students表。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">TopicID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 外键，关联至ThesisTopics表。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">ProgressDescription</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(MAX), 进度描述。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">RecordDate</font></strong><font style="color:rgb(44, 44, 54);">: DATE, 记录日期。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgb(44, 44, 54);">ThesisReviews</font></strong><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">ReviewID</font></strong><font style="color:rgb(44, 44, 54);">: INT, 主键，自增。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">StudentID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 外键，关联至Students表。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">ReviewComments</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(MAX), 审核评论。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">ReviewResult</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 审核结果，检查约束限制为’Pass’, ‘Fail’, ‘Pending’。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">ReviewDate</font></strong><font style="color:rgb(44, 44, 54);">: DATE, 审核日期。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgb(44, 44, 54);">StudentFeedback</font></strong><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">FeedbackID</font></strong><font style="color:rgb(44, 44, 54);">: INT, 主键，自增。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">StudentID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 外键，关联至Students表。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">TopicID</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(20), 外键，关联至ThesisTopics表。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">FeedbackContent</font></strong><font style="color:rgb(44, 44, 54);">: NVARCHAR(MAX), 反馈内容。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">FeedbackDate</font></strong><font style="color:rgb(44, 44, 54);">: DATE, 反馈日期。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgb(44, 44, 54);">Sequence</font></strong><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">StudentID_Seq</font></strong><font style="color:rgb(44, 44, 54);">: 序列，用于生成唯一的StudentID。</font></li>
+</ul>
+</li>
+</ol>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a><font style="color:rgb(44, 44, 54);">触发器</font></h3><ul>
+<li><strong><font style="color:rgb(44, 44, 54);">trg_InsertStudentID</font></strong><font style="color:rgb(44, 44, 54);">: 在Students表插入数据时，自动分配学生ID。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">trg_UpdateStudentThesis</font></strong><font style="color:rgb(44, 44, 54);">: 更新StudentThesis表时，自动记录进度日志。</font></li>
+<li><strong><font style="color:rgb(44, 44, 54);">trg_DeleteStudent</font></strong><font style="color:rgb(44, 44, 54);">: 删除Students表中的学生时，同时删除关联的StudentThesis记录。</font></li>
+</ul>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a><font style="color:rgb(44, 44, 54);">索引</font></h3><font style="color:rgb(44, 44, 54);">分别为各表的关键字段创建了索引，以提高查询效率。</font>
+
+
+
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>毕业设计管理系统</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E6%B4%9B%E8%B0%B7/">洛谷</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E6%95%99%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">教职工管理系统</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E5%BA%93%E5%BB%BA%E8%A1%A8%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">建库建表代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%92%8C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">索引和性能优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%AD%90%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">用户子模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E4%BB%A3%E7%A0%81"><span class="toc-number">2.3.</span> <span class="toc-text">最终代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">功能测试代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ER%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">ER图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">关系模式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Students-%E5%AD%A6%E7%94%9F%E8%A1%A8"><span class="toc-number">5.1.</span> <span class="toc-text">Students (学生表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Instructors-%E6%8C%87%E5%AF%BC%E6%95%99%E5%B8%88%E8%A1%A8"><span class="toc-number">5.2.</span> <span class="toc-text">Instructors (指导教师表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Administrators-%E7%AE%A1%E7%90%86%E5%91%98%E4%BF%A1%E6%81%AF%E8%A1%A8"><span class="toc-number">5.3.</span> <span class="toc-text">Administrators (管理员信息表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThesisTopics-%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E9%A2%98%E7%9B%AE%E4%BF%A1%E6%81%AF%E8%A1%A8"><span class="toc-number">5.4.</span> <span class="toc-text">ThesisTopics (毕业设计题目信息表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StudentThesis-%E5%AD%A6%E7%94%9F%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E4%BF%A1%E6%81%AF%E8%A1%A8"><span class="toc-number">5.5.</span> <span class="toc-text">StudentThesis (学生毕业设计信息表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ProgressLogs-%E8%BF%9B%E5%BA%A6%E4%BF%A1%E6%81%AF%E8%A1%A8"><span class="toc-number">5.6.</span> <span class="toc-text">ProgressLogs (进度信息表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThesisReviews-%E8%AE%BA%E6%96%87%E5%AE%A1%E6%A0%B8%E8%A1%A8"><span class="toc-number">5.7.</span> <span class="toc-text">ThesisReviews (论文审核表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StudentFeedback-%E5%AD%A6%E7%94%9F%E5%8F%8D%E9%A6%88%E8%A1%A8"><span class="toc-number">5.8.</span> <span class="toc-text">StudentFeedback (学生反馈表)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8"><span class="toc-number">6.</span> <span class="toc-text">数据字典</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">6.1.</span> <span class="toc-text">触发器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">6.2.</span> <span class="toc-text">索引</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

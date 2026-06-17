@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>贝叶斯网络（Python） || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="贝叶斯网络（Python）">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%EF%BC%88Python%EF%BC%89/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="一、原理贝叶斯网络概述贝叶斯网络（BayesianNetwork，BN）作为一种概率图模型（ProbabilisticGraphicalModel，PGD），可以通过有向无环图(DirectedAcyclicGraph，DAG)来表现。因为概率图模型是用图来表示变量概率依赖关系的模型，结合概率论与图论的知识，">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">贝叶斯网络（Python）</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:34:19.697Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h2 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h2><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=贝叶斯&amp;spm=1001.2101.3001.7020"><strong>贝叶斯</strong></a><strong>网络概述</strong></p>
+<p>贝叶斯网络（Bayesian Network，BN）作为一种概率图模型（Probabilistic Graphical Model，PGD），可以通过有向无环图(Directed Acyclic Graph，DAG)来表现。因为概率图模型是用图来表示变量概率依赖关系的模型，结合概率论与图论的知识，利用图来表示与模型有关的变量的联合概率分布。在处理实际问题时，如果我们希望在数据中挖掘隐含的知识，可以通过概率图模型构建一幅图的方式实现，具体实现就是用观测结点表示观测到的数据，用隐含结点表示潜在的知识，用边来描述知识与数据的相互关系，最后基于这样的关系图获得一个概率分布。概率图中的节点分为隐含节点和观测节点，边分为有向边和无向边。从概率论的角度，节点对应于随机变量，边对应于随机变量的依赖或相关关系，其中有向边表示单向的依赖或者说存在因果关系，无向边表示相互依赖关系。</p>
+<p>贝叶斯网络是一种模拟人类推理过程中因果关系的不确定性处理模型，它是一个有向无环图，它的节点表示的是一些随机变量，这些随机变量有些可以观测到的，有些无法观测到的。无环表示在信息流动的过程中有一个确定的方向的。当一件事物发生的时候，另一件事情更容易发生，这时候就用概率来表达，而且这种概率通常表达的是因果关系。</p>
+<p>贝叶斯网络是一种模拟人类推理过程中因果关系的不确定性处理模型，也是一些变量的联合概率分布的图形表示。通常包含两个部分，一个是贝叶斯网络结构图，它是一个有向无环图（DAG），其中图中的每个节点代表相应的变量，节点之间的连接关系代表了贝叶斯网络的条件独立语义。另一部分，就是节点和节点之间的条件概率表（CPT），也就是一系列的概率值。如果一个贝叶斯网络提供了足够的条件概率值，足以计算任何给定的联合概率，我们就称，它是可计算的，即可推理的。</p>
+<p>贝叶斯推断，使用贝叶斯方法处理不确定性，需要利用贝叶斯定理将先验分布更新至后验分布中，这无疑是最流行的方法之一。但还存在其他非贝叶斯方法，例如集中不等式就是非贝叶斯方法，它们允许计算置信区间和不确定性集合。<br>wee<br><strong>贝叶斯网络定义</strong></p>
+<p>贝叶斯网络是一个有向无环图(Directed Acyclic Graph, DAG)，由代表变量节点及连接这些节点有向边构成。其中节点代表随机变量，节点间的有向边代表了节点间的互相关系(由父节点指向其子节点)，用条件概率表达变量间依赖关系，没有父节点的用先验概率进行信息表达。</p>
+<script type="math/tex; mode=display">
+{x_1,x_2,...,x_n}</script><p>令 G 为定义在<img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/clip_image002.gif" alt="img">上的一个贝叶斯网络，其联合概率分布可以表示为各个 节点的条件概率分布的乘积：</p>
+<h2 id="二、实例"><a href="#二、实例" class="headerlink" title="二、实例"></a>二、实例</h2><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/test.png" alt="test|54"></p>
+<h3 id="2-1-手动计算"><a href="#2-1-手动计算" class="headerlink" title="2.1. 手动计算"></a>2.1. 手动计算</h3><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/微信图片_20231029233954.jpg" alt="微信图片_20231029233954"></p>
+<h3 id="2-2-python计算"><a href="#2-2-python计算" class="headerlink" title="2.2. python计算"></a>2.2. python计算</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pgmpy.inference <span class="hljs-keyword">import</span> VariableElimination<br><span class="hljs-keyword">from</span> pgmpy.factors.discrete <span class="hljs-keyword">import</span> TabularCPD<br><span class="hljs-keyword">from</span> pgmpy.models <span class="hljs-keyword">import</span> BayesianNetwork<br><span class="hljs-keyword">from</span> rich <span class="hljs-keyword">import</span> <span class="hljs-built_in">print</span><br><br>bayes_model = BayesianNetwork([(<span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-string">&#x27;Y&#x27;</span>),<br>                               (<span class="hljs-string">&#x27;Y&#x27;</span>, <span class="hljs-string">&#x27;Z&#x27;</span>),<br>                               (<span class="hljs-string">&#x27;Z&#x27;</span>, <span class="hljs-string">&#x27;W&#x27;</span>)])<br><br><span class="hljs-comment"># TabularCPD通过TabularCPD构造条件概率分布CPD（condition probability distribution）表格</span><br><span class="hljs-comment"># 最后将CPD数据添加到贝叶斯网络结构中，完成贝叶斯网络的构造。</span><br><span class="hljs-comment"># 设置参数</span><br><br>x = TabularCPD(variable=<span class="hljs-string">&#x27;X&#x27;</span>,            <span class="hljs-comment">#variable:节点变量名称是&#x27;X&#x27;</span><br>               variable_card=<span class="hljs-number">2</span>,         <span class="hljs-comment">#variable_card:变量的可能结果有2种(0 or 1)</span><br>               values=[[<span class="hljs-number">0.4</span>], [<span class="hljs-number">0.6</span>]])   <span class="hljs-comment">#values:两种结果的概率值</span><br><br><br>y = TabularCPD( variable=<span class="hljs-string">&#x27;Y&#x27;</span>, variable_card=<span class="hljs-number">2</span>,<br>               values=[[<span class="hljs-number">0.9</span>,<span class="hljs-number">0.8</span>],<br>                       [<span class="hljs-number">0.1</span>,<span class="hljs-number">0.2</span>]],<br>                evidence=[<span class="hljs-string">&#x27;X&#x27;</span>],  <span class="hljs-comment"># evidence:父节点变量名称</span><br>                evidence_card=[<span class="hljs-number">2</span>])<span class="hljs-comment"># 父节点有几个，分别有几种结果(当只有一个父节点时[]内只填写几种结果)</span><br><br>z = TabularCPD(variable=<span class="hljs-string">&#x27;Z&#x27;</span>, variable_card=<span class="hljs-number">2</span>,<br>               values=[[<span class="hljs-number">0.7</span>,<span class="hljs-number">0.4</span>],<br>                       [<span class="hljs-number">0.3</span>,<span class="hljs-number">0.6</span>]],<br>                evidence=[<span class="hljs-string">&#x27;Y&#x27;</span>],  evidence_card=[<span class="hljs-number">2</span>])<br><br>w = TabularCPD(variable=<span class="hljs-string">&#x27;W&#x27;</span>, variable_card=<span class="hljs-number">2</span>,<br>               values=[[<span class="hljs-number">0.5</span>,<span class="hljs-number">0.6</span>],<br>                       [<span class="hljs-number">0.5</span>,<span class="hljs-number">0.4</span>]],<br>               evidence=[<span class="hljs-string">&#x27;Z&#x27;</span>],evidence_card=[<span class="hljs-number">2</span>])<br><br><br>bayes_model.add_cpds(x,y,z,w)<br><br><span class="hljs-comment"># 测试网络结构是否正确</span><br><span class="hljs-built_in">print</span>(bayes_model.check_model())<br><span class="hljs-comment"># 变量消除法是精确推断的一种方法.</span><br><br><span class="hljs-comment"># 使用建立好的贝叶斯网络进行推理</span><br>asia_infer = VariableElimination(bayes_model)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;X&#x27;</span>,asia_infer.query(variables=[<span class="hljs-string">&#x27;X&#x27;</span>])) <span class="hljs-comment"># 计算variables的概率</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Y&#x27;</span>,asia_infer.query(variables=[<span class="hljs-string">&#x27;Y&#x27;</span>]))  <span class="hljs-comment"># 计算variables的概率</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Z&#x27;</span>,asia_infer.query(variables=[<span class="hljs-string">&#x27;Z&#x27;</span>]))  <span class="hljs-comment"># 计算variables的概率</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;W&#x27;</span>,asia_infer.query(variables=[<span class="hljs-string">&#x27;W&#x27;</span>]))  <span class="hljs-comment"># 计算variables的概率</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;P(w1|x1)=&#x27;</span>,asia_infer.query(variables=[<span class="hljs-string">&#x27;W&#x27;</span>], evidence=&#123;<span class="hljs-string">&#x27;X&#x27;</span>: <span class="hljs-number">1</span>&#125;))  <span class="hljs-comment"># 计算evidence前提下的variables的概率</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;P(x1|w1)=&#x27;</span>,asia_infer.query(variables=[<span class="hljs-string">&#x27;X&#x27;</span>], evidence=&#123;<span class="hljs-string">&#x27;W&#x27;</span>: <span class="hljs-number">1</span>&#125;)) <span class="hljs-comment"># 计算evidence前提下的variables的概率</span><br></code></pre></td></tr></table></figure>
+<p>得到的结果</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">X <br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| X    |   phi(X) |<br>+======+==========+<br>| X(<span class="hljs-number">0</span>) |   <span class="hljs-number">0.4000</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| X(<span class="hljs-number">1</span>) |   <span class="hljs-number">0.6000</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>Y <br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| Y    |   phi(Y) |<br>+======+==========+<br>| Y(<span class="hljs-number">0</span>) |   <span class="hljs-number">0.8400</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| Y(<span class="hljs-number">1</span>) |   <span class="hljs-number">0.1600</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>Z <br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| Z    |   phi(Z) |<br>+======+==========+<br>| Z(<span class="hljs-number">0</span>) |   <span class="hljs-number">0.6520</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| Z(<span class="hljs-number">1</span>) |   <span class="hljs-number">0.3480</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>W <br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| W    |   phi(W) |<br>+======+==========+<br>| W(<span class="hljs-number">0</span>) |   <span class="hljs-number">0.5348</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| W(<span class="hljs-number">1</span>) |   <span class="hljs-number">0.4652</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>P(w1|x1)= <br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| W    |   phi(W) |<br>+======+==========+<br>| W(<span class="hljs-number">0</span>) |   <span class="hljs-number">0.5360</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| W(<span class="hljs-number">1</span>) |   <span class="hljs-number">0.4640</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>P(x1|w1)= <br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| X    |   phi(X) |<br>+======+==========+<br>| X(<span class="hljs-number">0</span>) |   <span class="hljs-number">0.4015</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br>| X(<span class="hljs-number">1</span>) |   <span class="hljs-number">0.5985</span> |<br>+<span class="hljs-literal">------</span>+<span class="hljs-literal">----------</span>+<br></code></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>贝叶斯网络（Python）</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/SCI%E5%B8%B8%E8%A7%81%E7%9A%8416%E7%A7%8D%E9%85%8D%E5%9B%BE%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">SCI常见的16种配图代码实现</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/Git%E8%AE%B2%E4%B9%89/">Git讲义</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">一、原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">二、实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%89%8B%E5%8A%A8%E8%AE%A1%E7%AE%97"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 手动计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-python%E8%AE%A1%E7%AE%97"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. python计算</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

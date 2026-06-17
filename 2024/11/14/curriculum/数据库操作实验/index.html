@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>数据库操作实验 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="数据库操作实验">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.[实验名称]数据库操作实验2.[实验目的]2.1.实验1.1掌握SQL程序设计基本规范，熟练运用SQL语言实现数据基本查询，包括单表查询、分组统计查询和连接查询。2.2.实验1.2熟悉SQL语言有关视图的操作，能够熟练使用SQL语句来创建需要的视图，定义数据库外模式，并能使用所创建的视图实现数据管理。2.">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">数据库操作实验</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.906Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-实验名称-数据库操作实验"><a href="#1-实验名称-数据库操作实验" class="headerlink" title="1. [实验名称] 数据库操作实验"></a>1. [实验名称] 数据库操作实验</h1><h1 id="2-实验目的"><a href="#2-实验目的" class="headerlink" title="2. [实验目的]"></a>2. [实验目的]</h1><h2 id="2-1-实验1-1"><a href="#2-1-实验1-1" class="headerlink" title="2.1. 实验1.1"></a>2.1. 实验1.1</h2><p>掌握SQL 程序设计基本规范，熟练运用SQL 语言实现数据基本查询，包括单表查询、<br>分组统计查询和连接查询。</p>
+<h2 id="2-2-实验1-2"><a href="#2-2-实验1-2" class="headerlink" title="2.2. 实验1.2"></a>2.2. 实验1.2</h2><p>熟悉SQL 语言有关视图的操作，能够熟练使用SQL 语句来创建需要的视图，定义数据<br>库外模式，并能使用所创建的视图实现数据管理。</p>
+<h2 id="2-3-实验1-3"><a href="#2-3-实验1-3" class="headerlink" title="2.3. 实验1.3"></a>2.3. 实验1.3</h2><p>掌握SQL 嵌套查询和集合查询等各种高级查询的设计方法。</p>
+<h2 id="2-4-实验1-4"><a href="#2-4-实验1-4" class="headerlink" title="2.4. 实验1.4"></a>2.4. 实验1.4</h2><p>掌握索引设计原则和技巧，能够创建合适的索引以提高数据库查询、统计分析效率。</p>
+<h2 id="2-5-实验1-5"><a href="#2-5-实验1-5" class="headerlink" title="2.5. 实验1.5"></a>2.5. 实验1.5</h2><p>熟悉数据库的数据更新操作，能够使用SQL 语句对数据库进行数据的插入、修改、删除操作。</p>
+<h2 id="2-6-实验1-6"><a href="#2-6-实验1-6" class="headerlink" title="2.6. 实验1.6"></a>2.6. 实验1.6</h2><p>掌握自主存取控制(MAC)权限的定义和维护方法。</p>
+<h1 id="3-实验要求"><a href="#3-实验要求" class="headerlink" title="3. [实验要求]"></a>3. [实验要求]</h1><h2 id="3-1-实验1-1"><a href="#3-1-实验1-1" class="headerlink" title="3.1. 实验1.1"></a>3.1. 实验1.1</h2><p>针对NorthWind 数据库设计各种单表查询SQL 语句、分组统计查询语句；设计单个表针对自身的连接查询，设计多个表的连接查询。理解和掌握SQL 查询语句各个子句的特点和作用，按照SQL 程序设计规范写出具体的SQL 查询语句，并调试通过。<br>说明：简单地说，SQL 程序设计规范包含SQL 关键字大写、表名、属性名、存储过程名等大小写混合、SQL 程序书写缩进排列等编程规范。</p>
+<h2 id="3-2-实验1-2"><a href="#3-2-实验1-2" class="headerlink" title="3.2. 实验1.2"></a>3.2. 实验1.2</h2><p>针对给定的数据库模式，以及相应的应用需求，创建视图和带WITH CHECK OPTION的视图，并验证视图WITH CHECK OPTION 选项的有效性。理解和掌握视图消解执行原理，<br>掌握可更新视图和不可更新视图的区别。</p>
+<h2 id="3-3-实验1-3"><a href="#3-3-实验1-3" class="headerlink" title="3.3. 实验1.3"></a>3.3. 实验1.3</h2><p>针对NorthWind 数据库，正确分析用户查询要求，设计各种嵌套查询和集合查询。</p>
+<h2 id="3-4-实验1-4"><a href="#3-4-实验1-4" class="headerlink" title="3.4. 实验1.4"></a>3.4. 实验1.4</h2><p>针对给定的数据库模式和具体应用需求，创建数据库索引。设计相应的SQL 查询验证索引的有效性。学习利用EXPLAIN 命令分析SQL 查询是否使用了所创建的索引，并能够分析其原因，执行SQL 查询并估算索引提高查询效率的百分比。要求实验数据集达到10 万条记录以上的数据量，以便验证索引效果。</p>
+<h2 id="3-5-实验1-5"><a href="#3-5-实验1-5" class="headerlink" title="3.5. 实验1.5"></a>3.5. 实验1.5</h2><p>针对NorthWind 数据库设计单个记录插入、批量数据插入、修改数据和删除数据等SQL语句。理解和掌握INSERT、UPDATE 和DELETE 语法结构的各个组成成分，结合嵌套SQL子查询，分别设计几种不同形式的插入、修改和删除数据的语句，并调试成功。</p>
+<h2 id="3-6-实验1-6"><a href="#3-6-实验1-6" class="headerlink" title="3.6. 实验1.6"></a>3.6. 实验1.6</h2><p> 定义用户、角色；<br> 分配权限给用户、角色；<br> 回收权限；<br> 以相应的用户名登录数据库验证权限分配是否正确。</p>
+<h1 id="4-实验过程及内容"><a href="#4-实验过程及内容" class="headerlink" title="4. [实验过程及内容]"></a>4. [实验过程及内容]</h1><h2 id="4-1-实验1-1-基本查询实验"><a href="#4-1-实验1-1-基本查询实验" class="headerlink" title="4.1. 实验1.1 基本查询实验"></a>4.1. 实验1.1 基本查询实验</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">mysql&gt; use NorthWind; use 命令打开指定的数据库模式<br>Database changed<br>mysql&gt; show Tables;  显示库中的数据表<br>+---------------------+<br>| Tables_in_northwind |<br>+---------------------+<br>| v_product_16        |<br>| v_product_康富食品  |<br>| 产品                |<br>| 供应商              |<br>| 客户                |<br>| 类别                |<br>| 订单                |<br>| 订单明细            |<br>| 运货商              |<br>| 雇员                |<br>+---------------------+<br>10 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+<h3 id="4-1-1-1-1-1列出所有供应商的名称、联系人姓名、城市、地址和电话。"><a href="#4-1-1-1-1-1列出所有供应商的名称、联系人姓名、城市、地址和电话。" class="headerlink" title="4.1.1. 1.1.1列出所有供应商的名称、联系人姓名、城市、地址和电话。"></a>4.1.1. 1.1.1列出所有供应商的名称、联系人姓名、城市、地址和电话。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT 公司名称,联系人姓名,城市,地址,电话 from 供应商;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618000817937.png" alt="image-20240618000817937"></p>
+<h3 id="4-1-2-1-1-2查询订购日期为-1997-年第-1-季度，货主城市为天津或上海的订单的所有信息。"><a href="#4-1-2-1-1-2查询订购日期为-1997-年第-1-季度，货主城市为天津或上海的订单的所有信息。" class="headerlink" title="4.1.2. 1.1.2查询订购日期为 1997 年第 1 季度，货主城市为天津或上海的订单的所有信息。"></a>4.1.2. 1.1.2查询订购日期为 1997 年第 1 季度，货主城市为天津或上海的订单的所有信息。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT * from 订单 <br>WHERE  (订购日期&lt;&#x27;1997-03-31&#x27; &amp;&amp; 订购日期&gt;&#x27;1997-01-01&#x27;) <br>&amp;&amp; (货主城市 =&#x27;天津&#x27; || 货主城市 =&#x27;上海&#x27; );<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618000900257.png" alt="image-20240618000900257"></p>
+<h3 id="4-1-3-1-1-3不带分组过滤条件的分组统计查询-按照地区统计客户的数目，并按数目从低到高排序"><a href="#4-1-3-1-1-3不带分组过滤条件的分组统计查询-按照地区统计客户的数目，并按数目从低到高排序" class="headerlink" title="4.1.3. 1.1.3不带分组过滤条件的分组统计查询,按照地区统计客户的数目，并按数目从低到高排序"></a>4.1.3. 1.1.3不带分组过滤条件的分组统计查询,按照地区统计客户的数目，并按数目从低到高排序</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT `地区`, COUNT(*) FROM `客户` GROUP BY `地区` ORDER BY COUNT(*) DESC;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618000933236.png" alt="image-20240618000933236"></p>
+<h3 id="4-1-4-1-1-4列出总金额-即订单中每个产品的金额之和-在-3800-到-4000-之间-含-的每个订单及其总金额，计算结果取小数点后两位。要求输出结果按照总金额从高到低排序。附：每个产品的金额-单价-数量-1-折扣-。"><a href="#4-1-4-1-1-4列出总金额-即订单中每个产品的金额之和-在-3800-到-4000-之间-含-的每个订单及其总金额，计算结果取小数点后两位。要求输出结果按照总金额从高到低排序。附：每个产品的金额-单价-数量-1-折扣-。" class="headerlink" title="4.1.4. 1.1.4列出总金额(即订单中每个产品的金额之和)在 3800 到 4000 之间(含)的每个订单及其总金额，计算结果取小数点后两位。要求输出结果按照总金额从高到低排序。附：每个产品的金额 = 单价  数量  (1 - 折扣)。"></a>4.1.4. 1.1.4列出总金额(即订单中每个产品的金额之和)在 3800 到 4000 之间(含)的每个订单及其总金额，计算结果取小数点后两位。要求输出结果按照总金额从高到低排序。附：每个产品的金额 = 单价 <em> 数量 </em> (1 - 折扣)。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT 订单ID, ROUND(SUM(单价 * 数量 * (1 - 折扣)), 2) AS 总金额<br>FROM 订单明细<br>GROUP BY 订单ID<br>HAVING 总金额 BETWEEN 3800 AND 4000<br>ORDER BY 总金额 DESC;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001000136.png" alt="image-20240618001000136"></p>
+<h3 id="4-1-5-1-1-5两表连接查询-列出雇员“张颖”所销售的所有订单的货主信息（包括货主名称、国家、地区、城市、地址）以及到货日期。供应商“福满多”能提供哪些产品？请列出产品的详细信息。"><a href="#4-1-5-1-1-5两表连接查询-列出雇员“张颖”所销售的所有订单的货主信息（包括货主名称、国家、地区、城市、地址）以及到货日期。供应商“福满多”能提供哪些产品？请列出产品的详细信息。" class="headerlink" title="4.1.5. 1.1.5两表连接查询 列出雇员“张颖”所销售的所有订单的货主信息（包括货主名称、国家、地区、城市、地址）以及到货日期。供应商“福满多”能提供哪些产品？请列出产品的详细信息。"></a>4.1.5. 1.1.5两表连接查询 列出雇员“张颖”所销售的所有订单的货主信息（包括货主名称、国家、地区、城市、地址）以及到货日期。供应商“福满多”能提供哪些产品？请列出产品的详细信息。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT 客户.联系人姓名, 客户.国家, 客户.地区, 客户.城市, 客户.地址, 订单.到货日期<br>FROM 雇员,订单,客户<br>WHERE 雇员.姓名 = &#x27;张颖&#x27; &amp;&amp; 订单.雇员ID = 雇员.雇员ID &amp;&amp; 订单.客户ID = 客户.客户ID; <br><br>SELECT 产品.产品名称<br>FROM 供应商,产品<br>WHERE 供应商.公司名称 = &#x27;福满多&#x27; &amp;&amp; 供应商.供应商ID = 产品.供应商ID;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001025173.png" alt="image-20240618001025173"></p>
+<h3 id="4-1-6-1-1-6单表自身连接查询-找出客户“赐芳股份”所在的城市，同时列出除它外也位于这个城市的客户名称。"><a href="#4-1-6-1-1-6单表自身连接查询-找出客户“赐芳股份”所在的城市，同时列出除它外也位于这个城市的客户名称。" class="headerlink" title="4.1.6. 1.1.6单表自身连接查询 找出客户“赐芳股份”所在的城市，同时列出除它外也位于这个城市的客户名称。"></a>4.1.6. 1.1.6单表自身连接查询 找出客户“赐芳股份”所在的城市，同时列出除它外也位于这个城市的客户名称。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT c1.城市, c2.公司名称 <br>FROM 客户 c1,客户 c2<br>WHERE c1.公司名称 = &#x27;赐芳股份&#x27; AND c2.公司名称 &lt;&gt; &#x27;赐芳股份&#x27; &amp;&amp;  c1.城市 =c2.城市;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001103694.png" alt="image-20240618001103694"></p>
+<h3 id="4-1-7-1-1-7三表及以上连接查询列出公司名称中含有“人寿”的所有客户的公司名称及其订单总金额，计算结果取小数点后两位。列出客户“建国科技”在-1997-年订购的所有产品的名称及其数量。"><a href="#4-1-7-1-1-7三表及以上连接查询列出公司名称中含有“人寿”的所有客户的公司名称及其订单总金额，计算结果取小数点后两位。列出客户“建国科技”在-1997-年订购的所有产品的名称及其数量。" class="headerlink" title="4.1.7. 1.1.7三表及以上连接查询列出公司名称中含有“人寿”的所有客户的公司名称及其订单总金额，计算结果取小数点后两位。列出客户“建国科技”在 1997 年订购的所有产品的名称及其数量。"></a>4.1.7. 1.1.7三表及以上连接查询列出公司名称中含有“人寿”的所有客户的公司名称及其订单总金额，计算结果取小数点后两位。列出客户“建国科技”在 1997 年订购的所有产品的名称及其数量。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT 客户.公司名称, ROUND(SUM(订单明细.单价 * 订单明细.数量 * (1 - 订单明细.折扣)), 2) AS 订单总额<br>FROM 客户,订单,订单明细<br>where 客户.客户ID = 订单.客户ID &amp;&amp; 订单.订单ID = 订单明细.订单ID &amp;&amp; 客户.公司名称 LIKE &#x27;%人寿%&#x27;<br>GROUP BY 客户.公司名称;<br><br>SELECT 产品.产品名称, 订单明细.数量<br>FROM 客户,订单,订单明细,产品<br>WHERE 客户.公司名称 = &#x27;建国科技&#x27; &amp;&amp; YEAR(订单.订购日期) = 1997 &amp;&amp; 客户.客户ID = 订单.客户ID <br>&amp;&amp;订单.订单ID = 订单明细.订单ID &amp;&amp; 订单明细.产品ID = 产品.产品ID ;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001145583.png" alt="image-20240618001145583"></p>
+<h2 id="4-2-实验1-2-视图实验"><a href="#4-2-实验1-2-视图实验" class="headerlink" title="4.2. 实验1.2 视图实验"></a>4.2. 实验1.2 视图实验</h2><h3 id="4-2-1-1-2-1创建行列子集视图在产品表上创建视图“-V-PRODUCT-16”，列出-ID-为-16-的供应商所供应产品的-ID、产品名称、供应商-ID、类别-ID、单位数量、单价、库存量；查询此视图的所有记录。"><a href="#4-2-1-1-2-1创建行列子集视图在产品表上创建视图“-V-PRODUCT-16”，列出-ID-为-16-的供应商所供应产品的-ID、产品名称、供应商-ID、类别-ID、单位数量、单价、库存量；查询此视图的所有记录。" class="headerlink" title="4.2.1. 1.2.1创建行列子集视图在产品表上创建视图“ V_PRODUCT_16”，列出 ID 为 16 的供应商所供应产品的 ID、产品名称、供应商 ID、类别 ID、单位数量、单价、库存量；查询此视图的所有记录。"></a>4.2.1. 1.2.1创建行列子集视图在产品表上创建视图“ V_PRODUCT_16”，列出 ID 为 16 的供应商所供应产品的 ID、产品名称、供应商 ID、类别 ID、单位数量、单价、库存量；查询此视图的所有记录。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">create view V_PRODUCT_16 as select 产品.产品ID, 产品.产品名称, 产品.类别ID,<br>                                   产品.单位数量, 产品.单价, 产品.库存量,产品.供应商ID<br>from 产品<br>where 产品.供应商ID=16;<br>SELECT * FROM V_PRODUCT_16;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001214858.png" alt="image-20240618001214858"></p>
+<h3 id="4-2-2-1-2-2从多个表中创建视图为供应商“康富食品”-创建一个它能供应的产品的视图“-VPRODUCT康富食品”，列出产品-ID、产品名称、类别名称、单位数量、单价、库存量；查询此视图的所有记录。"><a href="#4-2-2-1-2-2从多个表中创建视图为供应商“康富食品”-创建一个它能供应的产品的视图“-VPRODUCT康富食品”，列出产品-ID、产品名称、类别名称、单位数量、单价、库存量；查询此视图的所有记录。" class="headerlink" title="4.2.2. 1.2.2从多个表中创建视图为供应商“康富食品” 创建一个它能供应的产品的视图“ VPRODUCT康富食品”，列出产品 ID、产品名称、类别名称、单位数量、单价、库存量；查询此视图的所有记录。"></a>4.2.2. 1.2.2从多个表中创建视图为供应商“康富食品” 创建一个它能供应的产品的视图“ V<em>PRODUCT</em>康富食品”，列出产品 ID、产品名称、类别名称、单位数量、单价、库存量；查询此视图的所有记录。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">CREATE VIEW V_PRODUCT_康富食品 AS SELECT 产品.产品ID, 产品.产品名称, 产品.类别ID,<br>                                   产品.单位数量, 产品.单价, 产品.库存量, 产品.供应商ID <br>FROM 产品,供应商<br>WHERE 供应商.公司名称=&#x27;康富食品&#x27; &amp;&amp; 供应商.供应商ID = 产品.供应商ID;<br><br>SELECT * FROM V_PRODUCT_康富食品;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001243521.png" alt="image-20240618001243521"></p>
+<h3 id="4-2-3-1-2-3创建来源于单个表的统计视图创建视图“-V-产品类别库存”，统计不同类别产品的总库存，只需列出类别-ID-和总库存量；在视图中查询类别-ID-为-8-的产品的总库存量。"><a href="#4-2-3-1-2-3创建来源于单个表的统计视图创建视图“-V-产品类别库存”，统计不同类别产品的总库存，只需列出类别-ID-和总库存量；在视图中查询类别-ID-为-8-的产品的总库存量。" class="headerlink" title="4.2.3. 1.2.3创建来源于单个表的统计视图创建视图“ V_产品类别库存”，统计不同类别产品的总库存，只需列出类别 ID 和总库存量；在视图中查询类别 ID 为 8 的产品的总库存量。"></a>4.2.3. 1.2.3创建来源于单个表的统计视图创建视图“ V_产品类别库存”，统计不同类别产品的总库存，只需列出类别 ID 和总库存量；在视图中查询类别 ID 为 8 的产品的总库存量。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">CREATE VIEW V_产品类别库存 AS <br>SELECT 类别ID, SUM(库存量) AS 总库存量 <br>FROM 产品 <br>GROUP BY 类别ID;<br>SELECT * FROM V_产品类别库存;<br><br>SELECT * FROM V_产品类别库存<br>WHERE 类别ID = 8;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001322335.png" alt="image-20240618001322335"></p>
+<h3 id="4-2-4-1-2-4创建来源于多个表的统计视图创建视图“-V-雇员产品销售额”，统计每个雇员所销售的每种产品的总数量和总金额，要求视图中包括雇员ID、雇员姓名、产品名称、销售总数量、销售总金额（计算结果取小数点后两位）；在视图中查询蛋糕的总销售额。"><a href="#4-2-4-1-2-4创建来源于多个表的统计视图创建视图“-V-雇员产品销售额”，统计每个雇员所销售的每种产品的总数量和总金额，要求视图中包括雇员ID、雇员姓名、产品名称、销售总数量、销售总金额（计算结果取小数点后两位）；在视图中查询蛋糕的总销售额。" class="headerlink" title="4.2.4. 1.2.4创建来源于多个表的统计视图创建视图“ V_雇员产品销售额”，统计每个雇员所销售的每种产品的总数量和总金额，要求视图中包括雇员ID、雇员姓名、产品名称、销售总数量、销售总金额（计算结果取小数点后两位）；在视图中查询蛋糕的总销售额。"></a>4.2.4. 1.2.4创建来源于多个表的统计视图创建视图“ V_雇员产品销售额”，统计每个雇员所销售的每种产品的总数量和总金额，要求视图中包括雇员ID、雇员姓名、产品名称、销售总数量、销售总金额（计算结果取小数点后两位）；在视图中查询蛋糕的总销售额。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">CREATE VIEW V_雇员产品销售额 AS <br>SELECT 雇员.雇员ID, 雇员.姓名, 产品.产品名称, SUM(订单明细.数量) AS 销售总数量, ROUND(SUM(订单明细.单价 * 订单明细.数量 * (1 - 订单明细.折扣)), 2) AS 销售总金额<br>FROM 雇员,订单,订单明细,产品<br>where 雇员.雇员ID = 订单.雇员ID &amp;&amp; 订单.订单ID = 订单明细.订单ID &amp;&amp; 订单明细.产品ID = 产品.产品ID<br>GROUP BY 雇员.雇员ID, 产品.产品名称;<br><br>SELECT * FROM V_雇员产品销售额;<br><br>SELECT * FROM V_雇员产品销售额<br>WHERE 产品名称 = &#x27;蛋糕&#x27;;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001413316.png" alt="image-20240618001413316"></p>
+<h3 id="4-2-5-1-2-5验证视图的可更新性和进行更新操作-视图“-V-产品类别库存”是可更新的吗？通过-SQL-语句加以验证，并说明原因。向视图“-V-PRODUCT-16”中分别插入两条记录：-101-‘可口可乐’-16-1-‘每箱-12瓶’-20-00-100-和-102-‘百事可乐’-15-1-‘每箱-24-瓶’-30-00-100-；看能否从视图中查询到这两条记录，再看能否从基本表中查询到这两条记录？通过视图删除刚才插入的两条记录，并验证之。"><a href="#4-2-5-1-2-5验证视图的可更新性和进行更新操作-视图“-V-产品类别库存”是可更新的吗？通过-SQL-语句加以验证，并说明原因。向视图“-V-PRODUCT-16”中分别插入两条记录：-101-‘可口可乐’-16-1-‘每箱-12瓶’-20-00-100-和-102-‘百事可乐’-15-1-‘每箱-24-瓶’-30-00-100-；看能否从视图中查询到这两条记录，再看能否从基本表中查询到这两条记录？通过视图删除刚才插入的两条记录，并验证之。" class="headerlink" title="4.2.5. 1.2.5验证视图的可更新性和进行更新操作 视图“ V_产品类别库存”是可更新的吗？通过 SQL 语句加以验证，并说明原因。向视图“ V_PRODUCT_16”中分别插入两条记录： (101, ‘可口可乐’, 16, 1, ‘每箱 12瓶’, 20.00, 100) 和 (102, ‘百事可乐’, 15, 1, ‘每箱 24 瓶’, 30.00, 100)；看能否从视图中查询到这两条记录，再看能否从基本表中查询到这两条记录？通过视图删除刚才插入的两条记录，并验证之。"></a>4.2.5. 1.2.5验证视图的可更新性和进行更新操作 视图“ V_产品类别库存”是可更新的吗？通过 SQL 语句加以验证，并说明原因。向视图“ V_PRODUCT_16”中分别插入两条记录： (101, ‘可口可乐’, 16, 1, ‘每箱 12瓶’, 20.00, 100) 和 (102, ‘百事可乐’, 15, 1, ‘每箱 24 瓶’, 30.00, 100)；看能否从视图中查询到这两条记录，再看能否从基本表中查询到这两条记录？通过视图删除刚才插入的两条记录，并验证之。</h3><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001433318.png" alt="image-20240618001433318"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">SELECT * FROM v_产品类别库存;<br>INSERT INTO v_产品类别库存(类别ID, 库存量)<br>VALUES (11,111);<br><br><br>INSERT INTO V_PRODUCT_16(产品ID, 产品名称, 供应商ID, 类别ID,<br>                                   单位数量, 单价, 库存量)<br>VALUES (101, &#x27;可口可乐&#x27;, 16, 1, &#x27;每箱 12瓶&#x27;, 20.00, 100);<br><br>INSERT INTO V_PRODUCT_16(产品ID, 产品名称, 供应商ID, 类别ID,<br>                                   单位数量, 单价, 库存量)<br>VALUES (102, &#x27;百事可乐&#x27;, 15, 1, &#x27;每箱 24 瓶&#x27;, 30.00, 100);<br><br>SELECT * FROM V_PRODUCT_16;<br><br>SELECT * FROM 产品<br>WHERE (产品ID=101||产品ID=102);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001516233.png" alt="image-20240618001516233"></p>
+<h3 id="4-2-6-1-2-6验证-WITH-CHECK-OPTIONPage-8-仿照视图“-V-PRODUCT-16”，创建视图“-V-PRODUCT-16-WCO”，但增加-WITHCHECK-OPTION；向视图“-V-PRODUCT-16-WCO”中插入记录：-103-‘百事可乐’-15-1-‘每箱-24瓶’-30-00-100-，能否成功？"><a href="#4-2-6-1-2-6验证-WITH-CHECK-OPTIONPage-8-仿照视图“-V-PRODUCT-16”，创建视图“-V-PRODUCT-16-WCO”，但增加-WITHCHECK-OPTION；向视图“-V-PRODUCT-16-WCO”中插入记录：-103-‘百事可乐’-15-1-‘每箱-24瓶’-30-00-100-，能否成功？" class="headerlink" title="4.2.6. 1.2.6验证 WITH CHECK OPTIONPage 8 仿照视图“ V_PRODUCT_16”，创建视图“ V_PRODUCT_16_WCO”，但增加 WITHCHECK OPTION；向视图“ V_PRODUCT_16_WCO”中插入记录： (103, ‘百事可乐’, 15, 1, ‘每箱 24瓶’, 30.00, 100)，能否成功？"></a>4.2.6. 1.2.6验证 WITH CHECK OPTIONPage 8 仿照视图“ V_PRODUCT_16”，创建视图“ V_PRODUCT_16_WCO”，但增加 WITHCHECK OPTION；向视图“ V_PRODUCT_16_WCO”中插入记录： (103, ‘百事可乐’, 15, 1, ‘每箱 24瓶’, 30.00, 100)，能否成功？</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">CREATE VIEW V_PRODUCT_16_WCO AS <br>SELECT 产品.产品ID, 产品.产品名称,产品.供应商ID, 产品.类别ID, 产品.单位数量, 产品.单价, 产品.库存量<br>FROM 产品<br>WHERE 产品.供应商ID=16<br>WITH CHECK OPTION;<br><br>INSERT INTO V_PRODUCT_16_WCO(产品ID, 产品名称, 供应商ID, 类别ID,单位数量, 单价, 库存量)<br>VALUES (103, &#x27;百事可乐&#x27;, 15, 1, &#x27;每箱 24瓶&#x27;, 30.00, 100);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001539206.png" alt="image-20240618001539206"></p>
+<h3 id="4-2-7-1-2-7验证-RESTRICT-和-CASCADE-基于视图“-V雇员产品销售额”创建视图“-V雇员销售总额”，要求列出雇员姓名、销售总金额-分别使RESTRICT-和-CASCADE-选项删除视图“-V-雇员产品销售额”，观察发生的现象并做出结论。"><a href="#4-2-7-1-2-7验证-RESTRICT-和-CASCADE-基于视图“-V雇员产品销售额”创建视图“-V雇员销售总额”，要求列出雇员姓名、销售总金额-分别使RESTRICT-和-CASCADE-选项删除视图“-V-雇员产品销售额”，观察发生的现象并做出结论。" class="headerlink" title="4.2.7. 1.2.7验证 RESTRICT 和 CASCADE,基于视图“ V雇员产品销售额”创建视图“ V雇员销售总额”，要求列出雇员姓名、销售总金额; 分别使RESTRICT 和 CASCADE 选项删除视图“ V_雇员产品销售额”，观察发生的现象并做出结论。"></a>4.2.7. 1.2.7验证 RESTRICT 和 CASCADE,基于视图“ V<em>雇员产品销售额”创建视图“ V</em>雇员销售总额”，要求列出雇员姓名、销售总金额; 分别使RESTRICT 和 CASCADE 选项删除视图“ V_雇员产品销售额”，观察发生的现象并做出结论。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">CREATE VIEW V_雇员销售总额 AS<br>SELECT 姓名, SUM(销售总金额) AS 总销售金额<br>FROM V_雇员产品销售额<br>GROUP BY 姓名; <br><br>SELECT * FROM V_雇员销售总额;<br><br>DROP VIEW RESTRICT V_雇员产品销售额;<br>DROP VIEW CASCADE V_雇员产品销售额;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001608899.png" alt="image-20240618001608899"></p>
+<h2 id="4-3-实验1-3-数据高级查询实验"><a href="#4-3-实验1-3-数据高级查询实验" class="headerlink" title="4.3. 实验1.3 数据高级查询实验"></a>4.3. 实验1.3 数据高级查询实验</h2><h3 id="4-3-1-1-3-1列出购买了“小坊”供应的“干贝”的客户的公司名称。（要求分别使用连接查询和嵌套查询两种方式，并在-MySQL-WorkBench-中比较这两种方式的执行计划：点击结果窗口右侧的“Execution-Plan”按钮）。"><a href="#4-3-1-1-3-1列出购买了“小坊”供应的“干贝”的客户的公司名称。（要求分别使用连接查询和嵌套查询两种方式，并在-MySQL-WorkBench-中比较这两种方式的执行计划：点击结果窗口右侧的“Execution-Plan”按钮）。" class="headerlink" title="4.3.1. 1.3.1列出购买了“小坊”供应的“干贝”的客户的公司名称。（要求分别使用连接查询和嵌套查询两种方式，并在 MySQL WorkBench 中比较这两种方式的执行计划：点击结果窗口右侧的“Execution Plan”按钮）。"></a>4.3.1. 1.3.1列出购买了“小坊”供应的“干贝”的客户的公司名称。（要求分别使用连接查询和嵌套查询两种方式，并在 MySQL WorkBench 中比较这两种方式的执行计划：点击结果窗口右侧的“Execution Plan”按钮）。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">--连接查询<br>SELECT 客户.公司名称<br>FROM 订单<br>JOIN 客户 ON 订单.客户ID = 客户.客户ID<br>JOIN 订单明细 ON 订单.订单ID = 订单明细.订单ID<br>JOIN 产品 ON 订单明细.产品ID = 产品.产品ID<br>JOIN 供应商 ON 产品.供应商ID = 供应商.供应商ID<br>WHERE 供应商.公司名称 = &#x27;小坊&#x27; AND 产品.产品名称 = &#x27;干贝&#x27;;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240618001636361.png" alt="image-20240618001636361"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">嵌套查询：<br>SELECT 客户.公司名称<br>FROM 客户<br>WHERE EXISTS (<br>    SELECT 1<br>    FROM 订单<br>    JOIN 订单明细 ON 订单.订单ID = 订单明细.订单ID<br>    JOIN 产品 ON 订单明细.产品ID = 产品.产品ID<br>    JOIN 供应商 ON 产品.供应商ID = 供应商.供应商ID<br>    WHERE 供应商.公司名称 = &#x27;小坊&#x27; AND 产品.产品名称 = &#x27;干贝&#x27; AND 订单.客户ID = 客户.客户ID<br>);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112145930514.png" alt="image.png"></p>
+<h3 id="4-3-2-1-3-2使用单层-EXISTS-嵌套查询没有购买过“小坊”供应的“干贝”的客户数目。"><a href="#4-3-2-1-3-2使用单层-EXISTS-嵌套查询没有购买过“小坊”供应的“干贝”的客户数目。" class="headerlink" title="4.3.2. 1.3.2使用单层 EXISTS 嵌套查询没有购买过“小坊”供应的“干贝”的客户数目。"></a>4.3.2. 1.3.2使用单层 EXISTS 嵌套查询没有购买过“小坊”供应的“干贝”的客户数目。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT COUNT(*)<br>FROM 客户<br>WHERE NOT EXISTS (<br>    SELECT 1<br>    FROM 订单<br>    JOIN 订单明细 ON 订单.订单ID = 订单明细.订单ID<br>    JOIN 产品 ON 订单明细.产品ID = 产品.产品ID<br>    JOIN 供应商 ON 产品.供应商ID = 供应商.供应商ID<br>    WHERE 供应商.公司名称 = &#x27;小坊&#x27; AND 产品.产品名称 = &#x27;干贝&#x27; AND 订单.客户ID = 客户.客户ID<br>);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150150101.png" alt="image.png"></p>
+<h3 id="4-3-3-1-3-3双层-EXISTS-嵌套查询-列出购买过客户“森通”购买过的类别-ID-为-3-的全部产品的客户名称。（成功写出语句后，在-MySQLWorkBench-中分析其执行计划）。"><a href="#4-3-3-1-3-3双层-EXISTS-嵌套查询-列出购买过客户“森通”购买过的类别-ID-为-3-的全部产品的客户名称。（成功写出语句后，在-MySQLWorkBench-中分析其执行计划）。" class="headerlink" title="4.3.3. 1.3.3双层 EXISTS 嵌套查询 列出购买过客户“森通”购买过的类别 ID 为 3 的全部产品的客户名称。（成功写出语句后，在 MySQLWorkBench 中分析其执行计划）。"></a>4.3.3. 1.3.3双层 EXISTS 嵌套查询 列出购买过客户“森通”购买过的类别 ID 为 3 的全部产品的客户名称。（成功写出语句后，在 MySQLWorkBench 中分析其执行计划）。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT 客户.公司名称<br>FROM 客户<br>WHERE EXISTS (<br>    SELECT 1<br>    FROM 订单<br>    JOIN 订单明细 ON 订单.订单ID = 订单明细.订单ID<br>    JOIN 产品 ON 订单明细.产品ID = 产品.产品ID<br>    WHERE 订单.客户ID = 客户.客户ID AND EXISTS (<br>        SELECT 1<br>        FROM 订单 AS 订单2<br>        JOIN 订单明细 AS 订单明细2 ON 订单2.订单ID = 订单明细2.订单ID<br>        WHERE 订单2.客户ID = (SELECT 客户ID FROM 客户 WHERE 公司名称 = &#x27;森通&#x27;) AND 订单明细2.产品ID = 产品.产品ID AND 产品.类别ID = 3<br>    )<br>);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150220968.png" alt="image.png"></p>
+<h3 id="4-3-4-1-3-4采用-FROM-子句中的嵌套查询方式列出订单平均金额超过-800-元的华北地区客户的公司名称及订单平均金额，要求输出结果按照平均金额从低到高排序。"><a href="#4-3-4-1-3-4采用-FROM-子句中的嵌套查询方式列出订单平均金额超过-800-元的华北地区客户的公司名称及订单平均金额，要求输出结果按照平均金额从低到高排序。" class="headerlink" title="4.3.4. 1.3.4采用 FROM 子句中的嵌套查询方式列出订单平均金额超过 800 元的华北地区客户的公司名称及订单平均金额，要求输出结果按照平均金额从低到高排序。"></a>4.3.4. 1.3.4采用 FROM 子句中的嵌套查询方式列出订单平均金额超过 800 元的华北地区客户的公司名称及订单平均金额，要求输出结果按照平均金额从低到高排序。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT 公司名称, 平均订单金额<br>FROM (<br>    SELECT 客户.公司名称, AVG(订单总金额) AS 平均订单金额<br>    FROM (<br>        SELECT 订单.客户ID, SUM(订单明细.数量 * 产品.单价) AS 订单总金额<br>        FROM 订单<br>        JOIN 订单明细 ON 订单.订单ID = 订单明细.订单ID<br>        JOIN 产品 ON 订单明细.产品ID = 产品.产品ID<br>        GROUP BY 订单.客户ID<br>    ) AS 订单总金额<br>    JOIN 客户 ON 订单总金额.客户ID = 客户.客户ID<br>    WHERE 客户.地区 = &#x27;华北&#x27;<br>    GROUP BY 客户.公司名称<br>) AS 订单平均金额<br>WHERE 平均订单金额 &gt; 800<br>ORDER BY 平均订单金额;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150247476.png" alt="image.png"></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">+<span class="hljs-literal">------------------------</span>+<span class="hljs-literal">---------------</span>+<br>| 公司名称               | 平均订单金额  |<br>+<span class="hljs-literal">------------------------</span>+<span class="hljs-literal">---------------</span>+<br>| 光远商贸               | <span class="hljs-number">1640.800000</span>   |<br>| 德化食品               | <span class="hljs-number">1653.580000</span>   |<br>| 山泰企业               | <span class="hljs-number">1987.400000</span>   |<br>| 志远有限公司           | <span class="hljs-number">3161.350000</span>   |<br>| 森通                   | <span class="hljs-number">3239.800000</span>   |<br>| 利合材料               | <span class="hljs-number">3540.000000</span>   |<br>| 汉典电机               | <span class="hljs-number">3646.700000</span>   |<br>| 正太实业               | <span class="hljs-number">4437.100000</span>   |<br>| 同恒                   | <span class="hljs-number">4451.900000</span>   |<br>| 就业广兑               | <span class="hljs-number">4677.640000</span>   |<br>| 仲堂企业               | <span class="hljs-number">5345.000000</span>   |<br>| 康毅系统               | <span class="hljs-number">5864.100000</span>   |<br>| 亚太公司               | <span class="hljs-number">7585.580000</span>   |<br>| 坦森行贸易             | <span class="hljs-number">7616.150000</span>   |<br>| 建国科技               | <span class="hljs-number">7762.200000</span>   |<br>| 兰格英语               | <span class="hljs-number">7789.530000</span>   |<br>| 千固                   | <span class="hljs-number">10823.300000</span>  |<br>| 池春建设               | <span class="hljs-number">11266.450000</span>  |<br>| 协昌妮绒有限公司       | <span class="hljs-number">11272.000000</span>  |<br>| 凯旋科技               | <span class="hljs-number">11623.550000</span>  |<br>| 建资                   | <span class="hljs-number">11895.500000</span>  |<br>| 嘉业                   | <span class="hljs-number">12263.700000</span>  |<br>| 浩天旅行社             | <span class="hljs-number">13336.100000</span>  |<br>| 宇欣实业               | <span class="hljs-number">13848.250000</span>  |<br>| 中通                   | <span class="hljs-number">15777.770000</span>  |<br>| 升格企业               | <span class="hljs-number">18343.500000</span>  |<br>| 仪和贸易               | <span class="hljs-number">18500.620000</span>  |<br>| 艾德高科技             | <span class="hljs-number">18929.150000</span>  |<br>| 百达电子               | <span class="hljs-number">19744.750000</span>  |<br>| 富泰人寿               | <span class="hljs-number">19819.660000</span>  |<br>| 福星制衣厂股份有限公司 | <span class="hljs-number">27918.400000</span>  |<br>| 友恒信托               | <span class="hljs-number">31621.110000</span>  |<br>| 留学服务中心           | <span class="hljs-number">32989.900000</span>  |<br>| 师大贸易               | <span class="hljs-number">58540.910000</span>  |<br>| 高上补习班             | <span class="hljs-number">119333.040000</span> |<br>+<span class="hljs-literal">------------------------</span>+<span class="hljs-literal">---------------</span>+<br></code></pre></td></tr></table></figure>
+<h2 id="4-4-实验1-4-索引实验"><a href="#4-4-实验1-4-索引实验" class="headerlink" title="4.4. 实验1.4 索引实验"></a>4.4. 实验1.4 索引实验</h2><h3 id="4-4-1-1-4-1执行程序-tpch-MySQL8-sql，建立一个新的数据库模式-tpch。成功执行后，各表中的记录数为：customer-661296-，nation-150-，continent-6-。"><a href="#4-4-1-1-4-1执行程序-tpch-MySQL8-sql，建立一个新的数据库模式-tpch。成功执行后，各表中的记录数为：customer-661296-，nation-150-，continent-6-。" class="headerlink" title="4.4.1. 1.4.1执行程序 tpch-MySQL8.sql，建立一个新的数据库模式 tpch。成功执行后，各表中的记录数为：customer(661296)，nation(150)，continent(6)。"></a>4.4.1. 1.4.1执行程序 tpch-MySQL8.sql，建立一个新的数据库模式 tpch。成功执行后，各表中的记录数为：customer(661296)，nation(150)，continent(6)。</h3><h3 id="4-4-2-1-4-2创建普通索引-列出-customer-表中姓“欧阳”的所有客户，并记录下其执行时间（点击结果窗口右侧的“Query-Stat”按钮）；在-customer-表的-name-字段上创建普通索引-IDX-Name（可能需要较长时间）；再次执行上述查询，并记录下其执行时间，与前次时间进行比较。"><a href="#4-4-2-1-4-2创建普通索引-列出-customer-表中姓“欧阳”的所有客户，并记录下其执行时间（点击结果窗口右侧的“Query-Stat”按钮）；在-customer-表的-name-字段上创建普通索引-IDX-Name（可能需要较长时间）；再次执行上述查询，并记录下其执行时间，与前次时间进行比较。" class="headerlink" title="4.4.2. 1.4.2创建普通索引 列出 customer 表中姓“欧阳”的所有客户，并记录下其执行时间（点击结果窗口右侧的“Query Stat”按钮）；在 customer 表的 name 字段上创建普通索引 IDX_Name（可能需要较长时间）；再次执行上述查询，并记录下其执行时间，与前次时间进行比较。"></a>4.4.2. 1.4.2创建普通索引 列出 customer 表中姓“欧阳”的所有客户，并记录下其执行时间（点击结果窗口右侧的“Query Stat”按钮）；在 customer 表的 name 字段上创建普通索引 IDX_Name（可能需要较长时间）；再次执行上述查询，并记录下其执行时间，与前次时间进行比较。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">-- 查询姓“欧阳”的所有客户并记录查询时间<br>SELECT * FROM customer WHERE name LIKE &#x27;欧阳%&#x27;;<br><br>&gt; OK<br>&gt; 查询时间: 0.27s<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150314262.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">-- 在customer表的name字段上创建普通索引IDX_Name<br>CREATE INDEX IDX_Name ON customer(name);<br><br><br>-- 再次查询姓“欧阳”的所有客户并记录查询时间<br>SELECT * FROM customer WHERE name LIKE &#x27;欧阳%&#x27;; <br>&gt; OK<br>&gt; 查询时间: 0.003s<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150331941.png" alt="image.png"></p>
+<h3 id="4-4-3-1-4-3用-EXPLAIN-命令分析某个-SQL-查询语句执行时是否使用了索引。"><a href="#4-4-3-1-4-3用-EXPLAIN-命令分析某个-SQL-查询语句执行时是否使用了索引。" class="headerlink" title="4.4.3. 1.4.3用 EXPLAIN 命令分析某个 SQL 查询语句执行时是否使用了索引。"></a>4.4.3. 1.4.3用 EXPLAIN 命令分析某个 SQL 查询语句执行时是否使用了索引。</h3><h3 id="4-4-4-1-4-4删除-customer-表的普通索引-IDX-Name。"><a href="#4-4-4-1-4-4删除-customer-表的普通索引-IDX-Name。" class="headerlink" title="4.4.4. 1.4.4删除 customer 表的普通索引 IDX_Name。"></a>4.4.4. 1.4.4删除 customer 表的普通索引 IDX_Name。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">-- 使用EXPLAIN命令分析SQL查询语句<br>EXPLAIN SELECT * FROM customer WHERE name LIKE &#x27;欧阳%&#x27;;<br><br>-- 删除customer表的普通索引IDX_Name<br>DROP INDEX IDX_Name ON customer;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150353678.png" alt="image.png"></p>
+<h2 id="4-5-实验1-5-数据更新实验"><a href="#4-5-实验1-5-数据更新实验" class="headerlink" title="4.5. 实验1.5 数据更新实验"></a>4.5. 实验1.5 数据更新实验</h2><p>编写 SQL 语句，实现以下数据更新操作。</p>
+<h3 id="4-5-1-1-5-1INSERT-基本语句（插入全部列的数据），在雇员表中添加第-10-号雇员“张三”，要求为每列都给出一个合理的值。"><a href="#4-5-1-1-5-1INSERT-基本语句（插入全部列的数据），在雇员表中添加第-10-号雇员“张三”，要求为每列都给出一个合理的值。" class="headerlink" title="4.5.1. 1.5.1INSERT 基本语句（插入全部列的数据），在雇员表中添加第 10 号雇员“张三”，要求为每列都给出一个合理的值。"></a>4.5.1. 1.5.1INSERT 基本语句（插入全部列的数据），在雇员表中添加第 10 号雇员“张三”，要求为每列都给出一个合理的值。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">-- INSERT 基本语句（插入全部列的数据），在雇员表中添加第 10 号雇员“张三”，要求为每列都给出一个合理的值。<br>INSERT INTO 雇员(雇员ID,姓名,职务,尊称,出生日期,雇用日期,地址,城市,地区,邮政编码,国家,家庭电话,分机)<br>VALUES (10, &#x27;张三&#x27;, &#x27;安全员&#x27;, &#x27;华科第一深情&#x27;, &#x27;2001-08-15&#x27;, &#x27;2021-08-15&#x27;, &#x27;复兴门 245 号&#x27;, &#x27;北京&#x27;, &#x27;华北&#x27;, &#x27;100098&#x27;, &#x27;中国&#x27;, &#x27;(010) 65559857&#x27;, &#x27;5467&#x27;);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150419036.png" alt="image.png"></p>
+<h3 id="4-5-2-1-5-2INSERT-基本语句（插入部分列的数据）在订单表中插入一条-ID-为-99999-的订单：雇员-ID-为-10，客户-ID-为“BLONP”。并补足订单表的非空属性（订购日期-到货日期-运货商-运货费-货主名称）的值。"><a href="#4-5-2-1-5-2INSERT-基本语句（插入部分列的数据）在订单表中插入一条-ID-为-99999-的订单：雇员-ID-为-10，客户-ID-为“BLONP”。并补足订单表的非空属性（订购日期-到货日期-运货商-运货费-货主名称）的值。" class="headerlink" title="4.5.2. 1.5.2INSERT 基本语句（插入部分列的数据）在订单表中插入一条 ID 为 99999 的订单：雇员 ID 为 10，客户 ID 为“BLONP”。并补足订单表的非空属性（订购日期, 到货日期,运货商, 运货费, 货主名称）的值。"></a>4.5.2. 1.5.2INSERT 基本语句（插入部分列的数据）在订单表中插入一条 ID 为 99999 的订单：雇员 ID 为 10，客户 ID 为“BLONP”。并补足订单表的非空属性（订购日期, 到货日期,运货商, 运货费, 货主名称）的值。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">-- INSERT 基本语句（插入部分列的数据）在订单表中插入一条 ID 为 99999 的订单：雇员 ID 为 10，客户 ID 为“BLONP”。并补足订单表的非空属性（订购日期, 到货日期,运货商, 运货费, 货主名称）的值。<br>INSERT INTO 订单(订单ID, 雇员ID, 客户ID, 订购日期, 到货日期, 运货商, 运货费, 货主名称)<br>VALUES (99999, 10, &#x27;BLONP&#x27;, &#x27;2022-01-01&#x27;, &#x27;2022-01-10&#x27;, 1, 100, &#x27;李四&#x27;);<br><br>SELECT * FROM 订单 WHERE (订单ID=99999);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150446260.png" alt="image.png"></p>
+<h3 id="4-5-3-1-5-3批量数据-INSERT-语句，创建一个新的客户表“河北客户”，把所有石家庄客户加入到此表中；继续把秦皇岛客户加入到“河北客户”表中；创建一个“购物统计”表，记录每个客户的公司名称及其订单总价（计算结果取小数点后两位）。"><a href="#4-5-3-1-5-3批量数据-INSERT-语句，创建一个新的客户表“河北客户”，把所有石家庄客户加入到此表中；继续把秦皇岛客户加入到“河北客户”表中；创建一个“购物统计”表，记录每个客户的公司名称及其订单总价（计算结果取小数点后两位）。" class="headerlink" title="4.5.3. 1.5.3批量数据 INSERT 语句，创建一个新的客户表“河北客户”，把所有石家庄客户加入到此表中；继续把秦皇岛客户加入到“河北客户”表中；创建一个“购物统计”表，记录每个客户的公司名称及其订单总价（计算结果取小数点后两位）。"></a>4.5.3. 1.5.3批量数据 INSERT 语句，创建一个新的客户表“河北客户”，把所有石家庄客户加入到此表中；继续把秦皇岛客户加入到“河北客户”表中；创建一个“购物统计”表，记录每个客户的公司名称及其订单总价（计算结果取小数点后两位）。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">-- 创建新的客户表“河北客户”<br>CREATE TABLE 河北客户 AS SELECT * FROM 客户 WHERE 城市 = &#x27;石家庄&#x27;;<br><br>-- 把秦皇岛客户加入到“河北客户”表中<br>INSERT INTO 河北客户 SELECT * FROM 客户 WHERE 城市 = &#x27;秦皇岛&#x27;;<br>SELECT * FROM 河北客户;<br><br>-- 创建一个“购物统计”表，记录每个客户的公司名称及其订单总价<br>CREATE TABLE 购物统计 AS<br>SELECT 客户.公司名称, ROUND(SUM(订单明细.单价*订单明细.数量*(1-订单明细.折扣)), 2) AS 订单总价<br>FROM 订单,客户,订单明细<br>WHERE 客户.客户ID = 订单.客户ID &amp;&amp; 订单.订单ID = 订单明细.订单ID<br>GROUP BY 公司名称;<br><br>SELECT * FROM 购物统计;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150554709.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150617029.png" alt="image.png"></p>
+<h3 id="4-5-4-1-5-4UPDATE-语句（修改部分记录的部分列值）将所有单价在-100-元以上（含）的产品的单价下降-10-。"><a href="#4-5-4-1-5-4UPDATE-语句（修改部分记录的部分列值）将所有单价在-100-元以上（含）的产品的单价下降-10-。" class="headerlink" title="4.5.4. 1.5.4UPDATE 语句（修改部分记录的部分列值）将所有单价在 100 元以上（含）的产品的单价下降 10%。"></a>4.5.4. 1.5.4UPDATE 语句（修改部分记录的部分列值）将所有单价在 100 元以上（含）的产品的单价下降 10%。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">UPDATE 产品<br>SET 单价 = 单价 * 0.9<br>WHERE 单价 &gt;= 100;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150648341.png" alt="image.png"></p>
+<h3 id="4-5-5-1-5-5UPDATE-语句（利用一个表中的数据修改另外一个表中的数据）在订单表中增加一个类型为-Decimal-8-2-的属性“总金额”；利用订单明细表中的属性修改订单表中的总金额：总金额-单价数量-1-折扣-。"><a href="#4-5-5-1-5-5UPDATE-语句（利用一个表中的数据修改另外一个表中的数据）在订单表中增加一个类型为-Decimal-8-2-的属性“总金额”；利用订单明细表中的属性修改订单表中的总金额：总金额-单价数量-1-折扣-。" class="headerlink" title="4.5.5. 1.5.5UPDATE 语句（利用一个表中的数据修改另外一个表中的数据）在订单表中增加一个类型为 Decimal(8, 2)的属性“总金额”；利用订单明细表中的属性修改订单表中的总金额：总金额 = 单价数量(1-折扣)。"></a>4.5.5. 1.5.5UPDATE 语句（利用一个表中的数据修改另外一个表中的数据）在订单表中增加一个类型为 Decimal(8, 2)的属性“总金额”；利用订单明细表中的属性修改订单表中的总金额：总金额 = 单价<em>数量</em>(1-折扣)。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">-- 在订单表中增加一个类型为 Decimal(8, 2)的属性“总金额”<br>ALTER TABLE 订单<br>ADD 总金额 decimal(8,2);<br><br>-- 利用订单明细表中的属性修改订单表中的总金额：总金额 = 单价*数量*(1-折扣)<br>UPDATE 订单<br>SET 总金额 = (SELECT SUM(单价*数量*(1-折扣)) <br>FROM 订单明细 <br>WHERE 订单.订单ID = 订单明细.订单ID);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150709587.png" alt="image.png"></p>
+<h3 id="4-5-6-1-5-6DELETE-语句（删除给定条件的所有记录）删除客户“东南实业”的所有订单（先删订单明细，再删订单）。只删除客户“三川实业有限公司”的所有订单，而不先删除其明细，看看结果如何？将“订单明细”的外码约束“订单明细-ibfk-1”修改为级联删除（使用-ALTER-Table命令对约束先删再增）；现在直接删除客户“三川实业有限公司”的所有订单，看看结果如何？"><a href="#4-5-6-1-5-6DELETE-语句（删除给定条件的所有记录）删除客户“东南实业”的所有订单（先删订单明细，再删订单）。只删除客户“三川实业有限公司”的所有订单，而不先删除其明细，看看结果如何？将“订单明细”的外码约束“订单明细-ibfk-1”修改为级联删除（使用-ALTER-Table命令对约束先删再增）；现在直接删除客户“三川实业有限公司”的所有订单，看看结果如何？" class="headerlink" title="4.5.6. 1.5.6DELETE 语句（删除给定条件的所有记录）删除客户“东南实业”的所有订单（先删订单明细，再删订单）。只删除客户“三川实业有限公司”的所有订单，而不先删除其明细，看看结果如何？将“订单明细”的外码约束“订单明细_ibfk_1”修改为级联删除（使用 ALTER Table命令对约束先删再增）；现在直接删除客户“三川实业有限公司”的所有订单，看看结果如何？"></a>4.5.6. 1.5.6DELETE 语句（删除给定条件的所有记录）删除客户“东南实业”的所有订单（先删订单明细，再删订单）。只删除客户“三川实业有限公司”的所有订单，而不先删除其明细，看看结果如何？将“订单明细”的外码约束“订单明细_ibfk_1”修改为级联删除（使用 ALTER Table命令对约束先删再增）；现在直接删除客户“三川实业有限公司”的所有订单，看看结果如何？</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">DELETE FROM 订单明细<br>WHERE 订单ID IN (<br>    SELECT 订单ID FROM 订单<br>    WHERE 客户ID = (SELECT 客户ID FROM 客户 WHERE 公司名称 = &#x27;东南实业&#x27;)<br>);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150752145.png" alt="image.png"><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">DELETE FROM 订单<br>WHERE 客户ID = (SELECT 客户ID FROM 客户 WHERE 公司名称 = &#x27;东南实业&#x27;);<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150837770.png" alt="image.png"><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">DELETE FROM 订单<br>WHERE 客户ID = (SELECT 客户ID FROM 客户 WHERE 公司名称 = &#x27;三川实业有限公司&#x27;);<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150902978.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">ALTER TABLE 订单明细<br>DROP FOREIGN KEY 订单明细_ibfk_1;<br><br>ALTER TABLE 订单明细<br>ADD CONSTRAINT 订单明细_ibfk_1 FOREIGN KEY (订单ID) REFERENCES 订单(订单ID) ON DELETE CASCADE;<br><br>DELETE FROM 订单<br>WHERE 客户ID = (SELECT 客户ID FROM 客户 WHERE 公司名称 = &#x27;三川实业有限公司&#x27;);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150926654.png" alt="image.png"></p>
+<h2 id="4-6-实验1-6-安全性实验"><a href="#4-6-实验1-6-安全性实验" class="headerlink" title="4.6. 实验1.6 安全性实验"></a>4.6. 实验1.6 安全性实验</h2><p>本节实验适宜于在两个或以上命令行窗口中进行：在窗口 1 中始终以 root 身份进行操作，在窗口 2 中以不同的用户身份登录数据库。</p>
+<h3 id="4-6-1-1-6-1在窗口-1-中创建一个数据库用户“赵军”，初始密码为-123456；"><a href="#4-6-1-1-6-1在窗口-1-中创建一个数据库用户“赵军”，初始密码为-123456；" class="headerlink" title="4.6.1. 1.6.1在窗口 1 中创建一个数据库用户“赵军”，初始密码为 123456；"></a>4.6.1. 1.6.1在窗口 1 中创建一个数据库用户“赵军”，初始密码为 123456；</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SQL&gt; CREATE USER 赵军 IDENTIFIED BY &#x27;123456&#x27;;<br></code></pre></td></tr></table></figure>
+<h3 id="4-6-2-1-6-2在窗口-2-中以“赵军”登录，看能否创建一个新的数据库-test；"><a href="#4-6-2-1-6-2在窗口-2-中以“赵军”登录，看能否创建一个新的数据库-test；" class="headerlink" title="4.6.2. 1.6.2在窗口 2 中以“赵军”登录，看能否创建一个新的数据库 test；"></a>4.6.2. 1.6.2在窗口 2 中以“赵军”登录，看能否创建一个新的数据库 test；</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SQL&gt; CREATE Database test;         <br>#ERROR 1044 (42000): Access denied...<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112150959286.png" alt="image.png"></p>
+<h3 id="4-6-3-1-6-3在窗口-1-中创建一个角色“销售经理”，并授予其创建新数据库和查询-northwind库中所有表的权限；"><a href="#4-6-3-1-6-3在窗口-1-中创建一个角色“销售经理”，并授予其创建新数据库和查询-northwind库中所有表的权限；" class="headerlink" title="4.6.3. 1.6.3在窗口 1 中创建一个角色“销售经理”，并授予其创建新数据库和查询 northwind库中所有表的权限；"></a>4.6.3. 1.6.3在窗口 1 中创建一个角色“销售经理”，并授予其创建新数据库和查询 northwind库中所有表的权限；</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SQL&gt; CREATE ROLE 销售经理;                 #创建角色<br><br>SQL&gt; GRANT create ON *.* TO 销售经理;             #为角色赋创建数据库的权限 <br>SQL&gt; GRANT select ON northwind.* TO 销售经理; #为角色赋表的查询权限 <br>SQL&gt; SHOW GRANTS for 销售经理;                                                       #查看角色的权限<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151019359.png" alt="image.png"></p>
+<h3 id="4-6-4-1-6-4在窗口-1-为用户“赵军”赋予角色“销售经理”，并查看其权限；"><a href="#4-6-4-1-6-4在窗口-1-为用户“赵军”赋予角色“销售经理”，并查看其权限；" class="headerlink" title="4.6.4. 1.6.4在窗口 1 为用户“赵军”赋予角色“销售经理”，并查看其权限；"></a>4.6.4. 1.6.4在窗口 1 为用户“赵军”赋予角色“销售经理”，并查看其权限；</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SQL&gt; GRANT 销售经理 TO 赵军;        #将角色赋给用户<br><br>SQL&gt; set default role all to 赵军; #赵军在登录时使用默认角色“销售经理”<br></code></pre></td></tr></table></figure>
+<h3 id="4-6-5-1-6-5在窗口-2-中以“赵军”重新登录，并尝试创建一个新的数据库，以及从-northwind数据库的表中查询数据；"><a href="#4-6-5-1-6-5在窗口-2-中以“赵军”重新登录，并尝试创建一个新的数据库，以及从-northwind数据库的表中查询数据；" class="headerlink" title="4.6.5. 1.6.5在窗口 2 中以“赵军”重新登录，并尝试创建一个新的数据库，以及从 northwind数据库的表中查询数据；"></a>4.6.5. 1.6.5在窗口 2 中以“赵军”重新登录，并尝试创建一个新的数据库，以及从 northwind数据库的表中查询数据；</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SQL&gt; CREATE Database test; <br>SQL&gt; USE NorthWind;<br><br>SQL&gt; SELECT 姓名,职务 FROM 雇员;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151048115.png" alt="image.png"></p>
+<h3 id="4-6-6-1-6-6在窗口-1-中创建“销售视图”，其作用是使每个销售代表只能看到自己的销售订单；"><a href="#4-6-6-1-6-6在窗口-1-中创建“销售视图”，其作用是使每个销售代表只能看到自己的销售订单；" class="headerlink" title="4.6.6. 1.6.6在窗口 1 中创建“销售视图”，其作用是使每个销售代表只能看到自己的销售订单；"></a>4.6.6. 1.6.6在窗口 1 中创建“销售视图”，其作用是使每个销售代表只能看到自己的销售订单；</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SQL&gt; CREATE View 销售视图 AS SELECT 订单.*<br><br>FROM 订单 JOIN 雇员 ON (订单.雇员ID = 雇员.雇员ID)<br><br>WHERE INSTR(USER(),雇员.姓名) = 1;     #INSTR 和 USER 是内置函数<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151103442.png" alt="image.png"></p>
+<h3 id="4-6-7-1-6-7在窗口-1-中为雇员表中的-6-个销售代表（张颖等）各创建一个用户；然后创建一个新的角色“销售代表”，为其赋“销售视图”的选择权限，将此角色授予上述-6-个用户；"><a href="#4-6-7-1-6-7在窗口-1-中为雇员表中的-6-个销售代表（张颖等）各创建一个用户；然后创建一个新的角色“销售代表”，为其赋“销售视图”的选择权限，将此角色授予上述-6-个用户；" class="headerlink" title="4.6.7. 1.6.7在窗口 1 中为雇员表中的 6 个销售代表（张颖等）各创建一个用户；然后创建一个新的角色“销售代表”，为其赋“销售视图”的选择权限，将此角色授予上述 6 个用户；"></a>4.6.7. 1.6.7在窗口 1 中为雇员表中的 6 个销售代表（张颖等）各创建一个用户；然后创建一个新的角色“销售代表”，为其赋“销售视图”的选择权限，将此角色授予上述 6 个用户；</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SQL&gt; CREATE USER 张颖 IDENTIFIED BY &#x27;123456&#x27;; <br>SQL&gt; CREATE ROLE 销售代表;<br>SQL&gt; GRANT select ON northwind.销售视图 TO 销售代表; <br>SQL&gt; GRANT 销售代表 TO 张颖;<br><br>SQL&gt; set default role all to 张颖;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151118443.png" alt="image.png"></p>
+<h3 id="4-6-8-1-6-8在窗口-2-中以不同身份登录，验证以上视图；"><a href="#4-6-8-1-6-8在窗口-2-中以不同身份登录，验证以上视图；" class="headerlink" title="4.6.8. 1.6.8在窗口 2 中以不同身份登录，验证以上视图；"></a>4.6.8. 1.6.8在窗口 2 中以不同身份登录，验证以上视图；</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">--以张颖为例<br>SQL&gt; SELECT Distinct 雇员ID FROM 销售视图;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151133354.png" alt="image.png"></p>
+<h3 id="4-6-9-1-6-9收回用户“张颖”的“销售代表”角色权限，并验证之；"><a href="#4-6-9-1-6-9收回用户“张颖”的“销售代表”角色权限，并验证之；" class="headerlink" title="4.6.9. 1.6.9收回用户“张颖”的“销售代表”角色权限，并验证之；"></a>4.6.9. 1.6.9收回用户“张颖”的“销售代表”角色权限，并验证之；</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SQL&gt; revoke 销售代表 from 张颖;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151150014.png" alt="image.png"><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SELECT Distinct 雇员ID FROM 销售视图;<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151207469.png" alt="image.png"></p>
+<h3 id="4-6-10-1-6-10自己设计关于数据库和表的其他权限操作实验，并验证。"><a href="#4-6-10-1-6-10自己设计关于数据库和表的其他权限操作实验，并验证。" class="headerlink" title="4.6.10. 1.6.10自己设计关于数据库和表的其他权限操作实验，并验证。"></a>4.6.10. 1.6.10自己设计关于数据库和表的其他权限操作实验，并验证。</h3><p><strong>回收除root用户外其他所有用户的权限</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">-- 查询除 root 外的其他用户的列表<br>SELECT User, Host FROM mysql.user WHERE User != &#x27;root&#x27;;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151233842.png" alt="image.png"><br><code>mysql.infoschema</code>，<code>mysql.session</code> 和 <code>mysql.sys</code> 是 MySQL 系统账户，不应该修改这些账户的权限。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">--收回权限<br>REVOKE ALL PRIVILEGES ON *.* FROM &#x27;张颖&#x27;@&#x27;%&#x27;;<br>REVOKE ALL PRIVILEGES ON *.* FROM &#x27;赵军&#x27;@&#x27;%&#x27;;<br>REVOKE ALL PRIVILEGES ON *.* FROM &#x27;销售代表&#x27;@&#x27;%&#x27;;<br>REVOKE ALL PRIVILEGES ON *.* FROM &#x27;销售经理&#x27;@&#x27;%&#x27;;<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151253509.png" alt="image.png"></p>
+<p><code>SELECT</code> 查询显示这些用户仍然存在于 <code>mysql.user</code> 表中。这是因为 <code>REVOKE</code> 语句只收回用户的权限，而不删除用户。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">--删除用户<br>DROP USER &#x27;张颖&#x27;@&#x27;%&#x27;;<br>DROP USER &#x27;赵军&#x27;@&#x27;%&#x27;;<br>DROP USER &#x27;销售代表&#x27;@&#x27;%&#x27;;<br>DROP USER &#x27;销售经理&#x27;@&#x27;%&#x27;;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251112151313620.png" alt="image.png"></p>
+<h1 id="5-实验总结"><a href="#5-实验总结" class="headerlink" title="5. [实验总结]"></a>5. [实验总结]</h1><p>本次实验总体来说难度不大，但是有点费时间。我主要遇到了以下几点问题：</p>
+<p>1.工具选择。最开始因为不熟悉那个可视化界面MySQL Workbench，我选择了那个黑窗口去编写运行SQL语句，主要这个界面不太方便修改自己的SQL语句，所以后面我安装了Navicat来进行实验，效率起飞。<br>2.对少量SQL语句不太熟悉，实验时需要翻看PPT和课本<br>3.特别是连接查询时，需要理清楚各个便之间的关系，最初我没有注意到实验指导书上面有一个northwind数据库的结构图，一直在Navicat中查看各个表之间的关系，很不方便，后面发现前面有结构图之后，理清关系时简单了许多，不需要耗费太多时间</p>
+<p>总体来说这次实验收获很大，让我基本掌握了SQL语句的使用、MySQL数据库以及相关工具的使用。</p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>数据库操作实验</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E6%99%BA%E8%83%BD%E8%AE%BE%E6%96%BD%E7%AE%A1%E7%90%86/">智能设施管理</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E7%90%86%E7%AE%97%E6%B3%95%E5%8F%8A%E5%B7%A5%E5%85%B7%E5%BA%94%E7%94%A8/">因果推理算法及工具应用</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E5%90%8D%E7%A7%B0-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.</span> <span class="toc-text">1. [实验名称] 数据库操作实验</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-number">2.</span> <span class="toc-text">2. [实验目的]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%AE%9E%E9%AA%8C1-1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 实验1.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%AE%9E%E9%AA%8C1-2"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 实验1.2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%AE%9E%E9%AA%8C1-3"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 实验1.3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%AE%9E%E9%AA%8C1-4"><span class="toc-number">2.4.</span> <span class="toc-text">2.4. 实验1.4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E5%AE%9E%E9%AA%8C1-5"><span class="toc-number">2.5.</span> <span class="toc-text">2.5. 实验1.5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-%E5%AE%9E%E9%AA%8C1-6"><span class="toc-number">2.6.</span> <span class="toc-text">2.6. 实验1.6</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="toc-number">3.</span> <span class="toc-text">3. [实验要求]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%AE%9E%E9%AA%8C1-1"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 实验1.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%AE%9E%E9%AA%8C1-2"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 实验1.2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%AE%9E%E9%AA%8C1-3"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 实验1.3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E5%AE%9E%E9%AA%8C1-4"><span class="toc-number">3.4.</span> <span class="toc-text">3.4. 实验1.4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E5%AE%9E%E9%AA%8C1-5"><span class="toc-number">3.5.</span> <span class="toc-text">3.5. 实验1.5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-%E5%AE%9E%E9%AA%8C1-6"><span class="toc-number">3.6.</span> <span class="toc-text">3.6. 实验1.6</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B%E5%8F%8A%E5%86%85%E5%AE%B9"><span class="toc-number">4.</span> <span class="toc-text">4. [实验过程及内容]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%AE%9E%E9%AA%8C1-1-%E5%9F%BA%E6%9C%AC%E6%9F%A5%E8%AF%A2%E5%AE%9E%E9%AA%8C"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 实验1.1 基本查询实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-1-1-1%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E4%BE%9B%E5%BA%94%E5%95%86%E7%9A%84%E5%90%8D%E7%A7%B0%E3%80%81%E8%81%94%E7%B3%BB%E4%BA%BA%E5%A7%93%E5%90%8D%E3%80%81%E5%9F%8E%E5%B8%82%E3%80%81%E5%9C%B0%E5%9D%80%E5%92%8C%E7%94%B5%E8%AF%9D%E3%80%82"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1.1. 1.1.1列出所有供应商的名称、联系人姓名、城市、地址和电话。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-1-1-2%E6%9F%A5%E8%AF%A2%E8%AE%A2%E8%B4%AD%E6%97%A5%E6%9C%9F%E4%B8%BA-1997-%E5%B9%B4%E7%AC%AC-1-%E5%AD%A3%E5%BA%A6%EF%BC%8C%E8%B4%A7%E4%B8%BB%E5%9F%8E%E5%B8%82%E4%B8%BA%E5%A4%A9%E6%B4%A5%E6%88%96%E4%B8%8A%E6%B5%B7%E7%9A%84%E8%AE%A2%E5%8D%95%E7%9A%84%E6%89%80%E6%9C%89%E4%BF%A1%E6%81%AF%E3%80%82"><span class="toc-number">4.1.2.</span> <span class="toc-text">4.1.2. 1.1.2查询订购日期为 1997 年第 1 季度，货主城市为天津或上海的订单的所有信息。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-3-1-1-3%E4%B8%8D%E5%B8%A6%E5%88%86%E7%BB%84%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%88%86%E7%BB%84%E7%BB%9F%E8%AE%A1%E6%9F%A5%E8%AF%A2-%E6%8C%89%E7%85%A7%E5%9C%B0%E5%8C%BA%E7%BB%9F%E8%AE%A1%E5%AE%A2%E6%88%B7%E7%9A%84%E6%95%B0%E7%9B%AE%EF%BC%8C%E5%B9%B6%E6%8C%89%E6%95%B0%E7%9B%AE%E4%BB%8E%E4%BD%8E%E5%88%B0%E9%AB%98%E6%8E%92%E5%BA%8F"><span class="toc-number">4.1.3.</span> <span class="toc-text">4.1.3. 1.1.3不带分组过滤条件的分组统计查询,按照地区统计客户的数目，并按数目从低到高排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-4-1-1-4%E5%88%97%E5%87%BA%E6%80%BB%E9%87%91%E9%A2%9D-%E5%8D%B3%E8%AE%A2%E5%8D%95%E4%B8%AD%E6%AF%8F%E4%B8%AA%E4%BA%A7%E5%93%81%E7%9A%84%E9%87%91%E9%A2%9D%E4%B9%8B%E5%92%8C-%E5%9C%A8-3800-%E5%88%B0-4000-%E4%B9%8B%E9%97%B4-%E5%90%AB-%E7%9A%84%E6%AF%8F%E4%B8%AA%E8%AE%A2%E5%8D%95%E5%8F%8A%E5%85%B6%E6%80%BB%E9%87%91%E9%A2%9D%EF%BC%8C%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E5%8F%96%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E4%B8%A4%E4%BD%8D%E3%80%82%E8%A6%81%E6%B1%82%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C%E6%8C%89%E7%85%A7%E6%80%BB%E9%87%91%E9%A2%9D%E4%BB%8E%E9%AB%98%E5%88%B0%E4%BD%8E%E6%8E%92%E5%BA%8F%E3%80%82%E9%99%84%EF%BC%9A%E6%AF%8F%E4%B8%AA%E4%BA%A7%E5%93%81%E7%9A%84%E9%87%91%E9%A2%9D-%E5%8D%95%E4%BB%B7-%E6%95%B0%E9%87%8F-1-%E6%8A%98%E6%89%A3-%E3%80%82"><span class="toc-number">4.1.4.</span> <span class="toc-text">4.1.4. 1.1.4列出总金额(即订单中每个产品的金额之和)在 3800 到 4000 之间(含)的每个订单及其总金额，计算结果取小数点后两位。要求输出结果按照总金额从高到低排序。附：每个产品的金额 &#x3D; 单价  数量  (1 - 折扣)。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-5-1-1-5%E4%B8%A4%E8%A1%A8%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2-%E5%88%97%E5%87%BA%E9%9B%87%E5%91%98%E2%80%9C%E5%BC%A0%E9%A2%96%E2%80%9D%E6%89%80%E9%94%80%E5%94%AE%E7%9A%84%E6%89%80%E6%9C%89%E8%AE%A2%E5%8D%95%E7%9A%84%E8%B4%A7%E4%B8%BB%E4%BF%A1%E6%81%AF%EF%BC%88%E5%8C%85%E6%8B%AC%E8%B4%A7%E4%B8%BB%E5%90%8D%E7%A7%B0%E3%80%81%E5%9B%BD%E5%AE%B6%E3%80%81%E5%9C%B0%E5%8C%BA%E3%80%81%E5%9F%8E%E5%B8%82%E3%80%81%E5%9C%B0%E5%9D%80%EF%BC%89%E4%BB%A5%E5%8F%8A%E5%88%B0%E8%B4%A7%E6%97%A5%E6%9C%9F%E3%80%82%E4%BE%9B%E5%BA%94%E5%95%86%E2%80%9C%E7%A6%8F%E6%BB%A1%E5%A4%9A%E2%80%9D%E8%83%BD%E6%8F%90%E4%BE%9B%E5%93%AA%E4%BA%9B%E4%BA%A7%E5%93%81%EF%BC%9F%E8%AF%B7%E5%88%97%E5%87%BA%E4%BA%A7%E5%93%81%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF%E3%80%82"><span class="toc-number">4.1.5.</span> <span class="toc-text">4.1.5. 1.1.5两表连接查询 列出雇员“张颖”所销售的所有订单的货主信息（包括货主名称、国家、地区、城市、地址）以及到货日期。供应商“福满多”能提供哪些产品？请列出产品的详细信息。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-6-1-1-6%E5%8D%95%E8%A1%A8%E8%87%AA%E8%BA%AB%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2-%E6%89%BE%E5%87%BA%E5%AE%A2%E6%88%B7%E2%80%9C%E8%B5%90%E8%8A%B3%E8%82%A1%E4%BB%BD%E2%80%9D%E6%89%80%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82%EF%BC%8C%E5%90%8C%E6%97%B6%E5%88%97%E5%87%BA%E9%99%A4%E5%AE%83%E5%A4%96%E4%B9%9F%E4%BD%8D%E4%BA%8E%E8%BF%99%E4%B8%AA%E5%9F%8E%E5%B8%82%E7%9A%84%E5%AE%A2%E6%88%B7%E5%90%8D%E7%A7%B0%E3%80%82"><span class="toc-number">4.1.6.</span> <span class="toc-text">4.1.6. 1.1.6单表自身连接查询 找出客户“赐芳股份”所在的城市，同时列出除它外也位于这个城市的客户名称。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-7-1-1-7%E4%B8%89%E8%A1%A8%E5%8F%8A%E4%BB%A5%E4%B8%8A%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2%E5%88%97%E5%87%BA%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A7%B0%E4%B8%AD%E5%90%AB%E6%9C%89%E2%80%9C%E4%BA%BA%E5%AF%BF%E2%80%9D%E7%9A%84%E6%89%80%E6%9C%89%E5%AE%A2%E6%88%B7%E7%9A%84%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A7%B0%E5%8F%8A%E5%85%B6%E8%AE%A2%E5%8D%95%E6%80%BB%E9%87%91%E9%A2%9D%EF%BC%8C%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E5%8F%96%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E4%B8%A4%E4%BD%8D%E3%80%82%E5%88%97%E5%87%BA%E5%AE%A2%E6%88%B7%E2%80%9C%E5%BB%BA%E5%9B%BD%E7%A7%91%E6%8A%80%E2%80%9D%E5%9C%A8-1997-%E5%B9%B4%E8%AE%A2%E8%B4%AD%E7%9A%84%E6%89%80%E6%9C%89%E4%BA%A7%E5%93%81%E7%9A%84%E5%90%8D%E7%A7%B0%E5%8F%8A%E5%85%B6%E6%95%B0%E9%87%8F%E3%80%82"><span class="toc-number">4.1.7.</span> <span class="toc-text">4.1.7. 1.1.7三表及以上连接查询列出公司名称中含有“人寿”的所有客户的公司名称及其订单总金额，计算结果取小数点后两位。列出客户“建国科技”在 1997 年订购的所有产品的名称及其数量。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E5%AE%9E%E9%AA%8C1-2-%E8%A7%86%E5%9B%BE%E5%AE%9E%E9%AA%8C"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 实验1.2 视图实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-1-2-1%E5%88%9B%E5%BB%BA%E8%A1%8C%E5%88%97%E5%AD%90%E9%9B%86%E8%A7%86%E5%9B%BE%E5%9C%A8%E4%BA%A7%E5%93%81%E8%A1%A8%E4%B8%8A%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%E2%80%9C-V-PRODUCT-16%E2%80%9D%EF%BC%8C%E5%88%97%E5%87%BA-ID-%E4%B8%BA-16-%E7%9A%84%E4%BE%9B%E5%BA%94%E5%95%86%E6%89%80%E4%BE%9B%E5%BA%94%E4%BA%A7%E5%93%81%E7%9A%84-ID%E3%80%81%E4%BA%A7%E5%93%81%E5%90%8D%E7%A7%B0%E3%80%81%E4%BE%9B%E5%BA%94%E5%95%86-ID%E3%80%81%E7%B1%BB%E5%88%AB-ID%E3%80%81%E5%8D%95%E4%BD%8D%E6%95%B0%E9%87%8F%E3%80%81%E5%8D%95%E4%BB%B7%E3%80%81%E5%BA%93%E5%AD%98%E9%87%8F%EF%BC%9B%E6%9F%A5%E8%AF%A2%E6%AD%A4%E8%A7%86%E5%9B%BE%E7%9A%84%E6%89%80%E6%9C%89%E8%AE%B0%E5%BD%95%E3%80%82"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1. 1.2.1创建行列子集视图在产品表上创建视图“ V_PRODUCT_16”，列出 ID 为 16 的供应商所供应产品的 ID、产品名称、供应商 ID、类别 ID、单位数量、单价、库存量；查询此视图的所有记录。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-1-2-2%E4%BB%8E%E5%A4%9A%E4%B8%AA%E8%A1%A8%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%E4%B8%BA%E4%BE%9B%E5%BA%94%E5%95%86%E2%80%9C%E5%BA%B7%E5%AF%8C%E9%A3%9F%E5%93%81%E2%80%9D-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%AE%83%E8%83%BD%E4%BE%9B%E5%BA%94%E7%9A%84%E4%BA%A7%E5%93%81%E7%9A%84%E8%A7%86%E5%9B%BE%E2%80%9C-VPRODUCT%E5%BA%B7%E5%AF%8C%E9%A3%9F%E5%93%81%E2%80%9D%EF%BC%8C%E5%88%97%E5%87%BA%E4%BA%A7%E5%93%81-ID%E3%80%81%E4%BA%A7%E5%93%81%E5%90%8D%E7%A7%B0%E3%80%81%E7%B1%BB%E5%88%AB%E5%90%8D%E7%A7%B0%E3%80%81%E5%8D%95%E4%BD%8D%E6%95%B0%E9%87%8F%E3%80%81%E5%8D%95%E4%BB%B7%E3%80%81%E5%BA%93%E5%AD%98%E9%87%8F%EF%BC%9B%E6%9F%A5%E8%AF%A2%E6%AD%A4%E8%A7%86%E5%9B%BE%E7%9A%84%E6%89%80%E6%9C%89%E8%AE%B0%E5%BD%95%E3%80%82"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2. 1.2.2从多个表中创建视图为供应商“康富食品” 创建一个它能供应的产品的视图“ VPRODUCT康富食品”，列出产品 ID、产品名称、类别名称、单位数量、单价、库存量；查询此视图的所有记录。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3-1-2-3%E5%88%9B%E5%BB%BA%E6%9D%A5%E6%BA%90%E4%BA%8E%E5%8D%95%E4%B8%AA%E8%A1%A8%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%A7%86%E5%9B%BE%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%E2%80%9C-V-%E4%BA%A7%E5%93%81%E7%B1%BB%E5%88%AB%E5%BA%93%E5%AD%98%E2%80%9D%EF%BC%8C%E7%BB%9F%E8%AE%A1%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%88%AB%E4%BA%A7%E5%93%81%E7%9A%84%E6%80%BB%E5%BA%93%E5%AD%98%EF%BC%8C%E5%8F%AA%E9%9C%80%E5%88%97%E5%87%BA%E7%B1%BB%E5%88%AB-ID-%E5%92%8C%E6%80%BB%E5%BA%93%E5%AD%98%E9%87%8F%EF%BC%9B%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B8%AD%E6%9F%A5%E8%AF%A2%E7%B1%BB%E5%88%AB-ID-%E4%B8%BA-8-%E7%9A%84%E4%BA%A7%E5%93%81%E7%9A%84%E6%80%BB%E5%BA%93%E5%AD%98%E9%87%8F%E3%80%82"><span class="toc-number">4.2.3.</span> <span class="toc-text">4.2.3. 1.2.3创建来源于单个表的统计视图创建视图“ V_产品类别库存”，统计不同类别产品的总库存，只需列出类别 ID 和总库存量；在视图中查询类别 ID 为 8 的产品的总库存量。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-4-1-2-4%E5%88%9B%E5%BB%BA%E6%9D%A5%E6%BA%90%E4%BA%8E%E5%A4%9A%E4%B8%AA%E8%A1%A8%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%A7%86%E5%9B%BE%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%E2%80%9C-V-%E9%9B%87%E5%91%98%E4%BA%A7%E5%93%81%E9%94%80%E5%94%AE%E9%A2%9D%E2%80%9D%EF%BC%8C%E7%BB%9F%E8%AE%A1%E6%AF%8F%E4%B8%AA%E9%9B%87%E5%91%98%E6%89%80%E9%94%80%E5%94%AE%E7%9A%84%E6%AF%8F%E7%A7%8D%E4%BA%A7%E5%93%81%E7%9A%84%E6%80%BB%E6%95%B0%E9%87%8F%E5%92%8C%E6%80%BB%E9%87%91%E9%A2%9D%EF%BC%8C%E8%A6%81%E6%B1%82%E8%A7%86%E5%9B%BE%E4%B8%AD%E5%8C%85%E6%8B%AC%E9%9B%87%E5%91%98ID%E3%80%81%E9%9B%87%E5%91%98%E5%A7%93%E5%90%8D%E3%80%81%E4%BA%A7%E5%93%81%E5%90%8D%E7%A7%B0%E3%80%81%E9%94%80%E5%94%AE%E6%80%BB%E6%95%B0%E9%87%8F%E3%80%81%E9%94%80%E5%94%AE%E6%80%BB%E9%87%91%E9%A2%9D%EF%BC%88%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E5%8F%96%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E4%B8%A4%E4%BD%8D%EF%BC%89%EF%BC%9B%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B8%AD%E6%9F%A5%E8%AF%A2%E8%9B%8B%E7%B3%95%E7%9A%84%E6%80%BB%E9%94%80%E5%94%AE%E9%A2%9D%E3%80%82"><span class="toc-number">4.2.4.</span> <span class="toc-text">4.2.4. 1.2.4创建来源于多个表的统计视图创建视图“ V_雇员产品销售额”，统计每个雇员所销售的每种产品的总数量和总金额，要求视图中包括雇员ID、雇员姓名、产品名称、销售总数量、销售总金额（计算结果取小数点后两位）；在视图中查询蛋糕的总销售额。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-5-1-2-5%E9%AA%8C%E8%AF%81%E8%A7%86%E5%9B%BE%E7%9A%84%E5%8F%AF%E6%9B%B4%E6%96%B0%E6%80%A7%E5%92%8C%E8%BF%9B%E8%A1%8C%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C-%E8%A7%86%E5%9B%BE%E2%80%9C-V-%E4%BA%A7%E5%93%81%E7%B1%BB%E5%88%AB%E5%BA%93%E5%AD%98%E2%80%9D%E6%98%AF%E5%8F%AF%E6%9B%B4%E6%96%B0%E7%9A%84%E5%90%97%EF%BC%9F%E9%80%9A%E8%BF%87-SQL-%E8%AF%AD%E5%8F%A5%E5%8A%A0%E4%BB%A5%E9%AA%8C%E8%AF%81%EF%BC%8C%E5%B9%B6%E8%AF%B4%E6%98%8E%E5%8E%9F%E5%9B%A0%E3%80%82%E5%90%91%E8%A7%86%E5%9B%BE%E2%80%9C-V-PRODUCT-16%E2%80%9D%E4%B8%AD%E5%88%86%E5%88%AB%E6%8F%92%E5%85%A5%E4%B8%A4%E6%9D%A1%E8%AE%B0%E5%BD%95%EF%BC%9A-101-%E2%80%98%E5%8F%AF%E5%8F%A3%E5%8F%AF%E4%B9%90%E2%80%99-16-1-%E2%80%98%E6%AF%8F%E7%AE%B1-12%E7%93%B6%E2%80%99-20-00-100-%E5%92%8C-102-%E2%80%98%E7%99%BE%E4%BA%8B%E5%8F%AF%E4%B9%90%E2%80%99-15-1-%E2%80%98%E6%AF%8F%E7%AE%B1-24-%E7%93%B6%E2%80%99-30-00-100-%EF%BC%9B%E7%9C%8B%E8%83%BD%E5%90%A6%E4%BB%8E%E8%A7%86%E5%9B%BE%E4%B8%AD%E6%9F%A5%E8%AF%A2%E5%88%B0%E8%BF%99%E4%B8%A4%E6%9D%A1%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%86%8D%E7%9C%8B%E8%83%BD%E5%90%A6%E4%BB%8E%E5%9F%BA%E6%9C%AC%E8%A1%A8%E4%B8%AD%E6%9F%A5%E8%AF%A2%E5%88%B0%E8%BF%99%E4%B8%A4%E6%9D%A1%E8%AE%B0%E5%BD%95%EF%BC%9F%E9%80%9A%E8%BF%87%E8%A7%86%E5%9B%BE%E5%88%A0%E9%99%A4%E5%88%9A%E6%89%8D%E6%8F%92%E5%85%A5%E7%9A%84%E4%B8%A4%E6%9D%A1%E8%AE%B0%E5%BD%95%EF%BC%8C%E5%B9%B6%E9%AA%8C%E8%AF%81%E4%B9%8B%E3%80%82"><span class="toc-number">4.2.5.</span> <span class="toc-text">4.2.5. 1.2.5验证视图的可更新性和进行更新操作 视图“ V_产品类别库存”是可更新的吗？通过 SQL 语句加以验证，并说明原因。向视图“ V_PRODUCT_16”中分别插入两条记录： (101, ‘可口可乐’, 16, 1, ‘每箱 12瓶’, 20.00, 100) 和 (102, ‘百事可乐’, 15, 1, ‘每箱 24 瓶’, 30.00, 100)；看能否从视图中查询到这两条记录，再看能否从基本表中查询到这两条记录？通过视图删除刚才插入的两条记录，并验证之。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-6-1-2-6%E9%AA%8C%E8%AF%81-WITH-CHECK-OPTIONPage-8-%E4%BB%BF%E7%85%A7%E8%A7%86%E5%9B%BE%E2%80%9C-V-PRODUCT-16%E2%80%9D%EF%BC%8C%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%E2%80%9C-V-PRODUCT-16-WCO%E2%80%9D%EF%BC%8C%E4%BD%86%E5%A2%9E%E5%8A%A0-WITHCHECK-OPTION%EF%BC%9B%E5%90%91%E8%A7%86%E5%9B%BE%E2%80%9C-V-PRODUCT-16-WCO%E2%80%9D%E4%B8%AD%E6%8F%92%E5%85%A5%E8%AE%B0%E5%BD%95%EF%BC%9A-103-%E2%80%98%E7%99%BE%E4%BA%8B%E5%8F%AF%E4%B9%90%E2%80%99-15-1-%E2%80%98%E6%AF%8F%E7%AE%B1-24%E7%93%B6%E2%80%99-30-00-100-%EF%BC%8C%E8%83%BD%E5%90%A6%E6%88%90%E5%8A%9F%EF%BC%9F"><span class="toc-number">4.2.6.</span> <span class="toc-text">4.2.6. 1.2.6验证 WITH CHECK OPTIONPage 8 仿照视图“ V_PRODUCT_16”，创建视图“ V_PRODUCT_16_WCO”，但增加 WITHCHECK OPTION；向视图“ V_PRODUCT_16_WCO”中插入记录： (103, ‘百事可乐’, 15, 1, ‘每箱 24瓶’, 30.00, 100)，能否成功？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-7-1-2-7%E9%AA%8C%E8%AF%81-RESTRICT-%E5%92%8C-CASCADE-%E5%9F%BA%E4%BA%8E%E8%A7%86%E5%9B%BE%E2%80%9C-V%E9%9B%87%E5%91%98%E4%BA%A7%E5%93%81%E9%94%80%E5%94%AE%E9%A2%9D%E2%80%9D%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE%E2%80%9C-V%E9%9B%87%E5%91%98%E9%94%80%E5%94%AE%E6%80%BB%E9%A2%9D%E2%80%9D%EF%BC%8C%E8%A6%81%E6%B1%82%E5%88%97%E5%87%BA%E9%9B%87%E5%91%98%E5%A7%93%E5%90%8D%E3%80%81%E9%94%80%E5%94%AE%E6%80%BB%E9%87%91%E9%A2%9D-%E5%88%86%E5%88%AB%E4%BD%BFRESTRICT-%E5%92%8C-CASCADE-%E9%80%89%E9%A1%B9%E5%88%A0%E9%99%A4%E8%A7%86%E5%9B%BE%E2%80%9C-V-%E9%9B%87%E5%91%98%E4%BA%A7%E5%93%81%E9%94%80%E5%94%AE%E9%A2%9D%E2%80%9D%EF%BC%8C%E8%A7%82%E5%AF%9F%E5%8F%91%E7%94%9F%E7%9A%84%E7%8E%B0%E8%B1%A1%E5%B9%B6%E5%81%9A%E5%87%BA%E7%BB%93%E8%AE%BA%E3%80%82"><span class="toc-number">4.2.7.</span> <span class="toc-text">4.2.7. 1.2.7验证 RESTRICT 和 CASCADE,基于视图“ V雇员产品销售额”创建视图“ V雇员销售总额”，要求列出雇员姓名、销售总金额; 分别使RESTRICT 和 CASCADE 选项删除视图“ V_雇员产品销售额”，观察发生的现象并做出结论。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E5%AE%9E%E9%AA%8C1-3-%E6%95%B0%E6%8D%AE%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2%E5%AE%9E%E9%AA%8C"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 实验1.3 数据高级查询实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1-1-3-1%E5%88%97%E5%87%BA%E8%B4%AD%E4%B9%B0%E4%BA%86%E2%80%9C%E5%B0%8F%E5%9D%8A%E2%80%9D%E4%BE%9B%E5%BA%94%E7%9A%84%E2%80%9C%E5%B9%B2%E8%B4%9D%E2%80%9D%E7%9A%84%E5%AE%A2%E6%88%B7%E7%9A%84%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A7%B0%E3%80%82%EF%BC%88%E8%A6%81%E6%B1%82%E5%88%86%E5%88%AB%E4%BD%BF%E7%94%A8%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2%E5%92%8C%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%B9%B6%E5%9C%A8-MySQL-WorkBench-%E4%B8%AD%E6%AF%94%E8%BE%83%E8%BF%99%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%EF%BC%9A%E7%82%B9%E5%87%BB%E7%BB%93%E6%9E%9C%E7%AA%97%E5%8F%A3%E5%8F%B3%E4%BE%A7%E7%9A%84%E2%80%9CExecution-Plan%E2%80%9D%E6%8C%89%E9%92%AE%EF%BC%89%E3%80%82"><span class="toc-number">4.3.1.</span> <span class="toc-text">4.3.1. 1.3.1列出购买了“小坊”供应的“干贝”的客户的公司名称。（要求分别使用连接查询和嵌套查询两种方式，并在 MySQL WorkBench 中比较这两种方式的执行计划：点击结果窗口右侧的“Execution Plan”按钮）。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-1-3-2%E4%BD%BF%E7%94%A8%E5%8D%95%E5%B1%82-EXISTS-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2%E6%B2%A1%E6%9C%89%E8%B4%AD%E4%B9%B0%E8%BF%87%E2%80%9C%E5%B0%8F%E5%9D%8A%E2%80%9D%E4%BE%9B%E5%BA%94%E7%9A%84%E2%80%9C%E5%B9%B2%E8%B4%9D%E2%80%9D%E7%9A%84%E5%AE%A2%E6%88%B7%E6%95%B0%E7%9B%AE%E3%80%82"><span class="toc-number">4.3.2.</span> <span class="toc-text">4.3.2. 1.3.2使用单层 EXISTS 嵌套查询没有购买过“小坊”供应的“干贝”的客户数目。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-3-1-3-3%E5%8F%8C%E5%B1%82-EXISTS-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2-%E5%88%97%E5%87%BA%E8%B4%AD%E4%B9%B0%E8%BF%87%E5%AE%A2%E6%88%B7%E2%80%9C%E6%A3%AE%E9%80%9A%E2%80%9D%E8%B4%AD%E4%B9%B0%E8%BF%87%E7%9A%84%E7%B1%BB%E5%88%AB-ID-%E4%B8%BA-3-%E7%9A%84%E5%85%A8%E9%83%A8%E4%BA%A7%E5%93%81%E7%9A%84%E5%AE%A2%E6%88%B7%E5%90%8D%E7%A7%B0%E3%80%82%EF%BC%88%E6%88%90%E5%8A%9F%E5%86%99%E5%87%BA%E8%AF%AD%E5%8F%A5%E5%90%8E%EF%BC%8C%E5%9C%A8-MySQLWorkBench-%E4%B8%AD%E5%88%86%E6%9E%90%E5%85%B6%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%EF%BC%89%E3%80%82"><span class="toc-number">4.3.3.</span> <span class="toc-text">4.3.3. 1.3.3双层 EXISTS 嵌套查询 列出购买过客户“森通”购买过的类别 ID 为 3 的全部产品的客户名称。（成功写出语句后，在 MySQLWorkBench 中分析其执行计划）。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-4-1-3-4%E9%87%87%E7%94%A8-FROM-%E5%AD%90%E5%8F%A5%E4%B8%AD%E7%9A%84%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E5%88%97%E5%87%BA%E8%AE%A2%E5%8D%95%E5%B9%B3%E5%9D%87%E9%87%91%E9%A2%9D%E8%B6%85%E8%BF%87-800-%E5%85%83%E7%9A%84%E5%8D%8E%E5%8C%97%E5%9C%B0%E5%8C%BA%E5%AE%A2%E6%88%B7%E7%9A%84%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A7%B0%E5%8F%8A%E8%AE%A2%E5%8D%95%E5%B9%B3%E5%9D%87%E9%87%91%E9%A2%9D%EF%BC%8C%E8%A6%81%E6%B1%82%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C%E6%8C%89%E7%85%A7%E5%B9%B3%E5%9D%87%E9%87%91%E9%A2%9D%E4%BB%8E%E4%BD%8E%E5%88%B0%E9%AB%98%E6%8E%92%E5%BA%8F%E3%80%82"><span class="toc-number">4.3.4.</span> <span class="toc-text">4.3.4. 1.3.4采用 FROM 子句中的嵌套查询方式列出订单平均金额超过 800 元的华北地区客户的公司名称及订单平均金额，要求输出结果按照平均金额从低到高排序。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E5%AE%9E%E9%AA%8C1-4-%E7%B4%A2%E5%BC%95%E5%AE%9E%E9%AA%8C"><span class="toc-number">4.4.</span> <span class="toc-text">4.4. 实验1.4 索引实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-1-1-4-1%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F-tpch-MySQL8-sql%EF%BC%8C%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%BC%8F-tpch%E3%80%82%E6%88%90%E5%8A%9F%E6%89%A7%E8%A1%8C%E5%90%8E%EF%BC%8C%E5%90%84%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%AE%B0%E5%BD%95%E6%95%B0%E4%B8%BA%EF%BC%9Acustomer-661296-%EF%BC%8Cnation-150-%EF%BC%8Ccontinent-6-%E3%80%82"><span class="toc-number">4.4.1.</span> <span class="toc-text">4.4.1. 1.4.1执行程序 tpch-MySQL8.sql，建立一个新的数据库模式 tpch。成功执行后，各表中的记录数为：customer(661296)，nation(150)，continent(6)。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-2-1-4-2%E5%88%9B%E5%BB%BA%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95-%E5%88%97%E5%87%BA-customer-%E8%A1%A8%E4%B8%AD%E5%A7%93%E2%80%9C%E6%AC%A7%E9%98%B3%E2%80%9D%E7%9A%84%E6%89%80%E6%9C%89%E5%AE%A2%E6%88%B7%EF%BC%8C%E5%B9%B6%E8%AE%B0%E5%BD%95%E4%B8%8B%E5%85%B6%E6%89%A7%E8%A1%8C%E6%97%B6%E9%97%B4%EF%BC%88%E7%82%B9%E5%87%BB%E7%BB%93%E6%9E%9C%E7%AA%97%E5%8F%A3%E5%8F%B3%E4%BE%A7%E7%9A%84%E2%80%9CQuery-Stat%E2%80%9D%E6%8C%89%E9%92%AE%EF%BC%89%EF%BC%9B%E5%9C%A8-customer-%E8%A1%A8%E7%9A%84-name-%E5%AD%97%E6%AE%B5%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95-IDX-Name%EF%BC%88%E5%8F%AF%E8%83%BD%E9%9C%80%E8%A6%81%E8%BE%83%E9%95%BF%E6%97%B6%E9%97%B4%EF%BC%89%EF%BC%9B%E5%86%8D%E6%AC%A1%E6%89%A7%E8%A1%8C%E4%B8%8A%E8%BF%B0%E6%9F%A5%E8%AF%A2%EF%BC%8C%E5%B9%B6%E8%AE%B0%E5%BD%95%E4%B8%8B%E5%85%B6%E6%89%A7%E8%A1%8C%E6%97%B6%E9%97%B4%EF%BC%8C%E4%B8%8E%E5%89%8D%E6%AC%A1%E6%97%B6%E9%97%B4%E8%BF%9B%E8%A1%8C%E6%AF%94%E8%BE%83%E3%80%82"><span class="toc-number">4.4.2.</span> <span class="toc-text">4.4.2. 1.4.2创建普通索引 列出 customer 表中姓“欧阳”的所有客户，并记录下其执行时间（点击结果窗口右侧的“Query Stat”按钮）；在 customer 表的 name 字段上创建普通索引 IDX_Name（可能需要较长时间）；再次执行上述查询，并记录下其执行时间，与前次时间进行比较。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-3-1-4-3%E7%94%A8-EXPLAIN-%E5%91%BD%E4%BB%A4%E5%88%86%E6%9E%90%E6%9F%90%E4%B8%AA-SQL-%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E6%97%B6%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E4%BA%86%E7%B4%A2%E5%BC%95%E3%80%82"><span class="toc-number">4.4.3.</span> <span class="toc-text">4.4.3. 1.4.3用 EXPLAIN 命令分析某个 SQL 查询语句执行时是否使用了索引。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-4-1-4-4%E5%88%A0%E9%99%A4-customer-%E8%A1%A8%E7%9A%84%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95-IDX-Name%E3%80%82"><span class="toc-number">4.4.4.</span> <span class="toc-text">4.4.4. 1.4.4删除 customer 表的普通索引 IDX_Name。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-%E5%AE%9E%E9%AA%8C1-5-%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E5%AE%9E%E9%AA%8C"><span class="toc-number">4.5.</span> <span class="toc-text">4.5. 实验1.5 数据更新实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-1-1-5-1INSERT-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5%EF%BC%88%E6%8F%92%E5%85%A5%E5%85%A8%E9%83%A8%E5%88%97%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%89%EF%BC%8C%E5%9C%A8%E9%9B%87%E5%91%98%E8%A1%A8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%AC%AC-10-%E5%8F%B7%E9%9B%87%E5%91%98%E2%80%9C%E5%BC%A0%E4%B8%89%E2%80%9D%EF%BC%8C%E8%A6%81%E6%B1%82%E4%B8%BA%E6%AF%8F%E5%88%97%E9%83%BD%E7%BB%99%E5%87%BA%E4%B8%80%E4%B8%AA%E5%90%88%E7%90%86%E7%9A%84%E5%80%BC%E3%80%82"><span class="toc-number">4.5.1.</span> <span class="toc-text">4.5.1. 1.5.1INSERT 基本语句（插入全部列的数据），在雇员表中添加第 10 号雇员“张三”，要求为每列都给出一个合理的值。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-2-1-5-2INSERT-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5%EF%BC%88%E6%8F%92%E5%85%A5%E9%83%A8%E5%88%86%E5%88%97%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%89%E5%9C%A8%E8%AE%A2%E5%8D%95%E8%A1%A8%E4%B8%AD%E6%8F%92%E5%85%A5%E4%B8%80%E6%9D%A1-ID-%E4%B8%BA-99999-%E7%9A%84%E8%AE%A2%E5%8D%95%EF%BC%9A%E9%9B%87%E5%91%98-ID-%E4%B8%BA-10%EF%BC%8C%E5%AE%A2%E6%88%B7-ID-%E4%B8%BA%E2%80%9CBLONP%E2%80%9D%E3%80%82%E5%B9%B6%E8%A1%A5%E8%B6%B3%E8%AE%A2%E5%8D%95%E8%A1%A8%E7%9A%84%E9%9D%9E%E7%A9%BA%E5%B1%9E%E6%80%A7%EF%BC%88%E8%AE%A2%E8%B4%AD%E6%97%A5%E6%9C%9F-%E5%88%B0%E8%B4%A7%E6%97%A5%E6%9C%9F-%E8%BF%90%E8%B4%A7%E5%95%86-%E8%BF%90%E8%B4%A7%E8%B4%B9-%E8%B4%A7%E4%B8%BB%E5%90%8D%E7%A7%B0%EF%BC%89%E7%9A%84%E5%80%BC%E3%80%82"><span class="toc-number">4.5.2.</span> <span class="toc-text">4.5.2. 1.5.2INSERT 基本语句（插入部分列的数据）在订单表中插入一条 ID 为 99999 的订单：雇员 ID 为 10，客户 ID 为“BLONP”。并补足订单表的非空属性（订购日期, 到货日期,运货商, 运货费, 货主名称）的值。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-3-1-5-3%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE-INSERT-%E8%AF%AD%E5%8F%A5%EF%BC%8C%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%AE%A2%E6%88%B7%E8%A1%A8%E2%80%9C%E6%B2%B3%E5%8C%97%E5%AE%A2%E6%88%B7%E2%80%9D%EF%BC%8C%E6%8A%8A%E6%89%80%E6%9C%89%E7%9F%B3%E5%AE%B6%E5%BA%84%E5%AE%A2%E6%88%B7%E5%8A%A0%E5%85%A5%E5%88%B0%E6%AD%A4%E8%A1%A8%E4%B8%AD%EF%BC%9B%E7%BB%A7%E7%BB%AD%E6%8A%8A%E7%A7%A6%E7%9A%87%E5%B2%9B%E5%AE%A2%E6%88%B7%E5%8A%A0%E5%85%A5%E5%88%B0%E2%80%9C%E6%B2%B3%E5%8C%97%E5%AE%A2%E6%88%B7%E2%80%9D%E8%A1%A8%E4%B8%AD%EF%BC%9B%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E2%80%9C%E8%B4%AD%E7%89%A9%E7%BB%9F%E8%AE%A1%E2%80%9D%E8%A1%A8%EF%BC%8C%E8%AE%B0%E5%BD%95%E6%AF%8F%E4%B8%AA%E5%AE%A2%E6%88%B7%E7%9A%84%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A7%B0%E5%8F%8A%E5%85%B6%E8%AE%A2%E5%8D%95%E6%80%BB%E4%BB%B7%EF%BC%88%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C%E5%8F%96%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E4%B8%A4%E4%BD%8D%EF%BC%89%E3%80%82"><span class="toc-number">4.5.3.</span> <span class="toc-text">4.5.3. 1.5.3批量数据 INSERT 语句，创建一个新的客户表“河北客户”，把所有石家庄客户加入到此表中；继续把秦皇岛客户加入到“河北客户”表中；创建一个“购物统计”表，记录每个客户的公司名称及其订单总价（计算结果取小数点后两位）。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-4-1-5-4UPDATE-%E8%AF%AD%E5%8F%A5%EF%BC%88%E4%BF%AE%E6%94%B9%E9%83%A8%E5%88%86%E8%AE%B0%E5%BD%95%E7%9A%84%E9%83%A8%E5%88%86%E5%88%97%E5%80%BC%EF%BC%89%E5%B0%86%E6%89%80%E6%9C%89%E5%8D%95%E4%BB%B7%E5%9C%A8-100-%E5%85%83%E4%BB%A5%E4%B8%8A%EF%BC%88%E5%90%AB%EF%BC%89%E7%9A%84%E4%BA%A7%E5%93%81%E7%9A%84%E5%8D%95%E4%BB%B7%E4%B8%8B%E9%99%8D-10-%E3%80%82"><span class="toc-number">4.5.4.</span> <span class="toc-text">4.5.4. 1.5.4UPDATE 语句（修改部分记录的部分列值）将所有单价在 100 元以上（含）的产品的单价下降 10%。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-5-1-5-5UPDATE-%E8%AF%AD%E5%8F%A5%EF%BC%88%E5%88%A9%E7%94%A8%E4%B8%80%E4%B8%AA%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BF%AE%E6%94%B9%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%89%E5%9C%A8%E8%AE%A2%E5%8D%95%E8%A1%A8%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%9E%8B%E4%B8%BA-Decimal-8-2-%E7%9A%84%E5%B1%9E%E6%80%A7%E2%80%9C%E6%80%BB%E9%87%91%E9%A2%9D%E2%80%9D%EF%BC%9B%E5%88%A9%E7%94%A8%E8%AE%A2%E5%8D%95%E6%98%8E%E7%BB%86%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E6%94%B9%E8%AE%A2%E5%8D%95%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%80%BB%E9%87%91%E9%A2%9D%EF%BC%9A%E6%80%BB%E9%87%91%E9%A2%9D-%E5%8D%95%E4%BB%B7%E6%95%B0%E9%87%8F-1-%E6%8A%98%E6%89%A3-%E3%80%82"><span class="toc-number">4.5.5.</span> <span class="toc-text">4.5.5. 1.5.5UPDATE 语句（利用一个表中的数据修改另外一个表中的数据）在订单表中增加一个类型为 Decimal(8, 2)的属性“总金额”；利用订单明细表中的属性修改订单表中的总金额：总金额 &#x3D; 单价数量(1-折扣)。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-6-1-5-6DELETE-%E8%AF%AD%E5%8F%A5%EF%BC%88%E5%88%A0%E9%99%A4%E7%BB%99%E5%AE%9A%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%89%80%E6%9C%89%E8%AE%B0%E5%BD%95%EF%BC%89%E5%88%A0%E9%99%A4%E5%AE%A2%E6%88%B7%E2%80%9C%E4%B8%9C%E5%8D%97%E5%AE%9E%E4%B8%9A%E2%80%9D%E7%9A%84%E6%89%80%E6%9C%89%E8%AE%A2%E5%8D%95%EF%BC%88%E5%85%88%E5%88%A0%E8%AE%A2%E5%8D%95%E6%98%8E%E7%BB%86%EF%BC%8C%E5%86%8D%E5%88%A0%E8%AE%A2%E5%8D%95%EF%BC%89%E3%80%82%E5%8F%AA%E5%88%A0%E9%99%A4%E5%AE%A2%E6%88%B7%E2%80%9C%E4%B8%89%E5%B7%9D%E5%AE%9E%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E2%80%9D%E7%9A%84%E6%89%80%E6%9C%89%E8%AE%A2%E5%8D%95%EF%BC%8C%E8%80%8C%E4%B8%8D%E5%85%88%E5%88%A0%E9%99%A4%E5%85%B6%E6%98%8E%E7%BB%86%EF%BC%8C%E7%9C%8B%E7%9C%8B%E7%BB%93%E6%9E%9C%E5%A6%82%E4%BD%95%EF%BC%9F%E5%B0%86%E2%80%9C%E8%AE%A2%E5%8D%95%E6%98%8E%E7%BB%86%E2%80%9D%E7%9A%84%E5%A4%96%E7%A0%81%E7%BA%A6%E6%9D%9F%E2%80%9C%E8%AE%A2%E5%8D%95%E6%98%8E%E7%BB%86-ibfk-1%E2%80%9D%E4%BF%AE%E6%94%B9%E4%B8%BA%E7%BA%A7%E8%81%94%E5%88%A0%E9%99%A4%EF%BC%88%E4%BD%BF%E7%94%A8-ALTER-Table%E5%91%BD%E4%BB%A4%E5%AF%B9%E7%BA%A6%E6%9D%9F%E5%85%88%E5%88%A0%E5%86%8D%E5%A2%9E%EF%BC%89%EF%BC%9B%E7%8E%B0%E5%9C%A8%E7%9B%B4%E6%8E%A5%E5%88%A0%E9%99%A4%E5%AE%A2%E6%88%B7%E2%80%9C%E4%B8%89%E5%B7%9D%E5%AE%9E%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E2%80%9D%E7%9A%84%E6%89%80%E6%9C%89%E8%AE%A2%E5%8D%95%EF%BC%8C%E7%9C%8B%E7%9C%8B%E7%BB%93%E6%9E%9C%E5%A6%82%E4%BD%95%EF%BC%9F"><span class="toc-number">4.5.6.</span> <span class="toc-text">4.5.6. 1.5.6DELETE 语句（删除给定条件的所有记录）删除客户“东南实业”的所有订单（先删订单明细，再删订单）。只删除客户“三川实业有限公司”的所有订单，而不先删除其明细，看看结果如何？将“订单明细”的外码约束“订单明细_ibfk_1”修改为级联删除（使用 ALTER Table命令对约束先删再增）；现在直接删除客户“三川实业有限公司”的所有订单，看看结果如何？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-%E5%AE%9E%E9%AA%8C1-6-%E5%AE%89%E5%85%A8%E6%80%A7%E5%AE%9E%E9%AA%8C"><span class="toc-number">4.6.</span> <span class="toc-text">4.6. 实验1.6 安全性实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-1-1-6-1%E5%9C%A8%E7%AA%97%E5%8F%A3-1-%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E2%80%9C%E8%B5%B5%E5%86%9B%E2%80%9D%EF%BC%8C%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81%E4%B8%BA-123456%EF%BC%9B"><span class="toc-number">4.6.1.</span> <span class="toc-text">4.6.1. 1.6.1在窗口 1 中创建一个数据库用户“赵军”，初始密码为 123456；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-2-1-6-2%E5%9C%A8%E7%AA%97%E5%8F%A3-2-%E4%B8%AD%E4%BB%A5%E2%80%9C%E8%B5%B5%E5%86%9B%E2%80%9D%E7%99%BB%E5%BD%95%EF%BC%8C%E7%9C%8B%E8%83%BD%E5%90%A6%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93-test%EF%BC%9B"><span class="toc-number">4.6.2.</span> <span class="toc-text">4.6.2. 1.6.2在窗口 2 中以“赵军”登录，看能否创建一个新的数据库 test；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-3-1-6-3%E5%9C%A8%E7%AA%97%E5%8F%A3-1-%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%A7%92%E8%89%B2%E2%80%9C%E9%94%80%E5%94%AE%E7%BB%8F%E7%90%86%E2%80%9D%EF%BC%8C%E5%B9%B6%E6%8E%88%E4%BA%88%E5%85%B6%E5%88%9B%E5%BB%BA%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E6%9F%A5%E8%AF%A2-northwind%E5%BA%93%E4%B8%AD%E6%89%80%E6%9C%89%E8%A1%A8%E7%9A%84%E6%9D%83%E9%99%90%EF%BC%9B"><span class="toc-number">4.6.3.</span> <span class="toc-text">4.6.3. 1.6.3在窗口 1 中创建一个角色“销售经理”，并授予其创建新数据库和查询 northwind库中所有表的权限；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-4-1-6-4%E5%9C%A8%E7%AA%97%E5%8F%A3-1-%E4%B8%BA%E7%94%A8%E6%88%B7%E2%80%9C%E8%B5%B5%E5%86%9B%E2%80%9D%E8%B5%8B%E4%BA%88%E8%A7%92%E8%89%B2%E2%80%9C%E9%94%80%E5%94%AE%E7%BB%8F%E7%90%86%E2%80%9D%EF%BC%8C%E5%B9%B6%E6%9F%A5%E7%9C%8B%E5%85%B6%E6%9D%83%E9%99%90%EF%BC%9B"><span class="toc-number">4.6.4.</span> <span class="toc-text">4.6.4. 1.6.4在窗口 1 为用户“赵军”赋予角色“销售经理”，并查看其权限；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-5-1-6-5%E5%9C%A8%E7%AA%97%E5%8F%A3-2-%E4%B8%AD%E4%BB%A5%E2%80%9C%E8%B5%B5%E5%86%9B%E2%80%9D%E9%87%8D%E6%96%B0%E7%99%BB%E5%BD%95%EF%BC%8C%E5%B9%B6%E5%B0%9D%E8%AF%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E4%BB%A5%E5%8F%8A%E4%BB%8E-northwind%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A1%A8%E4%B8%AD%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%EF%BC%9B"><span class="toc-number">4.6.5.</span> <span class="toc-text">4.6.5. 1.6.5在窗口 2 中以“赵军”重新登录，并尝试创建一个新的数据库，以及从 northwind数据库的表中查询数据；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-6-1-6-6%E5%9C%A8%E7%AA%97%E5%8F%A3-1-%E4%B8%AD%E5%88%9B%E5%BB%BA%E2%80%9C%E9%94%80%E5%94%AE%E8%A7%86%E5%9B%BE%E2%80%9D%EF%BC%8C%E5%85%B6%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BD%BF%E6%AF%8F%E4%B8%AA%E9%94%80%E5%94%AE%E4%BB%A3%E8%A1%A8%E5%8F%AA%E8%83%BD%E7%9C%8B%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E9%94%80%E5%94%AE%E8%AE%A2%E5%8D%95%EF%BC%9B"><span class="toc-number">4.6.6.</span> <span class="toc-text">4.6.6. 1.6.6在窗口 1 中创建“销售视图”，其作用是使每个销售代表只能看到自己的销售订单；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-7-1-6-7%E5%9C%A8%E7%AA%97%E5%8F%A3-1-%E4%B8%AD%E4%B8%BA%E9%9B%87%E5%91%98%E8%A1%A8%E4%B8%AD%E7%9A%84-6-%E4%B8%AA%E9%94%80%E5%94%AE%E4%BB%A3%E8%A1%A8%EF%BC%88%E5%BC%A0%E9%A2%96%E7%AD%89%EF%BC%89%E5%90%84%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7%EF%BC%9B%E7%84%B6%E5%90%8E%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E8%A7%92%E8%89%B2%E2%80%9C%E9%94%80%E5%94%AE%E4%BB%A3%E8%A1%A8%E2%80%9D%EF%BC%8C%E4%B8%BA%E5%85%B6%E8%B5%8B%E2%80%9C%E9%94%80%E5%94%AE%E8%A7%86%E5%9B%BE%E2%80%9D%E7%9A%84%E9%80%89%E6%8B%A9%E6%9D%83%E9%99%90%EF%BC%8C%E5%B0%86%E6%AD%A4%E8%A7%92%E8%89%B2%E6%8E%88%E4%BA%88%E4%B8%8A%E8%BF%B0-6-%E4%B8%AA%E7%94%A8%E6%88%B7%EF%BC%9B"><span class="toc-number">4.6.7.</span> <span class="toc-text">4.6.7. 1.6.7在窗口 1 中为雇员表中的 6 个销售代表（张颖等）各创建一个用户；然后创建一个新的角色“销售代表”，为其赋“销售视图”的选择权限，将此角色授予上述 6 个用户；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-8-1-6-8%E5%9C%A8%E7%AA%97%E5%8F%A3-2-%E4%B8%AD%E4%BB%A5%E4%B8%8D%E5%90%8C%E8%BA%AB%E4%BB%BD%E7%99%BB%E5%BD%95%EF%BC%8C%E9%AA%8C%E8%AF%81%E4%BB%A5%E4%B8%8A%E8%A7%86%E5%9B%BE%EF%BC%9B"><span class="toc-number">4.6.8.</span> <span class="toc-text">4.6.8. 1.6.8在窗口 2 中以不同身份登录，验证以上视图；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-9-1-6-9%E6%94%B6%E5%9B%9E%E7%94%A8%E6%88%B7%E2%80%9C%E5%BC%A0%E9%A2%96%E2%80%9D%E7%9A%84%E2%80%9C%E9%94%80%E5%94%AE%E4%BB%A3%E8%A1%A8%E2%80%9D%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%EF%BC%8C%E5%B9%B6%E9%AA%8C%E8%AF%81%E4%B9%8B%EF%BC%9B"><span class="toc-number">4.6.9.</span> <span class="toc-text">4.6.9. 1.6.9收回用户“张颖”的“销售代表”角色权限，并验证之；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-10-1-6-10%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%85%B6%E4%BB%96%E6%9D%83%E9%99%90%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C%EF%BC%8C%E5%B9%B6%E9%AA%8C%E8%AF%81%E3%80%82"><span class="toc-number">4.6.10.</span> <span class="toc-text">4.6.10. 1.6.10自己设计关于数据库和表的其他权限操作实验，并验证。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">5. [实验总结]</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

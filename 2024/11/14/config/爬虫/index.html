@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>爬虫 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="爬虫">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/%E7%88%AC%E8%99%AB/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.爬取数据保存为json学习1.1.pachong.pyimportjsonfrombs4importBeautifulSoupimportrequestsurl=&amp;quot;https://xl.16888.com/factory.html&amp;quot;response=requests.get(url)r">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">爬虫</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:34:11.804Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-爬取数据保存为json"><a href="#1-爬取数据保存为json" class="headerlink" title="1. 爬取数据保存为json"></a>1. 爬取数据保存为json</h1><p>学习</p>
+<h2 id="1-1-pachong-py"><a href="#1-1-pachong-py" class="headerlink" title="1.1. pachong.py"></a>1.1. pachong.py</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&quot;https://xl.16888.com/factory.html&quot;</span><br>response = requests.get(url)<br>response.encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span><br>soup = BeautifulSoup(response.text, <span class="hljs-string">&#x27;html.parser&#x27;</span>)<br><br><span class="hljs-comment"># 找到表格中的所有行</span><br>rows = soup.find_all(<span class="hljs-string">&#x27;tr&#x27;</span>)<br><br><span class="hljs-comment"># 初始化一个空列表用于存储表格数据</span><br>table_data = []<br><br><span class="hljs-comment"># 提取表头字段</span><br>header_row = rows[<span class="hljs-number">0</span>]<br>headers = [th.text.strip() <span class="hljs-keyword">for</span> th <span class="hljs-keyword">in</span> header_row.find_all(<span class="hljs-string">&#x27;th&#x27;</span>)]<br><br><span class="hljs-comment"># 提取每一行的数据</span><br><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> rows[<span class="hljs-number">1</span>:]:<br>    row_data = [td.text.strip() <span class="hljs-keyword">for</span> td <span class="hljs-keyword">in</span> row.find_all(<span class="hljs-string">&#x27;td&#x27;</span>)]<br>    <span class="hljs-keyword">if</span> row_data:  <span class="hljs-comment"># 如果行数据不为空，则添加到表格数据列表中</span><br>        entry = &#123;&#125;<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(headers)):<br>            entry[headers[i]] = row_data[i] <span class="hljs-keyword">if</span> i &lt; <span class="hljs-built_in">len</span>(row_data) <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;&quot;</span>  <span class="hljs-comment"># 用空字符串填充缺失的数据</span><br>        table_data.append(entry)<br><br><span class="hljs-comment"># 将表格数据保存为 JSON 文件</span><br>json_data = json.dumps(table_data, ensure_ascii=<span class="hljs-literal">False</span>)<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./test/未转译.json&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> json_file:<br>    json_file.write(json_data)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;JSON 文件已成功保存为 未转译.json&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<h2 id="1-2-运行截图"><a href="#1-2-运行截图" class="headerlink" title="1.2. 运行截图"></a>1.2. 运行截图</h2><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240425105006016.png" alt="image-20240425105006016"></p>
+<h1 id="2-json文件处理"><a href="#2-json文件处理" class="headerlink" title="2. json文件处理"></a>2. json文件处理</h1><h2 id="2-1-json-1-py"><a href="#2-1-json-1-py" class="headerlink" title="2.1. json_1.py"></a>2.1. json_1.py</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> csv<br><br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br><span class="hljs-comment"># 读取 JSON 文件</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./test/未转译.json&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> json_file:<br>    json_data = json.load(json_file)<br><br><span class="hljs-comment"># 定义 CSV 文件名</span><br>csv_file = <span class="hljs-string">&quot;./test/转译.csv&quot;</span><br><br><span class="hljs-comment"># 获取字段名（列名）</span><br>fieldnames = <span class="hljs-built_in">list</span>(json_data[<span class="hljs-number">0</span>].keys())<br><br><span class="hljs-comment"># 将 JSON 数据写入 CSV 文件</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(csv_file, <span class="hljs-string">&quot;w&quot;</span>, newline=<span class="hljs-string">&quot;&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> csvfile:<br>    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)<br>    <br>    <span class="hljs-comment"># 写入表头</span><br>    writer.writeheader()<br>    <br>    <span class="hljs-comment"># 写入数据</span><br>    writer.writerows(json_data)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;CSV 文件已成功保存为&quot;</span>, csv_file)<br><br></code></pre></td></tr></table></figure>
+<h2 id="2-2-运行截图"><a href="#2-2-运行截图" class="headerlink" title="2.2. 运行截图"></a>2.2. 运行截图</h2><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240425105147676.png" alt="image-20240425105147676"></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240425105226982.png" alt="image-20240425105226982"></p>
+<h1 id="3-数据处理-可视化"><a href="#3-数据处理-可视化" class="headerlink" title="3. 数据处理,可视化"></a>3. 数据处理,可视化</h1><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br><span class="hljs-comment">#中文乱码处理</span><br>plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>] = [<span class="hljs-string">&#x27;SimHei&#x27;</span>]<br><br><span class="hljs-comment"># 读取 CSV 文件</span><br>data = pd.read_csv(<span class="hljs-string">&quot;./test/转译.csv&quot;</span>)<br><br><span class="hljs-comment"># 删除第一列和第二列</span><br>data_cleaned = data.drop(data.columns[[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]], axis=<span class="hljs-number">1</span>)<br><br><span class="hljs-comment"># 删除最后一行</span><br>data_cleaned = data_cleaned.drop(data_cleaned.index[-<span class="hljs-number">1</span>])<br><br><span class="hljs-comment"># 将百分比字符串转换为浮点数</span><br>data_cleaned[<span class="hljs-string">&#x27;占销量份额&#x27;</span>] = data_cleaned[<span class="hljs-string">&#x27;占销量份额&#x27;</span>].<span class="hljs-built_in">str</span>.rstrip(<span class="hljs-string">&#x27;%&#x27;</span>).astype(<span class="hljs-string">&#x27;float&#x27;</span>)<br><br><span class="hljs-comment"># 计算每个扇形的占比</span><br>sales_data = data_cleaned[<span class="hljs-string">&#x27;占销量份额&#x27;</span>]<br>total_sales = sales_data.<span class="hljs-built_in">sum</span>()<br>percentages = sales_data / total_sales * <span class="hljs-number">100</span><br><br><span class="hljs-comment"># 将占比低于2%的扇形的标签设置为None</span><br>labels = data_cleaned[<span class="hljs-string">&#x27;厂商&#x27;</span>]<br>labels[percentages &lt; <span class="hljs-number">2</span>] = <span class="hljs-literal">None</span><br><br><span class="hljs-comment"># 绘制饼状图</span><br>plt.figure(figsize=(<span class="hljs-number">8</span>, <span class="hljs-number">8</span>))<br>plt.pie(sales_data, labels=labels, autopct=<span class="hljs-string">&#x27;%1.1f%%&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Distribution of Sales&#x27;</span>)<br><br><span class="hljs-comment"># 添加图例，并将图例放在右边，过滤掉标签为None的项</span><br>plt.legend(labels[labels.notnull()], loc=<span class="hljs-string">&#x27;center left&#x27;</span>, bbox_to_anchor=(<span class="hljs-number">1</span>, <span class="hljs-number">0.5</span>))<br><br><span class="hljs-comment">#保存图片</span><br>plt.savefig(<span class="hljs-string">&#x27;./test/销量分布.png&#x27;</span>)<br><br>plt.show()<br><br></code></pre></td></tr></table></figure>
+<h2 id="3-1-运行截图"><a href="#3-1-运行截图" class="headerlink" title="3.1. 运行截图"></a>3.1. 运行截图</h2><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240425105346250.png" alt="image-20240425105346250"></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>爬虫</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E5%91%BD%E4%BB%A4/">查看文件大小命令</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A83G/">小米路由器3G</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%88%AC%E5%8F%96%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98%E4%B8%BAjson"><span class="toc-number">1.</span> <span class="toc-text">1. 爬取数据保存为json</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-pachong-py"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. pachong.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 运行截图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-json%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">2. json文件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-json-1-py"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. json_1.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 运行截图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">3. 数据处理,可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 运行截图</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

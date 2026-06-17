@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>教职工管理系统 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="教职工管理系统">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E6%95%99%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="此处为语雀卡片，点击链接查看在运行这个程序时，需要安装pyodbc这个第三方库，win+r,输入cmd,enter,pipinstallpyodbc,下载完成，即可运行还要把程序中的数据库的密码修改为自己的数据库的密码用户ID,是数据库自增ID，不可自己设置ID你输入user,密码：123456数据库文件--">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">教职工管理系统</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.182Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/175010475#Jttoj">此处为语雀卡片，点击链接查看</a></p>
+<p>在运行这个程序时，需要安装pyodbc这个第三方库，win+r,输入cmd,enter,pip install pyodbc,下载完成，即可运行</p>
+<p>还要把程序中的数据库的密码修改为自己的数据库的密码</p>
+<p>用户ID,是数据库自增ID，不可自己设置ID</p>
+<p>你输入user,密码：123456</p>
+<p>数据库文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plsql">-- 创建数据库<br>CREATE DATABASE test;<br><br>USE test;<br><br>-- 创建用户表<br>CREATE TABLE Users (<br>    UserID INT IDENTITY(1,1) PRIMARY KEY,<br>    Username NVARCHAR(50) NOT NULL,<br>    Password NVARCHAR(50) NOT NULL<br>);<br><br>-- 创建部门表<br>CREATE TABLE Departments (<br>  DepartmentID INT IDENTITY(1,1) PRIMARY KEY,<br>  DepartmentName NVARCHAR(255) NOT NULL,<br>  Description NVARCHAR(MAX)<br>);<br><br>-- 创建教职工表<br>CREATE TABLE Teachers (<br>  TeacherID INT IDENTITY(1,1) PRIMARY KEY,<br>  Name NVARCHAR(255) NOT NULL,<br>  Gender VARCHAR(10) CHECK (Gender IN (&#x27;男&#x27;, &#x27;女&#x27;)),<br>  Age INT,<br>  DepartmentID INT,<br>  Position NVARCHAR(255),<br>  ContactInfo NVARCHAR(255),<br>  CONSTRAINT FK_Teachers_Departments FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)<br>);<br><br>-- 创建签到记录表<br>CREATE TABLE SigninRecords (<br>    SigninID INT PRIMARY KEY IDENTITY(1,1),<br>    TeacherID INT NOT NULL,<br>    SigninTime DATETIME NOT NULL,<br>    IsLate BIT,<br>    Notes NVARCHAR(255),<br>    CONSTRAINT FK_SigninRecords_Teachers FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)<br>);<br><br>-- 插入测试用户<br>INSERT INTO Users (Username, Password) VALUES (&#x27;user&#x27;, &#x27;123456&#x27;);<br><br>-- 创建触发器<br>CREATE TRIGGER trg_DeleteTeacher<br>ON Teachers<br>FOR DELETE<br>AS<br>BEGIN<br>    DELETE FROM SigninRecords<br>    WHERE TeacherID IN (SELECT TeacherID FROM DELETED);<br>END;<br><br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1719329204106-21f834f1-5957-405d-84ae-467660f892f4.png" alt=""></p>
+<p>python界面：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plsql">import pyodbc<br>import tkinter as tk<br>from tkinter import messagebox<br><br># 数据库连接设置<br>conn = pyodbc.connect(<br>    &#x27;DRIVER=&#123;SQL Server&#125;;&#x27;<br>    &#x27;SERVER=127.0.0.1;&#x27;  <br>    &#x27;DATABASE=test;&#x27;  <br>    &#x27;UID=sa;&#x27; <br>    &#x27;PWD=******&#x27;  # 替换为你的密码<br>)<br><br>cursor = conn.cursor()<br><br># 登录功能<br>def login():<br>    username = entry_username.get().strip()<br>    password = entry_password.get().strip()<br>    <br>    if not username or not password:<br>        messagebox.showerror(&quot;错误&quot;, &quot;用户名和密码为必填项&quot;)<br>        return<br>    <br>    try:<br>        cursor.execute(&quot;SELECT * FROM Users WHERE Username = ? AND Password = ?&quot;, username, password)<br>        user = cursor.fetchone()<br>        <br>        if user:<br>            login_window.destroy()<br>            main_window()<br>        else:<br>            messagebox.showerror(&quot;错误&quot;, &quot;用户名或密码错误&quot;)<br>    except Exception as e:<br>        messagebox.showerror(&quot;错误&quot;, str(e))<br><br># 主窗口功能<br>def main_window():<br>    root = tk.Tk()<br>    root.title(&quot;教职工管理系统&quot;)<br>    root.geometry(&quot;1050x400&quot;)  # 设置窗口大小<br><br>    # 教职工信息管理功能<br>    def add_teacher():<br>        teacher_id = entry_teacher_id.get().strip()<br>        name = entry_name.get().strip()<br>        gender = entry_gender.get().strip()<br>        if gender not in [&#x27;男&#x27;, &#x27;女&#x27;]:<br>            messagebox.showerror(&quot;错误&quot;, &quot;性别必须为 &#x27;男&#x27; 或 &#x27;女&#x27;&quot;)<br>            return<br>        try:<br>            age = int(entry_age.get().strip())<br>        except ValueError:<br>            messagebox.showerror(&quot;错误&quot;, &quot;年龄必须为整数&quot;)<br>            return<br>        dept_id = entry_teacher_dept_id.get().strip()<br>        position = entry_position.get().strip()<br>        contact = entry_contact.get().strip()<br><br>        if not all([name, gender, dept_id, position, contact]):<br>            messagebox.showerror(&quot;错误&quot;, &quot;所有字段均为必填&quot;)<br>            return<br><br>        try:<br>            cursor.execute(&quot;INSERT INTO Teachers (Name, Gender, Age, DepartmentID, Position, ContactInfo) VALUES (?, ?, ?, ?, ?, ?)&quot;,<br>                        name, gender, age, dept_id, position, contact)<br>            conn.commit()<br>            messagebox.showinfo(&quot;提示&quot;, &quot;教职工信息添加成功&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    def delete_teacher():<br>        teacher_id = entry_teacher_id.get().strip()<br>        if not teacher_id:<br>            messagebox.showerror(&quot;错误&quot;, &quot;教职工ID为必填项&quot;)<br>            return<br>        try:<br>            cursor.execute(&quot;DELETE FROM Teachers WHERE TeacherID = ?&quot;, teacher_id)<br>            conn.commit()<br>            messagebox.showinfo(&quot;提示&quot;, &quot;教职工信息删除成功&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    def update_teacher():<br>        teacher_id = entry_teacher_id.get().strip()<br>        name = entry_name.get().strip()<br>        gender = entry_gender.get().strip()<br>        if gender not in [&#x27;男&#x27;, &#x27;女&#x27;]:<br>            messagebox.showerror(&quot;错误&quot;, &quot;性别必须为 &#x27;男&#x27; 或 &#x27;女&#x27;&quot;)<br>            return<br>        try:<br>            age = int(entry_age.get().strip())<br>        except ValueError:<br>            messagebox.showerror(&quot;错误&quot;, &quot;年龄必须为整数&quot;)<br>            return<br>        dept_id = entry_teacher_dept_id.get().strip()<br>        position = entry_position.get().strip()<br>        contact = entry_contact.get().strip()<br><br>        if not all([teacher_id, name, gender, dept_id, position, contact]):<br>            messagebox.showerror(&quot;错误&quot;, &quot;所有字段均为必填&quot;)<br>            return<br><br>        try:<br>            cursor.execute(&quot;&quot;&quot;<br>                UPDATE Teachers <br>                SET Name = ?, Gender = ?, Age = ?, DepartmentID = ?, Position = ?, ContactInfo = ?<br>                WHERE TeacherID = ?<br>            &quot;&quot;&quot;, name, gender, age, dept_id, position, contact, teacher_id)<br>            conn.commit()<br>            messagebox.showinfo(&quot;提示&quot;, &quot;教职工信息更新成功&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    def query_teacher():<br>        teacher_id = entry_teacher_id.get().strip()<br>        try:<br>            cursor.execute(&quot;SELECT * FROM Teachers WHERE TeacherID = ?&quot;, teacher_id)<br>            row = cursor.fetchone()<br>            <br>            if row:<br>                entry_teacher_id.delete(0, tk.END)<br>                entry_teacher_id.insert(0, str(row.TeacherID))<br>                entry_name.delete(0, tk.END)<br>                entry_name.insert(0, row.Name)<br>                entry_gender.delete(0, tk.END)<br>                entry_gender.insert(0, row.Gender)<br>                entry_age.delete(0, tk.END)<br>                entry_age.insert(0, str(row.Age))<br>                entry_teacher_dept_id.delete(0, tk.END)<br>                entry_teacher_dept_id.insert(0, str(row.DepartmentID))<br>                entry_position.delete(0, tk.END)<br>                entry_position.insert(0, row.Position)<br>                entry_contact.delete(0, tk.END)<br>                entry_contact.insert(0, row.ContactInfo)<br>            else:<br>                messagebox.showinfo(&quot;提示&quot;, &quot;未找到教职工信息&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    # 部门信息管理功能<br>    def add_department():<br>        dept_id = entry_dept_id.get().strip()<br>        dept_name = entry_dept_name.get().strip()<br>        description = entry_dept_description.get().strip()<br>        <br>        if not all([dept_name]):<br>            messagebox.showerror(&quot;错误&quot;, &quot;部门名称为必填&quot;)<br>            return<br><br>        try:<br>            cursor.execute(&quot;INSERT INTO Departments (DepartmentName, Description) VALUES (?, ?)&quot;, dept_name, description)<br>            conn.commit()<br>            messagebox.showinfo(&quot;提示&quot;, &quot;部门信息添加成功&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    def delete_department():<br>        dept_id = entry_dept_id.get().strip()<br>        <br>        if not dept_id:<br>            messagebox.showerror(&quot;错误&quot;, &quot;部门ID为必填项&quot;)<br>            return<br><br>        try:<br>            cursor.execute(&quot;DELETE FROM Departments WHERE DepartmentID = ?&quot;, dept_id)<br>            conn.commit()<br>            messagebox.showinfo(&quot;提示&quot;, &quot;部门信息删除成功&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    def update_department():<br>        dept_id = entry_dept_id.get().strip()<br>        dept_name = entry_dept_name.get().strip()<br>        description = entry_dept_description.get().strip()<br>        <br>        if not all([dept_id, dept_name]):<br>            messagebox.showerror(&quot;错误&quot;, &quot;部门ID和名称为必填&quot;)<br>            return<br><br>        try:<br>            cursor.execute(&quot;&quot;&quot;<br>                UPDATE Departments <br>                SET DepartmentName = ?, Description = ?<br>                WHERE DepartmentID = ?<br>            &quot;&quot;&quot;, dept_name, description, dept_id)<br>            conn.commit()<br>            messagebox.showinfo(&quot;提示&quot;, &quot;部门信息更新成功&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    def query_department():<br>        dept_id = entry_dept_id.get().strip()<br>        try:<br>            cursor.execute(&quot;SELECT * FROM Departments WHERE DepartmentID = ?&quot;, dept_id)<br>            row = cursor.fetchone()<br>            <br>            if row:<br>                entry_dept_id.delete(0, tk.END)<br>                entry_dept_id.insert(0, str(row.DepartmentID))<br>                entry_dept_name.delete(0, tk.END)<br>                entry_dept_name.insert(0, row.DepartmentName)<br>                entry_dept_description.delete(0, tk.END)<br>                entry_dept_description.insert(0, row.Description)<br>            else:<br>                messagebox.showinfo(&quot;提示&quot;, &quot;未找到部门信息&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    # 签到信息管理功能<br>    def add_signin():<br>        signin_id = entry_signin_id.get().strip()<br>        teacher_id = entry_signin_teacher_id.get().strip()<br>        signin_time = entry_signin_time.get().strip()<br>        is_late = entry_signin_is_late.get().strip()<br>        notes = entry_signin_notes.get().strip()<br>        <br>        if not all([teacher_id, signin_time]):<br>            messagebox.showerror(&quot;错误&quot;, &quot;教职工ID和签到时间为必填&quot;)<br>            return<br><br>        try:<br>            cursor.execute(&quot;INSERT INTO SigninRecords (TeacherID, SigninTime, IsLate, Notes) VALUES (?, ?, ?, ?)&quot;,<br>                        teacher_id, signin_time, is_late, notes)<br>            conn.commit()<br>            messagebox.showinfo(&quot;提示&quot;, &quot;签到信息添加成功&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    def delete_signin():<br>        signin_id = entry_signin_id.get().strip()<br>        <br>        if not signin_id:<br>            messagebox.showerror(&quot;错误&quot;, &quot;签到ID为必填项&quot;)<br>            return<br><br>        try:<br>            cursor.execute(&quot;DELETE FROM SigninRecords WHERE SigninID = ?&quot;, signin_id)<br>            conn.commit()<br>            messagebox.showinfo(&quot;提示&quot;, &quot;签到信息删除成功&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    def update_signin():<br>        signin_id = entry_signin_id.get().strip()<br>        teacher_id = entry_signin_teacher_id.get().strip()<br>        signin_time = entry_signin_time.get().strip()<br>        is_late = entry_signin_is_late.get().strip()<br>        notes = entry_signin_notes.get().strip()<br>        <br>        if not all([signin_id, teacher_id, signin_time]):<br>            messagebox.showerror(&quot;错误&quot;, &quot;签到ID、教职工ID和签到时间为必填&quot;)<br>            return<br><br>        try:<br>            cursor.execute(&quot;&quot;&quot;<br>                UPDATE SigninRecords <br>                SET TeacherID = ?, SigninTime = ?, IsLate = ?, Notes = ?<br>                WHERE SigninID = ?<br>            &quot;&quot;&quot;, teacher_id, signin_time, is_late, notes, signin_id)<br>            conn.commit()<br>            messagebox.showinfo(&quot;提示&quot;, &quot;签到信息更新成功&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    def query_signin():<br>        signin_id = entry_signin_id.get().strip()<br>        try:<br>            cursor.execute(&quot;SELECT * FROM SigninRecords WHERE SigninID = ?&quot;, signin_id)<br>            row = cursor.fetchone()<br>            <br>            if row:<br>                entry_signin_id.delete(0, tk.END)<br>                entry_signin_id.insert(0, str(row.SigninID))<br>                entry_signin_teacher_id.delete(0, tk.END)<br>                entry_signin_teacher_id.insert(0, str(row.TeacherID))<br>                entry_signin_time.delete(0, tk.END)<br>                entry_signin_time.insert(0, str(row.SigninTime))<br>                entry_signin_is_late.delete(0, tk.END)<br>                entry_signin_is_late.insert(0, row.IsLate)<br>                entry_signin_notes.delete(0, tk.END)<br>                entry_signin_notes.insert(0, row.Notes)<br>            else:<br>                messagebox.showinfo(&quot;提示&quot;, &quot;未找到签到信息&quot;)<br>        except Exception as e:<br>            messagebox.showerror(&quot;错误&quot;, str(e))<br><br>    # 创建教职工管理界面<br>    frame_teacher = tk.LabelFrame(root, text=&quot;教职工管理&quot;, padx=10, pady=10)<br>    frame_teacher.grid(row=0, column=0, padx=10, pady=10)<br><br>    tk.Label(frame_teacher, text=&quot;教职工ID&quot;).grid(row=0, column=0)<br>    tk.Label(frame_teacher, text=&quot;姓名&quot;).grid(row=0, column=1)<br>    tk.Label(frame_teacher, text=&quot;性别&quot;).grid(row=0, column=2)<br>    tk.Label(frame_teacher, text=&quot;年龄&quot;).grid(row=0, column=3)<br>    tk.Label(frame_teacher, text=&quot;部门ID&quot;).grid(row=0, column=4)<br>    tk.Label(frame_teacher, text=&quot;职位&quot;).grid(row=0, column=5)<br>    tk.Label(frame_teacher, text=&quot;联系方式&quot;).grid(row=0, column=6)<br><br>    entry_teacher_id = tk.Entry(frame_teacher)<br>    entry_name = tk.Entry(frame_teacher)<br>    entry_gender = tk.Entry(frame_teacher)<br>    entry_age = tk.Entry(frame_teacher)<br>    entry_teacher_dept_id = tk.Entry(frame_teacher)<br>    entry_position = tk.Entry(frame_teacher)<br>    entry_contact = tk.Entry(frame_teacher)<br><br>    entry_teacher_id.grid(row=1, column=0)<br>    entry_name.grid(row=1, column=1)<br>    entry_gender.grid(row=1, column=2)<br>    entry_age.grid(row=1, column=3)<br>    entry_teacher_dept_id.grid(row=1, column=4)<br>    entry_position.grid(row=1, column=5)<br>    entry_contact.grid(row=1, column=6)<br><br>    tk.Button(frame_teacher, text=&quot;添加&quot;, command=add_teacher).grid(row=2, column=0)<br>    tk.Button(frame_teacher, text=&quot;删除&quot;, command=delete_teacher).grid(row=2, column=1)<br>    tk.Button(frame_teacher, text=&quot;更新&quot;, command=update_teacher).grid(row=2, column=2)<br>    tk.Button(frame_teacher, text=&quot;查询&quot;, command=query_teacher).grid(row=2, column=3)<br><br>    # 创建部门管理界面<br>    frame_department = tk.LabelFrame(root, text=&quot;部门管理&quot;, padx=10, pady=10)<br>    frame_department.grid(row=1, column=0, padx=10, pady=10)<br><br>    tk.Label(frame_department, text=&quot;部门ID&quot;).grid(row=0, column=0)<br>    tk.Label(frame_department, text=&quot;部门名称&quot;).grid(row=0, column=1)<br>    tk.Label(frame_department, text=&quot;描述&quot;).grid(row=0, column=2)<br><br>    entry_dept_id = tk.Entry(frame_department)<br>    entry_dept_name = tk.Entry(frame_department)<br>    entry_dept_description = tk.Entry(frame_department)<br><br>    entry_dept_id.grid(row=1, column=0)<br>    entry_dept_name.grid(row=1, column=1)<br>    entry_dept_description.grid(row=1, column=2)<br><br>    tk.Button(frame_department, text=&quot;添加&quot;, command=add_department).grid(row=2, column=0)<br>    tk.Button(frame_department, text=&quot;删除&quot;, command=delete_department).grid(row=2, column=1)<br>    tk.Button(frame_department, text=&quot;更新&quot;, command=update_department).grid(row=2, column=2)<br>    tk.Button(frame_department, text=&quot;查询&quot;, command=query_department).grid(row=2, column=3)<br><br>    # 创建签到管理界面<br>    frame_signin = tk.LabelFrame(root, text=&quot;签到管理&quot;, padx=10, pady=10)<br>    frame_signin.grid(row=2, column=0, padx=10, pady=10)<br><br>    tk.Label(frame_signin, text=&quot;签到ID&quot;).grid(row=0, column=0)<br>    tk.Label(frame_signin, text=&quot;教职工ID&quot;).grid(row=0, column=1)<br>    tk.Label(frame_signin, text=&quot;签到时间&quot;).grid(row=0, column=2)<br>    tk.Label(frame_signin, text=&quot;是否迟到&quot;).grid(row=0, column=3)<br>    tk.Label(frame_signin, text=&quot;备注&quot;).grid(row=0, column=4)<br><br>    entry_signin_id = tk.Entry(frame_signin)<br>    entry_signin_teacher_id = tk.Entry(frame_signin)<br>    entry_signin_time = tk.Entry(frame_signin)<br>    entry_signin_is_late = tk.Entry(frame_signin)<br>    entry_signin_notes = tk.Entry(frame_signin)<br><br>    entry_signin_id.grid(row=1, column=0)<br>    entry_signin_teacher_id.grid(row=1, column=1)<br>    entry_signin_time.grid(row=1, column=2)<br>    entry_signin_is_late.grid(row=1, column=3)<br>    entry_signin_notes.grid(row=1, column=4)<br><br>    tk.Button(frame_signin, text=&quot;添加&quot;, command=add_signin).grid(row=2, column=0)<br>    tk.Button(frame_signin, text=&quot;删除&quot;, command=delete_signin).grid(row=2, column=1)<br>    tk.Button(frame_signin, text=&quot;更新&quot;, command=update_signin).grid(row=2, column=2)<br>    tk.Button(frame_signin, text=&quot;查询&quot;, command=query_signin).grid(row=2, column=3)<br><br>    root.mainloop()<br><br># 创建登录窗口<br>login_window = tk.Tk()<br>login_window.title(&quot;登录&quot;)<br>login_window.geometry(&quot;300x200&quot;)<br><br>tk.Label(login_window, text=&quot;用户名&quot;).grid(row=0, column=0, padx=10, pady=10)<br>entry_username = tk.Entry(login_window)<br>entry_username.grid(row=0, column=1, padx=10, pady=10)<br><br>tk.Label(login_window, text=&quot;密码&quot;).grid(row=1, column=0, padx=10, pady=10)<br>entry_password = tk.Entry(login_window, show=&quot;*&quot;)<br>entry_password.grid(row=1, column=1, padx=10, pady=10)<br><br>tk.Button(login_window, text=&quot;登录&quot;, command=login).grid(row=2, column=1, padx=10, pady=10)<br><br>login_window.mainloop()<br><br><br></code></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>教职工管理系统</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">毕业设计管理系统</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E5%BD%B1%E9%99%A2%E7%A5%A8%E5%8A%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Foracle/">影院票务管理系统oracle</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

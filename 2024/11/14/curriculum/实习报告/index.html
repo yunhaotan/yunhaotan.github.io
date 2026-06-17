@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>实习报告 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="实习报告">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E5%AE%9E%E4%B9%A0%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="一、实习内容分析（5000）1.1.(一）实习目标本实习项目旨在通过实际操作，加深对专业知识和技能的理解和应用，强化解决复杂工程问题的能力。实习重点围绕汉口历史风貌区的实体资产管理，采用BIM技术，实现历史建筑信息的数字化、可视化和智能化管理。实习项目分为三个关键阶段：第一阶段：学习Web开发基础知识，搭建平">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">实习报告</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.902Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="一、实习内容分析（5000）"><a href="#一、实习内容分析（5000）" class="headerlink" title="一、实习内容分析（5000）"></a>一、实习内容分析（5000）</h1><h2 id="1-1-一）实习目标"><a href="#1-1-一）实习目标" class="headerlink" title="1.1. (一）实习目标"></a>1.1. (一）实习目标</h2><p>本实习项目旨在通过实际操作，加深对专业知识和技能的理解和应用，强化解决复杂工程问题的能力。实习重点围绕汉口历史风貌区的实体资产管理，采用BIM技术，实现历史建筑信息的数字化、可视化和智能化管理。</p>
+<p>实习项目分为三个关键阶段：</p>
+<ol>
+<li>第一阶段：学习Web开发基础知识，搭建平台基础框架，确定历史建筑实体对象，并设计系统原型。</li>
+<li>第二阶段：深入学习前端框架与DTBIM引擎的使用，深化平台设计与编码，实现数据交互。</li>
+<li>第三阶段：集成所有模块，进行系统调试与优化，完成功能测试，并部署至云服务器。</li>
+</ol>
+<p>本次实习的核心任务包括：</p>
+<ul>
+<li>完成BIM平台体系搭建，实现建筑单体到构件级别的信息管理。</li>
+<li>建立多维结构化数据库，融合展示集体建筑历史沿革信息与模型。</li>
+<li>开发BIM应用大屏，直观呈现历史建筑的数字化管理成果。</li>
+</ul>
+<p>本次实习项目是围绕历史建筑的现状BIM、设计BIM、竣工BIM以及HBIM所展开的，涵盖了保护性修缮设计、勘察测绘、价值评估、修缮更新、竣工运营、预测性保护与运营维护等多个环节。通过构建HBIM历史建筑管理平台，集成遗产建筑与缓冲区环境信息，建立风貌DNA库，为城市历史风貌建筑的保护与利用提供决策支持。</p>
+<p>此次实习还旨在培养团队协作能力和项目管理能力。通过分组合作，每个组需要自主管理项目进度，分配任务，共同解决问题。</p>
+<h2 id="1-2-二）实习分组"><a href="#1-2-二）实习分组" class="headerlink" title="1.2. (二）实习分组"></a>1.2. (二）实习分组</h2><p>本次实习我荣幸地与丁天逸、周梁然、曾宇航、张晨阳组队。在组织架构与职能分配上，各成员均根据其专长进行了明确的职责划分：</p>
+<ul>
+<li><strong>丁天逸</strong>：担任项目经理，负责项目的整体规划、进度控制及团队间的高效协调，确保项目目标的顺利达成。</li>
+<li><strong>谭斌</strong>：归属于技术开发组，负责框架的构建、DTBIM引擎的集成，以及项目的最终部署与发布。</li>
+<li><strong>周梁然</strong>：归属于技术开发组，承担Web界面的设计与实现任务，力求为用户提供直观且友好的交互体验。</li>
+<li><strong>曾宇航</strong>：隶属于报告撰写与宣传小组，负责成果的系统性总结与开发报告的撰写。</li>
+<li><strong>张晨阳</strong>：隶属于资料收集与处理小组，负责历史建筑信息的搜集、整理工作，确保项目数据的准确性和完整性。</li>
+</ul>
+<p>我们组选择以“中建10086局”作为我们的公司名，其主要原因有二：一是因为此次实习与建筑有关，中建是建筑行业内极具影响力的企业，因此希望我们公司也能像中建集团一样，能做出实际性的、有意义的成果；二是因为“10086”为众人所知，将这一串数字加入到公司名称中，有助于公司的宣传。同时，我们公司还设计了相应的logo，进一步完善公司的各个细节。</p>
+<h2 id="1-3-三）内容分析"><a href="#1-3-三）内容分析" class="headerlink" title="1.3. (三）内容分析"></a>1.3. (三）内容分析</h2><h3 id="1-3-1-1、需求分析"><a href="#1-3-1-1、需求分析" class="headerlink" title="1.3.1. 1、需求分析"></a>1.3.1. 1、需求分析</h3><p><strong>（1）技术学习与应用需求</strong></p>
+<p>此次实习所需要掌握的技术基础包括前端技术框架、DTBIM引擎集成、数据管理与架构等三个方面。前端技术框架包括HTML、CSS、JavaScript等Web开发基础技术，以及Vue这个现代前端框架，用于搭建历史建筑管理平台的用户界面。需要理解并运用DTBIM引擎SDK进行二次开发，实现建筑实体中三维几何信息与资产信息的数据交互。同时，需要熟悉历史建筑信息的存储与管理，构建多维结构化数据库，如现状库、构件库等，以支持历史建筑实体资产的挂接信息。</p>
+<p><strong>（2）信息收集与处理需求</strong></p>
+<p>这一需求主要包括两个方面的内容：历史建筑实体信息采集与BIM信息整合。</p>
+<p>需要对汉口历史风貌区内的实体资产进行详细的信息挖掘和抽取，包括风貌街区、建筑区位、保护等级、资产详情、历史沿革、历史事件等，为建立风貌DNA库提供基础资料。需要整合现状BIM、设计BIM、竣工BIM以及HBIM信息，形成全过程的信息链，支撑历史建筑的保护与利用决策。</p>
+<p><strong>（3）平台开发需求</strong></p>
+<p>针对建筑级BIM平台，需要完成从建筑单体到构件级别的BIM平台方案体系搭建，形成实体资产信息的完整建档。同时，需要针对特定历史建筑的特色构件进行识别，开发相应的信息管理模块。对于功能实现的需求，首先需要开发预测性保护算法和运营维护策略，基于历史建筑的现状信息和运营数据，提升保护效率和维护质量。同时，在决策支持系统方面，需要创建决策支持模块，集成遗产建筑和缓冲区环境的各类信息，为城市历史风貌建筑的保护利用提供科学依据。</p>
+<p>为了满足用户的界面与体验需求，在UI设计时，需设计直观易用的用户界面，确保历史建筑信息的可视化展示既美观又实用，提升用户体验。同时也需要实现流畅的用户交互，保证信息查询、数据分析等功能的高效执行。</p>
+<h3 id="1-3-2-2、大屏设计"><a href="#1-3-2-2、大屏设计" class="headerlink" title="1.3.2. 2、大屏设计"></a>1.3.2. 2、大屏设计</h3><p>我们小组设计的HBIM历史建筑管理平台总体框架为页面由“头部”和“主体内容”两部分组成，包含“建筑模型”、“建筑采风”、“建筑信息”、“构件信息”、“历史沿革”和“联系我们”六个选项卡。</p>
+<p>平台主要由四部分组成：平台框架、建筑模型、交互功能、服务器部署。平台框架主要实现平台整体结构的搭建，便于后续功能的增添与修改，同时简化平台视觉效果的修改过程；建筑模型主要实现建筑的可视化，便于用户对建筑有更加详细的了解；交互功能主要实现平台的多功能切换，包括建筑模型、建筑采风、建筑信息、构件信息、历史沿革、联系我们六个功能；服务器部署主要实现用户对平台的访问。</p>
+<p>平台的头部主要展现公司LOGO、公司名称、平台名称、时间与日期及平台功能选项卡，是平台首页视觉效果的重要组成部分。同时，平台头部还采用透明渐变黑作为背景色，简约且富有科技感。</p>
+<p>“建筑模型”页面即为平台的首页，该页面进行了建筑模型的展示，建筑模型默认居中，360度无死角展示，用户可自由对其进行缩放、移动，观察建筑的每一个角落。页面左下角设置方向按钮以辅助定位，用户可使用方向按钮进行视角微调。同时，平台提供剖切和测量功能，便于用户对建筑内部结构和尺寸大小进行深入了解。</p>
+<p>“建筑采风”中的“采风”二字来源于《诗经》，该页面主要进行各类建筑图片的展示，包括历史图、设计图、模型图等。同时，对该页面的图片展示设计了流畅灵动的动画效果，并增加了切换图片、第一张/最后一张图片的提示信息，优化了用户的使用体验。</p>
+<p>在“建筑信息”页面中，为了展示建筑物的地理位置，页面采用地图作为背景，并加上了城市白膜和POI按钮，便于用户对建筑物进行精准定位。页面两侧展示了建筑的详细信息，包括建筑的历史背景、文化意义、文化遗产信息、建筑特色等，同时采用动态特效，增强高级感。</p>
+<p>“构件信息”页面的上半部分主要展示整体的构件，下半部分主要展示构件详图，清晰明了。各建筑信息周围流动的线条给人以视觉上的冲击感，在展示建筑历史风貌的同时，又利用现代技术提升了展示效果。</p>
+<p>“历史沿革”页面采用了和构件信息页面相似的处理方法，并同样选用了渐变黑色作为背景底色。页面采用时间轴的形式，直观展示各个历史事件和重要节点，使历史沿革一目了然，便于用户快速了解关键时间点和事件。页面设计了交互动画，当用户的鼠标放置在一项历史信息记录上时，该项记录会高亮展示，同时，时间轴会闪烁呼吸，增强了页面的互动性和用户的参与感。</p>
+<p>“联系我们”页面详细介绍了中建10086局各成员的工作分工及联系方式。页面增添了交互动画效果：将鼠标悬停在任意一位成员上时，会展示该成员的工作分工及其联系方式，同时其他成员的信息卡会面向内旋转，便于用户快速检索到所需的信息。</p>
+<h3 id="1-3-3-3、大屏开发"><a href="#1-3-3-3、大屏开发" class="headerlink" title="1.3.3. 3、大屏开发"></a>1.3.3. 3、大屏开发</h3><h4 id="1-3-3-1-（1）技术学习"><a href="#1-3-3-1-（1）技术学习" class="headerlink" title="1.3.3.1. （1）技术学习"></a>1.3.3.1. （1）技术学习</h4><p>本次实习的三次集中学习介绍了平台开发的基础知识。</p>
+<ul>
+<li><strong>第一次集中学习</strong>：介绍了Web开发的基础知识，包括HTML、CSS和JavaScript，并介绍了前端开发的基本原理和技术。HTML，即超文本标记语言，是一种标记语言，用于搭建框架并将其结合在一起；CSS（层叠样式表）是一种基于规则的语言，用于将样式应用于HTML，起到装饰美化的作用；JavaScript是一种编程语言，用于为网站添加交互功能，提供丰富的用户体验。</li>
+<li><strong>第二次集中学习</strong>：介绍了Vue3框架的基础知识以及DTBIM引擎前端SDK的基础知识，并讲解了如何构建一个三维场景应用。Vue是一款用于构建用户界面的Web框架，基于标准的HTML、CSS和JavaScript构建，提供了一套声明式、组件化的编程模型，有助于高效地开发用户界面；SDK可用于三维场景的搭建，并提供了添加3D模型、添加天气效果、添加交互插件等功能。</li>
+<li><strong>第三次集中学习</strong>：主要通过一个实例，介绍了如何制作一个大屏项目，其主要步骤包括前置条件准备、页面布局、图表布局、图表及数据展示、添加三维场景、美化三维场景、添加POI和三维模型，以及三维场景与页面的交互，最终完成了大屏项目的开发。</li>
+</ul>
+<h4 id="1-3-3-2-（2）开发"><a href="#1-3-3-2-（2）开发" class="headerlink" title="1.3.3.2. （2）开发"></a>1.3.3.2. （2）开发</h4><p>为了实现汉口历史风貌区的BIM应用大屏，在前端技术栈的选择上，我们使用HTML、CSS和JavaScript作为基础，并引入Vue作为前端框架，以实现组件化的开发和状态管理。</p>
+<p>在进行前端开发时，首先进行了基础页面的搭建，使用HTML和CSS构建了基本的页面布局，应用了CSS动画效果，提高了用户体验。按照模块化的原则，将各个功能拆分成独立的Vue组件，例如建筑构件组件、地球视图组件等，从而进行Vue.js组件开发。</p>
+<p>在场景搭建时，我们小组采用了上课时所介绍的方式，使用Scene类创建三维场景，同时采用了地球场景的查看模式，使平台更具高级感。在添加3D模型时，首先使用BuildingLayer图层进行初始化，经过场景视角调整，将相机跟踪到3D模型所在位置的视角。在交互插件的选择上，我们选择了剖切、场景测量这两个较为关键的插件。</p>
+<p>对于“建筑信息”页面，我们借鉴了上课时大屏实战的例子，将页面分为上下两个部分，即上方的header和下方的主体，并在下方主体部分采用slot插槽的方式进行编码。在添加三维场景时，我们选用了蓝色作为地图的主体颜色，使用SceneLayer添加了武汉市建筑白模图层，并采用colorizerPlugin染色插件进行着色。同时，为了使建筑物的地理位置更加突出，我们使用了ScatterplotLayer创建POI图层。对于该页面左右两侧文字内容的排版，我们采用了与课上所讲的“图表布局”类似的方法，通过自定义组件和CSS样式实现。</p>
+<p>对于“构件信息”和“历史沿革”页面，我们采用了相似的编码方式。页面的信息从一个预定义的数组<code>historyList</code>中获取，并通过Vue.js的模板语法和指令来动态渲染。同时，组件还利用了CSS和JavaScript来增强视觉效果和交互体验，例如使用WOW动画库来添加页面加载时的动画效果。</p>
+<p>对于“联系我们”页面，成员卡片使用了Vue.js的数据绑定特性，使得成员信息能够动态展示在页面上。此外，CSS样式和WOW库中的动画效果增强了用户体验感。</p>
+<p>总而言之，在平台进行编码开发时，我们主要参考了助教上课时所介绍的编码方式，并将其作为我们的基础代码进行进一步修改。同时，我们在多处使用了动画特效，包括流光特效、呼吸灯特效等，结合设计好的CSS样式，达到了较好的视觉效果和实操体验。</p>
+<h3 id="1-3-4-4、版本优化"><a href="#1-3-4-4、版本优化" class="headerlink" title="1.3.4. 4、版本优化"></a>1.3.4. 4、版本优化</h3><p>基于平台测试的结果与反馈，我们小组进行了一系列的改进，并进行了多个版本的更新。平台版本的变更具体如下：</p>
+<ul>
+<li>2024.07.04：平台最初版本完成，包括建筑模型、建筑采风、建筑信息、相关政策、联系我们等功能。</li>
+<li>2024.07.05：平台更改整体风格，并更换了页面结构，更新了视觉效果。</li>
+<li>2024.07.06：新增“历史沿革”功能，用以展示汉口平汉铁路局旧址的历史信息；将旧版本的“联系我们”页面移植到新版本的页面上，并对动画效果进行了优化；将旧版本的“建筑采风”页面移植到新版本的页面上，并解决了图片的放大和缩放问题，同时增添了“已经是第一张/最后一张图片了”的提示信息。</li>
+<li>2024.07.07：更改了header部分的整体风格，使其更适配平台首页的风格。</li>
+<li>2024.07.08：在“建筑模型”页面中新增“微调按钮”功能和“建筑剖切”功能，便于用户更好地了解建筑物；搭建了“建筑信息”基础页面。</li>
+<li>2024.07.09：在“建筑信息”页面中加入了地图，并引入了更多的建筑信息。</li>
+<li>2024.07.10：美化“建筑信息”页面，包括地图调色、新增武汉市白膜等，同时增添动画效果，增加了平台的科技感；修改了“历史沿革”页面的视觉效果，使得整体颜色更符合历史的厚重感；在“建筑模型”页面新增“场景测量”和“底部状态栏”两个小控件；修改了“构件信息”页面的排版方式，使其更具有逻辑性。</li>
+<li>2024.07.11：优化平台整体视觉效果。</li>
+<li>2024.07.12：将平台部署到服务器上，便于用户远程快捷地使用本平台。</li>
+</ul>
+<h3 id="1-3-5-5、实习汇报"><a href="#1-3-5-5、实习汇报" class="headerlink" title="1.3.5. 5、实习汇报"></a>1.3.5. 5、实习汇报</h3><h4 id="1-3-5-1-（1）第一次汇报"><a href="#1-3-5-1-（1）第一次汇报" class="headerlink" title="1.3.5.1. （1）第一次汇报"></a>1.3.5.1. （1）第一次汇报</h4><p>在实习第一周的周五进行了第一次汇报，汇报的主要内容为公司简介及项目展望，包括公司基本信息、成员分工、实习项目所选定的对象、预期功能、系统UI设计思路与理念、进度计划安排与预期成果等。第一周的汇报为本次实习定下了整体的基调，也帮助我们小组能够按照规划如期推进项目。</p>
+<h4 id="1-3-5-2-（2）第二次汇报"><a href="#1-3-5-2-（2）第二次汇报" class="headerlink" title="1.3.5.2. （2）第二次汇报"></a>1.3.5.2. （2）第二次汇报</h4><p>第二次的汇报主要聚焦于前端框架与DTBIM引擎SDK的二次开发方面的进展，并汇报了开发过程中遇到的问题及解决方案。在此次汇报前，我们小组的选题为“胜利仓库”，但由于胜利仓库的网络资料较少，导致在第二周汇报前我们小组的平台显得较为空洞，因此在老师的建议下，我们组将选题更换为了“汉口平汉铁路局旧址”，并在此基础上开始了第三周的进度推进。</p>
+<h4 id="1-3-5-3-（3）第三次汇报"><a href="#1-3-5-3-（3）第三次汇报" class="headerlink" title="1.3.5.3. （3）第三次汇报"></a>1.3.5.3. （3）第三次汇报</h4><p>在第三次汇报上，我们小组展示了最终的BIM平台，包括功能演示和用户界面，并介绍了平台各个页面的设计理念。同时，我们还分享了项目的可持续发展方向，以及项目的可能应用场景。在聆听其他小组的汇报过程中，我们也发现了一些未曾注意到的问题和没有考虑到的想法。同时，我们发现有部分组将平台部署到了服务器上，因此在汇报结束后，我们也效仿这一做法对我们组的平台进行了改善，以扩大其应用场景。</p>
+<h3 id="1-3-6-6、企业参观"><a href="#1-3-6-6、企业参观" class="headerlink" title="1.3.6. 6、企业参观"></a>1.3.6. 6、企业参观</h3><p>在2024年7月4日，我们集体前往中铁十一局进行参观学习，学习内容包括了解盾构机的工作原理、组成部件、关键技术，并了解中铁十一局的光辉历史。</p>
+<p>中铁十一局研发和使用了多台大型盾构机，并提供了盾构机的保养、维修、改造以及相关技能的培训等一站式服务，堪称国内乃至国际上享有盛誉的盾构技术公司。中铁十一局在盾构机技术方面有显著的创新和突破，并在每年的盾构里程数上排名世界前列。同时，中铁十一局还参与了其他多个重要项目，如广州地铁八号线北延段白云湖站的泥水盾构机项目、深江高铁“鲲鹏号”大直径盾构机的始发等，展示了其在盾构技术和精密施工方面的高超技艺。</p>
+<h1 id="二、专题内容分析（2500）"><a href="#二、专题内容分析（2500）" class="headerlink" title="二、专题内容分析（2500）"></a>二、专题内容分析（2500）</h1><h2 id="2-1-一）、路由和模型的引入"><a href="#2-1-一）、路由和模型的引入" class="headerlink" title="2.1. (一）、路由和模型的引入"></a>2.1. (一）、路由和模型的引入</h2><h3 id="2-1-1-1、路由"><a href="#2-1-1-1、路由" class="headerlink" title="2.1.1. 1、路由"></a>2.1.1. 1、路由</h3><p>在项目开发的第二周，我们技术开发组遇到了一个关键问题，涉及BIM可视化大屏应用中页面切换时的整体效果。当时，由于我尚未掌握路由的使用技巧，我们只能依靠Vue中的基本功能来实现一些核心功能，导致页面的切换效果不理想。具体而言，我们希望在用户点击按钮切换页面时，顶部的banner头部能够固定不动，始终保持在大屏应用的最上方，而下方的内容则随着按钮的点击进行动态变化。然而，在实际开发中，页面每次切换时，整个页面都会刷新，导致banner消失，新的页面无法显示我们预期的效果。</p>
+<p>在第二次项目汇报后，我专门向助教请教了这个问题。助教指出，这是因为我们没有采用Vue Router来进行页面管理。Vue Router是Vue.js生态中专门用来处理页面导航的工具，它能够实现单页面应用中的路由跳转，而不会重新加载整个页面。助教不仅解释了这一技术的原理，还为我提供了一个参考案例，详细展示了如何通过Vue Router优化项目的页面切换效果。</p>
+<p>通过对参考案例的学习和深入研究，我逐渐理解了如何利用Vue Router来实现我们的需求，特别是在处理项目中部分页面需要固定显示的组件时，路由系统能带来巨大的便利。因此，我决定对项目进行重构，使用Vue Router优化项目结构，使得banner等全局部分在页面切换时能够保持不变。</p>
+<p>以下是我在项目重构过程中采取的具体步骤，以banner组件为例进行详细说明：</p>
+<ol>
+<li>设置 Vue Router</li>
+</ol>
+<p>在明确了项目中哪些组件是全局部分、哪些组件是动态变化部分之后，我首先开始配置Vue Router。如果项目中未设置Vue Router，可以通过<code>npm install vue-router</code>来安装相关依赖。接下来，我在<code>main.js</code>或<code>main.ts</code>中引入并配置Vue Router。例如，在<code>main.js</code>中通过<code>Vue.use(Router)</code>方法启用路由功能，然后定义应用的路由规则，将不同路径与相应的页面组件进行绑定，并在项目入口文件中注册这些路由。这样，应用可以根据用户的操作动态加载不同的页面组件，而无需刷新整个页面。</p>
+<ol>
+<li>创建布局组件</li>
+</ol>
+<p>在理解了路由的基本配置之后，我着手创建一个布局组件，该组件将包含不随路由变化的全局部分，比如banner头部。在这个布局组件中，我使用了Vue Router的<code>&lt;router-view&gt;</code>标签。<code>&lt;router-view&gt;</code>是Vue Router提供的占位符，用于在页面中动态加载不同的路由组件。</p>
+<ol>
+<li>调整路由配置</li>
+</ol>
+<p>在完成布局组件的创建后，我根据项目需求对路由配置文件<code>router.js</code>进行了调整，将不同功能页面按照路径映射到各自的组件。此过程中，我还学习了嵌套路由的使用。嵌套路由允许在主页面中嵌入多个子页面，从而实现更复杂的层级导航结构。例如，对于每个模型展示页面，我为其配置了子路由，这使得我们可以在一个主页面中展示多个子页面，并且子页面之间的切换也更加灵活。这种结构不仅简化了代码管理，还使得项目的导航逻辑更为清晰和高效。</p>
+<h3 id="2-1-2-2、模型开发中的挑战"><a href="#2-1-2-2、模型开发中的挑战" class="headerlink" title="2.1.2. 2、模型开发中的挑战"></a>2.1.2. 2、模型开发中的挑战</h3><p>除了路由问题，我们在项目中还遇到了其他技术挑战，尤其是在模型展示功能的开发上。由于我们对模型开发的相关技术了解有限，起初只能按照助教提供的教学视频和在线教程一步步进行开发。然而，在实现模型展示的过程中，我们遇到了一个严重的bug：模型的图层无法铺满整个屏幕，无论如何调整代码和设置都无法达到预期效果。这个问题让我们感到十分困惑，尝试了多种方法后依然无法解决。</p>
+<p>在7月2日下午，我们参观完中铁十一局返回学校后，我决定再次向助教寻求帮助。助教仔细检查了我们的代码和配置文件，最终发现问题的根源在于我们遗漏了某些关键的脚本文件。正是这些脚本文件的缺失，导致模型的显示效果不完整。在助教的指导下，我们迅速导入了这些脚本，并重新运行项目。令人欣慰的是，这次模型图层终于能够完全铺满屏幕，功能也得到了正常展示</p>
+<h2 id="2-2-二）、项目部署"><a href="#2-2-二）、项目部署" class="headerlink" title="2.2. (二）、项目部署"></a>2.2. (二）、项目部署</h2><p>项目初期，我们技术开发组并未计划将项目部署到服务器上，因为团队中大部分成员没有相关经验，同时认为这个过程较为复杂且耗时。起初的计划是通过本地电脑进行现场实操演示，因此我们将大部分精力集中在项目功能的开发与完善上，而对PPT的制作并未给予足够的重视。我们仅准备了一个简陋的备选版本，预期只是以防万一。然而，在第二次项目汇报中，原定计划被意外打乱，由于现场的投影设备出现了调试问题，导致我们无法正常展示项目内容。最终，我们只能仓促使用那份简陋的PPT进行答辩，整体演示效果大打折扣，项目的展示未能达到预期。</p>
+<p>汇报结束后，陈维亚老师向我们分享了他年轻时的类似经历。他提到，自己早年间也常常偏爱现场演示，但却屡次因为所谓的“DEMO效应”遭遇各种意外问题。这些意外让他逐渐意识到，项目展示的稳定性至关重要。因此，他建议我们将项目部署到服务器上，确保在各种硬件环境下都能顺利进行演示。通过URL访问项目，不仅能够避免设备差异引发的问题，还能使展示流程更为流畅、稳定。这一建议让我们深刻认识到，项目展示不仅要关注内容，更要重视展示方式的可控性和稳定性。经过团队讨论，我们技术开发组决定，由我负责将项目部署到服务器上，以确保后续展示能够顺利进行。</p>
+<p>在项目部署的初期，云服务器的选择成为了首要问题。当前国内有多家知名厂商提供云服务器服务，例如阿里云、腾讯云和华为云等。经过对各大厂商的价格、服务、学生优惠政策的综合对比后，我最终选择了阿里云。阿里云为在校大学生提供了300元的优惠券，使得我们可以在零成本的情况下完成BIM可视化大屏项目的部署。这一选择不仅符合项目预算，还为后续的服务器配置提供了良好的支持。</p>
+<p>接下来是服务器系统的选择和配置。在之前的课程中，我们对服务器相关的知识有所了解，知道大多数服务器使用的是Linux系统。因此，我最初在云服务器上安装了Ubuntu操作系统，并配置了公网IP及所需端口，以便通过SSH协议实现远程连接。尽管成功连接到服务器，但我在项目部署过程中遇到了诸多挑战。尤其是在配置Tomcat时，由于对Linux系统和vim编辑器的不熟悉，命令行操作频频出错，导致配置屡次失败。在多次尝试无果后，我决定为服务器重装Windows Server操作系统。相较于Linux，Windows系统的图形化界面更为直观，操作更加便捷。此外，我对Windows系统更为熟悉，这也有助于我们在后续的开发与维护中提高效率。更重要的是，Windows与Windows之间的远程连接操作简单，更符合我们团队的需求。在安装完新的操作系统后，我重新配置了服务器的公网IP，并设置了安全组规则，开放了必要的端口，以确保远程连接顺畅。</p>
+<p>接下来便是配置IIS服务。对于Windows系统而言，IIS（Internet Information Services）是标准的Web服务器，相当于Unix/Linux平台上的Apache。IIS服务作为Windows Server的一部分，在系统启动时会自动加载。经过相关配置后，我通过访问服务器的公网IP验证了IIS的正常运行，表明服务器的基础环境已经就绪。</p>
+<p>在研究如何部署Web应用时，我查阅了哔哩哔哩和CSDN上的多个教程，了解到很多资深开发者推荐使用Nginx进行项目部署。Nginx以其高性能、轻量级和出色的高并发处理能力广泛应用于Web开发中，特别是在需要处理大量请求的情况下表现尤为出色。尽管我们的项目目前规模不大，性能需求也不算复杂，但我们认为采用Nginx部署可以更好地贴近行业趋势，为未来的项目扩展和优化提供良好的基础。Nginx的安装和配置相对简单，下载并解压后即可使用。配置完成后，通过访问服务器的公网IP和Nginx的默认端口，确认可以成功显示默认页面，这表明Nginx的环境已正确搭建。</p>
+<p>尽管环境搭建顺利，但在实际部署项目时，我遇到了新的问题。项目在本地开发环境中通过<code>npm run dev</code>命令可以顺利运行，所有资源文件均能正常加载。然而，在打包编译后将项目部署到Nginx上时，资源文件（如图片和脚本）却未能正常加载。这一问题困扰了我一段时间，由于我们团队在Web开发和运维方面的经验有限，一时难以确定问题的根源。经过多次调试和请教助教，最终发现问题出在两个方面：首先，图片资源的引用方式需要在项目代码中明确声明，而不能直接通过路径导入；其次，在编译项目前，需要修改<code>vue.config.js</code>文件，添加<code>base: &#39;/项目名称/&#39;</code>配置，然后再进行打包编译。这些调整完成后，资源加载问题得到了顺利解决。</p>
+<p>部署的最后步骤相对简单。将编译生成的dist文件夹放置到Nginx的html目录下，并修改Nginx的配置文件指向该文件夹。完成配置后，重启Nginx服务，即可通过浏览器访问“服务器公网IP+端口+项目名”来查看我们的BIM可视化大屏项目。通过这次部署，我们不仅顺利解决了展示环境的问题，还在实际操作中积累了宝贵的经验。</p>
+<h1 id="三、收获体会（500）"><a href="#三、收获体会（500）" class="headerlink" title="三、收获体会（500）"></a>三、收获体会（500）</h1><p>在这次项目开发过程中，我深刻体会到了技术选型和技术栈的重要性。最初遇到的页面切换问题促使我深入了解了Vue Router的工作机制，并将其应用于项目中。通过学习和实践，我认识到合理的架构设计对于用户体验有着至关重要的作用。例如，使用Vue Router不仅能够优化页面间的过渡效果，还可以有效地管理全局组件，保证了像banner这样的重要元素能够在页面切换时保持不变，提升了项目的整体质量。</p>
+<p>模型展示功能的开发让我意识到了细致入微的代码审查的重要性。在开发过程中遇到的模型无法铺满屏幕的问题，虽然最终通过补充遗漏的脚本文件得以解决，但这也提醒了我们在编码阶段就需要注重细节，确保每一个环节都经过仔细检查。这不仅是对技术能力的考验，更是对耐心和细心的考验。</p>
+<p>至于项目部署方面，从最初简单的本地演示到最终的服务器部署，这一转变让我受益匪浅。在部署过程中，我不仅学会了如何选择合适的云服务提供商，还掌握了服务器环境的搭建和配置，包括操作系统的选择、IIS服务的配置以及Nginx的使用。这些经验对于我来说是非常宝贵的，不仅拓宽了我的技术视野，也为将来可能遇到的类似问题提供了有效的解决方案。</p>
+<p>在整个项目周期内，我也深刻体会到了团队合作的重要性。面对种种技术难题，团队成员之间相互支持、共同探讨解决方案的过程，让项目得以顺利完成。特别是当遇到问题时，及时与助教沟通并寻求帮助，这对我们解决问题起到了关键的作用。</p>
+<p>通过这次经历，我学到了许多书本上学不到的知识，包括技术层面的实际操作能力和非技术层面的沟通协调能力。未来，在面对类似的项目时，我相信我可以更加自信地应对挑战，同时也更加注重项目的整体规划和细节把控，确保项目的顺利实施。这段经历将成为我职业生涯中宝贵的财富，指引我在技术道路上不断前进。</p>
+<h1 id="四、改进建议（200）"><a href="#四、改进建议（200）" class="headerlink" title="四、改进建议（200）"></a>四、改进建议（200）</h1><p>此次实习总体而言是一次难忘的经历,组织有序,收获丰厚,让我度过了充实的三个星期.但就部分方面而言,我还是有一些小小的建议.<br>其一,希望能更加合理地安排集中学习环节.本次实习共有三次集中学习,每次学习时长约2.5h,单次培训时长较长且讲授内容较多,学习起来会有些吃力;<br>其二,希望能增加集体实践环节的次数.本次实习只有一次参观调研活动,且只持续了一个上午,会导致实习过程稍显枯燥乏味;<br>最后,希望能在实习初期多一些引导,便于学生能快速清楚实习的内容与目标.在本次实习刚开始时,进度略显脱节,导致我们小组对实习内容和实习方向存在疑问,甚至产生了误解.增加引导有助于学生快速上手.</p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>实习报告</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/">参数优化方法</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E4%BD%BF%E7%94%A8Python%E5%92%8Cstatsmodels%E5%BA%93%E8%BF%9B%E8%A1%8C%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/">使用Python和statsmodels库进行多项式回归分析</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E4%B9%A0%E5%86%85%E5%AE%B9%E5%88%86%E6%9E%90%EF%BC%885000%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">一、实习内容分析（5000）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%B8%80%EF%BC%89%E5%AE%9E%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. (一）实习目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%BA%8C%EF%BC%89%E5%AE%9E%E4%B9%A0%E5%88%86%E7%BB%84"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. (二）实习分组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E4%B8%89%EF%BC%89%E5%86%85%E5%AE%B9%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. (三）内容分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-1%E3%80%81%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.3.1. 1、需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-2%E3%80%81%E5%A4%A7%E5%B1%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.2.</span> <span class="toc-text">1.3.2. 2、大屏设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-3-3%E3%80%81%E5%A4%A7%E5%B1%8F%E5%BC%80%E5%8F%91"><span class="toc-number">1.3.3.</span> <span class="toc-text">1.3.3. 3、大屏开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-1-%EF%BC%881%EF%BC%89%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">1.3.3.1. （1）技术学习</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-2-%EF%BC%882%EF%BC%89%E5%BC%80%E5%8F%91"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">1.3.3.2. （2）开发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-4-4%E3%80%81%E7%89%88%E6%9C%AC%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.4.</span> <span class="toc-text">1.3.4. 4、版本优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-5-5%E3%80%81%E5%AE%9E%E4%B9%A0%E6%B1%87%E6%8A%A5"><span class="toc-number">1.3.5.</span> <span class="toc-text">1.3.5. 5、实习汇报</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-5-1-%EF%BC%881%EF%BC%89%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%B1%87%E6%8A%A5"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">1.3.5.1. （1）第一次汇报</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-5-2-%EF%BC%882%EF%BC%89%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%B1%87%E6%8A%A5"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">1.3.5.2. （2）第二次汇报</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-5-3-%EF%BC%883%EF%BC%89%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%B1%87%E6%8A%A5"><span class="toc-number">1.3.5.3.</span> <span class="toc-text">1.3.5.3. （3）第三次汇报</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-6-6%E3%80%81%E4%BC%81%E4%B8%9A%E5%8F%82%E8%A7%82"><span class="toc-number">1.3.6.</span> <span class="toc-text">1.3.6. 6、企业参观</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%93%E9%A2%98%E5%86%85%E5%AE%B9%E5%88%86%E6%9E%90%EF%BC%882500%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">二、专题内容分析（2500）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E4%B8%80%EF%BC%89%E3%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BC%95%E5%85%A5"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. (一）、路由和模型的引入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-1%E3%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1. 1、路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-2%E3%80%81%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E6%8C%91%E6%88%98"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2. 2、模型开发中的挑战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E4%BA%8C%EF%BC%89%E3%80%81%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. (二）、项目部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%94%B6%E8%8E%B7%E4%BD%93%E4%BC%9A%EF%BC%88500%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">三、收获体会（500）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE%EF%BC%88200%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">四、改进建议（200）</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

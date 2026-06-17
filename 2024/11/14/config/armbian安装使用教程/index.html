@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>armbian安装使用教程 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="armbian安装使用教程">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/armbian%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="安装armbian-install安装CasaOShttps://blog.csdn.net/2301_77485708/article/details/141569648.0.#连接校园网通过网盘分享的文件：hust-network-login链接:https://pan.baidu.com/s/1qH15">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">armbian安装使用教程</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.754Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">armbian-<span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
+<h1 id="安装CasaOS"><a href="#安装CasaOS" class="headerlink" title="安装CasaOS"></a>安装CasaOS</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_77485708/article/details/141569648">https://blog.csdn.net/2301_77485708/article/details/141569648</a><br>.0.# 连接校园网</p>
+<p>通过网盘分享的文件：hust-network-login<br>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1qH15zIA7HLtESscjavDOBw?pwd=irwu">https://pan.baidu.com/s/1qH15zIA7HLtESscjavDOBw?pwd=irwu</a> 提取码: irwu<br>—来自百度网盘超级会员v4的分享</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><code class="hljs angelscript">chmod +x setup-hust-<span class="hljs-built_in">auto</span>login.sh<br></code></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><code class="hljs angelscript">./setup-hust-<span class="hljs-built_in">auto</span>login.sh<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &gt; setup-hust-autologin.sh &lt;&lt;<span class="hljs-string">&#x27;EOF&#x27;</span><br><span class="hljs-comment">#!/bin/bash</span><br><br><span class="hljs-built_in">set</span> -e<br>USER_NAME=$(<span class="hljs-built_in">whoami</span>)<br>USER_HOME=<span class="hljs-string">&quot;/root&quot;</span>  <span class="hljs-comment"># 如果你是 root 用户，请改为 /root</span><br><br>SCRIPT_PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$USER_HOME</span>/hust-network-login&quot;</span><br>CONF_PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$USER_HOME</span>/my.conf&quot;</span><br>SERVICE_NAME=<span class="hljs-string">&quot;hust-network-login.service&quot;</span><br>SERVICE_DIR=<span class="hljs-string">&quot;<span class="hljs-variable">$USER_HOME</span>/.config/systemd/user&quot;</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;🚀 正在为 斐讯N1 配置 HUST 校园网自动登录...&quot;</span><br><br><span class="hljs-keyword">if</span> [ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$SCRIPT_PATH</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;❌ 错误: <span class="hljs-variable">$SCRIPT_PATH</span> 不存在！&quot;</span><br>    <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br><span class="hljs-keyword">if</span> [ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$CONF_PATH</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;❌ 错误: <span class="hljs-variable">$CONF_PATH</span> 不存在！&quot;</span><br>    <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br><br><span class="hljs-built_in">chmod</span> 600 <span class="hljs-string">&quot;<span class="hljs-variable">$CONF_PATH</span>&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;🔒 已设置 <span class="hljs-variable">$CONF_PATH</span> 权限为 600&quot;</span><br><br><span class="hljs-built_in">mkdir</span> -p <span class="hljs-string">&quot;<span class="hljs-variable">$SERVICE_DIR</span>&quot;</span><br><br><span class="hljs-built_in">cat</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$SERVICE_DIR</span>/<span class="hljs-variable">$SERVICE_NAME</span>&quot;</span> &lt;&lt;<span class="hljs-string">INNEREOF</span><br><span class="hljs-string">[Unit]</span><br><span class="hljs-string">Description=HUST Network Auto Login (for Phicomm N1)</span><br><span class="hljs-string">After=network.target network-online.target</span><br><span class="hljs-string">Wants=network-online.target</span><br><span class="hljs-string"></span><br><span class="hljs-string">[Service]</span><br><span class="hljs-string">Type=simple</span><br><span class="hljs-string">ExecStartPre=/bin/sleep 10</span><br><span class="hljs-string">ExecStart=$SCRIPT_PATH $CONF_PATH</span><br><span class="hljs-string">WorkingDirectory=$USER_HOME</span><br><span class="hljs-string">Restart=on-failure</span><br><span class="hljs-string">RestartSec=15</span><br><span class="hljs-string">StartLimitInterval=120</span><br><span class="hljs-string">StartLimitBurst=5</span><br><span class="hljs-string">StandardOutput=journal</span><br><span class="hljs-string">StandardError=journal</span><br><span class="hljs-string">Environment=HOME=$USER_HOME</span><br><span class="hljs-string"></span><br><span class="hljs-string">[Install]</span><br><span class="hljs-string">WantedBy=default.target</span><br><span class="hljs-string">INNEREOF</span><br><br>systemctl --user daemon-reload<br>systemctl --user <span class="hljs-built_in">enable</span> --now <span class="hljs-string">&quot;<span class="hljs-variable">$SERVICE_NAME</span>&quot;</span><br><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">command</span> -v loginctl &gt;/dev/null; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">sudo</span> loginctl enable-linger <span class="hljs-string">&quot;<span class="hljs-variable">$USER_NAME</span>&quot;</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;✅ 已启用 linger&quot;</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;⚠️ warning: loginctl 未找到&quot;</span><br><span class="hljs-keyword">fi</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;🎉 配置完成！&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;📄 查看日志: journalctl --user -u hust-network-login -f&quot;</span><br>EOF<br><br></code></pre></td></tr></table></figure>
+<p>要<strong>停止并禁用</strong>你通过脚本部署的 HUST 校园网自动登录服务，只需执行以下几步命令（在 <strong>root 用户</strong> 下操作）：</p>
+<hr>
+<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight crmsh"><table><tr><td class="code"><pre><code class="hljs crmsh">🔴 <span class="hljs-number">1</span>. 停止当前运行的服务<br>systemctl --<span class="hljs-keyword">user</span> <span class="hljs-title">stop</span> hust-network-login.service<br><br>🚫 <span class="hljs-number">2</span>. 禁用开机自启<br>systemctl --<span class="hljs-keyword">user</span> <span class="hljs-title">disable</span> hust-network-login.service<br><br>🧹 <span class="hljs-number">3</span>. （可选）清理 linger 设置<br>loginctl disable-linger root<br><br><span class="hljs-comment"># 检查服务状态</span><br>systemctl --<span class="hljs-keyword">user</span> <span class="hljs-title">status</span> hust-network-login<br><br><span class="hljs-comment"># 查看日志是否不再更新</span><br>journalctl --<span class="hljs-keyword">user</span> <span class="hljs-title">-u</span> hust-network-login --since <span class="hljs-string">&quot;1 hour ago&quot;</span><br></code></pre></td></tr></table></figure></h2><h1 id="宝塔面板（不建议使用）"><a href="#宝塔面板（不建议使用）" class="headerlink" title="宝塔面板（不建议使用）"></a>宝塔面板（不建议使用）</h1><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">wget -O <span class="hljs-keyword">install</span>.sh http://download.bt.cn/<span class="hljs-keyword">install</span>/<span class="hljs-keyword">install</span>-ubuntu_6.<span class="hljs-number">0</span>.sh &amp;&amp; sudo bash <span class="hljs-keyword">install</span>.sh<br></code></pre></td></tr></table></figure>
+<hr>
+<h1 id="安装1panel"><a href="#安装1panel" class="headerlink" title="安装1panel"></a>安装1panel</h1><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick_start.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-number">1</span>pctl <span class="hljs-keyword">user</span>-<span class="hljs-keyword">info</span><br></code></pre></td></tr></table></figure>
+<pre><code>http://192.168.31.178:38704/9343d48369
+</code></pre><p><a target="_blank" rel="noopener" href="http://192.168.10.98:38704/9343d48369">http://192.168.10.98:38704/9343d48369</a></p>
+<hr>
+<h1 id="openlist"><a href="#openlist" class="headerlink" title="openlist"></a>openlist</h1><p>安装脚本<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">curl -fsSL https://res.oplist.org/script/v4.sh &gt; install-openlist-v4.sh &amp;&amp; <span class="hljs-built_in">sudo</span> bash install-openlist-v4.sh<br>openlist<br></code></pre></td></tr></table></figure><br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20260108210432043.png" alt="image.png"></p>
+<p>放行端口<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> ufw status<br><span class="hljs-built_in">sudo</span> ufw allow 5244/tcp<br></code></pre></td></tr></table></figure></p>
+<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><h2 id="局域网WOL（Wake-on-LAN）唤醒应用"><a href="#局域网WOL（Wake-on-LAN）唤醒应用" class="headerlink" title="局域网WOL（Wake-on-LAN）唤醒应用"></a>局域网WOL（Wake-on-LAN）唤醒应用</h2><p><a target="_blank" rel="noopener" href="https://github.com/Trugamr/wol">https://github.com/Trugamr/wol</a></p>
+<figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix">mkdir <span class="hljs-operator">-</span>p <span class="hljs-symbol">/mnt/mydisk/WOL/config</span><br><br>docker run <span class="hljs-operator">-</span>-network host <span class="hljs-operator">-</span>v $(pwd)<span class="hljs-operator">/</span>config.yaml:<span class="hljs-symbol">/etc/wol/config.yaml</span> ghcr.io<span class="hljs-operator">/</span>trugamr<span class="hljs-operator">/</span>wol:latest<br><br><br>cat <span class="hljs-operator">&gt;</span> <span class="hljs-symbol">/mnt/mydisk/WOL/config/config.yaml</span> <span class="hljs-operator">&lt;</span><span class="hljs-operator">&lt;</span> EOF<br><span class="hljs-params">hosts:</span><br>  <span class="hljs-operator">-</span> <span class="hljs-params">name:</span> <span class="hljs-string">&quot;办公电脑&quot;</span><br>    <span class="hljs-params">mac:</span> <span class="hljs-string">&quot;01:23:45:67:89:ab&quot;</span>  <span class="hljs-comment"># 替换为实际MAC地址</span><br>    <span class="hljs-params">broadcast:</span> <span class="hljs-string">&quot;192.168.1.255&quot;</span> <span class="hljs-comment"># 替换为你的网络广播地址</span><br>    <span class="hljs-params">ip:</span> <span class="hljs-string">&quot;192.168.1.100&quot;</span>        <span class="hljs-comment"># 可选，设备IP</span><br>  <br>  <span class="hljs-operator">-</span> <span class="hljs-params">name:</span> <span class="hljs-string">&quot;家庭服务器&quot;</span><br>    <span class="hljs-params">mac:</span> <span class="hljs-string">&quot;aa:bb:cc:dd:ee:ff&quot;</span>   <span class="hljs-comment"># 替换为实际MAC地址</span><br>    <span class="hljs-params">broadcast:</span> <span class="hljs-string">&quot;192.168.1.255&quot;</span> <span class="hljs-comment"># 替换为你的网络广播地址</span><br>    <span class="hljs-params">ip:</span> <span class="hljs-string">&quot;192.168.1.101&quot;</span>        <span class="hljs-comment"># 可选，设备IP</span><br>EOF<br><br><span class="hljs-comment"># 启动容器</span><br>docker run <span class="hljs-operator">-</span>d \<br>  <span class="hljs-operator">-</span>-name wol-service \<br>  <span class="hljs-operator">-</span>-network host \<br>  <span class="hljs-operator">-</span>v <span class="hljs-operator">/</span>mnt<span class="hljs-operator">/</span>mydisk<span class="hljs-operator">/</span>WOL<span class="hljs-operator">/</span>config<span class="hljs-operator">/</span>config.yaml:<span class="hljs-symbol">/etc/wol/config.yaml</span> \<br>  <span class="hljs-operator">-</span>e TZ<span class="hljs-operator">=</span>Asia<span class="hljs-symbol">/Shanghai</span> \<br>  <span class="hljs-operator">-</span>-restart unless-stopped \<br>  ghcr.io<span class="hljs-operator">/</span>trugamr<span class="hljs-operator">/</span>wol:latest \<br>  serve <span class="hljs-operator">-</span>-port <span class="hljs-number">8080</span><br></code></pre></td></tr></table></figure>
+<h2 id="安装syncthing"><a href="#安装syncthing" class="headerlink" title="安装syncthing"></a>安装syncthing</h2><p><a target="_blank" rel="noopener" href="http://192.168.31.178:8384/">http://192.168.31.178:8384/</a></p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">mkdir</span> -p /mnt/mydisk/syncthing/config<br><span class="hljs-attribute">mkdir</span> -p /mnt/mydisk/syncthing/data<br><span class="hljs-attribute">docker</span> pull lscr.io/linuxserver/syncthing:latest<br><span class="hljs-attribute">docker</span> run -d <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --name=syncthing <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -e PUID=<span class="hljs-number">1000</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -e PGID=<span class="hljs-number">1000</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -e UMASK=<span class="hljs-number">002</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -p <span class="hljs-number">8384</span>:<span class="hljs-number">8384</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -p <span class="hljs-number">22000</span>:<span class="hljs-number">22000</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -p <span class="hljs-number">21027</span>:<span class="hljs-number">21027</span>/udp <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -v /mnt/mydisk/syncthing/config:/config <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -v /mnt/mydisk/syncthing/data:/data <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --restart unless-stopped <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  lscr.io/linuxserver/syncthing:latest<br></code></pre></td></tr></table></figure>
+<p>docker-compose.yml<br><figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix"><span class="hljs-params">version:</span> &#x27;<span class="hljs-number">3.8</span>&#x27;<br><br><span class="hljs-params">services:</span><br>  <span class="hljs-params">syncthing:</span><br>    <span class="hljs-params">container_name:</span> syncthing<br>    <span class="hljs-params">image:</span> lscr.io<span class="hljs-operator">/</span>linuxserver<span class="hljs-operator">/</span>syncthing:latest<br>    <span class="hljs-params">restart:</span> unless-stopped<br>    <span class="hljs-params">environment:</span><br>      <span class="hljs-comment"># 用户和权限设置</span><br>      <span class="hljs-operator">-</span> PUID<span class="hljs-operator">=</span><span class="hljs-number">1000</span><br>      <span class="hljs-operator">-</span> PGID<span class="hljs-operator">=</span><span class="hljs-number">1000</span><br>      <span class="hljs-operator">-</span> UMASK<span class="hljs-operator">=</span><span class="hljs-number">002</span><br>      <br>      <span class="hljs-comment"># 时区设置（根据你的位置修改）</span><br>      <span class="hljs-operator">-</span> TZ<span class="hljs-operator">=</span>Asia<span class="hljs-symbol">/Shanghai</span><br>      <br>      <span class="hljs-comment"># 可选：Web UI 配置</span><br>      <span class="hljs-comment"># - GUI_ADDRESS=0.0.0.0:8384</span><br>      <span class="hljs-comment"># - GUI_API_KEY=your_api_key_here</span><br>      <span class="hljs-comment"># - GUI_USERNAME=admin</span><br>      <span class="hljs-comment"># - GUI_PASSWORD_PLAIN=password</span><br>      <span class="hljs-comment"># - GUI_THEME=dark</span><br>      <br>      <span class="hljs-comment"># 可选：Syncthing 高级配置</span><br>      <span class="hljs-comment"># - STNORESTART=1  # 禁用自动重启</span><br>      <span class="hljs-comment"># - STNODEFAULTFOLDER=1  # 不创建默认文件夹</span><br>      <br>    <span class="hljs-params">ports:</span><br>      <span class="hljs-comment"># Web UI 端口</span><br>      <span class="hljs-operator">-</span> <span class="hljs-string">&quot;8384:8384&quot;</span><br>      <span class="hljs-comment"># 文件传输端口</span><br>      <span class="hljs-operator">-</span> <span class="hljs-string">&quot;22000:22000/tcp&quot;</span><br>      <span class="hljs-comment"># 发现端口 (UDP)</span><br>      <span class="hljs-operator">-</span> <span class="hljs-string">&quot;21027:21027/udp&quot;</span><br>      <span class="hljs-comment"># 可选：如果需要额外的端口</span><br>      <span class="hljs-comment"># - &quot;22000:22000/udp&quot;  # 如果启用了QUIC</span><br>      <span class="hljs-comment"># - &quot;22067:22067/tcp&quot;  # 中继端口</span><br>    <br>    <span class="hljs-params">volumes:</span><br>      <span class="hljs-comment"># 配置目录（必须）</span><br>      <span class="hljs-operator">-</span> <span class="hljs-operator">/</span>mnt<span class="hljs-operator">/</span>mydisk<span class="hljs-operator">/</span>syncthing<span class="hljs-operator">/</span>config:<span class="hljs-symbol">/config</span><br>      <span class="hljs-comment"># 数据目录（可以添加多个）</span><br>      <span class="hljs-operator">-</span> <span class="hljs-operator">/</span>mnt<span class="hljs-operator">/</span>mydisk<span class="hljs-operator">/</span>syncthing<span class="hljs-operator">/</span>data:<span class="hljs-symbol">/data</span><br>      <span class="hljs-comment"># 可选：映射主机目录到容器</span><br>      <span class="hljs-comment"># - /mnt/mydisk/sync/folder1:/data/folder1</span><br>      <span class="hljs-comment"># - /mnt/mydisk/sync/folder2:/data/folder2</span><br>      <span class="hljs-comment"># - /mnt/mydisk/sync/folder3:/data/folder3</span><br>    <br>    <span class="hljs-comment"># 可选：设备资源限制</span><br>    <span class="hljs-comment"># deploy:</span><br>    <span class="hljs-comment">#   resources:</span><br>    <span class="hljs-comment">#     limits:</span><br>    <span class="hljs-comment">#       cpus: &#x27;1.0&#x27;</span><br>    <span class="hljs-comment">#       memory: 1G</span><br>    <span class="hljs-comment">#     reservations:</span><br>    <span class="hljs-comment">#       cpus: &#x27;0.5&#x27;</span><br>    <span class="hljs-comment">#       memory: 512M</span><br>    <br>    <span class="hljs-comment"># 可选：健康检查</span><br>    <span class="hljs-params">healthcheck:</span><br>      <span class="hljs-params">test:</span> [<span class="hljs-string">&quot;CMD&quot;</span>, <span class="hljs-string">&quot;curl&quot;</span>, <span class="hljs-string">&quot;-f&quot;</span>, <span class="hljs-string">&quot;http://localhost:8384/rest/system/ping&quot;</span>]<br>      <span class="hljs-params">interval:</span> <span class="hljs-number">30</span>s<br>      <span class="hljs-params">timeout:</span> <span class="hljs-number">10</span>s<br>      <span class="hljs-params">retries:</span> <span class="hljs-number">3</span><br>      <span class="hljs-params">start_period:</span> <span class="hljs-number">60</span>s<br>    <br>    <span class="hljs-comment"># 可选：日志设置</span><br>    <span class="hljs-params">logging:</span><br>      <span class="hljs-params">driver:</span> <span class="hljs-string">&quot;json-file&quot;</span><br>      <span class="hljs-params">options:</span><br>        <span class="hljs-params">max-size:</span> <span class="hljs-string">&quot;10m&quot;</span><br>        <span class="hljs-params">max-file:</span> <span class="hljs-string">&quot;3&quot;</span><br></code></pre></td></tr></table></figure></p>
+<h2 id="openlist-1"><a href="#openlist-1" class="headerlink" title="openlist"></a>openlist</h2><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">mkdir -p <span class="hljs-regexp">/mnt/my</span>disk<span class="hljs-regexp">/openlist/</span>config<br>mkdir -p <span class="hljs-regexp">/mnt/my</span>disk<span class="hljs-regexp">/openlist/</span>data<br><br>docker run -d \<br>  --name=openlist \<br>  --restart=unless-stopped \<br>  -p <span class="hljs-number">5244</span>:<span class="hljs-number">5244</span> \<br>  -v <span class="hljs-regexp">/mnt/my</span>disk<span class="hljs-regexp">/openlist/</span>config:<span class="hljs-regexp">/app/</span>config \<br>  -v <span class="hljs-regexp">/mnt/my</span>disk<span class="hljs-regexp">/openlist/</span>data:<span class="hljs-regexp">/app/</span>data \<br>  openlistteam/openlist:latest<br></code></pre></td></tr></table></figure>
+<h2 id="-1"><a href="#-1" class="headerlink" title=" "></a> </h2><p>docker-compose.yml<br><figure class="highlight nestedtext"><table><tr><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">version</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&#x27;3.8&#x27;</span><br><br><span class="hljs-attribute">services</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">upsnap</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">container_name</span><span class="hljs-punctuation">:</span> <span class="hljs-string">upsnap</span><br>    <span class="hljs-attribute">image</span><span class="hljs-punctuation">:</span> <span class="hljs-string">ghcr.io/seriousm4x/upsnap:5</span><br>    <span class="hljs-attribute">network_mode</span><span class="hljs-punctuation">:</span> <span class="hljs-string">host</span><br>    <span class="hljs-attribute">restart</span><span class="hljs-punctuation">:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attribute">volumes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/mnt/mydisk/upsnap/data:/app/pb_data</span><br>    <span class="hljs-attribute">environment</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-comment"># 基础配置</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">TZ=Asia/Shanghai</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">UPSNAP_HTTP_LISTEN=0.0.0.0:8090</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">UPSNAP_SCAN_RANGE=192.168.1.0/24</span><br>      <br>      <span class="hljs-comment"># 高级配置</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">UPSNAP_INTERVAL=&quot;*/10 * * * * *&quot;  # 每10秒扫描一次</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">UPSNAP_SCAN_TIMEOUT=500ms</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">UPSNAP_PING_PRIVILEGED=true</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">UPSNAP_SCAN_PORTS=22,80,443,3389  # 扫描这些端口</span><br>      <br>      <span class="hljs-comment"># 可选：网站标题</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">UPSNAP_WEbsite_TITLE=&quot;Armbian 设备管理&quot;</span><br>      <br>      <span class="hljs-comment"># 可选：设备发现设置</span><br>      <span class="hljs-comment"># - UPSNAP_DISCOVERY_ENABLED=true</span><br>      <span class="hljs-comment"># - UPSNAP_DISCOVERY_METHOD=nmap</span><br>      <br>      <span class="hljs-comment"># 可选：通知设置</span><br>      <span class="hljs-comment"># - UPSNAP_TELEGRAM_BOT_TOKEN=your_token</span><br>      <span class="hljs-comment"># - UPSNAP_TELEGRAM_CHAT_ID=your_chat_id</span><br>    <span class="hljs-attribute">cap_add</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">NET_RAW</span><br>    <span class="hljs-comment"># DNS设置（可选）</span><br>    <span class="hljs-attribute">dns</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">8.8.8.8</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">1.1.1.1</span><br></code></pre></td></tr></table></figure></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>armbian安装使用教程</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/hexo/">hexo</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/debian%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">debian安装教程</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85CasaOS"><span class="toc-number">2.</span> <span class="toc-text">安装CasaOS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">🔴 1. 停止当前运行的服务systemctl --user stop hust-network-login.service🚫 2. 禁用开机自启systemctl --user disable hust-network-login.service🧹 3. （可选）清理 linger 设置loginctl disable-linger root# 检查服务状态systemctl --user status hust-network-login# 查看日志是否不再更新journalctl --user -u hust-network-login --since &quot;1 hour ago&quot;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%EF%BC%88%E4%B8%8D%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">宝塔面板（不建议使用）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%851panel"><span class="toc-number">4.</span> <span class="toc-text">安装1panel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#openlist"><span class="toc-number">5.</span> <span class="toc-text">openlist</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker"><span class="toc-number">6.</span> <span class="toc-text">docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91WOL%EF%BC%88Wake-on-LAN%EF%BC%89%E5%94%A4%E9%86%92%E5%BA%94%E7%94%A8"><span class="toc-number">6.1.</span> <span class="toc-text">局域网WOL（Wake-on-LAN）唤醒应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85syncthing"><span class="toc-number">6.2.</span> <span class="toc-text">安装syncthing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openlist-1"><span class="toc-number">6.3.</span> <span class="toc-text">openlist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">6.4.</span> <span class="toc-text"> </span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

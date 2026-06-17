@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>anaconda &amp; jupyter notebook使用技巧 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="anaconda &amp; jupyter notebook使用技巧">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/anaconda%20&amp;%20jupyter%20notebook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.一、安装1.1.anaconda安装：https://www.anaconda.com/安装教程：https://blog.csdn.net/qq_42257666/article/details/1213834501.2.jupyternotebook:anaconda会自行绑定jupyternoteb">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">anaconda & jupyter notebook使用技巧</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.746Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-一、安装"><a href="#1-一、安装" class="headerlink" title="1. 一、安装"></a>1. 一、安装</h1><h2 id="1-1-anaconda安装："><a href="#1-1-anaconda安装：" class="headerlink" title="1.1. anaconda安装："></a>1.1. anaconda安装：</h2><p><a target="_blank" rel="noopener" href="https://www.anaconda.com/">https://www.anaconda.com/</a></p>
+<p>安装教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42257666/article/details/121383450">https://blog.csdn.net/qq_42257666/article/details/121383450</a></p>
+<h2 id="1-2-jupyter-notebook"><a href="#1-2-jupyter-notebook" class="headerlink" title="1.2. jupyter notebook:"></a>1.2. jupyter notebook:</h2><p>anaconda会自行绑定jupyter notebook和spyder,开箱即用</p>
+<p>Readme</p>
+<h1 id="2-二、配置环境"><a href="#2-二、配置环境" class="headerlink" title="2. 二、配置环境"></a>2. 二、配置环境</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/597981788">Anaconda3安装教程与环境变量添加 - 知乎 (zhihu.com)</a></p>
+<h1 id="3-三、jupyter-notebook安装插件"><a href="#3-三、jupyter-notebook安装插件" class="headerlink" title="3. 三、jupyter notebook安装插件"></a>3. 三、jupyter notebook安装插件</h1><p>首先我们先下载好插件选择的工具栏，通过<code>pip install</code>来进行下载即可</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">pip install jupyter_contrib_nbextension<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">pip</span> install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyter_contrib_nbextensions<br></code></pre></td></tr></table></figure>
+<p>然后我们将这个插件选项的工具栏添加到<code>jupyter notebook</code>的页面当中，运行下面这个的命令行</p>
+<p>必须要有这一步，否则在jupyter notebook中看不到Nbextensions</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">jupyter contrib nbextension install<br></code></pre></td></tr></table></figure>
+<p>s我们打开<code>jupyter notebook</code>页面之后就可以看到有<code>Nbextensions</code>这个工具栏</p>
+<p>然后就可以安装插件了</p>
+<h1 id="4-四、jupyter-notebook更换主题"><a href="#4-四、jupyter-notebook更换主题" class="headerlink" title="4. 四、jupyter notebook更换主题"></a>4. 四、jupyter notebook更换主题</h1><p>打开anaconda propmt,输入</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">pip install <span class="hljs-literal">--upgrade</span> jupyterthemes<br></code></pre></td></tr></table></figure>
+<p>输入命令查看主题列表</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">jt <span class="hljs-literal">-l</span><br></code></pre></td></tr></table></figure>
+<p>会看到如下输出</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">Available Themes:<br>   chesterish<br>   grade3<br>   gruvboxd<br>   gruvboxl<br>   monokai<br>   oceans16<br>   onedork<br>   solarizedd<br>   solarizedl<br></code></pre></td></tr></table></figure>
+<p>输入命令切换主题：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">jt <span class="hljs-literal">-t</span> [<span class="hljs-type">theme</span>] <span class="hljs-literal">-T</span><br><br>jt <span class="hljs-literal">-t</span> monokai <span class="hljs-literal">-T</span><br><br>jt <span class="hljs-literal">-t</span> gruvboxl <span class="hljs-literal">-T</span><br><br>jt <span class="hljs-literal">-t</span> chesterish <span class="hljs-literal">-T</span><br><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">jt</span> -t monokai -T -f roboto -fs <span class="hljs-number">14</span> -nfs <span class="hljs-number">14</span> -tfs <span class="hljs-number">14</span> -ofs <span class="hljs-number">11</span><br></code></pre></td></tr></table></figure>
+<h1 id="5-五、jupyter-notebook使用Anaconda虚拟环境内核"><a href="#5-五、jupyter-notebook使用Anaconda虚拟环境内核" class="headerlink" title="5. 五、jupyter notebook使用Anaconda虚拟环境内核"></a>5. 五、jupyter notebook使用Anaconda虚拟环境内核</h1><p>创建一个名为 “yourenvname” 的 Conda 环境，并在该环境中安装 pycaret 软件包，并且将该环境注册为 Jupyter Notebook 的内核的一系列命令。</p>
+<pre><code>  ## 5.1. 1.创建一个名为 &quot;yourenvname&quot; 的 Conda 环境，并指定 Python 版本为 3.8：
+</code></pre><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">--name</span> yourenvname python=<span class="hljs-number">3.8</span><br>conda create <span class="hljs-literal">--name</span> URrobot python=<span class="hljs-number">3.11</span><br></code></pre></td></tr></table></figure>
+<p>这个命令会在 Conda 环境中创建一个名为 “yourenvname” 的全新环境，其中包含了 Python 3.8 版本。</p>
+<h2 id="5-2-2-激活-“yourenvname”-环境："><a href="#5-2-2-激活-“yourenvname”-环境：" class="headerlink" title="5.2. 2.激活 “yourenvname” 环境："></a>5.2. 2.激活 “yourenvname” 环境：</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">conda activate yourenvname<br></code></pre></td></tr></table></figure>
+<p>这个命令用于激活刚刚创建的 “yourenvname” 环境，意味着在后续的操作中，将在yourenvname环境下进行工作。</p>
+<h2 id="5-3-3-在-“yourenvname”-环境中安装-pycaret："><a href="#5-3-3-在-“yourenvname”-环境中安装-pycaret：" class="headerlink" title="5.3. 3.在 “yourenvname” 环境中安装 pycaret："></a>5.3. 3.在 “yourenvname” 环境中安装 pycaret：</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">pip install pycaret<br></code></pre></td></tr></table></figure>
+<p>这个命令使用 pip 包管理器在激活的 “yourenvname” 环境中安装了 pycaret 软件包。Pycaret 是一个用于快速和简单地进行机器学习任务的库。</p>
+<h2 id="5-4-4-创建-Jupyter-Notebook-的内核："><a href="#5-4-4-创建-Jupyter-Notebook-的内核：" class="headerlink" title="5.4. 4.创建 Jupyter Notebook 的内核："></a>5.4. 4.创建 Jupyter Notebook 的内核：</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">python <span class="hljs-literal">-m</span> ipykernel install <span class="hljs-literal">--user</span> <span class="hljs-literal">--name</span> mywork <span class="hljs-literal">--display-name</span> <span class="hljs-string">&quot;mywork&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">python <span class="hljs-literal">-m</span> ipykernel install <span class="hljs-literal">--user</span> <span class="hljs-literal">--name</span> mytorch <span class="hljs-literal">--display-name</span> <span class="hljs-string">&quot;mytorch&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">python -m ipykernel install --user --name mytorch --display-name <span class="hljs-string">&quot;myenv&quot;</span><br></code></pre></td></tr></table></figure>
+<p>这个命令用于在 Jupyter Notebook 中创建一个新的内核，使得您可以在该环境下运行 Notebook。”yourenvname” 参数指定了 Conda 环境的名称，”display-name” 参数用于指定内核在 Notebook 中显示的名称。</p>
+<p>综上所述，这些命令将会在 Conda 环境中安装 pycaret 并在 Jupyter Notebook 中创建一个新的内核，以便可以在该环境中进行机器学习任务和分析。</p>
+<h2 id="5-5-5-查看-Jupyter-notebook-kernel"><a href="#5-5-5-查看-Jupyter-notebook-kernel" class="headerlink" title="5.5. 5.查看 Jupyter notebook kernel"></a>5.5. 5.查看 Jupyter notebook kernel</h2><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">jupyter kernelspec <span class="hljs-built_in">list</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20200830215814833.png" alt="20200830215814833"></p>
+<h2 id="5-6-6-删除-jupyter-内核"><a href="#5-6-6-删除-jupyter-内核" class="headerlink" title="5.6. 6.删除 jupyter 内核"></a>5.6. 6.删除 jupyter 内核</h2><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">jupyter kernelspec remove kernelname<br></code></pre></td></tr></table></figure>
+<h1 id="6-Pytorch和TensorFlow"><a href="#6-Pytorch和TensorFlow" class="headerlink" title="6. Pytorch和TensorFlow"></a>6. Pytorch和TensorFlow</h1><p>[[pytorch和TensorFlow安装教程]]</p>
+<p><a href="anaconda环境导出与重装.md">anaconda环境导出与重装</a></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20250519181230039.png" alt="image-20250519181230039"></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>anaconda &amp; jupyter notebook使用技巧</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/anaconda%E7%8E%AF%E5%A2%83%E5%AF%BC%E5%87%BA%E4%B8%8E%E9%87%8D%E8%A3%85/">anaconda环境导出与重装</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/alist%E9%85%8D%E7%BD%AE/">alist配置</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">1. 一、安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-anaconda%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. anaconda安装：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-jupyter-notebook"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. jupyter notebook:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BA%8C%E3%80%81%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">2. 二、配置环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%B8%89%E3%80%81jupyter-notebook%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">3. 三、jupyter notebook安装插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%9B%9B%E3%80%81jupyter-notebook%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">4. 四、jupyter notebook更换主题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%BA%94%E3%80%81jupyter-notebook%E4%BD%BF%E7%94%A8Anaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%86%85%E6%A0%B8"><span class="toc-number">5.</span> <span class="toc-text">5. 五、jupyter notebook使用Anaconda虚拟环境内核</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-2-%E6%BF%80%E6%B4%BB-%E2%80%9Cyourenvname%E2%80%9D-%E7%8E%AF%E5%A2%83%EF%BC%9A"><span class="toc-number">5.1.</span> <span class="toc-text">5.2. 2.激活 “yourenvname” 环境：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-3-%E5%9C%A8-%E2%80%9Cyourenvname%E2%80%9D-%E7%8E%AF%E5%A2%83%E4%B8%AD%E5%AE%89%E8%A3%85-pycaret%EF%BC%9A"><span class="toc-number">5.2.</span> <span class="toc-text">5.3. 3.在 “yourenvname” 环境中安装 pycaret：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-4-%E5%88%9B%E5%BB%BA-Jupyter-Notebook-%E7%9A%84%E5%86%85%E6%A0%B8%EF%BC%9A"><span class="toc-number">5.3.</span> <span class="toc-text">5.4. 4.创建 Jupyter Notebook 的内核：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-5-%E6%9F%A5%E7%9C%8B-Jupyter-notebook-kernel"><span class="toc-number">5.4.</span> <span class="toc-text">5.5. 5.查看 Jupyter notebook kernel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-6-%E5%88%A0%E9%99%A4-jupyter-%E5%86%85%E6%A0%B8"><span class="toc-number">5.5.</span> <span class="toc-text">5.6. 6.删除 jupyter 内核</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Pytorch%E5%92%8CTensorFlow"><span class="toc-number">6.</span> <span class="toc-text">6. Pytorch和TensorFlow</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>学生信息管理系统oracle || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="学生信息管理系统oracle">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Foracle/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="学生信息管理系统1.需求分析1.1学生模块学生信息管理：提供学生个人信息的录入、查询、更新和删除功能，包括姓名、学号、联系方式等。选课管理：学生可以查看可选课程，进行选课与退课操作。系统需记录选课历史，并能够查询学期内的选课情况。1.2教师模块教师信息管理：教师可以录入、更新和删除个人信息，包括姓名、工号、教">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">学生信息管理系统oracle</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.162Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p>学生信息管理系统</p>
+<h1 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h1><font style="color:rgb(0,0,0);">1</font><font style="color:rgb(0,0,0);">.1 </font><font style="color:rgb(0,0,0);">学生模块</font>
+
+<font style="color:rgb(0,0,0);">学生信息管理</font><font style="color:rgb(0,0,0);">：</font><font style="color:rgb(0,0,0);">提供学生个人信息的录入、查询、更新和删除功能，包括姓名、学号、联系方式等。</font>
+
+<font style="color:rgb(0,0,0);">选课管理</font><font style="color:rgb(0,0,0);">：</font><font style="color:rgb(0,0,0);">学生可以查看可选课程，进行选课与退课操作。系统需记录选课历史，并能够查询学期内的选课情况。</font>
+
+<font style="color:rgb(0,0,0);">1</font><font style="color:rgb(0,0,0);">.2 </font><font style="color:rgb(0,0,0);">教师模块</font>
+
+<font style="color:rgb(0,0,0);">教师信息管理</font><font style="color:rgb(0,0,0);">：</font><font style="color:rgb(0,0,0);">教师可以录入、更新和删除个人信息，包括姓名、工号、教学科目及联系方式等。</font>
+
+<font style="color:rgb(0,0,0);">授课管理</font><font style="color:rgb(0,0,0);">：</font><font style="color:rgb(0,0,0);">教师可以查看自己所教授的课程信息，并录入学生的期中与期末成绩。</font>
+
+<font style="color:rgb(0,0,0);">1</font><font style="color:rgb(0,0,0);">.3 </font><font style="color:rgb(0,0,0);">课程模块</font>
+
+<font style="color:rgb(0,0,0);">课程信息管理</font><font style="color:rgb(0,0,0);">：</font><font style="color:rgb(0,0,0);">管理员及教师可以添加、修改和删除课程信息，如课程名称、学分、授课教师和教学大纲等。</font>
+
+<font style="color:rgb(0,0,0);">1</font><font style="color:rgb(0,0,0);">.4 </font><font style="color:rgb(0,0,0);">教务模块</font>
+
+<font style="color:rgb(0,0,0);">教学计划管理</font><font style="color:rgb(0,0,0);">：</font><font style="color:rgb(0,0,0);">教务管理人员可以制定和维护每学期的教学计划，包括课程安排、考试安排及其他相关活动。</font>
+
+<font style="color:rgb(0,0,0);">1</font><font style="color:rgb(0,0,0);">.5 </font><font style="color:rgb(0,0,0);">系统管理模块</font>
+
+<font style="color:rgb(0,0,0);">用户权限管理</font><font style="color:rgb(0,0,0);">：</font><font style="color:rgb(0,0,0);">系统允许超级管理员设置和管理用户的权限，确保不同角色（如学生、教师、管理员）能访问相应的功能。</font>
+
+<font style="color:rgb(0,0,0);">基础数据管理：管理员可管理系统的基础数据，包括教学资源、学科信息和用户信息等。</font>
+
+<h1 id="2-系统设计"><a href="#2-系统设计" class="headerlink" title="2. 系统设计"></a>2. 系统设计</h1><h2 id="2-1-系统结构功能图"><a href="#2-1-系统结构功能图" class="headerlink" title="2.1. 系统结构功能图"></a>2.1. 系统结构功能图</h2><p>根据需求分析，确定系统结构功能如图2-1所示：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1748970843146-f9ce81d5-d6e2-4342-9a4e-f9bb3d9365ce.png" alt=""></p>
+<p>图2-1 系统功能结构图</p>
+<h2 id="2-2-功能流程图"><a href="#2-2-功能流程图" class="headerlink" title="2.2. 功能流程图"></a>2.2. 功能流程图</h2><p>系统最主要的功能就是管理员登录之后对各种功能的使用。管理员登录过程流程如图4-2所示。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1748970855864-6a34b698-0c46-4abc-99bc-5b9b27a514e5.png" alt=""></p>
+<p>图2-2 管理员管理流程</p>
+<h2 id="2-3-数据库设计"><a href="#2-3-数据库设计" class="headerlink" title="2.3. 数据库设计"></a>2.3. 数据库设计</h2><p>整体功能的E-R图如图2-3所示。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1748970880090-02ee02d8-d1dc-4e84-8d30-a343cb7fc570.png" alt=""></p>
+<p>图2-3 系统E-R图</p>
+<p>本系统包含的数据表如下：</p>
+<p>用户表用来存储用户的一些相关信息，如表2-1所示。</p>
+<h3 id="2-3-1-1-专业-Major"><a href="#2-3-1-1-专业-Major" class="headerlink" title="2.3.1. 1. **专业 **(Major)"></a>2.3.1. <strong>1. **</strong>专业 <strong>**(Major)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>专业ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>专业的唯一标识符</td>
+</tr>
+<tr>
+<td>专业名称</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NO</td>
+<td></td>
+<td>专业名称</td>
+</tr>
+<tr>
+<td>人数</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>YES</td>
+<td>0</td>
+<td>注册学生人数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-3-2-2-班级-Class"><a href="#2-3-2-2-班级-Class" class="headerlink" title="2.3.2. 2. **班级 **(Class)"></a>2.3.2. <strong>2. **</strong>班级 <strong>**(Class)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>班级ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>班级的唯一标识符</td>
+</tr>
+<tr>
+<td>班级名称</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NO</td>
+<td></td>
+<td>班级名称</td>
+</tr>
+<tr>
+<td>人数</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>YES</td>
+<td>0</td>
+<td>班级注册人数</td>
+</tr>
+<tr>
+<td>专业ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>关联的专业ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-3-3-3-学生-Student"><a href="#2-3-3-3-学生-Student" class="headerlink" title="2.3.3. 3. **学生 **(Student)"></a>2.3.3. <strong>3. **</strong>学生 <strong>**(Student)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>学生ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>学生的唯一标识符</td>
+</tr>
+<tr>
+<td>姓名</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NO</td>
+<td></td>
+<td>学生姓名</td>
+</tr>
+<tr>
+<td>身份证号</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>18</td>
+<td>YES</td>
+<td></td>
+<td>学生身份证号</td>
+</tr>
+<tr>
+<td>性别</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>10</td>
+<td>YES</td>
+<td></td>
+<td>学生性别</td>
+</tr>
+<tr>
+<td>出生日期</td>
+<td>DATE</td>
+<td>DATE</td>
+<td></td>
+<td>YES</td>
+<td></td>
+<td>学生出生日期</td>
+</tr>
+<tr>
+<td>入学日期</td>
+<td>DATE</td>
+<td>DATE</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>学生入学日期</td>
+</tr>
+<tr>
+<td>联系电话</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>20</td>
+<td>YES</td>
+<td></td>
+<td>学生联系电话</td>
+</tr>
+<tr>
+<td>邮箱</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>YES</td>
+<td></td>
+<td>学生邮箱</td>
+</tr>
+<tr>
+<td>班级ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>关联的班级ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-3-4-4-教师-Teacher"><a href="#2-3-4-4-教师-Teacher" class="headerlink" title="2.3.4. 4. **教师 **(Teacher)"></a>2.3.4. <strong>4. **</strong>教师 <strong>**(Teacher)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>教师ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>教师的唯一标识符</td>
+</tr>
+<tr>
+<td>姓名</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NO</td>
+<td></td>
+<td>教师姓名</td>
+</tr>
+<tr>
+<td>职称</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>50</td>
+<td>YES</td>
+<td></td>
+<td>教师职称</td>
+</tr>
+<tr>
+<td>联系电话</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>20</td>
+<td>YES</td>
+<td></td>
+<td>教师联系电话</td>
+</tr>
+<tr>
+<td>邮箱</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>YES</td>
+<td></td>
+<td>教师邮箱</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-3-5-5-课程-Course"><a href="#2-3-5-5-课程-Course" class="headerlink" title="2.3.5. 5. **课程 **(Course)"></a>2.3.5. <strong>5. **</strong>课程 <strong>**(Course)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>课程ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>课程的唯一标识符</td>
+</tr>
+<tr>
+<td>课程名称</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NO</td>
+<td></td>
+<td>课程名称</td>
+</tr>
+<tr>
+<td>学时</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>课程学时</td>
+</tr>
+<tr>
+<td>考核方式</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>50</td>
+<td>YES</td>
+<td></td>
+<td>考核方式</td>
+</tr>
+<tr>
+<td>学分</td>
+<td>NUMBER(3,1)</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>课程学分</td>
+</tr>
+<tr>
+<td>教授教师ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>关联的教师ID</td>
+</tr>
+<tr>
+<td>课程描述</td>
+<td>CLOB</td>
+<td>CLOB</td>
+<td></td>
+<td>YES</td>
+<td></td>
+<td>课程描述</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-3-6-6-学生选课-Student-Course-Selection"><a href="#2-3-6-6-学生选课-Student-Course-Selection" class="headerlink" title="2.3.6. 6. **学生选课 **(Student Course Selection)"></a>2.3.6. <strong>6. **</strong>学生选课 <strong>**(Student Course Selection)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>学生ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>关联的学生ID</td>
+</tr>
+<tr>
+<td>课程ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>关联的课程ID</td>
+</tr>
+<tr>
+<td>成绩</td>
+<td>NUMBER(5,2)</td>
+<td>NUMBER</td>
+<td></td>
+<td>YES</td>
+<td></td>
+<td>学生成绩</td>
+</tr>
+<tr>
+<td>学期</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>50</td>
+<td>YES</td>
+<td></td>
+<td>学期名称</td>
+</tr>
+<tr>
+<td>修课时间</td>
+<td>DATE</td>
+<td>DATE</td>
+<td></td>
+<td>YES</td>
+<td>SYSDATE</td>
+<td>选课时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-3-7-7-管理员-Administrator"><a href="#2-3-7-7-管理员-Administrator" class="headerlink" title="2.3.7. 7. **管理员 **(Administrator)"></a>2.3.7. <strong>7. **</strong>管理员 <strong>**(Administrator)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>管理员ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>管理员的唯一标识符</td>
+</tr>
+<tr>
+<td>姓名</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NO</td>
+<td></td>
+<td>管理员姓名</td>
+</tr>
+<tr>
+<td>工号</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>20</td>
+<td>NO</td>
+<td></td>
+<td>管理员工号</td>
+</tr>
+<tr>
+<td>联系电话</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>20</td>
+<td>YES</td>
+<td></td>
+<td>管理员联系电话</td>
+</tr>
+<tr>
+<td>邮箱</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>YES</td>
+<td></td>
+<td>管理员邮箱</td>
+</tr>
+<tr>
+<td>创建时间</td>
+<td>DATE</td>
+<td>DATE</td>
+<td></td>
+<td>YES</td>
+<td>SYSDATE</td>
+<td>管理员创建时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-3-8-8-系统用户-System-User"><a href="#2-3-8-8-系统用户-System-User" class="headerlink" title="2.3.8. 8. **系统用户 **(System User)"></a>2.3.8. <strong>8. **</strong>系统用户 <strong>**(System User)</strong></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>NO</td>
+<td></td>
+<td>系统用户的唯一标识符</td>
+</tr>
+<tr>
+<td>用户名</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>50</td>
+<td>NO</td>
+<td></td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NO</td>
+<td></td>
+<td>用户密码</td>
+</tr>
+<tr>
+<td>用户类型</td>
+<td>VARCHAR2</td>
+<td>VARCHAR</td>
+<td>10</td>
+<td>NO</td>
+<td></td>
+<td>用户类型</td>
+</tr>
+<tr>
+<td>关联学生ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>YES</td>
+<td></td>
+<td>关联的学生ID</td>
+</tr>
+<tr>
+<td>关联教师ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>YES</td>
+<td></td>
+<td>关联的教师ID</td>
+</tr>
+<tr>
+<td>关联管理员ID</td>
+<td>NUMBER</td>
+<td>NUMBER</td>
+<td></td>
+<td>YES</td>
+<td></td>
+<td>关联的管理员ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="3-3-SQL-实现"><a href="#3-3-SQL-实现" class="headerlink" title="3. 3 SQL**实现**"></a>3. <strong>3 SQL**</strong>实现**</h1><h2 id="3-1-3-1创建数据库表对象"><a href="#3-1-3-1创建数据库表对象" class="headerlink" title="3.1. 3.1创建数据库表对象"></a>3.1. <strong>3.1创建数据库表对象</strong></h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">-</span> 创建序列<br><span class="hljs-keyword">CREATE</span> SEQUENCE 班级_SEQ  MINVALUE <span class="hljs-number">1</span> MAXVALUE <span class="hljs-number">999999999999999999999999999</span> INCREMENT <span class="hljs-keyword">BY</span> <span class="hljs-number">1</span> <span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> <span class="hljs-number">1</span> CACHE <span class="hljs-number">20</span> NOORDER  NOCYCLE;<br><span class="hljs-keyword">CREATE</span> SEQUENCE 教师_SEQ  MINVALUE <span class="hljs-number">1</span> MAXVALUE <span class="hljs-number">999999999999999999999999999</span> INCREMENT <span class="hljs-keyword">BY</span> <span class="hljs-number">1</span> <span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> <span class="hljs-number">1</span> CACHE <span class="hljs-number">20</span> NOORDER  NOCYCLE;<br><span class="hljs-keyword">CREATE</span> SEQUENCE 课程_SEQ  MINVALUE <span class="hljs-number">1</span> MAXVALUE <span class="hljs-number">999999999999999999999999999</span> INCREMENT <span class="hljs-keyword">BY</span> <span class="hljs-number">1</span> <span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> <span class="hljs-number">1</span> CACHE <span class="hljs-number">20</span> NOORDER  NOCYCLE;<br><span class="hljs-keyword">CREATE</span> SEQUENCE 学生_SEQ  MINVALUE <span class="hljs-number">1</span> MAXVALUE <span class="hljs-number">999999999999999999999999999</span> INCREMENT <span class="hljs-keyword">BY</span> <span class="hljs-number">1</span> <span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> <span class="hljs-number">1</span> CACHE <span class="hljs-number">20</span> NOORDER  NOCYCLE;<br><span class="hljs-keyword">CREATE</span> SEQUENCE 专业_SEQ  MINVALUE <span class="hljs-number">1</span> MAXVALUE <span class="hljs-number">999999999999999999999999999</span> INCREMENT <span class="hljs-keyword">BY</span> <span class="hljs-number">1</span> <span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> <span class="hljs-number">1</span> CACHE <span class="hljs-number">20</span> NOORDER  NOCYCLE;<br><span class="hljs-keyword">CREATE</span> SEQUENCE 管理员_SEQ MINVALUE <span class="hljs-number">1</span> MAXVALUE <span class="hljs-number">999999999999999999999999999</span> <br>INCREMENT <span class="hljs-keyword">BY</span> <span class="hljs-number">1</span> <span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> <span class="hljs-number">1</span> CACHE <span class="hljs-number">20</span> NOORDER NOCYCLE;<br><br><span class="hljs-comment">-- 创建表（按依赖顺序）</span><br><span class="hljs-keyword">CREATE TABLE</span> 专业 (<br>专业ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>专业名称VARCHAR2(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,<br>人数NUMBER <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span>,<br><span class="hljs-keyword">PRIMARY KEY</span> (专业ID)<br>);<br><br><span class="hljs-keyword">CREATE TABLE</span> 班级 (<br>班级ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>班级名称VARCHAR2(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,<br>人数NUMBER <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span>,<br>专业ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br><span class="hljs-keyword">PRIMARY KEY</span> (班级ID),<br><span class="hljs-keyword">CONSTRAINT</span> FK_班级_专业 <span class="hljs-keyword">FOREIGN KEY</span> (专业ID) <span class="hljs-keyword">REFERENCES</span> 专业 (专业ID)<br>);<br><br><span class="hljs-keyword">CREATE TABLE</span> 学生 (<br>学生ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>姓名VARCHAR2(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,<br>身份证号VARCHAR2(<span class="hljs-number">18</span>) <span class="hljs-keyword">UNIQUE</span>,<br>性别VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">CHECK</span> (性别 <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span>, <span class="hljs-string">&#x27;其他&#x27;</span>)),<br>出生日期<span class="hljs-type">DATE</span>,<br>入学日期<span class="hljs-type">DATE</span> <span class="hljs-keyword">NOT NULL</span>,<br>联系电话VARCHAR2(<span class="hljs-number">20</span>),<br>邮箱VARCHAR2(<span class="hljs-number">255</span>),<br>班级ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br><span class="hljs-keyword">PRIMARY KEY</span> (学生ID),<br><span class="hljs-keyword">CONSTRAINT</span> FK_学生_班级 <span class="hljs-keyword">FOREIGN KEY</span> (班级ID) <span class="hljs-keyword">REFERENCES</span> 班级 (班级ID)<br>);<br><br><span class="hljs-keyword">CREATE TABLE</span> 教师 (<br>教师ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>姓名VARCHAR2(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,<br>职称VARCHAR2(<span class="hljs-number">50</span>),<br>联系电话VARCHAR2(<span class="hljs-number">20</span>),<br>邮箱VARCHAR2(<span class="hljs-number">255</span>),<br><span class="hljs-keyword">PRIMARY KEY</span> (教师ID)<br>);<br><br><span class="hljs-keyword">CREATE TABLE</span> 课程 (<br>课程ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>课程名称VARCHAR2(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,<br>学时NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>考核方式VARCHAR2(<span class="hljs-number">50</span>) <span class="hljs-keyword">CHECK</span> (考核方式 <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;考试&#x27;</span>, <span class="hljs-string">&#x27;考查&#x27;</span>, <span class="hljs-string">&#x27;其他&#x27;</span>)),<br>学分NUMBER(<span class="hljs-number">3</span>,<span class="hljs-number">1</span>) <span class="hljs-keyword">NOT NULL</span>,<br>教授教师ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>课程描述<span class="hljs-type">CLOB</span>,<br><span class="hljs-keyword">PRIMARY KEY</span> (课程ID),<br><span class="hljs-keyword">CONSTRAINT</span> FK_课程_教师 <span class="hljs-keyword">FOREIGN KEY</span> (教授教师ID) <span class="hljs-keyword">REFERENCES</span> 教师 (教师ID)<br>);<br><br><span class="hljs-comment">-- 学生选课关系表</span><br><span class="hljs-keyword">CREATE TABLE</span> 学生选课 (<br>学生ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>课程ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>成绩NUMBER(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>) <span class="hljs-keyword">CHECK</span> (成绩 <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">0</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">100</span>),<br>学期VARCHAR2(<span class="hljs-number">50</span>),<br>修课时间<span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> SYSDATE,<br><span class="hljs-keyword">PRIMARY KEY</span> (学生ID, 课程ID),<br><span class="hljs-keyword">CONSTRAINT</span> FK_选课_学生 <span class="hljs-keyword">FOREIGN KEY</span> (学生ID) <span class="hljs-keyword">REFERENCES</span> 学生 (学生ID),<br><span class="hljs-keyword">CONSTRAINT</span> FK_选课_课程 <span class="hljs-keyword">FOREIGN KEY</span> (课程ID) <span class="hljs-keyword">REFERENCES</span> 课程 (课程ID)<br>);<br><br><span class="hljs-comment">-- 管理员表</span><br><span class="hljs-keyword">CREATE TABLE</span> 管理员 (<br>  管理员ID NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>  姓名VARCHAR2(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,<br>  工号VARCHAR2(<span class="hljs-number">20</span>) <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">NOT NULL</span>,<br>  联系电话VARCHAR2(<span class="hljs-number">20</span>),<br>  邮箱VARCHAR2(<span class="hljs-number">255</span>),<br>  创建时间<span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> SYSDATE,<br>  <span class="hljs-keyword">PRIMARY KEY</span> (管理员ID)<br>);<br><br><span class="hljs-comment">-- 系统用户表（统一登录入口）</span><br><span class="hljs-keyword">CREATE TABLE</span> 系统用户 (<br>  用户ID NUMBER GENERATED ALWAYS <span class="hljs-keyword">AS</span> <span class="hljs-keyword">IDENTITY</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>  用户名VARCHAR2(<span class="hljs-number">50</span>) <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">NOT NULL</span>,<br>  密码VARCHAR2(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,<br>  用户类型VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT NULL</span> <br>  <span class="hljs-keyword">CHECK</span> (用户类型 <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;学生&#x27;</span>, <span class="hljs-string">&#x27;教师&#x27;</span>, <span class="hljs-string">&#x27;管理员&#x27;</span>)),<br>  关联学生ID NUMBER <span class="hljs-keyword">REFERENCES</span> 学生(学生ID),<br>  关联教师ID NUMBER <span class="hljs-keyword">REFERENCES</span> 教师(教师ID),<br>  关联管理员ID NUMBER <span class="hljs-keyword">REFERENCES</span> 管理员(管理员ID),<br>  <span class="hljs-comment">-- 确保每种用户类型只关联一个ID</span><br>  <span class="hljs-keyword">CONSTRAINT</span> CHK_单一关联 <span class="hljs-keyword">CHECK</span> (<br>    (用户类型 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;学生&#x27;</span> <span class="hljs-keyword">AND</span> 关联学生ID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">AND</span> 关联教师ID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">AND</span> 关联管理员ID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>) <span class="hljs-keyword">OR</span><br>    (用户类型 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;教师&#x27;</span> <span class="hljs-keyword">AND</span> 关联教师ID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">AND</span> 关联学生ID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">AND</span> 关联管理员ID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>) <span class="hljs-keyword">OR</span><br>    (用户类型 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;管理员&#x27;</span> <span class="hljs-keyword">AND</span> 关联管理员ID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">AND</span> 关联学生ID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">AND</span> 关联教师ID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>)<br>  )<br>);<br></code></pre></td></tr></table></figure>
+<h2 id="3-2-3-2-创建索引"><a href="#3-2-3-2-创建索引" class="headerlink" title="3.2. 3.2**创建索引**"></a>3.2. <strong>3.2**</strong>创建索引**</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">-- 创建索引优化查询性能<br>CREATE INDEX IDX_系统用户_用户名 ON 系统用户(用户名);<br>CREATE INDEX IDX_管理员_工号 ON 管理员(工号);<br>CREATE INDEX IDX_学生_身份证号 ON 学生(身份证号);<br>CREATE INDEX IDX_班级_专业ID ON 班级(专业ID);<br>CREATE INDEX IDX_学生选课_课程ID ON 学生选课(课程ID);<br></code></pre></td></tr></table></figure>
+<h2 id="3-3-3-3-创建视图"><a href="#3-3-3-3-创建视图" class="headerlink" title="3.3. 3.3**创建视图**"></a>3.3. <strong>3.3**</strong>创建视图**</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">学生信息视图，包含班级和专业信息<br>CREATE OR REPLACE VIEW 学生信息视图 AS<br>SELECT <br>s.学生ID, <br>s.姓名, <br>s.性别, <br>s.出生日期, <br>s.入学日期, <br>s.联系电话, <br>s.邮箱,<br>c.班级名称,<br>m.专业名称<br>FROM <br>学生s<br>JOIN <br>班级c ON s.班级ID = c.班级ID<br>JOIN <br>专业m ON c.专业ID = m.专业ID;<br><br>课程信息视图，包含教师信息<br>CREATE OR REPLACE VIEW 课程信息视图 AS<br>SELECT <br>k.课程ID, <br>k.课程名称, <br>k.学时, <br>k.考核方式, <br>k.学分, <br>k.课程描述,<br>t.姓名 AS 教师姓名,<br>t.职称,<br>t.联系电话,<br>t.邮箱<br>FROM <br>课程k<br>JOIN <br>教师t ON k.教授教师ID = t.教师ID;<br><br>学生成绩视图，包含课程和教师信息<br>CREATE OR REPLACE VIEW 学生成绩视图 AS<br>SELECT <br>s.学生ID, <br>s.姓名, <br>c.班级名称,<br>k.课程ID, <br>k.课程名称, <br>x.成绩,<br>x.学期,<br>t.姓名 AS 教师姓名<br>FROM <br>学生s<br>JOIN <br>学生选课x ON s.学生ID = x.学生ID<br>JOIN <br>课程k ON x.课程ID = k.课程ID<br>JOIN <br>教师t ON k.教授教师ID = t.教师ID<br>JOIN <br>班级c ON s.班级ID = c.班级ID;<br><br>专业统计视图，包含班级和学生人数<br>CREATE OR REPLACE VIEW 专业统计视图 AS<br>SELECT <br>m.专业ID, <br>m.专业名称, <br>m.人数 AS 专业总人数,<br>COUNT(c.班级ID) AS 班级数量,<br>AVG(c.人数) AS 平均班级人数<br>FROM <br>专业m<br>LEFT JOIN <br>班级c ON m.专业ID = c.专业ID<br>GROUP BY <br>m.专业ID, m.专业名称, m.人数;<br><br>教师授课统计视图<br>CREATE OR REPLACE VIEW 教师授课统计视图 AS<br>SELECT <br>t.教师ID, <br>t.姓名, <br>t.职称,<br>COUNT(k.课程ID) AS 授课数量,<br>SUM(k.学时) AS 总学时,<br>AVG(k.学分) AS 平均学分<br>FROM <br>教师t<br>LEFT JOIN <br>课程k ON t.教师ID = k.教授教师ID<br>GROUP BY <br>t.教师ID, t.姓名, t.职称;<br></code></pre></td></tr></table></figure>
+<h2 id="3-4-3-4-创建存储过程、函数"><a href="#3-4-3-4-创建存储过程、函数" class="headerlink" title="3.4. 3.4**创建存储过程、函数**"></a>3.4. <strong>3.4**</strong>创建存储过程、函数**</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">学生注册过程（带班级人数同步）<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> 注册学生(<br>  p_姓名 VARCHAR2,<br>  p_身份证号 VARCHAR2,<br>  p_性别 VARCHAR2,<br>  p_出生日期 <span class="hljs-type">DATE</span>,<br>  p_入学日期 <span class="hljs-type">DATE</span>,<br>  p_联系电话 VARCHAR2,<br>  p_邮箱 VARCHAR2,<br>  p_班级ID NUMBER,<br>  p_用户名 VARCHAR2,<br>  p_密码 VARCHAR2<br>)<br><span class="hljs-keyword">IS</span><br>v_学生ID NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 插入学生记录</span><br><span class="hljs-keyword">INSERT INTO</span> 学生(姓名, 身份证号, 性别, 出生日期, 入学日期, 联系电话, 邮箱, 班级ID)<br><span class="hljs-keyword">VALUES</span> (p_姓名, p_身份证号, p_性别, p_出生日期, p_入学日期, p_联系电话, p_邮箱, p_班级ID)<br>RETURNING 学生ID <span class="hljs-keyword">INTO</span> v_学生ID;<br><br><span class="hljs-comment">-- 创建系统账号</span><br><span class="hljs-keyword">INSERT INTO</span> 系统用户(用户名, 密码, 用户类型, 关联学生ID)<br><span class="hljs-keyword">VALUES</span> (p_用户名, p_密码, <span class="hljs-string">&#x27;学生&#x27;</span>, v_学生ID);<br><br><span class="hljs-comment">-- 触发器会自动更新班级/专业人数</span><br><span class="hljs-keyword">COMMIT</span>;<br>DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">&#x27;学生注册成功! ID: &#x27;</span> <span class="hljs-operator">||</span> v_学生ID);<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> DUP_VAL_ON_INDEX <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">ROLLBACK</span>;<br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20001</span>, <span class="hljs-string">&#x27;身份证号或用户名已存在&#x27;</span>);<br><span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">ROLLBACK</span>;<br>RAISE;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br>课程开设过程<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> 开设课程(<br>  p_课程名称 VARCHAR2,<br>  p_学时 NUMBER,<br>  p_考核方式 VARCHAR2,<br>  p_学分 NUMBER,<br>  p_教师ID NUMBER,<br>  p_课程描述 <span class="hljs-type">CLOB</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span><br>)<br><span class="hljs-keyword">IS</span><br>v_课程ID NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 验证教师存在</span><br>IF <span class="hljs-keyword">NOT</span> 教师存在(p_教师ID) <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20002</span>, <span class="hljs-string">&#x27;教师ID不存在&#x27;</span>);<br><span class="hljs-keyword">END</span> IF;<br><br><span class="hljs-comment">-- 创建课程</span><br><span class="hljs-keyword">INSERT INTO</span> 课程(课程名称, 学时, 考核方式, 学分, 教授教师ID, 课程描述)<br><span class="hljs-keyword">VALUES</span> (p_课程名称, p_学时, p_考核方式, p_学分, p_教师ID, p_课程描述)<br>RETURNING 课程ID <span class="hljs-keyword">INTO</span> v_课程ID;<br><br><span class="hljs-keyword">COMMIT</span>;<br>DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">&#x27;课程开设成功! ID: &#x27;</span> <span class="hljs-operator">||</span> v_课程ID);<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">ROLLBACK</span>;<br>RAISE;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br>成绩录入过程<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> 录入成绩(<br>  p_学生ID NUMBER,<br>  p_课程ID NUMBER,<br>  p_成绩 NUMBER,<br>  p_学期 VARCHAR2<br>)<br><span class="hljs-keyword">IS</span><br>v_记录数 NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 检查选课记录是否存在</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">INTO</span> v_记录数<br><span class="hljs-keyword">FROM</span> 学生选课<br><span class="hljs-keyword">WHERE</span> 学生ID <span class="hljs-operator">=</span> p_学生ID <span class="hljs-keyword">AND</span> 课程ID <span class="hljs-operator">=</span> p_课程ID;<br><br>IF v_记录数 <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br><span class="hljs-comment">-- 不存在则创建新记录</span><br><span class="hljs-keyword">INSERT INTO</span> 学生选课(学生ID, 课程ID, 成绩, 学期)<br><span class="hljs-keyword">VALUES</span> (p_学生ID, p_课程ID, p_成绩, p_学期);<br><span class="hljs-keyword">ELSE</span><br><span class="hljs-comment">-- 存在则更新成绩</span><br><span class="hljs-keyword">UPDATE</span> 学生选课<br><span class="hljs-keyword">SET</span> 成绩 <span class="hljs-operator">=</span> p_成绩, 学期 <span class="hljs-operator">=</span> p_学期<br><span class="hljs-keyword">WHERE</span> 学生ID <span class="hljs-operator">=</span> p_学生ID <span class="hljs-keyword">AND</span> 课程ID <span class="hljs-operator">=</span> p_课程ID;<br><span class="hljs-keyword">END</span> IF;<br><br><span class="hljs-keyword">COMMIT</span>;<br>DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">&#x27;成绩录入成功!&#x27;</span>);<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">ROLLBACK</span>;<br>RAISE;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br>学生转班过程<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> 学生转班(<br>  p_学生ID NUMBER,<br>  p_新班级ID NUMBER<br>)<br><span class="hljs-keyword">IS</span><br>v_原班级ID NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 获取原班级</span><br><span class="hljs-keyword">SELECT</span> 班级ID <span class="hljs-keyword">INTO</span> v_原班级ID<br><span class="hljs-keyword">FROM</span> 学生 <span class="hljs-keyword">WHERE</span> 学生ID <span class="hljs-operator">=</span> p_学生ID;<br><br><span class="hljs-comment">-- 更新班级</span><br><span class="hljs-keyword">UPDATE</span> 学生 <span class="hljs-keyword">SET</span> 班级ID <span class="hljs-operator">=</span> p_新班级ID<br><span class="hljs-keyword">WHERE</span> 学生ID <span class="hljs-operator">=</span> p_学生ID;<br><br><span class="hljs-keyword">COMMIT</span>;<br>DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">&#x27;学生 &#x27;</span> <span class="hljs-operator">||</span> p_学生ID <span class="hljs-operator">||</span> <span class="hljs-string">&#x27; 已从班级 &#x27;</span> <span class="hljs-operator">||</span> v_原班级ID <span class="hljs-operator">||</span> <span class="hljs-string">&#x27; 转到 &#x27;</span> <span class="hljs-operator">||</span> p_新班级ID);<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20003</span>, <span class="hljs-string">&#x27;学生不存在&#x27;</span>);<br><span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">ROLLBACK</span>;<br>RAISE;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br>函数<br>计算学生总学分（通过课程）<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> 计算学生总学分(<br>  p_学生ID NUMBER<br>) <span class="hljs-keyword">RETURN</span> NUMBER<br><span class="hljs-keyword">IS</span><br>v_总学分 NUMBER :<span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(学分) <span class="hljs-keyword">INTO</span> v_总学分<br><span class="hljs-keyword">FROM</span> 学生选课 sc<br><span class="hljs-keyword">JOIN</span> 课程 k <span class="hljs-keyword">ON</span> sc.课程ID <span class="hljs-operator">=</span> k.课程ID<br><span class="hljs-keyword">WHERE</span> sc.学生ID <span class="hljs-operator">=</span> p_学生ID<br><span class="hljs-keyword">AND</span> sc.成绩 <span class="hljs-operator">&gt;=</span> <span class="hljs-number">60</span>;  <span class="hljs-comment">-- 成绩合格</span><br><br><span class="hljs-keyword">RETURN</span> NVL(v_总学分, <span class="hljs-number">0</span>);<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">RETURN</span> <span class="hljs-number">0</span>;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br>检查教师是否存在<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> 教师存在(<br>  p_教师ID NUMBER<br>) <span class="hljs-keyword">RETURN</span> <span class="hljs-type">BOOLEAN</span><br><span class="hljs-keyword">IS</span><br>v_计数 NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">INTO</span> v_计数<br><span class="hljs-keyword">FROM</span> 教师<br><span class="hljs-keyword">WHERE</span> 教师ID <span class="hljs-operator">=</span> p_教师ID;<br><br><span class="hljs-keyword">RETURN</span> (v_计数 <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 3. 获取班级平均成绩</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> 获取班级平均成绩(<br>  p_班级ID NUMBER<br>) <span class="hljs-keyword">RETURN</span> NUMBER<br><span class="hljs-keyword">IS</span><br>v_平均成绩 NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(sc.成绩) <span class="hljs-keyword">INTO</span> v_平均成绩<br><span class="hljs-keyword">FROM</span> 学生选课 sc<br><span class="hljs-keyword">JOIN</span> 学生 s <span class="hljs-keyword">ON</span> sc.学生ID <span class="hljs-operator">=</span> s.学生ID<br><span class="hljs-keyword">WHERE</span> s.班级ID <span class="hljs-operator">=</span> p_班级ID;<br><br><span class="hljs-keyword">RETURN</span> ROUND(NVL(v_平均成绩, <span class="hljs-number">0</span>), <span class="hljs-number">2</span>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br>生成学生成绩单(JSON格式)<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> 生成成绩单(<br>  p_学生ID NUMBER<br>) <span class="hljs-keyword">RETURN</span> <span class="hljs-type">CLOB</span><br><span class="hljs-keyword">IS</span><br>v_json <span class="hljs-type">CLOB</span>;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">JSON_OBJECT</span>(<br>  <span class="hljs-string">&#x27;studentId&#x27;</span> <span class="hljs-keyword">VALUE</span> s.学生ID,<br>  <span class="hljs-string">&#x27;studentName&#x27;</span> <span class="hljs-keyword">VALUE</span> s.姓名,<br>  <span class="hljs-string">&#x27;className&#x27;</span> <span class="hljs-keyword">VALUE</span> c.班级名称,<br><span class="hljs-string">&#x27;major&#x27;</span> <span class="hljs-keyword">VALUE</span> m.专业名称,<br><span class="hljs-string">&#x27;totalCredits&#x27;</span> <span class="hljs-keyword">VALUE</span> 计算学生总学分(p_学生ID),<br><span class="hljs-string">&#x27;courses&#x27;</span> <span class="hljs-keyword">VALUE</span> (<br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">JSON_ARRAYAGG</span>(<br><span class="hljs-built_in">JSON_OBJECT</span>(<br><span class="hljs-string">&#x27;courseId&#x27;</span> <span class="hljs-keyword">VALUE</span> sc.课程ID,<br><span class="hljs-string">&#x27;courseName&#x27;</span> <span class="hljs-keyword">VALUE</span> k.课程名称,<br><span class="hljs-string">&#x27;credit&#x27;</span> <span class="hljs-keyword">VALUE</span> k.学分,<br><span class="hljs-string">&#x27;score&#x27;</span> <span class="hljs-keyword">VALUE</span> sc.成绩,<br><span class="hljs-string">&#x27;semester&#x27;</span> <span class="hljs-keyword">VALUE</span> sc.学期<br>)<br>)<br><span class="hljs-keyword">FROM</span> 学生选课 sc<br><span class="hljs-keyword">JOIN</span> 课程 k <span class="hljs-keyword">ON</span> sc.课程ID <span class="hljs-operator">=</span> k.课程ID<br><span class="hljs-keyword">WHERE</span> sc.学生ID <span class="hljs-operator">=</span> s.学生ID<br>)<br>)<br><span class="hljs-keyword">INTO</span> v_json<br><span class="hljs-keyword">FROM</span> 学生 s<br><span class="hljs-keyword">JOIN</span> 班级 c <span class="hljs-keyword">ON</span> s.班级ID <span class="hljs-operator">=</span> c.班级ID<br><span class="hljs-keyword">JOIN</span> 专业 m <span class="hljs-keyword">ON</span> c.专业ID <span class="hljs-operator">=</span> m.专业ID<br><span class="hljs-keyword">WHERE</span> s.学生ID <span class="hljs-operator">=</span> p_学生ID;<br><br><span class="hljs-keyword">RETURN</span> v_json;<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">RETURN</span> <span class="hljs-built_in">JSON_OBJECT</span>(<span class="hljs-string">&#x27;error&#x27;</span> <span class="hljs-keyword">VALUE</span> <span class="hljs-string">&#x27;学生不存在&#x27;</span>);<br><span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">RETURN</span> <span class="hljs-built_in">JSON_OBJECT</span>(<span class="hljs-string">&#x27;error&#x27;</span> <span class="hljs-keyword">VALUE</span> SQLERRM);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br>验证用户凭据<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> 验证用户(<br>p_用户名 VARCHAR2,<br>p_密码 VARCHAR2<br>) <span class="hljs-keyword">RETURN</span> <span class="hljs-type">BOOLEAN</span><br><span class="hljs-keyword">IS</span><br>v_计数 NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">INTO</span> v_计数<br><span class="hljs-keyword">FROM</span> 系统用户<br><span class="hljs-keyword">WHERE</span> 用户名 <span class="hljs-operator">=</span> p_用户名<br><span class="hljs-keyword">AND</span> 密码 <span class="hljs-operator">=</span> p_密码;  <span class="hljs-comment">-- 实际应用中密码应加密比较</span><br><br><span class="hljs-keyword">RETURN</span> (v_计数 <span class="hljs-operator">=</span> <span class="hljs-number">1</span>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
+<h2 id="3-5-3-5-创建触发器"><a href="#3-5-3-5-创建触发器" class="headerlink" title="3.5. 3.5**创建触发器**"></a>3.5. <strong>3.5**</strong>创建触发器**</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">主键生成触发器：在<span class="hljs-keyword">INSERT</span>操作之前，自动生成主键ID的触发器，自动从对应序列获取下一个值，将序列值赋给新记录的主键ID字段<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 班级_BI<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> 班级<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> 班级_SEQ.NEXTVAL <span class="hljs-keyword">INTO</span> :NEW.班级ID <span class="hljs-keyword">FROM</span> DUAL;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 教师_BI<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> 教师<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> 教师_SEQ.NEXTVAL <span class="hljs-keyword">INTO</span> :NEW.教师ID <span class="hljs-keyword">FROM</span> DUAL;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 课程_BI<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> 课程<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> 课程_SEQ.NEXTVAL <span class="hljs-keyword">INTO</span> :NEW.课程ID <span class="hljs-keyword">FROM</span> DUAL;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 学生_BI<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> 学生<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> 学生_SEQ.NEXTVAL <span class="hljs-keyword">INTO</span> :NEW.学生ID <span class="hljs-keyword">FROM</span> DUAL;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 专业_BI<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> 专业<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> 专业_SEQ.NEXTVAL <span class="hljs-keyword">INTO</span> :NEW.专业ID <span class="hljs-keyword">FROM</span> DUAL;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br>班级人数更新触发器：学生记录插入、删除或班级ID更新(AFTER<span class="hljs-operator">/</span><span class="hljs-keyword">INSERT</span><span class="hljs-operator">/</span><span class="hljs-keyword">DELETE</span><span class="hljs-operator">/</span><span class="hljs-keyword">UPDATE</span>)，保持班级表中&quot;人数&quot;字段的实时准确性<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 班级人数更新<br>AFTER <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> 班级ID <span class="hljs-keyword">ON</span> 学生<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 新增学生：班级人数+1</span><br>IF INSERTING <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">UPDATE</span> 班级 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> 人数 <span class="hljs-operator">+</span> <span class="hljs-number">1</span> <span class="hljs-keyword">WHERE</span> 班级ID <span class="hljs-operator">=</span> :NEW.班级ID;<br><br><span class="hljs-comment">-- 删除学生：班级人数-1</span><br>ELSIF DELETING <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">UPDATE</span> 班级 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> 人数 <span class="hljs-operator">-</span> <span class="hljs-number">1</span> <span class="hljs-keyword">WHERE</span> 班级ID <span class="hljs-operator">=</span> :OLD.班级ID;<br><br><span class="hljs-comment">-- 学生转班：原班级-1，新班级+1</span><br>ELSIF UPDATING(<span class="hljs-string">&#x27;班级ID&#x27;</span>) <span class="hljs-keyword">AND</span> :OLD.班级ID <span class="hljs-operator">&lt;&gt;</span> :NEW.班级ID <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">UPDATE</span> 班级 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> 人数 <span class="hljs-operator">-</span> <span class="hljs-number">1</span> <span class="hljs-keyword">WHERE</span> 班级ID <span class="hljs-operator">=</span> :OLD.班级ID;<br><span class="hljs-keyword">UPDATE</span> 班级 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> 人数 <span class="hljs-operator">+</span> <span class="hljs-number">1</span> <span class="hljs-keyword">WHERE</span> 班级ID <span class="hljs-operator">=</span> :NEW.班级ID;<br><span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br>专业人数更新触发器：班级记录插入、删除或专业ID<span class="hljs-operator">/</span>人数更新后，实现三级数据一致性（学生→班级→专业）<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 专业人数更新<br>AFTER <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> 专业ID <span class="hljs-keyword">ON</span> 班级<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">DECLARE</span><br>人数变化NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 新增班级：专业人数增加（新班级初始人数）</span><br>IF INSERTING <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">UPDATE</span> 专业 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> 人数 <span class="hljs-operator">+</span> :NEW.人数 <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> :NEW.专业ID;<br><br><span class="hljs-comment">-- 删除班级：专业人数减少（被删班级最后人数）</span><br>ELSIF DELETING <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">UPDATE</span> 专业 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> 人数 <span class="hljs-operator">-</span> :OLD.人数 <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> :OLD.专业ID;<br><br><span class="hljs-comment">-- 班级转专业：原专业减少，新专业增加</span><br>ELSIF UPDATING(<span class="hljs-string">&#x27;专业ID&#x27;</span>) <span class="hljs-keyword">AND</span> :OLD.专业ID <span class="hljs-operator">&lt;&gt;</span> :NEW.专业ID <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">UPDATE</span> 专业 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> 人数 <span class="hljs-operator">-</span> :OLD.人数 <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> :OLD.专业ID;<br><span class="hljs-keyword">UPDATE</span> 专业 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> 人数 <span class="hljs-operator">+</span> :NEW.人数 <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> :NEW.专业ID;<br><br><span class="hljs-comment">-- 班级人数变化：同步更新专业人数</span><br>ELSIF UPDATING(<span class="hljs-string">&#x27;人数&#x27;</span>) <span class="hljs-keyword">THEN</span><br>人数变化:<span class="hljs-operator">=</span> :NEW.人数 <span class="hljs-operator">-</span> :OLD.人数;<br><span class="hljs-keyword">UPDATE</span> 专业 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> 人数 <span class="hljs-operator">+</span> 人数变化 <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> :NEW.专业ID;<br><span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
+<h2 id="3-6-3-6-数据的操纵"><a href="#3-6-3-6-数据的操纵" class="headerlink" title="3.6. 3.6 数据的操纵"></a>3.6. <strong>3.6 数据的操纵</strong></h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">数据插入<br><span class="hljs-comment">-- 1. 插入专业数据</span><br><span class="hljs-keyword">INSERT INTO</span> 专业 (专业ID, 专业名称) <span class="hljs-keyword">VALUES</span> (专业_SEQ.NEXTVAL, <span class="hljs-string">&#x27;计算机科学与技术&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 专业 (专业ID, 专业名称) <span class="hljs-keyword">VALUES</span> (专业_SEQ.NEXTVAL, <span class="hljs-string">&#x27;软件工程&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 专业 (专业ID, 专业名称) <span class="hljs-keyword">VALUES</span> (专业_SEQ.NEXTVAL, <span class="hljs-string">&#x27;人工智能&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 专业 (专业ID, 专业名称) <span class="hljs-keyword">VALUES</span> (专业_SEQ.NEXTVAL, <span class="hljs-string">&#x27;数据科学与大数据技术&#x27;</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 2. 插入班级数据</span><br><span class="hljs-comment">-- 计算机专业班级</span><br><span class="hljs-keyword">INSERT INTO</span> 班级 (班级ID, 班级名称, 专业ID) <span class="hljs-keyword">VALUES</span> (班级_SEQ.NEXTVAL, <span class="hljs-string">&#x27;计科1班&#x27;</span>, <span class="hljs-number">1</span>);<br><span class="hljs-keyword">INSERT INTO</span> 班级 (班级ID, 班级名称, 专业ID) <span class="hljs-keyword">VALUES</span> (班级_SEQ.NEXTVAL, <span class="hljs-string">&#x27;计科2班&#x27;</span>, <span class="hljs-number">1</span>);<br><span class="hljs-comment">-- 软件工程专业班级</span><br><span class="hljs-keyword">INSERT INTO</span> 班级 (班级ID, 班级名称, 专业ID) <span class="hljs-keyword">VALUES</span> (班级_SEQ.NEXTVAL, <span class="hljs-string">&#x27;软工1班&#x27;</span>, <span class="hljs-number">2</span>);<br><span class="hljs-keyword">INSERT INTO</span> 班级 (班级ID, 班级名称, 专业ID) <span class="hljs-keyword">VALUES</span> (班级_SEQ.NEXTVAL, <span class="hljs-string">&#x27;软工2班&#x27;</span>, <span class="hljs-number">2</span>);<br><span class="hljs-comment">-- 人工智能专业班级</span><br><span class="hljs-keyword">INSERT INTO</span> 班级 (班级ID, 班级名称, 专业ID) <span class="hljs-keyword">VALUES</span> (班级_SEQ.NEXTVAL, <span class="hljs-string">&#x27;智能1班&#x27;</span>, <span class="hljs-number">3</span>);<br><span class="hljs-comment">-- 大数据专业班级</span><br><span class="hljs-keyword">INSERT INTO</span> 班级 (班级ID, 班级名称, 专业ID) <span class="hljs-keyword">VALUES</span> (班级_SEQ.NEXTVAL, <span class="hljs-string">&#x27;数据1班&#x27;</span>, <span class="hljs-number">4</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 3. 插入教师数据</span><br><span class="hljs-keyword">INSERT INTO</span> 教师 (教师ID, 姓名, 职称, 联系电话, 邮箱) <br><span class="hljs-keyword">VALUES</span> (教师_SEQ.NEXTVAL, <span class="hljs-string">&#x27;张教授&#x27;</span>, <span class="hljs-string">&#x27;教授&#x27;</span>, <span class="hljs-string">&#x27;13800138001&#x27;</span>, <span class="hljs-string">&#x27;zhang@edu.cn&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 教师 (教师ID, 姓名, 职称, 联系电话, 邮箱) <br><span class="hljs-keyword">VALUES</span> (教师_SEQ.NEXTVAL, <span class="hljs-string">&#x27;李副教授&#x27;</span>, <span class="hljs-string">&#x27;副教授&#x27;</span>, <span class="hljs-string">&#x27;13900139002&#x27;</span>, <span class="hljs-string">&#x27;li@edu.cn&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 教师 (教师ID, 姓名, 职称, 联系电话, 邮箱) <br><span class="hljs-keyword">VALUES</span> (教师_SEQ.NEXTVAL, <span class="hljs-string">&#x27;王老师&#x27;</span>, <span class="hljs-string">&#x27;讲师&#x27;</span>, <span class="hljs-string">&#x27;13700137003&#x27;</span>, <span class="hljs-string">&#x27;wang@edu.cn&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 教师 (教师ID, 姓名, 职称, 联系电话, 邮箱) <br><span class="hljs-keyword">VALUES</span> (教师_SEQ.NEXTVAL, <span class="hljs-string">&#x27;赵教授&#x27;</span>, <span class="hljs-string">&#x27;教授&#x27;</span>, <span class="hljs-string">&#x27;13600136004&#x27;</span>, <span class="hljs-string">&#x27;zhao@edu.cn&#x27;</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 4. 插入学生数据</span><br><span class="hljs-comment">-- 计科1班学生</span><br><span class="hljs-keyword">INSERT INTO</span> 学生 (学生ID, 姓名, 身份证号, 性别, 出生日期, 入学日期, 联系电话, 邮箱, 班级ID)<br><span class="hljs-keyword">VALUES</span> (学生_SEQ.NEXTVAL, <span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-string">&#x27;110101200001011234&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2000-01-01&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2023-09-01&#x27;</span>, <span class="hljs-string">&#x27;13800000001&#x27;</span>, <span class="hljs-string">&#x27;zhangsan@stu.edu.cn&#x27;</span>, <span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 学生 (学生ID, 姓名, 身份证号, 性别, 出生日期, 入学日期, 联系电话, 邮箱, 班级ID)<br><span class="hljs-keyword">VALUES</span> (学生_SEQ.NEXTVAL, <span class="hljs-string">&#x27;李四&#x27;</span>, <span class="hljs-string">&#x27;110102200002022345&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2000-02-02&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2023-09-01&#x27;</span>, <span class="hljs-string">&#x27;13800000002&#x27;</span>, <span class="hljs-string">&#x27;lisi@stu.edu.cn&#x27;</span>, <span class="hljs-number">1</span>);<br><br><span class="hljs-comment">-- 计科2班学生</span><br><span class="hljs-keyword">INSERT INTO</span> 学生 (学生ID, 姓名, 身份证号, 性别, 出生日期, 入学日期, 联系电话, 邮箱, 班级ID)<br><span class="hljs-keyword">VALUES</span> (学生_SEQ.NEXTVAL, <span class="hljs-string">&#x27;王五&#x27;</span>, <span class="hljs-string">&#x27;110103200003033456&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2000-03-03&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2023-09-01&#x27;</span>, <span class="hljs-string">&#x27;13800000003&#x27;</span>, <span class="hljs-string">&#x27;wangwu@stu.edu.cn&#x27;</span>, <span class="hljs-number">2</span>);<br><br><span class="hljs-comment">-- 软工1班学生</span><br><span class="hljs-keyword">INSERT INTO</span> 学生 (学生ID, 姓名, 身份证号, 性别, 出生日期, 入学日期, 联系电话, 邮箱, 班级ID)<br><span class="hljs-keyword">VALUES</span> (学生_SEQ.NEXTVAL, <span class="hljs-string">&#x27;赵六&#x27;</span>, <span class="hljs-string">&#x27;110104200004044567&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2000-04-04&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2023-09-01&#x27;</span>, <span class="hljs-string">&#x27;13800000004&#x27;</span>, <span class="hljs-string">&#x27;zhaoliu@stu.edu.cn&#x27;</span>, <span class="hljs-number">3</span>);<br><br><span class="hljs-comment">-- 软工2班学生</span><br><span class="hljs-keyword">INSERT INTO</span> 学生 (学生ID, 姓名, 身份证号, 性别, 出生日期, 入学日期, 联系电话, 邮箱, 班级ID)<br><span class="hljs-keyword">VALUES</span> (学生_SEQ.NEXTVAL, <span class="hljs-string">&#x27;钱七&#x27;</span>, <span class="hljs-string">&#x27;110105200005055678&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2000-05-05&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2023-09-01&#x27;</span>, <span class="hljs-string">&#x27;13800000005&#x27;</span>, <span class="hljs-string">&#x27;qianqi@stu.edu.cn&#x27;</span>, <span class="hljs-number">4</span>);<br><br><span class="hljs-comment">-- 智能1班学生</span><br><span class="hljs-keyword">INSERT INTO</span> 学生 (学生ID, 姓名, 身份证号, 性别, 出生日期, 入学日期, 联系电话, 邮箱, 班级ID)<br><span class="hljs-keyword">VALUES</span> (学生_SEQ.NEXTVAL, <span class="hljs-string">&#x27;孙八&#x27;</span>, <span class="hljs-string">&#x27;110106200006066789&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2000-06-06&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2023-09-01&#x27;</span>, <span class="hljs-string">&#x27;13800000006&#x27;</span>, <span class="hljs-string">&#x27;sunba@stu.edu.cn&#x27;</span>, <span class="hljs-number">5</span>);<br><br><span class="hljs-comment">-- 数据1班学生</span><br><span class="hljs-keyword">INSERT INTO</span> 学生 (学生ID, 姓名, 身份证号, 性别, 出生日期, 入学日期, 联系电话, 邮箱, 班级ID)<br><span class="hljs-keyword">VALUES</span> (学生_SEQ.NEXTVAL, <span class="hljs-string">&#x27;周九&#x27;</span>, <span class="hljs-string">&#x27;110107200007077890&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2000-07-07&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2023-09-01&#x27;</span>, <span class="hljs-string">&#x27;13800000007&#x27;</span>, <span class="hljs-string">&#x27;zhoujiu@stu.edu.cn&#x27;</span>, <span class="hljs-number">6</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 5. 插入课程数据</span><br><span class="hljs-keyword">INSERT INTO</span> 课程 (课程ID, 课程名称, 学时, 考核方式, 学分, 教授教师ID, 课程描述)<br><span class="hljs-keyword">VALUES</span> (课程_SEQ.NEXTVAL, <span class="hljs-string">&#x27;数据库系统&#x27;</span>, <span class="hljs-number">64</span>, <span class="hljs-string">&#x27;考试&#x27;</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;关系数据库原理与设计&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 课程 (课程ID, 课程名称, 学时, 考核方式, 学分, 教授教师ID, 课程描述)<br><span class="hljs-keyword">VALUES</span> (课程_SEQ.NEXTVAL, <span class="hljs-string">&#x27;数据结构&#x27;</span>, <span class="hljs-number">64</span>, <span class="hljs-string">&#x27;考试&#x27;</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;基本数据结构与算法&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 课程 (课程ID, 课程名称, 学时, 考核方式, 学分, 教授教师ID, 课程描述)<br><span class="hljs-keyword">VALUES</span> (课程_SEQ.NEXTVAL, <span class="hljs-string">&#x27;人工智能导论&#x27;</span>, <span class="hljs-number">48</span>, <span class="hljs-string">&#x27;考查&#x27;</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;人工智能基本原理与应用&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 课程 (课程ID, 课程名称, 学时, 考核方式, 学分, 教授教师ID, 课程描述)<br><span class="hljs-keyword">VALUES</span> (课程_SEQ.NEXTVAL, <span class="hljs-string">&#x27;机器学习&#x27;</span>, <span class="hljs-number">48</span>, <span class="hljs-string">&#x27;考试&#x27;</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;机器学习基本算法与实践&#x27;</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 6. 插入学生选课数据</span><br><span class="hljs-comment">-- 张三选课</span><br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">85.5</span>, <span class="hljs-string">&#x27;2023秋季&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">92.0</span>, <span class="hljs-string">&#x27;2023秋季&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">78.0</span>, <span class="hljs-string">&#x27;2024春季&#x27;</span>);<br><br><span class="hljs-comment">-- 李四选课</span><br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">90.5</span>, <span class="hljs-string">&#x27;2023秋季&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">88.0</span>, <span class="hljs-string">&#x27;2024春季&#x27;</span>);<br><br><span class="hljs-comment">-- 王五选课</span><br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">76.5</span>, <span class="hljs-string">&#x27;2023秋季&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">92.5</span>, <span class="hljs-string">&#x27;2024春季&#x27;</span>);<br><br><span class="hljs-comment">-- 赵六选课</span><br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">82.0</span>, <span class="hljs-string">&#x27;2023秋季&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">95.0</span>, <span class="hljs-string">&#x27;2024春季&#x27;</span>);<br><br><span class="hljs-comment">-- 钱七选课</span><br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">79.5</span>, <span class="hljs-string">&#x27;2024春季&#x27;</span>);<br><br><span class="hljs-comment">-- 孙八选课</span><br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">87.0</span>, <span class="hljs-string">&#x27;2023秋季&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">91.5</span>, <span class="hljs-string">&#x27;2024春季&#x27;</span>);<br><br><span class="hljs-comment">-- 周九选课</span><br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">7</span>, <span class="hljs-number">1</span>, <span class="hljs-number">94.5</span>, <span class="hljs-string">&#x27;2023秋季&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> 学生选课 (学生ID, 课程ID, 成绩, 学期) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-number">85.0</span>, <span class="hljs-string">&#x27;2024春季&#x27;</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 7. 插入管理员数据</span><br><span class="hljs-keyword">INSERT INTO</span> 管理员 (管理员ID, 姓名, 工号, 联系电话, 邮箱) <br><span class="hljs-keyword">VALUES</span> (管理员_SEQ.NEXTVAL, <span class="hljs-string">&#x27;张校长&#x27;</span>, <span class="hljs-string">&#x27;ADM001&#x27;</span>, <span class="hljs-string">&#x27;13888888888&#x27;</span>, <span class="hljs-string">&#x27;headmaster@edu.cn&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 管理员 (管理员ID, 姓名, 工号, 联系电话, 邮箱) <br><span class="hljs-keyword">VALUES</span> (管理员_SEQ.NEXTVAL, <span class="hljs-string">&#x27;李主任&#x27;</span>, <span class="hljs-string">&#x27;ADM002&#x27;</span>, <span class="hljs-string">&#x27;13999999999&#x27;</span>, <span class="hljs-string">&#x27;director@edu.cn&#x27;</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 8. 插入系统用户数据</span><br><span class="hljs-comment">-- 学生用户</span><br><span class="hljs-keyword">INSERT INTO</span> 系统用户 (用户名, 密码, 用户类型, 关联学生ID) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;zhangsan&#x27;</span>, <span class="hljs-string">&#x27;student_pass1&#x27;</span>, <span class="hljs-string">&#x27;学生&#x27;</span>, <span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 系统用户 (用户名, 密码, 用户类型, 关联学生ID) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;lisi&#x27;</span>, <span class="hljs-string">&#x27;student_pass2&#x27;</span>, <span class="hljs-string">&#x27;学生&#x27;</span>, <span class="hljs-number">2</span>);<br><br><span class="hljs-comment">-- 教师用户</span><br><span class="hljs-keyword">INSERT INTO</span> 系统用户 (用户名, 密码, 用户类型, 关联教师ID) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;prof_zhang&#x27;</span>, <span class="hljs-string">&#x27;teacher_pass1&#x27;</span>, <span class="hljs-string">&#x27;教师&#x27;</span>, <span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 系统用户 (用户名, 密码, 用户类型, 关联教师ID) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;prof_li&#x27;</span>, <span class="hljs-string">&#x27;teacher_pass2&#x27;</span>, <span class="hljs-string">&#x27;教师&#x27;</span>, <span class="hljs-number">2</span>);<br><br><span class="hljs-comment">-- 管理员用户</span><br><span class="hljs-keyword">INSERT INTO</span> 系统用户 (用户名, 密码, 用户类型, 关联管理员ID) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;admin_zhang&#x27;</span>, <span class="hljs-string">&#x27;admin_pass1&#x27;</span>, <span class="hljs-string">&#x27;管理员&#x27;</span>, <span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> 系统用户 (用户名, 密码, 用户类型, 关联管理员ID) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;admin_li&#x27;</span>, <span class="hljs-string">&#x27;admin_pass2&#x27;</span>, <span class="hljs-string">&#x27;管理员&#x27;</span>, <span class="hljs-number">2</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br>数据更新<br><span class="hljs-comment">-- 1. 更新专业人数</span><br><span class="hljs-keyword">UPDATE</span> 专业 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(人数) <span class="hljs-keyword">FROM</span> 班级 <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> <span class="hljs-number">1</span>) <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><span class="hljs-keyword">UPDATE</span> 专业 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(人数) <span class="hljs-keyword">FROM</span> 班级 <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> <span class="hljs-number">2</span>) <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br><span class="hljs-keyword">UPDATE</span> 专业 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(人数) <span class="hljs-keyword">FROM</span> 班级 <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> <span class="hljs-number">3</span>) <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;<br><span class="hljs-keyword">UPDATE</span> 专业 <span class="hljs-keyword">SET</span> 人数 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(人数) <span class="hljs-keyword">FROM</span> 班级 <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> <span class="hljs-number">4</span>) <span class="hljs-keyword">WHERE</span> 专业ID <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 2. 更新学生信息</span><br><span class="hljs-keyword">UPDATE</span> 学生 <span class="hljs-keyword">SET</span> 邮箱 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;zhangsan_updated@stu.edu.cn&#x27;</span> <span class="hljs-keyword">WHERE</span> 学生ID <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><span class="hljs-keyword">UPDATE</span> 学生 <span class="hljs-keyword">SET</span> 联系电话 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;13800001111&#x27;</span> <span class="hljs-keyword">WHERE</span> 姓名 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;李四&#x27;</span>;<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 3. 更新课程信息</span><br><span class="hljs-keyword">UPDATE</span> 课程 <span class="hljs-keyword">SET</span> 学时 <span class="hljs-operator">=</span> <span class="hljs-number">72</span> <span class="hljs-keyword">WHERE</span> 课程名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;数据库系统&#x27;</span>;<br><span class="hljs-keyword">UPDATE</span> 课程 <span class="hljs-keyword">SET</span> 学分 <span class="hljs-operator">=</span> <span class="hljs-number">4.5</span> <span class="hljs-keyword">WHERE</span> 课程ID <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 4. 更新成绩</span><br><span class="hljs-keyword">UPDATE</span> 学生选课 <span class="hljs-keyword">SET</span> 成绩 <span class="hljs-operator">=</span> <span class="hljs-number">88.5</span> <br><span class="hljs-keyword">WHERE</span> 学生ID <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> 学生ID <span class="hljs-keyword">FROM</span> 学生 <span class="hljs-keyword">WHERE</span> 姓名 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;张三&#x27;</span>) <br><span class="hljs-keyword">AND</span> 课程ID <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> 课程ID <span class="hljs-keyword">FROM</span> 课程 <span class="hljs-keyword">WHERE</span> 课程名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;数据库系统&#x27;</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br>数据删除<br><span class="hljs-comment">-- 1. 删除无效选课记录（成绩低于60分）</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> 学生选课 <span class="hljs-keyword">WHERE</span> 成绩 <span class="hljs-operator">&lt;</span> <span class="hljs-number">60</span>;<br><span class="hljs-comment">-- 示例：假设王五的数据结构成绩低于60</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> 学生选课 <br><span class="hljs-keyword">WHERE</span> 学生ID <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> 学生ID <span class="hljs-keyword">FROM</span> 学生 <span class="hljs-keyword">WHERE</span> 姓名 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;王五&#x27;</span>) <br><span class="hljs-keyword">AND</span> 课程ID <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> 课程ID <span class="hljs-keyword">FROM</span> 课程 <span class="hljs-keyword">WHERE</span> 课程名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;数据结构&#x27;</span>);<br><span class="hljs-keyword">COMMIT</span>;<br><br><span class="hljs-comment">-- 2. 删除未分配课程的教师（演示用，实际无此类数据）</span><br><span class="hljs-comment">-- DELETE FROM 教师 </span><br><span class="hljs-comment">-- WHERE 教师ID NOT IN (SELECT 教授教师ID FROM 课程);</span><br><br>数据查询<br><span class="hljs-comment">-- 1. 查询所有学生及其班级信息</span><br><span class="hljs-keyword">SELECT</span> s.学生ID, s.姓名, s.性别, c.班级名称, m.专业名称<br><span class="hljs-keyword">FROM</span> 学生 s<br><span class="hljs-keyword">JOIN</span> 班级 c <span class="hljs-keyword">ON</span> s.班级ID <span class="hljs-operator">=</span> c.班级ID<br><span class="hljs-keyword">JOIN</span> 专业 m <span class="hljs-keyword">ON</span> c.专业ID <span class="hljs-operator">=</span> m.专业ID;<br><br><span class="hljs-comment">-- 2. 查询课程及授课教师信息</span><br><span class="hljs-keyword">SELECT</span> k.课程ID, k.课程名称, k.学分, t.姓名 <span class="hljs-keyword">AS</span> 授课教师, t.职称<br><span class="hljs-keyword">FROM</span> 课程 k<br><span class="hljs-keyword">JOIN</span> 教师 t <span class="hljs-keyword">ON</span> k.教授教师ID <span class="hljs-operator">=</span> t.教师ID;<br><br><span class="hljs-comment">-- 3. 查询学生成绩单（张三）</span><br><span class="hljs-keyword">SELECT</span> s.姓名, k.课程名称, sc.成绩, sc.学期, t.姓名 <span class="hljs-keyword">AS</span> 授课教师<br><span class="hljs-keyword">FROM</span> 学生选课 sc<br><span class="hljs-keyword">JOIN</span> 学生 s <span class="hljs-keyword">ON</span> sc.学生ID <span class="hljs-operator">=</span> s.学生ID<br><span class="hljs-keyword">JOIN</span> 课程 k <span class="hljs-keyword">ON</span> sc.课程ID <span class="hljs-operator">=</span> k.课程ID<br><span class="hljs-keyword">JOIN</span> 教师 t <span class="hljs-keyword">ON</span> k.教授教师ID <span class="hljs-operator">=</span> t.教师ID<br><span class="hljs-keyword">WHERE</span> s.姓名 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;张三&#x27;</span>;<br><br><span class="hljs-comment">-- 4. 查询班级平均成绩</span><br><span class="hljs-keyword">SELECT</span> c.班级名称, ROUND(<span class="hljs-built_in">AVG</span>(sc.成绩), <span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> 平均成绩<br><span class="hljs-keyword">FROM</span> 学生选课 sc<br><span class="hljs-keyword">JOIN</span> 学生 s <span class="hljs-keyword">ON</span> sc.学生ID <span class="hljs-operator">=</span> s.学生ID<br><span class="hljs-keyword">JOIN</span> 班级 c <span class="hljs-keyword">ON</span> s.班级ID <span class="hljs-operator">=</span> c.班级ID<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> c.班级名称;<br><br><span class="hljs-comment">-- 5. 查询教师授课情况</span><br><span class="hljs-keyword">SELECT</span> t.姓名, t.职称, <span class="hljs-built_in">COUNT</span>(k.课程ID) <span class="hljs-keyword">AS</span> 授课课程数<br><span class="hljs-keyword">FROM</span> 教师 t<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> 课程 k <span class="hljs-keyword">ON</span> t.教师ID <span class="hljs-operator">=</span> k.教授教师ID<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> t.姓名, t.职称;<br><br><span class="hljs-comment">-- 6. 查询系统用户</span><br><span class="hljs-keyword">SELECT</span> u.用户名, u.用户类型, <br><span class="hljs-built_in">COALESCE</span>(s.姓名, t.姓名, a.姓名) <span class="hljs-keyword">AS</span> 姓名<br><span class="hljs-keyword">FROM</span> 系统用户 u<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> 学生 s <span class="hljs-keyword">ON</span> u.关联学生ID <span class="hljs-operator">=</span> s.学生ID <span class="hljs-keyword">AND</span> u.用户类型 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;学生&#x27;</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> 教师 t <span class="hljs-keyword">ON</span> u.关联教师ID <span class="hljs-operator">=</span> t.教师ID <span class="hljs-keyword">AND</span> u.用户类型 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;教师&#x27;</span><br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> 管理员 a <span class="hljs-keyword">ON</span> u.关联管理员ID <span class="hljs-operator">=</span> a.管理员ID <span class="hljs-keyword">AND</span> u.用户类型 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;管理员&#x27;</span>;<br><br><span class="hljs-comment">-- 7. 查询专业人数统计</span><br><span class="hljs-keyword">SELECT</span> m.专业名称, <span class="hljs-built_in">SUM</span>(c.人数) <span class="hljs-keyword">AS</span> 学生总数<br><span class="hljs-keyword">FROM</span> 专业 m<br><span class="hljs-keyword">JOIN</span> 班级 c <span class="hljs-keyword">ON</span> m.专业ID <span class="hljs-operator">=</span> c.专业ID<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> m.专业名称;<br><br><span class="hljs-comment">-- 8. 查询学分超过3.5的课程</span><br><span class="hljs-keyword">SELECT</span> 课程名称, 学分, 考核方式 <br><span class="hljs-keyword">FROM</span> 课程 <br><span class="hljs-keyword">WHERE</span> 学分 <span class="hljs-operator">&gt;</span> <span class="hljs-number">3.5</span>;<br><br><span class="hljs-comment">-- 9. 查询成绩优秀的学生（平均分&gt;90）</span><br><span class="hljs-keyword">SELECT</span> s.学生ID, s.姓名, ROUND(<span class="hljs-built_in">AVG</span>(sc.成绩), <span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> 平均分<br><span class="hljs-keyword">FROM</span> 学生 s<br><span class="hljs-keyword">JOIN</span> 学生选课 sc <span class="hljs-keyword">ON</span> s.学生ID <span class="hljs-operator">=</span> sc.学生ID<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> s.学生ID, s.姓名<br><span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">AVG</span>(sc.成绩) <span class="hljs-operator">&gt;</span> <span class="hljs-number">90</span>;<br><br><span class="hljs-comment">-- 10. 查询2023秋季学期课程选修情况</span><br><span class="hljs-keyword">SELECT</span> k.课程名称, <span class="hljs-built_in">COUNT</span>(sc.学生ID) <span class="hljs-keyword">AS</span> 选课人数<br><span class="hljs-keyword">FROM</span> 课程 k<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> 学生选课 sc <span class="hljs-keyword">ON</span> k.课程ID <span class="hljs-operator">=</span> sc.课程ID <span class="hljs-keyword">AND</span> sc.学期 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;2023秋季&#x27;</span><br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> k.课程名称;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2025/zip/40495483/1748971764388-8abb70b9-ef15-455e-a08b-cf2c7758dad4.zip">学生信息管理系统.zip</a></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>学生信息管理系统oracle</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E7%8E%87%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">学生出勤率预测分析报告</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fpython%E7%89%88/">学生信息管理系统python版</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">1. 需求分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">2. 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 系统结构功能图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 功能流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-1-%E4%B8%93%E4%B8%9A-Major"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1. 1. **专业 **(Major)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-2-%E7%8F%AD%E7%BA%A7-Class"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2. 2. **班级 **(Class)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-3-%E5%AD%A6%E7%94%9F-Student"><span class="toc-number">2.3.3.</span> <span class="toc-text">2.3.3. 3. **学生 **(Student)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-4-4-%E6%95%99%E5%B8%88-Teacher"><span class="toc-number">2.3.4.</span> <span class="toc-text">2.3.4. 4. **教师 **(Teacher)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-5-5-%E8%AF%BE%E7%A8%8B-Course"><span class="toc-number">2.3.5.</span> <span class="toc-text">2.3.5. 5. **课程 **(Course)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-6-6-%E5%AD%A6%E7%94%9F%E9%80%89%E8%AF%BE-Student-Course-Selection"><span class="toc-number">2.3.6.</span> <span class="toc-text">2.3.6. 6. **学生选课 **(Student Course Selection)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-7-7-%E7%AE%A1%E7%90%86%E5%91%98-Administrator"><span class="toc-number">2.3.7.</span> <span class="toc-text">2.3.7. 7. **管理员 **(Administrator)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-8-8-%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7-System-User"><span class="toc-number">2.3.8.</span> <span class="toc-text">2.3.8. 8. **系统用户 **(System User)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-3-SQL-%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">3. 3 SQL**实现**</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-3-1%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 3.1创建数据库表对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-3-2-%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 3.2**创建索引**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-3-3-%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 3.3**创建视图**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-3-4-%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">3.4. 3.4**创建存储过程、函数**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-3-5-%E5%88%9B%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">3.5.</span> <span class="toc-text">3.5. 3.5**创建触发器**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-3-6-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%93%8D%E7%BA%B5"><span class="toc-number">3.6.</span> <span class="toc-text">3.6. 3.6 数据的操纵</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

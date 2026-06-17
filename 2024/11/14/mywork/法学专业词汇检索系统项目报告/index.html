@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>法学专业词汇检索系统项目报告 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="法学专业词汇检索系统项目报告">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E6%B3%95%E5%AD%A6%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="法学专业词汇检索系统项目报告1.需求分析1.1解决的问题法学专业学生在学习和研究过程中面临以下问题：术语分散：法律术语分散在不同法律领域，缺乏统一的检索平台定义不明确：同一术语在不同法律领域可能有不同解释学习效率低：传统纸质词典检索效率低下，无法快速关联相关概念个性化需求：不同用户（学生、教师、研究者）对词汇">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">法学专业词汇检索系统项目报告</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.193Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="法学专业词汇检索系统项目报告"><a href="#法学专业词汇检索系统项目报告" class="headerlink" title="法学专业词汇检索系统项目报告"></a>法学专业词汇检索系统项目报告</h1><h2 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h2><h3 id="1-1-解决的问题"><a href="#1-1-解决的问题" class="headerlink" title="1.1 解决的问题"></a>1.1 解决的问题</h3><p>法学专业学生在学习和研究过程中面临以下问题：</p>
+<ol>
+<li><strong>术语分散</strong>：法律术语分散在不同法律领域，缺乏统一的检索平台</li>
+<li><strong>定义不明确</strong>：同一术语在不同法律领域可能有不同解释</li>
+<li><strong>学习效率低</strong>：传统纸质词典检索效率低下，无法快速关联相关概念</li>
+<li><strong>个性化需求</strong>：不同用户（学生、教师、研究者）对词汇的需求不同</li>
+</ol>
+<h3 id="1-2-核心功能规划"><a href="#1-2-核心功能规划" class="headerlink" title="1.2 核心功能规划"></a>1.2 核心功能规划</h3><p>围绕用户核心痛点，系统设计分层级功能体系，覆盖检索、管理、分析全场景：</p>
+<ol>
+<li>多维度词汇检索：支持关键词精准 / 模糊搜索、按法律领域筛选、按难度级别（1-5 级）筛选，兼顾快速检索与精准定位；</li>
+<li>用户权限管理：实现用户注册、登录、角色区分（普通用户 / 管理员），不同角色匹配差异化功能权限；</li>
+<li>个性化学习体系：提供词汇收藏、搜索历史记录、个人学习数据统计，适配学生个性化学习需求；</li>
+<li>数据可视化分析：支持系统使用数据、词汇难度分布、热门搜索词等多维度可视化展示，辅助学习决策；</li>
+<li>管理员专属功能：涵盖词汇增删改查、用户管理、系统参数配置、数据备份 / 恢复，保障系统运维效率。</li>
+</ol>
+<h2 id="2-数据库设计"><a href="#2-数据库设计" class="headerlink" title="2. 数据库设计"></a>2. 数据库设计</h2><h3 id="2-1-E-R图（实体关系图）"><a href="#2-1-E-R图（实体关系图）" class="headerlink" title="2.1 E-R图（实体关系图）"></a>2.1 E-R图（实体关系图）</h3><h3 id="2-2-关系模式（8个数据表）"><a href="#2-2-关系模式（8个数据表）" class="headerlink" title="2.2 关系模式（8个数据表）"></a>2.2 关系模式（8个数据表）</h3><h4 id="1-用户表-users"><a href="#1-用户表-users" class="headerlink" title="1. 用户表 (users)"></a>1. 用户表 (users)</h4><ul>
+<li><code>user_id</code> (主键): 用户ID</li>
+<li><code>username</code>: 用户名（唯一）</li>
+<li><code>password_hash</code>: 密码哈希值（SHA256加密）</li>
+<li><code>user_role</code>: 用户角色（普通用户/管理员）</li>
+<li><code>email</code>: 邮箱</li>
+<li><code>created_date</code>: 创建日期</li>
+<li><code>last_login_date</code>: 最后登录日期</li>
+</ul>
+<h4 id="2-法律领域表-legal-fields"><a href="#2-法律领域表-legal-fields" class="headerlink" title="2. 法律领域表 (legal_fields)"></a>2. 法律领域表 (legal_fields)</h4><ul>
+<li><code>field_id</code> (主键): 领域ID</li>
+<li><code>field_name</code>: 领域名称（唯一）</li>
+<li><code>field_description</code>: 领域描述</li>
+<li><code>created_date</code>: 创建日期</li>
+<li><code>is_active</code>: 是否启用</li>
+</ul>
+<h4 id="3-法律词汇表-legal-terms"><a href="#3-法律词汇表-legal-terms" class="headerlink" title="3. 法律词汇表 (legal_terms)"></a>3. 法律词汇表 (legal_terms)</h4><ul>
+<li><code>term_id</code> (主键): 词汇ID</li>
+<li><code>term_name</code>: 词汇名称（唯一）</li>
+<li><code>term_definition</code>: 词汇定义</li>
+<li><code>term_example</code>: 使用示例</li>
+<li><code>created_date</code>: 创建日期</li>
+<li><code>updated_date</code>: 更新日期</li>
+<li><code>difficulty_level</code>: 难度级别（1-5）</li>
+<li><code>image_path</code>: 图片路径</li>
+<li><code>source_reference</code>: 法律依据</li>
+<li><code>is_active</code>: 是否启用</li>
+</ul>
+<h4 id="4-词汇-领域关联表-term-field-relations-多对多关系"><a href="#4-词汇-领域关联表-term-field-relations-多对多关系" class="headerlink" title="4. 词汇-领域关联表 (term_field_relations) - 多对多关系"></a>4. 词汇-领域关联表 (term_field_relations) - 多对多关系</h4><ul>
+<li><code>relation_id</code> (主键): 关联ID</li>
+<li><code>term_id</code>: 词汇ID（外键）</li>
+<li><code>field_id</code>: 领域ID（外键）</li>
+<li>唯一约束: (term_id, field_id)</li>
+</ul>
+<h4 id="5-收藏记录表-favorites"><a href="#5-收藏记录表-favorites" class="headerlink" title="5. 收藏记录表 (favorites)"></a>5. 收藏记录表 (favorites)</h4><ul>
+<li><code>favorite_id</code> (主键): 收藏ID</li>
+<li><code>user_id</code>: 用户ID（外键）</li>
+<li><code>term_id</code>: 词汇ID（外键）</li>
+<li><code>favorite_date</code>: 收藏日期</li>
+<li><code>notes</code>: 备注</li>
+<li>唯一约束: (user_id, term_id)</li>
+</ul>
+<h4 id="6-搜索历史表-search-history"><a href="#6-搜索历史表-search-history" class="headerlink" title="6. 搜索历史表 (search_history)"></a>6. 搜索历史表 (search_history)</h4><ul>
+<li><code>history_id</code> (主键): 历史ID</li>
+<li><code>user_id</code>: 用户ID（外键）</li>
+<li><code>search_keyword</code>: 搜索关键词</li>
+<li><code>search_date</code>: 搜索时间</li>
+<li><code>search_type</code>: 搜索类型</li>
+<li><code>results_count</code>: 结果数量</li>
+</ul>
+<h4 id="7-系统设置表-system-settings"><a href="#7-系统设置表-system-settings" class="headerlink" title="7. 系统设置表 (system_settings)"></a>7. 系统设置表 (system_settings)</h4><ul>
+<li><code>setting_id</code> (主键): 设置ID</li>
+<li><code>setting_key</code>: 设置键（唯一）</li>
+<li><code>setting_value</code>: 设置值</li>
+<li><code>setting_description</code>: 设置描述</li>
+<li><code>updated_date</code>: 更新日期</li>
+</ul>
+<h4 id="8-操作日志表-operation-logs"><a href="#8-操作日志表-operation-logs" class="headerlink" title="8. 操作日志表 (operation_logs)"></a>8. 操作日志表 (operation_logs)</h4><ul>
+<li><code>log_id</code> (主键): 日志ID</li>
+<li><code>user_id</code>: 用户ID（外键）</li>
+<li><code>username</code>: 用户名</li>
+<li><code>operation_type</code>: 操作类型</li>
+<li><code>operation_details</code>: 操作详情</li>
+<li><code>ip_address</code>: IP地址</li>
+<li><code>operation_time</code>: 操作时间</li>
+</ul>
+<h3 id="2-3-规范化说明"><a href="#2-3-规范化说明" class="headerlink" title="2.3 规范化说明"></a>2.3 规范化说明</h3><p>数据库设计满足第三范式（3NF）：</p>
+<ol>
+<li><strong>第一范式（1NF）</strong>：所有属性都是原子值，没有重复列</li>
+<li><strong>第二范式（2NF）</strong>：所有非主属性完全依赖于主键</li>
+<li><strong>第三范式（3NF）</strong>：消除传递依赖，所有非主属性不依赖于其他非主属性</li>
+</ol>
+<p><strong>具体规范化措施</strong>：</p>
+<ul>
+<li>使用<code>term_field_relations</code>表解决法律词汇与法律领域之间的多对多关系</li>
+<li>将用户信息、词汇信息、领域信息分离到不同表中</li>
+<li>使用外键约束确保数据完整性</li>
+<li>创建索引优化查询性能</li>
+</ul>
+<h2 id="3-系统架构"><a href="#3-系统架构" class="headerlink" title="3. 系统架构"></a>3. 系统架构</h2><h3 id="3-1-模块划分图"><a href="#3-1-模块划分图" class="headerlink" title="3.1 模块划分图"></a>3.1 模块划分图</h3><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/未命名绘图.png" alt=""></p>
+<h3 id="3-2-技术架构"><a href="#3-2-技术架构" class="headerlink" title="3.2 技术架构"></a>3.2 技术架构</h3><ul>
+<li><strong>数据库</strong>: SQLite 3（轻量级，无需单独安装）</li>
+<li><strong>后端语言</strong>: Python 3.6+</li>
+<li><strong>GUI框架</strong>: Tkinter（Python标准库）</li>
+<li><strong>数据可视化</strong>: Matplotlib</li>
+<li><strong>数据处理</strong>: Pandas</li>
+<li><strong>加密算法</strong>: SHA256（密码加密）</li>
+<li>项目打包：Pyinstaller<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">pyi-makespec --onefile --noconsole --name=<span class="hljs-string">&quot;LawResearchSystem&quot;</span> main.py<br><br>pyinstaller LawResearchSystem.spec<br></code></pre></td></tr></table></figure>
+<h2 id="4-核心代码说明"><a href="#4-核心代码说明" class="headerlink" title="4. 核心代码说明"></a>4. 核心代码说明</h2></li>
+</ul>
+<h3 id="4-1-DatabaseManager-database-manager-py"><a href="#4-1-DatabaseManager-database-manager-py" class="headerlink" title="4.1 DatabaseManager (database_manager.py)"></a>4.1 DatabaseManager (database_manager.py)</h3><p><strong>功能</strong>: 数据库操作的核心类，封装所有数据库操作<br><strong>关键方法</strong>:</p>
+<ul>
+<li><code>connect()</code>: 建立数据库连接，设置行工厂返回字典格式</li>
+<li><code>execute_query()</code>: 执行查询语句，返回结果列表</li>
+<li><code>execute_update()</code>: 执行更新语句，返回影响行数</li>
+<li><code>verify_user()</code>: 用户登录验证，使用SHA256加密验证</li>
+<li><code>search_legal_terms()</code>: 多条件词汇检索，支持关键词、领域、难度筛选<h3 id="4-2-initialize-database-init-database-py"><a href="#4-2-initialize-database-init-database-py" class="headerlink" title="4.2 initialize_database (init_database.py)"></a>4.2 initialize_database (init_database.py)</h3><strong>功能</strong>: 数据库初始化，创建表结构和插入初始数据<br><strong>关键步骤</strong>:</li>
+</ul>
+<ol>
+<li>创建8个核心数据表</li>
+<li>插入50+条法律词汇数据</li>
+<li>建立词汇与领域的多对多关联</li>
+<li>创建索引优化查询性能</li>
+<li>插入系统默认设置<h3 id="4-3-LawVocabularyGUI类-main-py"><a href="#4-3-LawVocabularyGUI类-main-py" class="headerlink" title="4.3 LawVocabularyGUI类 (main.py)"></a>4.3 LawVocabularyGUI类 (main.py)</h3><strong>功能</strong>: 图形用户界面的主控制器<br><strong>关键方法</strong>:</li>
+</ol>
+<ul>
+<li><code>show_login_screen()</code>: 显示登录界面</li>
+<li><code>show_user_main_screen()</code>: 显示用户主界面</li>
+<li><code>show_admin_main_screen()</code>: 显示管理员界面</li>
+<li><code>search_terms()</code>: 处理词汇搜索请求</li>
+<li><code>show_statistics()</code>: 显示统计分析图表<h3 id="4-4-词汇检索算法-database-manager-py中的search-legal-terms方法"><a href="#4-4-词汇检索算法-database-manager-py中的search-legal-terms方法" class="headerlink" title="4.4 词汇检索算法 (database_manager.py中的search_legal_terms方法)"></a>4.4 词汇检索算法 (database_manager.py中的search_legal_terms方法)</h3><strong>功能</strong>: 实现多条件联合查询<br><strong>算法流程</strong>:</li>
+</ul>
+<ol>
+<li>构建动态SQL查询语句</li>
+<li>根据用户输入条件添加WHERE子句</li>
+<li>使用参数化查询防止SQL注入</li>
+<li>执行查询并返回格式化结果</li>
+<li>支持分页和排序</li>
+</ol>
+<p><strong>优化措施</strong>:</p>
+<ul>
+<li>使用预编译语句提高性能</li>
+<li>创建复合索引加速查询</li>
+<li>实现结果缓存机制<h2 id="5-使用说明"><a href="#5-使用说明" class="headerlink" title="5. 使用说明"></a>5. 使用说明</h2><h3 id="5-1安装运行步骤"><a href="#5-1安装运行步骤" class="headerlink" title="5.1安装运行步骤"></a>5.1安装运行步骤</h3><h4 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h4></li>
+<li>Python 3.6或更高版本</li>
+<li>操作系统: Windows/Linux/macOS</li>
+</ul>
+<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 安装依赖包</span><br>pip install -r requirements.txt<br><br><span class="hljs-comment"># 2. 启动系统</span><br>python main.py<br></code></pre></td></tr></table></figure>
+<h4 id="依赖包说明"><a href="#依赖包说明" class="headerlink" title="依赖包说明"></a>依赖包说明</h4><ul>
+<li><code>matplotlib</code>: 数据可视化图表</li>
+<li><code>pandas</code>: 数据处理和分析</li>
+<li><code>openpyxl</code>: Excel文件支持（用于数据导入导出）</li>
+</ul>
+<h3 id="5-2-操作指南"><a href="#5-2-操作指南" class="headerlink" title="5.2 操作指南"></a>5.2 操作指南</h3><h4 id="5-2-1-登录账户"><a href="#5-2-1-登录账户" class="headerlink" title="5.2.1 登录账户"></a>5.2.1 登录账户</h4><ul>
+<li><strong>管理员账户</strong>: <code>admin</code> / <code>admin123</code></li>
+<li><strong>普通用户账户</strong>: <code>user1</code> / <code>user123</code></li>
+</ul>
+<h4 id="5-2-2-主要功能操作"><a href="#5-2-2-主要功能操作" class="headerlink" title="5.2.2 主要功能操作"></a>5.2.2 主要功能操作</h4><p><strong>1.登录界面</strong><br><strong>2. 用户模式（登录后）</strong></p>
+<ul>
+<li><strong>收藏管理</strong>：<ul>
+<li>在词汇详情页点击”收藏”按钮</li>
+<li>在个人中心查看和管理收藏的词汇</li>
+<li>可以为收藏的词汇添加备注</li>
+</ul>
+</li>
+<li><strong>搜索历史</strong>：<ul>
+<li>系统自动记录用户的搜索历史</li>
+<li>在个人中心查看历史记录</li>
+<li>可以快速重新执行历史搜索</li>
+</ul>
+</li>
+<li><strong>个人统计</strong>：<ul>
+<li>查看个人学习进度</li>
+<li>分析收藏词汇的难度分布</li>
+<li>查看搜索习惯分析</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 管理员模式</strong></p>
+<ul>
+<li><strong>数据管理</strong>：<ul>
+<li>添加/编辑/删除法律词汇</li>
+<li>管理法律领域分类</li>
+<li>批量导入导出数据</li>
+</ul>
+</li>
+<li><strong>用户管理</strong>：<ul>
+<li>查看所有用户列表</li>
+<li>修改用户角色（普通用户/管理员）</li>
+<li>重置用户密码</li>
+</ul>
+</li>
+<li><strong>系统分析</strong>：<ul>
+<li>查看系统使用统计</li>
+<li>分析热门搜索词汇</li>
+<li>生成数据可视化报表</li>
+</ul>
+</li>
+<li><strong>系统设置</strong>：<ul>
+<li>修改系统名称、版本</li>
+<li>配置用户权限策略</li>
+<li>管理操作日志</li>
+</ul>
+</li>
+</ul>
+<p><strong>4. 词汇检索和高级搜索</strong></p>
+<p><strong>5. 收藏</strong></p>
+<p><strong>6. 统计分析</strong></p>
+<p><strong>7. 数据管理</strong></p>
+<p><strong>8. 用户管理</strong></p>
+<h2 id="6-总结反思"><a href="#6-总结反思" class="headerlink" title="6. 总结反思"></a>6. 总结反思</h2><h3 id="6-1-遇到的问题及解决方案"><a href="#6-1-遇到的问题及解决方案" class="headerlink" title="6.1 遇到的问题及解决方案"></a>6.1 遇到的问题及解决方案</h3><h4 id="问题1-数据库设计复杂度"><a href="#问题1-数据库设计复杂度" class="headerlink" title="问题1: 数据库设计复杂度"></a>问题1: 数据库设计复杂度</h4><p><strong>问题描述</strong>: 法律词汇与法律领域存在多对多关系，需要设计合理的关联表<br><strong>解决方案</strong>: </p>
+<ul>
+<li>创建<code>term_field_relations</code>表作为中间表</li>
+<li>使用外键约束确保数据完整性</li>
+<li>建立复合索引优化关联查询性能</li>
+</ul>
+<h4 id="问题2-用户权限管理"><a href="#问题2-用户权限管理" class="headerlink" title="问题2: 用户权限管理"></a>问题2: 用户权限管理</h4><p><strong>问题描述</strong>: 需要区分普通用户和管理员的不同权限<br><strong>解决方案</strong>:</p>
+<ul>
+<li>在<code>users</code>表中添加<code>user_role</code>字段</li>
+<li>在业务逻辑层进行权限验证</li>
+<li>在界面层根据角色显示不同功能</li>
+</ul>
+<h4 id="问题3-搜索性能优化"><a href="#问题3-搜索性能优化" class="headerlink" title="问题3: 搜索性能优化"></a>问题3: 搜索性能优化</h4><p><strong>问题描述</strong>: 大量数据时关键词搜索性能下降<br><strong>解决方案</strong>:</p>
+<ul>
+<li>为<code>legal_terms</code>表的<code>term_name</code>和<code>term_definition</code>字段创建索引</li>
+<li>实现分页查询，避免一次性加载过多数据</li>
+<li>使用预编译语句提高查询效率</li>
+</ul>
+<h4 id="问题4-密码安全存储"><a href="#问题4-密码安全存储" class="headerlink" title="问题4: 密码安全存储"></a>问题4: 密码安全存储</h4><p><strong>问题描述</strong>: 明文存储密码存在安全风险<br><strong>解决方案</strong>:</p>
+<ul>
+<li>使用SHA256哈希算法加密密码</li>
+<li>在<code>users</code>表中存储密码哈希值而非明文</li>
+<li>在登录验证时比较哈希值</li>
+</ul>
+<h3 id="6-2-改进方向"><a href="#6-2-改进方向" class="headerlink" title="6.2 改进方向"></a>6.2 改进方向</h3><ol>
+<li><strong>数据导入导出功能</strong><ul>
+<li>支持Excel/CSV格式导入词汇数据</li>
+<li>支持批量导出用户数据和学习报告</li>
+<li>实现数据备份和恢复功能</li>
+</ul>
+</li>
+<li><strong>搜索功能增强</strong><ul>
+<li>实现模糊搜索和同义词搜索</li>
+<li>添加搜索建议（自动补全）</li>
+<li>支持高级搜索语法（AND/OR/NOT）</li>
+</ul>
+</li>
+<li><strong>网络功能</strong><ul>
+<li>实现在线词汇库同步</li>
+<li>支持多用户协作编辑</li>
+<li>添加词汇讨论和评论功能</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>法学专业词汇检索系统项目报告</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E8%82%BE%E8%84%8F%E5%8A%9F%E8%83%BD%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">肾脏功能数据分析报告</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E7%94%B5%E8%84%91%E9%94%80%E5%94%AE%E7%B3%BB%E7%BB%9Foracle/">电脑销售系统oracle</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%95%E5%AD%A6%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%8A%A5%E5%91%8A"><span class="toc-number">1.</span> <span class="toc-text">法学专业词汇检索系统项目报告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">1. 需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 解决的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E8%A7%84%E5%88%92"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 核心功能规划</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.</span> <span class="toc-text">2. 数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-E-R%E5%9B%BE%EF%BC%88%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E5%9B%BE%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 E-R图（实体关系图）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%EF%BC%888%E4%B8%AA%E6%95%B0%E6%8D%AE%E8%A1%A8%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 关系模式（8个数据表）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%94%A8%E6%88%B7%E8%A1%A8-users"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1. 用户表 (users)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B3%95%E5%BE%8B%E9%A2%86%E5%9F%9F%E8%A1%A8-legal-fields"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2. 法律领域表 (legal_fields)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%B3%95%E5%BE%8B%E8%AF%8D%E6%B1%87%E8%A1%A8-legal-terms"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">3. 法律词汇表 (legal_terms)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%AF%8D%E6%B1%87-%E9%A2%86%E5%9F%9F%E5%85%B3%E8%81%94%E8%A1%A8-term-field-relations-%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">4. 词汇-领域关联表 (term_field_relations) - 多对多关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%94%B6%E8%97%8F%E8%AE%B0%E5%BD%95%E8%A1%A8-favorites"><span class="toc-number">1.2.2.5.</span> <span class="toc-text">5. 收藏记录表 (favorites)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%90%9C%E7%B4%A2%E5%8E%86%E5%8F%B2%E8%A1%A8-search-history"><span class="toc-number">1.2.2.6.</span> <span class="toc-text">6. 搜索历史表 (search_history)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E8%A1%A8-system-settings"><span class="toc-number">1.2.2.7.</span> <span class="toc-text">7. 系统设置表 (system_settings)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E6%93%8D%E4%BD%9C%E6%97%A5%E5%BF%97%E8%A1%A8-operation-logs"><span class="toc-number">1.2.2.8.</span> <span class="toc-text">8. 操作日志表 (operation_logs)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E8%A7%84%E8%8C%83%E5%8C%96%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 规范化说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">3. 系统架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%A8%A1%E5%9D%97%E5%88%92%E5%88%86%E5%9B%BE"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 模块划分图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 技术架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81%E8%AF%B4%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">4. 核心代码说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-DatabaseManager-database-manager-py"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 DatabaseManager (database_manager.py)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-initialize-database-init-database-py"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 initialize_database (init_database.py)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-LawVocabularyGUI%E7%B1%BB-main-py"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 LawVocabularyGUI类 (main.py)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E8%AF%8D%E6%B1%87%E6%A3%80%E7%B4%A2%E7%AE%97%E6%B3%95-database-manager-py%E4%B8%AD%E7%9A%84search-legal-terms%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 词汇检索算法 (database_manager.py中的search_legal_terms方法)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-number">1.5.</span> <span class="toc-text">5. 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1安装运行步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">环境要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">安装步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%8C%85%E8%AF%B4%E6%98%8E"><span class="toc-number">1.5.1.3.</span> <span class="toc-text">依赖包说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 操作指南</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-1-%E7%99%BB%E5%BD%95%E8%B4%A6%E6%88%B7"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">5.2.1 登录账户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-2-%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">5.2.2 主要功能操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%80%BB%E7%BB%93%E5%8F%8D%E6%80%9D"><span class="toc-number">1.6.</span> <span class="toc-text">6. 总结反思</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 遇到的问题及解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%981-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.6.1.1.</span> <span class="toc-text">问题1: 数据库设计复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%982-%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">1.6.1.2.</span> <span class="toc-text">问题2: 用户权限管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%983-%E6%90%9C%E7%B4%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">1.6.1.3.</span> <span class="toc-text">问题3: 搜索性能优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%984-%E5%AF%86%E7%A0%81%E5%AE%89%E5%85%A8%E5%AD%98%E5%82%A8"><span class="toc-number">1.6.1.4.</span> <span class="toc-text">问题4: 密码安全存储</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E6%94%B9%E8%BF%9B%E6%96%B9%E5%90%91"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 改进方向</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

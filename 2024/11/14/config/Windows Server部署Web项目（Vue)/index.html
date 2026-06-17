@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>Windows Server部署Web项目（Vue) || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="Windows Server部署Web项目（Vue)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/Windows%20Server%E9%83%A8%E7%BD%B2Web%E9%A1%B9%E7%9B%AE%EF%BC%88Vue)/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.前期准备购买服务器（我选的是windowsserver)给服务器配置公网ip(弹性ip)学生有300优惠券(可白嫖）2.远程连接服务器win+r,输入mstsc，enter,输入服务器的公网IP，用户名+密码:administrator+password在主机和服务器之间可以通过复制粘贴传输文件3.安装相">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">Windows Server部署Web项目（Vue)</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.840Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1. 前期准备"></a>1. 前期准备</h1><p>购买服务器 （我选的是windows server)</p>
+<p>给服务器配置公网ip(弹性ip)</p>
+<p>学生有300优惠券(可白嫖）</p>
+<h1 id="2-远程连接服务器"><a href="#2-远程连接服务器" class="headerlink" title="2. 远程连接服务器"></a>2. 远程连接服务器</h1><ol>
+<li>win+r,输入mstsc，enter,</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721270564830-69f19947-180f-4307-b155-4c247566a768.png" alt=""></p>
+<ol>
+<li>输入服务器的公网IP，</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721270592157-0a5ce2ff-f3ed-4b49-99da-c515876afd8b.png" alt=""></p>
+<ol>
+<li>用户名+密码 : administrator+password</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721270618717-bb6b468e-0698-4594-88b6-57347b46ba2e.png" alt=""></p>
+<p>在主机和服务器之间可以通过 复制 粘贴传输文件</p>
+<h1 id="3-安装相关软件"><a href="#3-安装相关软件" class="headerlink" title="3. 安装相关软件"></a>3. 安装相关软件</h1><p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1720785317151-4d8b8647-e22c-4caf-a785-7d36aa6fc256.png?x-oss-process=image%2Fformat%2Cwebp" alt=""></p>
+<h2 id="3-1-bandzip-压缩软件）"><a href="#3-1-bandzip-压缩软件）" class="headerlink" title="3.1. bandzip(压缩软件）"></a>3.1. bandzip(压缩软件）</h2><h2 id="3-2-nodejs"><a href="#3-2-nodejs" class="headerlink" title="3.2. nodejs"></a>3.2. nodejs</h2><h2 id="3-3-tomcat"><a href="#3-3-tomcat" class="headerlink" title="3.3. tomcat"></a>3.3. tomcat</h2><p>（1）安装成功之后，Tomcat\apache-tomcat-10.0.16\bin里面，找到startup.bat文件，双击运行。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721062326233-b6371f85-eed2-4133-8ffa-15f86dfe1dc2.png" alt=""></p>
+<p>（2）在浏览器输入localhost:8080 出现如下页面说明Tomcat部署成功。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721062333871-6863008c-4bd5-42f0-a477-be7550f8a188.png" alt=""></p>
+<p>（3）最后一步，修改端口，8080是tomcat默认的端口，而80是常用的默认端口。如果端口设置为80的话，输入完ip后不需要接80。因为80已经设置为默认的端口了。</p>
+<p>打开Tomcat所在的目录，打开conf文件夹，打开server.xml文件，如图，将port改为80：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">&lt;Connector port=<span class="hljs-string">&quot;80&quot;</span> protocol=<span class="hljs-string">&quot;HTTP/1.1&quot;</span><br>               connectionTimeout=<span class="hljs-string">&quot;20000&quot;</span><br>               redirectPort=<span class="hljs-string">&quot;8443&quot;</span> /&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="3-4-vscode"><a href="#3-4-vscode" class="headerlink" title="3.4. vscode"></a>3.4. vscode</h2><h2 id="3-5-nginx"><a href="#3-5-nginx" class="headerlink" title="3.5. nginx"></a>3.5. nginx</h2><h2 id="3-6-jdk"><a href="#3-6-jdk" class="headerlink" title="3.6. jdk"></a>3.6. jdk</h2><p>需要给jdk配置环境变量</p>
+<p>安装完成之后，配置系统环境变量：如下图所示</p>
+<p>（1）JAVA_HOME：服务器存放jdk文件的路径</p>
+<p>（2）CLASSPATH: %JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721061924191-a23b45d1-4da0-45b2-8eef-15a06de60dfb.png" alt=""></p>
+<p>（3）Path: %JAVA_HOME%\bin 和 %JAVA_HOME%\jre\bin</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721061962254-ae447341-7688-4e5e-aa0a-b130b7fae85c.png" alt=""></p>
+<p>最后，cmd 输入:java -version ，看是否出现版本消息，如图说明配置成功。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721061973810-2ae9feeb-7ea0-40a1-88f4-2b9011a3f8c8.png" alt=""></p>
+<p>软件下载链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2024/zip/40495483/1720785528282-53e587e2-707f-4437-973d-f4d7449363df.zip">server.zip</a></p>
+<h1 id="4-相关软件的配置"><a href="#4-相关软件的配置" class="headerlink" title="4. 相关软件的配置"></a>4. 相关软件的配置</h1><h2 id="4-1-配置IIS服务"><a href="#4-1-配置IIS服务" class="headerlink" title="4.1. 配置IIS服务"></a>4.1. <font style="color:rgb(24, 24, 24);">配置IIS服务</font></h2><ol>
+<li><font style="color:rgb(24, 24, 24);">在云服务器ECS实例中打开CMD命令提示符。</font></li>
+<li><font style="color:rgb(24, 24, 24);">输入</font><font style="color:rgb(0, 0, 0);background-color:rgb(231, 231, 231);">powershell</font><font style="color:rgb(24, 24, 24);">切换至PowerShell模块。</font></li>
+<li><font style="color:rgb(24, 24, 24);">安装IIS服务及相关管理工具。</font>
+
+</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Install-WindowsFeature</span> <span class="hljs-literal">-name</span> Web<span class="hljs-literal">-Server</span> <span class="hljs-literal">-IncludeAllSubFeature</span> <span class="hljs-literal">-IncludeManagementTools</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li><font style="color:rgb(24, 24, 24);">IIS安装进度变为100%后，在当前浏览器页面，新开启一个网页，在地址栏输入实例的公网IP地址，并回车。</font>
+
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">http://&lt;实例公网IP地址&gt;<br></code></pre></td></tr></table></figure>
+<p>参考连接：<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/getting-started/quick-start-for-windows-instances">https://help.aliyun.com/zh/ecs/getting-started/quick-start-for-windows-instances</a></p>
+<h2 id="4-2-nginx配置"><a href="#4-2-nginx配置" class="headerlink" title="4.2. nginx配置"></a>4.2. nginx配置</h2><h3 id="4-2-1-配置"><a href="#4-2-1-配置" class="headerlink" title="4.2.1. 配置"></a>4.2.1. 配置</h3><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">nginx默认的监听端口为80，如被占用可修改：”</font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">nginx\conf\nginx.conf</font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">“ 文件</font>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721062534431-d417d0c7-4d79-401e-a6d8-5a3b11b3edcf.png" alt=""></p>
+<h3 id="4-2-2-启动"><a href="#4-2-2-启动" class="headerlink" title="4.2.2. 启动"></a>4.2.2. 启动</h3><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">双击解压后根目录下的nginx.exe或命令行启动均可。</font>
+
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">启动后，在浏览器输入 ”</font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font>[<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">http://localhost:80</font>](http://localhost/)<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">" 进行测试</font>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721062534393-769edbd3-56ee-41f0-9ec0-da85c71f39d9.png" alt=""></p>
+<h3 id="4-2-3-关闭"><a href="#4-2-3-关闭" class="headerlink" title="4.2.3. 关闭"></a>4.2.3. 关闭</h3><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">由于未设置环境变量，关闭时需要利用命令行进入nginx所在路径，执行 “</font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">nginx -s stop</font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">”。</font>
+
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">除了nginx外，还有其他的web服务器，不过nginx内存占用少，启动快，并发能力强，并且安装简单，因此采用nginx。</font>
+
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">重启：“ </font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">nginx -s reload</font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> ”</font>
+
+<h1 id="5-项目打包"><a href="#5-项目打包" class="headerlink" title="5. 项目打包"></a>5. 项目打包</h1><p>在vite.config.js中加入这个</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1720788264803-7a2eb056-bdd0-43eb-a908-11eb6e0bc81c.png" alt=""></p>
+<p>图片的路径要特别注意</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1720788495439-7b0deadc-85c6-4aaa-858c-4db1c2afc74d.png" alt=""></p>
+<p>然后好像就没有问题了</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">npm run build<br></code></pre></td></tr></table></figure>
+<h1 id="6-部署到服务器"><a href="#6-部署到服务器" class="headerlink" title="6. 部署到服务器"></a>6. 部署到服务器</h1><p>这里的端口记得要在阿里云平台的ECS的控制台给服务器配置安全组，即放行端口，不然是无法访问到我们的网页的</p>
+<h2 id="6-1-使用tomcat"><a href="#6-1-使用tomcat" class="headerlink" title="6.1. 使用tomcat"></a>6.1. 使用tomcat</h2><p>把生成的dist文件移动到tomcat的webapps下，运行startup.bat</p>
+<p>即可http://&lt;公网ip&gt;:port/&lt;项目名&gt;  访问</p>
+<h2 id="6-2-使用nginx"><a href="#6-2-使用nginx" class="headerlink" title="6.2. 使用nginx"></a>6.2. 使用nginx</h2><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">将build生成的dist目录复制到nginx下的html目录中。</font>
+
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">修改nginx配置文件</font>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721062558742-dc5a06ac-94ce-45bd-94bc-92868d1d09f6.png" alt=""></p>
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">重启nginx，浏览器访问 “</font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font>[<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">http://localhost:8080/</font>](http://localhost:8080/)<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">”，即可。</font>
+
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">如果页面空白，没有任何内容，使用F12查看报错信息</font>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1721062558752-72dae101-ccaf-410c-83f1-35e8a9005000.png" alt=""></p>
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">如果错误如上图所示，恭喜你，很好解决，这是因为打包找寻路径错误，导致dist中的index.html中的css与js加载失败。</font>
+
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">回到vue项目中，打开 </font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">vue.config.js</font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> 文件</font>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plain">module.exports = &#123;<br>  publicPath: &#x27;/myName&#x27;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">如果你的配置做了修改，没有使用默认配置（如上），则表明资源加载路径为 '</font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">/myName</font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);"> </font><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">'，此时有两个方法：</font>
+
+<ol>
+<li><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">将</font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">publicPath</font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">恢复成默认状态：</font>`<font style="color:rgb(21, 167, 167);background-color:rgb(247, 248, 250);">publicPath: './'</font>`<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">（不建议）；</font></li>
+<li><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">重新配置nginx。</font>
+
+</li>
+</ol>
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">这里建议使用第二种方法，因为nginx可能会部署多个项目，针对不同项目增加配置是一种很正常的操作。</font>
+
+<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">打开</font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">nginx.conf</font>**<font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">文件</font>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">server &#123;<br>        listen       8080; # 监听的端口号，默认是8080<br>        server_name  localhost; # 默认地址，仅需要在本地做验证，可以不修改<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">		# </span><span class="language-bash">这里可以放nginx启动页</span><br>        location / &#123;<br>            root   html/dist; # 项目所在路径<br>            index  index.html index.htm; # 默认访问主页<br>            try_files  $uri $uri/ index.html=404; # 解决vue项目刷新404的问题<br>        &#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">		# </span><span class="language-bash">这里放新增加的项目，我这里叫myName，因此localtion后接/myName</span><br>        location /myName &#123;<br>            alias  html/myName; # 项目所在路径<br>            index  index.html index.htm; # 默认访问主页<br>            try_files  $uri $uri/ /myName/index.html; # 解决vue项目刷新404的问题<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">之后，将打包后的dist文件更名为myName，重启nginx，访问链接</font><a target="_blank" rel="noopener" href="http://localhost:8080/myName/"><font style="color:rgb(29, 33, 41);background-color:rgb(247, 248, 250);">http://localhost:8080/myName/</font></a></p>
+<p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43690623/article/details/122718677">https://blog.csdn.net/weixin_43690623/article/details/122718677</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/quantoublog/articles/17998376">https://www.cnblogs.com/quantoublog/articles/17998376</a></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>Windows Server部署Web项目（Vue)</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/alist%E9%85%8D%E7%BD%AE/">alist配置</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/VScode+MinGW%E7%BC%96%E5%86%99C++%E6%95%99%E7%A8%8B/">VScode+MinGW编写C++教程</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">1. 前期准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">2. 远程连接服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85%E7%9B%B8%E5%85%B3%E8%BD%AF%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">3. 安装相关软件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-bandzip-%E5%8E%8B%E7%BC%A9%E8%BD%AF%E4%BB%B6%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. bandzip(压缩软件）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-nodejs"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-tomcat"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-vscode"><span class="toc-number">3.4.</span> <span class="toc-text">3.4. vscode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-nginx"><span class="toc-number">3.5.</span> <span class="toc-text">3.5. nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-jdk"><span class="toc-number">3.6.</span> <span class="toc-text">3.6. jdk</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%9B%B8%E5%85%B3%E8%BD%AF%E4%BB%B6%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">4. 相关软件的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E9%85%8D%E7%BD%AEIIS%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 配置IIS服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-nginx%E9%85%8D%E7%BD%AE"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. nginx配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-%E9%85%8D%E7%BD%AE"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1. 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-%E5%90%AF%E5%8A%A8"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2. 启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3-%E5%85%B3%E9%97%AD"><span class="toc-number">4.2.3.</span> <span class="toc-text">4.2.3. 关闭</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85"><span class="toc-number">5.</span> <span class="toc-text">5. 项目打包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">6.</span> <span class="toc-text">6. 部署到服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E4%BD%BF%E7%94%A8tomcat"><span class="toc-number">6.1.</span> <span class="toc-text">6.1. 使用tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E4%BD%BF%E7%94%A8nginx"><span class="toc-number">6.2.</span> <span class="toc-text">6.2. 使用nginx</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

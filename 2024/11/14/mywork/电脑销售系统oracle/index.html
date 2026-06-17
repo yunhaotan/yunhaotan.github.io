@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>电脑销售系统oracle || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="电脑销售系统oracle">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E7%94%B5%E8%84%91%E9%94%80%E5%94%AE%E7%B3%BB%E7%BB%9Foracle/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="用户表:编号，用户名，密码，邮箱，角色，用户头像；影片表：编号，影片名称，国外名称，演职人员，导演，电影详情，电影时长，电影类型，电影评分，票房，电影参评人数，上映时间，制片地区，电影海报地址，电影状态；影院表：编号，影院名称，影院地址；放映厅表：编号，放映厅名称，放映厅容量，所属影院编号；订单表：编号，所属">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">电脑销售系统oracle</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:32:13.511Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p>用户表:编号，用户名，密码，邮箱，角色，用户头像；<br>影片表：编号，影片名称，国外名称，演职人员，导演，电影详情，电影时长，电影类型，电影评分，票房，电影参评人数，上映时间，制片地区，电影海报地址，电影状态；<br>影院表：编号，影院名称，影院地址；<br>放映厅表：编号，放映厅名称，放映厅容量，所属影院编号；<br>订单表：编号，所属用户编号，所属场次编号，电影票座位信息，订单状态，订单价格，订单支付时间，所属用户对象；<br>订单详情表：编号，所属放映厅，放映的电影编号，电影放映时间，售价，剩余座位数，场次状态，所属放映厅对象，放映的电影；<br>评论表：编号，所属用户编号，评论内容，所属电影编号，评论时间，所属用户，评分；</p>
+<h1 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1 需求分析"></a>1 需求分析</h1><h1 id="2-系统设计"><a href="#2-系统设计" class="headerlink" title="2 系统设计"></a>2 系统设计</h1><h2 id="2-1-系统结构功能图"><a href="#2-1-系统结构功能图" class="headerlink" title="2.1 系统结构功能图"></a>2.1 系统结构功能图</h2><p>根据需求分析，确定系统结构功能如图2-1所示：</p>
+<p>图2-1 系统功能结构图</p>
+<h2 id="2-2-功能流程图"><a href="#2-2-功能流程图" class="headerlink" title="2.2 功能流程图"></a>2.2 功能流程图</h2><p>系统最主要的功能就是管理员登录之后对各种功能的使用。管理员功能如图4-2所示。</p>
+<p>图2-2 管理员登录管理流程</p>
+<h2 id="2-3-数据库设计"><a href="#2-3-数据库设计" class="headerlink" title="2.3 数据库设计"></a>2.3 数据库设计</h2><p>整体功能的E-R图如图2-4所示。<br><img src="https://cdn.nlark.com/yuque/0/2025/jpeg/40495483/1749389420949-bcf635b2-c7e8-4290-94ab-f017b92520c8.jpeg" alt="画板"><br>图2-4 系统E-R图<br>本系统包含的数据表如下：</p>
+<h3 id="1-商品表-goods"><a href="#1-商品表-goods" class="headerlink" title="1. 商品表 (goods)"></a>1. 商品表 (<code>goods</code>)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gID</td>
+<td>CHAR</td>
+<td>主键</td>
+<td>6</td>
+<td>否</td>
+<td>-</td>
+<td>商品ID</td>
+</tr>
+<tr>
+<td>gNAME</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>10</td>
+<td>否</td>
+<td>-</td>
+<td>商品名称</td>
+</tr>
+<tr>
+<td>gKIDS</td>
+<td>VARCHAR2</td>
+<td>可空</td>
+<td>6</td>
+<td>是</td>
+<td>-</td>
+<td>商品分类ID</td>
+</tr>
+<tr>
+<td>gUNIT</td>
+<td>NUMBER</td>
+<td>检查</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>单位，必须大于0</td>
+</tr>
+<tr>
+<td>gPRICE</td>
+<td>NUMBER</td>
+<td>检查</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>价格，不能小于0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="2-供应商表-provider"><a href="#2-供应商表-provider" class="headerlink" title="2. 供应商表 (provider)"></a>2. 供应商表 (<code>provider</code>)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pID</td>
+<td>CHAR</td>
+<td>主键</td>
+<td>6</td>
+<td>否</td>
+<td>-</td>
+<td>供应商ID</td>
+</tr>
+<tr>
+<td>pNAME</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>10</td>
+<td>否</td>
+<td>-</td>
+<td>供应商名称</td>
+</tr>
+<tr>
+<td>pACC</td>
+<td>CHAR</td>
+<td>可空</td>
+<td>19</td>
+<td>是</td>
+<td>-</td>
+<td>账户信息</td>
+</tr>
+<tr>
+<td>pADD</td>
+<td>VARCHAR2</td>
+<td>可空</td>
+<td>8</td>
+<td>是</td>
+<td>-</td>
+<td>地址</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="3-仓库表-store"><a href="#3-仓库表-store" class="headerlink" title="3. 仓库表 (store)"></a>3. 仓库表 (<code>store</code>)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sID</td>
+<td>CHAR</td>
+<td>主键</td>
+<td>6</td>
+<td>否</td>
+<td>-</td>
+<td>仓库ID</td>
+</tr>
+<tr>
+<td>sADD</td>
+<td>VARCHAR2</td>
+<td>可空</td>
+<td>8</td>
+<td>是</td>
+<td>-</td>
+<td>地址</td>
+</tr>
+<tr>
+<td>sLEAD</td>
+<td>VARCHAR2</td>
+<td>可空</td>
+<td>4</td>
+<td>是</td>
+<td>-</td>
+<td>联系负责人</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="4-门店表-shop"><a href="#4-门店表-shop" class="headerlink" title="4. 门店表 (shop)"></a>4. 门店表 (<code>shop</code>)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shID</td>
+<td>CHAR</td>
+<td>主键</td>
+<td>6</td>
+<td>否</td>
+<td>-</td>
+<td>门店ID</td>
+</tr>
+<tr>
+<td>shNAME</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>10</td>
+<td>否</td>
+<td>-</td>
+<td>门店名称</td>
+</tr>
+<tr>
+<td>shADD</td>
+<td>VARCHAR2</td>
+<td>可空</td>
+<td>8</td>
+<td>是</td>
+<td>-</td>
+<td>地址</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="5-营业员表-assistant"><a href="#5-营业员表-assistant" class="headerlink" title="5. 营业员表 (assistant)"></a>5. 营业员表 (<code>assistant</code>)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aID</td>
+<td>CHAR</td>
+<td>主键</td>
+<td>6</td>
+<td>否</td>
+<td>-</td>
+<td>营业员ID</td>
+</tr>
+<tr>
+<td>aNAME</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>4</td>
+<td>否</td>
+<td>-</td>
+<td>营业员姓名</td>
+</tr>
+<tr>
+<td>aFEAT</td>
+<td>NUMBER</td>
+<td>可空</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>业绩特征</td>
+</tr>
+<tr>
+<td>shID</td>
+<td>CHAR</td>
+<td>外键</td>
+<td>6</td>
+<td>是</td>
+<td>-</td>
+<td>关联的门店ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="6-管理员表-manager"><a href="#6-管理员表-manager" class="headerlink" title="6. 管理员表 (manager)"></a>6. 管理员表 (<code>manager</code>)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mID</td>
+<td>CHAR</td>
+<td>主键</td>
+<td>6</td>
+<td>否</td>
+<td>-</td>
+<td>管理员ID</td>
+</tr>
+<tr>
+<td>mNAME</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>4</td>
+<td>否</td>
+<td>-</td>
+<td>管理员姓名</td>
+</tr>
+<tr>
+<td>mFEAT</td>
+<td>NUMBER</td>
+<td>可空</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>管理员特征</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="7-采购员表-shopper"><a href="#7-采购员表-shopper" class="headerlink" title="7. 采购员表 (shopper)"></a>7. 采购员表 (<code>shopper</code>)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shopperID</td>
+<td>CHAR</td>
+<td>主键</td>
+<td>6</td>
+<td>否</td>
+<td>-</td>
+<td>采购员ID</td>
+</tr>
+<tr>
+<td>shopperNAME</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>4</td>
+<td>否</td>
+<td>-</td>
+<td>采购员姓名</td>
+</tr>
+<tr>
+<td>shopperFEAT</td>
+<td>NUMBER</td>
+<td>可空</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>采购员特征</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="8-商品库存更新历史表-goods-history"><a href="#8-商品库存更新历史表-goods-history" class="headerlink" title="8. 商品库存更新历史表 (goods_history)"></a>8. 商品库存更新历史表 (<code>goods_history</code>)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hID</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>历史记录ID</td>
+</tr>
+<tr>
+<td>gID</td>
+<td>CHAR</td>
+<td>外键</td>
+<td>6</td>
+<td>是</td>
+<td>-</td>
+<td>关联的商品ID</td>
+</tr>
+<tr>
+<td>oldQuantity</td>
+<td>NUMBER</td>
+<td>可空</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>旧数量</td>
+</tr>
+<tr>
+<td>newQuantity</td>
+<td>NUMBER</td>
+<td>可空</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>新数量</td>
+</tr>
+<tr>
+<td>changeDate</td>
+<td>TIMESTAMP</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>更改日期</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="9-销售表-sales"><a href="#9-销售表-sales" class="headerlink" title="9. 销售表 (sales)"></a>9. 销售表 (<code>sales</code>)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>saleID</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>销售记录ID</td>
+</tr>
+<tr>
+<td>gID</td>
+<td>CHAR</td>
+<td>外键</td>
+<td>6</td>
+<td>是</td>
+<td>-</td>
+<td>关联的商品ID</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>NUMBER</td>
+<td>检查</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>销售数量，必须大于0</td>
+</tr>
+<tr>
+<td>salesPrice</td>
+<td>NUMBER</td>
+<td>检查</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>售价，不能小于0</td>
+</tr>
+<tr>
+<td>aID</td>
+<td>CHAR</td>
+<td>外键</td>
+<td>6</td>
+<td>是</td>
+<td>-</td>
+<td>关联的营业员ID</td>
+</tr>
+<tr>
+<td>saleDate</td>
+<td>TIMESTAMP</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+<td>DEFAULT SYSTIMESTAMP</td>
+<td>销售日期</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h1 id="3-SQL-实现"><a href="#3-SQL-实现" class="headerlink" title="3 SQL**实现**"></a><strong>3 SQL**</strong>实现**</h1><h2 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建商品表</span><br><span class="hljs-keyword">CREATE TABLE</span> goods (<br>    gID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    gNAME VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    gKIDS VARCHAR2(<span class="hljs-number">6</span>),<br>    gUNIT NUMBER <span class="hljs-keyword">CHECK</span>(gUNIT <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>),<br>    gPRICE NUMBER <span class="hljs-keyword">CHECK</span>(gPRICE <span class="hljs-operator">&gt;=</span> <span class="hljs-number">0</span>)<br>);<br><br><span class="hljs-comment">-- 创建供应商表</span><br><span class="hljs-keyword">CREATE TABLE</span> provider (<br>    pID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    pNAME VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    pACC <span class="hljs-type">CHAR</span>(<span class="hljs-number">19</span>),<br>    pADD VARCHAR2(<span class="hljs-number">8</span>)<br>);<br><br><span class="hljs-comment">-- 创建仓库表</span><br><span class="hljs-keyword">CREATE TABLE</span> store (<br>    sID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    sADD VARCHAR2(<span class="hljs-number">8</span>),<br>    sLEAD VARCHAR2(<span class="hljs-number">4</span>)<br>);<br><br><span class="hljs-comment">-- 创建门店表</span><br><span class="hljs-keyword">CREATE TABLE</span> shop (<br>    shID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    shNAME VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    shADD VARCHAR2(<span class="hljs-number">8</span>)<br>);<br><br><span class="hljs-comment">-- 创建营业员表</span><br><span class="hljs-keyword">CREATE TABLE</span> assistant (<br>    aID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    aNAME VARCHAR2(<span class="hljs-number">4</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    aFEAT NUMBER,<br>    shID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (shID) <span class="hljs-keyword">REFERENCES</span> shop(shID)<br>);<br><br><span class="hljs-comment">-- 创建管理员表</span><br><span class="hljs-keyword">CREATE TABLE</span> manager (<br>    mID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    mNAME VARCHAR2(<span class="hljs-number">4</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    mFEAT NUMBER<br>);<br><br><span class="hljs-comment">-- 创建采购员表</span><br><span class="hljs-keyword">CREATE TABLE</span> shopper (<br>    shopperID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    shopperNAME VARCHAR2(<span class="hljs-number">4</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    shopperFEAT NUMBER<br>);<br><br><span class="hljs-comment">-- 创建商品库存更新历史表</span><br><span class="hljs-keyword">CREATE TABLE</span> goods_history (<br>    hID NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>    gID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    oldQuantity NUMBER,<br>    newQuantity NUMBER,<br>    changeDate <span class="hljs-type">TIMESTAMP</span><br>);<br><br><span class="hljs-comment">-- 创建销售表</span><br><span class="hljs-keyword">CREATE TABLE</span> sales (<br>    saleID NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,      <span class="hljs-comment">-- 销售记录ID</span><br>    gID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),                    <span class="hljs-comment">-- 商品ID</span><br>    quantity NUMBER <span class="hljs-keyword">CHECK</span>(quantity <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>), <span class="hljs-comment">-- 销售数量</span><br>    salesPrice NUMBER <span class="hljs-keyword">CHECK</span>(salesPrice <span class="hljs-operator">&gt;=</span> <span class="hljs-number">0</span>), <span class="hljs-comment">-- 售价</span><br>    aID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),                    <span class="hljs-comment">-- 营业员ID</span><br>    saleDate <span class="hljs-type">TIMESTAMP</span> <span class="hljs-keyword">DEFAULT</span> SYSTIMESTAMP, <span class="hljs-comment">-- 销售日期</span><br>    <span class="hljs-keyword">FOREIGN KEY</span> (gID) <span class="hljs-keyword">REFERENCES</span> goods(gID), <span class="hljs-comment">-- 外键关联商品</span><br>    <span class="hljs-keyword">FOREIGN KEY</span> (aID) <span class="hljs-keyword">REFERENCES</span> assistant(aID) <span class="hljs-comment">-- 外键关联营业员</span><br>);<br></code></pre></td></tr></table></figure>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 在商品表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_goods_name <span class="hljs-keyword">ON</span> goods(gNAME);<br><br><span class="hljs-comment">-- 在供应商表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_provider_name <span class="hljs-keyword">ON</span> provider(pNAME);<br><span class="hljs-keyword">CREATE</span> INDEX idx_provider_acc <span class="hljs-keyword">ON</span> provider(pACC);<br><br><span class="hljs-comment">-- 在仓库表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_store_address <span class="hljs-keyword">ON</span> store(sADD);<br><br><span class="hljs-comment">-- 在门店表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_shop_name <span class="hljs-keyword">ON</span> shop(shNAME);<br><span class="hljs-keyword">CREATE</span> INDEX idx_shop_address <span class="hljs-keyword">ON</span> shop(shADD);<br><br><span class="hljs-comment">-- 在营业员表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_assistant_name <span class="hljs-keyword">ON</span> assistant(aNAME);<br><span class="hljs-keyword">CREATE</span> INDEX idx_assistant_store_id <span class="hljs-keyword">ON</span> assistant(shID);<br><br><span class="hljs-comment">-- 在管理员表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_manager_name <span class="hljs-keyword">ON</span> manager(mNAME);<br><br><span class="hljs-comment">-- 在采购员表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_shopper_name <span class="hljs-keyword">ON</span> shopper(shopperNAME);<br><br><span class="hljs-comment">-- 如果需要在采购员表上添加唯一索引</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">UNIQUE</span> INDEX idx_shopper_id <span class="hljs-keyword">ON</span> shopper(shopperID);<br></code></pre></td></tr></table></figure>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_goods_suppliers <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    g.gID,<br>    g.gNAME,<br>    g.gKIDS,<br>    g.gUNIT,<br>    g.gPRICE,<br>    p.pID <span class="hljs-keyword">AS</span> supplier_id,<br>    p.pNAME <span class="hljs-keyword">AS</span> supplier_name<br><span class="hljs-keyword">FROM</span> <br>    goods g<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    provider p <span class="hljs-keyword">ON</span> g.gID <span class="hljs-operator">=</span> p.pID;<br>		<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_assistants_shops <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    a.aID,<br>    a.aNAME,<br>    a.aFEAT,<br>    s.shID <span class="hljs-keyword">AS</span> shop_id,<br>    s.shNAME <span class="hljs-keyword">AS</span> shop_name<br><span class="hljs-keyword">FROM</span> <br>    assistant a<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    shop s <span class="hljs-keyword">ON</span> a.shID <span class="hljs-operator">=</span> s.shID;<br>		<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_inventory_summary <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    g.gID,<br>    g.gNAME,<br>    g.gUNIT,<br>    <span class="hljs-built_in">SUM</span>(g.gPRICE) <span class="hljs-keyword">AS</span> total_value<br><span class="hljs-keyword">FROM</span> <br>    goods g<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <br>    g.gID, g.gNAME, g.gUNIT;<br>		<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_manager_performance <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    m.mID,<br>    m.mNAME,<br>    <span class="hljs-built_in">SUM</span>(m.mFEAT) <span class="hljs-keyword">AS</span> total_performance<br><span class="hljs-keyword">FROM</span> <br>    manager m<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <br>    m.mID, m.mNAME;<br>		<br>		<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_shop_store_info <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    sh.shID <span class="hljs-keyword">AS</span> shop_id,<br>    sh.shNAME <span class="hljs-keyword">AS</span> shop_name,<br>    sh.shADD <span class="hljs-keyword">AS</span> shop_address,<br>    st.sID <span class="hljs-keyword">AS</span> store_id,<br>    st.sADD <span class="hljs-keyword">AS</span> store_address<br><span class="hljs-keyword">FROM</span> <br>    shop sh<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    store st <span class="hljs-keyword">ON</span> sh.shID <span class="hljs-operator">=</span> st.sID;<br></code></pre></td></tr></table></figure>
+<h2 id="存储过程、函数"><a href="#存储过程、函数" class="headerlink" title="存储过程、函数"></a>存储过程、函数</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 1. 存储过程：添加新商品</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> add_new_goods (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    p_gNAME <span class="hljs-keyword">IN</span> VARCHAR2,<br>    p_gKIDS <span class="hljs-keyword">IN</span> VARCHAR2,<br>    p_gUNIT <span class="hljs-keyword">IN</span> NUMBER,<br>    p_gPRICE <span class="hljs-keyword">IN</span> NUMBER,<br>    p_pID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    p_pNAME <span class="hljs-keyword">IN</span> VARCHAR2,<br>    p_pACC <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">19</span>),<br>    p_pADD <span class="hljs-keyword">IN</span> VARCHAR2<br>) <span class="hljs-keyword">AS</span><br>    v_count NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 检查供应商是否存在</span><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">INTO</span> v_count<br>    <span class="hljs-keyword">FROM</span> provider<br>    <span class="hljs-keyword">WHERE</span> pID <span class="hljs-operator">=</span> p_pID;<br><br>    <span class="hljs-comment">-- 如果供应商不存在，则插入</span><br>    IF v_count <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">INSERT INTO</span> provider (pID, pNAME, pACC, pADD) <br>        <span class="hljs-keyword">VALUES</span> (p_pID, p_pNAME, p_pACC, p_pADD);<br>    <span class="hljs-keyword">END</span> IF;<br><br>    <span class="hljs-comment">-- 添加新商品</span><br>    <span class="hljs-keyword">INSERT INTO</span> goods (gID, gNAME, gKIDS, gUNIT, gPRICE)<br>    <span class="hljs-keyword">VALUES</span> (p_gID, p_gNAME, p_gKIDS, p_gUNIT, p_gPRICE);<br>    <br>    <span class="hljs-keyword">COMMIT</span>;  <span class="hljs-comment">-- 提交更改</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">ROLLBACK</span>;  <span class="hljs-comment">-- 出错时回滚</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发错误</span><br><span class="hljs-keyword">END</span> add_new_goods;<br><br><br><span class="hljs-comment">-- 2. 存储过程：更新商品库存</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> update_goods_stock (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    p_newQuantity <span class="hljs-keyword">IN</span> NUMBER<br>) <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 更新商品数量</span><br>    <span class="hljs-keyword">UPDATE</span> goods<br>    <span class="hljs-keyword">SET</span> gUNIT <span class="hljs-operator">=</span> p_newQuantity<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    IF <span class="hljs-keyword">SQL</span><span class="hljs-operator">%</span>ROWCOUNT <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20001</span>, <span class="hljs-string">&#x27;未找到该商品。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><br>    <span class="hljs-keyword">COMMIT</span>;  <span class="hljs-comment">-- 提交更改</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">ROLLBACK</span>;  <span class="hljs-comment">-- 出错时回滚</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发错误</span><br><span class="hljs-keyword">END</span> update_goods_stock;<br><br><br><span class="hljs-comment">-- 3. 存储过程：记录销售</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> record_sale (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),                   <span class="hljs-comment">-- 商品ID</span><br>    p_quantity <span class="hljs-keyword">IN</span> NUMBER,               <span class="hljs-comment">-- 销售数量</span><br>    p_salesPrice <span class="hljs-keyword">IN</span> NUMBER,             <span class="hljs-comment">-- 销售价格</span><br>    p_aID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>)                    <span class="hljs-comment">-- 营业员ID</span><br>) <span class="hljs-keyword">AS</span><br>    v_current_stock NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 检查库存量</span><br>    <span class="hljs-keyword">SELECT</span> gUNIT <span class="hljs-keyword">INTO</span> v_current_stock<br>    <span class="hljs-keyword">FROM</span> goods<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    <span class="hljs-comment">-- 验证库存是否足够</span><br>    IF v_current_stock <span class="hljs-operator">&lt;</span> p_quantity <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20002</span>, <span class="hljs-string">&#x27;库存不足，无法完成销售。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><br>    <span class="hljs-comment">-- 扣减库存</span><br>    <span class="hljs-keyword">UPDATE</span> goods<br>    <span class="hljs-keyword">SET</span> gUNIT <span class="hljs-operator">=</span> gUNIT <span class="hljs-operator">-</span> p_quantity<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    <span class="hljs-comment">-- 记录销售详细信息（假设存在销售表）</span><br>    <span class="hljs-keyword">INSERT INTO</span> sales (saleID, gID, quantity, salesPrice, aID, saleDate)<br>    <span class="hljs-keyword">VALUES</span> (sales_seq.NEXTVAL, p_gID, p_quantity, p_salesPrice, p_aID, SYSDATE);<br>    <br>    <span class="hljs-keyword">COMMIT</span>;  <span class="hljs-comment">-- 提交更改</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">ROLLBACK</span>;  <span class="hljs-comment">-- 出错时回滚</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发错误</span><br><span class="hljs-keyword">END</span> record_sale;<br><br><br><span class="hljs-comment">-- 4. 函数：计算总库存价值</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> calculate_total_value (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>)<br>) <span class="hljs-keyword">RETURN</span> NUMBER <span class="hljs-keyword">IS</span><br>    v_total_value NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 计算库存总价值</span><br>    <span class="hljs-keyword">SELECT</span> gPRICE <span class="hljs-operator">*</span> gUNIT<br>    <span class="hljs-keyword">INTO</span> v_total_value<br>    <span class="hljs-keyword">FROM</span> goods<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    <span class="hljs-keyword">RETURN</span> v_total_value;  <span class="hljs-comment">-- 返回计算结果</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">RETURN</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">-- 如果未找到商品，返回0</span><br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发其他错误</span><br><span class="hljs-keyword">END</span> calculate_total_value;<br><br><br><span class="hljs-comment">-- 5. 函数：获取供应商信息</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> get_supplier_info (<br>    p_pID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>)<br>) <span class="hljs-keyword">RETURN</span> VARCHAR2 <span class="hljs-keyword">IS</span><br>    v_supplier_info VARCHAR2(<span class="hljs-number">100</span>);<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 检索供应商名称和账户</span><br>    <span class="hljs-keyword">SELECT</span> pNAME <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;, &#x27;</span> <span class="hljs-operator">||</span> pACC <br>    <span class="hljs-keyword">INTO</span> v_supplier_info<br>    <span class="hljs-keyword">FROM</span> provider<br>    <span class="hljs-keyword">WHERE</span> pID <span class="hljs-operator">=</span> p_pID;<br><br>    <span class="hljs-keyword">RETURN</span> v_supplier_info;  <span class="hljs-comment">-- 返回供应商信息</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">RETURN</span> <span class="hljs-string">&#x27;未找到该供应商。&#x27;</span>;<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发其他错误</span><br><span class="hljs-keyword">END</span> get_supplier_info;<br><br><br><span class="hljs-comment">-- 6. 计算总收入</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> calculate_total_revenue (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>)<br>) <span class="hljs-keyword">RETURN</span> NUMBER <span class="hljs-keyword">IS</span><br>    v_total_revenue NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 计算该商品的总收入</span><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(quantity <span class="hljs-operator">*</span> salesPrice)<br>    <span class="hljs-keyword">INTO</span> v_total_revenue<br>    <span class="hljs-keyword">FROM</span> sales<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    IF v_total_revenue <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">RETURN</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">-- 如果没有销售记录，返回0</span><br>    <span class="hljs-keyword">END</span> IF;<br><br>    <span class="hljs-keyword">RETURN</span> v_total_revenue;  <span class="hljs-comment">-- 返回总收入</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发其他错误</span><br><span class="hljs-keyword">END</span> calculate_total_revenue;<br></code></pre></td></tr></table></figure>
+<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 插入商品时检查商品数量的触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> trg_check_goods_quantity <br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> goods <br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span> <br><span class="hljs-keyword">BEGIN</span><br>    IF :NEW.gUNIT <span class="hljs-operator">&lt;=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20001</span>, <span class="hljs-string">&#x27;商品数量必须大于零。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span> trg_check_goods_quantity;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 更新库存时记录历史的触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> trg_update_goods_stock_history <br>AFTER <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> gUNIT <span class="hljs-keyword">ON</span> goods <br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span> <br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">INSERT INTO</span> goods_history (hID, gID, oldQuantity, newQuantity, changeDate)<br>    <span class="hljs-keyword">VALUES</span> (goods_history_seq.NEXTVAL, :OLD.gID, :OLD.gUNIT, :NEW.gUNIT, SYSTIMESTAMP);<br><span class="hljs-keyword">END</span> trg_update_goods_stock_history;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 插入销售记录后更新库存的触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> trg_update_stock_after_sale <br>AFTER <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> sales <br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span> <br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">UPDATE</span> goods<br>    <span class="hljs-keyword">SET</span> gUNIT <span class="hljs-operator">=</span> gUNIT <span class="hljs-operator">-</span> :NEW.quantity<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> :NEW.gID;<br><br>    IF <span class="hljs-keyword">SQL</span><span class="hljs-operator">%</span>ROWCOUNT <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20002</span>, <span class="hljs-string">&#x27;更新库存失败：未找到商品。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span> trg_update_stock_after_sale;<br><span class="hljs-operator">/</span><br><br><br><br><span class="hljs-comment">-- 插入销售记录后更新库存的触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> trg_update_stock_after_sale <br>AFTER <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> sales <br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span> <br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">UPDATE</span> goods<br>    <span class="hljs-keyword">SET</span> gUNIT <span class="hljs-operator">=</span> gUNIT <span class="hljs-operator">-</span> :NEW.quantity<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> :NEW.gID;<br><br>    IF <span class="hljs-keyword">SQL</span><span class="hljs-operator">%</span>ROWCOUNT <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20002</span>, <span class="hljs-string">&#x27;更新库存失败：未找到商品。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span> trg_update_stock_after_sale;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
+<h2 id="数据操纵"><a href="#数据操纵" class="headerlink" title="数据操纵"></a>数据操纵</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 插入产品数据</span><br><span class="hljs-keyword">INSERT INTO</span> goods (gID, gNAME, gKIDS, gUNIT, gPRICE) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;P001&#x27;</span>, <span class="hljs-string">&#x27;笔记本&#x27;</span>, <span class="hljs-string">&#x27;001&#x27;</span>, <span class="hljs-number">50</span>, <span class="hljs-number">20</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> goods (gID, gNAME, gKIDS, gUNIT, gPRICE) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;P002&#x27;</span>, <span class="hljs-string">&#x27;铅笔&#x27;</span>, <span class="hljs-string">&#x27;001&#x27;</span>, <span class="hljs-number">100</span>, <span class="hljs-number">5</span>);<br><br><span class="hljs-comment">-- 插入供应商数据</span><br><span class="hljs-keyword">INSERT INTO</span> provider (pID, pNAME, pACC, pADD) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;PR001&#x27;</span>, <span class="hljs-string">&#x27;供应商A&#x27;</span>, <span class="hljs-string">&#x27;1234567890123456789&#x27;</span>, <span class="hljs-string">&#x27;地址1&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> provider (pID, pNAME, pACC, pADD) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;PR002&#x27;</span>, <span class="hljs-string">&#x27;供应商B&#x27;</span>, <span class="hljs-string">&#x27;9876543210123456789&#x27;</span>, <span class="hljs-string">&#x27;地址2&#x27;</span>);<br><br><span class="hljs-comment">-- 插入门店数据</span><br><span class="hljs-keyword">INSERT INTO</span> shop (shID, shNAME, shADD) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;SH001&#x27;</span>, <span class="hljs-string">&#x27;商店A&#x27;</span>, <span class="hljs-string">&#x27;地址A&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> shop (shID, shNAME, shADD) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;SH002&#x27;</span>, <span class="hljs-string">&#x27;商店B&#x27;</span>, <span class="hljs-string">&#x27;地址B&#x27;</span>);<br><br><span class="hljs-comment">-- 插入营业员数据</span><br><span class="hljs-keyword">INSERT INTO</span> assistant (aID, aNAME, aFEAT, shID) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;A001&#x27;</span>, <span class="hljs-string">&#x27;11&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;SH001&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> assistant (aID, aNAME, aFEAT, shID) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;A002&#x27;</span>, <span class="hljs-string">&#x27;12&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;SH002&#x27;</span>);<br><br><span class="hljs-comment">-- 插入销售记录</span><br><span class="hljs-keyword">INSERT INTO</span> sales (saleID, gID, quantity, salesPrice, aID) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;P001&#x27;</span>, <span class="hljs-number">5</span>, <span class="hljs-number">20</span>, <span class="hljs-string">&#x27;A001&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> sales (saleID, gID, quantity, salesPrice, aID) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;P002&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-string">&#x27;A002&#x27;</span>);<br><br><br><span class="hljs-comment">-- 删除指定的销售记录</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> sales <br><span class="hljs-keyword">WHERE</span> saleID <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">-- 删除指定的商品</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> goods <br><span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;P002&#x27;</span>;<br><br><span class="hljs-comment">-- 删除供应商</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> provider <br><span class="hljs-keyword">WHERE</span> pID <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;PR002&#x27;</span>;<br><br><span class="hljs-comment">-- 查询所有商品信息</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> goods;<br><br><span class="hljs-comment">-- 查询所有供应商的名称和地址</span><br><span class="hljs-keyword">SELECT</span> pNAME, pADD <span class="hljs-keyword">FROM</span> provider;<br><br><span class="hljs-comment">-- 查询门店信息</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> shop;<br><br><span class="hljs-comment">-- 查询所有营业员</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> assistant;<br><br><span class="hljs-comment">-- 查询销售记录及其对应的商品名称和营业员姓名</span><br><span class="hljs-keyword">SELECT</span> s.saleID, g.gNAME, s.quantity, s.salesPrice, a.aNAME <br><span class="hljs-keyword">FROM</span> sales s<br><span class="hljs-keyword">JOIN</span> goods g <span class="hljs-keyword">ON</span> s.gID <span class="hljs-operator">=</span> g.gID <br><span class="hljs-keyword">JOIN</span> assistant a <span class="hljs-keyword">ON</span> s.aID <span class="hljs-operator">=</span> a.aID;<br><br><span class="hljs-comment">-- 查询所有销售记录</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> sales;<br><br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2025/zip/40495483/1749396805690-c1af9a80-0216-4580-bd38-42be1841eb53.zip">电脑销售系统oracle.zip</a></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>电脑销售系统oracle</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E6%B3%95%E5%AD%A6%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%8A%A5%E5%91%8A/">法学专业词汇检索系统项目报告</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E6%B3%95%E5%AD%A6%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/">法学专业词汇检索系统</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">1 需求分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">2 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 系统结构功能图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 功能流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%95%86%E5%93%81%E8%A1%A8-goods"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. 商品表 (goods)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BE%9B%E5%BA%94%E5%95%86%E8%A1%A8-provider"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. 供应商表 (provider)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BB%93%E5%BA%93%E8%A1%A8-store"><span class="toc-number">2.3.3.</span> <span class="toc-text">3. 仓库表 (store)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%97%A8%E5%BA%97%E8%A1%A8-shop"><span class="toc-number">2.3.4.</span> <span class="toc-text">4. 门店表 (shop)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%90%A5%E4%B8%9A%E5%91%98%E8%A1%A8-assistant"><span class="toc-number">2.3.5.</span> <span class="toc-text">5. 营业员表 (assistant)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%AE%A1%E7%90%86%E5%91%98%E8%A1%A8-manager"><span class="toc-number">2.3.6.</span> <span class="toc-text">6. 管理员表 (manager)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%87%87%E8%B4%AD%E5%91%98%E8%A1%A8-shopper"><span class="toc-number">2.3.7.</span> <span class="toc-text">7. 采购员表 (shopper)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%95%86%E5%93%81%E5%BA%93%E5%AD%98%E6%9B%B4%E6%96%B0%E5%8E%86%E5%8F%B2%E8%A1%A8-goods-history"><span class="toc-number">2.3.8.</span> <span class="toc-text">8. 商品库存更新历史表 (goods_history)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E9%94%80%E5%94%AE%E8%A1%A8-sales"><span class="toc-number">2.3.9.</span> <span class="toc-text">9. 销售表 (sales)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-SQL-%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">3 SQL**实现**</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8"><span class="toc-number">3.1.</span> <span class="toc-text">建表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">3.2.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-number">3.3.</span> <span class="toc-text">视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">存储过程、函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">3.5.</span> <span class="toc-text">触发器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E7%BA%B5"><span class="toc-number">3.6.</span> <span class="toc-text">数据操纵</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

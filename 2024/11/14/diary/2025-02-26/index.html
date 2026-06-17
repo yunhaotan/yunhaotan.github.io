@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>Wed Feb 26 2025 00:00:00 GMT+0800 (中国标准时间) || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="Wed Feb 26 2025 00:00:00 GMT+0800 (中国标准时间)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/diary/2025-02-26/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.今日任务：今天详细阅读了FoundationPose部署教程以及其他个人博客中的部署教程，明确了一下几点：cuda版本：11.8torch.version：2.0.0+cu118torchvision.version：0.15.1+cu118pytorch3d.version：0.7.3成功安装了程序运行">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">Wed Feb 26 2025 00:00:00 GMT+0800 (中国标准时间)</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/diary/">diary</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.955Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-今日任务："><a href="#1-今日任务：" class="headerlink" title="1. 今日任务："></a>1. 今日任务：</h1><p>今天详细阅读了FoundationPose部署教程以及其他个人博客中的部署教程，明确了一下几点：</p>
+<ol>
+<li>cuda 版本： 11.8</li>
+<li>torch.<strong>version</strong>：2.0.0+cu118<br>torchvision.<strong>version</strong>：0.15.1+cu118<br>pytorch3d.<strong>version</strong>：0.7.3</li>
+</ol>
+<p>成功安装了程序运行所需要的依赖项，其中pytorch的安装是一个难题，版本不匹配<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226185509964.png" alt="image.png"></p>
+<p>安装教程<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226191843209.png" alt="image.png"></p>
+<p>在最后Build extensions这一步一直会报错<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226192334894.png" alt="image.png"><br>原因有下面两点<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226192429066.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226192443119.png" alt="image.png"><br>解决办法<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226192648438.png" alt="image.png"><br>完成上面步骤后解决了Boost的问题，但Eigen头文件缺失的问题仍然存在<br>尝试采用下面方式解决</p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226193835494.png" alt="image.png"></p>
+<p>成功构建<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226194541922.png" alt="image.png"><br>最后出现了numpy和pandas与其他库不兼容的问题<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226194634520.png" alt="image.png"><br>修改pandas和numpy的版本后，问题解决<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250226195142131.png" alt="image.png"></p>
+<h1 id="2-明日任务"><a href="#2-明日任务" class="headerlink" title="2. 明日任务"></a>2. 明日任务</h1><p>1.完成demo程序的可重复演示<br>2.在解决上述问题后，完成GG-CNN抓取规划算法的程序运行</p>
+<p>运行结果：<br><figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix">(foundationpose) root@<span class="hljs-number">3</span>nmwrhl0:~<span class="hljs-operator">/</span>FoundationPose<span class="hljs-comment"># python run_demo.py  </span><br>  <br>A module that was compiled using NumPy <span class="hljs-number">1</span>.x cannot be run <span class="hljs-keyword">in</span>  <br>NumPy <span class="hljs-number">2.0</span>.<span class="hljs-number">2</span> as it may crash. To support both <span class="hljs-number">1</span>.x and <span class="hljs-number">2</span>.x  <br>versions of NumPy, modules must be compiled <span class="hljs-keyword">with</span> NumPy <span class="hljs-number">2.0</span>.  <br>Some module may need to rebuild instead e.g. <span class="hljs-keyword">with</span> &#x27;pybind11<span class="hljs-operator">&gt;=</span><span class="hljs-number">2.12</span>&#x27;.  <br>  <br>If you are a user of the module, the easiest solution will be to  <br>downgrade to &#x27;numpy<span class="hljs-operator">&lt;</span><span class="hljs-number">2</span>&#x27; <span class="hljs-keyword">or</span> try to upgrade the affected module.  <br>We expect that some modules will need time to support NumPy <span class="hljs-number">2</span>.  <br>  <br>Traceback (most recent call last): File <span class="hljs-string">&quot;/root/FoundationPose/run_demo.py&quot;</span>, line <span class="hljs-number">10</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from estimater <span class="hljs-built_in">import</span> <span class="hljs-operator">*</span>  <br>File <span class="hljs-string">&quot;/root/FoundationPose/estimater.py&quot;</span>, line <span class="hljs-number">10</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from Utils <span class="hljs-built_in">import</span> <span class="hljs-operator">*</span>  <br>File <span class="hljs-string">&quot;/root/FoundationPose/Utils.py&quot;</span>, line <span class="hljs-number">12</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from pytorch3d.renderer <span class="hljs-built_in">import</span> FoVPerspectiveCameras, PerspectiveCameras, look_at_view_transform, look_at_rotation, RasterizationSettings, MeshRenderer, MeshRasterizer, BlendParams, SoftSilhouetteShader, HardPhongShader, PointLights, TexturesVertex  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/pytorch3d/renderer/__init__.py&quot;</span>, line <span class="hljs-number">13</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from .camera_utils <span class="hljs-built_in">import</span> join_cameras_as_batch, rotate_on_spot  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/pytorch3d/renderer/camera_utils.py&quot;</span>, line <span class="hljs-number">12</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from .cameras <span class="hljs-built_in">import</span> CamerasBase  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/pytorch3d/renderer/cameras.py&quot;</span>, line <span class="hljs-number">21</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>_<span class="hljs-attr">R</span> <span class="hljs-operator">=</span> torch.eye(<span class="hljs-number">3</span>)[None] <span class="hljs-comment"># (1, 3, 3)  </span><br><span class="hljs-operator">/</span>root<span class="hljs-operator">/</span>anaconda3<span class="hljs-operator">/</span>envs<span class="hljs-operator">/</span>foundationpose<span class="hljs-operator">/</span>lib<span class="hljs-operator">/</span>python3.<span class="hljs-number">9</span><span class="hljs-operator">/</span>site-packages<span class="hljs-operator">/</span>pytorch3d<span class="hljs-operator">/</span>renderer<span class="hljs-operator">/</span>cameras.py:<span class="hljs-number">21</span>: <span class="hljs-params">UserWarning:</span> Failed to initialize <span class="hljs-params">NumPy:</span> _ARRAY_API not found (Triggered internally at ..<span class="hljs-operator">/</span>torch<span class="hljs-operator">/</span>csrc<span class="hljs-operator">/</span>utils<span class="hljs-operator">/</span>tensor_numpy.cpp:<span class="hljs-number">84</span>.)  <br>_<span class="hljs-attr">R</span> <span class="hljs-operator">=</span> torch.eye(<span class="hljs-number">3</span>)[None] <span class="hljs-comment"># (1, 3, 3)  </span><br>Traceback (most recent call last):  <br>File <span class="hljs-string">&quot;/root/FoundationPose/run_demo.py&quot;</span>, line <span class="hljs-number">10</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from estimater <span class="hljs-built_in">import</span> <span class="hljs-operator">*</span>  <br>File <span class="hljs-string">&quot;/root/FoundationPose/estimater.py&quot;</span>, line <span class="hljs-number">10</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from Utils <span class="hljs-built_in">import</span> <span class="hljs-operator">*</span>  <br>File <span class="hljs-string">&quot;/root/FoundationPose/Utils.py&quot;</span>, line <span class="hljs-number">24</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br><span class="hljs-built_in">import</span> open3d as o3d  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/open3d/__init__.py&quot;</span>, line <span class="hljs-number">146</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br><span class="hljs-built_in">import</span> open3d.ml  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/open3d/ml/__init__.py&quot;</span>, line <span class="hljs-number">16</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from . <span class="hljs-built_in">import</span> datasets  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/open3d/ml/datasets.py&quot;</span>, line <span class="hljs-number">15</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from open3d._ml3d.datasets <span class="hljs-built_in">import</span> <span class="hljs-operator">*</span>  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/open3d/_ml3d/datasets/__init__.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from .semantickitti <span class="hljs-built_in">import</span> SemanticKITTI  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/open3d/_ml3d/datasets/semantickitti.py&quot;</span>, line <span class="hljs-number">6</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from sklearn.neighbors <span class="hljs-built_in">import</span> KDTree  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/sklearn/__init__.py&quot;</span>, line <span class="hljs-number">87</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from .base <span class="hljs-built_in">import</span> clone  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/sklearn/base.py&quot;</span>, line <span class="hljs-number">19</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from .utils <span class="hljs-built_in">import</span> _IS_32BIT  <br>File <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/sklearn/utils/__init__.py&quot;</span>, line <span class="hljs-number">28</span>, <span class="hljs-keyword">in</span> <span class="hljs-symbol">&lt;module&gt;</span>  <br>from .murmurhash <span class="hljs-built_in">import</span> murmurhash3_32  <br>File <span class="hljs-string">&quot;sklearn/utils/murmurhash.pyx&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> init sklearn.utils.murmurhash  <br><span class="hljs-params">ValueError:</span> numpy.dtype size changed, may indicate binary incompatibility. Expected <span class="hljs-number">96</span> from C header, got <span class="hljs-number">88</span> from PyObject  <br>(foundationpose) root@<span class="hljs-number">3</span>nmwrhl0:~<span class="hljs-operator">/</span>FoundationPose<span class="hljs-comment"># pip install numpy&lt;1.29  </span><br><span class="hljs-operator">-</span><span class="hljs-params">bash:</span> <span class="hljs-number">1.29</span>: No such file <span class="hljs-keyword">or</span> directory  <br>(foundationpose) root@<span class="hljs-number">3</span>nmwrhl0:~<span class="hljs-operator">/</span>FoundationPose<span class="hljs-comment"># pip install numpy&lt;1.29  </span><br><span class="hljs-operator">-</span><span class="hljs-params">bash:</span> <span class="hljs-number">1.29</span>: No such file <span class="hljs-keyword">or</span> directory  <br>(foundationpose) root@<span class="hljs-number">3</span>nmwrhl0:~<span class="hljs-operator">/</span>FoundationPose<span class="hljs-comment"># pip install &quot;numpy&lt;2&quot;  </span><br>Looking <span class="hljs-keyword">in</span> <span class="hljs-params">indexes:</span> https:<span class="hljs-symbol">//pypi.tuna.tsinghua.edu.cn/simple</span>  <br>Collecting numpy<span class="hljs-operator">&lt;</span><span class="hljs-number">2</span>  <br>Using cached https:<span class="hljs-symbol">//pypi.tuna.tsinghua.edu.cn/packages/54/30/c2a907b9443cf42b90c17ad10c1e8fa801975f01cb9764f3f8eb8aea638b/numpy-1.26.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl</span> (<span class="hljs-number">18.2</span> MB)  <br>Installing collected <span class="hljs-params">packages:</span> numpy  <br>Attempting <span class="hljs-params">uninstall:</span> numpy  <br>Found existing <span class="hljs-params">installation:</span> numpy <span class="hljs-number">2.0</span>.<span class="hljs-number">2</span>  <br>Uninstalling numpy-<span class="hljs-number">2.0</span>.<span class="hljs-number">2</span>:  <br>Successfully uninstalled numpy-<span class="hljs-number">2.0</span>.<span class="hljs-number">2</span>  <br>Successfully installed numpy-<span class="hljs-number">1.26</span>.<span class="hljs-number">4</span>  <br><span class="hljs-params">WARNING:</span> Running pip as the &#x27;root&#x27; user can result <span class="hljs-keyword">in</span> broken permissions and conflicting behaviour <span class="hljs-keyword">with</span> the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment <span class="hljs-params">instead:</span> https:<span class="hljs-symbol">//pip.pypa.io/warnings/venv.</span> Use the <span class="hljs-operator">-</span>-root-user-action option <span class="hljs-keyword">if</span> you know what you are doing and want to suppress this warning.  <br>(foundationpose) root@<span class="hljs-number">3</span>nmwrhl0:~<span class="hljs-operator">/</span>FoundationPose<span class="hljs-comment"># python run_demo.py  </span><br>Warp <span class="hljs-number">1.0</span>.<span class="hljs-number">2</span> <span class="hljs-params">initialized:</span>  <br>CUDA Toolkit <span class="hljs-number">11.5</span>, Driver <span class="hljs-number">11.8</span>  <br><span class="hljs-params">Devices:</span>  <br><span class="hljs-string">&quot;cpu&quot;</span> : <span class="hljs-string">&quot;x86_64&quot;</span>  <br><span class="hljs-string">&quot;cuda:0&quot;</span> : <span class="hljs-string">&quot;NVIDIA GeForce RTX 3090&quot;</span> (<span class="hljs-number">24</span> GiB, sm_86, mempool enabled)  <br>Kernel <span class="hljs-params">cache:</span>  <br><span class="hljs-symbol">/root/.cache/warp/1.0.2</span>  <br>[__init__()] self.<span class="hljs-params">cfg:</span>  <br><span class="hljs-params">lr:</span> <span class="hljs-number">0.0001</span>  <br><span class="hljs-params">c_in:</span> <span class="hljs-number">6</span>  <br><span class="hljs-params">zfar:</span> &#x27;Infinity&#x27;  <br><span class="hljs-params">debug:</span> <span class="hljs-literal">null</span>  <br><span class="hljs-params">n_view:</span> <span class="hljs-number">1</span>  <br><span class="hljs-params">run_id:</span> <span class="hljs-number">3</span>wy8qqex  <br><span class="hljs-params">use_BN:</span> <span class="hljs-literal">true</span>  <br><span class="hljs-params">exp_name:</span> <span class="hljs-number">202</span>4-<span class="hljs-number">0</span>1-<span class="hljs-number">1</span>1-<span class="hljs-number">2</span>0-<span class="hljs-number">0</span>2-<span class="hljs-number">45</span>  <br><span class="hljs-params">n_epochs:</span> <span class="hljs-number">62</span>  <br><span class="hljs-params">save_dir:</span> <span class="hljs-operator">/</span>home<span class="hljs-operator">/</span>bowenw<span class="hljs-operator">/</span>debug<span class="hljs-operator">/</span><span class="hljs-number">202</span>4-<span class="hljs-number">0</span>1-<span class="hljs-number">1</span>1-<span class="hljs-number">2</span>0-<span class="hljs-number">0</span>2-<span class="hljs-number">45</span><span class="hljs-symbol">/</span>  <br><span class="hljs-params">use_mask:</span> <span class="hljs-literal">false</span>  <br><span class="hljs-params">loss_type:</span> pairwise_valid  <br><span class="hljs-params">optimizer:</span> adam  <br><span class="hljs-params">batch_size:</span> <span class="hljs-number">64</span>  <br><span class="hljs-params">crop_ratio:</span> <span class="hljs-number">1.1</span>  <br><span class="hljs-params">enable_amp:</span> <span class="hljs-literal">true</span>  <br><span class="hljs-params">use_normal:</span> <span class="hljs-literal">false</span>  <br><span class="hljs-params">max_num_key:</span> <span class="hljs-literal">null</span>  <br><span class="hljs-params">warmup_step:</span> <span class="hljs-operator">-</span><span class="hljs-number">1</span>  <br><span class="hljs-params">input_resize:</span>  <br><span class="hljs-operator">-</span> <span class="hljs-number">160</span>  <br><span class="hljs-operator">-</span> <span class="hljs-number">160</span>  <br><span class="hljs-params">max_step_val:</span> <span class="hljs-number">1000</span>  <br><span class="hljs-params">vis_interval:</span> <span class="hljs-number">1000</span>  <br><span class="hljs-params">weight_decay:</span> <span class="hljs-number">0</span>  <br><span class="hljs-params">normalize_xyz:</span> <span class="hljs-literal">true</span>  <br><span class="hljs-params">resume_run_id:</span> <span class="hljs-literal">null</span>  <br><span class="hljs-params">clip_grad_norm:</span> &#x27;Infinity&#x27;  <br><span class="hljs-params">lr_epoch_decay:</span> <span class="hljs-number">500</span>  <br><span class="hljs-params">render_backend:</span> nvdiffrast  <br><span class="hljs-params">train_num_pair:</span> <span class="hljs-number">5</span>  <br><span class="hljs-params">lr_decay_epochs:</span>  <br><span class="hljs-operator">-</span> <span class="hljs-number">50</span>  <br><span class="hljs-params">n_epochs_warmup:</span> <span class="hljs-number">1</span>  <br><span class="hljs-params">make_pair_online:</span> <span class="hljs-literal">false</span>  <br><span class="hljs-params">gradient_max_norm:</span> &#x27;Infinity&#x27;  <br><span class="hljs-params">max_step_per_epoch:</span> <span class="hljs-number">10000</span>  <br><span class="hljs-params">n_rendering_workers:</span> <span class="hljs-number">1</span>  <br><span class="hljs-params">save_epoch_interval:</span> <span class="hljs-number">100</span>  <br><span class="hljs-params">n_dataloader_workers:</span> <span class="hljs-number">100</span>  <br><span class="hljs-params">split_objects_across_gpus:</span> <span class="hljs-literal">true</span>  <br><span class="hljs-params">ckpt_dir:</span> <span class="hljs-symbol">/root/FoundationPose/learning/training/../../weights/2024-01-11-20-02-45/model_best.pth</span>  <br>  <br>[__init__()] self.h5_file:None  <br>[__init__()] Using pretrained model from <span class="hljs-symbol">/root/FoundationPose/learning/training/../../weights/2024-01-11-20-02-45/model_best.pth</span>  <br>[__init__()] init done  <br>[__init__()] welcome  <br>[__init__()] self.<span class="hljs-params">cfg:</span>  <br><span class="hljs-params">lr:</span> <span class="hljs-number">0.0001</span>  <br><span class="hljs-params">c_in:</span> <span class="hljs-number">6</span>  <br><span class="hljs-params">zfar:</span> .inf  <br><span class="hljs-params">debug:</span> <span class="hljs-literal">null</span>  <br><span class="hljs-params">w_rot:</span> <span class="hljs-number">0.1</span>  <br><span class="hljs-params">n_view:</span> <span class="hljs-number">1</span>  <br><span class="hljs-params">run_id:</span> <span class="hljs-literal">null</span>  <br><span class="hljs-params">use_BN:</span> <span class="hljs-literal">true</span>  <br><span class="hljs-params">rot_rep:</span> axis_angle  <br><span class="hljs-params">ckpt_dir:</span> <span class="hljs-symbol">/root/FoundationPose/learning/training/../../weights/2023-10-28-18-33-37/model_best.pth</span>  <br><span class="hljs-params">exp_name:</span> <span class="hljs-number">202</span>3-<span class="hljs-number">1</span>0-<span class="hljs-number">2</span>8-<span class="hljs-number">1</span>8-<span class="hljs-number">3</span>3-<span class="hljs-number">37</span>  <br><span class="hljs-params">save_dir:</span> <span class="hljs-operator">/</span>tmp<span class="hljs-operator">/</span><span class="hljs-number">202</span>3-<span class="hljs-number">1</span>0-<span class="hljs-number">2</span>8-<span class="hljs-number">1</span>8-<span class="hljs-number">3</span>3-<span class="hljs-number">37</span><span class="hljs-symbol">/</span>  <br><span class="hljs-params">loss_type:</span> l2  <br><span class="hljs-params">optimizer:</span> adam  <br><span class="hljs-params">trans_rep:</span> tracknet  <br><span class="hljs-params">batch_size:</span> <span class="hljs-number">64</span>  <br><span class="hljs-params">crop_ratio:</span> <span class="hljs-number">1.2</span>  <br><span class="hljs-params">use_normal:</span> <span class="hljs-literal">false</span>  <br><span class="hljs-params">BN_momentum:</span> <span class="hljs-number">0.1</span>  <br><span class="hljs-params">max_num_key:</span> <span class="hljs-literal">null</span>  <br><span class="hljs-params">warmup_step:</span> <span class="hljs-operator">-</span><span class="hljs-number">1</span>  <br><span class="hljs-params">input_resize:</span>  <br><span class="hljs-operator">-</span> <span class="hljs-number">160</span>  <br><span class="hljs-operator">-</span> <span class="hljs-number">160</span>  <br><span class="hljs-params">max_step_val:</span> <span class="hljs-number">1000</span>  <br><span class="hljs-params">normal_uint8:</span> <span class="hljs-literal">false</span>  <br><span class="hljs-params">vis_interval:</span> <span class="hljs-number">1000</span>  <br><span class="hljs-params">weight_decay:</span> <span class="hljs-number">0</span>  <br><span class="hljs-params">n_max_objects:</span> <span class="hljs-literal">null</span>  <br><span class="hljs-params">normalize_xyz:</span> <span class="hljs-literal">true</span>  <br><span class="hljs-params">clip_grad_norm:</span> &#x27;Infinity&#x27;  <br><span class="hljs-params">rot_normalizer:</span> <span class="hljs-number">0.3490658503988659</span>  <br><span class="hljs-params">trans_normalizer:</span>  <br><span class="hljs-operator">-</span> <span class="hljs-number">0.019999999552965164</span>  <br><span class="hljs-operator">-</span> <span class="hljs-number">0.019999999552965164</span>  <br><span class="hljs-operator">-</span> <span class="hljs-number">0.05000000074505806</span>  <br><span class="hljs-params">max_step_per_epoch:</span> <span class="hljs-number">25000</span>  <br><span class="hljs-params">val_epoch_interval:</span> <span class="hljs-number">10</span>  <br><span class="hljs-params">n_dataloader_workers:</span> <span class="hljs-number">60</span>  <br><span class="hljs-params">enable_amp:</span> <span class="hljs-literal">true</span>  <br><span class="hljs-params">use_mask:</span> <span class="hljs-literal">false</span>  <br>  <br>[__init__()] self.<span class="hljs-params">h5_file:</span>  <br>[__init__()] Using pretrained model from <span class="hljs-symbol">/root/FoundationPose/learning/training/../../weights/2023-10-28-18-33-37/model_best.pth</span>  <br>[__init__()] init done  <br>[reset_object()] self.diameter:<span class="hljs-number">0.19646325799497472</span>, vox_size:<span class="hljs-number">0.009823162899748735</span>  <br>[reset_object()] self.pts:torch.Size([<span class="hljs-number">607</span>, <span class="hljs-number">3</span>])  <br>[reset_object()] reset done  <br>[make_rotation_grid()] cam_in_obs:(<span class="hljs-number">42</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)  <br>[make_rotation_grid()] rot_grid:(<span class="hljs-number">252</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)  <br>num original candidates <span class="hljs-operator">=</span> <span class="hljs-number">252</span>  <br>num of pose after <span class="hljs-params">clustering:</span> <span class="hljs-number">252</span>  <br>[make_rotation_grid()] after cluster, rot_grid:(<span class="hljs-number">252</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)  <br>[make_rotation_grid()] self.<span class="hljs-params">rot_grid:</span> torch.Size([<span class="hljs-number">252</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>])  <br>[<span class="hljs-symbol">&lt;module&gt;</span>()] estimator initialization done  <br>[<span class="hljs-symbol">&lt;module&gt;</span>()] i:<span class="hljs-number">0</span>  <br>[register()] Welcome  <br>Module Utils load on device &#x27;cuda:<span class="hljs-number">0</span>&#x27; took <span class="hljs-number">476.91</span> ms  <br>[register()] poses:(<span class="hljs-number">252</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)  <br>[register()] after viewpoint, add_errs min:-<span class="hljs-number">1.0</span>  <br>[predict()] ob_in_cams:(<span class="hljs-number">252</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)  <br>[predict()] self.cfg.use_normal:False  <br>[predict()] trans_normalizer:[<span class="hljs-number">0.019999999552965164</span>, <span class="hljs-number">0.019999999552965164</span>, <span class="hljs-number">0.05000000074505806</span>], rot_normalizer:<span class="hljs-number">0.3490658503988659</span>  <br>[predict()] making cropped data  <br>[make_crop_data_batch()] Welcome make_crop_data_batch  <br>[make_crop_data_batch()] make tf_to_crops done  <br>[make_crop_data_batch()] render done  <br>[make_crop_data_batch()] warp done  <br>[make_crop_data_batch()] pose batch data done  <br>[predict()] forward start  <br>[predict()] forward done  <br>[predict()] making cropped data  <br>[make_crop_data_batch()] Welcome make_crop_data_batch  <br>[make_crop_data_batch()] make tf_to_crops done  <br>[make_crop_data_batch()] render done  <br>[make_crop_data_batch()] warp done  <br>[make_crop_data_batch()] pose batch data done  <br>[predict()] forward start  <br>[predict()] forward done  <br>[predict()] making cropped data  <br>[make_crop_data_batch()] Welcome make_crop_data_batch  <br>[make_crop_data_batch()] make tf_to_crops done  <br>[make_crop_data_batch()] render done  <br>[make_crop_data_batch()] warp done  <br>[make_crop_data_batch()] pose batch data done  <br>[predict()] forward start  <br>[predict()] forward done  <br>[predict()] making cropped data  <br>[make_crop_data_batch()] Welcome make_crop_data_batch  <br>[make_crop_data_batch()] make tf_to_crops done  <br>[make_crop_data_batch()] render done  <br>[make_crop_data_batch()] warp done  <br>[make_crop_data_batch()] pose batch data done  <br>[predict()] forward start  <br>[predict()] forward done  <br>[predict()] making cropped data  <br>[make_crop_data_batch()] Welcome make_crop_data_batch  <br>[make_crop_data_batch()] make tf_to_crops done  <br>[make_crop_data_batch()] render done  <br>[make_crop_data_batch()] warp done  <br>[make_crop_data_batch()] pose batch data done  <br>[predict()] forward start  <br>[predict()] forward done  <br>[predict()] ob_in_cams:(<span class="hljs-number">252</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)  <br>[predict()] self.cfg.use_normal:False  <br>[predict()] making cropped data  <br>[make_crop_data_batch()] Welcome make_crop_data_batch  <br>[make_crop_data_batch()] make tf_to_crops done  <br>[make_crop_data_batch()] render done  <br>[make_crop_data_batch()] pose batch data done  <br>[find_best_among_pairs()] pose_data.rgbAs.shape[<span class="hljs-number">0</span>]: <span class="hljs-number">252</span>  <br>[predict()] forward done  <br>[register()] final, add_errs min:-<span class="hljs-number">1.0</span>  <br>[register()] sort ids:tensor([ <span class="hljs-number">67</span>, <span class="hljs-number">98</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">72</span>, <span class="hljs-number">73</span>, <span class="hljs-number">97</span>, <span class="hljs-number">102</span>, <span class="hljs-number">103</span>, <span class="hljs-number">109</span>,  <br><span class="hljs-number">127</span>, <span class="hljs-number">133</span>, <span class="hljs-number">168</span>, <span class="hljs-number">186</span>, <span class="hljs-number">199</span>, <span class="hljs-number">223</span>, <span class="hljs-number">241</span>, <span class="hljs-number">242</span>, <span class="hljs-number">68</span>, <span class="hljs-number">169</span>, <span class="hljs-number">224</span>, <span class="hljs-number">96</span>, <span class="hljs-number">126</span>, <span class="hljs-number">145</span>,  <br><span class="hljs-number">198</span>, <span class="hljs-number">132</span>, <span class="hljs-number">187</span>, <span class="hljs-number">12</span>, <span class="hljs-number">24</span>, <span class="hljs-number">25</span>, <span class="hljs-number">78</span>, <span class="hljs-number">112</span>, <span class="hljs-number">228</span>, <span class="hljs-number">18</span>, <span class="hljs-number">19</span>, <span class="hljs-number">79</span>, <span class="hljs-number">84</span>, <span class="hljs-number">85</span>,  <br><span class="hljs-number">90</span>, <span class="hljs-number">91</span>, <span class="hljs-number">115</span>, <span class="hljs-number">120</span>, <span class="hljs-number">121</span>, <span class="hljs-number">150</span>, <span class="hljs-number">151</span>, <span class="hljs-number">175</span>, <span class="hljs-number">176</span>, <span class="hljs-number">181</span>, <span class="hljs-number">182</span>, <span class="hljs-number">229</span>, <span class="hljs-number">234</span>, <span class="hljs-number">13</span>,  <br><span class="hljs-number">55</span>, <span class="hljs-number">56</span>, <span class="hljs-number">92</span>, <span class="hljs-number">108</span>, <span class="hljs-number">114</span>, <span class="hljs-number">86</span>, <span class="hljs-number">236</span>, <span class="hljs-number">104</span>, <span class="hljs-number">235</span>, <span class="hljs-number">247</span>, <span class="hljs-number">54</span>, <span class="hljs-number">74</span>, <span class="hljs-number">111</span>, <span class="hljs-number">188</span>,  <br><span class="hljs-number">193</span>, <span class="hljs-number">205</span>, <span class="hljs-number">66</span>, <span class="hljs-number">26</span>, <span class="hljs-number">174</span>, <span class="hljs-number">80</span>, <span class="hljs-number">222</span>, <span class="hljs-number">230</span>, <span class="hljs-number">248</span>, <span class="hljs-number">163</span>, <span class="hljs-number">211</span>, <span class="hljs-number">194</span>, <span class="hljs-number">14</span>, <span class="hljs-number">69</span>,  <br><span class="hljs-number">32</span>, <span class="hljs-number">170</span>, <span class="hljs-number">144</span>, <span class="hljs-number">113</span>, <span class="hljs-number">231</span>, <span class="hljs-number">110</span>, <span class="hljs-number">204</span>, <span class="hljs-number">245</span>, <span class="hljs-number">81</span>, <span class="hljs-number">57</span>, <span class="hljs-number">61</span>, <span class="hljs-number">49</span>, <span class="hljs-number">131</span>, <span class="hljs-number">106</span>,  <br><span class="hljs-number">192</span>, <span class="hljs-number">196</span>, <span class="hljs-number">180</span>, <span class="hljs-number">240</span>, <span class="hljs-number">246</span>, <span class="hljs-number">178</span>, <span class="hljs-number">123</span>, <span class="hljs-number">39</span>, <span class="hljs-number">171</span>, <span class="hljs-number">53</span>, <span class="hljs-number">149</span>, <span class="hljs-number">15</span>, <span class="hljs-number">48</span>, <span class="hljs-number">172</span>,  <br><span class="hljs-number">135</span>, <span class="hljs-number">88</span>, <span class="hljs-number">155</span>, <span class="hljs-number">117</span>, <span class="hljs-number">221</span>, <span class="hljs-number">9</span>, <span class="hljs-number">147</span>, <span class="hljs-number">137</span>, <span class="hljs-number">45</span>, <span class="hljs-number">65</span>, <span class="hljs-number">87</span>, <span class="hljs-number">94</span>, <span class="hljs-number">191</span>, <span class="hljs-number">207</span>,  <br><span class="hljs-number">75</span>, <span class="hljs-number">154</span>, <span class="hljs-number">161</span>, <span class="hljs-number">166</span>, <span class="hljs-number">202</span>, <span class="hljs-number">208</span>, <span class="hljs-number">29</span>, <span class="hljs-number">52</span>, <span class="hljs-number">148</span>, <span class="hljs-number">214</span>, <span class="hljs-number">226</span>, <span class="hljs-number">16</span>, <span class="hljs-number">58</span>, <span class="hljs-number">64</span>,  <br><span class="hljs-number">77</span>, <span class="hljs-number">203</span>, <span class="hljs-number">250</span>, <span class="hljs-number">70</span>, <span class="hljs-number">232</span>, <span class="hljs-number">125</span>, <span class="hljs-number">179</span>, <span class="hljs-number">35</span>, <span class="hljs-number">105</span>, <span class="hljs-number">119</span>, <span class="hljs-number">141</span>, <span class="hljs-number">165</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>,  <br><span class="hljs-number">17</span>, <span class="hljs-number">23</span>, <span class="hljs-number">197</span>, <span class="hljs-number">209</span>, <span class="hljs-number">251</span>, <span class="hljs-number">183</span>, <span class="hljs-number">60</span>, <span class="hljs-number">129</span>, <span class="hljs-number">215</span>, <span class="hljs-number">243</span>, <span class="hljs-number">107</span>, <span class="hljs-number">158</span>, <span class="hljs-number">83</span>, <span class="hljs-number">239</span>,  <br><span class="hljs-number">11</span>, <span class="hljs-number">59</span>, <span class="hljs-number">160</span>, <span class="hljs-number">218</span>, <span class="hljs-number">227</span>, <span class="hljs-number">177</span>, <span class="hljs-number">244</span>, <span class="hljs-number">100</span>, <span class="hljs-number">124</span>, <span class="hljs-number">140</span>, <span class="hljs-number">4</span>, <span class="hljs-number">51</span>, <span class="hljs-number">62</span>, <span class="hljs-number">76</span>,  <br><span class="hljs-number">118</span>, <span class="hljs-number">136</span>, <span class="hljs-number">184</span>, <span class="hljs-number">20</span>, <span class="hljs-number">37</span>, <span class="hljs-number">47</span>, <span class="hljs-number">63</span>, <span class="hljs-number">212</span>, <span class="hljs-number">213</span>, <span class="hljs-number">249</span>, <span class="hljs-number">2</span>, <span class="hljs-number">50</span>, <span class="hljs-number">138</span>, <span class="hljs-number">143</span>,  <br><span class="hljs-number">220</span>, <span class="hljs-number">34</span>, <span class="hljs-number">122</span>, <span class="hljs-number">139</span>, <span class="hljs-number">167</span>, <span class="hljs-number">195</span>, <span class="hljs-number">210</span>, <span class="hljs-number">46</span>, <span class="hljs-number">99</span>, <span class="hljs-number">40</span>, <span class="hljs-number">71</span>, <span class="hljs-number">93</span>, <span class="hljs-number">130</span>, <span class="hljs-number">201</span>,  <br><span class="hljs-number">238</span>, <span class="hljs-number">21</span>, <span class="hljs-number">22</span>, <span class="hljs-number">82</span>, <span class="hljs-number">190</span>, <span class="hljs-number">41</span>, <span class="hljs-number">101</span>, <span class="hljs-number">225</span>, <span class="hljs-number">3</span>, <span class="hljs-number">142</span>, <span class="hljs-number">219</span>, <span class="hljs-number">27</span>, <span class="hljs-number">153</span>, <span class="hljs-number">159</span>,  <br><span class="hljs-number">95</span>, <span class="hljs-number">164</span>, <span class="hljs-number">116</span>, <span class="hljs-number">162</span>, <span class="hljs-number">216</span>, <span class="hljs-number">233</span>, <span class="hljs-number">43</span>, <span class="hljs-number">200</span>, <span class="hljs-number">8</span>, <span class="hljs-number">44</span>, <span class="hljs-number">89</span>, <span class="hljs-number">134</span>, <span class="hljs-number">185</span>, <span class="hljs-number">28</span>,  <br><span class="hljs-number">237</span>, <span class="hljs-number">38</span>, <span class="hljs-number">128</span>, <span class="hljs-number">173</span>, <span class="hljs-number">152</span>, <span class="hljs-number">217</span>, <span class="hljs-number">146</span>, <span class="hljs-number">189</span>, <span class="hljs-number">33</span>, <span class="hljs-number">42</span>, <span class="hljs-number">157</span>, <span class="hljs-number">156</span>, <span class="hljs-number">206</span>, <span class="hljs-number">36</span>])  <br>[register()] sorted scores:tensor([<span class="hljs-number">77.7656</span>, <span class="hljs-number">77.7656</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>,  <br><span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>,  <br><span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7500</span>, <span class="hljs-number">77.7344</span>, <span class="hljs-number">77.7344</span>,  <br><span class="hljs-number">77.7344</span>, <span class="hljs-number">77.7188</span>, <span class="hljs-number">77.7188</span>, <span class="hljs-number">77.7188</span>, <span class="hljs-number">77.7188</span>, <span class="hljs-number">77.7031</span>, <span class="hljs-number">77.6250</span>, <span class="hljs-number">77.5781</span>,  <br><span class="hljs-number">77.5781</span>, <span class="hljs-number">77.5781</span>, <span class="hljs-number">77.5781</span>, <span class="hljs-number">77.5781</span>, <span class="hljs-number">77.5781</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>,  <br><span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>,  <br><span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5625</span>, <span class="hljs-number">77.5469</span>,  <br><span class="hljs-number">77.5469</span>, <span class="hljs-number">77.5469</span>, <span class="hljs-number">77.5469</span>, <span class="hljs-number">77.5469</span>, <span class="hljs-number">77.5469</span>, <span class="hljs-number">77.5156</span>, <span class="hljs-number">77.5156</span>, <span class="hljs-number">77.5000</span>,  <br><span class="hljs-number">77.5000</span>, <span class="hljs-number">77.5000</span>, <span class="hljs-number">77.4844</span>, <span class="hljs-number">77.4844</span>, <span class="hljs-number">77.4844</span>, <span class="hljs-number">77.4688</span>, <span class="hljs-number">77.4531</span>, <span class="hljs-number">77.4531</span>,  <br><span class="hljs-number">77.4375</span>, <span class="hljs-number">77.2969</span>, <span class="hljs-number">77.2656</span>, <span class="hljs-number">77.2188</span>, <span class="hljs-number">77.2188</span>, <span class="hljs-number">77.1562</span>, <span class="hljs-number">77.1406</span>, <span class="hljs-number">77.1094</span>,  <br><span class="hljs-number">77.1094</span>, <span class="hljs-number">77.0938</span>, <span class="hljs-number">77.0781</span>, <span class="hljs-number">77.0781</span>, <span class="hljs-number">77.0625</span>, <span class="hljs-number">77.0625</span>, <span class="hljs-number">77.0469</span>, <span class="hljs-number">77.0312</span>,  <br><span class="hljs-number">77.0312</span>, <span class="hljs-number">77.0156</span>, <span class="hljs-number">77.0000</span>, <span class="hljs-number">77.0000</span>, <span class="hljs-number">76.9844</span>, <span class="hljs-number">76.9688</span>, <span class="hljs-number">76.9531</span>, <span class="hljs-number">76.9219</span>,  <br><span class="hljs-number">76.9219</span>, <span class="hljs-number">76.8906</span>, <span class="hljs-number">76.8750</span>, <span class="hljs-number">76.8281</span>, <span class="hljs-number">76.8125</span>, <span class="hljs-number">76.8125</span>, <span class="hljs-number">76.8125</span>, <span class="hljs-number">76.7969</span>,  <br><span class="hljs-number">76.7656</span>, <span class="hljs-number">76.7500</span>, <span class="hljs-number">76.7500</span>, <span class="hljs-number">76.7344</span>, <span class="hljs-number">76.7344</span>, <span class="hljs-number">76.7188</span>, <span class="hljs-number">76.7031</span>, <span class="hljs-number">76.6719</span>,  <br><span class="hljs-number">76.6406</span>, <span class="hljs-number">76.6250</span>, <span class="hljs-number">76.6094</span>, <span class="hljs-number">76.5938</span>, <span class="hljs-number">76.5938</span>, <span class="hljs-number">76.5625</span>, <span class="hljs-number">76.5625</span>, <span class="hljs-number">76.5469</span>,  <br><span class="hljs-number">76.5312</span>, <span class="hljs-number">76.5312</span>, <span class="hljs-number">76.5156</span>, <span class="hljs-number">76.5156</span>, <span class="hljs-number">76.5156</span>, <span class="hljs-number">76.5156</span>, <span class="hljs-number">76.5000</span>, <span class="hljs-number">76.5000</span>,  <br><span class="hljs-number">76.5000</span>, <span class="hljs-number">76.5000</span>, <span class="hljs-number">76.5000</span>, <span class="hljs-number">76.4844</span>, <span class="hljs-number">76.4688</span>, <span class="hljs-number">76.4688</span>, <span class="hljs-number">76.4688</span>, <span class="hljs-number">76.4688</span>,  <br><span class="hljs-number">76.4688</span>, <span class="hljs-number">76.4531</span>, <span class="hljs-number">76.4531</span>, <span class="hljs-number">76.4375</span>, <span class="hljs-number">76.4375</span>, <span class="hljs-number">76.4375</span>, <span class="hljs-number">76.4375</span>, <span class="hljs-number">76.4219</span>,  <br><span class="hljs-number">76.4219</span>, <span class="hljs-number">76.4062</span>, <span class="hljs-number">76.4062</span>, <span class="hljs-number">76.3906</span>, <span class="hljs-number">76.3906</span>, <span class="hljs-number">76.3906</span>, <span class="hljs-number">76.3906</span>, <span class="hljs-number">76.3906</span>,  <br><span class="hljs-number">76.3750</span>, <span class="hljs-number">76.3750</span>, <span class="hljs-number">76.3750</span>, <span class="hljs-number">76.3750</span>, <span class="hljs-number">76.3750</span>, <span class="hljs-number">76.3750</span>, <span class="hljs-number">76.3750</span>, <span class="hljs-number">76.3594</span>,  <br><span class="hljs-number">76.3281</span>, <span class="hljs-number">76.3281</span>, <span class="hljs-number">76.3125</span>, <span class="hljs-number">76.2969</span>, <span class="hljs-number">76.2812</span>, <span class="hljs-number">76.2812</span>, <span class="hljs-number">76.2656</span>, <span class="hljs-number">76.2656</span>,  <br><span class="hljs-number">76.2500</span>, <span class="hljs-number">76.2500</span>, <span class="hljs-number">76.2500</span>, <span class="hljs-number">76.2500</span>, <span class="hljs-number">76.2500</span>, <span class="hljs-number">76.2344</span>, <span class="hljs-number">76.2344</span>, <span class="hljs-number">76.2188</span>,  <br><span class="hljs-number">76.2188</span>, <span class="hljs-number">76.2188</span>, <span class="hljs-number">76.2031</span>, <span class="hljs-number">76.2031</span>, <span class="hljs-number">76.2031</span>, <span class="hljs-number">76.2031</span>, <span class="hljs-number">76.2031</span>, <span class="hljs-number">76.2031</span>,  <br><span class="hljs-number">76.2031</span>, <span class="hljs-number">76.1875</span>, <span class="hljs-number">76.1875</span>, <span class="hljs-number">76.1875</span>, <span class="hljs-number">76.1875</span>, <span class="hljs-number">76.1875</span>, <span class="hljs-number">76.1875</span>, <span class="hljs-number">76.1875</span>,  <br><span class="hljs-number">76.1719</span>, <span class="hljs-number">76.1719</span>, <span class="hljs-number">76.1719</span>, <span class="hljs-number">76.1719</span>, <span class="hljs-number">76.1719</span>, <span class="hljs-number">76.1562</span>, <span class="hljs-number">76.1562</span>, <span class="hljs-number">76.1562</span>,  <br><span class="hljs-number">76.1562</span>, <span class="hljs-number">76.1562</span>, <span class="hljs-number">76.1562</span>, <span class="hljs-number">76.1406</span>, <span class="hljs-number">76.1406</span>, <span class="hljs-number">76.1250</span>, <span class="hljs-number">76.1250</span>, <span class="hljs-number">76.1250</span>,  <br><span class="hljs-number">76.1250</span>, <span class="hljs-number">76.1250</span>, <span class="hljs-number">76.1250</span>, <span class="hljs-number">76.1094</span>, <span class="hljs-number">76.1094</span>, <span class="hljs-number">76.1094</span>, <span class="hljs-number">76.1094</span>, <span class="hljs-number">76.0938</span>,  <br><span class="hljs-number">76.0938</span>, <span class="hljs-number">76.0938</span>, <span class="hljs-number">76.0781</span>, <span class="hljs-number">76.0781</span>, <span class="hljs-number">76.0781</span>, <span class="hljs-number">76.0625</span>, <span class="hljs-number">76.0625</span>, <span class="hljs-number">76.0625</span>,  <br><span class="hljs-number">76.0469</span>, <span class="hljs-number">76.0469</span>, <span class="hljs-number">76.0312</span>, <span class="hljs-number">76.0312</span>, <span class="hljs-number">76.0312</span>, <span class="hljs-number">76.0312</span>, <span class="hljs-number">76.0000</span>, <span class="hljs-number">76.0000</span>,  <br><span class="hljs-number">75.9844</span>, <span class="hljs-number">75.9844</span>, <span class="hljs-number">75.9844</span>, <span class="hljs-number">75.9844</span>, <span class="hljs-number">75.9844</span>, <span class="hljs-number">75.9688</span>, <span class="hljs-number">75.9688</span>, <span class="hljs-number">75.9531</span>,  <br><span class="hljs-number">75.9531</span>, <span class="hljs-number">75.9531</span>, <span class="hljs-number">75.9219</span>, <span class="hljs-number">75.9219</span>, <span class="hljs-number">75.8906</span>, <span class="hljs-number">75.8906</span>, <span class="hljs-number">75.8750</span>, <span class="hljs-number">75.8594</span>,  <br><span class="hljs-number">75.8438</span>, <span class="hljs-number">75.8281</span>, <span class="hljs-number">75.8281</span>, <span class="hljs-number">75.8125</span>])  <br>qt.qpa.<span class="hljs-params">xcb:</span> could not connect to display  <br>qt.qpa.<span class="hljs-params">plugin:</span> Could not load the Qt platform plugin <span class="hljs-string">&quot;xcb&quot;</span> <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;/root/anaconda3/envs/foundationpose/lib/python3.9/site-packages/cv2/qt/plugins&quot;</span> even though it was found.  <br>This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.  <br>  <br>Available platform plugins <span class="hljs-params">are:</span> xcb.  <br>  <br>Aborted (core dumped)<br></code></pre></td></tr></table></figure></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>Wed Feb 26 2025 00:00:00 GMT+0800 (中国标准时间)</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/diary/2025-02-27/">Thu Feb 27 2025 00:00:00 GMT+0800 (中国标准时间)</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/diary/2025-02-25/">Tue Feb 25 2025 00:00:00 GMT+0800 (中国标准时间)</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BB%8A%E6%97%A5%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">1. 今日任务：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%98%8E%E6%97%A5%E4%BB%BB%E5%8A%A1"><span class="toc-number">2.</span> <span class="toc-text">2. 明日任务</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/diary/" aria-label="分类: diary">
+                        diary
+                        <span>(40)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

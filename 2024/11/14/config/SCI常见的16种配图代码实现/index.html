@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>SCI常见的16种配图代码实现 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="SCI常见的16种配图代码实现">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/SCI%E5%B8%B8%E8%A7%81%E7%9A%8416%E7%A7%8D%E9%85%8D%E5%9B%BE%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="一、ROC曲线（ROCCurveforModelPerformance）用于评价二分类模型的性能。importmatplotlib.pyplotaspltfromsklearn.metricsimportroc_curve,aucimportnumpyasnp#示例数据y_true=np.random.ran">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">SCI常见的16种配图代码实现</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.803Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="一、ROC曲线（ROC-Curve-for-Model-Performance）"><a href="#一、ROC曲线（ROC-Curve-for-Model-Performance）" class="headerlink" title="一、ROC曲线（ROC Curve for Model Performance）"></a>一、ROC曲线（ROC Curve for Model Performance）</h1><p>用于评价二分类模型的性能。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> roc_curve, auc<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例数据</span><br>y_true = np.random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100</span>)<br>y_scores = np.random.rand(<span class="hljs-number">100</span>)<br><br><span class="hljs-comment"># 计算ROC曲线</span><br>fpr, tpr, _ = roc_curve(y_true, y_scores)<br>roc_auc = auc(fpr, tpr)<br><br><span class="hljs-comment"># 绘制ROC曲线</span><br>plt.plot(fpr, tpr, label=<span class="hljs-string">&#x27;AUC = %0.2f&#x27;</span> % roc_auc)<br>plt.plot([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], <span class="hljs-string">&#x27;k--&#x27;</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;False Positive Rate&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;True Positive Rate&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;ROC Curve&#x27;</span>)<br>plt.legend(loc=<span class="hljs-string">&#x27;lower right&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/rovz5h6ecm.png" alt="1763012478710-70a4c153-95e3-4212-9db0-8c5bf071bf33"></p>
+<h1 id="二、精确率-召回率曲线（Precision-Recall-Curve）"><a href="#二、精确率-召回率曲线（Precision-Recall-Curve）" class="headerlink" title="二、精确率-召回率曲线（Precision-Recall Curve）"></a><strong>二、精确率-召回率曲线（Precision-Recall Curve）</strong></h1><blockquote>
+<p><strong>用于评价二分类模型的性能。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> precision_recall_curve<br><br><span class="hljs-comment"># 示例数据</span><br>y_true = np.random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100</span>)<br>y_scores = np.random.rand(<span class="hljs-number">100</span>)<br><br><span class="hljs-comment"># 计算精确率-召回率曲线</span><br>precision, recall, _ = precision_recall_curve(y_true, y_scores)<br><br><span class="hljs-comment"># 绘制精确率-召回率曲线</span><br>plt.plot(recall, precision)<br>plt.xlabel(<span class="hljs-string">&#x27;Recall&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Precision&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Precision-Recall Curve&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/8pdo2a1br9y.png" alt="1763012478775-b0b15967-0fc5-4d89-bf97-0e8575f4d73d"></p>
+<h1 id="三、混淆矩阵（Confusion-Matrix）"><a href="#三、混淆矩阵（Confusion-Matrix）" class="headerlink" title="三、混淆矩阵（Confusion Matrix）"></a><strong>三、混淆矩阵（Confusion Matrix）</strong></h1><blockquote>
+<p><strong>用于展示分类模型的性能。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> confusion_matrix<br><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例数据</span><br>y_true = np.random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">100</span>)<br>y_pred = np.random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">100</span>)<br><br><span class="hljs-comment"># 计算混淆矩阵</span><br>cm = confusion_matrix(y_true, y_pred)<br><br><span class="hljs-comment"># 绘制混淆矩阵</span><br>sns.heatmap(cm, annot=<span class="hljs-literal">True</span>, fmt=<span class="hljs-string">&#x27;d&#x27;</span>, cmap=<span class="hljs-string">&#x27;Blues&#x27;</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;Predicted&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Actual&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Confusion Matrix&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/dryoxhk8qnm.png" alt="1763012478849-1b109041-e26b-4f52-8d78-4a8287969b3e"></p>
+<h1 id="四、残差图（Residual-Plot）"><a href="#四、残差图（Residual-Plot）" class="headerlink" title="四、残差图（Residual Plot）"></a><strong>四、残差图（Residual Plot）</strong></h1><blockquote>
+<p><strong>用于回归分析中查看模型残差。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression<br><br><span class="hljs-comment"># 生成示例数据</span><br>np.random.seed(<span class="hljs-number">42</span>)<br>x = np.random.rand(<span class="hljs-number">100</span>, <span class="hljs-number">1</span>) * <span class="hljs-number">10</span><br>y = <span class="hljs-number">2</span> * x + <span class="hljs-number">1</span> + np.random.randn(<span class="hljs-number">100</span>, <span class="hljs-number">1</span>) * <span class="hljs-number">2</span><br><span class="hljs-comment"># 拟合线性回归模型</span><br>model = LinearRegression()<br>model.fit(x, y)<br>y_pred = model.predict(x)<br><br><span class="hljs-comment"># 计算残差</span><br>residuals = y - y_pred<br><br><span class="hljs-comment"># 创建图形</span><br>plt.figure(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">6</span>))<br><br><span class="hljs-comment"># 绘制残差图</span><br>sns.scatterplot(x=y_pred.flatten(), y=residuals.flatten(), alpha=<span class="hljs-number">0.7</span>, s=<span class="hljs-number">60</span>, color=<span class="hljs-string">&#x27;blue&#x27;</span>, edgecolor=<span class="hljs-string">&#x27;w&#x27;</span>)<br><br><span class="hljs-comment"># 添加辅助线</span><br>plt.axhline(<span class="hljs-number">0</span>, color=<span class="hljs-string">&#x27;red&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>, linewidth=<span class="hljs-number">2</span>)<br>plt.axhline(np.mean(residuals), color=<span class="hljs-string">&#x27;green&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>, linewidth=<span class="hljs-number">2</span>)<br>plt.axhline(np.mean(residuals) + np.std(residuals), color=<span class="hljs-string">&#x27;purple&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>, linewidth=<span class="hljs-number">1</span>)<br>plt.axhline(np.mean(residuals) - np.std(residuals), color=<span class="hljs-string">&#x27;purple&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>, linewidth=<span class="hljs-number">1</span>)<br><br><span class="hljs-comment"># 设置标签和标题</span><br>plt.xlabel(<span class="hljs-string">&#x27;Predicted Values&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Residuals&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Residual Plot&#x27;</span>)<br>plt.grid(<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># 显示图形</span><br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/4vxfv9yyzow.png" alt="1763012478906-739b2fc0-d00b-46fa-a1dc-bc0f9c27e2aa"></p>
+<h1 id="五、聚类结果可视化（Clustering-Plot）"><a href="#五、聚类结果可视化（Clustering-Plot）" class="headerlink" title="五、聚类结果可视化（Clustering Plot）"></a><strong>五、聚类结果可视化（Clustering Plot）</strong></h1><blockquote>
+<p><strong>用于显示聚类结果。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> KMeans<br><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例数据</span><br>X = np.random.rand(<span class="hljs-number">100</span>, <span class="hljs-number">2</span>)<br><br><span class="hljs-comment"># 训练模型</span><br>kmeans = KMeans(n_clusters=<span class="hljs-number">3</span>).fit(X)<br>labels = kmeans.labels_<br><br><span class="hljs-comment"># 绘制聚类结果</span><br>sns.scatterplot(x=X[:, <span class="hljs-number">0</span>], y=X[:, <span class="hljs-number">1</span>], hue=labels, palette=<span class="hljs-string">&#x27;viridis&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Clustering Plot&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/vp9ipr06ld9.png" alt="1763012478963-086cf01e-6f2b-4872-8a34-ed342338a2ec"></p>
+<h1 id="六、累积解释变量重要性（Cumulative-Feature-Importance）"><a href="#六、累积解释变量重要性（Cumulative-Feature-Importance）" class="headerlink" title="六、累积解释变量重要性（Cumulative Feature Importance）"></a><strong>六、累积解释变量重要性（Cumulative Feature Importance）</strong></h1><p><strong>用于显示特征重要性的累积贡献。</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例数据</span><br>features = [<span class="hljs-string">&#x27;Feature1&#x27;</span>, <span class="hljs-string">&#x27;Feature2&#x27;</span>, <span class="hljs-string">&#x27;Feature3&#x27;</span>, <span class="hljs-string">&#x27;Feature4&#x27;</span>]<br>importance = np.array([<span class="hljs-number">0.4</span>, <span class="hljs-number">0.3</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.1</span>])<br>cumulative_importance = np.cumsum(importance)<br><br><span class="hljs-comment"># 绘制累积特征重要性</span><br>plt.plot(features, cumulative_importance, marker=<span class="hljs-string">&#x27;o&#x27;</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;Feature&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Cumulative Importance&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Cumulative Feature Importance&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/ttx00826yw.png" alt="1763012479022-5280fccb-40e1-4524-8b79-61aac3cb0d11"></p>
+<h1 id="七、约束可视化（Constraint-Visualization）"><a href="#七、约束可视化（Constraint-Visualization）" class="headerlink" title="七、约束可视化（Constraint Visualization）"></a><strong>七、约束可视化（Constraint Visualization）</strong></h1><blockquote>
+<p><strong>用于显示约束条件的可行&#x57DF;</strong><em><strong>()</strong></em><strong>。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例约束条件</span><br>x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>, <span class="hljs-number">400</span>)<br>y1 = <span class="hljs-number">5</span> - x<br>y2 = x<br><br><span class="hljs-comment"># 绘制约束条件</span><br>plt.plot(x, y1, label=<span class="hljs-string">&#x27;Constraint 1: y &lt;= 5 - x&#x27;</span>)<br>plt.plot(x, y2, label=<span class="hljs-string">&#x27;Constraint 2: y &gt;= x&#x27;</span>)<br>plt.fill_between(x, np.maximum(y1, y2), <span class="hljs-number">5</span>, color=<span class="hljs-string">&#x27;gray&#x27;</span>, alpha=<span class="hljs-number">0.5</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;x&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;y&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Constraint Visualization&#x27;</span>)<br>plt.legend()<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/d5d28o5jfxc.png" alt="1763012479084-727a50f1-b319-4e3b-8d5f-4ae6699ff12f"></p>
+<h1 id="八、参数空间探索（Parameter-Space-Exploration）"><a href="#八、参数空间探索（Parameter-Space-Exploration）" class="headerlink" title="八、参数空间探索（Parameter Space Exploration）"></a><strong>八、参数空间探索（Parameter Space Exploration）</strong></h1><blockquote>
+<p><strong>用于显示不同参数组合下目标函数的值。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例目标函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">objective_function</span>(<span class="hljs-params">x, y</span>):<br>    <span class="hljs-keyword">return</span> np.sin(x) + np.cos(y)<br><br><span class="hljs-comment"># 示例数据</span><br>x = np.linspace(-<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">100</span>)<br>y = np.linspace(-<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">100</span>)<br>X, Y = np.meshgrid(x, y)<br>Z = objective_function(X, Y)<br><br><span class="hljs-comment"># 绘制参数空间探索图</span><br>plt.contourf(X, Y, Z, <span class="hljs-number">20</span>, cmap=<span class="hljs-string">&#x27;viridis&#x27;</span>)<br>plt.colorbar()<br>plt.xlabel(<span class="hljs-string">&#x27;Parameter 1&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Parameter 2&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Parameter Space Exploration&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/crxask3puyo.png" alt="1763012479146-2464bc72-1177-418d-8c89-c57a742fd16a"></p>
+<h1 id="九、优化路径图（Optimization-Path）"><a href="#九、优化路径图（Optimization-Path）" class="headerlink" title="九、优化路径图（Optimization Path）"></a><strong>九、优化路径图（Optimization Path）</strong></h1><blockquote>
+<p><strong>用于显示优化过程中的搜索路径。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例目标函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">objective_function</span>(<span class="hljs-params">x, y</span>):<br>    <span class="hljs-keyword">return</span> x**<span class="hljs-number">2</span> + y**<span class="hljs-number">2</span><br><br><span class="hljs-comment"># 优化路径示例数据</span><br>path_x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">0</span>])<br>path_y = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1.5</span>, <span class="hljs-number">1.2</span>, <span class="hljs-number">0.8</span>, <span class="hljs-number">0.2</span>])<br><br><span class="hljs-comment"># 绘制优化路径图</span><br>x = np.linspace(-<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100</span>)<br>y = np.linspace(-<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100</span>)<br>X, Y = np.meshgrid(x, y)<br>Z = objective_function(X, Y)<br><br>plt.contour(X, Y, Z, levels=<span class="hljs-number">20</span>)<br>plt.plot(path_x, path_y, marker=<span class="hljs-string">&#x27;o&#x27;</span>, color=<span class="hljs-string">&#x27;r&#x27;</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;x&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;y&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Optimization Path&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/gc6d03btech.png" alt="1763012479205-62caab7b-74c0-42da-bb9d-21b5c3b337be"></p>
+<h1 id="十、多峰三维图"><a href="#十、多峰三维图" class="headerlink" title="十、多峰三维图"></a>十、多峰三维图</h1><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> mpl_toolkits.mplot3d <span class="hljs-keyword">import</span> Axes3D<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例数据</span><br>np.random.seed(<span class="hljs-number">0</span>)<br>objectives = np.random.rand(<span class="hljs-number">100</span>, <span class="hljs-number">3</span>)  <span class="hljs-comment"># 生成随机数据</span><br>pareto_front = objectives[np.lexsort((objectives[:, <span class="hljs-number">0</span>], objectives[:, <span class="hljs-number">1</span>], objectives[:, <span class="hljs-number">2</span>]))]<br><br><br>fig = plt.figure()<br>ax = fig.add_subplot(<span class="hljs-number">111</span>, projection=<span class="hljs-string">&#x27;3d&#x27;</span>)<br>ax.plot_trisurf(pareto_front[:, <span class="hljs-number">0</span>], pareto_front[:, <span class="hljs-number">1</span>], pareto_front[:, <span class="hljs-number">2</span>], cmap=<span class="hljs-string">&#x27;viridis&#x27;</span>)<br><br><span class="hljs-comment"># 标题和标签</span><br>ax.set_title(<span class="hljs-string">&#x27;3D&#x27;</span>)<br>ax.set_xlabel(<span class="hljs-string">&#x27;Objective 1&#x27;</span>)<br>ax.set_ylabel(<span class="hljs-string">&#x27;Objective 2&#x27;</span>)<br>ax.set_zlabel(<span class="hljs-string">&#x27;Objective 3&#x27;</span>)<br><br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/bfe9xgppdwm.png" alt="1763012479281-ad4ca76c-fd54-4221-96ed-5328cb3b4fe4"></p>
+<h1 id="十一、动态系统稳定性（Dynamic-System-Stability）"><a href="#十一、动态系统稳定性（Dynamic-System-Stability）" class="headerlink" title="十一、动态系统稳定性（Dynamic System Stability）"></a><strong>十一、动态系统稳定性（Dynamic System Stability）</strong></h1><blockquote>
+<p><strong>用于显示动态系统的稳定性。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例数据</span><br>time = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">100</span>)<br>state = np.exp(-<span class="hljs-number">0.5</span> * time) * np.cos(<span class="hljs-number">2</span> * time)<br><br><span class="hljs-comment"># 绘制动态系统稳定性图</span><br>plt.plot(time, state)<br>plt.xlabel(<span class="hljs-string">&#x27;Time&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;State&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Dynamic System Stability&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/bylnzmf9h1b.png" alt="1763012479347-0e557a98-49fa-4dc1-adec-384985940e4c"></p>
+<h1 id="十二、决策边界（Decision-Boundary）"><a href="#十二、决策边界（Decision-Boundary）" class="headerlink" title="十二、决策边界（Decision Boundary）"></a><strong>十二、决策边界（Decision Boundary）</strong></h1><blockquote>
+<p><strong>用于显示分类模型的决策边界。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> make_blobs<br><span class="hljs-keyword">from</span> sklearn.svm <span class="hljs-keyword">import</span> SVC<br><br><span class="hljs-comment"># 示例数据</span><br>X, y = make_blobs(n_samples=<span class="hljs-number">100</span>, centers=<span class="hljs-number">2</span>, random_state=<span class="hljs-number">6</span>)<br>clf = SVC(kernel=<span class="hljs-string">&#x27;linear&#x27;</span>).fit(X, y)<br><br><span class="hljs-comment"># 绘制决策边界</span><br>xx, yy = np.meshgrid(np.linspace(-<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">500</span>), np.linspace(-<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">500</span>))<br>Z = clf.decision_function(np.c_[xx.ravel(), yy.ravel()])<br>Z = Z.reshape(xx.shape)<br><br>plt.contourf(xx, yy, Z, levels=[Z.<span class="hljs-built_in">min</span>(), <span class="hljs-number">0</span>, Z.<span class="hljs-built_in">max</span>()], cmap=<span class="hljs-string">&#x27;viridis&#x27;</span>, alpha=<span class="hljs-number">0.5</span>)<br>plt.scatter(X[:, <span class="hljs-number">0</span>], X[:, <span class="hljs-number">1</span>], c=y)<br>plt.xlabel(<span class="hljs-string">&#x27;Feature 1&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Feature 2&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Decision Boundary&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/bsqx2bldtic.png" alt="1763012479405-943598ee-48a3-48b5-8371-1c6aa440069b"></p>
+<h1 id="十三、算法对比图"><a href="#十三、算法对比图" class="headerlink" title="十三、算法对比图"></a>十三、算法对比图</h1><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例数据：不同算法在迭代过程中的目标函数值</span><br>iterations = np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">101</span>)<br>alg1_performance = np.log(iterations) + np.random.randn(<span class="hljs-number">100</span>) * <span class="hljs-number">0.1</span><br>alg2_performance = np.log(iterations) * <span class="hljs-number">1.1</span> + np.random.randn(<span class="hljs-number">100</span>) * <span class="hljs-number">0.1</span><br>alg3_performance = np.log(iterations) * <span class="hljs-number">0.9</span> + np.random.randn(<span class="hljs-number">100</span>) * <span class="hljs-number">0.1</span><br><br><span class="hljs-comment"># 绘制算法对比图</span><br>plt.plot(iterations, alg1_performance, label=<span class="hljs-string">&#x27;Algorithm 1&#x27;</span>, color=<span class="hljs-string">&#x27;b&#x27;</span>)<br>plt.plot(iterations, alg2_performance, label=<span class="hljs-string">&#x27;Algorithm 2&#x27;</span>, color=<span class="hljs-string">&#x27;g&#x27;</span>)<br>plt.plot(iterations, alg3_performance, label=<span class="hljs-string">&#x27;Algorithm 3&#x27;</span>, color=<span class="hljs-string">&#x27;r&#x27;</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;Iteration&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Objective Value&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Algorithm Performance Comparison&#x27;</span>)<br>plt.legend()<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/kxne3jtpkx.png" alt="1763012479463-0a643c25-d278-41a8-a9ad-6adab5af27a7"></p>
+<h1 id="十四、箱线图（Box-Plot）"><a href="#十四、箱线图（Box-Plot）" class="headerlink" title="十四、箱线图（Box Plot）"></a><strong>十四、箱线图（Box Plot）</strong></h1><blockquote>
+<p><strong>用于展示数据的集中趋势和分散程度。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例数据</span><br>data = [np.random.randn(<span class="hljs-number">100</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>)]<br><br><span class="hljs-comment"># 绘制箱线图</span><br>sns.boxplot(data=data)<br>plt.xlabel(<span class="hljs-string">&#x27;Category&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Value&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Box Plot of Data Distribution&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/7xetrqcmync.png" alt="1763012479526-21b01992-8d63-4463-87f1-9a1b4b56c096"></p>
+<h1 id="十五、人口金字塔（Population-Pyramid）"><a href="#十五、人口金字塔（Population-Pyramid）" class="headerlink" title="十五、人口金字塔（Population Pyramid）"></a><strong>十五、人口金字塔（Population Pyramid）</strong></h1><blockquote>
+<p><strong>用于显示不同年龄段的人口分布。</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 示例数据</span><br>age_groups = [<span class="hljs-string">&#x27;0-10&#x27;</span>, <span class="hljs-string">&#x27;10-20&#x27;</span>, <span class="hljs-string">&#x27;20-30&#x27;</span>, <span class="hljs-string">&#x27;30-40&#x27;</span>, <span class="hljs-string">&#x27;40-50&#x27;</span>, <span class="hljs-string">&#x27;50-60&#x27;</span>, <span class="hljs-string">&#x27;60-70&#x27;</span>, <span class="hljs-string">&#x27;70+&#x27;</span>]<br>male_population = [<span class="hljs-number">500</span>, <span class="hljs-number">600</span>, <span class="hljs-number">700</span>, <span class="hljs-number">800</span>, <span class="hljs-number">700</span>, <span class="hljs-number">600</span>, <span class="hljs-number">500</span>, <span class="hljs-number">400</span>]<br>female_population = [<span class="hljs-number">450</span>, <span class="hljs-number">550</span>, <span class="hljs-number">650</span>, <span class="hljs-number">750</span>, <span class="hljs-number">650</span>, <span class="hljs-number">550</span>, <span class="hljs-number">450</span>, <span class="hljs-number">350</span>]<br><br><span class="hljs-comment"># 绘制人口金字塔</span><br>fig, ax = plt.subplots(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">8</span>))<br>ax.barh(age_groups, male_population, color=<span class="hljs-string">&#x27;blue&#x27;</span>, label=<span class="hljs-string">&#x27;Male&#x27;</span>)<br>ax.barh(age_groups, [-x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> female_population], color=<span class="hljs-string">&#x27;red&#x27;</span>, label=<span class="hljs-string">&#x27;Female&#x27;</span>)<br>ax.set_xlabel(<span class="hljs-string">&#x27;Population&#x27;</span>)<br>ax.set_title(<span class="hljs-string">&#x27;Population Pyramid&#x27;</span>)<br>ax.legend()<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/w1cayd0ljp.png" alt="1763012479584-d9205e88-ab82-47cf-bb72-2becbb06d9b6"></p>
+<h1 id="十六、Pareto前沿（Pareto-Front）"><a href="#十六、Pareto前沿（Pareto-Front）" class="headerlink" title="十六、Pareto前沿（Pareto Front）"></a><strong>十六、Pareto前沿（Pareto Front）</strong></h1><blockquote>
+<p><strong>用于多目标优化的解的可视化</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 生成示例数据：多目标优化问题的结果</span><br>np.random.seed(<span class="hljs-number">0</span>)<br>objectives = np.random.rand(<span class="hljs-number">100</span>, <span class="hljs-number">2</span>)<br><br><span class="hljs-comment"># 计算Pareto前沿</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">pareto_frontier</span>(<span class="hljs-params">points</span>):<br>    sorted_points = points[np.argsort(points[:, <span class="hljs-number">0</span>])]<br>    pareto_front = [sorted_points[<span class="hljs-number">0</span>]]<br>    <span class="hljs-keyword">for</span> point <span class="hljs-keyword">in</span> sorted_points[<span class="hljs-number">1</span>:]:<br>        <span class="hljs-keyword">if</span> point[<span class="hljs-number">1</span>] &lt; pareto_front[-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]:<br>            pareto_front.append(point)<br>    <span class="hljs-keyword">return</span> np.array(pareto_front)<br><br>pareto_front = pareto_frontier(objectives)<br><br><span class="hljs-comment"># 绘制Pareto前沿线</span><br>plt.scatter(objectives[:, <span class="hljs-number">0</span>], objectives[:, <span class="hljs-number">1</span>], label=<span class="hljs-string">&#x27;Objective Points&#x27;</span>)<br>plt.plot(pareto_front[:, <span class="hljs-number">0</span>], pareto_front[:, <span class="hljs-number">1</span>], color=<span class="hljs-string">&#x27;red&#x27;</span>, label=<span class="hljs-string">&#x27;Pareto Front&#x27;</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;Objective 1&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Objective 2&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Pareto Front&#x27;</span>)<br>plt.legend()<br>plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/7fa8316ilep.png" alt="1763012479642-037f5688-d8f5-4b29-aae2-0371018062ec"></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>SCI常见的16种配图代码实现</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/Syncthing%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">Syncthing使用教程</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%EF%BC%88Python%EF%BC%89/">贝叶斯网络（Python）</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81ROC%E6%9B%B2%E7%BA%BF%EF%BC%88ROC-Curve-for-Model-Performance%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">一、ROC曲线（ROC Curve for Model Performance）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%B2%BE%E7%A1%AE%E7%8E%87-%E5%8F%AC%E5%9B%9E%E7%8E%87%E6%9B%B2%E7%BA%BF%EF%BC%88Precision-Recall-Curve%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">二、精确率-召回率曲线（Precision-Recall Curve）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5%EF%BC%88Confusion-Matrix%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">三、混淆矩阵（Confusion Matrix）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%AE%8B%E5%B7%AE%E5%9B%BE%EF%BC%88Residual-Plot%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">四、残差图（Residual Plot）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%81%9A%E7%B1%BB%E7%BB%93%E6%9E%9C%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%88Clustering-Plot%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">五、聚类结果可视化（Clustering Plot）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%B4%AF%E7%A7%AF%E8%A7%A3%E9%87%8A%E5%8F%98%E9%87%8F%E9%87%8D%E8%A6%81%E6%80%A7%EF%BC%88Cumulative-Feature-Importance%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">六、累积解释变量重要性（Cumulative Feature Importance）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%BA%A6%E6%9D%9F%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%88Constraint-Visualization%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">七、约束可视化（Constraint Visualization）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%8F%82%E6%95%B0%E7%A9%BA%E9%97%B4%E6%8E%A2%E7%B4%A2%EF%BC%88Parameter-Space-Exploration%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">八、参数空间探索（Parameter Space Exploration）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E4%BC%98%E5%8C%96%E8%B7%AF%E5%BE%84%E5%9B%BE%EF%BC%88Optimization-Path%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">九、优化路径图（Optimization Path）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E5%A4%9A%E5%B3%B0%E4%B8%89%E7%BB%B4%E5%9B%BE"><span class="toc-number">10.</span> <span class="toc-text">十、多峰三维图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E7%A8%B3%E5%AE%9A%E6%80%A7%EF%BC%88Dynamic-System-Stability%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">十一、动态系统稳定性（Dynamic System Stability）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C%EF%BC%88Decision-Boundary%EF%BC%89"><span class="toc-number">12.</span> <span class="toc-text">十二、决策边界（Decision Boundary）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E7%AE%97%E6%B3%95%E5%AF%B9%E6%AF%94%E5%9B%BE"><span class="toc-number">13.</span> <span class="toc-text">十三、算法对比图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E7%AE%B1%E7%BA%BF%E5%9B%BE%EF%BC%88Box-Plot%EF%BC%89"><span class="toc-number">14.</span> <span class="toc-text">十四、箱线图（Box Plot）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E4%BA%BA%E5%8F%A3%E9%87%91%E5%AD%97%E5%A1%94%EF%BC%88Population-Pyramid%EF%BC%89"><span class="toc-number">15.</span> <span class="toc-text">十五、人口金字塔（Population Pyramid）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E3%80%81Pareto%E5%89%8D%E6%B2%BF%EF%BC%88Pareto-Front%EF%BC%89"><span class="toc-number">16.</span> <span class="toc-text">十六、Pareto前沿（Pareto Front）</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

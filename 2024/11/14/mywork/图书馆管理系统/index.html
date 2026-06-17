@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>图书馆管理系统 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="图书馆管理系统">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="--创建数据库（若不存在）CREATEDATABASEIFNOTEXISTSlibrary;USElibrary;--创建用户表，并增加角色字段CREATETABLEusers(user_idINTAUTO_INCREMENTPRIMARYKEY,--用户ID，主键usernameVARCHAR(50)NOT">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">图书馆管理系统</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.142Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建数据库（若不存在）  </span><br><span class="hljs-keyword">CREATE</span> DATABASE IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> library;  <br>USE library;  <br><br><span class="hljs-comment">-- 创建用户表，并增加角色字段  </span><br><span class="hljs-keyword">CREATE TABLE</span> users (  <br>    user_id <span class="hljs-type">INT</span> AUTO_INCREMENT <span class="hljs-keyword">PRIMARY KEY</span>,              <span class="hljs-comment">-- 用户ID，主键  </span><br>    username <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">UNIQUE</span>,                <span class="hljs-comment">-- 用户名，唯一  </span><br>    password <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,                      <span class="hljs-comment">-- 密码  </span><br>    email <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">UNIQUE</span>,                  <span class="hljs-comment">-- 邮箱，唯一  </span><br>    role ENUM(<span class="hljs-string">&#x27;admin&#x27;</span>, <span class="hljs-string">&#x27;user&#x27;</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;user&#x27;</span>,           <span class="hljs-comment">-- 角色字段，默认值为&#x27;user&#x27;  </span><br>    created_at <span class="hljs-type">TIMESTAMP</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span>       <span class="hljs-comment">-- 创建时间，默认当前时间  </span><br>);  <br><br><span class="hljs-comment">-- 创建图书表  </span><br><span class="hljs-keyword">CREATE TABLE</span> books (  <br>    book_id <span class="hljs-type">INT</span> AUTO_INCREMENT <span class="hljs-keyword">PRIMARY KEY</span>,              <span class="hljs-comment">-- 图书ID，主键  </span><br>    title <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,                         <span class="hljs-comment">-- 图书标题  </span><br>    author <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,                        <span class="hljs-comment">-- 作者  </span><br>    published_date <span class="hljs-type">DATE</span>,                                 <span class="hljs-comment">-- 出版日期  </span><br>    available <span class="hljs-type">BOOLEAN</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">TRUE</span>                      <span class="hljs-comment">-- 是否可借，默认值为 TRUE  </span><br>);  <br><br><span class="hljs-comment">-- 创建借阅记录表  </span><br><span class="hljs-keyword">CREATE TABLE</span> borrow_records (  <br>    record_id <span class="hljs-type">INT</span> AUTO_INCREMENT <span class="hljs-keyword">PRIMARY KEY</span>,            <span class="hljs-comment">-- 借阅记录ID，主键  </span><br>    user_id <span class="hljs-type">INT</span>,                                         <span class="hljs-comment">-- 用户ID，外键关联users表  </span><br>    book_id <span class="hljs-type">INT</span>,                                         <span class="hljs-comment">-- 图书ID，外键关联books表  </span><br>    borrow_date <span class="hljs-type">TIMESTAMP</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span>,    <span class="hljs-comment">-- 借书日期，默认当前时间  </span><br>    return_date <span class="hljs-type">TIMESTAMP</span> <span class="hljs-keyword">NULL</span>,                         <span class="hljs-comment">-- 还书日期  </span><br>    <span class="hljs-keyword">FOREIGN KEY</span> (user_id) <span class="hljs-keyword">REFERENCES</span> users(user_id),    <span class="hljs-comment">-- 外键约束，关联users表  </span><br>    <span class="hljs-keyword">FOREIGN KEY</span> (book_id) <span class="hljs-keyword">REFERENCES</span> books(book_id)     <span class="hljs-comment">-- 外键约束，关联books表  </span><br>);  <br><br><span class="hljs-comment">-- 插入包含管理员和普通用户的初始数据  </span><br><span class="hljs-keyword">INSERT INTO</span> users (username, password, email, role) <span class="hljs-keyword">VALUES</span>   <br>(<span class="hljs-string">&#x27;admin1&#x27;</span>, <span class="hljs-string">&#x27;adminpassword1&#x27;</span>, <span class="hljs-string">&#x27;admin1@example.com&#x27;</span>, <span class="hljs-string">&#x27;admin&#x27;</span>),  <span class="hljs-comment">-- 管理员  </span><br>(<span class="hljs-string">&#x27;user1&#x27;</span>, <span class="hljs-string">&#x27;password1&#x27;</span>, <span class="hljs-string">&#x27;user1@example.com&#x27;</span>, <span class="hljs-string">&#x27;user&#x27;</span>),          <span class="hljs-comment">-- 普通用户  </span><br>(<span class="hljs-string">&#x27;user2&#x27;</span>, <span class="hljs-string">&#x27;password2&#x27;</span>, <span class="hljs-string">&#x27;user2@example.com&#x27;</span>, <span class="hljs-string">&#x27;user&#x27;</span>);          <span class="hljs-comment">-- 普通用户  </span><br><br><span class="hljs-comment">-- 插入一些图书数据  </span><br><span class="hljs-keyword">INSERT INTO</span> books (title, author, published_date) <span class="hljs-keyword">VALUES</span>   <br>(<span class="hljs-string">&#x27;Book Title 1&#x27;</span>, <span class="hljs-string">&#x27;Author 1&#x27;</span>, <span class="hljs-string">&#x27;2020-01-01&#x27;</span>),                 <span class="hljs-comment">-- 图书1  </span><br>(<span class="hljs-string">&#x27;Book Title 2&#x27;</span>, <span class="hljs-string">&#x27;Author 2&#x27;</span>, <span class="hljs-string">&#x27;2021-02-02&#x27;</span>);                 <span class="hljs-comment">-- 图书2</span><br></code></pre></td></tr></table></figure>
+<h1 id="1-一、绪论"><a href="#1-一、绪论" class="headerlink" title="1. 一、绪论"></a>1. 一、绪论</h1><h1 id="2-二、系统分析"><a href="#2-二、系统分析" class="headerlink" title="2. 二、系统分析"></a>2. 二、系统分析</h1><p>（一）用例图、分角色功能图</p>
+<p>用例图</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735290930669-2023b124-0560-4a9d-9863-52200273edfc.png" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735290990496-2a9610eb-0e09-4387-b038-2ef80664c59b.png" alt=""></p>
+<p>分角色功能图</p>
+<ol>
+<li><strong><font style="color:rgba(0, 0, 0, 0.82);">管理员功能</font></strong><font style="color:rgba(0, 0, 0, 0.82);">：</font><ul>
+<li><font style="color:rgba(0, 0, 0, 0.82);">管理员能管理用户信息：添加图书、新增用户、更新图书信息等。</font></li>
+<li><font style="color:rgba(0, 0, 0, 0.82);">管理员有高级权限，比如可以查看所有用户、删除图书。</font></li>
+</ul>
+</li>
+<li><strong><font style="color:rgba(0, 0, 0, 0.82);">普通用户功能</font></strong><font style="color:rgba(0, 0, 0, 0.82);">：</font><ul>
+<li><font style="color:rgba(0, 0, 0, 0.82);">普通用户只能查找图书、借阅图书等。</font>
+
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735288655980-40405c86-9aae-4a3c-9043-b33b4dd63cbd.png" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735290641657-ae8a4b86-ec8c-46f3-a9d7-43d140f08afc.png" alt=""></p>
+<p>（二)数据需求—数据流图</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735287757781-c5c4ccd9-eaab-48d0-9cf4-a53fa2437fd0.jpeg" alt="画板"></p>
+<h1 id="3-三、系统设计"><a href="#3-三、系统设计" class="headerlink" title="3. 三、系统设计"></a>3. 三、系统设计</h1><h3 id="3-1-1-一-概念结构设计-ER图系统功能模块图"><a href="#3-1-1-一-概念结构设计-ER图系统功能模块图" class="headerlink" title="3.1.1. (一)概念结构设计-ER图系统功能模块图"></a>3.1.1. (一)概念结构设计-ER图系统功能模块图</h3><p>users</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735409134933-e571680b-4538-4379-a43a-58a1d4e9d5e0.jpeg" alt="画板"></p>
+<p>books</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735409134946-39fa8692-d072-4874-b002-b108c9eb354f.jpeg" alt="画板"></p>
+<p>loans</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735409134935-de5cced6-8b46-4fff-9510-5c3c2d176427.jpeg" alt="画板"></p>
+<p>图书类别</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735409134811-654654a1-e640-4f9a-8bcc-18d7e891ba42.jpeg" alt="画板"></p>
+<p>出版社</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735409134825-d5ee83d5-99ff-46f5-8605-c3606c15239b.jpeg" alt="画板"></p>
+<p>整体</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735408371017-66d05686-9e62-4ffa-a70b-98e9f868f44f.jpeg" alt="画板"></p>
+<h3 id="3-1-2-二-系统功能模块图"><a href="#3-1-2-二-系统功能模块图" class="headerlink" title="3.1.2. (二)系统功能模块图"></a>3.1.2. (二)系统功能模块图</h3><h4 id="3-1-2-1-用户注册流程"><a href="#3-1-2-1-用户注册流程" class="headerlink" title="3.1.2.1. 用户注册流程"></a>3.1.2.1. 用户注册流程</h4><p><img src="https://gitee.com/huake-tan-yunhao/picture/raw/master/picture/1735283623192-f5096a66-2561-476f-9c51-952ba95f1817.png" alt=""></p>
+<h4 id="3-1-2-2-借书流程"><a href="#3-1-2-2-借书流程" class="headerlink" title="3.1.2.2. 借书流程"></a>3.1.2.2. 借书流程</h4><p><img src="https://gitee.com/huake-tan-yunhao/picture/raw/master/picture/1735284451148-75f69c75-e421-4772-a47f-723d91d05a43.png" alt=""></p>
+<h3 id="3-1-3-三-逻辑结构设计-关系模式-表"><a href="#3-1-3-三-逻辑结构设计-关系模式-表" class="headerlink" title="3.1.3. (三)逻辑结构设计-关系模式-表"></a>3.1.3. (三)逻辑结构设计-关系模式-表</h3><h3 id="3-1-4-实体关系分析"><a href="#3-1-4-实体关系分析" class="headerlink" title="3.1.4. 实体关系分析"></a>3.1.4. 实体关系分析</h3><p>主要实体：用户、图书、出版社、图书类别、借阅记录</p>
+<p>关系：</p>
+<ul>
+<li>一个出版社可以出版多本图书（1:n）</li>
+<li>一个类别可以包含多本图书（1:n）</li>
+<li>一个用户可以借多本图书（1:n）</li>
+<li>一本图书可以被多个用户借阅（记录在借阅历史中）（1:n）</li>
+</ul>
+<h3 id="3-1-5-关系模式（表结构）"><a href="#3-1-5-关系模式（表结构）" class="headerlink" title="3.1.5. 关系模式（表结构）"></a>3.1.5. 关系模式（表结构）</h3><h4 id="3-1-5-1-用户表-用户"><a href="#3-1-5-1-用户表-用户" class="headerlink" title="3.1.5.1. 用户表 (用户)"></a>3.1.5.1. 用户表 (用户)</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户编号</td>
+<td>INT</td>
+<td>主键, 自增</td>
+<td>用户唯一标识</td>
+</tr>
+<tr>
+<td>用户名</td>
+<td>VARCHAR(50)</td>
+<td>非空, 唯一</td>
+<td>登录账号</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>VARCHAR(255)</td>
+<td>非空</td>
+<td>登录密码</td>
+</tr>
+<tr>
+<td>邮箱</td>
+<td>VARCHAR(100)</td>
+<td>非空, 唯一</td>
+<td>联系邮箱</td>
+</tr>
+<tr>
+<td>角色</td>
+<td>ENUM</td>
+<td>非空, 默认’用户’</td>
+<td>用户角色：管理员/用户</td>
+</tr>
+<tr>
+<td>创建时间</td>
+<td>TIMESTAMP</td>
+<td>默认当前时间</td>
+<td>账号创建时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="3-1-5-2-出版社表-出版社"><a href="#3-1-5-2-出版社表-出版社" class="headerlink" title="3.1.5.2. 出版社表 (出版社)"></a>3.1.5.2. 出版社表 (出版社)</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>出版社编号</td>
+<td>INT</td>
+<td>主键, 自增</td>
+<td>出版社唯一标识</td>
+</tr>
+<tr>
+<td>出版社名称</td>
+<td>VARCHAR(100)</td>
+<td>非空, 唯一</td>
+<td>出版社名称</td>
+</tr>
+<tr>
+<td>地址</td>
+<td>VARCHAR(255)</td>
+<td>可空</td>
+<td>出版社地址</td>
+</tr>
+<tr>
+<td>联系电话</td>
+<td>VARCHAR(20)</td>
+<td>可空</td>
+<td>联系方式</td>
+</tr>
+<tr>
+<td>联系邮箱</td>
+<td>VARCHAR(100)</td>
+<td>可空</td>
+<td>业务邮箱</td>
+</tr>
+<tr>
+<td>创建时间</td>
+<td>TIMESTAMP</td>
+<td>默认当前时间</td>
+<td>记录创建时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="3-1-5-3-图书类别表-图书类别"><a href="#3-1-5-3-图书类别表-图书类别" class="headerlink" title="3.1.5.3. 图书类别表 (图书类别)"></a>3.1.5.3. 图书类别表 (图书类别)</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类别编号</td>
+<td>INT</td>
+<td>主键, 自增</td>
+<td>类别唯一标识</td>
+</tr>
+<tr>
+<td>类别名称</td>
+<td>VARCHAR(50)</td>
+<td>非空, 唯一</td>
+<td>类别名称</td>
+</tr>
+<tr>
+<td>类别描述</td>
+<td>TEXT</td>
+<td>可空</td>
+<td>类别详细描述</td>
+</tr>
+<tr>
+<td>创建时间</td>
+<td>TIMESTAMP</td>
+<td>默认当前时间</td>
+<td>记录创建时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="3-1-5-4-图书表-图书"><a href="#3-1-5-4-图书表-图书" class="headerlink" title="3.1.5.4. 图书表 (图书)"></a>3.1.5.4. 图书表 (图书)</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>图书编号</td>
+<td>INT</td>
+<td>主键, 自增</td>
+<td>图书唯一标识</td>
+</tr>
+<tr>
+<td>书名</td>
+<td>VARCHAR(255)</td>
+<td>非空</td>
+<td>图书名称</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>VARCHAR(255)</td>
+<td>非空</td>
+<td>作者姓名</td>
+</tr>
+<tr>
+<td>出版社编号</td>
+<td>INT</td>
+<td>外键</td>
+<td>关联出版社表</td>
+</tr>
+<tr>
+<td>类别编号</td>
+<td>INT</td>
+<td>外键</td>
+<td>关联图书类别表</td>
+</tr>
+<tr>
+<td>出版日期</td>
+<td>DATE</td>
+<td>可空</td>
+<td>出版日期</td>
+</tr>
+<tr>
+<td>ISBN码</td>
+<td>VARCHAR(13)</td>
+<td>唯一</td>
+<td>图书标准编号</td>
+</tr>
+<tr>
+<td>是否可借</td>
+<td>BOOLEAN</td>
+<td>默认TRUE</td>
+<td>借阅状态</td>
+</tr>
+<tr>
+<td>创建时间</td>
+<td>TIMESTAMP</td>
+<td>默认当前时间</td>
+<td>记录创建时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="3-1-5-5-借阅记录表-借阅记录"><a href="#3-1-5-5-借阅记录表-借阅记录" class="headerlink" title="3.1.5.5. 借阅记录表 (借阅记录)"></a>3.1.5.5. 借阅记录表 (借阅记录)</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>记录编号</td>
+<td>INT</td>
+<td>主键, 自增</td>
+<td>借阅记录唯一标识</td>
+</tr>
+<tr>
+<td>用户编号</td>
+<td>INT</td>
+<td>外键</td>
+<td>关联用户表</td>
+</tr>
+<tr>
+<td>图书编号</td>
+<td>INT</td>
+<td>外键</td>
+<td>关联图书表</td>
+</tr>
+<tr>
+<td>借出时间</td>
+<td>TIMESTAMP</td>
+<td>默认当前时间</td>
+<td>借书时间</td>
+</tr>
+<tr>
+<td>归还时间</td>
+<td>TIMESTAMP</td>
+<td>可空</td>
+<td>还书时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-1-6-主要关系说明"><a href="#3-1-6-主要关系说明" class="headerlink" title="3.1.6. 主要关系说明"></a>3.1.6. 主要关系说明</h3><ol>
+<li>图书与出版社：<ul>
+<li>一对多关系</li>
+<li>通过图书表的<code>出版社编号</code>关联到出版社表</li>
+</ul>
+</li>
+<li>图书与类别：<ul>
+<li>一对多关系</li>
+<li>通过图书表的<code>类别编号</code>关联到图书类别表</li>
+</ul>
+</li>
+<li>用户与借阅记录：<ul>
+<li>一对多关系</li>
+<li>通过借阅记录表的<code>用户编号</code>关联到用户表</li>
+</ul>
+</li>
+<li>图书与借阅记录：<ul>
+<li>一对多关系</li>
+<li>通过借阅记录表的<code>图书编号</code>关联到图书表</li>
+</ul>
+</li>
+</ol>
+<p>这种设计实现了：</p>
+<ul>
+<li>完整的图书管理功能</li>
+<li>清晰的数据关系</li>
+<li>可追踪的借阅历史</li>
+<li>灵活的用户权限控制</li>
+<li>完善的分类管理</li>
+</ul>
+<p>通过这样的结构，可以方便地实现：</p>
+<ul>
+<li>图书检索</li>
+<li>借阅管理</li>
+<li>库存统计</li>
+<li>用户管理</li>
+<li>分类统计等功能</li>
+</ul>
+<h2 id="3-2-四、系统实现-程序流程图，实现的界面-数据库连接"><a href="#3-2-四、系统实现-程序流程图，实现的界面-数据库连接" class="headerlink" title="3.2. 四、系统实现(程序流程图，实现的界面)数据库连接"></a>3.2. 四、系统实现(程序流程图，实现的界面)数据库连接</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk  <br><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> messagebox  <br><span class="hljs-keyword">import</span> mysql.connector  <br><br><span class="hljs-comment"># 连接到数据库  </span><br>db = mysql.connector.connect(  <br>    host=<span class="hljs-string">&quot;localhost&quot;</span>,  <br>    user=<span class="hljs-string">&quot;root&quot;</span>,  <br>    password=<span class="hljs-string">&quot; &quot;</span>,  <br>    database=<span class="hljs-string">&quot;library&quot;</span>  <br>)  <br><br>cursor = db.cursor()  <br><br><span class="hljs-comment"># 注册功能  </span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">register</span>():  <br>    username = entry_username.get()  <br>    password = entry_password.get()  <br>    email = entry_email.get()  <br><br>    <span class="hljs-keyword">if</span> username <span class="hljs-keyword">and</span> password <span class="hljs-keyword">and</span> email:  <br>        <span class="hljs-keyword">try</span>:  <br>            <span class="hljs-comment"># 往数据库中插入用户信息，默认 role 为 &#x27;user&#x27;  </span><br>            cursor.execute(  <br>                <span class="hljs-string">&quot;INSERT INTO users (username, password, email) VALUES (%s, %s, %s)&quot;</span>,  <br>                (username, password, email)  <br>            )  <br>            db.commit()  <br>            messagebox.showinfo(<span class="hljs-string">&quot;Success&quot;</span>, <span class="hljs-string">&quot;Registration successful!&quot;</span>)  <br>        <span class="hljs-keyword">except</span> mysql.connector.Error <span class="hljs-keyword">as</span> err:  <br>            <span class="hljs-comment"># 捕获数据库错误并弹窗提示  </span><br>            messagebox.showerror(<span class="hljs-string">&quot;Error&quot;</span>, <span class="hljs-string">f&quot;Error: <span class="hljs-subst">&#123;err&#125;</span>&quot;</span>)  <br>    <span class="hljs-keyword">else</span>:  <br>        <span class="hljs-comment"># 如果输入框空白，则报错  </span><br>        messagebox.showerror(<span class="hljs-string">&quot;Error&quot;</span>, <span class="hljs-string">&quot;All fields are required!&quot;</span>)  <br><br><span class="hljs-comment"># 登录功能  </span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">login</span>():  <br>    username = entry_username.get()  <br>    password = entry_password.get()  <br><br>    <span class="hljs-keyword">if</span> username <span class="hljs-keyword">and</span> password:  <br>        <span class="hljs-comment"># 查询用户的角色和登录状态  </span><br>        cursor.execute(  <br>            <span class="hljs-string">&quot;SELECT role FROM users WHERE username=%s AND password=%s&quot;</span>,  <br>            (username, password)  <br>        )  <br>        user = cursor.fetchone()  <span class="hljs-comment"># 获取结果  </span><br>        <span class="hljs-keyword">if</span> user:  <br>            role = user[<span class="hljs-number">0</span>]  <span class="hljs-comment"># 获取用户角色  </span><br>            <span class="hljs-keyword">if</span> role == <span class="hljs-string">&#x27;admin&#x27;</span>:  <br>                messagebox.showinfo(<span class="hljs-string">&quot;Success&quot;</span>, <span class="hljs-string">&quot;Login successful! Welcome, Admin!&quot;</span>)  <br>            <span class="hljs-keyword">else</span>:  <br>                messagebox.showinfo(<span class="hljs-string">&quot;Success&quot;</span>, <span class="hljs-string">&quot;Login successful! Welcome, User!&quot;</span>)  <br>        <span class="hljs-keyword">else</span>:  <br>            <span class="hljs-comment"># 用户名或密码错误时  </span><br>            messagebox.showerror(<span class="hljs-string">&quot;Error&quot;</span>, <span class="hljs-string">&quot;Invalid username or password!&quot;</span>)  <br>    <span class="hljs-keyword">else</span>:  <br>        <span class="hljs-comment"># 输入框为空时  </span><br>        messagebox.showerror(<span class="hljs-string">&quot;Error&quot;</span>, <span class="hljs-string">&quot;All fields are required!&quot;</span>)  <br><br><span class="hljs-comment"># 创建主窗口  </span><br>root = tk.Tk()  <br>root.geometry(<span class="hljs-string">&quot;400x300&quot;</span>)  <span class="hljs-comment"># 调整主窗口大小  </span><br>root.title(<span class="hljs-string">&quot;Library System&quot;</span>)  <br><br><span class="hljs-comment"># 创建标签和输入框  </span><br>tk.Label(root, text=<span class="hljs-string">&quot;Username&quot;</span>).grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">0</span>, padx=<span class="hljs-number">10</span>, pady=<span class="hljs-number">10</span>)  <br>entry_username = tk.Entry(root, width=<span class="hljs-number">40</span>)  <span class="hljs-comment"># 调整输入框宽度  </span><br>entry_username.grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">1</span>, padx=<span class="hljs-number">10</span>, pady=<span class="hljs-number">10</span>)  <br><br>tk.Label(root, text=<span class="hljs-string">&quot;Password&quot;</span>).grid(row=<span class="hljs-number">1</span>, column=<span class="hljs-number">0</span>, padx=<span class="hljs-number">10</span>, pady=<span class="hljs-number">10</span>)  <br>entry_password = tk.Entry(root, show=<span class="hljs-string">&quot;*&quot;</span>, width=<span class="hljs-number">40</span>)  <span class="hljs-comment"># 输入框隐藏内容  </span><br>entry_password.grid(row=<span class="hljs-number">1</span>, column=<span class="hljs-number">1</span>, padx=<span class="hljs-number">10</span>, pady=<span class="hljs-number">10</span>)  <br><br>tk.Label(root, text=<span class="hljs-string">&quot;Email&quot;</span>).grid(row=<span class="hljs-number">2</span>, column=<span class="hljs-number">0</span>, padx=<span class="hljs-number">10</span>, pady=<span class="hljs-number">10</span>)  <br>entry_email = tk.Entry(root, width=<span class="hljs-number">40</span>)  <br>entry_email.grid(row=<span class="hljs-number">2</span>, column=<span class="hljs-number">1</span>, padx=<span class="hljs-number">10</span>, pady=<span class="hljs-number">10</span>)  <br><br><span class="hljs-comment"># 创建按钮  </span><br>tk.Button(root, text=<span class="hljs-string">&quot;Register&quot;</span>, command=register).grid(row=<span class="hljs-number">3</span>, column=<span class="hljs-number">0</span>, padx=<span class="hljs-number">10</span>, pady=<span class="hljs-number">10</span>)  <br>tk.Button(root, text=<span class="hljs-string">&quot;Login&quot;</span>, command=login).grid(row=<span class="hljs-number">3</span>, column=<span class="hljs-number">1</span>, padx=<span class="hljs-number">10</span>, pady=<span class="hljs-number">10</span>)  <br><br><span class="hljs-comment"># 运行主循环  </span><br>root.mainloop()<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735287231613-7233b350-3ffa-4bed-99bc-aed890063a04.png" alt=""></p>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/200347199#z3o3Q">此处为语雀卡片，点击链接查看</a></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>图书馆管理系统</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Foracle/">图书馆管理系统oracle</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E4%BF%A1%E7%94%A8%E5%8D%A1%E7%8A%B6%E6%80%81/">信用卡状态</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%80%E3%80%81%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">1. 一、绪论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BA%8C%E3%80%81%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2. 二、系统分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">3. 三、系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E4%B8%80-%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-ER%E5%9B%BE%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">3.1.1. (一)概念结构设计-ER图系统功能模块图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E4%BA%8C-%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%9B%BE"><span class="toc-number">3.2.</span> <span class="toc-text">3.1.2. (二)系统功能模块图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-1-%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.1.2.1. 用户注册流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-2-%E5%80%9F%E4%B9%A6%E6%B5%81%E7%A8%8B"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.1.2.2. 借书流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-%E4%B8%89-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F-%E8%A1%A8"><span class="toc-number">3.3.</span> <span class="toc-text">3.1.3. (三)逻辑结构设计-关系模式-表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E5%88%86%E6%9E%90"><span class="toc-number">3.4.</span> <span class="toc-text">3.1.4. 实体关系分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-5-%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%EF%BC%88%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%89"><span class="toc-number">3.5.</span> <span class="toc-text">3.1.5. 关系模式（表结构）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-5-1-%E7%94%A8%E6%88%B7%E8%A1%A8-%E7%94%A8%E6%88%B7"><span class="toc-number">3.5.1.</span> <span class="toc-text">3.1.5.1. 用户表 (用户)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-5-2-%E5%87%BA%E7%89%88%E7%A4%BE%E8%A1%A8-%E5%87%BA%E7%89%88%E7%A4%BE"><span class="toc-number">3.5.2.</span> <span class="toc-text">3.1.5.2. 出版社表 (出版社)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-5-3-%E5%9B%BE%E4%B9%A6%E7%B1%BB%E5%88%AB%E8%A1%A8-%E5%9B%BE%E4%B9%A6%E7%B1%BB%E5%88%AB"><span class="toc-number">3.5.3.</span> <span class="toc-text">3.1.5.3. 图书类别表 (图书类别)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-5-4-%E5%9B%BE%E4%B9%A6%E8%A1%A8-%E5%9B%BE%E4%B9%A6"><span class="toc-number">3.5.4.</span> <span class="toc-text">3.1.5.4. 图书表 (图书)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-5-5-%E5%80%9F%E9%98%85%E8%AE%B0%E5%BD%95%E8%A1%A8-%E5%80%9F%E9%98%85%E8%AE%B0%E5%BD%95"><span class="toc-number">3.5.5.</span> <span class="toc-text">3.1.5.5. 借阅记录表 (借阅记录)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-6-%E4%B8%BB%E8%A6%81%E5%85%B3%E7%B3%BB%E8%AF%B4%E6%98%8E"><span class="toc-number">3.6.</span> <span class="toc-text">3.1.6. 主要关系说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%9B%9B%E3%80%81%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%95%8C%E9%9D%A2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.7.</span> <span class="toc-text">3.2. 四、系统实现(程序流程图，实现的界面)数据库连接</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

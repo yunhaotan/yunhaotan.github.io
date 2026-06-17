@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>数据库设计实验 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="数据库设计实验">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="[[数据库操作实验]]0.1.实验名称数据库设计实验0.2.实验目的掌握数据库设计基本方法。0.3.实验要求掌握数据库设计基本步骤，包括数据库概念结构设计、逻辑结构设计，数据库模式SQL语句生成。0.4.实验重点和难点实验重点：概念结构设计、逻辑结构设计。实验难点：逻辑结构设计。逻辑结构设计虽然可以按照一定的">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">数据库设计实验</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.909Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p>[[数据库操作实验]]</p>
+<h2 id="0-1-实验名称"><a href="#0-1-实验名称" class="headerlink" title="0.1. 实验名称"></a>0.1. 实验名称</h2><p>数据库设计实验</p>
+<h2 id="0-2-实验目的"><a href="#0-2-实验目的" class="headerlink" title="0.2. 实验目的"></a>0.2. 实验目的</h2><p>掌握数据库设计基本方法。</p>
+<h2 id="0-3-实验要求"><a href="#0-3-实验要求" class="headerlink" title="0.3. 实验要求"></a>0.3. 实验要求</h2><p>掌握数据库设计基本步骤，包括数据库概念结构设计、逻辑结构设计，数据库模式<code>SQL</code> 语句生成。</p>
+<h2 id="0-4-实验重点和难点"><a href="#0-4-实验重点和难点" class="headerlink" title="0.4. 实验重点和难点"></a>0.4. 实验重点和难点</h2><p>实验重点：概念结构设计、逻辑结构设计。 实验难点：逻辑结构设计。逻辑结构设计虽然可以按照一定的规则从概念结构转换而来， 但是由于概念结构通常比较抽象，较少考虑更多细节，因此转换而成的逻辑结构还需要进一 步调整和优化。逻辑结构承接概念结构和物理结构，处于核心地位，因而是数据库设计的重 点，也是难点。</p>
+<h2 id="0-5-实验内容"><a href="#0-5-实验内容" class="headerlink" title="0.5. 实验内容"></a>0.5. 实验内容</h2><p>设计一个服务于“XX 大学XX 学院”的本科生教务管理数据库。需求如下：学院有若干系，每个系有若干专业和教研室，每个专业有若干班级，每个教研室有若干教师，每个班级有若干学生；</p>
+<ol>
+<li><p>每位学生学习若干课程，每门课程有学分、学时、考试方式等性质；</p>
+</li>
+<li><p>每门课程由若干教师讲授，这些教师共同组成一个关于本课程的课程组，课程组的老师可来自不同的教研室或专业，课程组有一位负责教师；</p>
+</li>
+<li><p>每门课程有若干本参考书，其中一本作为指定教材，某本参考书可用于不同课程；</p>
+</li>
+<li><p>每个专业有一个培养计划，规定每门课程是必修还是选修，以及课程在哪个学期讲授；</p>
+</li>
+<li><p>每位学生所修的课程要有考试成绩。</p>
+</li>
+</ol>
+<h2 id="0-6-实验要求"><a href="#0-6-实验要求" class="headerlink" title="0.6. 实验要求"></a>0.6. 实验要求</h2><ol>
+<li>设计数据库概念结构 从上述需求中识别出相应的实体，分析每个实体的属性和码。例如：学生实体 的属性包括但不限于：学号、姓名、身份证号、性别、出生日期、所属班级、 入学时间、联系电话、家庭住址等。 确定实体之间的一对一、一对多和多对多联系。 画出实体-联系(E-R)图。</li>
+<li>设计数据库逻辑结构 按照教材第7 章中概念结构转化为逻辑结构的规则，根据上述E-R 图，将每个实体转 换成一个关系，多对多的联系也转换成一个关系。</li>
+<li>生成数据库模式<code>SQL</code> 语句 生成<code>MySQL</code> 数据库管理系统的<code>SQL</code> 语句。</li>
+<li>创建数据库模式 执行所生成的<code>SQL</code> 语句，创建本科生教务管理数据库模式。</li>
+</ol>
+<h2 id="0-7-实验结果"><a href="#0-7-实验结果" class="headerlink" title="0.7. 实验结果"></a>0.7. 实验结果</h2><h3 id="0-7-1-（1）关系模型"><a href="#0-7-1-（1）关系模型" class="headerlink" title="0.7.1. （1）关系模型"></a>0.7.1. （1）关系模型</h3><p>班级 (<u>班级ID</u>, 班级名称, 人数, 专业ID (FK))<br>参考书 (<u>参考书ID</u>, 参考书名称)<br>教师 (<u>教师ID</u>, 姓名, 教研室ID (FK), 职称)<br>教研室 (<u>教研室ID</u>, 教研室名称, 人数, 系ID (FK))<br>课程 (<u>课程ID</u>, 课程名称, 学时, 考核方式, 学分, 教授教师ID (FK))<br>课程_参考书 (课<u>程ID (PK, FK)</u>, <u>参考书ID (PK, FK)</u>, 是否指定教材)<br>课程组 (<u>课程组ID</u>, 负责教师ID (FK), 课程ID (FK))<br>培养计划 (<u>培养计划ID</u>, 专业ID (FK), 课程ID (FK), 是否必修, 学期)<br>系 (<u>系ID</u>, 系名称, 人数, 学院ID (FK))<br>学生 (<u>学生ID</u>, 姓名, 身份证号, 性别, 出生日期, 入学日期, 联系电话, 家庭住址, 班级ID (FK))<br>学院 (<u>学院ID</u>, 学院名称, 总人数)<br>专业 (<u>专业ID</u>, 专业名称, 人数, 系ID (FK))</p>
+<h3 id="0-7-2-（2）E-R图"><a href="#0-7-2-（2）E-R图" class="headerlink" title="0.7.2. （2）E-R图"></a>0.7.2. （2）E-R图</h3><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20231222231638.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20231222224039.jpg" alt="数据库E-R图"></p>
+<h3 id="0-7-3-（3）导出SQL语句"><a href="#0-7-3-（3）导出SQL语句" class="headerlink" title="0.7.3. （3）导出SQL语句"></a>0.7.3. （3）导出SQL语句</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs MySQL">SET NAMES utf8mb4;<br>SET FOREIGN_KEY_CHECKS = 0;<br>-- 选择或创建数据库<br>CREATE DATABASE IF NOT EXISTS `Undergraduate_Academic_Administration_Database`;<br>USE `Undergraduate_Academic_Administration_Database`;<br><br>CREATE TABLE `班级`  (<br>  `班级ID` int NOT NULL,<br>  `班级名称` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `人数` int NULL DEFAULT NULL,<br>  `专业ID` int NULL DEFAULT NULL,<br>  PRIMARY KEY (`班级ID`) USING BTREE,<br>  INDEX `专业ID`(`专业ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `参考书`  (<br>  `参考书ID` int NOT NULL,<br>  `参考书名称` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  PRIMARY KEY (`参考书ID`) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `教师`  (<br>  `教师ID` int NOT NULL,<br>  `姓名` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `教研室ID` int NULL DEFAULT NULL,<br>  `职称` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  PRIMARY KEY (`教师ID`) USING BTREE,<br>  INDEX `教研室ID`(`教研室ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `教研室`  (<br>  `教研室ID` int NOT NULL,<br>  `教研室名称` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `人数` int NULL DEFAULT NULL,<br>  `系ID` int NULL DEFAULT NULL,<br>  PRIMARY KEY (`教研室ID`) USING BTREE,<br>  INDEX `系ID`(`系ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `课程`  (<br>  `课程ID` int NOT NULL,<br>  `课程名称` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `学时` int NULL DEFAULT NULL,<br>  `考核方式` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `学分` int NULL DEFAULT NULL,<br>  `教授教师ID` int NULL DEFAULT NULL,<br>  PRIMARY KEY (`课程ID`) USING BTREE,<br>  INDEX `教授教师ID`(`教授教师ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `课程_参考书`  (<br>  `课程ID` int NOT NULL,<br>  `参考书ID` int NOT NULL,<br>  `是否指定教材` tinyint(1) NULL DEFAULT NULL,<br>  PRIMARY KEY (`课程ID`, `参考书ID`) USING BTREE,<br>  INDEX `参考书ID`(`参考书ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `课程组`  (<br>  `课程组ID` int NOT NULL,<br>  `负责教师ID` int NULL DEFAULT NULL,<br>  `课程ID` int NULL DEFAULT NULL,<br>  PRIMARY KEY (`课程组ID`) USING BTREE,<br>  INDEX `负责教师ID`(`负责教师ID` ASC) USING BTREE,<br>  INDEX `课程ID`(`课程ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `培养计划`  (<br>  `培养计划ID` int NOT NULL,<br>  `专业ID` int NULL DEFAULT NULL,<br>  `课程ID` int NULL DEFAULT NULL,<br>  `是否必修` tinyint(1) NULL DEFAULT NULL,<br>  `学期` int NULL DEFAULT NULL,<br>  PRIMARY KEY (`培养计划ID`) USING BTREE,<br>  INDEX `专业ID`(`专业ID` ASC) USING BTREE,<br>  INDEX `课程ID`(`课程ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `系`  (<br>  `系ID` int NOT NULL,<br>  `系名称` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `人数` int NULL DEFAULT NULL,<br>  `学院ID` int NULL DEFAULT NULL,<br>  PRIMARY KEY (`系ID`) USING BTREE,<br>  INDEX `学院ID`(`学院ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `学生`  (<br>  `学生ID` int NOT NULL,<br>  `姓名` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `身份证号` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `性别` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `出生日期` date NULL DEFAULT NULL,<br>  `入学日期` date NULL DEFAULT NULL,<br>  `联系电话` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `家庭住址` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `班级ID` int NULL DEFAULT NULL,<br>  PRIMARY KEY (`学生ID`) USING BTREE,<br>  INDEX `班级ID`(`班级ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `学院`  (<br>  `学院ID` int NOT NULL,<br>  `学院名称` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `总人数` int NULL DEFAULT NULL,<br>  PRIMARY KEY (`学院ID`) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>CREATE TABLE `专业`  (<br>  `专业ID` int NOT NULL,<br>  `专业名称` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,<br>  `人数` int NULL DEFAULT NULL,<br>  `系ID` int NULL DEFAULT NULL,<br>  PRIMARY KEY (`专业ID`) USING BTREE,<br>  INDEX `系ID`(`系ID` ASC) USING BTREE<br>) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;<br><br>ALTER TABLE `班级` ADD CONSTRAINT `班级_ibfk_1` FOREIGN KEY (`专业ID`) REFERENCES `专业` (`专业ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `教师` ADD CONSTRAINT `教师_ibfk_1` FOREIGN KEY (`教研室ID`) REFERENCES `教研室` (`教研室ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `教研室` ADD CONSTRAINT `教研室_ibfk_1` FOREIGN KEY (`系ID`) REFERENCES `系` (`系ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `课程` ADD CONSTRAINT `课程_ibfk_1` FOREIGN KEY (`教授教师ID`) REFERENCES `教师` (`教师ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `课程_参考书` ADD CONSTRAINT `课程_参考书_ibfk_1` FOREIGN KEY (`课程ID`) REFERENCES `课程` (`课程ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `课程_参考书` ADD CONSTRAINT `课程_参考书_ibfk_2` FOREIGN KEY (`参考书ID`) REFERENCES `参考书` (`参考书ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `课程组` ADD CONSTRAINT `课程组_ibfk_1` FOREIGN KEY (`负责教师ID`) REFERENCES `教师` (`教师ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `课程组` ADD CONSTRAINT `课程组_ibfk_2` FOREIGN KEY (`课程ID`) REFERENCES `课程` (`课程ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `培养计划` ADD CONSTRAINT `培养计划_ibfk_1` FOREIGN KEY (`专业ID`) REFERENCES `专业` (`专业ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `培养计划` ADD CONSTRAINT `培养计划_ibfk_2` FOREIGN KEY (`课程ID`) REFERENCES `课程` (`课程ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `系` ADD CONSTRAINT `系_ibfk_1` FOREIGN KEY (`学院ID`) REFERENCES `学院` (`学院ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `学生` ADD CONSTRAINT `学生_ibfk_1` FOREIGN KEY (`班级ID`) REFERENCES `班级` (`班级ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br>ALTER TABLE `专业` ADD CONSTRAINT `专业_ibfk_1` FOREIGN KEY (`系ID`) REFERENCES `系` (`系ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;<br></code></pre></td></tr></table></figure>
+<h2 id="0-8-实验总结"><a href="#0-8-实验总结" class="headerlink" title="0.8. 实验总结"></a>0.8. 实验总结</h2><p>​        总的来说，这次实验没有第一次实验繁琐，但是这次实验较第一次实验而言难度有所提高，在设计数据库时要考虑的东西有很多，要确保数据库尽可能少的有数据冗余，避免更新异常、插入异常和删除异常.在这个实验中，首先进行数据库的概念结构设计，找出与教务管理系统相关的实体，明确每个实体的属性和主键。然后确定实体之间的关系，绘制实体-联系(E-R)图，以更好地理解数据之间的关系。<br>   我主要遇到了以下几点问题： </p>
+<p>1.首先是不知道该用什么工具去设计， 在查阅资料、在B站学习后我选择使用navicat去设计数据库。</p>
+<p>2.在确定关系模型时，非常容易造成数据冗余。比如当一个实体与另一个通过各自的摸一个属性关联时，就非常容易造成数据冗余 。 数据冗余可能导致更新异常、插入异常和删除异常，因此在设计过程中要注意规范化数据库，确保每一处信息只在数据库中存储一份。这可以通过分解表、建立关联等手段来实现。</p>
+<p>3.在用navicat导出的SQL文件后，我发现重新运行该SQL文件时会报错。后来才发现是因为navicat导出的SQL文件并不会定义和创建模式或者数据库，所以要事先创建数据库后再运行该SQL文件，或者人为对navicat导出的SQL文件做出一些修改，即在导出的SQL文件开头加上数据库定义和创建语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mysql">-- 选择或创建数据库<br>CREATE DATABASE IF NOT EXISTS `Undergraduate_Academic_Administration_Database`;<br>USE `Undergraduate_Academic_Administration_Database`;<br></code></pre></td></tr></table></figure>
+<p>​     通过这次实验，我提高了数据库设计的能力，更好地理解了数据库的概念和结构，为今后的数据库设计和管理工作打下了坚实的基础。</p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>数据库设计实验</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%A4%A7%E4%BD%9C%E4%B8%9A/">机器学习大作业</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E6%99%BA%E8%83%BD%E8%AE%BE%E6%96%BD%E7%AE%A1%E7%90%86/">智能设施管理</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-1-%E5%AE%9E%E9%AA%8C%E5%90%8D%E7%A7%B0"><span class="toc-number">1.</span> <span class="toc-text">0.1. 实验名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-2-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-number">2.</span> <span class="toc-text">0.2. 实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-3-%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="toc-number">3.</span> <span class="toc-text">0.3. 实验要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-4-%E5%AE%9E%E9%AA%8C%E9%87%8D%E7%82%B9%E5%92%8C%E9%9A%BE%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">0.4. 实验重点和难点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-5-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-number">5.</span> <span class="toc-text">0.5. 实验内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-6-%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="toc-number">6.</span> <span class="toc-text">0.6. 实验要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-7-%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">7.</span> <span class="toc-text">0.7. 实验结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-7-1-%EF%BC%881%EF%BC%89%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.1.</span> <span class="toc-text">0.7.1. （1）关系模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-7-2-%EF%BC%882%EF%BC%89E-R%E5%9B%BE"><span class="toc-number">7.2.</span> <span class="toc-text">0.7.2. （2）E-R图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-7-3-%EF%BC%883%EF%BC%89%E5%AF%BC%E5%87%BASQL%E8%AF%AD%E5%8F%A5"><span class="toc-number">7.3.</span> <span class="toc-text">0.7.3. （3）导出SQL语句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-8-%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">0.8. 实验总结</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

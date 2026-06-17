@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>使用Python和statsmodels库进行多项式回归分析 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="使用Python和statsmodels库进行多项式回归分析">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E4%BD%BF%E7%94%A8Python%E5%92%8Cstatsmodels%E5%BA%93%E8%BF%9B%E8%A1%8C%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.题目下表列出了某城市18位35-44岁经理的年平均收入x1千元,风险偏好度x2和人寿保险额y千元的数据,其中风险偏好度是根据发给每个经理的问卷调查表综合评估得到的,它的数值越大就越偏爱高风险。研究人员想研究此年龄段中的经理所投保的人寿保险额与年均收入及风险偏好度之间的关系。研究者预计,经理的年均收入和人寿">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">使用Python和statsmodels库进行多项式回归分析</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.892Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-题目"><a href="#1-题目" class="headerlink" title="1. 题目"></a>1. 题目</h1><p>下表列出了某城市18位35-44岁经理的年平均收入x1千元,风险偏好度 x2 和人寿保险额y千元的数据,<br>其中风险偏好度是根据发给每个经理的问卷调查表综合评估得到的,它的数值越大就越偏爱高风险。研究人员<br>想研究此年龄段中的经理所投保的人寿保险额与年均收入及风险偏好度之间的关系。研究者预计,经理的年均<br>收入和人寿保险额之间存在着二次关系,并有把握地认为风险偏好度对人寿保险额有线性效应,但对风险偏好<br>度对人寿保险额是否有二次效应以及两个自变量是否对人寿保险额有交互效应,心中没底。<br>请你通过表1中的数据来建立一个合适的回归模型,验证上面的看法,并给出进一步的分析。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>y</th>
+<th>x1</th>
+<th>x2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>196</td>
+<td>66.290</td>
+<td>7</td>
+</tr>
+<tr>
+<td>2</td>
+<td>63</td>
+<td>40.964</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>252</td>
+<td>72.996</td>
+<td>10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>84</td>
+<td>45.010</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>126</td>
+<td>57.204</td>
+<td>4</td>
+</tr>
+<tr>
+<td>6</td>
+<td>14</td>
+<td>26.852</td>
+<td>5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>49</td>
+<td>38.122</td>
+<td>4</td>
+</tr>
+<tr>
+<td>8</td>
+<td>49</td>
+<td>35.840</td>
+<td>6</td>
+</tr>
+<tr>
+<td>9</td>
+<td>266</td>
+<td>75.796</td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>49</td>
+<td>37.408</td>
+<td>5</td>
+</tr>
+<tr>
+<td>11</td>
+<td>105</td>
+<td>54.376</td>
+<td>2</td>
+</tr>
+<tr>
+<td>12</td>
+<td>98</td>
+<td>46.186</td>
+<td>7</td>
+</tr>
+<tr>
+<td>13</td>
+<td>77</td>
+<td>46.130</td>
+<td>4</td>
+</tr>
+<tr>
+<td>14</td>
+<td>14</td>
+<td>30.366</td>
+<td>3</td>
+</tr>
+<tr>
+<td>15</td>
+<td>56</td>
+<td>39.060</td>
+<td>5</td>
+</tr>
+<tr>
+<td>16</td>
+<td>245</td>
+<td>79.380</td>
+<td>1</td>
+</tr>
+<tr>
+<td>17</td>
+<td>133</td>
+<td>52.766</td>
+<td>8</td>
+</tr>
+<tr>
+<td>18</td>
+<td>133</td>
+<td>55.916</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="2-代码"><a href="#2-代码" class="headerlink" title="2. 代码"></a>2. 代码</h1><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> statsmodels.api <span class="hljs-keyword">as</span> sm<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br><span class="hljs-comment">#中文乱码</span><br>plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>] = [<span class="hljs-string">&#x27;SimHei&#x27;</span>]<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">read_data</span>():<br>    data = &#123;<br>        <span class="hljs-string">&#x27;y&#x27;</span>: [<span class="hljs-number">196</span>, <span class="hljs-number">63</span>, <span class="hljs-number">252</span>, <span class="hljs-number">84</span>, <span class="hljs-number">126</span>, <span class="hljs-number">14</span>, <span class="hljs-number">49</span>, <span class="hljs-number">49</span>, <span class="hljs-number">266</span>, <span class="hljs-number">49</span>, <span class="hljs-number">105</span>, <span class="hljs-number">98</span>, <span class="hljs-number">77</span>, <span class="hljs-number">14</span>, <span class="hljs-number">56</span>, <span class="hljs-number">245</span>, <span class="hljs-number">133</span>, <span class="hljs-number">133</span>],<br>        <span class="hljs-string">&#x27;x1&#x27;</span>: [<span class="hljs-number">66.290</span>, <span class="hljs-number">40.964</span>, <span class="hljs-number">72.996</span>, <span class="hljs-number">45.010</span>, <span class="hljs-number">57.204</span>, <span class="hljs-number">26.852</span>, <span class="hljs-number">38.122</span>, <span class="hljs-number">35.840</span>, <span class="hljs-number">75.796</span>, <span class="hljs-number">37.408</span>, <span class="hljs-number">54.376</span>, <span class="hljs-number">46.186</span>, <span class="hljs-number">46.130</span>, <span class="hljs-number">30.366</span>, <span class="hljs-number">39.060</span>, <span class="hljs-number">79.380</span>, <span class="hljs-number">52.766</span>, <span class="hljs-number">55.916</span>],<br>        <span class="hljs-string">&#x27;x2&#x27;</span>: [<span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">9</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>]<br>    &#125;<br>    <span class="hljs-keyword">return</span> pd.DataFrame(data)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add_polynomial_terms</span>(<span class="hljs-params">df</span>):<br>    df[<span class="hljs-string">&#x27;x1_squared&#x27;</span>] = df[<span class="hljs-string">&#x27;x1&#x27;</span>] ** <span class="hljs-number">2</span><br>    <span class="hljs-keyword">return</span> sm.add_constant(df)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">fit_polynomial_regression</span>(<span class="hljs-params">df</span>):<br>    model = sm.OLS(df[<span class="hljs-string">&#x27;y&#x27;</span>], df[[<span class="hljs-string">&#x27;const&#x27;</span>, <span class="hljs-string">&#x27;x1&#x27;</span>, <span class="hljs-string">&#x27;x2&#x27;</span>, <span class="hljs-string">&#x27;x1_squared&#x27;</span>]])<br>    <span class="hljs-keyword">return</span> model.fit()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">save_summary_to_txt</span>(<span class="hljs-params">results</span>):<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;regression_summary.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        f.write(results.summary().as_text())<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_fitted_values</span>(<span class="hljs-params">df, fitted_values</span>):<br>    plt.figure(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">6</span>))<br>    plt.scatter(df[<span class="hljs-string">&#x27;x1&#x27;</span>], df[<span class="hljs-string">&#x27;y&#x27;</span>], label=<span class="hljs-string">&#x27;Actual&#x27;</span>)<br>    plt.scatter(df[<span class="hljs-string">&#x27;x1&#x27;</span>], fitted_values, color=<span class="hljs-string">&#x27;red&#x27;</span>, label=<span class="hljs-string">&#x27;Fitted&#x27;</span>)<br>    plt.xlabel(<span class="hljs-string">&#x27;年均收入 (x1)&#x27;</span>)<br>    plt.ylabel(<span class="hljs-string">&#x27;人寿保险额 (y)&#x27;</span>)<br>    plt.title(<span class="hljs-string">&#x27;模型拟合结果&#x27;</span>)<br>    plt.legend()<br>    plt.savefig(<span class="hljs-string">&#x27;模型拟合结果.png&#x27;</span>)<br>    <span class="hljs-comment">#plt.show()</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_residuals</span>(<span class="hljs-params">fitted_values, residuals</span>):<br>    plt.figure(figsize=(<span class="hljs-number">8</span>, <span class="hljs-number">5</span>))<br>    plt.scatter(fitted_values, residuals)<br>    plt.axhline(y=<span class="hljs-number">0</span>, color=<span class="hljs-string">&#x27;r&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>)<br>    plt.xlabel(<span class="hljs-string">&#x27;拟合值&#x27;</span>)<br>    plt.ylabel(<span class="hljs-string">&#x27;残差&#x27;</span>)<br>    plt.title(<span class="hljs-string">&#x27;残差图&#x27;</span>)<br>    plt.savefig(<span class="hljs-string">&#x27;残差图.png&#x27;</span>)<br>    <span class="hljs-comment">#plt.show()</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">save_results_to_txt</span>(<span class="hljs-params">results</span>):<br>    beta_0 = results.params[<span class="hljs-string">&#x27;const&#x27;</span>]<br>    beta_1 = results.params[<span class="hljs-string">&#x27;x1&#x27;</span>]<br>    beta_2 = results.params[<span class="hljs-string">&#x27;x2&#x27;</span>]<br>    beta_3 = results.params[<span class="hljs-string">&#x27;x1_squared&#x27;</span>]<br><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;regression_results.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        f.write(<span class="hljs-string">&quot;Regression Equation:\n&quot;</span>)<br>        f.write(<span class="hljs-string">f&quot;y = <span class="hljs-subst">&#123;beta_0&#125;</span> + <span class="hljs-subst">&#123;beta_1&#125;</span> * x1 + <span class="hljs-subst">&#123;beta_2&#125;</span> * x2 + <span class="hljs-subst">&#123;beta_3&#125;</span> * x1^2 + ε\n\n&quot;</span>)<br>        <br>        f.write(<span class="hljs-string">&quot;Regression Summary:\n&quot;</span>)<br>        f.write(results.summary().as_text())<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-comment"># 读取数据</span><br>    df = read_data()<br><br>    <span class="hljs-comment"># 添加多项式项和截距项</span><br>    df = add_polynomial_terms(df)<br><br>    <span class="hljs-comment"># 拟合多项式回归模型</span><br>    results = fit_polynomial_regression(df)<br><br>    <span class="hljs-comment"># 将结果摘要保存为txt文件</span><br>    <span class="hljs-comment">#save_summary_to_txt(results)</span><br><br>    <span class="hljs-comment"># 打印结果摘要</span><br>    <span class="hljs-built_in">print</span>(results.summary())<br><br>    <span class="hljs-comment"># 绘制模型拟合的散点图和拟合线</span><br>    plot_fitted_values(df, results.fittedvalues)<br><br>    <span class="hljs-comment"># 绘制残差图</span><br>    plot_residuals(results.fittedvalues, results.resid)<br><br>    <span class="hljs-comment"># 将表达式和摘要保存为txt文件</span><br>    save_results_to_txt(results)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Results saved to regression_results.txt&quot;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+<h1 id="3-运行结果"><a href="#3-运行结果" class="headerlink" title="3. 运行结果"></a>3. 运行结果</h1><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20240425235516250.png" alt="image-20240425235516250"></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/残差图.png" alt="残差图"></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/模型拟合结果.png" alt="模型拟合结果"></p>
+<h1 id="4-回归方程："><a href="#4-回归方程：" class="headerlink" title="4. 回归方程："></a>4. 回归方程：</h1><p>回归方程表明了自变量 x₁、x₂ 和 x₁²（x₁ 的平方项）与因变量 y 之间的关系。</p>
+<script type="math/tex; mode=display">
+y = -62.3489 + 0.8396x_1 + 5.6846x_2 + 0.0371x_1^2</script><h1 id="5-结果分析："><a href="#5-结果分析：" class="headerlink" title="5. 结果分析："></a>5. 结果分析：</h1><ul>
+<li><strong>R-squared（R²）</strong>：用于衡量回归模型对因变量变异性的解释程度，取值范围为0到1，越接近1表示拟合效果越好。<ul>
+<li>R² = 1.000：表明回归模型完美拟合了数据，自变量能够完全解释因变量的变异性。</li>
+</ul>
+</li>
+<li><strong>Adj. R-squared（调整 R²）</strong>：对 R² 进行调整，考虑了模型中自变量的数量和样本量之间的关系。<ul>
+<li>Adj. R² = 0.999：表示在考虑了自变量数量和样本量后，模型仍然具有很好的拟合效果。</li>
+</ul>
+</li>
+<li><strong>F-statistic（F统计量）</strong>：用于检验模型整体显著性的统计量。<ul>
+<li>F-statistic = <code>1.107e+04</code>，对应的 p-value 非常小（<code>7.41e-24</code>），表明模型整体显著。</li>
+</ul>
+</li>
+<li><strong>残差的正态性检验</strong>（<code>Omnibus、Jarque-Bera</code>等统计量）：用于检验残差是否符合正态分布。<ul>
+<li>Prob(Omnibus) = 0.740，<code>Prob(JB)</code> = 0.973：对应的 p-value 较大，表明残差可能符合正态分布。</li>
+</ul>
+</li>
+<li><strong><code>Durbin-Watson</code></strong>：用于检验残差是否存在自相关性。<ul>
+<li><code>Durbin-Watson</code> = 1.862：接近2，表明残差可能不存在一阶自相关性</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>使用Python和statsmodels库进行多项式回归分析</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E5%AE%9E%E4%B9%A0%E6%8A%A5%E5%91%8A/">实习报告</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/YOLO%20%E6%A8%A1%E5%9E%8B%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%A0%A1%E5%9B%AD%E5%9C%BA%E6%99%AF%E5%9B%BE%E5%83%8F%E6%A3%80%E6%B5%8B%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">YOLO 模型实现与校园场景图像检测实验报告</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">1. 题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">2. 代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">3.</span> <span class="toc-text">3. 运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%9B%9E%E5%BD%92%E6%96%B9%E7%A8%8B%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">4. 回归方程：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">5. 结果分析：</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

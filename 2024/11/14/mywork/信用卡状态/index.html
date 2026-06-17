@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>信用卡状态 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="信用卡状态">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E4%BF%A1%E7%94%A8%E5%8D%A1%E7%8A%B6%E6%80%81/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.一、前期工作1.1.导入库本文用到的库有numpy、pandas、matplotlib、seaborn、sklearn以及lightgbmimportpandasaspdimportnumpyasnpimportmatplotlib.pyplotaspltimportseabornassnsfromskl">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">信用卡状态</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.130Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-一、前期工作"><a href="#1-一、前期工作" class="headerlink" title="1. 一、前期工作"></a>1. 一、前期工作</h1><h2 id="1-1-导入库"><a href="#1-1-导入库" class="headerlink" title="1.1. 导入库"></a>1.1. 导入库</h2><p>本文用到的库有 numpy、pandas 、matplotlib、seaborn、sklearn以及lightgbm<br><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd  <br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np  <br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt  <br><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns  <br><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> cross_val_score  <br><span class="hljs-keyword">from</span> bayes_opt <span class="hljs-keyword">import</span> BayesianOptimization  <br><span class="hljs-keyword">import</span> joblib  <br><span class="hljs-keyword">from</span> sklearn.ensemble <span class="hljs-keyword">import</span> RandomForestClassifier, GradientBoostingClassifier, AdaBoostClassifier  <br><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> roc_auc_score, mean_absolute_error, mean_squared_error, r2_score  <br><span class="hljs-keyword">import</span> lightgbm <span class="hljs-keyword">as</span> lgb <br></code></pre></td></tr></table></figure></p>
+<h2 id="1-2-数据读取"><a href="#1-2-数据读取" class="headerlink" title="1.2. 数据读取"></a>1.2. 数据读取</h2><p>采用pandas读取训练集数据集<br><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">data_train = pd.read_csv(<span class="hljs-string">&#x27;train.csv&#x27;</span>) <br></code></pre></td></tr></table></figure></p>
+<h1 id="2-二、数据清洗与整理"><a href="#2-二、数据清洗与整理" class="headerlink" title="2. 二、数据清洗与整理"></a>2. 二、数据清洗与整理</h1><p>原有数据中有很多我们无法使用的信息，如一些非数值信息，或者是无效的信息，缺失的信息，为了后面建模的方便，我们将数据进行清洗。</p>
+<h2 id="2-1-缺失值处理"><a href="#2-1-缺失值处理" class="headerlink" title="2.1. 缺失值处理"></a>2.1. 缺失值处理</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 检查缺失值</span><br>missing_values = data_train.isnull().<span class="hljs-built_in">sum</span>()  <span class="hljs-comment"># 使用isnull()和sum()函数检查缺失值</span><br>missing_values  <span class="hljs-comment"># 显示每列的缺失值数量</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">个人年龄           <span class="hljs-number">0</span><br>个人性别           <span class="hljs-number">2</span><br>个人教育程度         <span class="hljs-number">0</span><br>个人收入           <span class="hljs-number">0</span><br>个人工作经验         <span class="hljs-number">0</span><br>个人房屋所有权        <span class="hljs-number">0</span><br>借记卡余额          <span class="hljs-number">0</span><br>信用卡使用意向        <span class="hljs-number">0</span><br>信用卡利率          <span class="hljs-number">0</span><br>贷款占收入的百分比      <span class="hljs-number">0</span><br>个人信用历史时长       <span class="hljs-number">0</span><br>信用评分           <span class="hljs-number">0</span><br>档案中以往贷款违约情况    <span class="hljs-number">0</span><br>信用卡状态          <span class="hljs-number">0</span><br>dtype: int64<br></code></pre></td></tr></table></figure>
+<p>去除缺失值<br><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 检查和处理缺失值  </span><br>data_train = data_train.dropna()<br></code></pre></td></tr></table></figure><br>再次检查数据集，确保所有缺失值已被移除<br><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">missing_values_cleaned = data_train.isnull().<span class="hljs-built_in">sum</span>()<br>missing_values_cleaned  <span class="hljs-comment"># 显示每列的缺失值数量</span><br></code></pre></td></tr></table></figure></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">个人年龄           <span class="hljs-number">0</span><br>个人性别           <span class="hljs-number">0</span><br>个人教育程度         <span class="hljs-number">0</span><br>个人收入           <span class="hljs-number">0</span><br>个人工作经验         <span class="hljs-number">0</span><br>个人房屋所有权        <span class="hljs-number">0</span><br>借记卡余额          <span class="hljs-number">0</span><br>信用卡使用意向        <span class="hljs-number">0</span><br>信用卡利率          <span class="hljs-number">0</span><br>贷款占收入的百分比      <span class="hljs-number">0</span><br>个人信用历史时长       <span class="hljs-number">0</span><br>信用评分           <span class="hljs-number">0</span><br>档案中以往贷款违约情况    <span class="hljs-number">0</span><br>信用卡状态          <span class="hljs-number">0</span><br>dtype: int64<br></code></pre></td></tr></table></figure>
+<h2 id="2-2-非数值数据独热编码"><a href="#2-2-非数值数据独热编码" class="headerlink" title="2.2. 非数值数据独热编码"></a>2.2. 非数值数据独热编码</h2><p>独热编码是针对具有明确分类值的数据进行预处理的有效方法，通过将每个分类值转换为独立的二进制向量，确保模型正确理解非数值分类特征，避免数值关系的误判。 独热编码特别适用于处理那些具有明确、有限且通常不带有数值意义的分类值的数据。<br><figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># 独热编码处理  </span><br><span class="hljs-attr">data_train</span> = pd.get_dummies(data_train)<br></code></pre></td></tr></table></figure></p>
+<h1 id="3-三、相关性分析"><a href="#3-三、相关性分析" class="headerlink" title="3. 三、相关性分析"></a>3. 三、相关性分析</h1><p>相关性分析是一种统计学方法，用于研究两个或多个变量之间的关系强度和方向，旨在衡量不同因素之间的相关密切程度，帮助人们理解变量之间的相互作用，以及一个变量的变化如何影响另一个变量。它广泛应用于数据分析、市场研究、科学研究等领域，是一种发现数据中的模式、趋势和关联的重要工具。</p>
+<h2 id="3-1-热力图"><a href="#3-1-热力图" class="headerlink" title="3.1. 热力图"></a>3.1. 热力图</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 使用seaBorn库绘制热图</span><br><span class="hljs-comment">#中文字体设置</span><br>plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>] = [<span class="hljs-string">&#x27;SimHei&#x27;</span>]<br>plt.figure(figsize=(<span class="hljs-number">20</span>, <span class="hljs-number">10</span>))  <span class="hljs-comment"># 设置图形大小</span><br>sns.heatmap(data_train.corr(), cmap=<span class="hljs-string">&#x27;coolwarm&#x27;</span>, annot=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># 使用heatmap()函数绘制热图</span><br>plt.title(<span class="hljs-string">&#x27;相关性热力图&#x27;</span>) <br>plt.show()  <span class="hljs-comment"># 显示图形</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/output_9_1.png" alt="output_9_1.png"></p>
+<h2 id="3-2-成对关系图"><a href="#3-2-成对关系图" class="headerlink" title="3.2. 成对关系图"></a>3.2. 成对关系图</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">sns.pairplot(data_train, corner = <span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/output_13_1.png" alt="output_13_1.png"></p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/tanyunhao/picture/master/宇宙太空-黑白星星太空_爱给网_aigei_com.gif">https://raw.githubusercontent.com/tanyunhao/picture/master/宇宙太空-黑白星星太空_爱给网_aigei_com.gif</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#用柱状图显示</span><br>data_train.corr()[<span class="hljs-string">&#x27;信用卡状态&#x27;</span>].sort_values(ascending=<span class="hljs-literal">True</span>).plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>)  <span class="hljs-comment"># 使用plot()函数绘制柱状图</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/output_11_2.png" alt="output_11_2.png"></p>
+<h2 id="3-3-去除相关性较低的变量"><a href="#3-3-去除相关性较低的变量" class="headerlink" title="3.3. 去除相关性较低的变量"></a>3.3. 去除相关性较低的变量</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">data_train = data_train.drop([<span class="hljs-string">&#x27;信用评分&#x27;</span>, <span class="hljs-string">&#x27;个人教育程度_Master&#x27;</span>, <span class="hljs-string">&#x27;个人性别_male&#x27;</span>, <span class="hljs-string">&#x27;个人教育程度_Associate&#x27;</span>, <br>                              <span class="hljs-string">&#x27;个人教育程度_Bachelor&#x27;</span>,<span class="hljs-string">&#x27;个人性别_female&#x27;</span>,<span class="hljs-string">&#x27;个人教育程度_Doctorate&#x27;</span>,<span class="hljs-string">&#x27;借记卡余额&#x27;</span>,<span class="hljs-string">&#x27;个人教育程度_High School&#x27;</span>], axis=<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<h1 id="4-四、模型建立及参数优化"><a href="#4-四、模型建立及参数优化" class="headerlink" title="4. 四、模型建立及参数优化"></a>4. 四、模型建立及参数优化</h1><h2 id="4-1-随机森林"><a href="#4-1-随机森林" class="headerlink" title="4.1. 随机森林"></a>4.1. 随机森林</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义模型1: 随机森林  </span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rf_cv</span>(<span class="hljs-params">n_estimators, max_depth, min_samples_split</span>):  <br>    model = RandomForestClassifier(  <br>        n_estimators=<span class="hljs-built_in">int</span>(n_estimators),  <br>        max_depth=<span class="hljs-literal">None</span> <span class="hljs-keyword">if</span> max_depth &lt; <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-built_in">int</span>(max_depth),  <br>        min_samples_split=<span class="hljs-built_in">int</span>(min_samples_split),  <br>        random_state=<span class="hljs-number">42</span>  <br>    )  <br>    <span class="hljs-keyword">return</span> cross_val_score(model, X_train, y_train, scoring=<span class="hljs-string">&#x27;roc_auc&#x27;</span>, cv=<span class="hljs-number">3</span>).mean()  <br><br>rf_bo = BayesianOptimization(  <br>    rf_cv,  <br>    &#123;<span class="hljs-string">&#x27;n_estimators&#x27;</span>: (<span class="hljs-number">100</span>, <span class="hljs-number">200</span>), <span class="hljs-string">&#x27;max_depth&#x27;</span>: (<span class="hljs-number">1</span>, <span class="hljs-number">20</span>), <span class="hljs-string">&#x27;min_samples_split&#x27;</span>: (<span class="hljs-number">2</span>, <span class="hljs-number">5</span>)&#125;  <br>)  <br>rf_bo.maximize(init_points=<span class="hljs-number">10</span>, n_iter=<span class="hljs-number">10</span>) <br></code></pre></td></tr></table></figure>
+<p>优化结果</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">|   iter    |  target   | max_depth | min_sa... | n_esti... |<br><span class="hljs-literal">-------------------------------------------------------------</span><br>| [<span class="hljs-number">39</span><span class="hljs-type">m1</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9511</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m2.858</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.179</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m166.5</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">35</span><span class="hljs-type">m2</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m0.9627</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m6.985</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m2.859</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m174.6</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">35</span><span class="hljs-type">m3</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m0.9671</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m8.686</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m3.493</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m105.4</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m4</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.963</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m6.566</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.675</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m101.0</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">35</span><span class="hljs-type">m5</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m0.9708</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m14.54</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m3.967</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m166.8</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m6</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9708</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m18.88</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m2.042</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m110.1</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m7</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9607</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m5.095</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.083</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m164.9</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m8</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9708</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m13.2</span>     [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.364</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m107.0</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">35</span><span class="hljs-type">m9</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m0.971</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m16.8</span>     [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m3.127</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m186.8</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m10</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9708</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m14.72</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.795</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m129.8</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m11</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9708</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m15.39</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.64</span>     [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m111.2</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m12</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9707</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m18.96</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.923</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m104.8</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m13</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9708</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m13.43</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.612</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m160.0</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m14</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9709</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m19.87</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m2.322</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m162.7</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">35</span><span class="hljs-type">m15</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m0.9711</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m15.84</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m2.986</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m121.6</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m16</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.967</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m8.499</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.989</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m124.1</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m17</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.971</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m19.98</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m2.443</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m128.4</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m18</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.971</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m19.7</span>     [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m2.395</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m194.4</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m19</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9699</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m11.22</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.639</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m193.9</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m20</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9708</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m19.67</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.937</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m137.6</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>=============================================================<br></code></pre></td></tr></table></figure>
+<h2 id="4-2-梯度提升"><a href="#4-2-梯度提升" class="headerlink" title="4.2. 梯度提升"></a>4.2. 梯度提升</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义模型2: 梯度提升  </span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gb_cv</span>(<span class="hljs-params">n_estimators, learning_rate, max_depth</span>):  <br>    model = GradientBoostingClassifier(  <br>        n_estimators=<span class="hljs-built_in">int</span>(n_estimators),  <br>        learning_rate=learning_rate,  <br>        max_depth=<span class="hljs-built_in">int</span>(max_depth),  <br>        random_state=<span class="hljs-number">42</span>  <br>    )  <br>    <span class="hljs-keyword">return</span> cross_val_score(model, X_train, y_train, scoring=<span class="hljs-string">&#x27;roc_auc&#x27;</span>, cv=<span class="hljs-number">3</span>).mean()  <br><br>gb_bo = BayesianOptimization(  <br>    gb_cv,  <br>    &#123;<span class="hljs-string">&#x27;n_estimators&#x27;</span>: (<span class="hljs-number">100</span>, <span class="hljs-number">200</span>), <span class="hljs-string">&#x27;learning_rate&#x27;</span>: (<span class="hljs-number">0.01</span>, <span class="hljs-number">0.1</span>), <span class="hljs-string">&#x27;max_depth&#x27;</span>: (<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)&#125;  <br>)  <br>gb_bo.maximize(init_points=<span class="hljs-number">10</span>, n_iter=<span class="hljs-number">10</span>)    <br></code></pre></td></tr></table></figure>
+<p>优化结果<br><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">|   iter    |  target   | learni... | max_depth | n_esti... |<br><span class="hljs-literal">-------------------------------------------------------------</span><br>| [<span class="hljs-number">39</span><span class="hljs-type">m1</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9732</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.09128</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.884</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m118.4</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m2</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9648</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.0332</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.908</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m103.6</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m3</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.967</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.02648</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.823</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m175.7</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m4</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9696</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.04652</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.293</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m163.1</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m5</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9698</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.04087</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.85</span>     [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m129.7</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m6</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9702</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.07502</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.998</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.6</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m7</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9624</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.01339</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.905</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m119.4</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m8</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9729</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.09138</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.891</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m118.4</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m9</span>        [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.967</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.02536</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.512</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m118.5</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m10</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9684</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.03262</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.959</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m118.7</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m11</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9719</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.07358</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.894</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m118.1</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m12</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9721</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.07516</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.746</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.7</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m13</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9694</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.03989</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.997</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.8</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m14</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9729</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.09002</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.53</span>     [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.9</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m15</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9635</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.01725</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.793</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m172.6</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m16</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9671</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.03594</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.626</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m130.9</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m17</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9718</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.07058</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.554</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.5</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m18</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9679</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.03026</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.382</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.7</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m19</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9712</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.06166</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.666</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m118.1</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m20</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.973</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.09644</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.759</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.3</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m21</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9691</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.03482</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.23</span>     [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m196.8</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m22</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9677</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.02879</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.576</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.1</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m23</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9665</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.02399</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.813</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.5</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m24</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9709</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.07578</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m3.795</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m142.4</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m25</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9716</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.07247</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.299</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m111.6</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m26</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9721</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.07639</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.694</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m117.9</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m27</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9678</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.02956</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.488</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m118.0</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">35</span><span class="hljs-type">m28</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m0.9741</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m0.09322</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m4.169</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">35</span><span class="hljs-type">m146.5</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m29</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.973</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.07774</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.264</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m146.5</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>| [<span class="hljs-number">39</span><span class="hljs-type">m30</span>       [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.9735</span>   [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m0.08407</span>  [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m4.012</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> | [<span class="hljs-number">39</span><span class="hljs-type">m146.4</span>    [<span class="hljs-number">39</span><span class="hljs-type">m</span> |<br>=============================================================<br></code></pre></td></tr></table></figure></p>
+<h2 id="4-3-LightGBM"><a href="#4-3-LightGBM" class="headerlink" title="4.3. LightGBM"></a>4.3. LightGBM</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"> <span class="hljs-comment"># 定义模型4: LightGBM  </span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">lgb_cv</span>(<span class="hljs-params">n_estimators, learning_rate, max_depth</span>):  <br>    model = lgb.LGBMClassifier(  <br>        n_estimators=<span class="hljs-built_in">int</span>(n_estimators),  <br>        learning_rate=learning_rate,  <br>        max_depth=<span class="hljs-built_in">int</span>(max_depth),  <br>        random_state=<span class="hljs-number">42</span>  <br>    )  <br>    <span class="hljs-keyword">return</span> cross_val_score(model, X_train, y_train, scoring=<span class="hljs-string">&#x27;roc_auc&#x27;</span>, cv=<span class="hljs-number">3</span>).mean()  <br><br>lgb_bo = BayesianOptimization(  <br>    lgb_cv,  <br>    &#123;<span class="hljs-string">&#x27;n_estimators&#x27;</span>: (<span class="hljs-number">100</span>, <span class="hljs-number">200</span>), <span class="hljs-string">&#x27;learning_rate&#x27;</span>: (<span class="hljs-number">0.01</span>, <span class="hljs-number">0.1</span>), <span class="hljs-string">&#x27;max_depth&#x27;</span>: (<span class="hljs-number">3</span>, <span class="hljs-number">10</span>)&#125;  <br>)  <br>lgb_bo.maximize(init_points=<span class="hljs-number">10</span>, n_iter=<span class="hljs-number">10</span>) <br></code></pre></td></tr></table></figure>
+<h2 id="4-4-AdaBoost"><a href="#4-4-AdaBoost" class="headerlink" title="4.4. AdaBoost"></a>4.4. AdaBoost</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"> <span class="hljs-comment"># 定义模型3: AdaBoost  </span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">ada_cv</span>(<span class="hljs-params">n_estimators, learning_rate</span>):  <br>    model = AdaBoostClassifier(  <br>        n_estimators=<span class="hljs-built_in">int</span>(n_estimators),  <br>        learning_rate=learning_rate,  <br>        random_state=<span class="hljs-number">42</span>  <br>    )  <br>    <span class="hljs-keyword">return</span> cross_val_score(model, X_train, y_train, scoring=<span class="hljs-string">&#x27;roc_auc&#x27;</span>, cv=<span class="hljs-number">3</span>).mean()  <br><br>ada_bo = BayesianOptimization(  <br>    ada_cv,  <br>    &#123;<span class="hljs-string">&#x27;n_estimators&#x27;</span>: (<span class="hljs-number">50</span>, <span class="hljs-number">200</span>), <span class="hljs-string">&#x27;learning_rate&#x27;</span>: (<span class="hljs-number">0.1</span>, <span class="hljs-number">1.0</span>)&#125;  <br>)  <br>ada_bo.maximize(init_points=<span class="hljs-number">10</span>, n_iter=<span class="hljs-number">10</span>) <br></code></pre></td></tr></table></figure>
+<h2 id="4-5-提取模型的最佳参数"><a href="#4-5-提取模型的最佳参数" class="headerlink" title="4.5. 提取模型的最佳参数"></a>4.5. 提取模型的最佳参数</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"> <span class="hljs-comment"># 获取最佳参数  </span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_best_params</span>(<span class="hljs-params">bo</span>):  <br>    params = bo.<span class="hljs-built_in">max</span>[<span class="hljs-string">&#x27;params&#x27;</span>]  <br>    params[<span class="hljs-string">&#x27;n_estimators&#x27;</span>] = <span class="hljs-built_in">int</span>(params[<span class="hljs-string">&#x27;n_estimators&#x27;</span>])  <span class="hljs-comment"># 转换为整数  </span><br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;max_depth&#x27;</span> <span class="hljs-keyword">in</span> params:  <br>        params[<span class="hljs-string">&#x27;max_depth&#x27;</span>] = <span class="hljs-literal">None</span> <span class="hljs-keyword">if</span> params[<span class="hljs-string">&#x27;max_depth&#x27;</span>] &lt; <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-built_in">int</span>(params[<span class="hljs-string">&#x27;max_depth&#x27;</span>])  <br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;min_samples_split&#x27;</span> <span class="hljs-keyword">in</span> params:  <br>        params[<span class="hljs-string">&#x27;min_samples_split&#x27;</span>] = <span class="hljs-built_in">int</span>(params[<span class="hljs-string">&#x27;min_samples_split&#x27;</span>])  <br>    <span class="hljs-keyword">return</span> params  <br><br>rf_params = get_best_params(rf_bo)  <br>gb_params = get_best_params(gb_bo)  <br>ada_params = get_best_params(ada_bo)  <br>lgb_params = get_best_params(lgb_bo)  <br></code></pre></td></tr></table></figure>
+<h2 id="4-6-训练模型"><a href="#4-6-训练模型" class="headerlink" title="4.6. 训练模型"></a>4.6. 训练模型</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 模型训练和验证  </span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">train_and_evaluate</span>(<span class="hljs-params">model, model_name, X_train, y_train, X_val, y_val</span>):  <br>    model.fit(X_train, y_train)  <br>    y_pred = model.predict(X_val)  <br>    y_proba = model.predict_proba(X_val)[:, <span class="hljs-number">1</span>]  <br>    <br>    metrics = &#123;  <br>        <span class="hljs-string">&#x27;Accuracy&#x27;</span>: (y_pred == y_val).mean(),  <br>        <span class="hljs-string">&#x27;AUC&#x27;</span>: roc_auc_score(y_val, y_proba),  <br>        <span class="hljs-string">&#x27;MAE&#x27;</span>: mean_absolute_error(y_val, y_pred),  <br>        <span class="hljs-string">&#x27;MSE&#x27;</span>: mean_squared_error(y_val, y_pred)  <br>    &#125;  <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\n<span class="hljs-subst">&#123;model_name&#125;</span> 验证集评估结果:&quot;</span>)  <br>    <span class="hljs-keyword">for</span> metric, value <span class="hljs-keyword">in</span> metrics.items():  <br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;metric&#125;</span>: <span class="hljs-subst">&#123;value:<span class="hljs-number">.4</span>f&#125;</span>&quot;</span>)  <br>    <br>    <span class="hljs-keyword">return</span> model, metrics <br></code></pre></td></tr></table></figure>
+<h1 id="5-五、模型评估"><a href="#5-五、模型评估" class="headerlink" title="5. 五、模型评估"></a>5. 五、模型评估</h1><h2 id="5-1-随机森林"><a href="#5-1-随机森林" class="headerlink" title="5.1. 随机森林"></a>5.1. 随机森林</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 训练并评估所有模型  </span><br>rf_model, rf_metrics = train_and_evaluate(  <br>    RandomForestClassifier(random_state=<span class="hljs-number">42</span>, **rf_params),  <br>    <span class="hljs-string">&quot;随机森林&quot;</span>,  <br>    X_train, y_train, X_val, y_val  <br>)  <br></code></pre></td></tr></table></figure>
+<h2 id="5-2-梯度提升"><a href="#5-2-梯度提升" class="headerlink" title="5.2. 梯度提升"></a>5.2. 梯度提升</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">gb_model, gb_metrics = train_and_evaluate(  <br>    GradientBoostingClassifier(random_state=<span class="hljs-number">42</span>, **gb_params),  <br>    <span class="hljs-string">&quot;梯度提升&quot;</span>,  <br>    X_train, y_train, X_val, y_val  <br>)  <br></code></pre></td></tr></table></figure>
+<h2 id="5-3-AdaBoost"><a href="#5-3-AdaBoost" class="headerlink" title="5.3. AdaBoost"></a>5.3. AdaBoost</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">ada_model, ada_metrics = train_and_evaluate(  <br>    AdaBoostClassifier(random_state=<span class="hljs-number">42</span>, **ada_params),  <br>    <span class="hljs-string">&quot;AdaBoost&quot;</span>,  <br>    X_train, y_train, X_val, y_val  <br>) <br></code></pre></td></tr></table></figure>
+<h2 id="5-4-LightGBM"><a href="#5-4-LightGBM" class="headerlink" title="5.4. LightGBM"></a>5.4. LightGBM</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">lgb_model, lgb_metrics = train_and_evaluate(  <br>    lgb.LGBMClassifier(random_state=<span class="hljs-number">42</span>, **lgb_params),  <br>    <span class="hljs-string">&quot;LightGBM&quot;</span>,  <br>    X_train, y_train, X_val, y_val  <br>) <br></code></pre></td></tr></table></figure>
+<h2 id="5-5-模型对比与最佳模型选取"><a href="#5-5-模型对比与最佳模型选取" class="headerlink" title="5.5. 模型对比与最佳模型选取"></a>5.5. 模型对比与最佳模型选取</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 汇总所有模型的性能  </span><br>results = pd.DataFrame(&#123;  <br>    <span class="hljs-string">&#x27;RandomForest&#x27;</span>: rf_metrics,  <br>    <span class="hljs-string">&#x27;GradientBoosting&#x27;</span>: gb_metrics,  <br>    <span class="hljs-string">&#x27;AdaBoost&#x27;</span>: ada_metrics,  <br>    <span class="hljs-string">&#x27;LightGBM&#x27;</span>: lgb_metrics  <br>&#125;)  <br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n模型性能对比:&quot;</span>)  <br><span class="hljs-built_in">print</span>(results)  <br><br><span class="hljs-comment"># 选择最佳模型  </span><br>best_model_name = results.idxmax(axis=<span class="hljs-number">1</span>)[<span class="hljs-string">&#x27;AUC&#x27;</span>]  <br>best_models = &#123;  <br>    <span class="hljs-string">&#x27;RandomForest&#x27;</span>: rf_model,  <br>    <span class="hljs-string">&#x27;GradientBoosting&#x27;</span>: gb_model,  <br>    <span class="hljs-string">&#x27;AdaBoost&#x27;</span>: ada_model,  <br>    <span class="hljs-string">&#x27;LightGBM&#x27;</span>: lgb_model  <br>&#125;  <br>best_model = best_models[best_model_name]  <br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\n最优模型是: <span class="hljs-subst">&#123;best_model_name&#125;</span>，AUC: <span class="hljs-subst">&#123;results.loc[<span class="hljs-string">&#x27;AUC&#x27;</span>, best_model_name]:<span class="hljs-number">.4</span>f&#125;</span>&quot;</span>)  <br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">模型性能对比:<br>          RandomForest  GradientBoosting  AdaBoost  LightGBM<br>Accuracy      <span class="hljs-number">0.925694</span>          <span class="hljs-number">0.931111</span>  <span class="hljs-number">0.914583</span>  <span class="hljs-number">0.931528</span><br>AUC           <span class="hljs-number">0.973731</span>          <span class="hljs-number">0.976323</span>  <span class="hljs-number">0.966190</span>  <span class="hljs-number">0.978273</span><br>MAE           <span class="hljs-number">0.074306</span>          <span class="hljs-number">0.068889</span>  <span class="hljs-number">0.085417</span>  <span class="hljs-number">0.068472</span><br>MSE           <span class="hljs-number">0.074306</span>          <span class="hljs-number">0.068889</span>  <span class="hljs-number">0.085417</span>  <span class="hljs-number">0.068472</span><br><br>最优模型是: LightGBM，AUC: <span class="hljs-number">0.9783</span><br></code></pre></td></tr></table></figure>
+<p>选取 LightGBM模型，其AUC: 0.9783</p>
+<h1 id="6-六、预测"><a href="#6-六、预测" class="headerlink" title="6. 六、预测"></a>6. 六、预测</h1><h2 id="6-1-数据处理"><a href="#6-1-数据处理" class="headerlink" title="6.1. 数据处理"></a>6.1. 数据处理</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">data_test = pd.read_csv(<span class="hljs-string">&#x27;202201108_test.csv&#x27;</span>)  <span class="hljs-comment"># 测试集输入 </span><br>data_test = data_test.dropna() <br>data_test = pd.get_dummies(data_test)   <span class="hljs-comment"># 独热编码</span><br><span class="hljs-comment"># 删除重复和无用信息特征  </span><br>columns_to_drop = [<span class="hljs-string">&#x27;信用评分&#x27;</span>, <span class="hljs-string">&#x27;个人教育程度_Master&#x27;</span>, <span class="hljs-string">&#x27;个人性别_male&#x27;</span>, <span class="hljs-string">&#x27;个人教育程度_Associate&#x27;</span>,  <br>                   <span class="hljs-string">&#x27;个人教育程度_Bachelor&#x27;</span>, <span class="hljs-string">&#x27;个人性别_female&#x27;</span>, <span class="hljs-string">&#x27;个人教育程度_Doctorate&#x27;</span>,   <br>                   <span class="hljs-string">&#x27;借记卡余额&#x27;</span>, <span class="hljs-string">&#x27;个人教育程度_High School&#x27;</span>] <br>data_test = data_test.drop(columns_to_drop, axis=<span class="hljs-number">1</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="6-2-预测"><a href="#6-2-预测" class="headerlink" title="6.2. 预测"></a>6.2. 预测</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 测试集预测  </span><br>y_pred = best_model.predict(data_test)  <br><br><span class="hljs-comment"># 保存预测结果  </span><br>predictions = pd.DataFrame(&#123;  <br>    <span class="hljs-comment">#&#x27;最优模型&#x27;: best_model_name,  </span><br>    <span class="hljs-string">&#x27;预测结果&#x27;</span>: y_pred  <br>&#125;)  <br><br>predictions.to_csv(<span class="hljs-string">&#x27;predictions.csv&#x27;</span>, index=<span class="hljs-literal">False</span>)  <br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;预测结果已保存至 predictions.csv&quot;</span>)  <br><br><span class="hljs-comment"># 保存最优模型以便于再次使用  </span><br>dump(best_model, <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;best_model_name&#125;</span>.pkl&quot;</span>)  <br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;best_model_name&#125;</span> 模型已保存为 <span class="hljs-subst">&#123;best_model_name&#125;</span>.pkl&quot;</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="6-3-AUC曲线"><a href="#6-3-AUC曲线" class="headerlink" title="6.3. AUC曲线"></a>6.3. AUC曲线</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"> <span class="hljs-comment"># 绘制AUC曲线</span><br><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> roc_curve, auc<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br><span class="hljs-comment"># 加载最优模型</span><br>best_model = load(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;best_model_name&#125;</span>.pkl&quot;</span>)<br><br><span class="hljs-comment"># 计算验证集的预测概率</span><br>y_pred_proba = best_model.predict_proba(X_val)[:, <span class="hljs-number">1</span>]<br><br><span class="hljs-comment"># 计算ROC曲线</span><br>fpr, tpr, thresholds = roc_curve(y_val, y_pred_proba)<br>roc_auc = auc(fpr, tpr)<br><br><span class="hljs-comment"># 绘制AUC曲线</span><br>plt.figure()<br>plt.plot(fpr, tpr, color=<span class="hljs-string">&#x27;darkorange&#x27;</span>, lw=<span class="hljs-number">2</span>, label=<span class="hljs-string">f&#x27;ROC curve (area = <span class="hljs-subst">&#123;roc_auc:<span class="hljs-number">.2</span>f&#125;</span>)&#x27;</span>)<br>plt.plot([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], color=<span class="hljs-string">&#x27;navy&#x27;</span>, lw=<span class="hljs-number">2</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>)<br>plt.xlim([<span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>])<br>plt.ylim([<span class="hljs-number">0.0</span>, <span class="hljs-number">1.05</span>])<br>plt.xlabel(<span class="hljs-string">&#x27;False Positive Rate&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;True Positive Rate&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Receiver Operating Characteristic&#x27;</span>)<br>plt.legend(loc=<span class="hljs-string">&quot;lower right&quot;</span>)<br>plt.show()<br><br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20250110020654976.png" alt="image-20250110020654976"></p>
+<h2 id="6-4-特征重要性可视化"><a href="#6-4-特征重要性可视化" class="headerlink" title="6.4. 特征重要性可视化"></a>6.4. 特征重要性可视化</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 4. 特征重要性可视化  </span><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(best_model, <span class="hljs-string">&#x27;feature_importances_&#x27;</span>):  <br>    importances = best_model.feature_importances_  <br>    feature_importance = pd.DataFrame(&#123;<span class="hljs-string">&#x27;feature&#x27;</span>: X_train.columns, <span class="hljs-string">&#x27;importance&#x27;</span>: importances&#125;).sort_values(by=<span class="hljs-string">&#x27;importance&#x27;</span>, ascending=<span class="hljs-literal">False</span>)  <br><br>    plt.figure(figsize=(<span class="hljs-number">12</span>, <span class="hljs-number">8</span>))  <br>    sns.barplot(x=<span class="hljs-string">&#x27;importance&#x27;</span>, y=<span class="hljs-string">&#x27;feature&#x27;</span>, data=feature_importance.head(<span class="hljs-number">20</span>))  <br>    plt.title(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;best_model_name&#125;</span> 特征重要性 Top 20&#x27;</span>)  <br>    plt.xlabel(<span class="hljs-string">&#x27;特征重要性&#x27;</span>)  <br>    plt.ylabel(<span class="hljs-string">&#x27;特征名&#x27;</span>)  <br>    plt.tight_layout()  <br>    plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20250110020904.png" alt="image.png"></p>
+<h1 id="7-References"><a href="#7-References" class="headerlink" title="7. References"></a>7. References</h1>
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>信用卡状态</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">图书馆管理系统</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E5%8D%8E%E4%B8%AD%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/">华中科技大学计算机组成原理实验</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%80%E3%80%81%E5%89%8D%E6%9C%9F%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">1. 一、前期工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%AF%BC%E5%85%A5%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 导入库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 数据读取</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BA%8C%E3%80%81%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E4%B8%8E%E6%95%B4%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">2. 二、数据清洗与整理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 缺失值处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E9%9D%9E%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%8B%AC%E7%83%AD%E7%BC%96%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 非数值数据独热编码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%B8%89%E3%80%81%E7%9B%B8%E5%85%B3%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">3. 三、相关性分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E7%83%AD%E5%8A%9B%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 热力图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%88%90%E5%AF%B9%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 成对关系图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%8E%BB%E9%99%A4%E7%9B%B8%E5%85%B3%E6%80%A7%E8%BE%83%E4%BD%8E%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 去除相关性较低的变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%9B%9B%E3%80%81%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B%E5%8F%8A%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">4. 四、模型建立及参数优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 随机森林</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%A2%AF%E5%BA%A6%E6%8F%90%E5%8D%87"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 梯度提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-LightGBM"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. LightGBM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-AdaBoost"><span class="toc-number">4.4.</span> <span class="toc-text">4.4. AdaBoost</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-%E6%8F%90%E5%8F%96%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%9C%80%E4%BD%B3%E5%8F%82%E6%95%B0"><span class="toc-number">4.5.</span> <span class="toc-text">4.5. 提取模型的最佳参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.6.</span> <span class="toc-text">4.6. 训练模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%BA%94%E3%80%81%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="toc-number">5.</span> <span class="toc-text">5. 五、模型评估</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97"><span class="toc-number">5.1.</span> <span class="toc-text">5.1. 随机森林</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E6%A2%AF%E5%BA%A6%E6%8F%90%E5%8D%87"><span class="toc-number">5.2.</span> <span class="toc-text">5.2. 梯度提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-AdaBoost"><span class="toc-number">5.3.</span> <span class="toc-text">5.3. AdaBoost</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-LightGBM"><span class="toc-number">5.4.</span> <span class="toc-text">5.4. LightGBM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94%E4%B8%8E%E6%9C%80%E4%BD%B3%E6%A8%A1%E5%9E%8B%E9%80%89%E5%8F%96"><span class="toc-number">5.5.</span> <span class="toc-text">5.5. 模型对比与最佳模型选取</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%85%AD%E3%80%81%E9%A2%84%E6%B5%8B"><span class="toc-number">6.</span> <span class="toc-text">6. 六、预测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">6.1.</span> <span class="toc-text">6.1. 数据处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E9%A2%84%E6%B5%8B"><span class="toc-number">6.2.</span> <span class="toc-text">6.2. 预测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-AUC%E6%9B%B2%E7%BA%BF"><span class="toc-number">6.3.</span> <span class="toc-text">6.3. AUC曲线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-%E7%89%B9%E5%BE%81%E9%87%8D%E8%A6%81%E6%80%A7%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">6.4.</span> <span class="toc-text">6.4. 特征重要性可视化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-References"><span class="toc-number">7.</span> <span class="toc-text">7. References</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

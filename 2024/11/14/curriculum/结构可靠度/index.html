@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>结构可靠度 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="结构可靠度">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E7%BB%93%E6%9E%84%E5%8F%AF%E9%9D%A0%E5%BA%A6/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="%%谭斌，圆形截面钢拉杆可靠度分析clc;clear;closeall;mu_D=30;%直径均值(mm)sigma_D=3;%直径标准差(mm)mu_r=290;%强度均值(N/mm^2)sigma_r=25;%强度标准差(N/mm^2)F=1e5;%拉力(N)%%中心点法计算fprintf(&amp;#x27;中">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">结构可靠度</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T09:20:32.460Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 谭斌，圆形截面钢拉杆可靠度分析</span><br>clc; clear; close all;<br>mu_D = <span class="hljs-number">30</span>;      <span class="hljs-comment">% 直径均值 (mm)</span><br>sigma_D = <span class="hljs-number">3</span>;    <span class="hljs-comment">% 直径标准差 (mm)</span><br>mu_r = <span class="hljs-number">290</span>;     <span class="hljs-comment">% 强度均值 (N/mm^2)</span><br>sigma_r = <span class="hljs-number">25</span>;   <span class="hljs-comment">% 强度标准差 (N/mm^2)</span><br>F = <span class="hljs-number">1e5</span>;        <span class="hljs-comment">% 拉力 (N)</span><br><br><span class="hljs-comment">%% 中心点法计算</span><br>fprintf(<span class="hljs-string">&#x27;中心点法计算\n&#x27;</span>);<br>mu_Z1 = (<span class="hljs-built_in">pi</span> * mu_D^<span class="hljs-number">2</span> / <span class="hljs-number">4</span>) * mu_r - F;<br>dZ1_dr = <span class="hljs-built_in">pi</span> * mu_D^<span class="hljs-number">2</span> / <span class="hljs-number">4</span>;      <span class="hljs-comment">% ∂Z1/∂r</span><br>dZ1_dD = <span class="hljs-built_in">pi</span> * mu_D * mu_r / <span class="hljs-number">2</span>;  <span class="hljs-comment">% ∂Z1/∂D</span><br>sigma_Z1 = <span class="hljs-built_in">sqrt</span>((dZ1_dr * sigma_r)^<span class="hljs-number">2</span> + (dZ1_dD * sigma_D)^<span class="hljs-number">2</span>);<br>beta1_center = mu_Z1 / sigma_Z1;<br>R1_center = normcdf(beta1_center);<br><br>fprintf(<span class="hljs-string">&#x27;功能函数1: Z = (πD²/4)*r - F\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;  μ_Z1 = %.2f N\n&#x27;</span>, mu_Z1);<br>fprintf(<span class="hljs-string">&#x27;  σ_Z1 = %.2f N\n&#x27;</span>, sigma_Z1);<br>fprintf(<span class="hljs-string">&#x27;  β1 = %.4f\n&#x27;</span>, beta1_center);<br>fprintf(<span class="hljs-string">&#x27;  R1 = %.6f\n\n&#x27;</span>, R1_center);<br><br>mu_Z2 = mu_r - <span class="hljs-number">4</span> * F / (<span class="hljs-built_in">pi</span> * mu_D^<span class="hljs-number">2</span>);<br>dZ2_dr = <span class="hljs-number">1</span>;  <span class="hljs-comment">% ∂Z2/∂r</span><br>dZ2_dD = <span class="hljs-number">8</span> * F / (<span class="hljs-built_in">pi</span> * mu_D^<span class="hljs-number">3</span>);  <span class="hljs-comment">% ∂Z2/∂D</span><br>sigma_Z2 = <span class="hljs-built_in">sqrt</span>((dZ2_dr * sigma_r)^<span class="hljs-number">2</span> + (dZ2_dD * sigma_D)^<span class="hljs-number">2</span>);<br>beta2_center = mu_Z2 / sigma_Z2;<br>R2_center = normcdf(beta2_center);<br><br>fprintf(<span class="hljs-string">&#x27;功能函数2: Z = r - 4F/(πD²)\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;  μ_Z2 = %.3f N/mm²\n&#x27;</span>, mu_Z2);<br>fprintf(<span class="hljs-string">&#x27;  σ_Z2 = %.3f N/mm²\n&#x27;</span>, sigma_Z2);<br>fprintf(<span class="hljs-string">&#x27;  β2 = %.4f\n&#x27;</span>, beta2_center);<br>fprintf(<span class="hljs-string">&#x27;  R2 = %.6f\n\n&#x27;</span>, R2_center);<br><br><span class="hljs-comment">%% JC法计算</span><br>fprintf(<span class="hljs-string">&#x27;JC法计算 \n&#x27;</span>);<br>tol = <span class="hljs-number">1e-6</span>;<br>max_iter = <span class="hljs-number">50</span>;<br><br>fprintf(<span class="hljs-string">&#x27;使用功能函数1进行JC法迭代：\n&#x27;</span>);<br>beta_old = <span class="hljs-number">0</span>;<br>x = [mu_r, mu_D];  <span class="hljs-comment">% [r, D]</span><br>mu = [mu_r, mu_D];<br>sigma = [sigma_r, sigma_D];<br><span class="hljs-keyword">for</span> iter = <span class="hljs-number">1</span>:max_iter<br>    r = x(<span class="hljs-number">1</span>);<br>    D = x(<span class="hljs-number">2</span>);<br>    Z = (<span class="hljs-built_in">pi</span> * D^<span class="hljs-number">2</span> / <span class="hljs-number">4</span>) * r - F;<br>    <span class="hljs-comment">% 梯度计算</span><br>    dZ_dr = <span class="hljs-built_in">pi</span> * D^<span class="hljs-number">2</span> / <span class="hljs-number">4</span>;      <span class="hljs-comment">% ∂Z/∂r</span><br>    dZ_dD = <span class="hljs-built_in">pi</span> * D * r / <span class="hljs-number">2</span>;    <span class="hljs-comment">% ∂Z/∂D</span><br>    grad = [dZ_dr, dZ_dD];<br>    <span class="hljs-comment">% 灵敏度系数α</span><br>    sigma_grad = grad .* sigma;<br>    norm_sigma_grad = norm(sigma_grad);<br>    alpha = -sigma_grad / norm_sigma_grad;<br>    <span class="hljs-comment">% 可靠指标β</span><br>    mu_Z = Z + grad * (mu - x)&#x27;;<br>    sigma_Z = norm_sigma_grad;<br>    <span class="hljs-built_in">beta</span> = mu_Z / sigma_Z;<br>    <span class="hljs-comment">% 更新设计点</span><br>    x = mu + <span class="hljs-built_in">beta</span> * (sigma .* alpha);<br>    <span class="hljs-comment">% 检查收敛</span><br>    <span class="hljs-keyword">if</span> iter &gt; <span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">abs</span>(<span class="hljs-built_in">beta</span> - beta_old) &lt; tol<br>        fprintf(<span class="hljs-string">&#x27;  迭代 %d: β=%.6f, 收敛！\n&#x27;</span>, iter, <span class="hljs-built_in">beta</span>);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">end</span><br>    beta_old = <span class="hljs-built_in">beta</span>;<br>    <span class="hljs-keyword">if</span> iter &lt;= <span class="hljs-number">5</span>  <span class="hljs-comment">% 显示前5次迭代</span><br>        fprintf(<span class="hljs-string">&#x27;  迭代 %d: β=%.6f, r*=%.3f, D*=%.3f\n&#x27;</span>, iter, <span class="hljs-built_in">beta</span>, x(<span class="hljs-number">1</span>), x(<span class="hljs-number">2</span>));<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">if</span> iter == max_iter<br>        fprintf(<span class="hljs-string">&#x27;  警告：达到最大迭代次数！\n&#x27;</span>);<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br>beta_JC = <span class="hljs-built_in">beta</span>;<br>R_JC = normcdf(beta_JC);<br>design_point = x;<br><br>fprintf(<span class="hljs-string">&#x27;\nJC法最终结果：\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;  可靠指标 β = %.6f\n&#x27;</span>, beta_JC);<br>fprintf(<span class="hljs-string">&#x27;  可靠度 R = %.6f\n&#x27;</span>, R_JC);<br>fprintf(<span class="hljs-string">&#x27;  设计点：r* = %.3f N/mm², D* = %.3f mm\n&#x27;</span>,design_point(<span class="hljs-number">1</span>), design_point(<span class="hljs-number">2</span>));<br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs txt">中心点法计算<br>功能函数1: Z = (πD²/4)*r - F<br>  μ_Z1 = 104988.92 N<br>  σ_Z1 = 44644.13 N<br>  β1 = 2.3517<br>  R1 = 0.990656<br><br>功能函数2: Z = r - 4F/(πD²)<br>  μ_Z2 = 148.529 N/mm²<br>  σ_Z2 = 37.757 N/mm²<br>  β2 = 3.9339<br>  R2 = 0.999958<br><br>JC法计算 <br>使用功能函数1进行JC法迭代：<br>  迭代 1: β=2.351685, r*=266.728, D*=23.521<br>  迭代 2: β=2.852905, r*=265.402, D*=21.966<br>  迭代 3: β=2.872293, r*=266.589, D*=21.854<br>  迭代 4: β=2.872213, r*=266.790, D*=21.846<br>  迭代 5: β=2.872212, r*=266.814, D*=21.845<br>  迭代 6: β=2.872212, 收敛！<br><br>JC法最终结果：<br>  可靠指标 β = 2.872212<br>  可靠度 R = 0.997962<br>  设计点：r* = 266.816 N/mm², D* = 21.845 mm<br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 谭斌，粒状土抗剪强度可靠度分析（中心点法）</span><br>clc; clear; close all;<br><br><span class="hljs-comment">%% 数据输入</span><br>tau = <span class="hljs-number">55</span>;           <span class="hljs-comment">% 剪切应力 (kPa)</span><br>mu_w = <span class="hljs-number">110</span>;         <span class="hljs-comment">% 法向应力均值 (kPa)</span><br>sigma_w = <span class="hljs-number">25</span>;       <span class="hljs-comment">% 法向应力标准差 (kPa)</span><br>mu_phi_deg = <span class="hljs-number">35</span>;    <span class="hljs-comment">% 摩擦角均值 (度)</span><br>sigma_phi_deg = <span class="hljs-number">5</span>;  <span class="hljs-comment">% 摩擦角标准差 (度)</span><br>mu_phi = deg2rad(mu_phi_deg);       <span class="hljs-comment">% 弧度</span><br>sigma_phi = deg2rad(sigma_phi_deg); <span class="hljs-comment">% 弧度</span><br><br>fprintf(<span class="hljs-string">&#x27;中心点法计算\n&#x27;</span>);<br>Z_mu = mu_w * <span class="hljs-built_in">tan</span>(mu_phi) - tau;<br>dZ_dw = <span class="hljs-built_in">tan</span>(mu_phi);<br>dZ_dphi = mu_w * (<span class="hljs-number">1</span>/<span class="hljs-built_in">cos</span>(mu_phi)^<span class="hljs-number">2</span>);<br>mu_Z = Z_mu;<br>sigma_Z = <span class="hljs-built_in">sqrt</span>((dZ_dw * sigma_w)^<span class="hljs-number">2</span> + (dZ_dphi * sigma_phi)^<span class="hljs-number">2</span>);<br><span class="hljs-comment">% 计算可靠指标 β</span><br><span class="hljs-built_in">beta</span> = mu_Z / sigma_Z;<br><span class="hljs-comment">% 计算失效概率 p_f</span><br>p_f = normcdf(-<span class="hljs-built_in">beta</span>);<br>R = normcdf(<span class="hljs-built_in">beta</span>);<br><br>fprintf(<span class="hljs-string">&#x27;失效概率与可靠度：\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;  可靠指标 β = %.4f\n&#x27;</span>, <span class="hljs-built_in">beta</span>);<br>fprintf(<span class="hljs-string">&#x27;  可靠度 R = Φ(β) = Φ(%.4f) = %.6f\n&#x27;</span>, <span class="hljs-built_in">beta</span>, R);<br>fprintf(<span class="hljs-string">&#x27;  失效概率 p_f = Φ(-β) = Φ(%.4f) = %.6f\n&#x27;</span>, -<span class="hljs-built_in">beta</span>, p_f);<br>fprintf(<span class="hljs-string">&#x27;  验证：p_f + R = %.6f + %.6f = %.6f ≈ 1\n&#x27;</span>, p_f, R, p_f+R);<br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs txt">中心点法计算<br>失效概率与可靠度：<br>  可靠指标 β = 0.9742<br>  可靠度 R = Φ(β) = Φ(0.9742) = 0.835009<br>  失效概率 p_f = Φ(-β) = Φ(-0.9742) = 0.164991<br>  验证：p_f + R = 0.164991 + 0.835009 = 1.000000 ≈ 1<br>&gt;&gt; <br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 谭斌 钢梁抗弯可靠度分析（JC法）</span><br>clc; clear; close all;<br>M = <span class="hljs-number">138</span>;            <span class="hljs-comment">% 弯矩 (kN·m)</span><br>mu_W = <span class="hljs-number">900e-6</span>;      <span class="hljs-comment">% 截面模量均值 (m³)</span><br>delta_W = <span class="hljs-number">0.05</span>;     <span class="hljs-comment">% W的变异系数</span><br>mu_f = <span class="hljs-number">265e6</span>;       <span class="hljs-comment">% 强度均值 (Pa)</span><br>delta_f = <span class="hljs-number">0.1</span>;      <span class="hljs-comment">% f的变异系数</span><br>sigma_W = mu_W * delta_W;<br>sigma_Y = <span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">log</span>(<span class="hljs-number">1</span> + delta_f^<span class="hljs-number">2</span>));<br>mu_Y = <span class="hljs-built_in">log</span>(mu_f) - sigma_Y^<span class="hljs-number">2</span>/<span class="hljs-number">2</span>;<br><br><span class="hljs-comment">%% JC法迭代计算</span><br>fprintf(<span class="hljs-string">&#x27;JC法迭代计算\n&#x27;</span>);<br>tol = <span class="hljs-number">1e-6</span>;<br>max_iter = <span class="hljs-number">50</span>;<br>x = [mu_f, mu_W];      <span class="hljs-comment">% 设计点 [f, W]</span><br>mu = [mu_f, mu_W];<br>beta_old = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> iter = <span class="hljs-number">1</span>:max_iter<br>    <span class="hljs-comment">% 当前设计点</span><br>    f_current = x(<span class="hljs-number">1</span>);<br>    W_current = x(<span class="hljs-number">2</span>);<br>    M_Nm = M * <span class="hljs-number">1000</span>;<br>    <span class="hljs-comment">% 功能函数和梯度</span><br>    Z = f_current * W_current - M_Nm;<br>    grad = [W_current, f_current];  <span class="hljs-comment">% [∂Z/∂f, ∂Z/∂W]</span><br>    <span class="hljs-comment">% 当量正态化（对对数正态变量f）</span><br>    u_f = (<span class="hljs-built_in">log</span>(f_current) - mu_Y) / sigma_Y;<br>    F_f = normcdf(u_f);<br>    f_f = (<span class="hljs-number">1</span>/(f_current*sigma_Y*<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>))) * <span class="hljs-built_in">exp</span>(<span class="hljs-number">-0.5</span>*u_f^<span class="hljs-number">2</span>);<br>    sigma_f_eq = normpdf(norminv(F_f)) / f_f;<br>    mu_f_eq = f_current - sigma_f_eq * norminv(F_f);<br>    <span class="hljs-comment">% 当量正态化参数</span><br>    mu_eq = [mu_f_eq, mu_W];<br>    sigma_eq = [sigma_f_eq, sigma_W];<br>    <span class="hljs-comment">% 灵敏度系数和可靠指标</span><br>    sigma_grad = grad .* sigma_eq;<br>    norm_sigma_grad = norm(sigma_grad);<br>    alpha = -sigma_grad / norm_sigma_grad;<br>    mu_Z = Z + grad * (mu_eq - x)&#x27;;<br>    sigma_Z = norm_sigma_grad;<br>    <span class="hljs-built_in">beta</span> = mu_Z / sigma_Z;<br>    <span class="hljs-comment">% 更新设计点</span><br>    x = mu_eq + <span class="hljs-built_in">beta</span> * (sigma_eq .* alpha);<br>    fprintf(<span class="hljs-string">&#x27;迭代 %2d: β=%.6f, f*=%.1f MPa, W*=%.3e m³\n&#x27;</span>, iter, <span class="hljs-built_in">beta</span>, x(<span class="hljs-number">1</span>)/<span class="hljs-number">1e6</span>, x(<span class="hljs-number">2</span>));<br><br>    <span class="hljs-comment">% 检查收敛</span><br>    <span class="hljs-keyword">if</span> iter &gt; <span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">abs</span>(<span class="hljs-built_in">beta</span> - beta_old) &lt; tol<br>        fprintf(<span class="hljs-string">&#x27;\n收敛于迭代 %d 次\n&#x27;</span>, iter);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">end</span><br><br>    beta_old = <span class="hljs-built_in">beta</span>;<br><br>    <span class="hljs-keyword">if</span> iter == max_iter<br>        fprintf(<span class="hljs-string">&#x27;警告：达到最大迭代次数！\n&#x27;</span>);<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-comment">%% 最终结果</span><br>fprintf(<span class="hljs-string">&#x27;\n最终结果\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;可靠指标: β = %.6f\n&#x27;</span>, <span class="hljs-built_in">beta</span>);<br>fprintf(<span class="hljs-string">&#x27;失效概率: P_f = Φ(-β) = %.6e\n&#x27;</span>, normcdf(-<span class="hljs-built_in">beta</span>));<br>fprintf(<span class="hljs-string">&#x27;可靠度: R = 1 - P_f = %.6f\n\n&#x27;</span>, <span class="hljs-number">1</span> - normcdf(-<span class="hljs-built_in">beta</span>));<br>fprintf(<span class="hljs-string">&#x27;设计点（最可能失效点）：\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;  钢材强度 f* = %.1f MPa\n&#x27;</span>, x(<span class="hljs-number">1</span>)/<span class="hljs-number">1e6</span>);<br>fprintf(<span class="hljs-string">&#x27;  截面模量 W* = %.3e m³\n&#x27;</span>, x(<span class="hljs-number">2</span>));<br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs txt">JC法迭代计算<br>迭代  1: β=3.731892, f*=175.5 MPa, W*=8.247e-04 m³<br>迭代  2: β=4.792922, f*=173.3 MPa, W*=7.965e-04 m³<br>迭代  3: β=4.796909, f*=173.9 MPa, W*=7.936e-04 m³<br>迭代  4: β=4.796847, f*=174.0 MPa, W*=7.933e-04 m³<br>迭代  5: β=4.796846, f*=174.0 MPa, W*=7.933e-04 m³<br><br>收敛于迭代 5 次<br><br>最终结果<br>可靠指标: β = 4.796846<br>失效概率: P_f = Φ(-β) = 8.059160e-07<br>可靠度: R = 1 - P_f = 0.999999<br><br>设计点（最可能失效点）：<br>  钢材强度 f* = 174.0 MPa<br>  截面模量 W* = 7.933e-04 m³<br>&gt;&gt; <br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 谭斌 钢筋混凝土受压短柱可靠度设计</span><br>clc; clear; close all;<br>fprintf(<span class="hljs-string">&#x27;钢筋混凝土受压短柱可靠度设计（JC法\n&#x27;</span>);<br>beta_target = <span class="hljs-number">3.7</span>;<br>mu_G = <span class="hljs-number">636</span>;      <span class="hljs-comment">% kN</span><br>sigma_G = <span class="hljs-number">0.07</span>;  <span class="hljs-comment">% kN</span><br>mu_Q = <span class="hljs-number">840</span>;      <span class="hljs-comment">% kN</span><br>delta_Q = <span class="hljs-number">0.29</span>;<br>sigma_Q = mu_Q * delta_Q;  <span class="hljs-comment">% kN</span><br>delta_R = <span class="hljs-number">0.18</span>;<br><br><span class="hljs-comment">%% 改进的JC法迭代求解μ_R</span><br>fprintf(<span class="hljs-string">&#x27;JC法迭代求解μ_R\n&#x27;</span>);<br>alpha_Q = <span class="hljs-number">1.28255</span> / sigma_Q;<br>u_Q = mu_Q - <span class="hljs-number">0.57722</span> / alpha_Q;<br>tol = <span class="hljs-number">1e-4</span>;<br>max_iter = <span class="hljs-number">50</span>;<br><span class="hljs-comment">% 确定μ_R的搜索范围</span><br>mu_R_low = mu_G + mu_Q;  <span class="hljs-comment">% 下限：至少大于恒载+活载</span><br>mu_R_high = <span class="hljs-number">2</span> * (mu_G + mu_Q) * (<span class="hljs-number">1</span> + <span class="hljs-number">5</span>*beta_target*delta_R);  <span class="hljs-comment">% 上限</span><br>fprintf(<span class="hljs-string">&#x27;搜索范围: μ_R ∈ [%.0f, %.0f] kN\n\n&#x27;</span>, mu_R_low, mu_R_high);<br><br><span class="hljs-comment">% 记录迭代过程</span><br>mu_R_history = [];<br>beta_history = [];<br><br><span class="hljs-keyword">for</span> iter = <span class="hljs-number">1</span>:max_iter<br>    <span class="hljs-comment">% 当前μ_R（使用二分法）</span><br>    mu_R_current = (mu_R_low + mu_R_high) / <span class="hljs-number">2</span>;<br><br>    <span class="hljs-comment">% 对于给定的μ_R，使用JC法计算实际β</span><br>    sigma_R = mu_R_current * delta_R;<br><br>    <span class="hljs-comment">% 对数正态分布参数</span><br>    sigma_Y_R = <span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">log</span>(<span class="hljs-number">1</span> + delta_R^<span class="hljs-number">2</span>));<br>    mu_Y_R = <span class="hljs-built_in">log</span>(mu_R_current) - sigma_Y_R^<span class="hljs-number">2</span>/<span class="hljs-number">2</span>;<br><br>    <span class="hljs-comment">% 初始化设计点</span><br>    x = [mu_R_current, mu_G, mu_Q];<br><br>    <span class="hljs-comment">% JC法内层迭代（设计点迭代）</span><br>    <span class="hljs-keyword">for</span> inner = <span class="hljs-number">1</span>:<span class="hljs-number">10</span><br>        R = x(<span class="hljs-number">1</span>);<br>        G = x(<span class="hljs-number">2</span>);<br>        Q = x(<span class="hljs-number">3</span>);<br><br>        <span class="hljs-comment">% 功能函数</span><br>        Z = R - G - Q;<br>        grad = [<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>];<br><br>        <span class="hljs-comment">% 当量正态化：R（对数正态）</span><br>        u_R = (<span class="hljs-built_in">log</span>(R) - mu_Y_R) / sigma_Y_R;<br>        F_R = normcdf(u_R);<br>        f_R = (<span class="hljs-number">1</span>/(R*sigma_Y_R*<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>))) * <span class="hljs-built_in">exp</span>(<span class="hljs-number">-0.5</span>*u_R^<span class="hljs-number">2</span>);<br>        sigma_R_eq = normpdf(norminv(F_R)) / f_R;<br>        mu_R_eq = R - sigma_R_eq * norminv(F_R);<br><br>        <span class="hljs-comment">% 当量正态化：Q（极值I型）</span><br>        F_Q = <span class="hljs-built_in">exp</span>(-<span class="hljs-built_in">exp</span>(-alpha_Q*(Q - u_Q)));<br>        f_Q = alpha_Q * <span class="hljs-built_in">exp</span>(-alpha_Q*(Q - u_Q)) * F_Q;<br>        sigma_Q_eq = normpdf(norminv(F_Q)) / f_Q;<br>        mu_Q_eq = Q - sigma_Q_eq * norminv(F_Q);<br><br>        <span class="hljs-comment">% G是正态分布，参数不变</span><br>        mu_G_eq = mu_G;<br>        sigma_G_eq = sigma_G;<br><br>        <span class="hljs-comment">% 当量正态化参数</span><br>        mu_eq = [mu_R_eq, mu_G_eq, mu_Q_eq];<br>        sigma_eq = [sigma_R_eq, sigma_G_eq, sigma_Q_eq];<br><br>        <span class="hljs-comment">% 计算β</span><br>        sigma_grad = grad .* sigma_eq;<br>        norm_sigma_grad = norm(sigma_grad);<br>        alpha = -sigma_grad / norm_sigma_grad;<br><br>        mu_Z = Z + grad * (mu_eq - x)&#x27;;<br>        sigma_Z = norm_sigma_grad;<br>        beta_current = mu_Z / sigma_Z;<br><br>        <span class="hljs-comment">% 更新设计点</span><br>        x_new = mu_eq + beta_current * (sigma_eq .* alpha);<br><br>        <span class="hljs-comment">% 检查内层收敛</span><br>        <span class="hljs-keyword">if</span> norm(x_new - x) &lt; <span class="hljs-number">1e-6</span><br>            x = x_new;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">end</span><br>        x = x_new;<br>    <span class="hljs-keyword">end</span><br><br>    <span class="hljs-comment">% 记录结果</span><br>    mu_R_history(<span class="hljs-keyword">end</span>+<span class="hljs-number">1</span>) = mu_R_current;<br>    beta_history(<span class="hljs-keyword">end</span>+<span class="hljs-number">1</span>) = beta_current;<br><br>    fprintf(<span class="hljs-string">&#x27;迭代 %2d: μ_R = %.1f kN, β = %.6f\n&#x27;</span>, iter, mu_R_current, beta_current);<br><br>    <span class="hljs-comment">% 检查是否达到目标β</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">abs</span>(beta_current - beta_target) &lt; tol<br>        fprintf(<span class="hljs-string">&#x27;\n收敛于迭代 %d 次\n&#x27;</span>, iter);<br>        mu_R_final = mu_R_current;<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">end</span><br><br>    <span class="hljs-comment">% 根据β的差异调整搜索区间</span><br>    <span class="hljs-keyword">if</span> beta_current &lt; beta_target<br>        mu_R_low = mu_R_current;  <span class="hljs-comment">% β太小，需要增加μ_R</span><br>    <span class="hljs-keyword">else</span><br>        mu_R_high = mu_R_current;  <span class="hljs-comment">% β太大，需要减小μ_R</span><br>    <span class="hljs-keyword">end</span><br><br>    <span class="hljs-keyword">if</span> iter == max_iter<br>        fprintf(<span class="hljs-string">&#x27;\n达到最大迭代次数，取最接近的值\n&#x27;</span>);<br>        <span class="hljs-comment">% 找到最接近目标β的μ_R</span><br>        [~, idx] = <span class="hljs-built_in">min</span>(<span class="hljs-built_in">abs</span>(beta_history - beta_target));<br>        mu_R_final = mu_R_history(idx);<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-comment">%% 输出最终结果</span><br>fprintf(<span class="hljs-string">&#x27;\n最终结果\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;当β_target = %.1f时，所需的抗力平均值为：\n&#x27;</span>, beta_target);<br>fprintf(<span class="hljs-string">&#x27;μ_R = %.1f kN\n\n&#x27;</span>, mu_R_final);<br><br><span class="hljs-comment">% 计算最终设计点</span><br>sigma_R_final = mu_R_final * delta_R;<br>sigma_Y_R = <span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">log</span>(<span class="hljs-number">1</span> + delta_R^<span class="hljs-number">2</span>));<br>mu_Y_R = <span class="hljs-built_in">log</span>(mu_R_final) - sigma_Y_R^<span class="hljs-number">2</span>/<span class="hljs-number">2</span>;<br><br><span class="hljs-comment">% 使用JC法计算设计点</span><br>x_final = [mu_R_final, mu_G, mu_Q];<br><span class="hljs-keyword">for</span> inner = <span class="hljs-number">1</span>:<span class="hljs-number">10</span><br>    R = x_final(<span class="hljs-number">1</span>); G = x_final(<span class="hljs-number">2</span>); Q = x_final(<span class="hljs-number">3</span>);<br><br>    <span class="hljs-comment">% 当量正态化</span><br>    u_R = (<span class="hljs-built_in">log</span>(R) - mu_Y_R) / sigma_Y_R;<br>    F_R = normcdf(u_R);<br>    f_R = (<span class="hljs-number">1</span>/(R*sigma_Y_R*<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>))) * <span class="hljs-built_in">exp</span>(<span class="hljs-number">-0.5</span>*u_R^<span class="hljs-number">2</span>);<br>    sigma_R_eq = normpdf(norminv(F_R)) / f_R;<br>    mu_R_eq = R - sigma_R_eq * norminv(F_R);<br><br>    F_Q = <span class="hljs-built_in">exp</span>(-<span class="hljs-built_in">exp</span>(-alpha_Q*(Q - u_Q)));<br>    f_Q = alpha_Q * <span class="hljs-built_in">exp</span>(-alpha_Q*(Q - u_Q)) * F_Q;<br>    sigma_Q_eq = normpdf(norminv(F_Q)) / f_Q;<br>    mu_Q_eq = Q - sigma_Q_eq * norminv(F_Q);<br><br>    mu_eq = [mu_R_eq, mu_G, mu_Q_eq];<br>    sigma_eq = [sigma_R_eq, sigma_G, sigma_Q_eq];<br><br>    Z = R - G - Q;<br>    grad = [<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>];<br>    sigma_grad = grad .* sigma_eq;<br>    norm_sigma_grad = norm(sigma_grad);<br>    alpha = -sigma_grad / norm_sigma_grad;<br><br>    mu_Z = Z + grad * (mu_eq - x_final)&#x27;;<br>    sigma_Z = norm_sigma_grad;<br>    beta_final = mu_Z / sigma_Z;<br><br>    x_final = mu_eq + beta_final * (sigma_eq .* alpha);<br><span class="hljs-keyword">end</span><br><br>fprintf(<span class="hljs-string">&#x27;设计点（最可能失效点）：\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;  R* = %.1f kN\n&#x27;</span>, x_final(<span class="hljs-number">1</span>));<br>fprintf(<span class="hljs-string">&#x27;  G* = %.2f kN\n&#x27;</span>, x_final(<span class="hljs-number">2</span>));<br>fprintf(<span class="hljs-string">&#x27;  Q* = %.1f kN\n&#x27;</span>, x_final(<span class="hljs-number">3</span>));<br>fprintf(<span class="hljs-string">&#x27;  验证: R* - G* - Q* = %.2e ≈ 0\n&#x27;</span>, x_final(<span class="hljs-number">1</span>)-x_final(<span class="hljs-number">2</span>)-x_final(<span class="hljs-number">3</span>));<br>fprintf(<span class="hljs-string">&#x27;  实际可靠指标: β = %.6f\n\n&#x27;</span>, beta_final);<br><br><span class="hljs-comment">%% 计算受压钢筋面积</span><br>fprintf(<span class="hljs-string">&#x27;计算受压钢筋面积\n&#x27;</span>);<br>b = <span class="hljs-number">400</span>;    <span class="hljs-comment">% mm</span><br>h = <span class="hljs-number">400</span>;    <span class="hljs-comment">% mm</span><br>K_R = <span class="hljs-number">1.33</span>;<br>f_c = <span class="hljs-number">14.3</span>;  <span class="hljs-comment">% C30混凝土 (N/mm²)</span><br>f_y = <span class="hljs-number">360</span>;   <span class="hljs-comment">% HRB400钢筋 (N/mm²)</span><br><br><span class="hljs-comment">% 计算设计抗力和钢筋面积</span><br>R_d = mu_R_final / K_R;<br>A_c = b * h;<br>N_c = <span class="hljs-number">0.9</span> * f_c * A_c / <span class="hljs-number">1000</span>;<br>N_s = R_d - N_c;<br>A_s = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, N_s * <span class="hljs-number">1000</span> / (<span class="hljs-number">0.9</span> * f_y));<br><br>fprintf(<span class="hljs-string">&#x27;截面尺寸: %d×%d mm\n&#x27;</span>, b, h);<br>fprintf(<span class="hljs-string">&#x27;设计抗力: R_d = μ_R/K_R = %.1f/%.2f = %.1f kN\n&#x27;</span>, mu_R_final, K_R, R_d);<br>fprintf(<span class="hljs-string">&#x27;混凝土承载力: N_c = 0.9×%.1f×%d/1000 = %.1f kN\n&#x27;</span>, f_c, A_c, N_c);<br>fprintf(<span class="hljs-string">&#x27;需要钢筋承担的荷载: N_s = %.1f - %.1f = %.1f kN\n&#x27;</span>, R_d, N_c, N_s);<br><br><span class="hljs-keyword">if</span> A_s &gt; <span class="hljs-number">0</span><br>    fprintf(<span class="hljs-string">&#x27;受压钢筋面积: A_s = %.1f×1000/(0.9×%.0f) = %.0f mm²\n&#x27;</span>, N_s, f_y, A_s);<br>    <span class="hljs-comment">% 钢筋配置</span><br>    d = <span class="hljs-number">20</span>;  <span class="hljs-comment">% 假设直径20mm</span><br>    A_s_one = <span class="hljs-built_in">pi</span> * d^<span class="hljs-number">2</span> / <span class="hljs-number">4</span>;<br>    n = <span class="hljs-built_in">ceil</span>(A_s / A_s_one);<br>    fprintf(<span class="hljs-string">&#x27;可选择 %dΦ%d (A_s = %d×%.1f = %.0f mm²)\n&#x27;</span>, n, d, n, A_s_one, n*A_s_one);<br>    fprintf(<span class="hljs-string">&#x27;配筋率: ρ = %.2f%%\n&#x27;</span>, (n*A_s_one)/A_c*<span class="hljs-number">100</span>);<br><span class="hljs-keyword">else</span><br>    fprintf(<span class="hljs-string">&#x27;按构造配筋: A_s_min = 0.006×%d = %.0f mm²\n&#x27;</span>, A_c, <span class="hljs-number">0.006</span>*A_c);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs txt">钢筋混凝土受压短柱可靠度设计（JC法<br>JC法迭代求解μ_R<br>搜索范围: μ_R ∈ [1476, 12782] kN<br><br>迭代  1: μ_R = 7129.1 kN, β = 5.697893<br>迭代  2: μ_R = 4302.5 kN, β = 4.010849<br>迭代  3: μ_R = 2889.3 kN, β = 2.651828<br>迭代  4: μ_R = 3595.9 kN, β = 3.407055<br>迭代  5: μ_R = 3949.2 kN, β = 3.723581<br>迭代  6: μ_R = 3772.6 kN, β = 3.569393<br>迭代  7: μ_R = 3860.9 kN, β = 3.647448<br>迭代  8: μ_R = 3905.1 kN, β = 3.685748<br>迭代  9: μ_R = 3927.1 kN, β = 3.704722<br>迭代 10: μ_R = 3916.1 kN, β = 3.695249<br>迭代 11: μ_R = 3921.6 kN, β = 3.699989<br><br>收敛于迭代 11 次<br><br>最终结果<br>当β_target = 3.7时，所需的抗力平均值为：<br>μ_R = 3921.6 kN<br><br>设计点（最可能失效点）：<br>  R* = 2595.1 kN<br>  G* = 636.00 kN<br>  Q* = 1959.1 kN<br>  验证: R* - G* - Q* = -6.82e-13 ≈ 0<br>  实际可靠指标: β = 3.699989<br><br>计算受压钢筋面积<br>截面尺寸: 400×400 mm<br>设计抗力: R_d = μ_R/K_R = 3921.6/1.33 = 2948.6 kN<br>混凝土承载力: N_c = 0.9×14.3×160000/1000 = 2059.2 kN<br>需要钢筋承担的荷载: N_s = 2948.6 - 2059.2 = 889.4 kN<br>受压钢筋面积: A_s = 889.4×1000/(0.9×360) = 2745 mm²<br>可选择 9Φ20 (A_s = 9×314.2 = 2827 mm²)<br>配筋率: ρ = 1.77%<br>&gt;&gt; <br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">clear; clc;<br><br><span class="hljs-comment">%% 给定参数</span><br>fprintf(<span class="hljs-string">&#x27;===== 蒙特卡洛法计算结构构件可靠度 =====\n&#x27;</span>);<br><br><span class="hljs-comment">% 各随机变量的均值和标准差</span><br>mu_x1 = <span class="hljs-number">25</span>;<br>sigma_x1 = <span class="hljs-number">5.75</span>;<br><br>mu_x2 = <span class="hljs-number">0.0113</span>;<br>sigma_x2 = <span class="hljs-number">0.00339</span>;<br><br>mu_x3 = <span class="hljs-number">0.0006</span>;<br>sigma_x3 = <span class="hljs-number">0.00018</span>;<br><br>mu_x4 = <span class="hljs-number">0</span>;<br>sigma_x4 = <span class="hljs-number">0.1</span>;<br><br><span class="hljs-comment">% 极限状态方程：Z = 1 - x1*x2 - x1^2*x3 - x4</span><br><br><span class="hljs-comment">%% 蒙特卡洛模拟参数设置</span><br>N = <span class="hljs-number">1000000</span>;  <span class="hljs-comment">% 模拟次数</span><br>failure_count = <span class="hljs-number">0</span>;  <span class="hljs-comment">% 失效次数计数器</span><br><br>fprintf(<span class="hljs-string">&#x27;开始蒙特卡洛模拟，样本量：%d\n&#x27;</span>, N);<br><br><span class="hljs-comment">% 为了监控进度，设置进度显示间隔</span><br>progress_interval = <span class="hljs-built_in">floor</span>(N/<span class="hljs-number">10</span>);<br><br><span class="hljs-comment">%% 生成随机样本并进行模拟</span><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:N<br>    <span class="hljs-comment">% 1. 生成x1（对数正态分布）</span><br>    <span class="hljs-comment">% 计算对数正态分布的对数空间参数</span><br>    mu_lnx1 = <span class="hljs-built_in">log</span>(mu_x1^<span class="hljs-number">2</span> / <span class="hljs-built_in">sqrt</span>(sigma_x1^<span class="hljs-number">2</span> + mu_x1^<span class="hljs-number">2</span>));<br>    sigma_lnx1 = <span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">log</span>(<span class="hljs-number">1</span> + (sigma_x1^<span class="hljs-number">2</span> / mu_x1^<span class="hljs-number">2</span>)));<br>    x1 = lognrnd(mu_lnx1, sigma_lnx1);<br>    <span class="hljs-comment">% 2. 生成x2（正态分布）</span><br>    x2 = normrnd(mu_x2, sigma_x2);<br>    <span class="hljs-comment">% 3. 生成x3（正态分布）</span><br>    x3 = normrnd(mu_x3, sigma_x3);<br>    <span class="hljs-comment">% 4. 生成x4（正态分布）</span><br>    x4 = normrnd(mu_x4, sigma_x4);<br><br>    <span class="hljs-comment">% 5. 计算极限状态函数值</span><br>    Z = <span class="hljs-number">1</span> - x1*x2 - x1^<span class="hljs-number">2</span>*x3 - x4;<br>    <span class="hljs-comment">% 6. 判断是否失效</span><br>    <span class="hljs-keyword">if</span> Z &lt;= <span class="hljs-number">0</span><br>        failure_count = failure_count + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-comment">% 显示进度</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">mod</span>(<span class="hljs-built_in">i</span>, progress_interval) == <span class="hljs-number">0</span><br>        fprintf(<span class="hljs-string">&#x27;  进度：%d/%d (%.0f%%)\n&#x27;</span>, <span class="hljs-built_in">i</span>, N, <span class="hljs-built_in">i</span>/N*<span class="hljs-number">100</span>);<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-comment">%% 计算失效概率和可靠指标</span><br>Pf = failure_count / N;  <span class="hljs-comment">% 失效概率</span><br><span class="hljs-built_in">beta</span> = -norminv(Pf);     <span class="hljs-comment">% 可靠指标</span><br><br><span class="hljs-comment">%% 结果输出</span><br>fprintf(<span class="hljs-string">&#x27;\n===== 模拟结果 =====\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;总样本数：%d\n&#x27;</span>, N);<br>fprintf(<span class="hljs-string">&#x27;失效次数：%d\n&#x27;</span>, failure_count);<br>fprintf(<span class="hljs-string">&#x27;失效概率 Pf = %.6f\n&#x27;</span>, Pf);<br>fprintf(<span class="hljs-string">&#x27;可靠指标 β = %.4f\n&#x27;</span>, <span class="hljs-built_in">beta</span>);<br>fprintf(<span class="hljs-string">&#x27;可靠度 = %.6f\n&#x27;</span>, <span class="hljs-number">1</span>-Pf);<br></code></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><code class="hljs abnf"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span> 蒙特卡洛法计算结构构件可靠度 <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>开始蒙特卡洛模拟，样本量：<span class="hljs-number">1000000</span><br>  进度：<span class="hljs-number">100000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">10</span>%)<br>  进度：<span class="hljs-number">200000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">20</span>%)<br>  进度：<span class="hljs-number">300000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">30</span>%)<br>  进度：<span class="hljs-number">400000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">40</span>%)<br>  进度：<span class="hljs-number">500000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">50</span>%)<br>  进度：<span class="hljs-number">600000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">60</span>%)<br>  进度：<span class="hljs-number">700000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">70</span>%)<br>  进度：<span class="hljs-number">800000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">80</span>%)<br>  进度：<span class="hljs-number">900000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">90</span>%)<br>  进度：<span class="hljs-number">1000000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">100</span>%)<br><br><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span> 模拟结果 <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>总样本数：<span class="hljs-number">1000000</span><br>失效次数：<span class="hljs-number">136681</span><br>失效概率 Pf <span class="hljs-operator">=</span> <span class="hljs-number">0.136681</span><br>可靠指标 β <span class="hljs-operator">=</span> <span class="hljs-number">1.0954</span><br>可靠度 <span class="hljs-operator">=</span> <span class="hljs-number">0.863319</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 钢筋混凝土框架底层柱可靠度分析（蒙特卡洛法）</span><br>clear; clc;<br><br><span class="hljs-comment">%% 已知参数</span><br><br><span class="hljs-comment">% R: 抗力，对数正态分布</span><br>mu_R = <span class="hljs-number">8.5</span>;<br>delta_R = <span class="hljs-number">0.15</span>;<br>sigma_R = mu_R * delta_R;<br><br><span class="hljs-comment">% 对数正态分布的对数空间参数</span><br>sigma_lnR = <span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">log</span>(<span class="hljs-number">1</span> + delta_R^<span class="hljs-number">2</span>));<br>mu_lnR = <span class="hljs-built_in">log</span>(mu_R) - <span class="hljs-number">0.5</span> * sigma_lnR^<span class="hljs-number">2</span>;<br><br><span class="hljs-comment">% S_G: 永久荷载效应，正态分布</span><br>mu_SG = <span class="hljs-number">2.3</span>;<br>delta_SG = <span class="hljs-number">0.05</span>;<br>sigma_SG = mu_SG * delta_SG;<br><br><span class="hljs-comment">% S_Q1, S_Q2, S_Q3: 可变荷载效应，极值I型分布</span><br><span class="hljs-comment">% S_Q1</span><br>mu_SQ1 = <span class="hljs-number">0.8</span>;<br>delta_SQ1 = <span class="hljs-number">0.415</span>;<br>sigma_SQ1 = mu_SQ1 * delta_SQ1;<br><br><span class="hljs-comment">% S_Q2</span><br>mu_SQ2 = <span class="hljs-number">0.6</span>;<br>delta_SQ2 = <span class="hljs-number">0.415</span>;<br>sigma_SQ2 = mu_SQ2 * delta_SQ2;<br><br><span class="hljs-comment">% S_Q3</span><br>mu_SQ3 = <span class="hljs-number">0.5</span>;<br>delta_SQ3 = <span class="hljs-number">0.29</span>;<br>sigma_SQ3 = mu_SQ3 * delta_SQ3;<br><br><span class="hljs-comment">% 极值I型分布参数计算</span><br><span class="hljs-comment">% 对于极值I型分布：CDF = exp(-exp(-α(x-u)))，其中：</span><br><span class="hljs-comment">% α = π/(√6σ) ≈ 1.28255/σ</span><br><span class="hljs-comment">% u = μ - 0.57722/α</span><br><br>alpha_SQ1 = <span class="hljs-number">1.28255</span> / sigma_SQ1;<br>u_SQ1 = mu_SQ1 - <span class="hljs-number">0.57722</span> / alpha_SQ1;<br><br>alpha_SQ2 = <span class="hljs-number">1.28255</span> / sigma_SQ2;<br>u_SQ2 = mu_SQ2 - <span class="hljs-number">0.57722</span> / alpha_SQ2;<br><br>alpha_SQ3 = <span class="hljs-number">1.28255</span> / sigma_SQ3;<br>u_SQ3 = mu_SQ3 - <span class="hljs-number">0.57722</span> / alpha_SQ3;<br><br><span class="hljs-comment">%% 2. 蒙特卡洛模拟参数</span><br>N = <span class="hljs-number">1000000</span>;  <span class="hljs-comment">% 模拟次数</span><br>fprintf(<span class="hljs-string">&#x27;\n开始蒙特卡洛模拟，样本量：N = %d\n\n&#x27;</span>, N);<br><br><span class="hljs-comment">% 预分配数组</span><br>Z_values = <span class="hljs-built_in">zeros</span>(N, <span class="hljs-number">1</span>);<br>failure_count = <span class="hljs-number">0</span>;<br><br><span class="hljs-comment">% 进度显示</span><br>progress_interval = <span class="hljs-built_in">floor</span>(N/<span class="hljs-number">10</span>);<br>fprintf(<span class="hljs-string">&#x27;模拟进度：\n&#x27;</span>);<br><br><span class="hljs-comment">%% 3. 蒙特卡洛模拟</span><br>start_time = tic;<br><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:N<br>    <span class="hljs-comment">% 生成R的样本（对数正态分布）</span><br>    R = lognrnd(mu_lnR, sigma_lnR);<br>    <span class="hljs-comment">% 生成S_G的样本（正态分布）</span><br>    SG = mu_SG + sigma_SG * <span class="hljs-built_in">randn</span>;<br>    <span class="hljs-comment">% 生成S_Q1, S_Q2, S_Q3的样本（极值I型分布）</span><br>    <span class="hljs-comment">% 极值I型分布：使用逆变换法生成</span><br>    U1 = <span class="hljs-built_in">rand</span>;<br>    SQ1 = u_SQ1 - (<span class="hljs-number">1</span>/alpha_SQ1) * <span class="hljs-built_in">log</span>(-<span class="hljs-built_in">log</span>(U1));<br>    U2 = <span class="hljs-built_in">rand</span>;<br>    SQ2 = u_SQ2 - (<span class="hljs-number">1</span>/alpha_SQ2) * <span class="hljs-built_in">log</span>(-<span class="hljs-built_in">log</span>(U2));<br>    U3 = <span class="hljs-built_in">rand</span>;<br>    SQ3 = u_SQ3 - (<span class="hljs-number">1</span>/alpha_SQ3) * <span class="hljs-built_in">log</span>(-<span class="hljs-built_in">log</span>(U3));<br>    <span class="hljs-comment">% 计算功能函数值</span><br>    Z = R - SG - SQ1 - SQ2 - SQ3;<br>    Z_values(<span class="hljs-built_in">i</span>) = Z;<br>    <span class="hljs-comment">% 判断是否失效</span><br>    <span class="hljs-keyword">if</span> Z &lt;= <span class="hljs-number">0</span><br>        failure_count = failure_count + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-comment">% 显示进度</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">mod</span>(<span class="hljs-built_in">i</span>, progress_interval) == <span class="hljs-number">0</span><br>        fprintf(<span class="hljs-string">&#x27;  进度：%d/%d (%.0f%%)\n&#x27;</span>, <span class="hljs-built_in">i</span>, N, <span class="hljs-built_in">i</span>/N*<span class="hljs-number">100</span>);<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br>elapsed_time = toc(start_time);<br>fprintf(<span class="hljs-string">&#x27;模拟完成！耗时：%.2f 秒\n\n&#x27;</span>, elapsed_time);<br><br><span class="hljs-comment">%% 4. 计算失效概率和可靠指标</span><br>Pf = failure_count / N;           <span class="hljs-comment">% 失效概率</span><br>R_val = <span class="hljs-number">1</span> - Pf;                   <span class="hljs-comment">% 可靠度</span><br><span class="hljs-built_in">beta</span> = -norminv(Pf);              <span class="hljs-comment">% 可靠指标</span><br><br><span class="hljs-comment">%% 5. 结果输出</span><br>fprintf(<span class="hljs-string">&#x27;===== 模拟结果 =====\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;总样本数：N = %d\n&#x27;</span>, N);<br>fprintf(<span class="hljs-string">&#x27;失效次数：N_f = %d\n&#x27;</span>, failure_count);<br>fprintf(<span class="hljs-string">&#x27;失效概率：Pf = %d/%d = %.6e\n&#x27;</span>, failure_count, N, Pf);<br>fprintf(<span class="hljs-string">&#x27;可靠度：R = 1 - Pf = %.6f\n&#x27;</span>, R_val);<br>fprintf(<span class="hljs-string">&#x27;可靠指标：β = -Φ⁻¹(Pf) = %.4f\n\n&#x27;</span>, <span class="hljs-built_in">beta</span>);<br><br><span class="hljs-comment">% 功能函数Z的统计特性</span><br>Z_mean = <span class="hljs-built_in">mean</span>(Z_values);<br>Z_std = std(Z_values);<br>Z_min = <span class="hljs-built_in">min</span>(Z_values);<br>Z_max = <span class="hljs-built_in">max</span>(Z_values);<br><br>fprintf(<span class="hljs-string">&#x27;功能函数Z的统计特性：\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;  均值 μ_Z = %.4f\n&#x27;</span>, Z_mean);<br>fprintf(<span class="hljs-string">&#x27;  标准差 σ_Z = %.4f\n&#x27;</span>, Z_std);<br>fprintf(<span class="hljs-string">&#x27;  最小值 Z_min = %.4f\n&#x27;</span>, Z_min);<br>fprintf(<span class="hljs-string">&#x27;  最大值 Z_max = %.4f\n&#x27;</span>, Z_max);<br>fprintf(<span class="hljs-string">&#x27;  安全裕度 μ_Z/σ_Z = %.4f\n&#x27;</span>, Z_mean/Z_std);<br></code></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><code class="hljs abnf"><br>开始蒙特卡洛模拟，样本量：N <span class="hljs-operator">=</span> <span class="hljs-number">1000000</span><br><br>模拟进度：<br>  进度：<span class="hljs-number">100000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">10</span>%)<br>  进度：<span class="hljs-number">200000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">20</span>%)<br>  进度：<span class="hljs-number">300000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">30</span>%)<br>  进度：<span class="hljs-number">400000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">40</span>%)<br>  进度：<span class="hljs-number">500000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">50</span>%)<br>  进度：<span class="hljs-number">600000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">60</span>%)<br>  进度：<span class="hljs-number">700000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">70</span>%)<br>  进度：<span class="hljs-number">800000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">80</span>%)<br>  进度：<span class="hljs-number">900000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">90</span>%)<br>  进度：<span class="hljs-number">1000000</span>/<span class="hljs-number">1000000</span> (<span class="hljs-number">100</span>%)<br>模拟完成！耗时：<span class="hljs-number">6.07</span> 秒<br><br><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span> 模拟结果 <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>总样本数：N <span class="hljs-operator">=</span> <span class="hljs-number">1000000</span><br>失效次数：N_f <span class="hljs-operator">=</span> <span class="hljs-number">121</span><br>失效概率：Pf <span class="hljs-operator">=</span> <span class="hljs-number">121</span>/<span class="hljs-number">1000000</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.210000</span>e-<span class="hljs-number">04</span><br>可靠度：R <span class="hljs-operator">=</span> <span class="hljs-number">1</span> - Pf <span class="hljs-operator">=</span> <span class="hljs-number">0.999879</span><br>可靠指标：β <span class="hljs-operator">=</span> -Φ⁻¹(Pf) <span class="hljs-operator">=</span> <span class="hljs-number">3.6706</span><br><br>功能函数Z的统计特性：<br>  均值 μ_Z <span class="hljs-operator">=</span> <span class="hljs-number">4.2995</span><br>  标准差 σ_Z <span class="hljs-operator">=</span> <span class="hljs-number">1.3526</span><br>  最小值 Z_min <span class="hljs-operator">=</span> -<span class="hljs-number">1.2769</span><br>  最大值 Z_max <span class="hljs-operator">=</span> <span class="hljs-number">12.5964</span><br>  安全裕度 μ_Z/σ_Z <span class="hljs-operator">=</span> <span class="hljs-number">3.1788</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 钢筋混凝土轴心受压短柱可靠度分析（修正版）</span><br>clear; clc; close all;<br><br><span class="hljs-comment">%% 1. 已知参数</span><br>fprintf(<span class="hljs-string">&#x27;===== 钢筋混凝土轴心受压短柱可靠度分析 =====\n&#x27;</span>);<br><br><span class="hljs-comment">% R: 抗力，对数正态分布</span><br>mu_R = <span class="hljs-number">4560</span>;      <span class="hljs-comment">% kN</span><br>sigma_R = <span class="hljs-number">729.6</span>;  <span class="hljs-comment">% kN</span><br>delta_R = sigma_R / mu_R;<br><br><span class="hljs-comment">% 对数正态分布的对数空间参数</span><br>sigma_lnR = <span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">log</span>(<span class="hljs-number">1</span> + delta_R^<span class="hljs-number">2</span>));<br>mu_lnR = <span class="hljs-built_in">log</span>(mu_R) - <span class="hljs-number">0.5</span> * sigma_lnR^<span class="hljs-number">2</span>;<br><br><span class="hljs-comment">% N_G: 恒载，正态分布</span><br>mu_NG = <span class="hljs-number">1159.1</span>;   <span class="hljs-comment">% kN</span><br>sigma_NG = <span class="hljs-number">81.1</span>;  <span class="hljs-comment">% kN</span><br><br><span class="hljs-comment">% N_L: 活载，极值I型分布</span><br>mu_NL = <span class="hljs-number">765.5</span>;    <span class="hljs-comment">% kN</span><br>sigma_NL = <span class="hljs-number">222</span>;   <span class="hljs-comment">% kN</span><br><br><span class="hljs-comment">% 修正的极值I型分布参数（更精确的计算）</span><br>alpha_NL = <span class="hljs-built_in">pi</span>/(sigma_NL*<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">6</span>));  <span class="hljs-comment">% 修正：使用精确公式</span><br><span class="hljs-built_in">gamma</span> = <span class="hljs-number">0.5772156649</span>;  <span class="hljs-comment">% 欧拉常数</span><br>u_NL = mu_NL - <span class="hljs-built_in">gamma</span>/alpha_NL;<br><br>fprintf(<span class="hljs-string">&#x27;随机变量参数：\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;R (抗力，对数正态): μ=%.1f kN, σ=%.1f kN, δ=%.4f\n&#x27;</span>, mu_R, sigma_R, delta_R);<br>fprintf(<span class="hljs-string">&#x27;   对数空间参数: μ_ln=%.6f, σ_ln=%.6f\n&#x27;</span>, mu_lnR, sigma_lnR);<br><br>fprintf(<span class="hljs-string">&#x27;N_G (恒载，正态): μ=%.1f kN, σ=%.1f kN\n&#x27;</span>, mu_NG, sigma_NG);<br>fprintf(<span class="hljs-string">&#x27;N_L (活载，极值I型): μ=%.1f kN, σ=%.1f kN\n&#x27;</span>, mu_NL, sigma_NL);<br>fprintf(<span class="hljs-string">&#x27;   极值I型参数: α=%.6f, u=%.4f\n\n&#x27;</span>, alpha_NL, u_NL);<br><br><span class="hljs-comment">%% 2. JC法计算</span><br>fprintf(<span class="hljs-string">&#x27;-------- JC法计算 --------\n&#x27;</span>);<br><br>tol = <span class="hljs-number">1e-6</span>;<br>max_iter = <span class="hljs-number">50</span>;<br>x = [mu_R, mu_NG, mu_NL];  <span class="hljs-comment">% [R, N_G, N_L]</span><br>beta_old = <span class="hljs-number">0</span>;<br><br>fprintf(<span class="hljs-string">&#x27;JC法迭代过程：\n&#x27;</span>);<br><span class="hljs-keyword">for</span> iter = <span class="hljs-number">1</span>:max_iter<br>    R = x(<span class="hljs-number">1</span>);<br>    NG = x(<span class="hljs-number">2</span>);<br>    NL = x(<span class="hljs-number">3</span>);<br>    <span class="hljs-comment">% 功能函数</span><br>    Z = R - NG - NL;<br>    grad = [<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>];<br>    <span class="hljs-comment">% 当量正态化：R（对数正态）</span><br>    u_R = (<span class="hljs-built_in">log</span>(R) - mu_lnR) / sigma_lnR;<br>    F_R = normcdf(u_R);<br>    f_R = (<span class="hljs-number">1</span>/(R*sigma_lnR*<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>))) * <span class="hljs-built_in">exp</span>(<span class="hljs-number">-0.5</span>*u_R^<span class="hljs-number">2</span>);<br>    sigma_R_eq = normpdf(norminv(F_R)) / f_R;<br>    mu_R_eq = R - sigma_R_eq * norminv(F_R);<br>    <span class="hljs-comment">% 当量正态化：N_L（极值I型）</span><br>    F_NL = <span class="hljs-built_in">exp</span>(-<span class="hljs-built_in">exp</span>(-alpha_NL*(NL - u_NL)));<br>    <span class="hljs-keyword">if</span> F_NL &gt; <span class="hljs-number">0</span> &amp;&amp; F_NL &lt; <span class="hljs-number">1</span><br>        f_NL = alpha_NL * <span class="hljs-built_in">exp</span>(-alpha_NL*(NL - u_NL)) * F_NL;<br>        sigma_NL_eq = normpdf(norminv(F_NL)) / f_NL;<br>        mu_NL_eq = NL - sigma_NL_eq * norminv(F_NL);<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-comment">% 边界情况处理</span><br>        sigma_NL_eq = sigma_NL;  <span class="hljs-comment">% 近似为正态分布</span><br>        mu_NL_eq = mu_NL;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-comment">% N_G是正态分布，参数不变</span><br>    mu_NG_eq = mu_NG;<br>    sigma_NG_eq = sigma_NG;<br>    <span class="hljs-comment">% 当量正态化参数</span><br>    mu_eq = [mu_R_eq, mu_NG_eq, mu_NL_eq];<br>    sigma_eq = [sigma_R_eq, sigma_NG_eq, sigma_NL_eq];<br>    <span class="hljs-comment">% 可靠指标计算</span><br>    sigma_grad = grad .* sigma_eq;<br>    norm_sigma_grad = norm(sigma_grad);<br>    alpha = -sigma_grad / norm_sigma_grad;<br>    mu_Z = Z + grad * (mu_eq - x)&#x27;;<br>    sigma_Z = norm_sigma_grad;<br>    <span class="hljs-built_in">beta</span> = mu_Z / sigma_Z;<br>    <span class="hljs-comment">% 更新设计点</span><br>    x_new = mu_eq + <span class="hljs-built_in">beta</span> * (sigma_eq .* alpha);<br>    fprintf(<span class="hljs-string">&#x27;迭代 %2d: β=%.6f, R*=%.1f, N_G*=%.1f, N_L*=%.1f\n&#x27;</span>,iter, <span class="hljs-built_in">beta</span>, x(<span class="hljs-number">1</span>), x(<span class="hljs-number">2</span>), x(<span class="hljs-number">3</span>));<br>    <span class="hljs-comment">% 检查收敛</span><br>    <span class="hljs-keyword">if</span> iter &gt; <span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">abs</span>(<span class="hljs-built_in">beta</span> - beta_old) &lt; tol<br>        fprintf(<span class="hljs-string">&#x27;\nJC法收敛于迭代 %d 次\n&#x27;</span>, iter);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">end</span><br>    beta_old = <span class="hljs-built_in">beta</span>;<br>    x = x_new;<br>    <span class="hljs-keyword">if</span> iter == max_iter<br>        fprintf(<span class="hljs-string">&#x27;警告：JC法达到最大迭代次数！\n&#x27;</span>);<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br>beta_JC = <span class="hljs-built_in">beta</span>;<br>Pf_JC = normcdf(-beta_JC);<br>design_point_JC = x;<br><br>fprintf(<span class="hljs-string">&#x27;\nJC法最终结果：\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;  可靠指标: β_JC = %.6f\n&#x27;</span>, beta_JC);<br>fprintf(<span class="hljs-string">&#x27;  失效概率: P_f = Φ(-β) = %.6e\n&#x27;</span>, Pf_JC);<br>fprintf(<span class="hljs-string">&#x27;  可靠度: R = 1 - P_f = %.6f\n&#x27;</span>, <span class="hljs-number">1</span>-Pf_JC);<br>fprintf(<span class="hljs-string">&#x27;  设计验算点:\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;    R* = %.1f kN\n&#x27;</span>, design_point_JC(<span class="hljs-number">1</span>));<br>fprintf(<span class="hljs-string">&#x27;    N_G* = %.1f kN\n&#x27;</span>, design_point_JC(<span class="hljs-number">2</span>));<br>fprintf(<span class="hljs-string">&#x27;    N_L* = %.1f kN\n&#x27;</span>, design_point_JC(<span class="hljs-number">3</span>));<br>fprintf(<span class="hljs-string">&#x27;  验证: Z(R*,N_G*,N_L*) = %.2e ≈ 0\n\n&#x27;</span>, design_point_JC(<span class="hljs-number">1</span>)-design_point_JC(<span class="hljs-number">2</span>)-design_point_JC(<span class="hljs-number">3</span>));<br><br><span class="hljs-comment">%% 3. 蒙特卡罗法计算（修正版）</span><br>fprintf(<span class="hljs-string">&#x27;-------- 蒙特卡罗法计算 --------\n&#x27;</span>);<br><br>N_MC = <span class="hljs-number">1000000</span>;<br>fprintf(<span class="hljs-string">&#x27;蒙特卡罗模拟，样本量：N = %d\n\n&#x27;</span>, N_MC);<br><br><span class="hljs-comment">% 更高效的向量化实现</span><br>rng(<span class="hljs-number">42</span>);  <span class="hljs-comment">% 设置随机种子保证可重复性</span><br>fprintf(<span class="hljs-string">&#x27;生成随机样本...\n&#x27;</span>);<br><br><span class="hljs-comment">% 对数正态分布抽样</span><br>U_R = <span class="hljs-built_in">randn</span>(N_MC, <span class="hljs-number">1</span>);<br>R_samples = <span class="hljs-built_in">exp</span>(mu_lnR + sigma_lnR * U_R);<br><br><span class="hljs-comment">% 正态分布抽样</span><br>NG_samples = mu_NG + sigma_NG * <span class="hljs-built_in">randn</span>(N_MC, <span class="hljs-number">1</span>);<br><br><span class="hljs-comment">% 极值I型分布抽样（向量化）</span><br>U_NL = <span class="hljs-built_in">rand</span>(N_MC, <span class="hljs-number">1</span>);<br>NL_samples = u_NL - (<span class="hljs-number">1</span>/alpha_NL) * <span class="hljs-built_in">log</span>(-<span class="hljs-built_in">log</span>(U_NL));<br><br><span class="hljs-comment">% 计算功能函数值（向量化）</span><br>Z_samples = R_samples - NG_samples - NL_samples;<br><br><span class="hljs-comment">% 统计失效</span><br>failure_mask = Z_samples &lt;= <span class="hljs-number">0</span>;<br>failure_count = sum(failure_mask);<br><br><span class="hljs-comment">% 计算结果</span><br>Pf_MC = failure_count / N_MC;<br>R_MC = <span class="hljs-number">1</span> - Pf_MC;<br>beta_MC = -norminv(Pf_MC);<br><br><span class="hljs-comment">% 精度分析</span><br><span class="hljs-keyword">if</span> failure_count &gt; <span class="hljs-number">0</span><br>    cov_Pf = <span class="hljs-built_in">sqrt</span>((<span class="hljs-number">1</span>-Pf_MC)/(N_MC*Pf_MC));<br>    z_95 = <span class="hljs-number">1.96</span>;<br>    CI_lower = Pf_MC * (<span class="hljs-number">1</span> - z_95 * cov_Pf);<br>    CI_upper = Pf_MC * (<span class="hljs-number">1</span> + z_95 * cov_Pf);<br><span class="hljs-keyword">else</span><br>    cov_Pf = <span class="hljs-number">0</span>;<br>    CI_lower = <span class="hljs-number">0</span>;<br>    CI_upper = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">end</span><br><br>fprintf(<span class="hljs-string">&#x27;蒙特卡罗法结果：\n&#x27;</span>);<br>fprintf(<span class="hljs-string">&#x27;  抽样次数: N = %d\n&#x27;</span>, N_MC);<br>fprintf(<span class="hljs-string">&#x27;  失效次数: N_f = %d\n&#x27;</span>, failure_count);<br>fprintf(<span class="hljs-string">&#x27;  失效概率: P_f = %.6e\n&#x27;</span>, Pf_MC);<br>fprintf(<span class="hljs-string">&#x27;  可靠度: R = %.6f\n&#x27;</span>, R_MC);<br>fprintf(<span class="hljs-string">&#x27;  可靠指标: β_MC = %.6f\n&#x27;</span>, beta_MC);<br>fprintf(<span class="hljs-string">&#x27;  精度指标: COV(P_f) = %.4f\n&#x27;</span>, cov_Pf);<br>fprintf(<span class="hljs-string">&#x27;  95%%置信区间: [%.6e, %.6e]\n&#x27;</span>, CI_lower, CI_upper);<br><br><span class="hljs-comment">% 统计特性</span><br>Z_mean = <span class="hljs-built_in">mean</span>(Z_samples);<br>Z_std = std(Z_samples);<br>fprintf(<span class="hljs-string">&#x27;  功能函数统计: μ_Z = %.2f, σ_Z = %.2f, μ_Z/σ_Z = %.4f&#x27;</span>,Z_mean, Z_std, Z_mean/Z_std);<br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs txt">===== 钢筋混凝土轴心受压短柱可靠度分析 =====<br>随机变量参数：<br>R (抗力，对数正态): μ=4560.0 kN, σ=729.6 kN, δ=0.1600<br>   对数空间参数: μ_ln=8.412439, σ_ln=0.158990<br>N_G (恒载，正态): μ=1159.1 kN, σ=81.1 kN<br>N_L (活载，极值I型): μ=765.5 kN, σ=222.0 kN<br>   极值I型参数: α=0.005777, u=665.5882<br><br>-------- JC法计算 --------<br>JC法迭代过程：<br>迭代  1: β=3.442367, R*=4560.0, N_G*=1159.1, N_L*=765.5<br>迭代  2: β=4.217026, R*=2120.9, N_G*=1188.9, N_L*=932.0<br>迭代  3: β=3.991285, R*=2632.8, N_G*=1221.9, N_L*=1410.9<br>迭代  4: β=3.960488, R*=2913.4, N_G*=1201.6, N_L*=1711.8<br>迭代  5: β=3.959016, R*=2996.0, N_G*=1195.4, N_L*=1800.6<br>迭代  6: β=3.958978, R*=3009.8, N_G*=1194.1, N_L*=1815.7<br>迭代  7: β=3.958977, R*=3011.8, N_G*=1193.9, N_L*=1818.0<br><br>JC法收敛于迭代 7 次<br><br>JC法最终结果：<br>  可靠指标: β_JC = 3.958977<br>  失效概率: P_f = Φ(-β) = 3.763578e-05<br>  可靠度: R = 1 - P_f = 0.999962<br>  设计验算点:<br>    R* = 3011.8 kN<br>    N_G* = 1193.9 kN<br>    N_L* = 1818.0 kN<br>  验证: Z(R*,N_G*,N_L*) = -4.55e-13 ≈ 0<br><br>-------- 蒙特卡罗法计算 --------<br>蒙特卡罗模拟，样本量：N = 1000000<br><br>生成随机样本...<br>蒙特卡罗法结果：<br>  抽样次数: N = 1000000<br>  失效次数: N_f = 40<br>  失效概率: P_f = 4.000000e-05<br>  可靠度: R = 0.999960<br>  可靠指标: β_MC = 3.944400<br>  精度指标: COV(P_f) = 0.1581<br>  95%置信区间: [2.760412e-05, 5.239588e-05]<br>  功能函数统计: μ_Z = 2635.88, σ_Z = 766.47, μ_Z/σ_Z = 3.4390&gt;&gt; <br></code></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>结构可靠度</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C%E4%B8%80/">计算机网络实验一</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E7%BA%A2%E9%85%92%E5%88%86%E7%B1%BB/">红酒分类</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

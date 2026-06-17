@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>计算机网络实验一 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="计算机网络实验一">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C%E4%B8%80/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.交换机VLAN实验1.1.[实验名称]交换机VLAN实验。1.2.[实验过程]描述实验过程中遇到的问题以及解决问题的过程。网络拓扑布置如下：1.2.1.1、实验结果：要求使用ping命令观察主机之间的连通情况：1.2.1.1.a.未划分VLAN时6台主机的连通情况；从P0ping其他主机，可以看到在为划分">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">计算机网络实验一</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T09:20:32.946Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-交换机-VLAN-实验"><a href="#1-交换机-VLAN-实验" class="headerlink" title="1. 交换机 VLAN 实验"></a>1. 交换机 VLAN 实验</h1><h2 id="1-1-实验名称-交换机-VLAN-实验。"><a href="#1-1-实验名称-交换机-VLAN-实验。" class="headerlink" title="1.1. [实验名称] 交换机 VLAN 实验。"></a>1.1. [实验名称] 交换机 VLAN 实验。</h2><h2 id="1-2-实验过程"><a href="#1-2-实验过程" class="headerlink" title="1.2. [实验过程]"></a>1.2. [实验过程]</h2><p>描述实验过程中遇到的问题以及解决问题的过程。</p>
+<p>网络拓扑布置如下：</p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20231229121214.png" title="" alt="image-20231229121212472" data-align="center"></p>
+<h3 id="1-2-1-1、实验结果："><a href="#1-2-1-1、实验结果：" class="headerlink" title="1.2.1. 1、实验结果："></a>1.2.1. 1、实验结果：</h3><p>要求使用ping 命令观察主机之间的连通情况：</p>
+<h4 id="1-2-1-1-a-未划分-VLAN-时-6-台主机的连通情况；"><a href="#1-2-1-1-a-未划分-VLAN-时-6-台主机的连通情况；" class="headerlink" title="1.2.1.1. a.未划分 VLAN 时 6 台主机的连通情况；"></a>1.2.1.1. a.未划分 VLAN 时 6 台主机的连通情况；</h4><p>从P0 ping 其他主机，可以看到在为划分VLAN之前，六台主机可以相互连通<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20231229121036.png" title="" alt="image-20231229121033864" data-align="center"></p>
+<h4 id="1-2-1-2-b-划分-VLAN-后，同一-VLAN-内部主机的连通情况；"><a href="#1-2-1-2-b-划分-VLAN-后，同一-VLAN-内部主机的连通情况；" class="headerlink" title="1.2.1.2. b.划分 VLAN 后，同一 VLAN 内部主机的连通情况；"></a>1.2.1.2. b.划分 VLAN 后，同一 VLAN 内部主机的连通情况；</h4><p>配置交换机，划分VLAN</p>
+<p><code>192.168.1.1,192.168.1.2,192.168.1.5</code>在<code>vlan 10</code>中</p>
+<p><code>192.168.1.3,192.168.1.4，192.168.1.6</code>在<code>vlan 20</code>中</p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20231229121756.png" title="" alt="image-20231229121752710" data-align="center"></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20231229122140.png" title="" alt="image-20231229122137123" data-align="center"></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20231229122351.png" title="" alt="P" data-align="center"></p>
+<h4 id="1-2-1-3-c-划分-VLAN-后，不同-VLAN-之间主机的连通情况。"><a href="#1-2-1-3-c-划分-VLAN-后，不同-VLAN-之间主机的连通情况。" class="headerlink" title="1.2.1.3. c.划分 VLAN 后，不同 VLAN 之间主机的连通情况。"></a>1.2.1.3. c.划分 VLAN 后，不同 VLAN 之间主机的连通情况。</h4><p><strong>P0：192.168.1.1</strong></p>
+<p>可以看到，划分 VLAN 后，不同 VLAN 之间主机无法相互连接</p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20231229171205.png" alt="image-20231229171202928"></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20231229123449.png" title="" alt="image-20231229123445601" data-align="center"></p>
+<h3 id="1-2-2-2、问题及解决过程："><a href="#1-2-2-2、问题及解决过程：" class="headerlink" title="1.2.2. 2、问题及解决过程："></a>1.2.2. 2、问题及解决过程：</h3><h4 id="1-2-2-1-1-软件使用不熟练。由于是第一次使用Cisco-Packet-Tracer，所以我们对软件的操作十分不熟悉，在实验的时候花费了不少的时间去熟悉软件"><a href="#1-2-2-1-1-软件使用不熟练。由于是第一次使用Cisco-Packet-Tracer，所以我们对软件的操作十分不熟悉，在实验的时候花费了不少的时间去熟悉软件" class="headerlink" title="1.2.2.1. 1.软件使用不熟练。由于是第一次使用Cisco Packet Tracer，所以我们对软件的操作十分不熟悉，在实验的时候花费了不少的时间去熟悉软件"></a>1.2.2.1. 1.软件使用不熟练。由于是第一次使用<code>Cisco Packet Tracer</code>，所以我们对软件的操作十分不熟悉，在实验的时候花费了不少的时间去熟悉软件</h4><h4 id="1-2-2-2-2-对实验内容不够了解。在实验最初的一段时间，没有弄明白我们需要干什么，后来老师实在看不下去了，就来指导我们，在老师指导后，我们方才明白需要干什么"><a href="#1-2-2-2-2-对实验内容不够了解。在实验最初的一段时间，没有弄明白我们需要干什么，后来老师实在看不下去了，就来指导我们，在老师指导后，我们方才明白需要干什么" class="headerlink" title="1.2.2.2. 2.对实验内容不够了解。在实验最初的一段时间，没有弄明白我们需要干什么，后来老师实在看不下去了，就来指导我们，在老师指导后，我们方才明白需要干什么"></a>1.2.2.2. 2.对实验内容不够了解。在实验最初的一段时间，没有弄明白我们需要干什么，后来老师实在看不下去了，就来指导我们，在老师指导后，我们方才明白需要干什么</h4><h4 id="1-2-2-3-3-在划分VLAN后，我在位于vlan-10-的P0依然可以ping通位于vlan-20的P3-显然与我们所掌握的知识是相悖的，我思考了很久，没有得到答案，后面咨询老师后，重新进行了相应的操作，实验结果才达到我们所预期的结果"><a href="#1-2-2-3-3-在划分VLAN后，我在位于vlan-10-的P0依然可以ping通位于vlan-20的P3-显然与我们所掌握的知识是相悖的，我思考了很久，没有得到答案，后面咨询老师后，重新进行了相应的操作，实验结果才达到我们所预期的结果" class="headerlink" title="1.2.2.3. 3.在划分VLAN后，我在位于vlan 10 的P0依然可以ping通位于vlan 20的P3,显然与我们所掌握的知识是相悖的，我思考了很久，没有得到答案，后面咨询老师后，重新进行了相应的操作，实验结果才达到我们所预期的结果"></a>1.2.2.3. 3.在划分VLAN后，我在位于vlan 10 的P0依然可以ping通位于vlan 20的P3,显然与我们所掌握的知识是相悖的，我思考了很久，没有得到答案，后面咨询老师后，重新进行了相应的操作，实验结果才达到我们所预期的结果</h4><h2 id="1-3-回答问题"><a href="#1-3-回答问题" class="headerlink" title="1.3. [回答问题]"></a>1.3. [回答问题]</h2><h5 id="1-3-1-1-1-1、PC0-能否-ping-通-PC2、PC3、PC4、PC5？为什么？"><a href="#1-3-1-1-1-1、PC0-能否-ping-通-PC2、PC3、PC4、PC5？为什么？" class="headerlink" title="1.3.1.1.1. 1、PC0 能否 ping 通 PC2、PC3、PC4、PC5？为什么？"></a>1.3.1.1.1. 1、PC0 能否 ping 通 PC2、PC3、PC4、PC5？为什么？</h5><p>在划分VLAN前，六台主机能够相互ping通<br>在划分VLAN后，只有处于同一VLAN的主机之间才能够相互ping通，不同 VLAN 之间主机无法相互ping通</p>
+<h5 id="1-3-1-1-2-2、使用二层交换机连接的网络需要配置网关吗？为什么？"><a href="#1-3-1-1-2-2、使用二层交换机连接的网络需要配置网关吗？为什么？" class="headerlink" title="1.3.1.1.2. 2、使用二层交换机连接的网络需要配置网关吗？为什么？"></a>1.3.1.1.2. 2、使用二层交换机连接的网络需要配置网关吗？为什么？</h5><p>需要。</p>
+<p>网关用于在2个网络间建立传输连接，使不同网络上的主机间可以建立起跨越多个网络的级联的、点对点的传输连接。</p>
+<h2 id="1-4-实验小结"><a href="#1-4-实验小结" class="headerlink" title="1.4. [实验小结]"></a>1.4. [实验小结]</h2><h3 id="1-4-1-通过实验，可以得出关于-VLAN-的哪些结论？"><a href="#1-4-1-通过实验，可以得出关于-VLAN-的哪些结论？" class="headerlink" title="1.4.1. 通过实验，可以得出关于 VLAN 的哪些结论？"></a>1.4.1. 通过实验，可以得出关于 VLAN 的哪些结论？</h3><p>一个二层交换网络属于一个广播域，广播域也可以理解为一个广播帧所能达到的范围。在网络中存在大量的广播，许多协议及应用通过广播来完成某种功能，如MAC地址的查询、ARP协议等，但过多的广播包在网络中会发生碰撞，一些广播包会被重传，这样，越来越多的广播包会最终将网络资源耗尽，使得网络性能下降，甚至造成网络擁疾。</p>
+<p>虚拟局域网(VLAN）技术可以将一个较大的二层交换网络划分为若干个较小的逻辑网络,每个逻辑网络是一个广播域，且与具体物理位置没有关系，故可以使用VLAN控制广播域，增强网络的安全性。</p>
+<h2 id="1-5-实验心得"><a href="#1-5-实验心得" class="headerlink" title="1.5. [实验心得]"></a>1.5. [实验心得]</h2><p>解决问题过程中自己的收获。</p>
+<p>在本次实验中，我基本学会了Cisco Packet Tracer的使用，包括主机ip的设置、不同设备之间的连接，同时也掌握了VLAN的相关知识。Cisco Packet Tracer模拟模式可以清晰地观察到不同的包在网络中的传递、走向。虽然遇到了很多问题，但是在查阅相关资料、课本，咨询老师和同学讨论后解决了这些问题。我们可以使用VLAN控制广播域、增强网络的安全性和灵活组网。VLAN只是逻辑上的分组网络，因此可以将不同地理位置上的用户划分到同—VLAN中。<br>[[计算机网络实验二]]</p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>计算机网络实验一</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E7%BE%A4%E4%BD%93%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98/">群体智能算法解决旅行商问题</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E7%BB%93%E6%9E%84%E5%8F%AF%E9%9D%A0%E5%BA%A6/">结构可靠度</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BA%A4%E6%8D%A2%E6%9C%BA-VLAN-%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.</span> <span class="toc-text">1. 交换机 VLAN 实验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%AE%9E%E9%AA%8C%E5%90%8D%E7%A7%B0-%E4%BA%A4%E6%8D%A2%E6%9C%BA-VLAN-%E5%AE%9E%E9%AA%8C%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. [实验名称] 交换机 VLAN 实验。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. [实验过程]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-1%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1. 1、实验结果：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-1-a-%E6%9C%AA%E5%88%92%E5%88%86-VLAN-%E6%97%B6-6-%E5%8F%B0%E4%B8%BB%E6%9C%BA%E7%9A%84%E8%BF%9E%E9%80%9A%E6%83%85%E5%86%B5%EF%BC%9B"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.2.1.1. a.未划分 VLAN 时 6 台主机的连通情况；</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-2-b-%E5%88%92%E5%88%86-VLAN-%E5%90%8E%EF%BC%8C%E5%90%8C%E4%B8%80-VLAN-%E5%86%85%E9%83%A8%E4%B8%BB%E6%9C%BA%E7%9A%84%E8%BF%9E%E9%80%9A%E6%83%85%E5%86%B5%EF%BC%9B"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">1.2.1.2. b.划分 VLAN 后，同一 VLAN 内部主机的连通情况；</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-3-c-%E5%88%92%E5%88%86-VLAN-%E5%90%8E%EF%BC%8C%E4%B8%8D%E5%90%8C-VLAN-%E4%B9%8B%E9%97%B4%E4%B8%BB%E6%9C%BA%E7%9A%84%E8%BF%9E%E9%80%9A%E6%83%85%E5%86%B5%E3%80%82"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">1.2.1.3. c.划分 VLAN 后，不同 VLAN 之间主机的连通情况。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-2%E3%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2. 2、问题及解决过程：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-1-1-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E4%B8%8D%E7%86%9F%E7%BB%83%E3%80%82%E7%94%B1%E4%BA%8E%E6%98%AF%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8Cisco-Packet-Tracer%EF%BC%8C%E6%89%80%E4%BB%A5%E6%88%91%E4%BB%AC%E5%AF%B9%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C%E5%8D%81%E5%88%86%E4%B8%8D%E7%86%9F%E6%82%89%EF%BC%8C%E5%9C%A8%E5%AE%9E%E9%AA%8C%E7%9A%84%E6%97%B6%E5%80%99%E8%8A%B1%E8%B4%B9%E4%BA%86%E4%B8%8D%E5%B0%91%E7%9A%84%E6%97%B6%E9%97%B4%E5%8E%BB%E7%86%9F%E6%82%89%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1.2.2.1. 1.软件使用不熟练。由于是第一次使用Cisco Packet Tracer，所以我们对软件的操作十分不熟悉，在实验的时候花费了不少的时间去熟悉软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-2-2-%E5%AF%B9%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E4%B8%8D%E5%A4%9F%E4%BA%86%E8%A7%A3%E3%80%82%E5%9C%A8%E5%AE%9E%E9%AA%8C%E6%9C%80%E5%88%9D%E7%9A%84%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%EF%BC%8C%E6%B2%A1%E6%9C%89%E5%BC%84%E6%98%8E%E7%99%BD%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E5%B9%B2%E4%BB%80%E4%B9%88%EF%BC%8C%E5%90%8E%E6%9D%A5%E8%80%81%E5%B8%88%E5%AE%9E%E5%9C%A8%E7%9C%8B%E4%B8%8D%E4%B8%8B%E5%8E%BB%E4%BA%86%EF%BC%8C%E5%B0%B1%E6%9D%A5%E6%8C%87%E5%AF%BC%E6%88%91%E4%BB%AC%EF%BC%8C%E5%9C%A8%E8%80%81%E5%B8%88%E6%8C%87%E5%AF%BC%E5%90%8E%EF%BC%8C%E6%88%91%E4%BB%AC%E6%96%B9%E6%89%8D%E6%98%8E%E7%99%BD%E9%9C%80%E8%A6%81%E5%B9%B2%E4%BB%80%E4%B9%88"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">1.2.2.2. 2.对实验内容不够了解。在实验最初的一段时间，没有弄明白我们需要干什么，后来老师实在看不下去了，就来指导我们，在老师指导后，我们方才明白需要干什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-3-3-%E5%9C%A8%E5%88%92%E5%88%86VLAN%E5%90%8E%EF%BC%8C%E6%88%91%E5%9C%A8%E4%BD%8D%E4%BA%8Evlan-10-%E7%9A%84P0%E4%BE%9D%E7%84%B6%E5%8F%AF%E4%BB%A5ping%E9%80%9A%E4%BD%8D%E4%BA%8Evlan-20%E7%9A%84P3-%E6%98%BE%E7%84%B6%E4%B8%8E%E6%88%91%E4%BB%AC%E6%89%80%E6%8E%8C%E6%8F%A1%E7%9A%84%E7%9F%A5%E8%AF%86%E6%98%AF%E7%9B%B8%E6%82%96%E7%9A%84%EF%BC%8C%E6%88%91%E6%80%9D%E8%80%83%E4%BA%86%E5%BE%88%E4%B9%85%EF%BC%8C%E6%B2%A1%E6%9C%89%E5%BE%97%E5%88%B0%E7%AD%94%E6%A1%88%EF%BC%8C%E5%90%8E%E9%9D%A2%E5%92%A8%E8%AF%A2%E8%80%81%E5%B8%88%E5%90%8E%EF%BC%8C%E9%87%8D%E6%96%B0%E8%BF%9B%E8%A1%8C%E4%BA%86%E7%9B%B8%E5%BA%94%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%8C%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E6%89%8D%E8%BE%BE%E5%88%B0%E6%88%91%E4%BB%AC%E6%89%80%E9%A2%84%E6%9C%9F%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">1.2.2.3. 3.在划分VLAN后，我在位于vlan 10 的P0依然可以ping通位于vlan 20的P3,显然与我们所掌握的知识是相悖的，我思考了很久，没有得到答案，后面咨询老师后，重新进行了相应的操作，实验结果才达到我们所预期的结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%9B%9E%E7%AD%94%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. [回答问题]</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-1-1-1-1%E3%80%81PC0-%E8%83%BD%E5%90%A6-ping-%E9%80%9A-PC2%E3%80%81PC3%E3%80%81PC4%E3%80%81PC5%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.3.1.1.1. 1、PC0 能否 ping 通 PC2、PC3、PC4、PC5？为什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-1-1-2-2%E3%80%81%E4%BD%BF%E7%94%A8%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%BD%91%E7%BB%9C%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE%E7%BD%91%E5%85%B3%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.2.</span> <span class="toc-text">1.3.1.1.2. 2、使用二层交换机连接的网络需要配置网关吗？为什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">1.4. [实验小结]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-1-%E9%80%9A%E8%BF%87%E5%AE%9E%E9%AA%8C%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%BE%97%E5%87%BA%E5%85%B3%E4%BA%8E-VLAN-%E7%9A%84%E5%93%AA%E4%BA%9B%E7%BB%93%E8%AE%BA%EF%BC%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.4.1. 通过实验，可以得出关于 VLAN 的哪些结论？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E5%AE%9E%E9%AA%8C%E5%BF%83%E5%BE%97"><span class="toc-number">1.5.</span> <span class="toc-text">1.5. [实验心得]</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

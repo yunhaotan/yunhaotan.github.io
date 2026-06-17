@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>影院票务管理系统oracle || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="影院票务管理系统oracle">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E5%BD%B1%E9%99%A2%E7%A5%A8%E5%8A%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Foracle/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="用户表:编号，用户名，密码，邮箱，角色，用户头像；影片表：编号，影片名称，国外名称，演职人员，导演，电影详情，电影时长，电影类型，电影评分，票房，电影参评人数，上映时间，制片地区，电影海报地址，电影状态；影院表：编号，影院名称，影院地址；放映厅表：编号，放映厅名称，放映厅容量，所属影院编号；订单表：编号，所属">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">影院票务管理系统oracle</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.178Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p>用户表:编号，用户名，密码，邮箱，角色，用户头像；</p>
+<p>影片表：编号，影片名称，国外名称，演职人员，导演，电影详情，电影时长，电影类型，电影评分，票房，电影参评人数，上映时间，制片地区，电影海报地址，电影状态；</p>
+<p>影院表：编号，影院名称，影院地址；</p>
+<p>放映厅表：编号，放映厅名称，放映厅容量，所属影院编号；</p>
+<p>订单表：编号，所属用户编号，所属场次编号，电影票座位信息，订单状态，订单价格，订单支付时间，所属用户对象；</p>
+<p>订单详情表：编号，所属放映厅，放映的电影编号，电影放映时间，售价，剩余座位数，场次状态，所属放映厅对象，放映的电影；</p>
+<p>评论表：编号，所属用户编号，评论内容，所属电影编号，评论时间，所属用户，评分；</p>
+<p>影院票务管理系统</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">姓名</th>
+<th style="text-align:center">主要完成的工作</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h1><h2 id="1-1-用户管理模块"><a href="#1-1-用户管理模块" class="headerlink" title="1.1. 用户管理模块"></a>1.1. 用户管理模块</h2><p><code>&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>用户管理模块提供完整的账户生命周期管理，支持新用户通过邮箱验证进行注册登录，允许用户维护个人信息（包括头像修改和密码更新），实施基于角色的权限控制（区分普通用户、影院管理员和系统管理员），并记录用户活动历史（如登录时间、购票记录等），确保账户安全性和操作可追溯性。<code>&lt;/font&gt;</code></p>
+<h2 id="1-2-影片管理模块"><a href="#1-2-影片管理模块" class="headerlink" title="1.2. 影片管理模块"></a>1.2. 影片管理模块</h2><p><code>&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>影片管理模块负责维护电影全生命周期数据，包括影片基本信息（名称、导演、时长、类型等）的增删改查，管理影片上映状态（即将上映<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>/<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>热映<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>/<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>已下架），提供多维度搜索筛选功能（按类型、评分、地区等），自动生成票房统计报表，并支持电影海报的上传与展示。<code>&lt;/font&gt;</code></p>
+<h2 id="1-3-影院管理模块"><a href="#1-3-影院管理模块" class="headerlink" title="1.3. 影院管理模块"></a>1.3. 影院管理模块</h2><p><code>&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>影院管理模块实现影院资源的数字化管理，维护影院基础信息（名称、地址等），配置放映厅参数（名称、座位容量），通过地图<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>API<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>展示影院地理分布，并统计各影院场次安排数据（如每日排片量、上座率等），为影院资源调度提供数据支持。<code>&lt;/font&gt;</code></p>
+<h2 id="1-4-场次管理模块"><a href="#1-4-场次管理模块" class="headerlink" title="1.4. 场次管理模块"></a>1.4. 场次管理模块</h2><p><code>&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>场次管理模块提供放映计划的全流程管理，支持创建<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>/<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>修改影厅放映计划（时间、影厅），设置动态票价策略（分时段差异化定价），实现可视化座位图展示，自动监控并更新场次状态（可预订<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>/<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>即将售罄<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>/<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>已售罄），并通过冲突检测机制防止同一影厅时间重叠排片。<code>&lt;/font&gt;</code></p>
+<h2 id="1-5-订单管理模块"><a href="#1-5-订单管理模块" class="headerlink" title="1.5. 订单管理模块"></a>1.5. 订单管理模块</h2><p><code>&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>订单管理模块实现票务交易闭环，支持在线选座购票流程，集成模拟支付系统（支持支付宝<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>/<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>微信等支付方式），管理订单全生命周期状态（待支付<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>/<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>已支付<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>/<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>已取消），提供用户订单历史查询功能，并处理退票业务（含退款规则计算）。<code>&lt;/font&gt;</code></p>
+<h2 id="1-6-评论管理模块"><a href="#1-6-评论管理模块" class="headerlink" title="1.6. 评论管理模块"></a>1.6. 评论管理模块</h2><p><code>&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>评论管理模块构建影片评价体系，允许用户发表评分和文字评论，实施先审后发的审核机制，支持评论互动功能（点赞<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>/<code>&lt;/font&gt;&lt;font style=&quot;color:rgb(64,64,64);background-color:rgb(255,255,255);&quot;&gt;</code>回复），自动生成评论分析报告（包含评分分布、热词分析等），并实时更新影片综合评分数据。<code>&lt;/font&gt;</code></p>
+<h1 id="2-系统设计"><a href="#2-系统设计" class="headerlink" title="2. 系统设计"></a>2. 系统设计</h1><h2 id="2-1-系统结构功能图"><a href="#2-1-系统结构功能图" class="headerlink" title="2.1. 系统结构功能图"></a>2.1. 系统结构功能图</h2><p>根据需求分析，确定系统结构功能如图2-1所示：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749126513653-527b1fd1-9a1f-4b30-b231-583102fe7abd.png" alt=""></p>
+<p>图2-1 系统功能结构图</p>
+<h2 id="2-2-功能流程图"><a href="#2-2-功能流程图" class="headerlink" title="2.2. 功能流程图"></a>2.2. 功能流程图</h2><p>系统最主要的功能就是管理员登录之后对各种功能的使用。管理员功能如图4-2所示。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749126525654-3786aedd-34d3-48fe-8d1d-7b4e9b42f381.png" alt=""></p>
+<p>图2-2 管理员登录管理流程</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749126539307-63800de4-9682-48bd-afb6-af339d544bef.png" alt=""></p>
+<p>图2-3普通用户登录流程</p>
+<h2 id="2-3-数据库设计"><a href="#2-3-数据库设计" class="headerlink" title="2.3. 数据库设计"></a>2.3. 数据库设计</h2><p>整体功能的E-R图如图2-4所示。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749126555804-1e51413e-0213-4618-a23f-3e8831ca4c44.png" alt=""></p>
+<p>图2-4 系统E-R图</p>
+<p>本系统包含的数据表如下：</p>
+<p><strong>1**</strong>书架类型表<strong>** (shelf_types)</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shelf_type_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>书架类型ID</td>
+</tr>
+<tr>
+<td>shelf_type_name</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>50</td>
+<td>否</td>
+<td>-</td>
+<td>书架类型名称</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>2**</strong>读者类型表<strong>** (reader_types)</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reader_type_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者类型ID</td>
+</tr>
+<tr>
+<td>reader_type_name</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>50</td>
+<td>否</td>
+<td>-</td>
+<td>读者类型名称</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>3**</strong>书架表<strong>** (shelves)</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shelf_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>书架ID</td>
+</tr>
+<tr>
+<td>shelf_number</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>20</td>
+<td>否</td>
+<td>-</td>
+<td>书架编号</td>
+</tr>
+<tr>
+<td>shelf_type_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>书架类型ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>4**</strong>工作人员表<strong>** (staff)</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>staff_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>工作人员ID</td>
+</tr>
+<tr>
+<td>staff_name</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>100</td>
+<td>否</td>
+<td>-</td>
+<td>工作人员姓名</td>
+</tr>
+<tr>
+<td>staff_position</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>50</td>
+<td>否</td>
+<td>-</td>
+<td>工作人员职位</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>5**</strong>图书表<strong>** (books)</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>book_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>图书ID</td>
+</tr>
+<tr>
+<td>title</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>200</td>
+<td>否</td>
+<td>-</td>
+<td>图书标题</td>
+</tr>
+<tr>
+<td>author</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>100</td>
+<td>否</td>
+<td>-</td>
+<td>图书作者</td>
+</tr>
+<tr>
+<td>isbn</td>
+<td>VARCHAR2</td>
+<td>唯一且非空</td>
+<td>20</td>
+<td>否</td>
+<td>-</td>
+<td>图书国际标准书号</td>
+</tr>
+<tr>
+<td>publication_year</td>
+<td>NUMBER</td>
+<td>可空</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>出版年份</td>
+</tr>
+<tr>
+<td>shelf_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>书架ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>6**</strong>读者表<strong>** (readers)</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reader_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者ID</td>
+</tr>
+<tr>
+<td>reader_name</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>100</td>
+<td>否</td>
+<td>-</td>
+<td>读者姓名</td>
+</tr>
+<tr>
+<td>reader_type_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者类型ID</td>
+</tr>
+<tr>
+<td>contact_phone</td>
+<td>VARCHAR2</td>
+<td>可空</td>
+<td>15</td>
+<td>是</td>
+<td>-</td>
+<td>联系电话</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>7**</strong>正借阅表<strong>** (loans)</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loan_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>借阅记录ID</td>
+</tr>
+<tr>
+<td>book_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>图书ID</td>
+</tr>
+<tr>
+<td>reader_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者ID</td>
+</tr>
+<tr>
+<td>loan_date</td>
+<td>DATE</td>
+<td>非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>借书日期</td>
+</tr>
+<tr>
+<td>due_date</td>
+<td>DATE</td>
+<td>非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>应还日期</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>8**</strong>已还书籍表<strong>** (returns)</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>return_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>还书记录ID</td>
+</tr>
+<tr>
+<td>loan_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>借阅记录ID</td>
+</tr>
+<tr>
+<td>return_date</td>
+<td>DATE</td>
+<td>非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>还书日期</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>9**</strong>通知记录表（<strong><strong>overdue_notifications</strong></strong>）**</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>通知记录</td>
+</tr>
+<tr>
+<td>loan_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>借阅记录 ID</td>
+</tr>
+<tr>
+<td>reader_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者 ID</td>
+</tr>
+<tr>
+<td>notification_date</td>
+<td>DATE</td>
+<td>日期</td>
+<td>-</td>
+<td>是</td>
+<td>SYSDATE</td>
+<td>通知日期</td>
+</tr>
+<tr>
+<td>message</td>
+<td>VARCHAR2</td>
+<td>字符串</td>
+<td>500</td>
+<td>是</td>
+<td>-</td>
+<td>通知内容</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>10**</strong>历史记录表（<strong><strong>book_location_history</strong></strong>）**</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>history_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>历史记录</td>
+</tr>
+<tr>
+<td>book_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>图书 ID</td>
+</tr>
+<tr>
+<td>old_shelf_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>旧书架 ID</td>
+</tr>
+<tr>
+<td>new_shelf_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>新书架 ID</td>
+</tr>
+<tr>
+<td>change_date</td>
+<td>DATE</td>
+<td>日期</td>
+<td>-</td>
+<td>是</td>
+<td>SYSDATE</td>
+<td>变更日期</td>
+</tr>
+<tr>
+<td>changed_by</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>操作人 ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="3-SQL实现"><a href="#3-SQL实现" class="headerlink" title="3. SQL实现"></a>3. SQL实现</h1><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建用户表</span><br><span class="hljs-keyword">CREATE TABLE</span> 用户表 (<br>    编号 NUMBER GENERATED <span class="hljs-keyword">BY</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">IDENTITY</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    用户名 VARCHAR2(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    密码 VARCHAR2(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    邮箱 VARCHAR2(<span class="hljs-number">100</span>) <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">NOT NULL</span>,<br>    角色 VARCHAR2(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    用户头像 VARCHAR2(<span class="hljs-number">255</span>)<br>);<br><br><span class="hljs-comment">-- 创建影片表</span><br><span class="hljs-keyword">CREATE TABLE</span> 影片表 (<br>    编号 NUMBER GENERATED <span class="hljs-keyword">BY</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">IDENTITY</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    影片名称 VARCHAR2(<span class="hljs-number">200</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    国外名称 VARCHAR2(<span class="hljs-number">200</span>),<br>    演职人员 VARCHAR2(<span class="hljs-number">500</span>),<br>    导演 VARCHAR2(<span class="hljs-number">100</span>),<br>    电影详情 VARCHAR2(<span class="hljs-number">1000</span>),<br>    电影时长 NUMBER, <span class="hljs-comment">-- 电影时长（以分钟为单位）</span><br>    电影类型 VARCHAR2(<span class="hljs-number">100</span>),<br>    电影评分 NUMBER <span class="hljs-keyword">CHECK</span> (电影评分 <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">0</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">10</span>),<br>    票房 NUMBER,<br>    电影参评人数 NUMBER,<br>    上映时间 <span class="hljs-type">DATE</span>,<br>    制片地区 VARCHAR2(<span class="hljs-number">100</span>),<br>    电影海报地址 VARCHAR2(<span class="hljs-number">255</span>),<br>    电影状态 VARCHAR2(<span class="hljs-number">50</span>) <span class="hljs-comment">-- 电影状态，例如正在上映或已下架</span><br>);<br><br><span class="hljs-comment">-- 创建影院表</span><br><span class="hljs-keyword">CREATE TABLE</span> 影院表 (<br>    编号 NUMBER GENERATED <span class="hljs-keyword">BY</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">IDENTITY</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    影院名称 VARCHAR2(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    影院地址 VARCHAR2(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span><br>);<br><br><span class="hljs-comment">-- 创建放映厅表</span><br><span class="hljs-keyword">CREATE TABLE</span> 放映厅表 (<br>    编号 NUMBER GENERATED <span class="hljs-keyword">BY</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">IDENTITY</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    放映厅名称 VARCHAR2(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    放映厅容量 NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>    所属影院编号 NUMBER,<br>    <span class="hljs-keyword">FOREIGN KEY</span> (所属影院编号) <span class="hljs-keyword">REFERENCES</span> 影院表(编号)<br>);<br><br><span class="hljs-comment">-- 创建订单详情表</span><br><span class="hljs-keyword">CREATE TABLE</span> 订单详情表 (<br>    编号 NUMBER GENERATED <span class="hljs-keyword">BY</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">IDENTITY</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    所属放映厅 NUMBER,<br>    放映的电影编号 NUMBER,<br>    电影放映时间 <span class="hljs-type">DATE</span>,<br>    售价 NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>    剩余座位数 NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>    场次状态 VARCHAR2(<span class="hljs-number">50</span>), <span class="hljs-comment">-- 可预订、已售罄等状态</span><br>    <span class="hljs-keyword">FOREIGN KEY</span> (所属放映厅) <span class="hljs-keyword">REFERENCES</span> 放映厅表(编号),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (放映的电影编号) <span class="hljs-keyword">REFERENCES</span> 影片表(编号)<br>);<br><br><span class="hljs-comment">-- 创建订单表</span><br><span class="hljs-keyword">CREATE TABLE</span> 订单表 (<br>    编号 NUMBER GENERATED <span class="hljs-keyword">BY</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">IDENTITY</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    所属用户编号 NUMBER,<br>    所属场次编号 NUMBER,<br>    电影票座位信息 VARCHAR2(<span class="hljs-number">500</span>), <span class="hljs-comment">-- 存储座位信息</span><br>    订单状态 VARCHAR2(<span class="hljs-number">50</span>),<br>    订单价格 NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>    订单支付时间 <span class="hljs-type">DATE</span>,<br>    <span class="hljs-keyword">FOREIGN KEY</span> (所属用户编号) <span class="hljs-keyword">REFERENCES</span> 用户表(编号),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (所属场次编号) <span class="hljs-keyword">REFERENCES</span> 订单详情表(编号)<br>);<br><br><span class="hljs-comment">-- 创建评论表</span><br><span class="hljs-keyword">CREATE TABLE</span> 评论表 (<br>    编号 NUMBER GENERATED <span class="hljs-keyword">BY</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">IDENTITY</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br>    所属用户编号 NUMBER,<br>    评论内容 VARCHAR2(<span class="hljs-number">1000</span>),<br>    所属电影编号 NUMBER,<br>    评论时间 <span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> SYSDATE,<br>    所属用户 VARCHAR2(<span class="hljs-number">100</span>),<br>    评分 NUMBER <span class="hljs-keyword">CHECK</span> (评分 <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">0</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">10</span>),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (所属用户编号) <span class="hljs-keyword">REFERENCES</span> 用户表(编号),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (所属电影编号) <span class="hljs-keyword">REFERENCES</span> 影片表(编号)<br>);<br><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 用户表索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_username <span class="hljs-keyword">ON</span> 用户表 (用户名);<br><span class="hljs-keyword">CREATE</span> INDEX idx_email <span class="hljs-keyword">ON</span> 用户表 (邮箱);<br><br><span class="hljs-comment">-- 影片表索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_movie_name <span class="hljs-keyword">ON</span> 影片表 (影片名称);<br><span class="hljs-keyword">CREATE</span> INDEX idx_director <span class="hljs-keyword">ON</span> 影片表 (导演);<br><span class="hljs-keyword">CREATE</span> INDEX idx_movie_rating <span class="hljs-keyword">ON</span> 影片表 (电影评分);<br><br><span class="hljs-comment">-- 影院表索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_cinema_name <span class="hljs-keyword">ON</span> 影院表 (影院名称);<br><br><span class="hljs-comment">-- 放映厅表索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_screening_room_name <span class="hljs-keyword">ON</span> 放映厅表 (放映厅名称);<br><br><span class="hljs-comment">-- 订单表索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_user_id <span class="hljs-keyword">ON</span> 订单表 (所属用户编号);<br><span class="hljs-keyword">CREATE</span> INDEX idx_showtime_id <span class="hljs-keyword">ON</span> 订单表 (所属场次编号);<br><br><span class="hljs-comment">-- 订单详情表索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_hall_id <span class="hljs-keyword">ON</span> 订单详情表 (所属放映厅);<br><span class="hljs-keyword">CREATE</span> INDEX idx_movie_id <span class="hljs-keyword">ON</span> 订单详情表 (放映的电影编号);<br><br><span class="hljs-comment">-- 评论表索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_user_id_comment <span class="hljs-keyword">ON</span> 评论表 (所属用户编号);<br><span class="hljs-keyword">CREATE</span> INDEX idx_movie_id_comment <span class="hljs-keyword">ON</span> 评论表 (所属电影编号);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建用户信息视图</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> 用户信息视图 <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">AS</span> 用户编号, 用户名, 邮箱, 角色<br><span class="hljs-keyword">FROM</span> 用户表;<br><br><span class="hljs-comment">-- 创建正在上映电影视图</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> 正在上映电影视图 <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">AS</span> 电影编号, 影片名称, 上映时间, 票房, 电影状态<br><span class="hljs-keyword">FROM</span> 影片表<br><span class="hljs-keyword">WHERE</span> 电影状态 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;正在上映&#x27;</span>;<br><br><span class="hljs-comment">-- 创建影院放映厅信息视图</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> 影院放映厅信息视图 <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> c.编号 <span class="hljs-keyword">AS</span> 影院编号, c.影院名称, c.影院地址, <br>       r.编号 <span class="hljs-keyword">AS</span> 放映厅编号, r.放映厅名称, r.放映厅容量<br><span class="hljs-keyword">FROM</span> 影院表 c<br><span class="hljs-keyword">JOIN</span> 放映厅表 r <span class="hljs-keyword">ON</span> c.编号 <span class="hljs-operator">=</span> r.所属影院编号;<br><br><span class="hljs-comment">-- 创建用户订单详情视图</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> 用户订单详情视图 <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> o.编号 <span class="hljs-keyword">AS</span> 订单编号, u.用户名, <br>      m.影片名称, d.电影放映时间,<br>      o.电影票座位信息, o.订单状态<br><span class="hljs-keyword">FROM</span> 订单表 o<br><span class="hljs-keyword">JOIN</span> 用户表 u <span class="hljs-keyword">ON</span> o.所属用户编号 <span class="hljs-operator">=</span> u.编号<br><span class="hljs-keyword">JOIN</span> 订单详情表 d <span class="hljs-keyword">ON</span> o.所属场次编号 <span class="hljs-operator">=</span> d.编号<br><span class="hljs-keyword">JOIN</span> 影片表 m <span class="hljs-keyword">ON</span> d.放映的电影编号 <span class="hljs-operator">=</span> m.编号;<br><br><span class="hljs-comment">-- 创建用户电影评论视图</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> 用户电影评论视图 <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> c.编号 <span class="hljs-keyword">AS</span> 评论编号, u.用户名, <br>      m.影片名称, c.评论内容, c.评分, c.评论时间<br><span class="hljs-keyword">FROM</span> 评论表 c<br><span class="hljs-keyword">JOIN</span> 用户表 u <span class="hljs-keyword">ON</span> c.所属用户编号 <span class="hljs-operator">=</span> u.编号<br><span class="hljs-keyword">JOIN</span> 影片表 m <span class="hljs-keyword">ON</span> c.所属电影编号 <span class="hljs-operator">=</span> m.编号;<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建用户注册存储过程</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> 用户注册 (<br>    p_username <span class="hljs-keyword">IN</span> VARCHAR2,<br>    p_password <span class="hljs-keyword">IN</span> VARCHAR2,<br>    p_email <span class="hljs-keyword">IN</span> VARCHAR2,<br>    p_role <span class="hljs-keyword">IN</span> VARCHAR2<br>) <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">INSERT INTO</span> 用户表 (用户名, 密码, 邮箱, 角色)<br>    <span class="hljs-keyword">VALUES</span> (p_username, p_password, p_email, p_role);<br><span class="hljs-keyword">END</span> 用户注册;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 创建更新订单状态存储过程</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> 更新订单状态 (<br>    p_order_id <span class="hljs-keyword">IN</span> NUMBER,<br>    p_new_status <span class="hljs-keyword">IN</span> VARCHAR2<br>) <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">UPDATE</span> 订单表<br>    <span class="hljs-keyword">SET</span> 订单状态 <span class="hljs-operator">=</span> p_new_status<br>    <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> p_order_id;<br><br>    <span class="hljs-keyword">COMMIT</span>; <span class="hljs-comment">-- 提交事务</span><br><span class="hljs-keyword">END</span> 更新订单状态;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 创建计算电影平均评分函数</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> 计算电影平均评分 (<br>    p_movie_id <span class="hljs-keyword">IN</span> NUMBER<br>) <span class="hljs-keyword">RETURN</span> NUMBER <span class="hljs-keyword">AS</span><br>    v_average_rating NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(评分)<br>    <span class="hljs-keyword">INTO</span> v_average_rating<br>    <span class="hljs-keyword">FROM</span> 评论表<br>    <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> p_movie_id;<br><br>    <span class="hljs-keyword">RETURN</span> NVL(v_average_rating, <span class="hljs-number">0</span>); <span class="hljs-comment">-- 如果没有评分，则返回0</span><br><span class="hljs-keyword">END</span> 计算电影平均评分;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 创建查询用户订单总数函数</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> 查询用户订单总数 (<br>    p_user_id <span class="hljs-keyword">IN</span> NUMBER<br>) <span class="hljs-keyword">RETURN</span> NUMBER <span class="hljs-keyword">AS</span><br>    v_order_count NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>)<br>    <span class="hljs-keyword">INTO</span> v_order_count<br>    <span class="hljs-keyword">FROM</span> 订单表<br>    <span class="hljs-keyword">WHERE</span> 所属用户编号 <span class="hljs-operator">=</span> p_user_id;<br><br>    <span class="hljs-keyword">RETURN</span> v_order_count;<br><span class="hljs-keyword">END</span> 查询用户订单总数;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 自动更新影片评分和参评人数</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 更新影片评分<br>AFTER <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> 评论表<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">DECLARE</span><br>    v_电影编号 影片表.编号<span class="hljs-operator">%</span>TYPE;<br><span class="hljs-keyword">BEGIN</span><br>    IF INSERTING <span class="hljs-keyword">THEN</span><br>        v_电影编号 :<span class="hljs-operator">=</span> :NEW.所属电影编号;<br>        <span class="hljs-keyword">UPDATE</span> 影片表 <span class="hljs-keyword">SET</span><br>            电影评分 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(评分) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> v_电影编号),<br>            电影参评人数 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> v_电影编号)<br>        <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> v_电影编号;<br>    ELSIF DELETING <span class="hljs-keyword">THEN</span><br>        v_电影编号 :<span class="hljs-operator">=</span> :OLD.所属电影编号;<br>        <span class="hljs-keyword">UPDATE</span> 影片表 <span class="hljs-keyword">SET</span><br>            电影评分 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(评分) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> v_电影编号),<br>            电影参评人数 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> v_电影编号)<br>        <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> v_电影编号;<br>    <span class="hljs-keyword">ELSE</span><br>        <span class="hljs-comment">-- 处理电影变更的情况</span><br>        IF :NEW.所属电影编号 <span class="hljs-operator">!=</span> :OLD.所属电影编号 <span class="hljs-keyword">THEN</span><br>            <span class="hljs-comment">-- 更新原电影</span><br>            <span class="hljs-keyword">UPDATE</span> 影片表 <span class="hljs-keyword">SET</span><br>                电影评分 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(评分) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> :OLD.所属电影编号),<br>                电影参评人数 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> :OLD.所属电影编号)<br>            <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> :OLD.所属电影编号;<br>          <br>            <span class="hljs-comment">-- 更新新电影</span><br>            <span class="hljs-keyword">UPDATE</span> 影片表 <span class="hljs-keyword">SET</span><br>                电影评分 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(评分) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> :NEW.所属电影编号),<br>                电影参评人数 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> :NEW.所属电影编号)<br>            <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> :NEW.所属电影编号;<br>        <span class="hljs-keyword">ELSE</span><br>            <span class="hljs-comment">-- 只更新当前电影</span><br>            <span class="hljs-keyword">UPDATE</span> 影片表 <span class="hljs-keyword">SET</span><br>                电影评分 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(评分) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> :NEW.所属电影编号),<br>                电影参评人数 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">FROM</span> 评论表 <span class="hljs-keyword">WHERE</span> 所属电影编号 <span class="hljs-operator">=</span> :NEW.所属电影编号)<br>            <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> :NEW.所属电影编号;<br>        <span class="hljs-keyword">END</span> IF;<br>    <span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 订单支付后更新场次座位</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 更新场次座位<br>AFTER <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> 订单状态 <span class="hljs-keyword">ON</span> 订单表<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">WHEN</span> (NEW.订单状态 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;已支付&#x27;</span> <span class="hljs-keyword">AND</span> OLD.订单状态 <span class="hljs-operator">!=</span> <span class="hljs-string">&#x27;已支付&#x27;</span>)<br><span class="hljs-keyword">DECLARE</span><br>    v_座位数 NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 计算订单中的座位数量（以逗号分隔）</span><br>    v_座位数 :<span class="hljs-operator">=</span> REGEXP_COUNT(:NEW.电影票座位信息, <span class="hljs-string">&#x27;,&#x27;</span>) <span class="hljs-operator">+</span> <span class="hljs-number">1</span>;<br>  <br>    <span class="hljs-keyword">UPDATE</span> 订单详情表<br>    <span class="hljs-keyword">SET</span> 剩余座位数 <span class="hljs-operator">=</span> 剩余座位数 <span class="hljs-operator">-</span> v_座位数<br>    <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> :NEW.所属场次编号;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 自动更新场次状态</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 更新场次状态<br>AFTER <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> 剩余座位数 <span class="hljs-keyword">ON</span> 订单详情表<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br>    IF :NEW.剩余座位数 <span class="hljs-operator">&lt;=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">UPDATE</span> 订单详情表<br>        <span class="hljs-keyword">SET</span> 场次状态 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;已售罄&#x27;</span><br>        <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> :NEW.编号;<br>    ELSIF :NEW.剩余座位数 <span class="hljs-operator">&lt;</span> (:NEW.剩余座位数 <span class="hljs-operator">+</span> :NEW.剩余座位数 <span class="hljs-operator">*</span> <span class="hljs-number">0.2</span>) <span class="hljs-keyword">THEN</span>  <span class="hljs-comment">-- 示例：少于20%座位时</span><br>        <span class="hljs-keyword">UPDATE</span> 订单详情表<br>        <span class="hljs-keyword">SET</span> 场次状态 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;即将售罄&#x27;</span><br>        <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> :NEW.编号;<br>    <span class="hljs-keyword">ELSE</span><br>        <span class="hljs-keyword">UPDATE</span> 订单详情表<br>        <span class="hljs-keyword">SET</span> 场次状态 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;可预订&#x27;</span><br>        <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> :NEW.编号;<br>    <span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 新评论自动关联用户名</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 填充评论用户名<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> 评论表<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">SELECT</span> 用户名 <span class="hljs-keyword">INTO</span> :NEW.所属用户<br>    <span class="hljs-keyword">FROM</span> 用户表<br>    <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> :NEW.所属用户编号;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 票房自动累加</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 更新影片票房<br>AFTER <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> 订单状态 <span class="hljs-keyword">ON</span> 订单表<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">WHEN</span> (NEW.订单状态 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;已支付&#x27;</span> <span class="hljs-keyword">AND</span> OLD.订单状态 <span class="hljs-operator">!=</span> <span class="hljs-string">&#x27;已支付&#x27;</span>)<br><span class="hljs-keyword">DECLARE</span><br>    v_电影编号 影片表.编号<span class="hljs-operator">%</span>TYPE;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 获取关联的电影编号</span><br>    <span class="hljs-keyword">SELECT</span> 放映的电影编号 <span class="hljs-keyword">INTO</span> v_电影编号<br>    <span class="hljs-keyword">FROM</span> 订单详情表<br>    <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> :NEW.所属场次编号;<br>  <br>    <span class="hljs-comment">-- 更新票房</span><br>    <span class="hljs-keyword">UPDATE</span> 影片表<br>    <span class="hljs-keyword">SET</span> 票房 <span class="hljs-operator">=</span> 票房 <span class="hljs-operator">+</span> :NEW.订单价格<br>    <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> v_电影编号;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 场次时间冲突检查</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> 检查场次冲突<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">ON</span> 订单详情表<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">DECLARE</span><br>    v_conflict_count NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">INTO</span> v_conflict_count<br>    <span class="hljs-keyword">FROM</span> 订单详情表<br>    <span class="hljs-keyword">WHERE</span> 所属放映厅 <span class="hljs-operator">=</span> :NEW.所属放映厅<br>    <span class="hljs-keyword">AND</span> 编号 <span class="hljs-operator">!=</span> :NEW.编号  <span class="hljs-comment">-- 排除自身</span><br>    <span class="hljs-keyword">AND</span> 电影放映时间 <span class="hljs-keyword">BETWEEN</span> :NEW.电影放映时间 <span class="hljs-operator">-</span> <span class="hljs-type">INTERVAL</span> <span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-keyword">HOUR</span><br>                     <span class="hljs-keyword">AND</span> :NEW.电影放映时间 <span class="hljs-operator">+</span> <span class="hljs-type">INTERVAL</span> <span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-keyword">HOUR</span>;<br>  <br>    IF v_conflict_count <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20001</span>, <span class="hljs-string">&#x27;该放映厅在此时间段已有其他场次安排&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
+<h3 id="3-1-1-用户管理操作"><a href="#3-1-1-用户管理操作" class="headerlink" title="3.1.1. 用户管理操作"></a>3.1.1. 用户管理操作</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 用户注册</span><br><span class="hljs-keyword">INSERT INTO</span> 用户表 (用户名, 密码, 邮箱, 角色) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-string">&#x27;zhangsan123&#x27;</span>, <span class="hljs-string">&#x27;zhangsan@example.com&#x27;</span>, <span class="hljs-string">&#x27;普通用户&#x27;</span>);<br><br><span class="hljs-comment">-- 用户信息更新</span><br><span class="hljs-keyword">UPDATE</span> 用户表 <br><span class="hljs-keyword">SET</span> 用户头像 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;avatars/zhangsan.jpg&#x27;</span>, 密码 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;newpassword123&#x27;</span> <br><span class="hljs-keyword">WHERE</span> 用户名 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;张三&#x27;</span>;<br><br><span class="hljs-comment">-- 用户删除</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> 用户表 <span class="hljs-keyword">WHERE</span> 用户名 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;张三&#x27;</span>;<br><br><span class="hljs-comment">-- 用户登录验证</span><br><span class="hljs-keyword">SELECT</span> 编号, 用户名, 角色 <span class="hljs-keyword">FROM</span> 用户表 <br><span class="hljs-keyword">WHERE</span> 邮箱 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;zhangsan@example.com&#x27;</span> <span class="hljs-keyword">AND</span> 密码 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;zhangsan123&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="3-1-2-影片管理操作"><a href="#3-1-2-影片管理操作" class="headerlink" title="3.1.2. 影片管理操作"></a>3.1.2. 影片管理操作</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 添加新影片</span><br><span class="hljs-keyword">INSERT INTO</span> 影片表 (<br>    影片名称, 国外名称, 导演, 电影详情, 电影时长, <br>    电影类型, 上映时间, 制片地区, 电影海报地址, 电影状态<br>) <span class="hljs-keyword">VALUES</span> (<br>    <span class="hljs-string">&#x27;流浪地球&#x27;</span>, <span class="hljs-string">&#x27;The Wandering Earth&#x27;</span>, <span class="hljs-string">&#x27;郭帆&#x27;</span>, <br>    <span class="hljs-string">&#x27;太阳即将毁灭，人类在地球表面建造巨大推进器...&#x27;</span>,<br>    <span class="hljs-number">125</span>, <span class="hljs-string">&#x27;科幻/灾难&#x27;</span>, <span class="hljs-type">DATE</span> <span class="hljs-string">&#x27;2019-02-05&#x27;</span>, <span class="hljs-string">&#x27;中国&#x27;</span>, <br>    <span class="hljs-string">&#x27;posters/wandering_earth.jpg&#x27;</span>, <span class="hljs-string">&#x27;已下架&#x27;</span><br>);<br><br><span class="hljs-comment">-- 更新影片信息</span><br><span class="hljs-keyword">UPDATE</span> 影片表 <br><span class="hljs-keyword">SET</span> 电影评分 <span class="hljs-operator">=</span> <span class="hljs-number">7.9</span>, 电影参评人数 <span class="hljs-operator">=</span> <span class="hljs-number">1250000</span> <br><span class="hljs-keyword">WHERE</span> 影片名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;流浪地球&#x27;</span>;<br><br><span class="hljs-comment">-- 影片查询 (按类型和评分)</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> 影片表 <br><span class="hljs-keyword">WHERE</span> 电影类型 <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%科幻%&#x27;</span> <span class="hljs-keyword">AND</span> 电影评分 <span class="hljs-operator">&gt;</span> <span class="hljs-number">7.0</span> <br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 上映时间 <span class="hljs-keyword">DESC</span>;<br><br><span class="hljs-comment">-- 票房排行榜</span><br><span class="hljs-keyword">SELECT</span> 影片名称, 票房 <span class="hljs-keyword">FROM</span> 影片表 <br><span class="hljs-keyword">WHERE</span> 票房 <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT NULL</span> <br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 票房 <span class="hljs-keyword">DESC</span> <br><span class="hljs-keyword">FETCH</span> <span class="hljs-keyword">FIRST</span> <span class="hljs-number">10</span> <span class="hljs-keyword">ROWS</span> <span class="hljs-keyword">ONLY</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="3-1-3-影院管理操作"><a href="#3-1-3-影院管理操作" class="headerlink" title="3.1.3. 影院管理操作"></a>3.1.3. 影院管理操作</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 新增影院</span><br><span class="hljs-keyword">INSERT INTO</span> 影院表 (影院名称, 影院地址) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;万达影城(北京CBD店)&#x27;</span>, <span class="hljs-string">&#x27;北京市朝阳区建国路93号万达广场&#x27;</span>);<br><br><span class="hljs-comment">-- 新增放映厅</span><br><span class="hljs-keyword">INSERT INTO</span> 放映厅表 (放映厅名称, 放映厅容量, 所属影院编号) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;IMAX厅&#x27;</span>, <span class="hljs-number">250</span>, (<span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">FROM</span> 影院表 <span class="hljs-keyword">WHERE</span> 影院名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;万达影城(北京CBD店)&#x27;</span>));<br></code></pre></td></tr></table></figure>
+<h3 id="3-1-4-场次管理操作"><a href="#3-1-4-场次管理操作" class="headerlink" title="3.1.4. 场次管理操作"></a>3.1.4. 场次管理操作</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建新场次</span><br><span class="hljs-keyword">INSERT INTO</span> 订单详情表 (<br>    所属放映厅, 放映的电影编号, 电影放映时间, 售价, 剩余座位数, 场次状态<br>) <span class="hljs-keyword">VALUES</span> (<br>    (<span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">FROM</span> 放映厅表 <span class="hljs-keyword">WHERE</span> 放映厅名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;IMAX厅&#x27;</span>),<br>    (<span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">FROM</span> 影片表 <span class="hljs-keyword">WHERE</span> 影片名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;流浪地球&#x27;</span>),<br>    <span class="hljs-type">TIMESTAMP</span> <span class="hljs-string">&#x27;2023-05-20 19:30:00&#x27;</span>,<br>    <span class="hljs-number">65.00</span>,<br>    (<span class="hljs-keyword">SELECT</span> 放映厅容量 <span class="hljs-keyword">FROM</span> 放映厅表 <span class="hljs-keyword">WHERE</span> 放映厅名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;IMAX厅&#x27;</span>),<br>    <span class="hljs-string">&#x27;可预订&#x27;</span><br>);<br><br><span class="hljs-comment">-- 查询可用场次</span><br><span class="hljs-keyword">SELECT</span> <br>    m.影片名称, <br>    c.影院名称, <br>    h.放映厅名称, <br>    s.电影放映时间, <br>    s.售价, <br>    s.剩余座位数<br><span class="hljs-keyword">FROM</span> 订单详情表 s<br><span class="hljs-keyword">JOIN</span> 影片表 m <span class="hljs-keyword">ON</span> s.放映的电影编号 <span class="hljs-operator">=</span> m.编号<br><span class="hljs-keyword">JOIN</span> 放映厅表 h <span class="hljs-keyword">ON</span> s.所属放映厅 <span class="hljs-operator">=</span> h.编号<br><span class="hljs-keyword">JOIN</span> 影院表 c <span class="hljs-keyword">ON</span> h.所属影院编号 <span class="hljs-operator">=</span> c.编号<br><span class="hljs-keyword">WHERE</span> m.影片名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;流浪地球&#x27;</span><br><span class="hljs-keyword">AND</span> s.电影放映时间 <span class="hljs-operator">&gt;</span> SYSDATE<br><span class="hljs-keyword">AND</span> s.剩余座位数 <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="3-1-5-订单管理操作"><a href="#3-1-5-订单管理操作" class="headerlink" title="3.1.5. 订单管理操作"></a>3.1.5. 订单管理操作</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建新订单</span><br><span class="hljs-keyword">INSERT INTO</span> 订单表 (<br>    所属用户编号, 所属场次编号, 电影票座位信息, 订单状态, 订单价格<br>) <span class="hljs-keyword">VALUES</span> (<br>    (<span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">FROM</span> 用户表 <span class="hljs-keyword">WHERE</span> 邮箱 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;zhangsan@example.com&#x27;</span>),<br>    (<span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">FROM</span> 订单详情表 <span class="hljs-keyword">WHERE</span> 电影放映时间 <span class="hljs-operator">=</span> <span class="hljs-type">TIMESTAMP</span> <span class="hljs-string">&#x27;2023-05-20 19:30:00&#x27;</span>),<br>    <span class="hljs-string">&#x27;A5,A6,A7&#x27;</span>,<br>    <span class="hljs-string">&#x27;待支付&#x27;</span>,<br>    <span class="hljs-number">195.00</span><br>);<br><br><span class="hljs-comment">-- 支付订单</span><br><span class="hljs-keyword">UPDATE</span> 订单表 <br><span class="hljs-keyword">SET</span> 订单状态 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;已支付&#x27;</span>, 订单支付时间 <span class="hljs-operator">=</span> SYSDATE <br><span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MAX</span>(编号) <span class="hljs-keyword">FROM</span> 订单表);<br><br><span class="hljs-comment">-- 查询用户历史订单</span><br><span class="hljs-keyword">SELECT</span> <br>    o.订单支付时间,<br>    m.影片名称,<br>    c.影院名称,<br>    h.放映厅名称,<br>    s.电影放映时间,<br>    o.电影票座位信息,<br>    o.订单价格<br><span class="hljs-keyword">FROM</span> 订单表 o<br><span class="hljs-keyword">JOIN</span> 订单详情表 s <span class="hljs-keyword">ON</span> o.所属场次编号 <span class="hljs-operator">=</span> s.编号<br><span class="hljs-keyword">JOIN</span> 影片表 m <span class="hljs-keyword">ON</span> s.放映的电影编号 <span class="hljs-operator">=</span> m.编号<br><span class="hljs-keyword">JOIN</span> 放映厅表 h <span class="hljs-keyword">ON</span> s.所属放映厅 <span class="hljs-operator">=</span> h.编号<br><span class="hljs-keyword">JOIN</span> 影院表 c <span class="hljs-keyword">ON</span> h.所属影院编号 <span class="hljs-operator">=</span> c.编号<br><span class="hljs-keyword">WHERE</span> o.所属用户编号 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">FROM</span> 用户表 <span class="hljs-keyword">WHERE</span> 邮箱 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;zhangsan@example.com&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<h3 id="3-1-6-评论管理操作"><a href="#3-1-6-评论管理操作" class="headerlink" title="3.1.6. 评论管理操作"></a>3.1.6. 评论管理操作</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 添加评论</span><br><span class="hljs-keyword">INSERT INTO</span> 评论表 (所属用户编号, 评论内容, 所属电影编号, 评分)<br><span class="hljs-keyword">VALUES</span> (<br>    (<span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">FROM</span> 用户表 <span class="hljs-keyword">WHERE</span> 邮箱 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;zhangsan@example.com&#x27;</span>),<br>    <span class="hljs-string">&#x27;特效震撼，中国科幻的里程碑作品&#x27;</span>,<br>    (<span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">FROM</span> 影片表 <span class="hljs-keyword">WHERE</span> 影片名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;流浪地球&#x27;</span>),<br>    <span class="hljs-number">9.0</span><br>);<br><br><span class="hljs-comment">-- 查询影片评论</span><br><span class="hljs-keyword">SELECT</span> <br>    u.用户名,<br>    c.评论内容,<br>    c.评分,<br>    c.评论时间<br><span class="hljs-keyword">FROM</span> 评论表 c<br><span class="hljs-keyword">JOIN</span> 用户表 u <span class="hljs-keyword">ON</span> c.所属用户编号 <span class="hljs-operator">=</span> u.编号<br><span class="hljs-keyword">WHERE</span> c.所属电影编号 <span class="hljs-operator">=</span> (<span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">FROM</span> 影片表 <span class="hljs-keyword">WHERE</span> 影片名称 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;流浪地球&#x27;</span>)<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> c.评论时间 <span class="hljs-keyword">DESC</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="3-1-7-事务处理示例-购票全流程"><a href="#3-1-7-事务处理示例-购票全流程" class="headerlink" title="3.1.7. 事务处理示例 (购票全流程)"></a>3.1.7. 事务处理示例 (购票全流程)</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DECLARE</span><br>    v_user_id 用户表.编号<span class="hljs-operator">%</span>TYPE;<br>    v_session_id 订单详情表.编号<span class="hljs-operator">%</span>TYPE;<br>    v_seats VARCHAR2(<span class="hljs-number">100</span>) :<span class="hljs-operator">=</span> <span class="hljs-string">&#x27;B10,B11&#x27;</span>;<br>    v_seat_count NUMBER :<span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>    v_price NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 获取用户ID</span><br>    <span class="hljs-keyword">SELECT</span> 编号 <span class="hljs-keyword">INTO</span> v_user_id <br>    <span class="hljs-keyword">FROM</span> 用户表 <span class="hljs-keyword">WHERE</span> 邮箱 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;zhangsan@example.com&#x27;</span>;<br>  <br>    <span class="hljs-comment">-- 获取场次信息和价格</span><br>    <span class="hljs-keyword">SELECT</span> 编号, 售价 <span class="hljs-keyword">INTO</span> v_session_id, v_price <br>    <span class="hljs-keyword">FROM</span> 订单详情表 <br>    <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> <span class="hljs-number">101</span>; <span class="hljs-comment">-- 假设场次ID为101</span><br>  <br>    <span class="hljs-comment">-- 验证座位可用性</span><br>    IF (<span class="hljs-keyword">SELECT</span> 剩余座位数 <span class="hljs-keyword">FROM</span> 订单详情表 <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> v_session_id) <span class="hljs-operator">&lt;</span> v_seat_count <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20001</span>, <span class="hljs-string">&#x27;座位不足&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br>  <br>    <span class="hljs-comment">-- 开始事务</span><br>    <span class="hljs-keyword">SAVEPOINT</span> start_transaction;<br>  <br>    <span class="hljs-comment">-- 创建订单</span><br>    <span class="hljs-keyword">INSERT INTO</span> 订单表 (所属用户编号, 所属场次编号, 电影票座位信息, 订单状态, 订单价格)<br>    <span class="hljs-keyword">VALUES</span> (v_user_id, v_session_id, v_seats, <span class="hljs-string">&#x27;待支付&#x27;</span>, v_price <span class="hljs-operator">*</span> v_seat_count);<br>  <br>    <span class="hljs-comment">-- 锁定座位 (通过更新场次)</span><br>    <span class="hljs-keyword">UPDATE</span> 订单详情表 <br>    <span class="hljs-keyword">SET</span> 剩余座位数 <span class="hljs-operator">=</span> 剩余座位数 <span class="hljs-operator">-</span> v_seat_count <br>    <span class="hljs-keyword">WHERE</span> 编号 <span class="hljs-operator">=</span> v_session_id;<br>  <br>    <span class="hljs-comment">-- 模拟支付成功</span><br>    <span class="hljs-keyword">UPDATE</span> 订单表 <br>    <span class="hljs-keyword">SET</span> 订单状态 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;已支付&#x27;</span>, 订单支付时间 <span class="hljs-operator">=</span> SYSDATE <br>    <span class="hljs-keyword">WHERE</span> 所属用户编号 <span class="hljs-operator">=</span> v_user_id <br>    <span class="hljs-keyword">AND</span> 所属场次编号 <span class="hljs-operator">=</span> v_session_id;<br>  <br>    <span class="hljs-keyword">COMMIT</span>;<br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">ROLLBACK</span> <span class="hljs-keyword">TO</span> start_transaction;<br>        RAISE;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
+<h3 id="3-1-8-复杂查询示例"><a href="#3-1-8-复杂查询示例" class="headerlink" title="3.1.8. 复杂查询示例"></a>3.1.8. 复杂查询示例</h3><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 查询各类型影片平均评分</span><br><span class="hljs-keyword">SELECT</span> <br>    电影类型,<br>    ROUND(<span class="hljs-built_in">AVG</span>(电影评分), <span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> 平均评分,<br>    <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">AS</span> 影片数量<br><span class="hljs-keyword">FROM</span> 影片表<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> 电影类型<br><span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">AVG</span>(电影评分) <span class="hljs-operator">&gt;</span> <span class="hljs-number">6.0</span><br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 平均评分 <span class="hljs-keyword">DESC</span>;<br><br><span class="hljs-comment">-- 查询热门影片(评分高且评论多)</span><br><span class="hljs-keyword">SELECT</span> <br>    m.影片名称,<br>    m.电影评分,<br>    <span class="hljs-built_in">COUNT</span>(c.编号) <span class="hljs-keyword">AS</span> 评论数量,<br>    <span class="hljs-built_in">SUM</span>(o.订单价格) <span class="hljs-keyword">AS</span> 总票房<br><span class="hljs-keyword">FROM</span> 影片表 m<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> 评论表 c <span class="hljs-keyword">ON</span> m.编号 <span class="hljs-operator">=</span> c.所属电影编号<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> 订单详情表 s <span class="hljs-keyword">ON</span> m.编号 <span class="hljs-operator">=</span> s.放映的电影编号<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> 订单表 o <span class="hljs-keyword">ON</span> s.编号 <span class="hljs-operator">=</span> o.所属场次编号<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> m.影片名称, m.电影评分<br><span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">COUNT</span>(c.编号) <span class="hljs-operator">&gt;</span> <span class="hljs-number">1000</span><br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> m.电影评分 <span class="hljs-keyword">DESC</span>, 评论数量 <span class="hljs-keyword">DESC</span>;<br><br><span class="hljs-comment">-- 查询用户观影偏好</span><br><span class="hljs-keyword">SELECT</span> <br>    u.用户名,<br>    m.电影类型,<br>    <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">AS</span> 观影次数,<br>    <span class="hljs-built_in">SUM</span>(o.订单价格) <span class="hljs-keyword">AS</span> 总消费<br><span class="hljs-keyword">FROM</span> 订单表 o<br><span class="hljs-keyword">JOIN</span> 用户表 u <span class="hljs-keyword">ON</span> o.所属用户编号 <span class="hljs-operator">=</span> u.编号<br><span class="hljs-keyword">JOIN</span> 订单详情表 s <span class="hljs-keyword">ON</span> o.所属场次编号 <span class="hljs-operator">=</span> s.编号<br><span class="hljs-keyword">JOIN</span> 影片表 m <span class="hljs-keyword">ON</span> s.放映的电影编号 <span class="hljs-operator">=</span> m.编号<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> u.用户名, m.电影类型<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 观影次数 <span class="hljs-keyword">DESC</span>;<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2025/zip/40495483/1749126752999-6a184b18-bf29-40dc-a55b-3e5912c44fd6.zip">影院票务管理系统.zip</a></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>影院票务管理系统oracle</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E6%95%99%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">教职工管理系统</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E5%AD%A6%E7%94%9F%E5%AE%BF%E8%88%8D%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Foracle/">学生宿舍管理系统oracle</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">1. 需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 用户管理模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%BD%B1%E7%89%87%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 影片管理模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%BD%B1%E9%99%A2%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. 影院管理模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E5%9C%BA%E6%AC%A1%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="toc-number">1.4.</span> <span class="toc-text">1.4. 场次管理模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="toc-number">1.5.</span> <span class="toc-text">1.5. 订单管理模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-%E8%AF%84%E8%AE%BA%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="toc-number">1.6.</span> <span class="toc-text">1.6. 评论管理模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">2. 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 系统结构功能图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 功能流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 数据库设计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-SQL%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">3. SQL实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C"><span class="toc-number">3.1.</span> <span class="toc-text">3.1.1. 用户管理操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E5%BD%B1%E7%89%87%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C"><span class="toc-number">3.2.</span> <span class="toc-text">3.1.2. 影片管理操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-%E5%BD%B1%E9%99%A2%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C"><span class="toc-number">3.3.</span> <span class="toc-text">3.1.3. 影院管理操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-%E5%9C%BA%E6%AC%A1%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C"><span class="toc-number">3.4.</span> <span class="toc-text">3.1.4. 场次管理操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-5-%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C"><span class="toc-number">3.5.</span> <span class="toc-text">3.1.5. 订单管理操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-6-%E8%AF%84%E8%AE%BA%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C"><span class="toc-number">3.6.</span> <span class="toc-text">3.1.6. 评论管理操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-7-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E7%A4%BA%E4%BE%8B-%E8%B4%AD%E7%A5%A8%E5%85%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">3.7.</span> <span class="toc-text">3.1.7. 事务处理示例 (购票全流程)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-8-%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.8.</span> <span class="toc-text">3.1.8. 复杂查询示例</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

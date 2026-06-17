@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>Diango学习笔记 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="Diango学习笔记">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/Diango%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="Diango学习笔记采用Anaconda+Pycharm实现安装Diango：[[Diango学习笔记]]pipinstalldjangoorcondainstalldiango一、建立项目(一)打开powershellwin+r(二)进入到我们想要存放文件的目录cdPycharmProjects可以看到如下">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">Diango学习笔记</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.761Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="Diango学习笔记"><a href="#Diango学习笔记" class="headerlink" title="Diango学习笔记"></a>Diango学习笔记</h1><p>采用Anaconda+Pycharm实现</p>
+<p>安装Diango：<br>[[Diango学习笔记]]</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">pip install django<br><br>or<br><br>conda install diango<br></code></pre></td></tr></table></figure>
+<h2 id="一、建立项目"><a href="#一、建立项目" class="headerlink" title="一、建立项目"></a>一、建立项目</h2><h3 id="一-打开powershell"><a href="#一-打开powershell" class="headerlink" title="(一)打开powershell"></a>(一)打开powershell</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">win+<span class="hljs-built_in">r</span><br></code></pre></td></tr></table></figure>
+<h3 id="二-进入到我们想要存放文件的目录"><a href="#二-进入到我们想要存放文件的目录" class="headerlink" title="(二)进入到我们想要存放文件的目录"></a>(二)进入到我们想要存放文件的目录</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> PycharmProjects<br></code></pre></td></tr></table></figure>
+<p>可以看到如下输出：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">C:\Users\tb&gt;<span class="hljs-built_in">cd</span> PycharmProjects<br>C:\Users\tb\PycharmProjects&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="三-在Django中创建项目"><a href="#三-在Django中创建项目" class="headerlink" title="(三)在Django中创建项目"></a>(三)在Django中创建项目</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">django<span class="hljs-literal">-admin</span> startproject learning_log .<br><br><span class="hljs-built_in">dir</span><br><br><span class="hljs-built_in">dir</span> learning_log<br></code></pre></td></tr></table></figure>
+<p>(注意不要忘记上面的句点)</p>
+<p>这行代码将会在当前目录下创建一个 <code>learning_logs</code> 目录。如果命令失败了，查看 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/4.2/faq/troubleshooting/#troubleshooting-django-admin">运行 django-admin 时遇到的问题</a>，可能能给你提供帮助。</p>
+<h3 id="四-创建数据库"><a href="#四-创建数据库" class="headerlink" title="(四)创建数据库"></a>(四)创建数据库</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">python manage.py migrate<br><br><span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
+<h3 id="五-查看项目"><a href="#五-查看项目" class="headerlink" title="(五)查看项目"></a>(五)查看项目</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">python manage.py runserver<br></code></pre></td></tr></table></figure>
+<p>你应该会看到如下输出：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">Performing system checks...<br><br>System check identified no issues (<span class="hljs-number">0</span> silenced).<br><br>You have unapplied migrations; your app may not work properly <span class="hljs-keyword">until</span> they are applied.<br>Run <span class="hljs-string">&#x27;python manage.py migrate&#x27;</span> to apply them.<br><br>七月 <span class="hljs-number">24</span>, <span class="hljs-number">2023</span> - <span class="hljs-number">15</span>:<span class="hljs-number">50</span>:<span class="hljs-number">53</span><br>Django version <span class="hljs-number">4.2</span>, <span class="hljs-keyword">using</span> settings <span class="hljs-string">&#x27;mysite.settings&#x27;</span><br>Starting development server at http://<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8000</span>/<br>Quit the server with CONTROL<span class="hljs-literal">-C</span>.<br></code></pre></td></tr></table></figure>
+<p>点击下面链接可查看    <a target="_blank" rel="noopener" href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> </p>
+<p>注意：在后续的步骤中该CMD窗口最好不要关闭，后续的操作中要打开新的CMD窗口输入命令</p>
+<h2 id="二、创建应用程序"><a href="#二、创建应用程序" class="headerlink" title="二、创建应用程序"></a>二、创建应用程序</h2><p>再打开一个终端窗口，切换到manage.py所在的目录</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> PyCharmProjects<br><br>python manage.py startapp learning_logs<br><br><span class="hljs-built_in">dir</span><br></code></pre></td></tr></table></figure>
+<p>会看到如下输出：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">PS</span> C:\Users\tb\PycharmProjects&gt; <span class="hljs-built_in">dir</span><br><br>    目录: C:\Users\tb\PycharmProjects<br><br>Mode                 LastWriteTime         Length Name<br><span class="hljs-literal">----</span>                 <span class="hljs-literal">-------------</span>         <span class="hljs-literal">------</span> <span class="hljs-literal">----</span><br>d<span class="hljs-literal">-----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">37</span>                learning_log<br>d<span class="hljs-literal">-----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">39</span>                learning_logs<br>d<span class="hljs-literal">-----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">24</span>     <span class="hljs-number">15</span>:<span class="hljs-number">55</span>                pythonProject<br>d<span class="hljs-literal">-----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">12</span>:<span class="hljs-number">09</span>                pythonProject1<br><span class="hljs-literal">-a----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">37</span>         <span class="hljs-number">131072</span> db.sqlite3<br><span class="hljs-literal">-a----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">35</span>            <span class="hljs-number">690</span> manage.py<br></code></pre></td></tr></table></figure>
+<p>再输入</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">dir</span> learning_logs/<br></code></pre></td></tr></table></figure>
+<p>会看到如下输出：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">PS</span> C:\Users\tb\PycharmProjects&gt; <span class="hljs-built_in">dir</span> learning_logs/<br><br>    目录: C:\Users\tb\PycharmProjects\learning_logs<br><br>Mode                 LastWriteTime         Length Name<br><span class="hljs-literal">----</span>                 <span class="hljs-literal">-------------</span>         <span class="hljs-literal">------</span> <span class="hljs-literal">----</span><br>d<span class="hljs-literal">-----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">39</span>                migrations<br><span class="hljs-literal">-a----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">39</span>             <span class="hljs-number">66</span> admin.py<br><span class="hljs-literal">-a----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">39</span>            <span class="hljs-number">163</span> apps.py<br><span class="hljs-literal">-a----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">39</span>             <span class="hljs-number">60</span> models.py<br><span class="hljs-literal">-a----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">39</span>             <span class="hljs-number">63</span> tests.py<br><span class="hljs-literal">-a----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">39</span>             <span class="hljs-number">66</span> views.py<br><span class="hljs-literal">-a----</span>         <span class="hljs-number">2023</span>/<span class="hljs-number">7</span>/<span class="hljs-number">25</span>     <span class="hljs-number">15</span>:<span class="hljs-number">39</span>              <span class="hljs-number">0</span> __init__.py<br></code></pre></td></tr></table></figure>
+<h3 id="一-定义模型"><a href="#一-定义模型" class="headerlink" title="(一)定义模型"></a>(一)定义模型</h3><p>打开文件models.py,创建自己的模型</p>
+<p>创建了Topic、Entry两个类，它们都继承Model</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models<br><br><span class="hljs-comment"># Create your models here.</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Topic</span>(models.Model):<br>    <span class="hljs-string">&#x27;&#x27;&#x27;用户学习的主题&#x27;&#x27;&#x27;</span><br>    text = models.CharField(max_length=<span class="hljs-number">200</span>) <span class="hljs-comment">#由字符组成的数据</span><br>    date_added = models.DateTimeField(auto_now_add=<span class="hljs-literal">True</span>) <span class="hljs-comment">#记录时间和日期的数据</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.text<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Entry</span>(models.Model):<br>    <span class="hljs-string">&#x27;&#x27;&#x27;学到的有关某个主题的具体知识&#x27;&#x27;&#x27;</span><br>    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)<br>    text = models.TextField()<br>    date_added = models.DateTimeField(auto_now_add=<span class="hljs-literal">True</span>)<br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Meta</span>:<br>        verbose_name_plural = <span class="hljs-string">&#x27;entries&#x27;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;self.text[:<span class="hljs-number">50</span>]&#125;</span>...&quot;</span><br></code></pre></td></tr></table></figure>
+<h3 id="二-激活模型"><a href="#二-激活模型" class="headerlink" title="(二)激活模型"></a>(二)激活模型</h3><p>打开setting.py,将</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">INSTALLED_APPS = [<br>    <span class="hljs-string">&quot;django.contrib.admin&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.auth&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.contenttypes&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.sessions&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.messages&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.staticfiles&quot;</span>,<br>]<br></code></pre></td></tr></table></figure>
+<p>修改为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">INSTALLED_APPS = [<br>    <span class="hljs-comment">#我的应用程序</span><br>    <span class="hljs-string">&quot;learning_logs&quot;</span>,<br><br>    <span class="hljs-comment">#默认应用程序</span><br>    <span class="hljs-string">&quot;django.contrib.admin&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.auth&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.contenttypes&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.sessions&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.messages&quot;</span>,<br>    <span class="hljs-string">&quot;django.contrib.staticfiles&quot;</span>,<br>]<br></code></pre></td></tr></table></figure>
+<p>(三)让Django修改数据库，使其能够存储与模型Topic、Entry相关的信息，在CMD窗口中执行如下命令：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">python manage.py makemigrations learning_logs<br><br>python manage.py migrate<br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">PS</span> C:\Users\tb\PycharmProjects&gt; python manage.py makemigrations learning_logs<br>Migrations <span class="hljs-keyword">for</span> <span class="hljs-string">&#x27;learning_logs&#x27;</span>:<br>  learning_logs\migrations\<span class="hljs-number">0001</span>_initial.py<br>    - Create model Topic<br><br><br><span class="hljs-built_in">PS</span> C:\Users\tb\PycharmProjects&gt; python manage.py migrate<br>Operations to perform:<br>  Apply all migrations: admin, auth, contenttypes, learning_logs, sessions<br>Running migrations:<br>  Applying learning_logs.<span class="hljs-number">0001</span>_initial... OK<br></code></pre></td></tr></table></figure>
+<p>注意：在后面每次增加新模型后，都需要迁移数据库：修改models.py，执行命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">python manage.py makemigrations learning_logs<br><br>python manage.py migrate<br></code></pre></td></tr></table></figure>
+<h3 id="三-Django管理网站"><a href="#三-Django管理网站" class="headerlink" title="(三)Django管理网站"></a>(三)Django管理网站</h3><h4 id="1、创建超级用户（具备所有权限的用户）"><a href="#1、创建超级用户（具备所有权限的用户）" class="headerlink" title="1、创建超级用户（具备所有权限的用户）"></a>1、创建超级用户（具备所有权限的用户）</h4><p>在cmd中输入命令：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">python manage.py createsuperuser<br></code></pre></td></tr></table></figure>
+<p>可以看到如下输出：输入Username，Email，Password</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">PS</span> C:\Users\tb\PycharmProjects&gt; python manage.py createsuperuser<br>Username (leave blank to use <span class="hljs-string">&#x27;tb&#x27;</span>): tb<br>Email address: your email<br>Password:<br>Password (again):<br>Superuser created successfully.<br><span class="hljs-built_in">PS</span> C:\Users\tb\PycharmProjects&gt;  python manage.py makemigrations learning_logs<br>Migrations <span class="hljs-keyword">for</span> <span class="hljs-string">&#x27;learning_logs&#x27;</span>:<br>  learning_logs\migrations\<span class="hljs-number">0002</span>_entry.py<br>    - Create model Entry<br></code></pre></td></tr></table></figure>
+<h4 id="2、向网站注册模型"><a href="#2、向网站注册模型" class="headerlink" title="2、向网站注册模型"></a>2、向网站注册模型</h4><p>Django会自动向网站中添加模型，如User和Group,但是我们自己创建的模型，需要手动注册。打开admin.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin<br><br><span class="hljs-comment"># Register your models here.</span><br></code></pre></td></tr></table></figure>
+<p>添加如下语句：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin<br><span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> Topic,Entry<br><br><span class="hljs-comment"># Register your models here.</span><br>admin.site.register(Topic)<br>admin.site.register(Entry)<br></code></pre></td></tr></table></figure>
+<h4 id="3、使用超级用户账户访问网站"><a href="#3、使用超级用户账户访问网站" class="headerlink" title="3、使用超级用户账户访问网站"></a>3、使用超级用户账户访问网站</h4><p>访问如下链接</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8000/admin/">http://localhost:8000/admin/</a> （推荐）或者<a target="_blank" rel="noopener" href="https://localhost:8000/admin/">https://localhost:8000/admin/</a> (不推荐，有可能会打不开)</p>
+<p>输入username和password登录</p>
+<h4 id="4、添加主题"><a href="#4、添加主题" class="headerlink" title="4、添加主题"></a>4、添加主题</h4><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/capture_20230725172223431.bmp" alt=""></p>
+<p>Diango（Django的中文拼写）是一个流行的Python Web框架，用于快速开发高质量的Web应用程序。它遵循“MTV”（Model-Template-View）的设计模式，提供了丰富的功能和工具，使Web开发变得更加简单和高效。</p>
+<p>下面是一些Django的入门操作步骤：</p>
+<ol>
+<li>确保安装Python：首先，确保你的计算机上已经安装了Python。Django需要Python 3.6或更高版本。</li>
+<li>安装Django：使用以下命令在命令行或终端中安装Django（假设你已经安装了Python）：</li>
+</ol>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">Copy</span> <span class="hljs-meta">code</span><br><span class="hljs-symbol">pip</span> install django<br></code></pre></td></tr></table></figure>
+<ol>
+<li>创建Django项目：在命令行中，导航到你想要创建项目的目录，并运行以下命令来创建Django项目：</li>
+</ol>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">Copy</span> code<br>django-<span class="hljs-keyword">admin</span> startproject projectname<br></code></pre></td></tr></table></figure>
+<p>这将在当前目录下创建一个名为”projectname”的Django项目。</p>
+<ol>
+<li>运行开发服务器：进入项目目录，执行以下命令来启动Django开发服务器：</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">bashCopy codecd projectname<br><span class="hljs-keyword">python</span> manage.<span class="hljs-keyword">py</span> runserver<br></code></pre></td></tr></table></figure>
+<p>现在，你可以通过浏览器访问<code>http://127.0.0.1:8000/</code>来查看Django默认的欢迎页面。</p>
+<ol>
+<li>创建Django应用：Django项目可以包含多个应用程序。要创建一个应用程序，请运行以下命令：</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">Copy <span class="hljs-selector-tag">code</span><br>python manage<span class="hljs-selector-class">.py</span> startapp appname<br></code></pre></td></tr></table></figure>
+<p>这将在项目目录下创建一个名为”appname”的Django应用程序。</p>
+<ol>
+<li>定义模型：在Django中，模型用于定义数据结构。打开”appname/models.py”文件，并定义你的模型类。</li>
+<li>迁移数据库：在定义了模型之后，运行以下命令以创建数据库表格：</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">Copy codepython manage.<span class="hljs-keyword">py</span> makemigrations<br><span class="hljs-keyword">python</span> manage.<span class="hljs-keyword">py</span> migrate<br></code></pre></td></tr></table></figure>
+<p>这将根据你在模型中定义的内容，生成数据库表格。</p>
+<ol>
+<li>创建视图：在Django中，视图处理Web请求并返回响应。打开”appname/views.py”文件，并编写你的视图函数。</li>
+<li>创建URL映射：为了让Django知道如何将URL映射到视图，打开”appname/urls.py”文件，并设置URL路由。</li>
+<li>运行你的应用：启动开发服务器后，你就可以通过定义的URL来访问你的应用程序。</li>
+</ol>
+<p>这只是Django的入门操作，Django还有很多功能和特性可以探索，如静态文件处理、表单、认证、管理后台等。你可以参考官方文档（<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/）和其他教程深入了解Django的更多内容。祝你在Django的世界里编写出优秀的Web应用程序！">https://docs.djangoproject.com/）和其他教程深入了解Django的更多内容。祝你在Django的世界里编写出优秀的Web应用程序！</a></p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>Diango学习笔记</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/Eclipse%20For%20C++%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE(Ubuntu%E3%80%81Windows)/">Eclipse For C++安装和配置(Ubuntu、Windows)</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E7%BB%93%E6%9E%84%E5%8F%AF%E9%9D%A0%E5%BA%A6%E7%90%86%E8%AE%BA%E4%B8%8E%E5%BA%94%E7%94%A8MATLAB/">结构可靠度理论与应用MATLAB</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Diango%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">Diango学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BB%BA%E7%AB%8B%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">一、建立项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E6%89%93%E5%BC%80powershell"><span class="toc-number">1.1.1.</span> <span class="toc-text">(一)打开powershell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E8%BF%9B%E5%85%A5%E5%88%B0%E6%88%91%E4%BB%AC%E6%83%B3%E8%A6%81%E5%AD%98%E6%94%BE%E6%96%87%E4%BB%B6%E7%9A%84%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">(二)进入到我们想要存放文件的目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E5%9C%A8Django%E4%B8%AD%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.1.3.</span> <span class="toc-text">(三)在Django中创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.4.</span> <span class="toc-text">(四)创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-%E6%9F%A5%E7%9C%8B%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.1.5.</span> <span class="toc-text">(五)查看项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.2.</span> <span class="toc-text">二、创建应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">(一)定义模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E6%BF%80%E6%B4%BB%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">(二)激活模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-Django%E7%AE%A1%E7%90%86%E7%BD%91%E7%AB%99"><span class="toc-number">1.2.3.</span> <span class="toc-text">(三)Django管理网站</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%EF%BC%88%E5%85%B7%E5%A4%87%E6%89%80%E6%9C%89%E6%9D%83%E9%99%90%E7%9A%84%E7%94%A8%E6%88%B7%EF%BC%89"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">1、创建超级用户（具备所有权限的用户）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E5%90%91%E7%BD%91%E7%AB%99%E6%B3%A8%E5%86%8C%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2、向网站注册模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E8%B4%A6%E6%88%B7%E8%AE%BF%E9%97%AE%E7%BD%91%E7%AB%99"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">3、使用超级用户账户访问网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E6%B7%BB%E5%8A%A0%E4%B8%BB%E9%A2%98"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">4、添加主题</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>计算机网络实验二 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="计算机网络实验二">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C%E4%BA%8C/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="[实验名称]静态路由与默认路由配置。[实验过程]按照3.4进行实验，记录实验结果，并描述实验过程中遇到的问题以及解决问题的过程。配置R0：配置R1：配置R2:1、实验结果：要求使用ping命令观察主机PC1和PC0之间的连通情况：a.配置静态路由时主机的连通情况；从P1pingP0，两者可以连接b.配置默认路">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">计算机网络实验二</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.925Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h3 id="实验名称"><a href="#实验名称" class="headerlink" title="[实验名称]"></a>[实验名称]</h3><p>静态路由与默认路由配置。</p>
+<h3 id="实验过程"><a href="#实验过程" class="headerlink" title="[实验过程]"></a>[实验过程]</h3><p>按照 <a href="#_bookmark1">3.4</a> 进行实验，记录实验结果，并描述实验过程中遇到的问题以及解决问题的过程。</p>
+<p>配置R0：</p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001155529.png" title="" alt="image-20231230001155529" data-align="center"></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001247682.png" title="" alt="image-20231230001247682" data-align="center"></p>
+<p>配置R1：</p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001702774.png" title="" alt="image-20231230001702774" data-align="center"></p>
+<p>配置R2:</p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001934985.png" title="" alt="image-20231230001934985" data-align="center"></p>
+<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230002016683.png" title="" alt="image-20231230002016683" data-align="center"></p>
+<h4 id="1、实验结果："><a href="#1、实验结果：" class="headerlink" title="1、实验结果："></a>1、实验结果：</h4><p>要求使用ping 命令观察主机 <code>PC1</code> 和<code>PC0</code> 之间的连通情况：</p>
+<p>a.   配置静态路由时主机的连通情况；</p>
+<p>从<code>P1 ping P0</code> ，两者可以连接</p>
+<p><img src="https://obsidian-1322115490.cos.ap-nanjing.myqcloud.com/image/202312300027898.png" title="" alt="" data-align="center"></p>
+<p>b.   配置默认路由时主机的连通情况。</p>
+<p>从<code>P0 ping P1</code>，两者可以连接<br><img title="" src="https://obsidian-1322115490.cos.ap-nanjing.myqcloud.com/image/202312300031741.png" alt="" data-align="center"></p>
+<h4 id="2、问题及解决过程："><a href="#2、问题及解决过程：" class="headerlink" title="2、问题及解决过程："></a>2、问题及解决过程：</h4><h3 id="回答问题"><a href="#回答问题" class="headerlink" title="[回答问题]"></a>[回答问题]</h3><h4 id="1、简单讨论-192-168-1-0-和-192-168-1-255-这两个-IP-地址所代表的含义。"><a href="#1、简单讨论-192-168-1-0-和-192-168-1-255-这两个-IP-地址所代表的含义。" class="headerlink" title="1、简单讨论 192.168.1.0 和 192.168.1.255 这两个 IP 地址所代表的含义。"></a>1、简单讨论 192.168.1.0 和 192.168.1.255 这两个 IP 地址所代表的含义。</h4><p><strong>192.168.1.0：</strong> 是一个网络的起始地址，用于标识整个网络。</p>
+<p><strong>192.168.1.255：</strong> 是广播地址，用于向网络中的所有设备发送广播消息。广播地址是一个特殊的地址，表示发送到该地址的数据包将被发送到网络上的所有设备。</p>
+<h4 id="2、在配置-R0-静态路由时，命令“ip-route-192-168-3-0-255-255-255-0-192-168-2-2”中，192-168-3-0-和-192-168-2-2-分别代表什么？能不能用-192-168-3-1-代替-192-168-3-0，用192-168-2-1-代替-192-168-2-2？请测试并说明原因。"><a href="#2、在配置-R0-静态路由时，命令“ip-route-192-168-3-0-255-255-255-0-192-168-2-2”中，192-168-3-0-和-192-168-2-2-分别代表什么？能不能用-192-168-3-1-代替-192-168-3-0，用192-168-2-1-代替-192-168-2-2？请测试并说明原因。" class="headerlink" title="2、在配置 R0 静态路由时，命令“ip route 192.168.3.0 255.255.255.0 192.168.2.2”中，192.168.3.0 和 192.168.2.2 分别代表什么？能不能用 192.168.3.1 代替 192.168.3.0，用192.168.2.1 代替 192.168.2.2？请测试并说明原因。"></a>2、在配置 <code>R0</code> 静态路由时，命令“ip route 192.168.3.0 255.255.255.0 192.168.2.2”中，192.168.3.0 和 192.168.2.2 分别代表什么？能不能用 192.168.3.1 代替 192.168.3.0，用192.168.2.1 代替 192.168.2.2？请测试并说明原因。</h4><p><strong>192.168.3.0：</strong> 代表目标网络的地址。</p>
+<p><strong>192.168.2.2：</strong> 下一跳地址，表示数据包应该被发送到这个地址，由该地址的设备负责将数据包路由到目标网络</p>
+<p>不能用 <code>192.168.3.1</code> 代替 <code>192.168.3.0</code>，因为 <code>192.168.3.1</code> 是一个主机地址，而不是网络地址。</p>
+<p>不能用 <code>192.168.2.1</code> 代替 <code>192.168.2.2</code>，因为 <code>192.168.2.1</code> 不是一个下一跳地址，而是连接到当前网络的设备的地址。</p>
+<h4 id="3、若PC-不配置默认网关，PC0-和PC1-是否能够相互-ping-通？进行测试并解释原因。"><a href="#3、若PC-不配置默认网关，PC0-和PC1-是否能够相互-ping-通？进行测试并解释原因。" class="headerlink" title="3、若PC 不配置默认网关，PC0 和PC1 是否能够相互 ping 通？进行测试并解释原因。"></a>3、若PC 不配置默认网关，<code>PC0</code> 和<code>PC1</code> 是否能够相互 ping 通？进行测试并解释原因。</h4><p>不能够<code>ping</code>通</p>
+<p>原因：<code>PC0</code>的<code>IP</code>地址是<code>192.168.1.1</code>，而<code>PC1</code>的IP地址是<code>192.168.4.1</code>，它们属于不同的子网，若PC 不配置默认网关，PC0 和PC1 不能够能够相互 ping 通。</p>
+<h3 id="实验小结"><a href="#实验小结" class="headerlink" title="[实验小结]"></a>[实验小结]</h3><p>通过实验，可以得出关于静态路由和默认路由的哪些结论？</p>
+<p>1.静态路由是指路由信息由人工手动配置的，而不是路由器通过路由算法和其他路由器学习得到的。所以,静态路由主要适合网络规模不大、拓扑结构相对固定的网络使用,当网络环境比较复杂时,由于其拓扑或链路状态相对容易变化,就需要人工再手动改变路由，非常繁琐</p>
+<p>2.默认路由也是一种静态路由，它位于路由表的最后,当数据报与路由表中前面的表项都不匹配时,数据报将根据默认路由转发。这使得其在某些时候是非常有效的。</p>
+<h3 id="实验心得"><a href="#实验心得" class="headerlink" title="[实验心得]"></a>[实验心得]</h3><p>解决问题过程中自己的收获。</p>
+<p>1.静态路由配置过程中，需要注意网络地址的设置以及下一跳地址的正确配置，否则可能会导致网络不通。</p>
+<p>2.静态路由配置相对于动态路由来说较为繁琐，需要手动设置路由表，但相应地也更加稳定可靠。</p>
+<p>3.在实验中出现ping不同的情况后，我才用ping不同的设备去检查网络以及设备的联通情况。</p>
+<p>4.默认路由可以大大简化路由器的项目数量及配置,减轻路由器和网络管理员的工作负担。静态路由优先级高于默认路由。</p>
+<p>通过本次实验，我深刻理解了静态路由配置的原理和实现方法，并对计算机网络的相关知识有了更加深入的认识。同时，实验过程中还锻炼了我的问题解决能力和实践操作能力，对我的专业学习和未来工作都具有积极意义。</p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>计算机网络实验二</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92%E4%B8%8E%E8%BD%A6%E8%BE%86%E8%B7%AF%E7%94%B1%E9%97%AE%E9%A2%98/">路径规划与车辆路由问题</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E7%BE%A4%E4%BD%93%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98/">群体智能算法解决旅行商问题</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%90%8D%E7%A7%B0"><span class="toc-number">1.</span> <span class="toc-text">[实验名称]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">[实验过程]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">1、实验结果：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">2、问题及解决过程：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E7%AD%94%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">[回答问题]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E5%8D%95%E8%AE%A8%E8%AE%BA-192-168-1-0-%E5%92%8C-192-168-1-255-%E8%BF%99%E4%B8%A4%E4%B8%AA-IP-%E5%9C%B0%E5%9D%80%E6%89%80%E4%BB%A3%E8%A1%A8%E7%9A%84%E5%90%AB%E4%B9%89%E3%80%82"><span class="toc-number">3.1.</span> <span class="toc-text">1、简单讨论 192.168.1.0 和 192.168.1.255 这两个 IP 地址所代表的含义。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E5%9C%A8%E9%85%8D%E7%BD%AE-R0-%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%97%B6%EF%BC%8C%E5%91%BD%E4%BB%A4%E2%80%9Cip-route-192-168-3-0-255-255-255-0-192-168-2-2%E2%80%9D%E4%B8%AD%EF%BC%8C192-168-3-0-%E5%92%8C-192-168-2-2-%E5%88%86%E5%88%AB%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%9F%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8-192-168-3-1-%E4%BB%A3%E6%9B%BF-192-168-3-0%EF%BC%8C%E7%94%A8192-168-2-1-%E4%BB%A3%E6%9B%BF-192-168-2-2%EF%BC%9F%E8%AF%B7%E6%B5%8B%E8%AF%95%E5%B9%B6%E8%AF%B4%E6%98%8E%E5%8E%9F%E5%9B%A0%E3%80%82"><span class="toc-number">3.2.</span> <span class="toc-text">2、在配置 R0 静态路由时，命令“ip route 192.168.3.0 255.255.255.0 192.168.2.2”中，192.168.3.0 和 192.168.2.2 分别代表什么？能不能用 192.168.3.1 代替 192.168.3.0，用192.168.2.1 代替 192.168.2.2？请测试并说明原因。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E8%8B%A5PC-%E4%B8%8D%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3%EF%BC%8CPC0-%E5%92%8CPC1-%E6%98%AF%E5%90%A6%E8%83%BD%E5%A4%9F%E7%9B%B8%E4%BA%92-ping-%E9%80%9A%EF%BC%9F%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E5%B9%B6%E8%A7%A3%E9%87%8A%E5%8E%9F%E5%9B%A0%E3%80%82"><span class="toc-number">3.3.</span> <span class="toc-text">3、若PC 不配置默认网关，PC0 和PC1 是否能够相互 ping 通？进行测试并解释原因。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">[实验小结]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%BF%83%E5%BE%97"><span class="toc-number">5.</span> <span class="toc-text">[实验心得]</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

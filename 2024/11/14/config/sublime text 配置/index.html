@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>sublime text 配置 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="sublime text 配置">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/config/sublime%20text%20%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="[[vscode扩展]]1.sublimetext3激活码-----BEGINLICENSE-----MemberJ2TeaMSingleUserLicenseEA7E-1011316D7DA350E1B8B0760972F8B60F3E64036B9B4E234F356F38F0AD1E3B70E9C5FA">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">sublime text 配置</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.811Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p>[[vscode 扩展]]</p>
+<h1 id="1-sublime-text3激活码"><a href="#1-sublime-text3激活码" class="headerlink" title="1. sublime text3激活码"></a>1. sublime text3激活码</h1><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json">----- BEGIN LICENSE -----<br>Member J2TeaM<br>Single User License<br>EA7E<span class="hljs-number">-1011316</span><br>D7DA350E <span class="hljs-number">1</span>B8B0760 <span class="hljs-number">972</span>F8B60 F3E64036<br>B9B4E234 F356F38F <span class="hljs-number">0</span>AD1E3B7 <span class="hljs-number">0E9</span>C5FAD<br>FA0A2ABE <span class="hljs-number">25</span>F65BD8 D51458E5 <span class="hljs-number">3923</span>CE80<br><span class="hljs-number">87428428</span> <span class="hljs-number">79079</span>A01 AA69F319 A1AF29A4<br>A684C2DC <span class="hljs-number">0</span>B1583D4 <span class="hljs-number">19</span>CBD290 <span class="hljs-number">217618</span>CD<br><span class="hljs-number">5653E0</span>A0 BACE3948 BB2EE45E <span class="hljs-number">422</span>D2C87<br>DD9AF44B <span class="hljs-number">99</span>C49590 D2DBDEE1 <span class="hljs-number">75860</span>FD2<br><span class="hljs-number">8</span>C8BB2AD B2ECE5A4 EFC08AF2 <span class="hljs-number">25</span>A9B864<br>------ END LICENSE ------<br></code></pre></td></tr></table></figure>
+<h1 id="2-sublimeRFPL快捷键"><a href="#2-sublimeRFPL快捷键" class="headerlink" title="2. sublimeRFPL快捷键"></a>2. sublimeRFPL快捷键</h1><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span> <br><span class="hljs-attr">&quot;keys&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;f7&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span> <br><span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;toggle_setting&quot;</span><span class="hljs-punctuation">,</span> <br><span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;setting&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;word_wrap&quot;</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br><br><span class="hljs-punctuation">&#123;</span> <br><span class="hljs-attr">&quot;keys&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-string">&quot;f5&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span> <br><span class="hljs-attr">&quot;caption&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;SublimeREPL: Python - RUN current file&quot;</span><span class="hljs-punctuation">,</span> <br><span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;run_existing_window_command&quot;</span><span class="hljs-punctuation">,</span> <br><span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;repl_python_run&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;file&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;config/Python/Main.sublime-menu&quot;</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;cmd&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span><span class="hljs-string">&quot;C:/Users/tanbin/miniconda3/python.exe&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;-u&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;$file&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;file_regex&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^[ ]*File \&quot;(...*?)\&quot;, line ([0-9]*)&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;selector&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;source.python&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;encoding&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;utf-8&quot;</span> <span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;PYTHONIOENCODING&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;utf8&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;shell&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;true&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-comment">// 代码字体。</span><br>  <span class="hljs-attr">&quot;font_face&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Monaco&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;font_size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">16</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// tab 大小。</span><br>  <span class="hljs-attr">&quot;icons&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;tab_size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;font_options&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;gdi&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;theme_font_options&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;gdi&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 开启 tab 转空格。</span><br>  <span class="hljs-attr">&quot;translate_tabs_to_spaces&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 关闭自动修剪空格。</span><br>  <span class="hljs-comment">// 如果打开这个，那么连续回车两下，上次回车产生的 tab 会莫名消失。</span><br>  <span class="hljs-attr">&quot;trim_automatic_white_space&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 关闭自动补全，这个自动补全出现的选项大多没什么用。</span><br>  <span class="hljs-attr">&quot;auto_complete&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 关闭括号补全，可以根据需要打开。</span><br>  <span class="hljs-attr">&quot;auto_match_enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 允许在选中的文本中 Find 和 Replace。</span><br>  <span class="hljs-attr">&quot;auto_find_in_selection&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 开启自动换行。</span><br>  <span class="hljs-attr">&quot;word_wrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 关闭更新检查。</span><br>  <span class="hljs-attr">&quot;update_check&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 下面这两个关闭后，防止鼠标移动到函数上的时候出现一些没用的提示。</span><br>  <span class="hljs-attr">&quot;index_files&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;show_definitions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 文件失去焦点时自动保存。</span><br>  <span class="hljs-attr">&quot;save_on_focus_lost&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 加入中文单词分割符，在使用Ctrl+方向键的时候不会跳过头。</span><br>  <span class="hljs-attr">&quot;word_separators&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./\\()\&quot;&#x27;-:,.;&lt;&gt;~!@#$%^&amp;*|+=[]&#123;&#125;`~?，。（）；、？“”‘’：！【】&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 侧边栏不显示后缀是 dll 和 exe 的文件。</span><br>  <span class="hljs-attr">&quot;file_exclude_patterns&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;*.dll&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;*.exe&quot;</span><br>  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 和上面同理。</span><br>  <span class="hljs-attr">&quot;folder_exclude_patterns&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;ignored_packages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-comment">//&quot;Package Control&quot;,</span><br><span class="hljs-comment">/*&quot;Package Control&quot;,*/</span><br><span class="hljs-comment">/*&quot;0_package_control_loader&quot;,*/</span><br><span class="hljs-comment">/*&quot;Catppuccin color schemes&quot;,*/</span><br><span class="hljs-comment">/*&quot;A File Icon&quot;,*/</span><br>  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;dark_theme&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Default.sublime-theme&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;light_theme&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Default.sublime-theme&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;theme&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Default Dark.sublime-theme&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;color_scheme&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Packages/Visual Studio Dark/Visual Studio Dark.tmTheme&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// 新增：保留热退出（未保存内容），但不恢复打开的文件</span><br>  <span class="hljs-attr">&quot;hot_exit&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;remember_open_files&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>sublime text 配置</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/pytorch%E5%92%8CTensorFlow%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">pytorch和TensorFlow安装教程</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/config/pip%E7%8E%AF%E5%A2%83%E9%87%8D%E8%A3%85%E5%92%8C%E5%AF%BC%E5%87%BA/">pip环境重装和导出</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-sublime-text3%E6%BF%80%E6%B4%BB%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">1. sublime text3激活码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-sublimeRFPL%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">2.</span> <span class="toc-text">2. sublimeRFPL快捷键</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(30)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>智能设施管理 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="智能设施管理">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E6%99%BA%E8%83%BD%E8%AE%BE%E6%96%BD%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="通过本学期《智能设施管理》课程的学习，我对这一融合信息技术、自动化技术及物联网等多领域的新兴行业有了深刻理解。这门课不仅展现了传统建筑维护和运营模式的技术升级，更是一场管理模式的革新，旨在提升效率、安全性和可持续性。课程伊始，我们了解了智能设施管理的全球发展背景及应用现状。智能化手段在优化资源使用、提高能源效">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">智能设施管理</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.912Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p>通过本学期《智能设施管理》课程的学习，我对这一融合信息技术、自动化技术及物联网等多领域的新兴行业有了深刻理解。这门课不仅展现了传统建筑维护和运营模式的技术升级，更是一场管理模式的革新，旨在提升效率、安全性和可持续性。</p>
+<p>课程伊始，我们了解了智能设施管理的全球发展背景及应用现状。智能化手段在优化资源使用、提高能源效率及降低运营成本方面的作用显著，同时也为用户提供更加舒适和安全的环境。这让我意识到智能设施管理不仅是技术的进步，更是对传统模式的重大转变。数据在其中扮演核心角色，无论是传感器收集的数据，还是数据分析得出的洞察，都是实现智能决策的关键。</p>
+<p>随着学习深入，老师详细讲解了智能设施管理系统的技术框架。一个完整的系统由多个相互关联的子系统组成，共同构成高效运作的整体。特别是楼宇自动化系统的介绍，使我对如何利用现代信息技术实现建筑设备的自动化控制有了全新认识。例如，温度传感器可实时监测室内外温度变化，并自动调整空调系统以达到节能目的。</p>
+<p>此外，课程还探讨了智能设施管理在不同场景下的应用案例，如商业办公楼、医院和学校等。这些案例展示了智能设施管理解决方案的实际效果，并让我认识到其在提高工作效率和服务质量方面的巨大潜力。例如，大型商场引入智能照明控制系统后，可根据人流量调节灯光亮度，不仅减少电力消耗，还实现了经济效益与社会效益的双赢。</p>
+<p>总之，课程让我了解到未来设施管理将越来越依赖智能化技术和数据分析能力，这是行业发展的趋势，也是提高服务质量、促进可持续发展的重要途径。这门课为我提供了宝贵的理论知识和技术技能，对我的职业道路产生了深远影响。</p>
+<p>课程中还安排了两次实验，分别是“小车组装与Arduino开发”和“基于PID的小车电机调速”。在参与第一次实验的过程中，我对硬件和技术有了更深刻的理解。这项实验不仅加深了我对小车硬件的认识，还为今后的嵌入式系统学习打下扎实基础。</p>
+<p>通过组装硬件组件，如控制模块、电机驱动模块等，我成功实现了小车的组装。这让我认识到理论与实践结合的重要性，动手操作能加深对理论知识的理解。在组装过程中，我逐渐熟悉了小车的硬件组成，包括底盘、电机、驱动模块和控制模块等。每个组件的安装和调试都需要细心和耐心，这让我体会到硬件开发的严谨性与复杂性。</p>
+<p>实验中，Arduino开发环境的安装与使用是重要内容之一。通过学习Arduino的特性和开发方式，我掌握了如何利用这一开源平台进行开发与调试。之前对开发板的认识仅停留在文字和图片说明，而这次实验让我亲身体验了整个开发过程，包括代码编写、调试和上传。这不仅让我对嵌入式开发有了初步了解，也让我认识到编程的重要性。</p>
+<p>此外，我深入学习了L298N驱动模块与Arduino的连接原理。作为电机驱动的核心组件，L298N模块的功能和工作原理对小车运行至关重要。在实验中，我通过查阅资料和实践，逐步掌握了如何连接L298N模块并通过编程实现对电机的控制。这让我认识到硬件连接和软件编程相辅相成，只有将两者结合，才能实现系统正常运行。</p>
+<p>实验中利用蓝牙模块实现小车无线控制是一个非常有趣的环节。通过蓝牙模块与手机连接，我可以通过手机发送指令控制小车的运动方向和速度。这让我对无线通信技术有了初步了解，同时感受到现代科技的便捷性和强大功能。当看到小车能够根据指令灵活运动时，那种成就感让我对嵌入式系统的应用有了更深刻认识，也对未来学习充满期待。</p>
+<p>整个实验过程中，我还学会了团队合作的重要性。实验需要小组成员密切配合，每个人都需承担一定任务并相互协作完成实验。通过与小组成员合作，我提高了沟通能力和团队协作能力，也学会了如何在团队中发挥自己的优势，为团队成功做出贡献。</p>
+<p>通过这次实验，我不仅掌握了小车硬件的基本组成和Arduino的开发方法，还提高了动手能力和解决问题的能力。这次实验让我明白，学习不仅是掌握知识，更重要的是培养实践能力和创新能力。</p>
+<p>在第二次实验中，我进一步深化了对PID控制的理解，学会了如何利用编码器测量电机实际转速，并据此设计适合自己的PID算法。PID控制是一种经典的闭环控制方法，由比例(P)、积分(I)、微分(D)三个部分组成，分别对应快速响应误差、消除稳态误差和预测误差变化趋势的功能。通过调整这三个参数的比例关系，可以使小车更加精准地按照预定路径行驶，即使遇到复杂路况也能保持良好的动态性能。</p>
+<p>实验中，我遇到了一些挑战，例如如何合理选择Kp、Ki、Kd三个系数，使系统既不过度振荡也不反应迟钝；以及在外界干扰下如何保证系统稳定性等问题。这些都需要不断尝试和优化才能得到满意的解决方案。通过实验，我逐渐掌握了PID控制的基本原理及其在小车电机调速中的应用。</p>
+<p>此外，我还认识到团队合作的重要性。在实验中，每个小组成员都需要承担一定任务并相互配合完成实验。通过团队合作，我学会了如何分工协作，并通过有效沟通解决实验中遇到的问题。这不仅提高了我的团队协作能力，也让我认识到团队合作在实际工作中的重要性。</p>
+<p>两次实验设计合理，将理论与实际操作完美结合。在“小车组装与Arduino开发”中，我学习了小车硬件的基本组成及Arduino的开发方法，并通过实践逐渐掌握了嵌入式系统的基本原理和硬件开发流程。在“基于PID的小车电机调速”实验中，我深入理解了PID控制的原理及其在实际中的应用。这两次实验让我认识到硬件与软件相辅相成，只有通过持续学习和实践，才能在嵌入式系统领域取得进步。</p>
+<p>实验的挑战性和创造性让我受益匪浅。通过理论学习与实践操作，我不仅提高了实践能力和解决问题的能力，还培养了团队合作精神。这些经历让我对嵌入式系统的开发有了更深刻认识，也让我对未来学习充满信心。我相信，通过不断学习和实践，我一定能够在这一领域取得更大进步。</p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>智能设施管理</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%AE%9E%E9%AA%8C/">数据库设计实验</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C/">数据库操作实验</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

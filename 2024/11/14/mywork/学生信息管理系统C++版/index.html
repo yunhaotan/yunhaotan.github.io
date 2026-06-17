@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>学生信息管理系统C++版 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="学生信息管理系统C++版">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FC++%E7%89%88/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="1.课程设计概述1.1.设计背景在教育教学管理中，学生信息与成绩的高效管理是提升工作效率的关键。传统手工记录、Excel表格管理等方式存在数据查询繁琐、修改不便、统计分析困难等问题，难以满足批量学生数据的规范化管理需求。因此，设计一款功能完善、操作便捷、数据安全的学生信息管理系统，对简化学生管理流程、提高教学">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">学生信息管理系统C++版</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:23.154Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="1-课程设计概述"><a href="#1-课程设计概述" class="headerlink" title="1. 课程设计概述"></a>1. 课程设计概述</h1><h2 id="1-1-设计背景"><a href="#1-1-设计背景" class="headerlink" title="1.1. 设计背景"></a>1.1. 设计背景</h2><p>在教育教学管理中，学生信息与成绩的高效管理是提升工作效率的关键。传统手工记录、Excel 表格管理等方式存在数据查询繁琐、修改不便、统计分析困难等问题，难以满足批量学生数据的规范化管理需求。因此，设计一款功能完善、操作便捷、数据安全的学生信息管理系统，对简化学生管理流程、提高教学管理效率具有重要现实意义。</p>
+<h2 id="1-2-设计目标"><a href="#1-2-设计目标" class="headerlink" title="1.2. 设计目标"></a>1.2. 设计目标</h2><p>本课程设计旨在开发一款基于 C++ 语言的学生信息管理系统，实现学生基本信息与成绩的一体化管理，具体目标如下：</p>
+<ol>
+<li>支持学生基本信息（学号、姓名、学院、专业）和成绩信息（语文、数学、英语、总分）的添加、删除、修改、查询操作；</li>
+<li>提供多样化排序功能，可按学号升序、各科目成绩降序、总分降序排列学生数据；</li>
+<li>实现成绩统计分析功能，包括各科目及总分的平均分、众数、最高分、最低分计算，并关联对应学生信息；</li>
+<li>采用 CSV 文件存储数据，保证数据持久化，支持特殊字符处理，确保数据读写准确性；</li>
+<li>设计友好的用户交互界面，包含输入验证机制，提升系统容错性和使用体验。<h2 id="1-3-开发环境"><a href="#1-3-开发环境" class="headerlink" title="1.3. 开发环境"></a>1.3. 开发环境</h2></li>
+</ol>
+<ul>
+<li>编程语言：C语言</li>
+<li>开发工具：Visual Studio Code + MinGW</li>
+<li>数据存储：CSV 文件<h1 id="2-系统总体设计"><a href="#2-系统总体设计" class="headerlink" title="2. 系统总体设计"></a>2. 系统总体设计</h1></li>
+</ul>
+<h2 id="2-1-系统架构"><a href="#2-1-系统架构" class="headerlink" title="2.1. 系统架构"></a>2.1. 系统架构</h2><p>本系统采用面向对象的设计思想，分为数据模型层和业务逻辑层两层架构：</p>
+<ol>
+<li>数据模型层：通过<code>Student</code>类封装单个学生的信息，作为系统数据的基本载体；</li>
+<li>业务逻辑层：通过<code>StudentManager</code>类封装所有业务操作，包括数据的增删改查、排序、统计分析及 CSV 文件读写，实现数据与操作的分离，提高代码的可维护性和复用性。<br>系统整体架构图如下：<br><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251118214705417.png" alt="image.png"></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs mermaid">graph TD<br>    A[&quot;控制逻辑层&quot;] --&gt;|&quot;核心管理类&quot;| A1[&quot;StudentManager类&quot;]<br>    A1 --&gt;|&quot;封装功能&quot;| A2[&quot;增删改查&lt;br&gt;排序&lt;br&gt;统计分析&lt;br&gt;CSV读写&quot;]<br>    <br>    B[&quot;数据模型层&quot;] --&gt;|&quot;数据载体类&quot;| B1[&quot;Student类&quot;]<br>    B1 --&gt;|&quot;存储信息&quot;| B2[&quot;学号、姓名、学院、专业&lt;br&gt;语文/数学/英语成绩&lt;br&gt;总分&quot;]<br>    <br>    C[&quot;数据存储层&quot;] --&gt;|&quot;持久化文件&quot;| C1[&quot;student_info.csv文件&quot;]<br>    <br>    %% 层级关联<br>    A1 --&gt; B1<br>    B1 --&gt; C1<br>    <br>    %% 样式优化（可选，使结构更清晰）<br>    classDef layerStyle fill:#f0f8ff,stroke:#2c3e50,stroke-width:2px,rounded:10px<br>    classDef classStyle fill:#e8f4f8,stroke:#3498db,stroke-width:1px,rounded:8px<br>    class A,B,C layerStyle<br>    class A1,B1,C1 classStyle<br></code></pre></td></tr></table></figure>
+<h2 id="2-2-核心类设计"><a href="#2-2-核心类设计" class="headerlink" title="2.2. 核心类设计"></a>2.2. 核心类设计</h2><h3 id="2-2-1-Student类"><a href="#2-2-1-Student类" class="headerlink" title="2.2.1. Student类"></a>2.2.1. <code>Student</code>类</h3><p><strong>功能</strong>：存储单个学生的完整信息，提供成员变量的访问接口。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>成员变量</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>学生学号（唯一标识）</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>学生姓名</td>
+</tr>
+<tr>
+<td><code>college</code></td>
+<td>string</td>
+<td>所属学院</td>
+</tr>
+<tr>
+<td><code>major</code></td>
+<td>string</td>
+<td>所属专业</td>
+</tr>
+<tr>
+<td><code>chinese</code></td>
+<td>string</td>
+<td>语文成绩（字符串存储，便于 CSV 读写）</td>
+</tr>
+<tr>
+<td><code>math</code></td>
+<td>string</td>
+<td>数学成绩</td>
+</tr>
+<tr>
+<td><code>english</code></td>
+<td>string</td>
+<td>英语成绩</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>string</td>
+<td>总分（自动计算）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>成员方法</strong>：</p>
+<ul>
+<li>构造函数：默认构造函数、带参数构造函数（用于快速创建学生对象）；</li>
+<li>访问器（getter）和修改器（setter）：用于安全访问和修改成员变量。<h3 id="2-2-2-StudentManager类"><a href="#2-2-2-StudentManager类" class="headerlink" title="2.2.2. StudentManager类"></a>2.2.2. <code>StudentManager</code>类</h3><strong>功能</strong>：封装系统所有业务逻辑，是系统的核心管理类。<br><strong>核心成员方法</strong>：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法分类</th>
+<th>方法名</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件操作</td>
+<td><code>loadFromCSV()</code></td>
+<td>从 CSV 文件加载数据到内存</td>
+</tr>
+<tr>
+<td></td>
+<td><code>saveToCSV()</code></td>
+<td>将内存中的数据保存到 CSV 文件</td>
+</tr>
+<tr>
+<td>辅助工具</td>
+<td><code>escapeCSVField()</code></td>
+<td>CSV 字段特殊字符转义（逗号、引号）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>unescapeCSVField()</code></td>
+<td>CSV 字段特殊字符解析</td>
+</tr>
+<tr>
+<td></td>
+<td><code>parseCSVLine()</code></td>
+<td>解析 CSV 文件中的一行数据</td>
+</tr>
+<tr>
+<td></td>
+<td><code>isValidScore()</code></td>
+<td>验证成绩是否为 0-100 的数字</td>
+</tr>
+<tr>
+<td></td>
+<td><code>calculateTotal()</code></td>
+<td>计算学生总分</td>
+</tr>
+<tr>
+<td></td>
+<td><code>findStudentIndex()</code></td>
+<td>根据学号 / 姓名查找学生索引</td>
+</tr>
+<tr>
+<td>增删改查</td>
+<td><code>addStudent()</code></td>
+<td>添加新学生信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>deleteStudent()</code></td>
+<td>删除指定学生信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>modifyStudent()</code></td>
+<td>修改指定学生信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>searchStudentById()</code></td>
+<td>按学号查询学生信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>searchStudentByName()</code></td>
+<td>按姓名查询学生信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>displayAllStudents()</code></td>
+<td>显示所有学生信息</td>
+</tr>
+<tr>
+<td>排序功能</td>
+<td><code>sortByid()</code></td>
+<td>按学号升序排序</td>
+</tr>
+<tr>
+<td></td>
+<td><code>sortByChinese()</code></td>
+<td>按语文成绩降序排序</td>
+</tr>
+<tr>
+<td></td>
+<td><code>sortByMath()</code></td>
+<td>按数学成绩降序排序</td>
+</tr>
+<tr>
+<td></td>
+<td><code>sortByEnglish()</code></td>
+<td>按英语成绩降序排序</td>
+</tr>
+<tr>
+<td></td>
+<td><code>sortByTotal()</code></td>
+<td>按总分降序排序</td>
+</tr>
+<tr>
+<td>统计分析</td>
+<td><code>calculateAverage()</code></td>
+<td>计算指定科目 / 总分的平均分</td>
+</tr>
+<tr>
+<td></td>
+<td><code>findMode()</code></td>
+<td>查找指定科目 / 总分的众数</td>
+</tr>
+<tr>
+<td></td>
+<td><code>findMaxScore()</code></td>
+<td>查找指定科目 / 总分的最高分及对应学生</td>
+</tr>
+<tr>
+<td></td>
+<td><code>findMinScore()</code></td>
+<td>查找指定科目 / 总分的最低分及对应学生</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-3-数据存储设计"><a href="#2-3-数据存储设计" class="headerlink" title="2.3. 数据存储设计"></a>2.3. 数据存储设计</h2><p>系统采用 CSV（Comma-Separated Values）文件作为数据存储格式，具体设计如下：</p>
+<ol>
+<li>文件名：<code>student_info.csv</code>，存储在程序运行目录下；</li>
+<li>文件格式：第一行为表头（学号，姓名，学院，专业，语文，数学，英语，总分），后续每行存储一个学生的完整信息；</li>
+<li>特殊字符处理：当字段中包含逗号（,）或双引号（”）时，使用双引号包裹该字段，并将字段内的双引号替换为两个连续双引号（””），确保 CSV 文件解析的准确性；</li>
+<li>数据持久化：每次添加、删除、修改、排序操作后，系统自动调用<code>saveToCSV()</code>方法将数据写入文件，保证数据不丢失。<h1 id="3-系统详细实现"><a href="#3-系统详细实现" class="headerlink" title="3. 系统详细实现"></a>3. 系统详细实现</h1></li>
+</ol>
+<h2 id="3-1-CSV-文件读写实现"><a href="#3-1-CSV-文件读写实现" class="headerlink" title="3.1. CSV 文件读写实现"></a>3.1. CSV 文件读写实现</h2><h3 id="3-1-1-特殊字符转义与解析"><a href="#3-1-1-特殊字符转义与解析" class="headerlink" title="3.1.1. 特殊字符转义与解析"></a>3.1.1. 特殊字符转义与解析</h3><p>为解决 CSV 文件中特殊字符导致的解析错误问题，实现了<code>escapeCSVField()</code>和<code>unescapeCSVField()</code>方法：<br><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// CSV特殊字符转义（处理包含逗号、引号的字段）</span><br><span class="hljs-function">string <span class="hljs-title">escapeCSVField</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; field)</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (field.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27;,&#x27;</span>) != string::npos || field.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27;&quot;&#x27;</span>) != string::npos) &#123;<br>		string escaped = field;<br>		<span class="hljs-comment">// 替换双引号为两个双引号（CSV标准转义）</span><br>		<span class="hljs-built_in">replace</span>(escaped.<span class="hljs-built_in">begin</span>(), escaped.<span class="hljs-built_in">end</span>(), <span class="hljs-string">&#x27;&quot;&#x27;</span>, <span class="hljs-string">&#x27;&quot;&#x27;</span>);<br>		<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;\&quot;&quot;</span> + escaped + <span class="hljs-string">&quot;\&quot;&quot;</span>; <span class="hljs-comment">// 用双引号包裹字段</span><br>	&#125;<br>	<span class="hljs-keyword">return</span> field;<br>&#125;<br><br><span class="hljs-comment">// 解析CSV字段（处理带引号的字段）</span><br><span class="hljs-function">string <span class="hljs-title">unescapeCSVField</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; field)</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (field.<span class="hljs-built_in">size</span>() &gt;= <span class="hljs-number">2</span> &amp;&amp; field.<span class="hljs-built_in">front</span>() == <span class="hljs-string">&#x27;&quot;&#x27;</span> &amp;&amp; field.<span class="hljs-built_in">back</span>() == <span class="hljs-string">&#x27;&quot;&#x27;</span>) &#123;<br>		string unescaped = field.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>, field.<span class="hljs-built_in">size</span>() - <span class="hljs-number">2</span>);<br>		<span class="hljs-comment">// 还原双引号（将两个双引号替换为一个）</span><br>		<span class="hljs-type">size_t</span> pos = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">while</span> ((pos = unescaped.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;\&quot;\&quot;&quot;</span>, pos)) != string::npos) &#123;<br>			unescaped.<span class="hljs-built_in">replace</span>(pos, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;\&quot;&quot;</span>);<br>			pos += <span class="hljs-number">1</span>;<br>		&#125;<br>		<span class="hljs-keyword">return</span> unescaped;<br>	&#125;<br>	<span class="hljs-keyword">return</span> field;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="3-1-2-CSV-文件加载与保存"><a href="#3-1-2-CSV-文件加载与保存" class="headerlink" title="3.1.2. CSV 文件加载与保存"></a>3.1.2. CSV 文件加载与保存</h3><ul>
+<li>加载数据：<code>loadFromCSV()</code>方法打开 CSV 文件，逐行读取数据，通过<code>parseCSVLine()</code>方法解析每行字段，创建<code>Student</code>对象并添加到<code>students</code>容器中；</li>
+<li>保存数据：<code>saveToCSV()</code>方法遍历<code>students</code>容器，将每个学生的信息转换为 CSV 格式的一行，写入文件并处理特殊字符。<h2 id="3-2-核心功能实现"><a href="#3-2-核心功能实现" class="headerlink" title="3.2. 核心功能实现"></a>3.2. 核心功能实现</h2></li>
+</ul>
+<h3 id="3-2-1-学生信息添加"><a href="#3-2-1-学生信息添加" class="headerlink" title="3.2.1. 学生信息添加"></a>3.2.1. 学生信息添加</h3><p>添加学生时需进行多重验证：学号唯一性、姓名 / 学院 / 专业非空、成绩为 0-100 的数字，验证通过后计算总分并保存数据：<br><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addStudent</span><span class="hljs-params">()</span> </span>&#123;<br>	Student s;<br>	cout &lt;&lt; <span class="hljs-string">&quot;\n===================== 添加学生 =====================&quot;</span> &lt;&lt; endl;<br><br>	<span class="hljs-comment">// 学号验证（唯一）</span><br>	<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;请输入学号：&quot;</span>;<br>		cin &gt;&gt; s.id;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">findById</span>(s.id) != <span class="hljs-number">-1</span>) &#123;<br>			cout &lt;&lt; <span class="hljs-string">&quot;错误：该学号已存在！请重新输入。&quot;</span> &lt;&lt; endl;<br>		&#125;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.id.<span class="hljs-built_in">empty</span>()) &#123;<br>			cout &lt;&lt; <span class="hljs-string">&quot;错误：学号不能为空！请重新输入。&quot;</span> &lt;&lt; endl;<br>		&#125;<br>		<span class="hljs-keyword">else</span> &#123;<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-comment">// 姓名</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;请输入姓名：&quot;</span>;<br>	cin.<span class="hljs-built_in">ignore</span>();<br>	<span class="hljs-built_in">getline</span>(cin, s.name);<br>	<span class="hljs-keyword">while</span> (s.name.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;错误：姓名不能为空！请重新输入：&quot;</span>;<br>		<span class="hljs-built_in">getline</span>(cin, s.name);<br>	&#125;<br><br>	<span class="hljs-comment">// 学院</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;请输入学院：&quot;</span>;<br>	<span class="hljs-built_in">getline</span>(cin, s.college);<br>	<span class="hljs-keyword">while</span> (s.college.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;错误：学院不能为空！请重新输入：&quot;</span>;<br>		<span class="hljs-built_in">getline</span>(cin, s.college);<br>	&#125;<br><br>	<span class="hljs-comment">// 专业</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;请输入专业：&quot;</span>;<br>	<span class="hljs-built_in">getline</span>(cin, s.major);<br>	<span class="hljs-keyword">while</span> (s.major.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;错误：专业不能为空！请重新输入：&quot;</span>;<br>		<span class="hljs-built_in">getline</span>(cin, s.major);<br>	&#125;<br><br>	<span class="hljs-comment">// 成绩输入与验证</span><br>	<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;请输入语文成绩：&quot;</span>;<br>		cin &gt;&gt; s.chinese;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">validateScore</span>(s.chinese, <span class="hljs-string">&quot;语文&quot;</span>)) <span class="hljs-keyword">break</span>;<br>	&#125;<br><br>	<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;请输入数学成绩：&quot;</span>;<br>		cin &gt;&gt; s.math;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">validateScore</span>(s.math, <span class="hljs-string">&quot;数学&quot;</span>)) <span class="hljs-keyword">break</span>;<br>	&#125;<br><br>	<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;请输入英语成绩：&quot;</span>;<br>		cin &gt;&gt; s.english;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">validateScore</span>(s.english, <span class="hljs-string">&quot;英语&quot;</span>)) <span class="hljs-keyword">break</span>;<br>	&#125;<br><br>	<span class="hljs-comment">// 计算总分</span><br>	<span class="hljs-built_in">updateTotal</span>(s);<br><br>	students.<span class="hljs-built_in">push_back</span>(s);<br>	<span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 学生添加成功！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="3-2-2-排序功能实现"><a href="#3-2-2-排序功能实现" class="headerlink" title="3.2.2. 排序功能实现"></a>3.2.2. 排序功能实现</h3><p>以按总分降序排序为例，利用 C++ STL 的<code>sort()</code>函数结合 lambda 表达式实现：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// 按学号排序（升序）</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortById</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>		<span class="hljs-comment">// 先按长度排序，再按字典序排序</span><br>		<span class="hljs-keyword">if</span> (a.id.<span class="hljs-built_in">size</span>() != b.id.<span class="hljs-built_in">size</span>())<br>			<span class="hljs-keyword">return</span> a.id.<span class="hljs-built_in">size</span>() &lt; b.id.<span class="hljs-built_in">size</span>();<br>		<span class="hljs-keyword">return</span> a.id &lt; b.id;<br>		&#125;);<br>	<span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按学号升序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-comment">// 按语文成绩排序（降序）</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortByChinese</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.chinese) &gt; <span class="hljs-built_in">stof</span>(b.chinese);<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		&#125;<br>		&#125;);<br>	<span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按语文成绩降序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-comment">// 按数学成绩排序（降序）</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortByMath</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.math) &gt; <span class="hljs-built_in">stof</span>(b.math);<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		&#125;<br>		&#125;);<br>	<span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按数学成绩降序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-comment">// 按英语成绩排序（降序）</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortByEnglish</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.english) &gt; <span class="hljs-built_in">stof</span>(b.english);<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		&#125;<br>		&#125;);<br>	<span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按英语成绩降序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-comment">// 按总分排序（降序）</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortByTotal</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.total) &gt; <span class="hljs-built_in">stof</span>(b.total);<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		&#125;<br>		&#125;);<br>	<span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按总分降序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="3-2-3-成绩统计分析实现"><a href="#3-2-3-成绩统计分析实现" class="headerlink" title="3.2.3. 成绩统计分析实现"></a>3.2.3. 成绩统计分析实现</h3><ul>
+<li>平均分计算：过滤无效成绩后，求所有有效成绩的均值；</li>
+<li>众数查找：通过<code>map</code>统计成绩出现频率，找出频率最高的成绩；</li>
+<li>极值查找：使用<code>min_element()</code>和<code>max_element()</code>函数查找最高分和最低分，并返回对应学生信息。<br>示例：众数查找实现<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// 计算平均分</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">calculateAverage</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-type">float</span> chiTotal = <span class="hljs-number">0.0f</span>, mathTotal = <span class="hljs-number">0.0f</span>, engTotal = <span class="hljs-number">0.0f</span>, totalTotal = <span class="hljs-number">0.0f</span>;<br>	<span class="hljs-type">int</span> validCount = <span class="hljs-number">0</span>;<br><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			chiTotal += <span class="hljs-built_in">stof</span>(s.chinese);<br>			mathTotal += <span class="hljs-built_in">stof</span>(s.math);<br>			engTotal += <span class="hljs-built_in">stof</span>(s.english);<br>			totalTotal += <span class="hljs-built_in">stof</span>(s.total);<br>			validCount++;<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123;<br>			<span class="hljs-keyword">continue</span>;<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-keyword">if</span> (validCount == <span class="hljs-number">0</span>) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;错误：没有有效的成绩数据可计算！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">2</span>) &lt;&lt; <span class="hljs-string">&quot;\n===================== 成绩平均分 =====================&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;语文平均分：&quot;</span> &lt;&lt; chiTotal / validCount &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;数学平均分：&quot;</span> &lt;&lt; mathTotal / validCount &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;英语平均分：&quot;</span> &lt;&lt; engTotal / validCount &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;总分平均分：&quot;</span> &lt;&lt; totalTotal / validCount &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-comment">// 查找众数（出现次数最多的成绩）</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">findMode</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-comment">// 辅助函数：查找map中的众数</span><br>	<span class="hljs-keyword">auto</span> findMapMode = [](<span class="hljs-type">const</span> map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt;&amp; freqMap) -&gt; pair&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; &#123;<br>		<span class="hljs-keyword">if</span> (freqMap.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">return</span> &#123; <span class="hljs-number">0.0f</span>, <span class="hljs-number">0</span> &#125;;<br>		<span class="hljs-keyword">auto</span> modeIt = <span class="hljs-built_in">max_element</span>(freqMap.<span class="hljs-built_in">begin</span>(), freqMap.<span class="hljs-built_in">end</span>(),<br>			[](<span class="hljs-type">const</span> pair&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt;&amp; a, <span class="hljs-type">const</span> pair&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt;&amp; b) &#123;<br>				<span class="hljs-keyword">return</span> a.second &lt; b.second;<br>			&#125;);<br>		<span class="hljs-keyword">return</span> *modeIt;<br>	&#125;;<br><br>	<span class="hljs-comment">// 语文成绩众数</span><br>	map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; chiFreq;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			chiFreq[<span class="hljs-built_in">stof</span>(s.chinese)]++;<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123; <span class="hljs-keyword">continue</span>; &#125;<br>	&#125;<br>	<span class="hljs-keyword">auto</span> chiMode = <span class="hljs-built_in">findMapMode</span>(chiFreq);<br><br>	<span class="hljs-comment">// 数学成绩众数</span><br>	map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; mathFreq;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			mathFreq[<span class="hljs-built_in">stof</span>(s.math)]++;<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123; <span class="hljs-keyword">continue</span>; &#125;<br>	&#125;<br>	<span class="hljs-keyword">auto</span> mathMode = <span class="hljs-built_in">findMapMode</span>(mathFreq);<br><br>	<span class="hljs-comment">// 英语成绩众数</span><br>	map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; engFreq;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			engFreq[<span class="hljs-built_in">stof</span>(s.english)]++;<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123; <span class="hljs-keyword">continue</span>; &#125;<br>	&#125;<br>	<span class="hljs-keyword">auto</span> engMode = <span class="hljs-built_in">findMapMode</span>(engFreq);<br><br>	<span class="hljs-comment">// 总分众数</span><br>	map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; totalFreq;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			totalFreq[<span class="hljs-built_in">stof</span>(s.total)]++;<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123; <span class="hljs-keyword">continue</span>; &#125;<br>	&#125;<br>	<span class="hljs-keyword">auto</span> totalMode = <span class="hljs-built_in">findMapMode</span>(totalFreq);<br><br>	cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-string">&quot;\n===================== 成绩众数 =====================&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;语文众数：&quot;</span> &lt;&lt; chiMode.first &lt;&lt; <span class="hljs-string">&quot; (出现次数：&quot;</span> &lt;&lt; chiMode.second &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;数学众数：&quot;</span> &lt;&lt; mathMode.first &lt;&lt; <span class="hljs-string">&quot; (出现次数：&quot;</span> &lt;&lt; mathMode.second &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;英语众数：&quot;</span> &lt;&lt; engMode.first &lt;&lt; <span class="hljs-string">&quot; (出现次数：&quot;</span> &lt;&lt; engMode.second &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;总分众数：&quot;</span> &lt;&lt; totalMode.first &lt;&lt; <span class="hljs-string">&quot; (出现次数：&quot;</span> &lt;&lt; totalMode.second &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-comment">// 查找极值（最高分和最低分）</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">findExtremeValues</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-comment">// 过滤掉成绩无效的学生</span><br>	vector&lt;Student&gt; validStudents;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>		<span class="hljs-keyword">try</span> &#123;<br>			<span class="hljs-built_in">stof</span>(s.chinese);<br>			<span class="hljs-built_in">stof</span>(s.math);<br>			<span class="hljs-built_in">stof</span>(s.english);<br>			<span class="hljs-built_in">stof</span>(s.total);<br>			validStudents.<span class="hljs-built_in">push_back</span>(s);<br>		&#125;<br>		<span class="hljs-built_in">catch</span> (...) &#123;<br>			<span class="hljs-keyword">continue</span>;<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-keyword">if</span> (validStudents.<span class="hljs-built_in">empty</span>()) &#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;错误：没有有效的成绩数据可分析！&quot;</span> &lt;&lt; endl;<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br><br>	<span class="hljs-comment">// 语文极值</span><br>	<span class="hljs-keyword">auto</span> chiMin = <span class="hljs-built_in">min_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>		[](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.chinese) &lt; <span class="hljs-built_in">stof</span>(b.chinese);<br>		&#125;);<br>	<span class="hljs-keyword">auto</span> chiMax = <span class="hljs-built_in">max_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>		[](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.chinese) &lt; <span class="hljs-built_in">stof</span>(b.chinese);<br>		&#125;);<br><br>	<span class="hljs-comment">// 数学极值</span><br>	<span class="hljs-keyword">auto</span> mathMin = <span class="hljs-built_in">min_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>		[](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.math) &lt; <span class="hljs-built_in">stof</span>(b.math);<br>		&#125;);<br>	<span class="hljs-keyword">auto</span> mathMax = <span class="hljs-built_in">max_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>		[](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.math) &lt; <span class="hljs-built_in">stof</span>(b.math);<br>		&#125;);<br><br>	<span class="hljs-comment">// 英语极值</span><br>	<span class="hljs-keyword">auto</span> engMin = <span class="hljs-built_in">min_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>		[](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.english) &lt; <span class="hljs-built_in">stof</span>(b.english);<br>		&#125;);<br>	<span class="hljs-keyword">auto</span> engMax = <span class="hljs-built_in">max_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>		[](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.english) &lt; <span class="hljs-built_in">stof</span>(b.english);<br>		&#125;);<br><br>	<span class="hljs-comment">// 总分极值</span><br>	<span class="hljs-keyword">auto</span> totalMin = <span class="hljs-built_in">min_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>		[](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.total) &lt; <span class="hljs-built_in">stof</span>(b.total);<br>		&#125;);<br>	<span class="hljs-keyword">auto</span> totalMax = <span class="hljs-built_in">max_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>		[](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.total) &lt; <span class="hljs-built_in">stof</span>(b.total);<br>		&#125;);<br><br>	cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-string">&quot;\n===================== 成绩极值 =====================&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;语文最低分：&quot;</span> &lt;&lt; chiMin-&gt;chinese &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; chiMin-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; chiMin-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;语文最高分：&quot;</span> &lt;&lt; chiMax-&gt;chinese &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; chiMax-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; chiMax-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;数学最低分：&quot;</span> &lt;&lt; mathMin-&gt;math &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; mathMin-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; mathMin-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;数学最高分：&quot;</span> &lt;&lt; mathMax-&gt;math &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; mathMax-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; mathMax-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;英语最低分：&quot;</span> &lt;&lt; engMin-&gt;english &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; engMin-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; engMin-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;英语最高分：&quot;</span> &lt;&lt; engMax-&gt;english &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; engMax-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; engMax-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;总分最低分：&quot;</span> &lt;&lt; totalMin-&gt;total &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; totalMin-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; totalMin-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;总分最高分：&quot;</span> &lt;&lt; totalMax-&gt;total &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; totalMax-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; totalMax-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="3-2-4-用户交互实现"><a href="#3-2-4-用户交互实现" class="headerlink" title="3.2.4. 用户交互实现"></a>3.2.4. 用户交互实现</h3></li>
+</ul>
+<p>系统提供清晰的菜单界面，用户通过输入数字选择功能，包含输入验证机制：<br><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// 显示主菜单</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">displayMenu</span><span class="hljs-params">()</span> </span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;\n==========================================================&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;                    学生信息管理系统              &quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;==========================================================&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;1. 添加学生        2. 删除学生        3. 修改学生&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;4. 查找学生        5. 显示所有        6. 按学号排序&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;7. 按语文排序      8. 按数学排序       9. 按英语排序&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;10. 按总分排序     11. 计算平均分     12. 查找众数&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;13. 查找极值       14. 退出系统                           &quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;==========================================================&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;提示：数据存储在 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; <span class="hljs-string">&quot;，支持Excel直接打开&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;请选择功能(1-14)：&quot;</span>;<br>&#125;<br><br><br><span class="hljs-comment">// 清空输入缓冲区</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">clearInputBuffer</span><span class="hljs-params">()</span> </span>&#123;<br>    cin.<span class="hljs-built_in">clear</span>();<br>    cin.<span class="hljs-built_in">ignore</span>(numeric_limits&lt;streamsize&gt;::<span class="hljs-built_in">max</span>(), <span class="hljs-string">&#x27;\n&#x27;</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 设置控制台输出为UTF-8（Windows系统）</span><br>    <span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _WIN32</span><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;chcp 65001 &gt; nul&quot;</span>);<br>    <span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br>    StudentManager manager;<br>    cout &lt;&lt; <span class="hljs-string">&quot;正在加载CSV学生数据...&quot;</span> &lt;&lt; endl;<br>    manager.<span class="hljs-built_in">loadFromCSV</span>(); <span class="hljs-comment">// 从CSV加载</span><br><br>    <span class="hljs-type">int</span> choice = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">do</span> &#123;<br>        <span class="hljs-built_in">displayMenu</span>();<br><br>        <span class="hljs-comment">// 输入验证</span><br>        <span class="hljs-keyword">if</span> (!(cin &gt;&gt; choice)) &#123;<br>            <span class="hljs-built_in">clearInputBuffer</span>();<br>            cout &lt;&lt; <span class="hljs-string">&quot;\n❌ 错误：输入无效！请输入数字1-14。&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">clearInputBuffer</span>(); <span class="hljs-comment">// 清空缓冲区中的多余字符</span><br><br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: manager.<span class="hljs-built_in">addStudent</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: manager.<span class="hljs-built_in">deleteStudent</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: manager.<span class="hljs-built_in">modifyStudent</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: manager.<span class="hljs-built_in">searchStudent</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>: manager.<span class="hljs-built_in">displayAll</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>: manager.<span class="hljs-built_in">sortById</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>: manager.<span class="hljs-built_in">sortByChinese</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>: manager.<span class="hljs-built_in">sortByMath</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>: manager.<span class="hljs-built_in">sortByEnglish</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>: manager.<span class="hljs-built_in">sortByTotal</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">11</span>: manager.<span class="hljs-built_in">calculateAverage</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">12</span>: manager.<span class="hljs-built_in">findMode</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">13</span>: manager.<span class="hljs-built_in">findExtremeValues</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">14</span>:<br>            cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 感谢使用学生信息管理系统！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:<br>            cout &lt;&lt; <span class="hljs-string">&quot;\n❌ 错误：选择无效！请输入1-14之间的数字。&quot;</span> &lt;&lt; endl;<br>        &#125;<br><br>        <span class="hljs-comment">// 每次操作后暂停，方便用户查看结果</span><br>        <span class="hljs-keyword">if</span> (choice != <span class="hljs-number">14</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;\n按Enter键继续...&quot;</span>;<br>            cin.<span class="hljs-built_in">get</span>();<br>        &#125;<br><br>    &#125; <span class="hljs-keyword">while</span> (choice != <span class="hljs-number">14</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h1 id="4-系统测试"><a href="#4-系统测试" class="headerlink" title="4. 系统测试"></a>4. 系统测试</h1><h2 id="4-1-功能测试"><a href="#4-1-功能测试" class="headerlink" title="4.1. 功能测试"></a>4.1. 功能测试</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>测试用例</th>
+<th>预期结果</th>
+<th>测试结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>添加学号重复的学生</td>
+<td>提示 “学号已存在”，添加失败</td>
+<td>符合预期</td>
+</tr>
+<tr>
+<td>添加成绩为 101 的学生</td>
+<td>提示 “成绩必须是 0-100 之间的数字”，添加失败</td>
+<td>符合预期</td>
+</tr>
+<tr>
+<td>按学号查询不存在的学生</td>
+<td>提示 “未找到该学生”</td>
+<td>符合预期</td>
+</tr>
+<tr>
+<td>修改学生姓名后保存</td>
+<td>CSV 文件中对应学生姓名更新</td>
+<td>符合预期</td>
+</tr>
+<tr>
+<td>按总分排序后显示</td>
+<td>学生按总分从高到低排列</td>
+<td>符合预期</td>
+</tr>
+<tr>
+<td>计算语文成绩平均分</td>
+<td>正确输出所有有效语文成绩的均值</td>
+<td>符合预期</td>
+</tr>
+<tr>
+<td>查找数学成绩众数</td>
+<td>正确输出出现频率最高的数学成绩</td>
+<td>符合预期</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="4-2-运行截图"><a href="#4-2-运行截图" class="headerlink" title="4.2. 运行截图"></a>4.2. 运行截图</h2><h3 id="4-2-1-显示所有学生信息"><a href="#4-2-1-显示所有学生信息" class="headerlink" title="4.2.1. 显示所有学生信息"></a>4.2.1. 显示所有学生信息</h3><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251118193755473.png" alt="image.png"></p>
+<h3 id="4-2-2-计算平均分"><a href="#4-2-2-计算平均分" class="headerlink" title="4.2.2. 计算平均分"></a>4.2.2. 计算平均分</h3><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251118193908389.png" alt="image.png"></p>
+<h3 id="4-2-3-插入学生"><a href="#4-2-3-插入学生" class="headerlink" title="4.2.3. 插入学生"></a>4.2.3. 插入学生</h3><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251118194026995.png" alt="image.png"></p>
+<h3 id="4-2-4-排序功能"><a href="#4-2-4-排序功能" class="headerlink" title="4.2.4. 排序功能"></a>4.2.4. 排序功能</h3><p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251118194358838.png" alt="image.png"></p>
+<h2 id="4-3-边界测试"><a href="#4-3-边界测试" class="headerlink" title="4.3. 边界测试"></a>4.3. 边界测试</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>测试用例</th>
+<th>预期结果</th>
+<th>测试结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统无学生数据时执行删除操作</td>
+<td>提示 “无学生数据”</td>
+<td>符合预期</td>
+</tr>
+<tr>
+<td>字段包含逗号（如姓名 “张，三”）</td>
+<td>正确存储和读取该字段</td>
+<td>符合预期</td>
+</tr>
+<tr>
+<td>成绩为 0 或 100</td>
+<td>正常添加和统计</td>
+<td>符合预期</td>
+</tr>
+<tr>
+<td>批量添加 100 条学生数据</td>
+<td>数据正常存储，排序和查询功能正常</td>
+<td>符合预期</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="4-4-用户体验测试"><a href="#4-4-用户体验测试" class="headerlink" title="4.4. 用户体验测试"></a>4.4. 用户体验测试</h2><ul>
+<li>输入错误时，系统给出明确提示并引导重新输入，容错性良好；</li>
+<li>每次操作后自动保存数据，无需手动干预；</li>
+<li>菜单界面清晰，操作流程简单，无需专业知识即可使用；</li>
+<li>CSV 文件可直接用 Excel 打开编辑，兼容性良好。<h1 id="5-总结与展望"><a href="#5-总结与展望" class="headerlink" title="5. 总结与展望"></a>5. 总结与展望</h1><h2 id="5-1-课程设计总结"><a href="#5-1-课程设计总结" class="headerlink" title="5.1. 课程设计总结"></a>5.1. 课程设计总结</h2>本课程设计基于 C++ 语言实现了一款功能完善的学生信息管理系统，完成了学生信息的增删改查、排序、统计分析及 CSV 文件存储等核心功能。系统采用面向对象设计思想，结构清晰，代码复用性高；通过严格的输入验证和特殊字符处理，提升了系统的稳定性和可靠性；友好的用户交互界面降低了使用门槛，满足了小型教育机构或班级的学生管理需求。<br>在开发过程中，重点解决了以下问题：</li>
+</ul>
+<ol>
+<li>CSV 文件中特殊字符的处理，确保数据读写的准确性；</li>
+<li>多样化排序和统计分析功能的实现，满足不同管理需求；</li>
+<li>输入验证机制的设计，提升系统容错性；</li>
+<li>数据持久化的实现，保证数据不丢失。<br>同时，也认识到系统存在的不足：</li>
+<li>未实现用户权限管理，所有用户拥有相同操作权限；</li>
+<li>数据查询功能仅支持按学号和姓名查询，不支持多条件组合查询；</li>
+<li>未提供数据备份和恢复功能；</li>
+<li>界面为控制台界面，视觉体验有待提升。</li>
+</ol>
+<h2 id="5-2-未来展望"><a href="#5-2-未来展望" class="headerlink" title="5.2. 未来展望"></a>5.2. 未来展望</h2><p>为进一步完善系统功能，提升用户体验，未来可进行以下改进：</p>
+<ol>
+<li>增加用户权限管理模块，区分管理员和普通用户，设置不同操作权限；</li>
+<li>扩展查询功能，支持按学院、专业、成绩区间等多条件组合查询；</li>
+<li>增加数据备份和恢复功能，支持手动备份和自动定时备份；</li>
+<li>采用 Qt 或 MFC 等框架开发图形化用户界面（GUI），提升视觉体验和操作便捷性；</li>
+<li>引入数据库（如 MySQL、SQLite）替代 CSV 文件存储，支持更大规模数据管理和更复杂的查询操作；</li>
+<li>增加成绩图表分析功能（如柱状图、折线图），直观展示成绩分布情况。<br>通过本次课程设计，不仅巩固了 C++ 语言基础、面向对象编程思想、STL 容器使用等专业知识，还提升了问题分析与解决能力、代码编写与调试能力。该学生信息管理系统虽存在一定不足，但基本满足小型场景的使用需求，具有一定的实用价值。</li>
+</ol>
+<h1 id="6-代码"><a href="#6-代码" class="headerlink" title="6. 代码"></a>6. 代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cctype&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iomanip&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;limits&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;map&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;numeric&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdexcept&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 表头定义（学号、姓名、学院、专业、语文、数学、英语、总分）</span><br><span class="hljs-type">const</span> vector&lt;string&gt; HEADERS = &#123; <span class="hljs-string">&quot;学号&quot;</span>, <span class="hljs-string">&quot;姓名&quot;</span>, <span class="hljs-string">&quot;学院&quot;</span>, <span class="hljs-string">&quot;专业&quot;</span>, <span class="hljs-string">&quot;语文&quot;</span>, <span class="hljs-string">&quot;数学&quot;</span>, <span class="hljs-string">&quot;英语&quot;</span>, <span class="hljs-string">&quot;总分&quot;</span> &#125;;<br><span class="hljs-type">const</span> string CSV_FILENAME = <span class="hljs-string">&quot;student_info.csv&quot;</span>; <span class="hljs-comment">// 标准CSV文件名</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    string id;<br>    string name;<br>    string college;<br>    string major;<br>    string chinese;<br>    string math;<br>    string english;<br>    string total;<br><br>    <span class="hljs-built_in">Student</span>(string i = <span class="hljs-string">&quot;&quot;</span>, string n = <span class="hljs-string">&quot;&quot;</span>, string c = <span class="hljs-string">&quot;&quot;</span>, string m = <span class="hljs-string">&quot;&quot;</span>,<br>        string chi = <span class="hljs-string">&quot;&quot;</span>, string ma = <span class="hljs-string">&quot;&quot;</span>, string eng = <span class="hljs-string">&quot;&quot;</span>, string tot = <span class="hljs-string">&quot;&quot;</span>)<br>        : <span class="hljs-built_in">id</span>(i), <span class="hljs-built_in">name</span>(n), <span class="hljs-built_in">college</span>(c), <span class="hljs-built_in">major</span>(m),<br>        <span class="hljs-built_in">chinese</span>(chi), <span class="hljs-built_in">math</span>(ma), <span class="hljs-built_in">english</span>(eng), <span class="hljs-built_in">total</span>(tot) &#123;<br>    &#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">StudentManager</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    vector&lt;Student&gt; students;<br><br>    <span class="hljs-comment">// 检查字符串是否为数字（支持整数和小数）</span><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isNumeric</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; str)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (str.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-type">int</span> dotCount = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : str) &#123;<br>            <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;.&#x27;</span>) &#123;<br>                dotCount++;<br>                <span class="hljs-keyword">if</span> (dotCount &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// 只能有一个小数点</span><br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">isdigit</span>(c)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 显示单个学生信息</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">displayStudent</span><span class="hljs-params">(<span class="hljs-type">const</span> Student&amp; s)</span> </span>&#123;<br>        cout &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left) &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; s.id<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">20</span>) &lt;&lt; s.name<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">30</span>) &lt;&lt; s.college<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">30</span>) &lt;&lt; s.major<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-built_in">stof</span>(s.chinese)<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-built_in">stof</span>(s.math)<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-built_in">stof</span>(s.english)<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-built_in">stof</span>(s.total) &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 根据学号查找学生索引</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">findById</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; id)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; students.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (students[i].id == id) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 根据姓名查找学生索引（找到第一个匹配的）</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">findByName</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; name)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; students.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (students[i].name == name) <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// CSV特殊字符转义（处理包含逗号、引号的字段）</span><br>    <span class="hljs-function">string <span class="hljs-title">escapeCSVField</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; field)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (field.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27;,&#x27;</span>) != string::npos || field.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27;&quot;&#x27;</span>) != string::npos) &#123;<br>            string escaped = field;<br>            <span class="hljs-comment">// 替换双引号为两个双引号（CSV标准转义）</span><br>            <span class="hljs-built_in">replace</span>(escaped.<span class="hljs-built_in">begin</span>(), escaped.<span class="hljs-built_in">end</span>(), <span class="hljs-string">&#x27;&quot;&#x27;</span>, <span class="hljs-string">&#x27;&quot;&#x27;</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;\&quot;&quot;</span> + escaped + <span class="hljs-string">&quot;\&quot;&quot;</span>; <span class="hljs-comment">// 用双引号包裹字段</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> field;<br>    &#125;<br><br>    <span class="hljs-comment">// 解析CSV字段（处理带引号的字段）</span><br>    <span class="hljs-function">string <span class="hljs-title">unescapeCSVField</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; field)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (field.<span class="hljs-built_in">size</span>() &gt;= <span class="hljs-number">2</span> &amp;&amp; field.<span class="hljs-built_in">front</span>() == <span class="hljs-string">&#x27;&quot;&#x27;</span> &amp;&amp; field.<span class="hljs-built_in">back</span>() == <span class="hljs-string">&#x27;&quot;&#x27;</span>) &#123;<br>            string unescaped = field.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>, field.<span class="hljs-built_in">size</span>() - <span class="hljs-number">2</span>);<br>            <span class="hljs-comment">// 还原双引号（将两个双引号替换为一个）</span><br>            <span class="hljs-type">size_t</span> pos = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">while</span> ((pos = unescaped.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;\&quot;\&quot;&quot;</span>, pos)) != string::npos) &#123;<br>                unescaped.<span class="hljs-built_in">replace</span>(pos, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;\&quot;&quot;</span>);<br>                pos += <span class="hljs-number">1</span>;<br>            &#125;<br>            <span class="hljs-keyword">return</span> unescaped;<br>        &#125;<br>        <span class="hljs-keyword">return</span> field;<br>    &#125;<br><br>    <span class="hljs-comment">// 从CSV行解析字段（支持带引号的字段）</span><br>    <span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">parseCSVLine</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; line)</span> </span>&#123;<br>        vector&lt;string&gt; fields;<br>        string currentField;<br>        <span class="hljs-type">bool</span> inQuotes = <span class="hljs-literal">false</span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : line) &#123;<br>            <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;&quot;&#x27;</span>) &#123;<br>                inQuotes = !inQuotes;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;,&#x27;</span> &amp;&amp; !inQuotes) &#123;<br>                <span class="hljs-comment">// 遇到逗号且不在引号中，字段结束</span><br>                fields.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">unescapeCSVField</span>(currentField));<br>                currentField.<span class="hljs-built_in">clear</span>();<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                currentField += c;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 添加最后一个字段</span><br>        fields.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">unescapeCSVField</span>(currentField));<br>        <span class="hljs-keyword">return</span> fields;<br>    &#125;<br><br>    <span class="hljs-comment">// 自动保存到CSV文件（标准CSV格式）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">autoSaveToCSV</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-function">ofstream <span class="hljs-title">file</span><span class="hljs-params">(CSV_FILENAME, ios::trunc)</span></span>;<br>        <span class="hljs-keyword">if</span> (!file.<span class="hljs-built_in">is_open</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;CSV文件保存失败！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-comment">// 写入CSV表头（转义特殊字符）</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; HEADERS.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            file &lt;&lt; <span class="hljs-built_in">escapeCSVField</span>(HEADERS[i]);<br>            <span class="hljs-keyword">if</span> (i &lt; HEADERS.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>) file &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;<br>        &#125;<br>        file &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>; <span class="hljs-comment">// CSV标准换行符</span><br><br>        <span class="hljs-comment">// 写入学生数据（每个字段都转义）</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>            file &lt;&lt; <span class="hljs-built_in">escapeCSVField</span>(s.id) &lt;&lt; <span class="hljs-string">&quot;,&quot;</span><br>                &lt;&lt; <span class="hljs-built_in">escapeCSVField</span>(s.name) &lt;&lt; <span class="hljs-string">&quot;,&quot;</span><br>                &lt;&lt; <span class="hljs-built_in">escapeCSVField</span>(s.college) &lt;&lt; <span class="hljs-string">&quot;,&quot;</span><br>                &lt;&lt; <span class="hljs-built_in">escapeCSVField</span>(s.major) &lt;&lt; <span class="hljs-string">&quot;,&quot;</span><br>                &lt;&lt; <span class="hljs-built_in">escapeCSVField</span>(s.chinese) &lt;&lt; <span class="hljs-string">&quot;,&quot;</span><br>                &lt;&lt; <span class="hljs-built_in">escapeCSVField</span>(s.math) &lt;&lt; <span class="hljs-string">&quot;,&quot;</span><br>                &lt;&lt; <span class="hljs-built_in">escapeCSVField</span>(s.english) &lt;&lt; <span class="hljs-string">&quot;,&quot;</span><br>                &lt;&lt; <span class="hljs-built_in">escapeCSVField</span>(s.total) &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>        &#125;<br>        file.<span class="hljs-built_in">close</span>();<br>    &#125;<br><br>    <span class="hljs-comment">// 验证成绩合法性</span><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">validateScore</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; score, <span class="hljs-type">const</span> string&amp; subject)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">isNumeric</span>(score)) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：&quot;</span> &lt;&lt; subject &lt;&lt; <span class="hljs-string">&quot;成绩必须是数字！请重新输入。&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">float</span> scoreValue = <span class="hljs-built_in">stof</span>(score);<br>            <span class="hljs-keyword">if</span> (scoreValue &lt; <span class="hljs-number">0</span> || scoreValue &gt; <span class="hljs-number">100</span>) &#123;<br>                cout &lt;&lt; <span class="hljs-string">&quot;错误：&quot;</span> &lt;&lt; subject &lt;&lt; <span class="hljs-string">&quot;成绩必须在0-100之间！请重新输入。&quot;</span> &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-built_in">catch</span> (...) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：&quot;</span> &lt;&lt; subject &lt;&lt; <span class="hljs-string">&quot;成绩格式错误！请重新输入。&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 更新总分</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">updateTotal</span><span class="hljs-params">(Student&amp; s)</span> </span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">float</span> chi = <span class="hljs-built_in">stof</span>(s.chinese);<br>            <span class="hljs-type">float</span> math = <span class="hljs-built_in">stof</span>(s.math);<br>            <span class="hljs-type">float</span> eng = <span class="hljs-built_in">stof</span>(s.english);<br>            <span class="hljs-type">float</span> total = chi + math + eng;<br>            s.total = <span class="hljs-built_in">to_string</span>(total);<br>        &#125;<br>        <span class="hljs-built_in">catch</span> (...) &#123;<br>            s.total = <span class="hljs-string">&quot;0.0&quot;</span>;<br>        &#125;<br>    &#125;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 从CSV文件加载数据</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">loadFromCSV</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-function">ifstream <span class="hljs-title">file</span><span class="hljs-params">(CSV_FILENAME)</span></span>;<br>        <span class="hljs-keyword">if</span> (!file.<span class="hljs-built_in">is_open</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;未找到CSV数据文件，将创建新文件。&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        string line;<br>        <span class="hljs-built_in">getline</span>(file, line); <span class="hljs-comment">// 跳过CSV表头</span><br><br>        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">getline</span>(file, line)) &#123;<br>            <span class="hljs-keyword">if</span> (line.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">continue</span>;<br><br>            <span class="hljs-comment">// 解析CSV行</span><br>            vector&lt;string&gt; tokens = <span class="hljs-built_in">parseCSVLine</span>(line);<br><br>            <span class="hljs-keyword">if</span> (tokens.<span class="hljs-built_in">size</span>() &gt;= <span class="hljs-number">8</span>) &#123;<br>                Student s;<br>                s.id = tokens[<span class="hljs-number">0</span>];<br>                s.name = tokens[<span class="hljs-number">1</span>];<br>                s.college = tokens[<span class="hljs-number">2</span>];<br>                s.major = tokens[<span class="hljs-number">3</span>];<br>                s.chinese = tokens[<span class="hljs-number">4</span>];<br>                s.math = tokens[<span class="hljs-number">5</span>];<br>                s.english = tokens[<span class="hljs-number">6</span>];<br>                s.total = tokens[<span class="hljs-number">7</span>];<br><br>                <span class="hljs-comment">// 验证加载的成绩是否合法，不合法则设为0</span><br>                <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">validateScore</span>(s.chinese, <span class="hljs-string">&quot;语文&quot;</span>)) s.chinese = <span class="hljs-string">&quot;0.0&quot;</span>;<br>                <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">validateScore</span>(s.math, <span class="hljs-string">&quot;数学&quot;</span>)) s.math = <span class="hljs-string">&quot;0.0&quot;</span>;<br>                <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">validateScore</span>(s.english, <span class="hljs-string">&quot;英语&quot;</span>)) s.english = <span class="hljs-string">&quot;0.0&quot;</span>;<br>                <span class="hljs-built_in">updateTotal</span>(s);<br>                students.<span class="hljs-built_in">push_back</span>(s);<br>            &#125;<br>        &#125;<br>        file.<span class="hljs-built_in">close</span>();<br>        cout &lt;&lt; <span class="hljs-string">&quot;CSV数据加载完成，共 &quot;</span> &lt;&lt; students.<span class="hljs-built_in">size</span>() &lt;&lt; <span class="hljs-string">&quot; 名学生。&quot;</span> &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 添加学生（保存到CSV）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addStudent</span><span class="hljs-params">()</span> </span>&#123;<br>        Student s;<br>        cout &lt;&lt; <span class="hljs-string">&quot;\n===================== 添加学生 =====================&quot;</span> &lt;&lt; endl;<br><br>        <span class="hljs-comment">// 学号验证（唯一）</span><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;请输入学号：&quot;</span>;<br>            cin &gt;&gt; s.id;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">findById</span>(s.id) != <span class="hljs-number">-1</span>) &#123;<br>                cout &lt;&lt; <span class="hljs-string">&quot;错误：该学号已存在！请重新输入。&quot;</span> &lt;&lt; endl;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.id.<span class="hljs-built_in">empty</span>()) &#123;<br>                cout &lt;&lt; <span class="hljs-string">&quot;错误：学号不能为空！请重新输入。&quot;</span> &lt;&lt; endl;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">// 姓名</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;请输入姓名：&quot;</span>;<br>        cin.<span class="hljs-built_in">ignore</span>();<br>        <span class="hljs-built_in">getline</span>(cin, s.name);<br>        <span class="hljs-keyword">while</span> (s.name.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：姓名不能为空！请重新输入：&quot;</span>;<br>            <span class="hljs-built_in">getline</span>(cin, s.name);<br>        &#125;<br><br>        <span class="hljs-comment">// 学院</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;请输入学院：&quot;</span>;<br>        <span class="hljs-built_in">getline</span>(cin, s.college);<br>        <span class="hljs-keyword">while</span> (s.college.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：学院不能为空！请重新输入：&quot;</span>;<br>            <span class="hljs-built_in">getline</span>(cin, s.college);<br>        &#125;<br><br>        <span class="hljs-comment">// 专业</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;请输入专业：&quot;</span>;<br>        <span class="hljs-built_in">getline</span>(cin, s.major);<br>        <span class="hljs-keyword">while</span> (s.major.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：专业不能为空！请重新输入：&quot;</span>;<br>            <span class="hljs-built_in">getline</span>(cin, s.major);<br>        &#125;<br><br>        <span class="hljs-comment">// 成绩输入与验证</span><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;请输入语文成绩：&quot;</span>;<br>            cin &gt;&gt; s.chinese;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">validateScore</span>(s.chinese, <span class="hljs-string">&quot;语文&quot;</span>)) <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;请输入数学成绩：&quot;</span>;<br>            cin &gt;&gt; s.math;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">validateScore</span>(s.math, <span class="hljs-string">&quot;数学&quot;</span>)) <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;请输入英语成绩：&quot;</span>;<br>            cin &gt;&gt; s.english;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">validateScore</span>(s.english, <span class="hljs-string">&quot;英语&quot;</span>)) <span class="hljs-keyword">break</span>;<br>        &#125;<br><br>        <span class="hljs-comment">// 计算总分</span><br>        <span class="hljs-built_in">updateTotal</span>(s);<br><br>        students.<span class="hljs-built_in">push_back</span>(s);<br>        <span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 学生添加成功！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 删除学生（保存到CSV）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">deleteStudent</span><span class="hljs-params">()</span> </span>&#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;\n===================== 删除学生 =====================&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        string input;<br>        cout &lt;&lt; <span class="hljs-string">&quot;请输入学号或姓名：&quot;</span>;<br>        cin &gt;&gt; input;<br><br>        <span class="hljs-type">int</span> index = <span class="hljs-built_in">isNumeric</span>(input) ? <span class="hljs-built_in">findById</span>(input) : <span class="hljs-built_in">findByName</span>(input);<br><br>        <span class="hljs-keyword">if</span> (index == <span class="hljs-number">-1</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：未找到该学生！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        cout &lt;&lt; <span class="hljs-string">&quot;找到学生：&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-built_in">displayHeader</span>();<br>        <span class="hljs-built_in">displayStudent</span>(students[index]);<br><br>        <span class="hljs-type">char</span> confirm;<br>        cout &lt;&lt; <span class="hljs-string">&quot;确定要删除吗？(y/n)：&quot;</span>;<br>        cin &gt;&gt; confirm;<br><br>        <span class="hljs-keyword">if</span> (confirm == <span class="hljs-string">&#x27;y&#x27;</span> || confirm == <span class="hljs-string">&#x27;Y&#x27;</span>) &#123;<br>            students.<span class="hljs-built_in">erase</span>(students.<span class="hljs-built_in">begin</span>() + index);<br>            <span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>            cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 学生删除成功！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;❌ 删除操作已取消&quot;</span> &lt;&lt; endl;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 修改学生信息（保存到CSV）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modifyStudent</span><span class="hljs-params">()</span> </span>&#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;\n===================== 修改学生 =====================&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        string input;<br>        cout &lt;&lt; <span class="hljs-string">&quot;请输入学号或姓名：&quot;</span>;<br>        cin &gt;&gt; input;<br><br>        <span class="hljs-type">int</span> index = <span class="hljs-built_in">isNumeric</span>(input) ? <span class="hljs-built_in">findById</span>(input) : <span class="hljs-built_in">findByName</span>(input);<br><br>        <span class="hljs-keyword">if</span> (index == <span class="hljs-number">-1</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：未找到该学生！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        cout &lt;&lt; <span class="hljs-string">&quot;当前学生信息：&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-built_in">displayHeader</span>();<br>        <span class="hljs-built_in">displayStudent</span>(students[index]);<br><br>        cout &lt;&lt; <span class="hljs-string">&quot;\n请选择要修改的项目：&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;1. 学院&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;2. 专业&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;3. 语文成绩&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;4. 数学成绩&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;5. 英语成绩&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;6. 取消修改&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;请选择(1-6)：&quot;</span>;<br><br>        <span class="hljs-type">int</span> choice;<br>        <span class="hljs-keyword">while</span> (!(cin &gt;&gt; choice) || choice &lt; <span class="hljs-number">1</span> || choice &gt; <span class="hljs-number">6</span>) &#123;<br>            cin.<span class="hljs-built_in">clear</span>();<br>            cin.<span class="hljs-built_in">ignore</span>(numeric_limits&lt;streamsize&gt;::<span class="hljs-built_in">max</span>(), <span class="hljs-string">&#x27;\n&#x27;</span>);<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：输入无效！请重新选择(1-6)：&quot;</span>;<br>        &#125;<br><br>        cin.<span class="hljs-built_in">ignore</span>(); <span class="hljs-comment">// 清空缓冲区</span><br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            cout &lt;&lt; <span class="hljs-string">&quot;请输入新的学院：&quot;</span>;<br>            <span class="hljs-built_in">getline</span>(cin, students[index].college);<br>            <span class="hljs-keyword">while</span> (students[index].college.<span class="hljs-built_in">empty</span>()) &#123;<br>                cout &lt;&lt; <span class="hljs-string">&quot;错误：学院不能为空！请重新输入：&quot;</span>;<br>                <span class="hljs-built_in">getline</span>(cin, students[index].college);<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>            cout &lt;&lt; <span class="hljs-string">&quot;请输入新的专业：&quot;</span>;<br>            <span class="hljs-built_in">getline</span>(cin, students[index].major);<br>            <span class="hljs-keyword">while</span> (students[index].major.<span class="hljs-built_in">empty</span>()) &#123;<br>                cout &lt;&lt; <span class="hljs-string">&quot;错误：专业不能为空！请重新输入：&quot;</span>;<br>                <span class="hljs-built_in">getline</span>(cin, students[index].major);<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cout &lt;&lt; <span class="hljs-string">&quot;请输入新的语文成绩：&quot;</span>;<br>                cin &gt;&gt; students[index].chinese;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">validateScore</span>(students[index].chinese, <span class="hljs-string">&quot;语文&quot;</span>)) &#123;<br>                    <span class="hljs-built_in">updateTotal</span>(students[index]);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cout &lt;&lt; <span class="hljs-string">&quot;请输入新的数学成绩：&quot;</span>;<br>                cin &gt;&gt; students[index].math;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">validateScore</span>(students[index].math, <span class="hljs-string">&quot;数学&quot;</span>)) &#123;<br>                    <span class="hljs-built_in">updateTotal</span>(students[index]);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                cout &lt;&lt; <span class="hljs-string">&quot;请输入新的英语成绩：&quot;</span>;<br>                cin &gt;&gt; students[index].english;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">validateScore</span>(students[index].english, <span class="hljs-string">&quot;英语&quot;</span>)) &#123;<br>                    <span class="hljs-built_in">updateTotal</span>(students[index]);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<br>            cout &lt;&lt; <span class="hljs-string">&quot;❌ 修改操作已取消&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 学生信息修改成功！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;修改后的信息：&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-built_in">displayHeader</span>();<br>        <span class="hljs-built_in">displayStudent</span>(students[index]);<br>    &#125;<br><br>    <span class="hljs-comment">// 查找学生</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">searchStudent</span><span class="hljs-params">()</span> </span>&#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;\n===================== 查找学生 =====================&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        string input;<br>        cout &lt;&lt; <span class="hljs-string">&quot;请输入学号或姓名：&quot;</span>;<br>        cin &gt;&gt; input;<br><br>        <span class="hljs-type">int</span> index = <span class="hljs-built_in">isNumeric</span>(input) ? <span class="hljs-built_in">findById</span>(input) : <span class="hljs-built_in">findByName</span>(input);<br><br>        <span class="hljs-keyword">if</span> (index == <span class="hljs-number">-1</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：未找到该学生！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        cout &lt;&lt; <span class="hljs-string">&quot;✅ 找到学生：&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-built_in">displayHeader</span>();<br>        <span class="hljs-built_in">displayStudent</span>(students[index]);<br>    &#125;<br><br>    <span class="hljs-comment">// 显示所有学生</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">displayAll</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        cout &lt;&lt; <span class="hljs-string">&quot;\n===================== 所有学生信息 (&quot;</span> &lt;&lt; students.<span class="hljs-built_in">size</span>() &lt;&lt; <span class="hljs-string">&quot; 名) =====================&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-built_in">displayHeader</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>            <span class="hljs-built_in">displayStudent</span>(s);<br>        &#125;<br>        cout &lt;&lt; <span class="hljs-string">&quot;==========================================================================&quot;</span> &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 按学号排序（升序）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortById</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>            <span class="hljs-comment">// 先按长度排序，再按字典序排序</span><br>            <span class="hljs-keyword">if</span> (a.id.<span class="hljs-built_in">size</span>() != b.id.<span class="hljs-built_in">size</span>())<br>                <span class="hljs-keyword">return</span> a.id.<span class="hljs-built_in">size</span>() &lt; b.id.<span class="hljs-built_in">size</span>();<br>            <span class="hljs-keyword">return</span> a.id &lt; b.id;<br>            &#125;);<br>        <span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按学号升序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 按语文成绩排序（降序）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortByChinese</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.chinese) &gt; <span class="hljs-built_in">stof</span>(b.chinese);<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>            &#125;);<br>        <span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按语文成绩降序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 按数学成绩排序（降序）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortByMath</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.math) &gt; <span class="hljs-built_in">stof</span>(b.math);<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>            &#125;);<br>        <span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按数学成绩降序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 按英语成绩排序（降序）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortByEnglish</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.english) &gt; <span class="hljs-built_in">stof</span>(b.english);<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>            &#125;);<br>        <span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按英语成绩降序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 按总分排序（降序）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortByTotal</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据可排序！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.total) &gt; <span class="hljs-built_in">stof</span>(b.total);<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>            &#125;);<br>        <span class="hljs-built_in">autoSaveToCSV</span>(); <span class="hljs-comment">// 保存到CSV</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 已按总分降序排序！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 显示表头</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">displayHeader</span><span class="hljs-params">()</span> </span>&#123;<br>        cout &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left) &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; HEADERS[<span class="hljs-number">0</span>]<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">20</span>) &lt;&lt; HEADERS[<span class="hljs-number">1</span>]<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">30</span>) &lt;&lt; HEADERS[<span class="hljs-number">2</span>]<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">30</span>) &lt;&lt; HEADERS[<span class="hljs-number">3</span>]<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; HEADERS[<span class="hljs-number">4</span>]<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; HEADERS[<span class="hljs-number">5</span>]<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; HEADERS[<span class="hljs-number">6</span>]<br>            &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::left)&lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">10</span>) &lt;&lt; HEADERS[<span class="hljs-number">7</span>] &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-built_in">string</span>(<span class="hljs-number">105</span>, <span class="hljs-string">&#x27;-&#x27;</span>) &lt;&lt; endl; <span class="hljs-comment">// 分隔线（105个减号）</span><br>    &#125;<br><br>    <span class="hljs-comment">// 计算平均分</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">calculateAverage</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-type">float</span> chiTotal = <span class="hljs-number">0.0f</span>, mathTotal = <span class="hljs-number">0.0f</span>, engTotal = <span class="hljs-number">0.0f</span>, totalTotal = <span class="hljs-number">0.0f</span>;<br>        <span class="hljs-type">int</span> validCount = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                chiTotal += <span class="hljs-built_in">stof</span>(s.chinese);<br>                mathTotal += <span class="hljs-built_in">stof</span>(s.math);<br>                engTotal += <span class="hljs-built_in">stof</span>(s.english);<br>                totalTotal += <span class="hljs-built_in">stof</span>(s.total);<br>                validCount++;<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (validCount == <span class="hljs-number">0</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：没有有效的成绩数据可计算！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">2</span>) &lt;&lt; <span class="hljs-string">&quot;\n===================== 成绩平均分 =====================&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;语文平均分：&quot;</span> &lt;&lt; chiTotal / validCount &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;数学平均分：&quot;</span> &lt;&lt; mathTotal / validCount &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;英语平均分：&quot;</span> &lt;&lt; engTotal / validCount &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;总分平均分：&quot;</span> &lt;&lt; totalTotal / validCount &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 查找众数（出现次数最多的成绩）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">findMode</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-comment">// 辅助函数：查找map中的众数</span><br>        <span class="hljs-keyword">auto</span> findMapMode = [](<span class="hljs-type">const</span> map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt;&amp; freqMap) -&gt; pair&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; &#123;<br>            <span class="hljs-keyword">if</span> (freqMap.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">return</span> &#123; <span class="hljs-number">0.0f</span>, <span class="hljs-number">0</span> &#125;;<br>            <span class="hljs-keyword">auto</span> modeIt = <span class="hljs-built_in">max_element</span>(freqMap.<span class="hljs-built_in">begin</span>(), freqMap.<span class="hljs-built_in">end</span>(),<br>                [](<span class="hljs-type">const</span> pair&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt;&amp; a, <span class="hljs-type">const</span> pair&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt;&amp; b) &#123;<br>                    <span class="hljs-keyword">return</span> a.second &lt; b.second;<br>                &#125;);<br>            <span class="hljs-keyword">return</span> *modeIt;<br>        &#125;;<br><br>        <span class="hljs-comment">// 语文成绩众数</span><br>        map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; chiFreq;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                chiFreq[<span class="hljs-built_in">stof</span>(s.chinese)]++;<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123; <span class="hljs-keyword">continue</span>; &#125;<br>        &#125;<br>        <span class="hljs-keyword">auto</span> chiMode = <span class="hljs-built_in">findMapMode</span>(chiFreq);<br><br>        <span class="hljs-comment">// 数学成绩众数</span><br>        map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; mathFreq;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                mathFreq[<span class="hljs-built_in">stof</span>(s.math)]++;<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123; <span class="hljs-keyword">continue</span>; &#125;<br>        &#125;<br>        <span class="hljs-keyword">auto</span> mathMode = <span class="hljs-built_in">findMapMode</span>(mathFreq);<br><br>        <span class="hljs-comment">// 英语成绩众数</span><br>        map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; engFreq;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                engFreq[<span class="hljs-built_in">stof</span>(s.english)]++;<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123; <span class="hljs-keyword">continue</span>; &#125;<br>        &#125;<br>        <span class="hljs-keyword">auto</span> engMode = <span class="hljs-built_in">findMapMode</span>(engFreq);<br><br>        <span class="hljs-comment">// 总分众数</span><br>        map&lt;<span class="hljs-type">float</span>, <span class="hljs-type">int</span>&gt; totalFreq;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                totalFreq[<span class="hljs-built_in">stof</span>(s.total)]++;<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123; <span class="hljs-keyword">continue</span>; &#125;<br>        &#125;<br>        <span class="hljs-keyword">auto</span> totalMode = <span class="hljs-built_in">findMapMode</span>(totalFreq);<br><br>        cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-string">&quot;\n===================== 成绩众数 =====================&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;语文众数：&quot;</span> &lt;&lt; chiMode.first &lt;&lt; <span class="hljs-string">&quot; (出现次数：&quot;</span> &lt;&lt; chiMode.second &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;数学众数：&quot;</span> &lt;&lt; mathMode.first &lt;&lt; <span class="hljs-string">&quot; (出现次数：&quot;</span> &lt;&lt; mathMode.second &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;英语众数：&quot;</span> &lt;&lt; engMode.first &lt;&lt; <span class="hljs-string">&quot; (出现次数：&quot;</span> &lt;&lt; engMode.second &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;总分众数：&quot;</span> &lt;&lt; totalMode.first &lt;&lt; <span class="hljs-string">&quot; (出现次数：&quot;</span> &lt;&lt; totalMode.second &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 查找极值（最高分和最低分）</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">findExtremeValues</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (students.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;提示：当前没有学生数据！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-comment">// 过滤掉成绩无效的学生</span><br>        vector&lt;Student&gt; validStudents;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : students) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-built_in">stof</span>(s.chinese);<br>                <span class="hljs-built_in">stof</span>(s.math);<br>                <span class="hljs-built_in">stof</span>(s.english);<br>                <span class="hljs-built_in">stof</span>(s.total);<br>                validStudents.<span class="hljs-built_in">push_back</span>(s);<br>            &#125;<br>            <span class="hljs-built_in">catch</span> (...) &#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (validStudents.<span class="hljs-built_in">empty</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;错误：没有有效的成绩数据可分析！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-comment">// 语文极值</span><br>        <span class="hljs-keyword">auto</span> chiMin = <span class="hljs-built_in">min_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>            [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.chinese) &lt; <span class="hljs-built_in">stof</span>(b.chinese);<br>            &#125;);<br>        <span class="hljs-keyword">auto</span> chiMax = <span class="hljs-built_in">max_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>            [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.chinese) &lt; <span class="hljs-built_in">stof</span>(b.chinese);<br>            &#125;);<br><br>        <span class="hljs-comment">// 数学极值</span><br>        <span class="hljs-keyword">auto</span> mathMin = <span class="hljs-built_in">min_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>            [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.math) &lt; <span class="hljs-built_in">stof</span>(b.math);<br>            &#125;);<br>        <span class="hljs-keyword">auto</span> mathMax = <span class="hljs-built_in">max_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>            [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.math) &lt; <span class="hljs-built_in">stof</span>(b.math);<br>            &#125;);<br><br>        <span class="hljs-comment">// 英语极值</span><br>        <span class="hljs-keyword">auto</span> engMin = <span class="hljs-built_in">min_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>            [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.english) &lt; <span class="hljs-built_in">stof</span>(b.english);<br>            &#125;);<br>        <span class="hljs-keyword">auto</span> engMax = <span class="hljs-built_in">max_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>            [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.english) &lt; <span class="hljs-built_in">stof</span>(b.english);<br>            &#125;);<br><br>        <span class="hljs-comment">// 总分极值</span><br>        <span class="hljs-keyword">auto</span> totalMin = <span class="hljs-built_in">min_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>            [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.total) &lt; <span class="hljs-built_in">stof</span>(b.total);<br>            &#125;);<br>        <span class="hljs-keyword">auto</span> totalMax = <span class="hljs-built_in">max_element</span>(validStudents.<span class="hljs-built_in">begin</span>(), validStudents.<span class="hljs-built_in">end</span>(),<br>            [](<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">stof</span>(a.total) &lt; <span class="hljs-built_in">stof</span>(b.total);<br>            &#125;);<br><br>        cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-string">&quot;\n===================== 成绩极值 =====================&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;语文最低分：&quot;</span> &lt;&lt; chiMin-&gt;chinese &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; chiMin-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; chiMin-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;语文最高分：&quot;</span> &lt;&lt; chiMax-&gt;chinese &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; chiMax-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; chiMax-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;数学最低分：&quot;</span> &lt;&lt; mathMin-&gt;math &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; mathMin-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; mathMin-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;数学最高分：&quot;</span> &lt;&lt; mathMax-&gt;math &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; mathMax-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; mathMax-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;英语最低分：&quot;</span> &lt;&lt; engMin-&gt;english &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; engMin-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; engMin-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;英语最高分：&quot;</span> &lt;&lt; engMax-&gt;english &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; engMax-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; engMax-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;总分最低分：&quot;</span> &lt;&lt; totalMin-&gt;total &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; totalMin-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; totalMin-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>        cout &lt;&lt; <span class="hljs-string">&quot;总分最高分：&quot;</span> &lt;&lt; totalMax-&gt;total &lt;&lt; <span class="hljs-string">&quot; (学号：&quot;</span> &lt;&lt; totalMax-&gt;id &lt;&lt; <span class="hljs-string">&quot;，姓名：&quot;</span> &lt;&lt; totalMax-&gt;name &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// 显示主菜单</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">displayMenu</span><span class="hljs-params">()</span> </span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;\n==========================================================&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;                    学生信息管理系统              &quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;==========================================================&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;1. 添加学生        2. 删除学生        3. 修改学生&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;4. 查找学生        5. 显示所有        6. 按学号排序&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;7. 按语文排序      8. 按数学排序       9. 按英语排序&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;10. 按总分排序     11. 计算平均分     12. 查找众数&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;13. 查找极值       14. 退出系统                           &quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;==========================================================&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;提示：数据存储在 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; <span class="hljs-string">&quot;，支持Excel直接打开&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;请选择功能(1-14)：&quot;</span>;<br>&#125;<br><br><br><span class="hljs-comment">// 清空输入缓冲区</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">clearInputBuffer</span><span class="hljs-params">()</span> </span>&#123;<br>    cin.<span class="hljs-built_in">clear</span>();<br>    cin.<span class="hljs-built_in">ignore</span>(numeric_limits&lt;streamsize&gt;::<span class="hljs-built_in">max</span>(), <span class="hljs-string">&#x27;\n&#x27;</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 设置控制台输出为UTF-8（Windows系统）</span><br>    <span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _WIN32</span><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;chcp 65001 &gt; nul&quot;</span>);<br>    <span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br>    StudentManager manager;<br>    cout &lt;&lt; <span class="hljs-string">&quot;正在加载CSV学生数据...&quot;</span> &lt;&lt; endl;<br>    manager.<span class="hljs-built_in">loadFromCSV</span>(); <span class="hljs-comment">// 从CSV加载</span><br><br>    <span class="hljs-type">int</span> choice = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">do</span> &#123;<br>        <span class="hljs-built_in">displayMenu</span>();<br><br>        <span class="hljs-comment">// 输入验证</span><br>        <span class="hljs-keyword">if</span> (!(cin &gt;&gt; choice)) &#123;<br>            <span class="hljs-built_in">clearInputBuffer</span>();<br>            cout &lt;&lt; <span class="hljs-string">&quot;\n❌ 错误：输入无效！请输入数字1-14。&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">clearInputBuffer</span>(); <span class="hljs-comment">// 清空缓冲区中的多余字符</span><br><br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: manager.<span class="hljs-built_in">addStudent</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: manager.<span class="hljs-built_in">deleteStudent</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: manager.<span class="hljs-built_in">modifyStudent</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: manager.<span class="hljs-built_in">searchStudent</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>: manager.<span class="hljs-built_in">displayAll</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>: manager.<span class="hljs-built_in">sortById</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>: manager.<span class="hljs-built_in">sortByChinese</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>: manager.<span class="hljs-built_in">sortByMath</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>: manager.<span class="hljs-built_in">sortByEnglish</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>: manager.<span class="hljs-built_in">sortByTotal</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">11</span>: manager.<span class="hljs-built_in">calculateAverage</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">12</span>: manager.<span class="hljs-built_in">findMode</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">13</span>: manager.<span class="hljs-built_in">findExtremeValues</span>(); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">14</span>:<br>            cout &lt;&lt; <span class="hljs-string">&quot;\n✅ 感谢使用学生信息管理系统！数据已保存到 &quot;</span> &lt;&lt; CSV_FILENAME &lt;&lt; endl;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:<br>            cout &lt;&lt; <span class="hljs-string">&quot;\n❌ 错误：选择无效！请输入1-14之间的数字。&quot;</span> &lt;&lt; endl;<br>        &#125;<br><br>        <span class="hljs-comment">// 每次操作后暂停，方便用户查看结果</span><br>        <span class="hljs-keyword">if</span> (choice != <span class="hljs-number">14</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;\n按Enter键继续...&quot;</span>;<br>            cin.<span class="hljs-built_in">get</span>();<br>        &#125;<br><br>    &#125; <span class="hljs-keyword">while</span> (choice != <span class="hljs-number">14</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>学生信息管理系统C++版</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/mywork/%E5%AD%A6%E7%94%9F%E5%AE%BF%E8%88%8D%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Foracle/">学生宿舍管理系统oracle</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/mywork/%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E7%8E%87%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">学生出勤率预测分析报告</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1. 课程设计概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E8%AE%BE%E8%AE%A1%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 设计背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 设计目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. 开发环境</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">2. 系统总体设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 系统架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E6%A0%B8%E5%BF%83%E7%B1%BB%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 核心类设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-Student%E7%B1%BB"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1. Student类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-StudentManager%E7%B1%BB"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2. StudentManager类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 数据存储设计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">3. 系统详细实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-CSV-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. CSV 文件读写实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E8%BD%AC%E4%B9%89%E4%B8%8E%E8%A7%A3%E6%9E%90"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1. 特殊字符转义与解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-CSV-%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E4%B8%8E%E4%BF%9D%E5%AD%98"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2. CSV 文件加载与保存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 核心功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E6%B7%BB%E5%8A%A0"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1. 学生信息添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E6%8E%92%E5%BA%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2. 排序功能实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E6%88%90%E7%BB%A9%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3. 成绩统计分析实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.4.</span> <span class="toc-text">3.2.4. 用户交互实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95"><span class="toc-number">4.</span> <span class="toc-text">4. 系统测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 功能测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 运行截图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1. 显示所有学生信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%9D%87%E5%88%86"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2. 计算平均分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3-%E6%8F%92%E5%85%A5%E5%AD%A6%E7%94%9F"><span class="toc-number">4.2.3.</span> <span class="toc-text">4.2.3. 插入学生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-4-%E6%8E%92%E5%BA%8F%E5%8A%9F%E8%83%BD"><span class="toc-number">4.2.4.</span> <span class="toc-text">4.2.4. 排序功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E8%BE%B9%E7%95%8C%E6%B5%8B%E8%AF%95"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 边界测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E6%B5%8B%E8%AF%95"><span class="toc-number">4.4.</span> <span class="toc-text">4.4. 用户体验测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="toc-number">5.</span> <span class="toc-text">5. 总结与展望</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%80%BB%E7%BB%93"><span class="toc-number">5.1.</span> <span class="toc-text">5.1. 课程设计总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E6%9C%AA%E6%9D%A5%E5%B1%95%E6%9C%9B"><span class="toc-number">5.2.</span> <span class="toc-text">5.2. 未来展望</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E4%BB%A3%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">6. 代码</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/mywork/" aria-label="分类: mywork">
+                        mywork
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>路径规划与车辆路由问题 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="路径规划与车辆路由问题">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92%E4%B8%8E%E8%BD%A6%E8%BE%86%E8%B7%AF%E7%94%B1%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="现有一大型零售企业的物流中心(12,12)要给10个超市送货,每个超市的需求量如下表1所示,物流中心共5辆车,每辆车载重q为40,要给这些超市送货,车辆的单位运输成本为c=10元/公里,求配送费用最低的配送方案。表1超市需求量及坐标超市编号需求量XY110313215127321226492412525312">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">路径规划与车辆路由问题</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-17T10:23:22.929Z">2026-06-17</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p>现有一大型零售企业的物流中心(12,12)要给10个超市送货,每个超市的需求量如下表1所示, 物流中心共5辆车,每辆车载重q为40,要给这些超市送货,车辆的单位运输成本为 c=10 元/公里,求配送费 用最低的配送方案。表1超市需求量及坐标</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">超市编号</th>
+<th style="text-align:left">需求量</th>
+<th style="text-align:left">X</th>
+<th style="text-align:left">Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">10</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">13</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">15</td>
+<td style="text-align:left">12</td>
+<td style="text-align:left">7</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">21</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">26</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">9</td>
+<td style="text-align:left">24</td>
+<td style="text-align:left">12</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">25</td>
+<td style="text-align:left">31</td>
+<td style="text-align:left">22</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">18</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">14</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">23</td>
+<td style="text-align:left">17</td>
+<td style="text-align:left">11</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">15</td>
+<td style="text-align:left">16</td>
+<td style="text-align:left">13</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">12</td>
+<td style="text-align:left">8</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">13</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="粒子群算法"><a href="#粒子群算法" class="headerlink" title="粒子群算法"></a>粒子群算法</h2><ol>
+<li><p>使用部分匹配交叉操作,确保后代没有重复元素。</p>
+</li>
+<li><p>在适应度函数中添加了惩罚项,对重复的路线和未覆盖所有位置的解进行了惩罚。</p>
+</li>
+<li><p>使用了锦标赛选择策略</p>
+</li>
+<li><p>输出最优解的总距离、总花费，以及每辆车的行驶路线</p>
+</li>
+<li><p>应该有五条路线，输出五条路线（用序号表示顺序）及每条路线的距离、花费</p>
+</li>
+<li><p>每辆车应从物流中心出发，最后回到物流中心，这些距离和花费也要加入计算</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 超市需求量及坐标</span><br>demand = [<span class="hljs-number">10</span>, <span class="hljs-number">15</span>, <span class="hljs-number">21</span>, <span class="hljs-number">9</span>, <span class="hljs-number">25</span>, <span class="hljs-number">18</span>, <span class="hljs-number">23</span>, <span class="hljs-number">15</span>, <span class="hljs-number">8</span>, <span class="hljs-number">13</span>]<br>x_coords = [<span class="hljs-number">3</span>, <span class="hljs-number">12</span>, <span class="hljs-number">2</span>, <span class="hljs-number">24</span>, <span class="hljs-number">31</span>, <span class="hljs-number">5</span>, <span class="hljs-number">17</span>, <span class="hljs-number">16</span>, <span class="hljs-number">12</span>, <span class="hljs-number">8</span>]<br>y_coords = [<span class="hljs-number">13</span>, <span class="hljs-number">7</span>, <span class="hljs-number">26</span>, <span class="hljs-number">12</span>, <span class="hljs-number">22</span>, <span class="hljs-number">14</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>, <span class="hljs-number">8</span>, <span class="hljs-number">2</span>]<br>num_stores = <span class="hljs-built_in">len</span>(demand)<br><br><span class="hljs-comment"># 物流中心坐标</span><br>depot_x, depot_y = <span class="hljs-number">12</span>, <span class="hljs-number">12</span><br><br><span class="hljs-comment"># 车辆载重量和单位运输成本</span><br>vehicle_capacity = <span class="hljs-number">40</span><br>unit_cost = <span class="hljs-number">10</span><br><br><span class="hljs-comment"># 蚂蚁数量和最大迭代次数</span><br>num_ants = <span class="hljs-number">50</span><br>max_iterations = <span class="hljs-number">100</span><br><br><span class="hljs-comment"># 信息素衰减率和启发式因子</span><br>rho = <span class="hljs-number">0.5</span><br>alpha = <span class="hljs-number">1.0</span><br>beta = <span class="hljs-number">2.0</span><br><br><span class="hljs-comment"># 计算两点之间的欧几里得距离</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">calculate_distance</span>(<span class="hljs-params">x1, y1, x2, y2</span>):<br>    <span class="hljs-keyword">return</span> math.sqrt((x1 - x2) ** <span class="hljs-number">2</span> + (y1 - y2) ** <span class="hljs-number">2</span>)<br><br><span class="hljs-comment"># 初始化信息素矩阵</span><br>pheromone_matrix = np.ones((num_stores + <span class="hljs-number">1</span>, num_stores + <span class="hljs-number">1</span>))<br><br><span class="hljs-comment"># ACO算法主函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aco_algorithm</span>():<br>    <span class="hljs-keyword">global</span> pheromone_matrix<br>    best_solution = <span class="hljs-literal">None</span><br>    best_cost = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)<br>    <br>    <span class="hljs-keyword">for</span> iteration <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(max_iterations):<br>        <span class="hljs-comment"># 构建蚂蚁集合</span><br>        ants = build_ants()<br>        <br>        <span class="hljs-comment"># 计算每只蚂蚁的解和成本</span><br>        solutions = []<br>        costs = []<br>        <span class="hljs-keyword">for</span> ant <span class="hljs-keyword">in</span> ants:<br>            solution, cost = calculate_solution(ant)<br>            solutions.append(solution)<br>            costs.append(cost)<br>        <br>        <span class="hljs-comment"># 更新最优解和信息素矩阵</span><br>        best_idx = np.argmin(costs)<br>        <span class="hljs-keyword">if</span> costs[best_idx] &lt; best_cost:<br>            best_solution = solutions[best_idx]<br>            best_cost = costs[best_idx]<br>        update_pheromone_matrix(solutions, costs)<br>        <br>        <span class="hljs-comment"># 输出当前迭代的最优解</span><br>        <span class="hljs-comment">#print(f&quot;Iteration &#123;iteration + 1&#125;: Best cost = &#123;best_cost&#125;&quot;)</span><br>    <br>    <span class="hljs-comment"># 输出最终最优解</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\nBest solution:&quot;</span>)<br>    print_solution(best_solution, best_cost)<br><br><span class="hljs-comment"># 构建蚂蚁集合</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">build_ants</span>():<br>    ants = []<br>    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_ants):<br>        ant = [<span class="hljs-number">0</span>]  <span class="hljs-comment"># 所有蚂蚁从物流中心出发</span><br>        remaining_stores = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, num_stores + <span class="hljs-number">1</span>))<br>        random.shuffle(remaining_stores)<br>        ant.extend(remaining_stores)<br>        ants.append(ant)<br>    <span class="hljs-keyword">return</span> ants<br><br><span class="hljs-comment"># 计算一只蚂蚁的解和成本</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">calculate_solution</span>(<span class="hljs-params">ant</span>):<br>    solution = []<br>    current_load = <span class="hljs-number">0</span><br>    current_route = [<span class="hljs-number">0</span>]  <span class="hljs-comment"># 从物流中心出发</span><br>    total_distance = <span class="hljs-number">0</span><br>    <br>    <span class="hljs-keyword">for</span> store <span class="hljs-keyword">in</span> ant[<span class="hljs-number">1</span>:]:<br>        <span class="hljs-keyword">if</span> current_load + demand[store - <span class="hljs-number">1</span>] &lt;= vehicle_capacity:<br>            current_route.append(store)<br>            current_load += demand[store - <span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">else</span>:<br>            total_distance += calculate_route_distance(current_route, x_coords, y_coords, depot_x, depot_y)<br>            solution.append(current_route)<br>            current_route = [<span class="hljs-number">0</span>, store]<br>            current_load = demand[store - <span class="hljs-number">1</span>]<br>    <br>    <span class="hljs-keyword">if</span> current_route:<br>        total_distance += calculate_route_distance(current_route, x_coords, y_coords, depot_x, depot_y)<br>        solution.append(current_route)<br>    <br>    cost = total_distance * unit_cost<br>    <span class="hljs-keyword">return</span> solution, cost<br><br><span class="hljs-comment"># 计算一条路线的距离</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">calculate_route_distance</span>(<span class="hljs-params">route, x_coords, y_coords, depot_x, depot_y</span>):<br>    distance = <span class="hljs-number">0</span><br>    prev_x, prev_y = depot_x, depot_y<br>    <span class="hljs-keyword">for</span> store <span class="hljs-keyword">in</span> route[<span class="hljs-number">1</span>:]:<br>        x, y = x_coords[store - <span class="hljs-number">1</span>], y_coords[store - <span class="hljs-number">1</span>]<br>        distance += calculate_distance(prev_x, prev_y, x, y)<br>        prev_x, prev_y = x, y<br>    distance += calculate_distance(prev_x, prev_y, depot_x, depot_y)<br>    <span class="hljs-keyword">return</span> distance<br><br><span class="hljs-comment"># 更新信息素矩阵</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">update_pheromone_matrix</span>(<span class="hljs-params">solutions, costs</span>):<br>    <span class="hljs-keyword">global</span> pheromone_matrix<br>    pheromone_matrix *= (<span class="hljs-number">1</span> - rho)  <span class="hljs-comment"># 信息素衰减</span><br>    <br>    <span class="hljs-keyword">for</span> solution, cost <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(solutions, costs):<br>        <span class="hljs-keyword">for</span> route <span class="hljs-keyword">in</span> solution:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(route) - <span class="hljs-number">1</span>):<br>                pheromone_matrix[route[i], route[i + <span class="hljs-number">1</span>]] += <span class="hljs-number">1.0</span> / cost<br>                pheromone_matrix[route[i + <span class="hljs-number">1</span>], route[i]] += <span class="hljs-number">1.0</span> / cost<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;ACO算法：&quot;</span>)<br><br><span class="hljs-comment"># 输出解</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">print_solution</span>(<span class="hljs-params">solution, cost</span>):<br>    <span class="hljs-keyword">for</span> i, route <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(solution):<br>        route_distance = calculate_route_distance(route, x_coords, y_coords, depot_x, depot_y)<br>        route_cost = route_distance * unit_cost<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Vehicle <span class="hljs-subst">&#123;i + <span class="hljs-number">1</span>&#125;</span> route: 0 -&gt; <span class="hljs-subst">&#123;<span class="hljs-string">&#x27; -&gt; &#x27;</span>.join(<span class="hljs-built_in">str</span>(store) <span class="hljs-keyword">for</span> store <span class="hljs-keyword">in</span> route[<span class="hljs-number">1</span>:])&#125;</span> -&gt; 0, Distance: <span class="hljs-subst">&#123;route_distance&#125;</span>, Cost: <span class="hljs-subst">&#123;route_cost&#125;</span>&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\nTotal cost: <span class="hljs-subst">&#123;cost&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 运行算法</span><br>aco_algorithm()<br></code></pre></td></tr></table></figure>
+<p>输出结果：<br><figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment">#ACO算法：</span><br><br>Best solution:<br>Vehicle <span class="hljs-number">1</span> route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">3</span> -&gt; <span class="hljs-number">1</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">39.29844048262797</span>, Cost: <span class="hljs-number">392.9844048262797</span><br>Vehicle <span class="hljs-number">2</span> route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">6</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">14.560219778561036</span>, Cost: <span class="hljs-number">145.60219778561037</span><br>Vehicle <span class="hljs-number">3</span> route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">7</span> -&gt; <span class="hljs-number">8</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">11.458193116710234</span>, Cost: <span class="hljs-number">114.58193116710234</span><br>Vehicle <span class="hljs-number">4</span> route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">9</span> -&gt; <span class="hljs-number">2</span> -&gt; <span class="hljs-number">10</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">22.173453851701858</span>, Cost: <span class="hljs-number">221.73453851701856</span><br>Vehicle <span class="hljs-number">5</span> route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">4</span> -&gt; <span class="hljs-number">5</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">45.67746616931759</span>, Cost: <span class="hljs-number">456.7746616931759</span><br><br>Total cost: <span class="hljs-number">1331.677733989187</span><br></code></pre></td></tr></table></figure></p>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> math<br><br><span class="hljs-comment"># 超市需求量及坐标</span><br>demand = [<span class="hljs-number">10</span>, <span class="hljs-number">15</span>, <span class="hljs-number">21</span>, <span class="hljs-number">9</span>, <span class="hljs-number">25</span>, <span class="hljs-number">18</span>, <span class="hljs-number">23</span>, <span class="hljs-number">15</span>, <span class="hljs-number">8</span>, <span class="hljs-number">13</span>]<br>x_coords = [<span class="hljs-number">3</span>, <span class="hljs-number">12</span>, <span class="hljs-number">2</span>, <span class="hljs-number">24</span>, <span class="hljs-number">31</span>, <span class="hljs-number">5</span>, <span class="hljs-number">17</span>, <span class="hljs-number">16</span>, <span class="hljs-number">12</span>, <span class="hljs-number">8</span>]<br>y_coords = [<span class="hljs-number">13</span>, <span class="hljs-number">7</span>, <span class="hljs-number">26</span>, <span class="hljs-number">12</span>, <span class="hljs-number">22</span>, <span class="hljs-number">14</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>, <span class="hljs-number">8</span>, <span class="hljs-number">2</span>]<br>num_stores = <span class="hljs-built_in">len</span>(demand)<br><br><span class="hljs-comment"># 物流中心坐标</span><br>depot_x, depot_y = <span class="hljs-number">12</span>, <span class="hljs-number">12</span><br><br><span class="hljs-comment"># 车辆载重量和单位运输成本</span><br>vehicle_capacity = <span class="hljs-number">40</span><br>unit_cost = <span class="hljs-number">10</span><br><br><span class="hljs-comment"># 计算两点之间的欧几里得距离</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">calculate_distance</span>(<span class="hljs-params">x1, y1, x2, y2</span>):<br>    <span class="hljs-keyword">return</span> math.sqrt((x1 - x2) ** <span class="hljs-number">2</span> + (y1 - y2) ** <span class="hljs-number">2</span>)<br><br><span class="hljs-comment"># 贪心算法求解</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">greedy_solution</span>():<br>    <span class="hljs-comment"># 按需求量从大到小排序</span><br>    sorted_indices = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">range</span>(num_stores), key=<span class="hljs-keyword">lambda</span> i: demand[i], reverse=<span class="hljs-literal">True</span>)<br>    <br>    routes = []<br>    current_route = []<br>    current_load = <span class="hljs-number">0</span><br>    <br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> sorted_indices:<br>        <span class="hljs-keyword">if</span> current_load + demand[i] &lt;= vehicle_capacity:<br>            current_route.append(i + <span class="hljs-number">1</span>)<br>            current_load += demand[i]<br>        <span class="hljs-keyword">else</span>:<br>            routes.append(current_route)<br>            current_route = [i + <span class="hljs-number">1</span>]<br>            current_load = demand[i]<br>    <br>    <span class="hljs-keyword">if</span> current_route:<br>        routes.append(current_route)<br>    <br>    <span class="hljs-comment"># 计算总距离和总花费</span><br>    total_distance = <span class="hljs-number">0</span><br>    total_cost = <span class="hljs-number">0</span><br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;贪心策略：&quot;</span>)<br>    <span class="hljs-keyword">for</span> route <span class="hljs-keyword">in</span> routes:<br>        route_distance = <span class="hljs-number">0</span><br>        prev_x, prev_y = depot_x, depot_y<br>        <span class="hljs-keyword">for</span> store <span class="hljs-keyword">in</span> route:<br>            x, y = x_coords[store - <span class="hljs-number">1</span>], y_coords[store - <span class="hljs-number">1</span>]<br>            route_distance += calculate_distance(prev_x, prev_y, x, y)<br>            prev_x, prev_y = x, y<br>        route_distance += calculate_distance(prev_x, prev_y, depot_x, depot_y)<br>        total_distance += route_distance<br>        total_cost += route_distance * unit_cost<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Vehicle route: 0 -&gt; <span class="hljs-subst">&#123;<span class="hljs-string">&#x27; -&gt; &#x27;</span>.join(<span class="hljs-built_in">str</span>(store) <span class="hljs-keyword">for</span> store <span class="hljs-keyword">in</span> route)&#125;</span> -&gt; 0, Distance: <span class="hljs-subst">&#123;route_distance&#125;</span>, Cost: <span class="hljs-subst">&#123;route_distance * unit_cost&#125;</span>&quot;</span>)<br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\nTotal distance: <span class="hljs-subst">&#123;total_distance&#125;</span>&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total cost: <span class="hljs-subst">&#123;total_cost&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 运行算法</span><br>greedy_solution()<br></code></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment">#贪心策略：</span><br>Vehicle route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">5</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">42.941821107167776</span>, Cost: <span class="hljs-number">429.4182110716778</span><br>Vehicle route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">7</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">10.198039027185569</span>, Cost: <span class="hljs-number">101.9803902718557</span><br>Vehicle route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">3</span> -&gt; <span class="hljs-number">6</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">36.854077300218755</span>, Cost: <span class="hljs-number">368.54077300218756</span><br>Vehicle route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">2</span> -&gt; <span class="hljs-number">8</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">16.33420817654564</span>, Cost: <span class="hljs-number">163.3420817654564</span><br>Vehicle route: <span class="hljs-number">0</span> -&gt; <span class="hljs-number">10</span> -&gt; <span class="hljs-number">1</span> -&gt; <span class="hljs-number">4</span> -&gt; <span class="hljs-number">9</span> -&gt; <span class="hljs-number">0</span>, Distance: <span class="hljs-number">60.526282270165744</span>, Cost: <span class="hljs-number">605.2628227016575</span><br><br>Total distance: <span class="hljs-number">166.8544278812835</span><br>Total cost: <span class="hljs-number">1668.5442788128348</span><br></code></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>路径规划与车辆路由问题</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2024-11-14</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/curriculum/%E7%BB%93%E6%9E%84%E5%8F%AF%E9%9D%A0%E5%BA%A6%E7%90%86%E8%AE%BA%E4%B8%8E%E5%BA%94%E7%94%A8MATLAB/">结构可靠度理论与应用MATLAB</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2024/11/14/curriculum/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C%E4%BA%8C/">计算机网络实验二</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%92%E5%AD%90%E7%BE%A4%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">粒子群算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">贪心算法</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
+                        curriculum
+                        <span>(23)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>
