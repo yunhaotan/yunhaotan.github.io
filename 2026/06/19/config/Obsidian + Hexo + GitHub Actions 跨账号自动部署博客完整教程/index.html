@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+
+<title>Obsidian + Hexo + GitHub Actions 跨账号自动部署博客完整教程 || 盗梦空间</title>
+<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="Obsidian + Hexo + GitHub Actions 跨账号自动部署博客完整教程">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yunhaotan.github.io/2026/06/19/config/Obsidian%20+%20Hexo%20+%20GitHub%20Actions%20%E8%B7%A8%E8%B4%A6%E5%8F%B7%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="盗梦空间">
+<meta property="og:author" content="谭云浩">
+
+  
+  
+  
+  <meta name="description" content="Obsidian+Hexo+GitHubActions跨账号自动部署博客完整教程本教程将指导你从零开始，搭建一套完全自动化的博客系统：在账号A用Obsidian写作，推送后由GitHubActions自动构建，并部署到账号B的yunhaotan.github.io博客仓库。📋目录前置准备本地仓库结构与配置G">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">盗梦空间</h2>
+        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">谭云浩</h2>
+        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/tanyunhao" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">Obsidian + Hexo + GitHub Actions 跨账号自动部署博客完整教程</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2026-06-19T06:34:00.000Z">2026-06-19</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/config/">config</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-06-19T06:35:13.747Z">2026-06-19</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <p>Obsidian + Hexo + GitHub Actions 跨账号自动部署博客完整教程</p>
+<p>本教程将指导你从零开始，搭建一套完全自动化的博客系统：在账号 A 用 Obsidian 写作，推送后由 GitHub Actions 自动构建，并部署到账号 B 的 <code>yunhaotan.github.io</code> 博客仓库。</p>
+<h2 id="📋-目录"><a href="#📋-目录" class="headerlink" title="📋 目录"></a>📋 目录</h2><ol>
+<li><p><a href="#1-前置准备">前置准备</a></p>
+</li>
+<li><p><a href="#2-本地仓库结构与配置">本地仓库结构与配置</a></p>
+</li>
+<li><p><a href="#3-github-actions-工作流配置">GitHub Actions 工作流配置</a></p>
+</li>
+<li><p><a href="#4-跨账号认证配置">跨账号认证配置</a></p>
+</li>
+<li><p><a href="#5-部署与验证">部署与验证</a></p>
+</li>
+<li><p><a href="#6-常见问题排查">常见问题排查</a></p>
+</li>
+<li><p><a href="#7-日常更新流程">日常更新流程</a></p>
+</li>
+</ol>
+<h2 id="1-前置准备"><a href="#1-前置准备" class="headerlink" title="1. 前置准备"></a>1. 前置准备</h2><h3 id="1-1-需要的-GitHub-账号"><a href="#1-1-需要的-GitHub-账号" class="headerlink" title="1.1 需要的 GitHub 账号"></a>1.1 需要的 GitHub 账号</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>角色</td>
+<td>账号</td>
+<td>用途</td>
+</tr>
+<tr>
+<td><strong>账号 A（写作账号）</strong></td>
+<td><code>tanyunhao</code></td>
+<td>存储 Hexo 源码和 Obsidian 笔记</td>
+</tr>
+<tr>
+<td><strong>账号 B（发布账号）</strong></td>
+<td><code>yunhaotan</code></td>
+<td>托管 <code>yunhaotan.github.io</code> 博客页面</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="1-2-本地环境要求"><a href="#1-2-本地环境要求" class="headerlink" title="1.2 本地环境要求"></a>1.2 本地环境要求</h3><ul>
+<li><p>Git（已安装并配置全局用户名 / 邮箱）</p>
+</li>
+<li><p>Node.js（建议 v18 或 v20，与 Actions 云端版本一致）</p>
+</li>
+<li><p>Hexo（本地已安装并初始化）</p>
+</li>
+</ul>
+<h3 id="1-3-仓库创建"><a href="#1-3-仓库创建" class="headerlink" title="1.3 仓库创建"></a>1.3 仓库创建</h3><ul>
+<li><p><strong>账号 A</strong>：创建仓库 <code>hexo_blog</code>（公开），用于存放 Hexo 源码</p>
+</li>
+<li><p><strong>账号 B</strong>：创建仓库 <code>yunhaotan.github.io</code>（公开），用于存放生成的静态页面</p>
+</li>
+</ul>
+<blockquote>
+<p>⚠️ 两个仓库均设为 <strong>Public</strong>，否则 GitHub Pages 和 Actions 的免费额度可能受限。</p>
+</blockquote>
+<h2 id="2-本地仓库结构与配置"><a href="#2-本地仓库结构与配置" class="headerlink" title="2. 本地仓库结构与配置"></a>2. 本地仓库结构与配置</h2><h3 id="2-1-本地-Hexo-目录结构"><a href="#2-1-本地-Hexo-目录结构" class="headerlink" title="2.1 本地 Hexo 目录结构"></a>2.1 本地 Hexo 目录结构</h3><p>假设你的 Hexo 项目位于 <code>E:\Documents\blog</code>，其标准结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs Plain">E:\Documents\blog\<br>├── .github/<br>│   └── workflows/<br>│       └── deploy.yml          # GitHub Actions 工作流<br>├── source/<br>│   ├── _posts/                 # Obsidian 笔记（核心内容）<br>│   └── ...                     # 其他页面<br>├── themes/<br>│   └── hexo-theme-wang/        # 主题（已删除内部 .git）<br>├── _config.yml                 # 站点主配置<br>├── package.json<br>├── package-lock.json<br>├── .gitignore<br>└── scaffolds/<br></code></pre></td></tr></table></figure>
+<h3 id="2-2-gitignore-文件"><a href="#2-2-gitignore-文件" class="headerlink" title="2.2 .gitignore 文件"></a>2.2 <code>.gitignore</code> 文件</h3><p>在根目录创建 <code>.gitignore</code>，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs gitignore"># Hexo 构建产物（Actions 云端生成）<br>/public/<br>/.deploy_git/<br>/.deploy*/<br><br># Node.js 依赖<br>/node_modules/<br><br># 本地缓存与日志<br>db.json<br>*.log<br><br># 多环境配置备份<br>_multiconfig.yml<br>*_back.yml<br><br># 操作系统与 IDE<br>.DS_Store<br>Thumbs.db<br>.vscode/<br>.idea/<br>*.sw?<br><br># Obsidian 工作区（避免频繁冲突）<br>source/.obsidian/workspace.json<br></code></pre></td></tr></table></figure>
+<h3 id="2-3-处理主题中的嵌套-Git-仓库"><a href="#2-3-处理主题中的嵌套-Git-仓库" class="headerlink" title="2.3 处理主题中的嵌套 Git 仓库"></a>2.3 处理主题中的嵌套 Git 仓库</h3><p>如果主题目录（如 <code>themes/hexo-theme-wang</code>）内部有 <code>.git</code> 文件夹，Git 会将其识别为子模块，导致 Actions 无法获取主题文件。</p>
+<p><strong>解决方案（二选一）</strong></p>
+<ul>
+<li><strong>方案 A（推荐）</strong>：删除主题内的 <code>.git</code>，使其成为普通文件夹</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Remove-Item</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span> themes/hexo<span class="hljs-literal">-theme-wang</span>/.git<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>方案 B</strong>：将其添加为 Git 子模块</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">git submodule add &lt;主题仓库URL&gt; themes/hexo<span class="hljs-literal">-theme-wang</span><br></code></pre></td></tr></table></figure>
+<h3 id="2-4-config-yml-核心配置"><a href="#2-4-config-yml-核心配置" class="headerlink" title="2.4 _config.yml 核心配置"></a>2.4 <code>_config.yml</code> 核心配置</h3><p>确保 <code>_config.yml</code> 中 <code>url</code> 和 <code>root</code> 设置正确，且<strong>没有重复键</strong>（否则 Hexo 构建失败）：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 站点 URL（根据实际部署位置选择一种）</span><br><br><span class="hljs-comment"># 方案A：部署在根域名（推荐）</span><br><span class="hljs-attr">url:</span> <span class="hljs-string">https://yunhaotan.github.io</span><br><span class="hljs-attr">root:</span> <span class="hljs-string">/</span><br><br><span class="hljs-comment"># 方案B：部署在子目录（如果之前使用 /hexo_blog/）</span><br><span class="hljs-comment"># url: https://yunhaotan.github.io/hexo_blog/</span><br><span class="hljs-comment"># root: /hexo_blog/</span><br><br><span class="hljs-attr">theme:</span> <span class="hljs-string">hexo-theme-wang</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️ 检查文件中是否存在重复的 <code>url:</code> 或 <code>root:</code> 键，只保留一个。</p>
+</blockquote>
+<h2 id="3-GitHub-Actions-工作流配置"><a href="#3-GitHub-Actions-工作流配置" class="headerlink" title="3. GitHub Actions 工作流配置"></a>3. GitHub Actions 工作流配置</h2><p>在本地 Hexo 根目录创建 <code>.github/workflows/deploy.yml</code>，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">自动部署</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">博客</span><br><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">master</span>          <span class="hljs-comment"># 与你的本地分支保持一致（master 或 main）</span><br>  <span class="hljs-attr">workflow_dispatch:</span>    <span class="hljs-comment"># 支持手动触发</span><br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">build-and-deploy:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">检出笔记仓库代码</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v4</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">fetch-depth:</span> <span class="hljs-number">0</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">设置</span> <span class="hljs-string">Node.js</span> <span class="hljs-string">环境</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-node@v4</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">node-version:</span> <span class="hljs-string">&#x27;20&#x27;</span>      <span class="hljs-comment"># 建议与本地版本接近</span><br>          <span class="hljs-attr">cache:</span> <span class="hljs-string">&#x27;npm&#x27;</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">安装</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">及依赖</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          npm install -g hexo-cli</span><br><span class="hljs-string">          npm install</span><br><span class="hljs-string"></span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">生成静态博客文件</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          hexo clean</span><br><span class="hljs-string">          hexo generate</span><br><span class="hljs-string"></span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">跨仓库部署到</span> <span class="hljs-string">GitHub</span> <span class="hljs-string">Pages</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">peaceiris/actions-gh-pages@v3</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">personal_token:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.PAGES_DEPLOY_TOKEN</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">external_repository:</span> <span class="hljs-string">yunhaotan/yunhaotan.github.io</span><br>          <span class="hljs-attr">publish_branch:</span> <span class="hljs-string">main</span>     <span class="hljs-comment"># 博客仓库的分支（通常是 main）</span><br>          <span class="hljs-attr">publish_dir:</span> <span class="hljs-string">./public</span><br>          <span class="hljs-attr">user_name:</span> <span class="hljs-string">&#x27;github-actions[bot]&#x27;</span><br>          <span class="hljs-attr">user_email:</span> <span class="hljs-string">&#x27;github-actions[bot]@users.noreply.github.com&#x27;</span><br>          <span class="hljs-attr">commit_message:</span> <span class="hljs-string">&#x27;部署来自 $&#123;&#123; github.repository &#125;&#125;@$&#123;&#123; github.sha &#125;&#125;&#x27;</span><br></code></pre></td></tr></table></figure>
+<h3 id="关键参数说明"><a href="#关键参数说明" class="headerlink" title="关键参数说明"></a>关键参数说明</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数</td>
+<td>说明</td>
+</tr>
+<tr>
+<td><code>branches: [master]</code></td>
+<td>监听你的笔记仓库分支（与本地一致）</td>
+</tr>
+<tr>
+<td><code>external_repository</code></td>
+<td>目标博客仓库（账号 B）</td>
+</tr>
+<tr>
+<td><code>publish_branch</code></td>
+<td>博客仓库的分支（与 Pages 设置一致）</td>
+</tr>
+<tr>
+<td><code>publish_dir</code></td>
+<td>Hexo 生成的静态文件目录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="4-跨账号认证配置"><a href="#4-跨账号认证配置" class="headerlink" title="4. 跨账号认证配置"></a>4. 跨账号认证配置</h2><h3 id="4-1-在账号-B-生成-Personal-Access-Token-PAT"><a href="#4-1-在账号-B-生成-Personal-Access-Token-PAT" class="headerlink" title="4.1 在账号 B 生成 Personal Access Token (PAT)"></a>4.1 在账号 B 生成 Personal Access Token (PAT)</h3><ol>
+<li><p>登录账号 B（<code>yunhaotan</code>）</p>
+</li>
+<li><p>进入 <code>Settings → Developer settings → Personal access tokens → Tokens (classic)</code></p>
+</li>
+<li><p>点击 <strong>Generate new token (classic)</strong></p>
+</li>
+<li><p>填写配置：</p>
+<ol>
+<li><p><strong>Note</strong>：<code>hexo-deploy</code></p>
+</li>
+<li><p><strong>Expiration</strong>：<code>No expiration</code> 或按需选择有效期</p>
+</li>
+<li><p><strong>Scopes</strong>：勾选完整 <code>repo</code> 权限</p>
+</li>
+</ol>
+</li>
+<li><p>点击生成，<strong>立即复制并保存 Token</strong>（离开页面后无法再次查看）</p>
+</li>
+</ol>
+<h3 id="4-2-在账号-A-添加-Secret"><a href="#4-2-在账号-A-添加-Secret" class="headerlink" title="4.2 在账号 A 添加 Secret"></a>4.2 在账号 A 添加 Secret</h3><ol>
+<li><p>登录账号 A（<code>tanyunhao</code>），进入笔记仓库 <code>hexo_blog</code></p>
+</li>
+<li><p>点击 <code>Settings → Secrets and variables → Actions</code></p>
+</li>
+<li><p>点击 <strong>New repository secret</strong></p>
+<ol>
+<li><p><strong>Name</strong>：<code>PAGES_DEPLOY_TOKEN</code></p>
+</li>
+<li><p><strong>Value</strong>：粘贴账号 B 生成的 Token</p>
+</li>
+</ol>
+</li>
+<li><p>点击 <strong>Add secret</strong> 保存</p>
+</li>
+</ol>
+<h3 id="4-3-在账号-B-启用-GitHub-Pages"><a href="#4-3-在账号-B-启用-GitHub-Pages" class="headerlink" title="4.3 在账号 B 启用 GitHub Pages"></a>4.3 在账号 B 启用 GitHub Pages</h3><ol>
+<li><p>登录账号 B，进入 <code>yunhaotan.github.io</code> 仓库</p>
+</li>
+<li><p>点击 <code>Settings → Pages</code></p>
+</li>
+<li><p><code>Build and deployment</code> 配置：</p>
+<ol>
+<li><p><strong>Source</strong>：<code>Deploy from a branch</code></p>
+</li>
+<li><p><strong>Branch</strong>：选择 <code>main</code>（与工作流 <code>publish_branch</code> 保持一致）</p>
+</li>
+</ol>
+</li>
+<li><p>点击 <strong>Save</strong></p>
+</li>
+</ol>
+<h2 id="5-部署与验证"><a href="#5-部署与验证" class="headerlink" title="5. 部署与验证"></a>5. 部署与验证</h2><h3 id="5-1-提交并推送源码"><a href="#5-1-提交并推送源码" class="headerlink" title="5.1 提交并推送源码"></a>5.1 提交并推送源码</h3><p>本地 PowerShell 执行命令：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 首次初始化仓库（仅第一次运行）</span><br>git init<br>git remote add origin https://github.com/tanyunhao/hexo_blog.git<br><br><span class="hljs-comment"># 添加全部文件</span><br>git add <span class="hljs-literal">--all</span><br><br><span class="hljs-comment"># 首次提交</span><br>git commit <span class="hljs-literal">-m</span> <span class="hljs-string">&quot;初始化 Hexo 博客源码&quot;</span><br><br><span class="hljs-comment"># 推送到远程仓库（-u 建立分支跟踪，仅首次需要）</span><br>git push <span class="hljs-literal">-u</span> origin master<br></code></pre></td></tr></table></figure>
+<h3 id="5-2-验证-Actions-运行"><a href="#5-2-验证-Actions-运行" class="headerlink" title="5.2 验证 Actions 运行"></a>5.2 验证 Actions 运行</h3><ol>
+<li><p>进入账号 A 的 <code>hexo_blog</code> 仓库</p>
+</li>
+<li><p>切换到 <strong>Actions</strong> 选项卡</p>
+</li>
+<li><p>查看工作流是否自动触发，运行状态是否为绿色✅</p>
+</li>
+</ol>
+<h3 id="5-3-验证博客发布"><a href="#5-3-验证博客发布" class="headerlink" title="5.3 验证博客发布"></a>5.3 验证博客发布</h3><ol>
+<li><p>等待 1~3 分钟生效</p>
+</li>
+<li><p>访问 <code>https://yunhaotan.github.io</code></p>
+</li>
+<li><p>正常加载博客内容即代表部署成功</p>
+</li>
+</ol>
+<h2 id="6-常见问题排查"><a href="#6-常见问题排查" class="headerlink" title="6. 常见问题排查"></a>6. 常见问题排查</h2><h3 id="6-1-Actions-报错-YAMLException-duplicated-mapping-key"><a href="#6-1-Actions-报错-YAMLException-duplicated-mapping-key" class="headerlink" title="6.1 Actions 报错 YAMLException: duplicated mapping key"></a>6.1 Actions 报错 <code>YAMLException: duplicated mapping key</code></h3><p><strong>原因</strong>：<code>_config.yml</code> 存在重复配置键（双份 <code>url:</code> / <code>root:</code>） <strong>解决</strong>：打开配置文件，删除重复行，仅保留一组 url/root</p>
+<h3 id="6-2-部署成功但页面无样式、大量-404"><a href="#6-2-部署成功但页面无样式、大量-404" class="headerlink" title="6.2 部署成功但页面无样式、大量 404"></a>6.2 部署成功但页面无样式、大量 404</h3><p><strong>原因</strong>：<code>root</code> 路径与实际部署域名不匹配 <strong>解决</strong>：</p>
+<ol>
+<li><p>核对 <code>_config.yml</code> 的 <code>url</code>、<code>root</code> 参数</p>
+</li>
+<li><p>浏览器分别访问两类静态资源测试：</p>
+<ol>
+<li><p><code>https://yunhaotan.github.io/css/style.css</code></p>
+</li>
+<li><p><code>https://yunhaotan.github.io/hexo_blog/css/style.css</code> 能正常打开的路径即为正确 root 配置参照</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="6-3-Actions-部署时报-Permission-denied-403"><a href="#6-3-Actions-部署时报-Permission-denied-403" class="headerlink" title="6.3 Actions 部署时报 Permission denied / 403"></a>6.3 Actions 部署时报 Permission denied / 403</h3><p><strong>原因</strong>：账号 B 的 Token 失效、未勾选 repo 权限 <strong>解决</strong>：</p>
+<ol>
+<li><p>重新登录账号 B 生成全新 classic PAT，完整勾选 repo 权限</p>
+</li>
+<li><p>进入账号 A 仓库 Secret，更新 <code>PAGES_DEPLOY_TOKEN</code> 值</p>
+</li>
+</ol>
+<h3 id="6-4-博客主题样式丢失、未加载"><a href="#6-4-博客主题样式丢失、未加载" class="headerlink" title="6.4 博客主题样式丢失、未加载"></a>6.4 博客主题样式丢失、未加载</h3><p><strong>原因</strong>：主题文件夹内置 <code>.git</code>，Git 识别为子模块未完整上传 <strong>解决</strong>：删除 <code>themes/主题名/.git</code>，重新 add、commit、push 推送</p>
+<h3 id="6-5-推送代码后-Actions-无任何运行记录"><a href="#6-5-推送代码后-Actions-无任何运行记录" class="headerlink" title="6.5 推送代码后 Actions 无任何运行记录"></a>6.5 推送代码后 Actions 无任何运行记录</h3><p><strong>原因</strong>：工作流文件路径错误 / 监听分支名不匹配 <strong>解决</strong>：</p>
+<ol>
+<li><p>确认工作流文件路径：<code>.github/workflows/deploy.yml</code></p>
+</li>
+<li><p>核对 <code>on.push.branches</code> 分支名，与本地推送分支（master/main）完全一致</p>
+</li>
+</ol>
+<h2 id="7-日常更新流程"><a href="#7-日常更新流程" class="headerlink" title="7. 日常更新流程"></a>7. 日常更新流程</h2><p>首次部署完成后，日常更新仅需三步：</p>
+<ol>
+<li><p><strong>Obsidian 写作</strong>：文章存放在 <code>source/_posts/</code> 目录</p>
+</li>
+<li><p>本地提交推送代码：</p>
+</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">git add .<br>git commit <span class="hljs-literal">-m</span> <span class="hljs-string">&quot;更新文章：文章标题&quot;</span><br>git push<br></code></pre></td></tr></table></figure>
+<ol>
+<li><p>自动部署：GitHub Actions 自动构建静态页面并发布到账号 B</p>
+</li>
+<li><p>等待 1~2 分钟刷新博客查看更新</p>
+</li>
+</ol>
+<h2 id="✅-成功标志"><a href="#✅-成功标志" class="headerlink" title="✅ 成功标志"></a>✅ 成功标志</h2><p>部署正常完成的判定标准：</p>
+<ul>
+<li><p>✅ <code>https://yunhaotan.github.io</code> 完整打开，页面无样式丢失</p>
+</li>
+<li><p>✅ 图片、CSS、JS 资源全部正常加载，无 404 报错</p>
+</li>
+<li><p>✅ 每次代码推送自动触发 Actions，执行结果绿色成功</p>
+</li>
+<li><p>✅ 账号 B <code>yunhaotan.github.io</code> 仓库 main 分支存在完整静态文件</p>
+</li>
+</ul>
+<h2 id="📌-注意事项"><a href="#📌-注意事项" class="headerlink" title="📌 注意事项"></a>📌 注意事项</h2><ol>
+<li><p><strong>分支统一</strong>：本地分支、工作流监听分支、部署目标分支、Pages 绑定分支，四处名称必须完全一致</p>
+</li>
+<li><p><strong>Token 安全</strong>：严禁将 PAT 写入仓库任何文件，统一通过仓库 Secret 注入</p>
+</li>
+<li><p><strong>Obsidian 冲突规避</strong>：忽略 workspace.json，避免本地多设备同步产生大量无意义提交冲突</p>
+</li>
+<li><p><strong>免费额度</strong>：公开仓库 GitHub Actions 运行时长无限制，全程免费使用</p>
+</li>
+</ol>
+<hr>
+<p>至此，Obsidian + Hexo + GitHub Actions 跨账号自动化博客部署系统搭建完毕，祝写作顺利！🎉</p>
+<h1 id="检查修正说明（已全部优化）"><a href="#检查修正说明（已全部优化）" class="headerlink" title="检查修正说明（已全部优化）"></a>检查修正说明（已全部优化）</h1><ol>
+<li><p>统一 Markdown 语法：标题层级、代码块、列表、引用格式标准化，无语法错误</p>
+</li>
+<li><p>修正排版瑕疵：代码块缩进、分隔线、表格对齐、指令分段优化</p>
+</li>
+<li><p>梳理冗余表述：删减重复解释，步骤逻辑更顺滑</p>
+</li>
+<li><p>区分 Windows/PowerShell 命令与 yaml 配置，代码块标注清晰</p>
+</li>
+<li><p>修正多处语序不通、标点不规范问题，保留全部原始教程功能与配置代码</p>
+</li>
+<li><p>锚点目录正常跳转，标题层级规范（# 一级、## 二级、### 三级）</p>
+</li>
+<li><p>所有配置文件内容完整保留，可直接复制使用</p>
+</li>
+</ol>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>谭云浩</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>Obsidian + Hexo + GitHub Actions 跨账号自动部署博客完整教程</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2026-06-19</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2024/11/14/config/Diango%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Diango学习笔记</a>
+      </div>
+    
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 只显示小时和分钟
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      clockElement.textContent = `${hours}:${minutes}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+
+      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
+      const now = new Date();
+      const secondsToNextMinute = 60 - now.getSeconds();
+
+      // 先设置一个定时器到下一分钟
+      setTimeout(() => {
+        updateClock();
+        // 然后每分钟更新一次
+        timerInterval = setInterval(updateClock, 60000);
+      }, secondsToNextMinute * 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8B-%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">📋 目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">1. 前置准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E9%9C%80%E8%A6%81%E7%9A%84-GitHub-%E8%B4%A6%E5%8F%B7"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 需要的 GitHub 账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 本地环境要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%BB%93%E5%BA%93%E5%88%9B%E5%BB%BA"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 仓库创建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E7%BB%93%E6%9E%84%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">2. 本地仓库结构与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%9C%AC%E5%9C%B0-Hexo-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 本地 Hexo 目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-gitignore-%E6%96%87%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 .gitignore 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%A4%84%E7%90%86%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84%E5%B5%8C%E5%A5%97-Git-%E4%BB%93%E5%BA%93"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 处理主题中的嵌套 Git 仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-config-yml-%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 _config.yml 核心配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-GitHub-Actions-%E5%B7%A5%E4%BD%9C%E6%B5%81%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">3. GitHub Actions 工作流配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">4.1.</span> <span class="toc-text">关键参数说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%B7%A8%E8%B4%A6%E5%8F%B7%E8%AE%A4%E8%AF%81%E9%85%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">4. 跨账号认证配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%9C%A8%E8%B4%A6%E5%8F%B7-B-%E7%94%9F%E6%88%90-Personal-Access-Token-PAT"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 在账号 B 生成 Personal Access Token (PAT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%9C%A8%E8%B4%A6%E5%8F%B7-A-%E6%B7%BB%E5%8A%A0-Secret"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 在账号 A 添加 Secret</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%9C%A8%E8%B4%A6%E5%8F%B7-B-%E5%90%AF%E7%94%A8-GitHub-Pages"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 在账号 B 启用 GitHub Pages</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%AA%8C%E8%AF%81"><span class="toc-number">6.</span> <span class="toc-text">5. 部署与验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%8F%90%E4%BA%A4%E5%B9%B6%E6%8E%A8%E9%80%81%E6%BA%90%E7%A0%81"><span class="toc-number">6.1.</span> <span class="toc-text">5.1 提交并推送源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E9%AA%8C%E8%AF%81-Actions-%E8%BF%90%E8%A1%8C"><span class="toc-number">6.2.</span> <span class="toc-text">5.2 验证 Actions 运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E9%AA%8C%E8%AF%81%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83"><span class="toc-number">6.3.</span> <span class="toc-text">5.3 验证博客发布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="toc-number">7.</span> <span class="toc-text">6. 常见问题排查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-Actions-%E6%8A%A5%E9%94%99-YAMLException-duplicated-mapping-key"><span class="toc-number">7.1.</span> <span class="toc-text">6.1 Actions 报错 YAMLException: duplicated mapping key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E9%83%A8%E7%BD%B2%E6%88%90%E5%8A%9F%E4%BD%86%E9%A1%B5%E9%9D%A2%E6%97%A0%E6%A0%B7%E5%BC%8F%E3%80%81%E5%A4%A7%E9%87%8F-404"><span class="toc-number">7.2.</span> <span class="toc-text">6.2 部署成功但页面无样式、大量 404</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-Actions-%E9%83%A8%E7%BD%B2%E6%97%B6%E6%8A%A5-Permission-denied-403"><span class="toc-number">7.3.</span> <span class="toc-text">6.3 Actions 部署时报 Permission denied &#x2F; 403</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E6%A0%B7%E5%BC%8F%E4%B8%A2%E5%A4%B1%E3%80%81%E6%9C%AA%E5%8A%A0%E8%BD%BD"><span class="toc-number">7.4.</span> <span class="toc-text">6.4 博客主题样式丢失、未加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E5%90%8E-Actions-%E6%97%A0%E4%BB%BB%E4%BD%95%E8%BF%90%E8%A1%8C%E8%AE%B0%E5%BD%95"><span class="toc-number">7.5.</span> <span class="toc-text">6.5 推送代码后 Actions 无任何运行记录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%97%A5%E5%B8%B8%E6%9B%B4%E6%96%B0%E6%B5%81%E7%A8%8B"><span class="toc-number">8.</span> <span class="toc-text">7. 日常更新流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E6%88%90%E5%8A%9F%E6%A0%87%E5%BF%97"><span class="toc-number">9.</span> <span class="toc-text">✅ 成功标志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8C-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">10.</span> <span class="toc-text">📌 注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E4%BF%AE%E6%AD%A3%E8%AF%B4%E6%98%8E%EF%BC%88%E5%B7%B2%E5%85%A8%E9%83%A8%E4%BC%98%E5%8C%96%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">检查修正说明（已全部优化）</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/config/" aria-label="分类: config">
+                        config
+                        <span>(31)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>
