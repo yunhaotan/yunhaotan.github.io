@@ -1,218 +1,510 @@
 <!DOCTYPE html>
-<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
-fb: http://ogp.me/ns/fb#
-article: http://ogp.me/ns/article#">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="tanyunhao">
+    
+    <title>
+        
+            电脑销售系统oracle |
+        
+        盗梦空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<title>电脑销售系统oracle || 盗梦空间</title>
-<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="电脑销售系统oracle">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E7%94%B5%E8%84%91%E9%94%80%E5%94%AE%E7%B3%BB%E7%BB%9Foracle/index.html">
-<meta property="og:image" content="">
-<meta property="og:site_name" content="盗梦空间">
-<meta property="og:author" content="谭云浩">
+    
+        <link rel="shortcut icon" href="/images/avatar.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
-  
-  
-  
-  <meta name="description" content="用户表:编号，用户名，密码，邮箱，角色，用户头像；影片表：编号，影片名称，国外名称，演职人员，导演，电影详情，电影时长，电影类型，电影评分，票房，电影参评人数，上映时间，制片地区，电影海报地址，电影状态；影院表：编号，影院名称，影院地址；放映厅表：编号，放映厅名称，放映厅容量，所属影院编号；订单表：编号，所属">
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script>
+        (function () {
+            let theme = localStorage.getItem('KEEP-THEME-STATUS');
+            let classname = "";
+            if (!theme || (JSON.parse(theme).isAutoTheme)){
+                classname = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark-mode" : "light-mode";
+            }
+            else{
+                classname = JSON.parse(theme).isDark ? "dark-mode" : "light-mode";
+            }
+            document.documentElement.classList.add(classname);
+        })();
+    </script>
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"盗梦空间","author":"tanyunhao","avatar":"/images/avatar.jpg","logo":"/images/avatar.jpg","favicon":"/images/avatar.jpg"},"menu":{"home":"/                     || fa-solid fa-home","archives":"/archives         || fa-solid fa-box-archive","categories":"/categories     || fa-solid fa-layer-group","links":"/links               || fa-solid fa-link","tools":"/tools               || fa-solid fa-tools","about":"/about               || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"生活的热闹与生命的骄傲，一个都不能少","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"tanyunhaoyyds","github_admins":["tanyunhaoyyds"],"repository":"hexo-site-comments","client_id":"Ov23liaNlY4iGiutYiDg","client_secret":"62fe13dbbfc8308f06422c153ba1b94bcdec1788","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","search_db_path":"keep-search.json","source_data":{"links":[{"title":"朋友们 1"},{"name":"XPoet","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"不知名艺术家","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}],"tools":[{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk0"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},"......","......","......"]},"version":"4.3.0"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.2"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
-<script src="/js/wang.js"></script>
-
-<link rel="stylesheet" href="/css/wang.css">
-<script> console.log("Hello hexo-theme-wang"); </script>
-<meta name="generator" content="Hexo 8.1.2"></head>
 <body>
-<main>
-    <div id="agplAlert" style="z-index: 9999;">
-    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
 </div>
-    <header>
-    <nav>
-        <ul>
-            
-                <li>
-                    <a href="/" rel="noopener">
-                        
-                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
-                        
-                        首页
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/archives" rel="noopener">
-                        
-                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
-                        
-                        归档
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/categories" rel="noopener">
-                        
-                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
-                        
-                        分类
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/tags" rel="noopener">
-                        
-                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
-                        
-                        标签
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/about" rel="noopener">
-                        
-                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
-                        
-                        关于
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/links" rel="noopener">
-                        
-                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
-                        
-                        友链
-                    </a>
-                </li>
-            
-                <li>
-                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
-                        
-                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
-                        
-                        开往
-                    </a>
-                </li>
-            
-            
-                <li>
-                    <button class="search-toggle-btn" aria-label="打开搜索">
-                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
-                        搜索
-                    </button>
-                </li>
-            
-        </ul>
-    </nav>
-</header>
 
-<script src="/js/header.js"></script>
 
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
     
-<script src="/js/search.js"></script>
 
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
 
-    
-        <!-- 搜索模态框 -->
-        <div id="search-modal" class="search-modal">
-          <div class="search-modal-content">
-            <div class="search-header">
-              <form class="search-form" action="#" onsubmit="return false;">
-                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
-                <button type="button" class="search-close-btn" aria-label="关闭">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </form>
-            </div>
-            <div id="search-results"></div>
-          </div>
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/avatar.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               盗梦空间
+            </a>
         </div>
 
-        <script>
-        // 向全局对象添加i18n数据，以便search.js使用
-        window.WANG_THEME = window.WANG_THEME || {};
-        window.WANG_THEME.i18n = {
-          search: {
-            noResults: '没有找到相关结果',
-            loading: '正在加载...',
-            placeholder: '输入关键词搜索',
-            close: '关闭',
-            shortcut_tip: '按 ESC 关闭',
-            toggle_search: '打开搜索',
-            error_loading: '加载搜索数据失败'
-          }
-        };
-        </script>
-    
-    <aside class="sidebar-container sidebar-left">
-    <div class="sidebar-bg">
-        <h2 class="site-title">盗梦空间</h2>
-        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
-        <h2 class="site-author">谭云浩</h2>
-        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                LINKS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tools"></i>
+                                
+                                TOOLS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="sidebar-bg">
-        <ul class="social_links">
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
             
-                <li>
-                    <a target="_blank" rel="noopener" href="https://github.com/tanyunhao" aria-label="Github的链接">
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
                         
-                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
-                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
-                            </div>
-                        
-                    </a>
+                    </label>
+                    
                 </li>
             
-                <li>
-                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
                         
-                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
-                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
-                            </div>
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
                         
-                    </a>
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            LINKS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tools"></i>
+                                </span>
+                            
+                            TOOLS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
                 </li>
             
         </ul>
     </div>
-</aside>
-<div class="post-container">
-  <article class="post">
-    <h1 class="post-title">电脑销售系统oracle</h1>
 
-    <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
-      
-        <span class="post-categories">
-          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
-        </span>
-      
-      
-        <span class="post-updated">
-          最后更新于 <time datetime="2026-06-29T15:07:54.135Z">2026-06-29</time>
-        </span>
-      
-      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        电脑销售系统oracle
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Tan Yunhao</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-14 09:08:00</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Sep 04 2026 10:57:58 GMT+0000">2026-09-04 10:57:58</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/mywork/">mywork</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
-    <div class="post-content">
-      <p>用户表:编号，用户名，密码，邮箱，角色，用户头像；<br>影片表：编号，影片名称，国外名称，演职人员，导演，电影详情，电影时长，电影类型，电影评分，票房，电影参评人数，上映时间，制片地区，电影海报地址，电影状态；<br>影院表：编号，影院名称，影院地址；<br>放映厅表：编号，放映厅名称，放映厅容量，所属影院编号；<br>订单表：编号，所属用户编号，所属场次编号，电影票座位信息，订单状态，订单价格，订单支付时间，所属用户对象；<br>订单详情表：编号，所属放映厅，放映的电影编号，电影放映时间，售价，剩余座位数，场次状态，所属放映厅对象，放映的电影；<br>评论表：编号，所属用户编号，评论内容，所属电影编号，评论时间，所属用户，评分；</p>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>用户表:编号，用户名，密码，邮箱，角色，用户头像；<br>影片表：编号，影片名称，国外名称，演职人员，导演，电影详情，电影时长，电影类型，电影评分，票房，电影参评人数，上映时间，制片地区，电影海报地址，电影状态；<br>影院表：编号，影院名称，影院地址；<br>放映厅表：编号，放映厅名称，放映厅容量，所属影院编号；<br>订单表：编号，所属用户编号，所属场次编号，电影票座位信息，订单状态，订单价格，订单支付时间，所属用户对象；<br>订单详情表：编号，所属放映厅，放映的电影编号，电影放映时间，售价，剩余座位数，场次状态，所属放映厅对象，放映的电影；<br>评论表：编号，所属用户编号，评论内容，所属电影编号，评论时间，所属用户，评分；</p>
 <h1 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1 需求分析"></a>1 需求分析</h1><h1 id="2-系统设计"><a href="#2-系统设计" class="headerlink" title="2 系统设计"></a>2 系统设计</h1><h2 id="2-1-系统结构功能图"><a href="#2-1-系统结构功能图" class="headerlink" title="2.1 系统结构功能图"></a>2.1 系统结构功能图</h2><p>根据需求分析，确定系统结构功能如图2-1所示：</p>
 <p>图2-1 系统功能结构图</p>
 <h2 id="2-2-功能流程图"><a href="#2-2-功能流程图" class="headerlink" title="2.2 功能流程图"></a>2.2 功能流程图</h2><p>系统最主要的功能就是管理员登录之后对各种功能的使用。管理员功能如图4-2所示。</p>
 <p>图2-2 管理员登录管理流程</p>
-<h2 id="2-3-数据库设计"><a href="#2-3-数据库设计" class="headerlink" title="2.3 数据库设计"></a>2.3 数据库设计</h2><p>整体功能的E-R图如图2-4所示。<br><img src="https://cdn.nlark.com/yuque/0/2025/jpeg/40495483/1749389420949-bcf635b2-c7e8-4290-94ab-f017b92520c8.jpeg" alt="画板"><br>图2-4 系统E-R图<br>本系统包含的数据表如下：</p>
-<h3 id="1-商品表-goods"><a href="#1-商品表-goods" class="headerlink" title="1. 商品表 (goods)"></a>1. 商品表 (<code>goods</code>)</h3><div class="table-container">
-<table>
+<h2 id="2-3-数据库设计"><a href="#2-3-数据库设计" class="headerlink" title="2.3 数据库设计"></a>2.3 数据库设计</h2><p>整体功能的E-R图如图2-4所示。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2025/jpeg/40495483/1749389420949-bcf635b2-c7e8-4290-94ab-f017b92520c8.jpeg"
+                        alt="画板"
+                 ><br>图2-4 系统E-R图<br>本系统包含的数据表如下：</p>
+<h3 id="1-商品表-goods"><a href="#1-商品表-goods" class="headerlink" title="1. 商品表 (goods)"></a>1. 商品表 (<code>goods</code>)</h3><table>
 <thead>
 <tr>
 <th>列名</th>
@@ -224,8 +516,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>gID</td>
 <td>CHAR</td>
 <td>主键</td>
@@ -270,12 +561,9 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>价格，不能小于0</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
-<h3 id="2-供应商表-provider"><a href="#2-供应商表-provider" class="headerlink" title="2. 供应商表 (provider)"></a>2. 供应商表 (<code>provider</code>)</h3><div class="table-container">
-<table>
+<h3 id="2-供应商表-provider"><a href="#2-供应商表-provider" class="headerlink" title="2. 供应商表 (provider)"></a>2. 供应商表 (<code>provider</code>)</h3><table>
 <thead>
 <tr>
 <th>列名</th>
@@ -287,8 +575,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>pID</td>
 <td>CHAR</td>
 <td>主键</td>
@@ -324,12 +611,9 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>地址</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
-<h3 id="3-仓库表-store"><a href="#3-仓库表-store" class="headerlink" title="3. 仓库表 (store)"></a>3. 仓库表 (<code>store</code>)</h3><div class="table-container">
-<table>
+<h3 id="3-仓库表-store"><a href="#3-仓库表-store" class="headerlink" title="3. 仓库表 (store)"></a>3. 仓库表 (<code>store</code>)</h3><table>
 <thead>
 <tr>
 <th>列名</th>
@@ -341,8 +625,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>sID</td>
 <td>CHAR</td>
 <td>主键</td>
@@ -369,12 +652,9 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>联系负责人</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
-<h3 id="4-门店表-shop"><a href="#4-门店表-shop" class="headerlink" title="4. 门店表 (shop)"></a>4. 门店表 (<code>shop</code>)</h3><div class="table-container">
-<table>
+<h3 id="4-门店表-shop"><a href="#4-门店表-shop" class="headerlink" title="4. 门店表 (shop)"></a>4. 门店表 (<code>shop</code>)</h3><table>
 <thead>
 <tr>
 <th>列名</th>
@@ -386,8 +666,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>shID</td>
 <td>CHAR</td>
 <td>主键</td>
@@ -414,12 +693,9 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>地址</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
-<h3 id="5-营业员表-assistant"><a href="#5-营业员表-assistant" class="headerlink" title="5. 营业员表 (assistant)"></a>5. 营业员表 (<code>assistant</code>)</h3><div class="table-container">
-<table>
+<h3 id="5-营业员表-assistant"><a href="#5-营业员表-assistant" class="headerlink" title="5. 营业员表 (assistant)"></a>5. 营业员表 (<code>assistant</code>)</h3><table>
 <thead>
 <tr>
 <th>列名</th>
@@ -431,8 +707,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>aID</td>
 <td>CHAR</td>
 <td>主键</td>
@@ -468,12 +743,9 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>关联的门店ID</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
-<h3 id="6-管理员表-manager"><a href="#6-管理员表-manager" class="headerlink" title="6. 管理员表 (manager)"></a>6. 管理员表 (<code>manager</code>)</h3><div class="table-container">
-<table>
+<h3 id="6-管理员表-manager"><a href="#6-管理员表-manager" class="headerlink" title="6. 管理员表 (manager)"></a>6. 管理员表 (<code>manager</code>)</h3><table>
 <thead>
 <tr>
 <th>列名</th>
@@ -485,8 +757,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>mID</td>
 <td>CHAR</td>
 <td>主键</td>
@@ -513,12 +784,9 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>管理员特征</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
-<h3 id="7-采购员表-shopper"><a href="#7-采购员表-shopper" class="headerlink" title="7. 采购员表 (shopper)"></a>7. 采购员表 (<code>shopper</code>)</h3><div class="table-container">
-<table>
+<h3 id="7-采购员表-shopper"><a href="#7-采购员表-shopper" class="headerlink" title="7. 采购员表 (shopper)"></a>7. 采购员表 (<code>shopper</code>)</h3><table>
 <thead>
 <tr>
 <th>列名</th>
@@ -530,8 +798,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>shopperID</td>
 <td>CHAR</td>
 <td>主键</td>
@@ -558,12 +825,9 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>采购员特征</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
-<h3 id="8-商品库存更新历史表-goods-history"><a href="#8-商品库存更新历史表-goods-history" class="headerlink" title="8. 商品库存更新历史表 (goods_history)"></a>8. 商品库存更新历史表 (<code>goods_history</code>)</h3><div class="table-container">
-<table>
+<h3 id="8-商品库存更新历史表-goods-history"><a href="#8-商品库存更新历史表-goods-history" class="headerlink" title="8. 商品库存更新历史表 (goods_history)"></a>8. 商品库存更新历史表 (<code>goods_history</code>)</h3><table>
 <thead>
 <tr>
 <th>列名</th>
@@ -575,8 +839,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>hID</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -621,12 +884,9 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>更改日期</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
-<h3 id="9-销售表-sales"><a href="#9-销售表-sales" class="headerlink" title="9. 销售表 (sales)"></a>9. 销售表 (<code>sales</code>)</h3><div class="table-container">
-<table>
+<h3 id="9-销售表-sales"><a href="#9-销售表-sales" class="headerlink" title="9. 销售表 (sales)"></a>9. 销售表 (<code>sales</code>)</h3><table>
 <thead>
 <tr>
 <th>列名</th>
@@ -638,8 +898,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>saleID</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -693,219 +952,608 @@ article: http://ogp.me/ns/article#">
 <td>DEFAULT SYSTIMESTAMP</td>
 <td>销售日期</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
-<h1 id="3-SQL-实现"><a href="#3-SQL-实现" class="headerlink" title="3 SQL**实现**"></a><strong>3 SQL**</strong>实现**</h1><h2 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建商品表</span><br><span class="hljs-keyword">CREATE TABLE</span> goods (<br>    gID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    gNAME VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    gKIDS VARCHAR2(<span class="hljs-number">6</span>),<br>    gUNIT NUMBER <span class="hljs-keyword">CHECK</span>(gUNIT <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>),<br>    gPRICE NUMBER <span class="hljs-keyword">CHECK</span>(gPRICE <span class="hljs-operator">&gt;=</span> <span class="hljs-number">0</span>)<br>);<br><br><span class="hljs-comment">-- 创建供应商表</span><br><span class="hljs-keyword">CREATE TABLE</span> provider (<br>    pID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    pNAME VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    pACC <span class="hljs-type">CHAR</span>(<span class="hljs-number">19</span>),<br>    pADD VARCHAR2(<span class="hljs-number">8</span>)<br>);<br><br><span class="hljs-comment">-- 创建仓库表</span><br><span class="hljs-keyword">CREATE TABLE</span> store (<br>    sID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    sADD VARCHAR2(<span class="hljs-number">8</span>),<br>    sLEAD VARCHAR2(<span class="hljs-number">4</span>)<br>);<br><br><span class="hljs-comment">-- 创建门店表</span><br><span class="hljs-keyword">CREATE TABLE</span> shop (<br>    shID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    shNAME VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    shADD VARCHAR2(<span class="hljs-number">8</span>)<br>);<br><br><span class="hljs-comment">-- 创建营业员表</span><br><span class="hljs-keyword">CREATE TABLE</span> assistant (<br>    aID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    aNAME VARCHAR2(<span class="hljs-number">4</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    aFEAT NUMBER,<br>    shID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    <span class="hljs-keyword">FOREIGN KEY</span> (shID) <span class="hljs-keyword">REFERENCES</span> shop(shID)<br>);<br><br><span class="hljs-comment">-- 创建管理员表</span><br><span class="hljs-keyword">CREATE TABLE</span> manager (<br>    mID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    mNAME VARCHAR2(<span class="hljs-number">4</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    mFEAT NUMBER<br>);<br><br><span class="hljs-comment">-- 创建采购员表</span><br><span class="hljs-keyword">CREATE TABLE</span> shopper (<br>    shopperID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">PRIMARY KEY</span>,<br>    shopperNAME VARCHAR2(<span class="hljs-number">4</span>) <span class="hljs-keyword">NOT NULL</span>,<br>    shopperFEAT NUMBER<br>);<br><br><span class="hljs-comment">-- 创建商品库存更新历史表</span><br><span class="hljs-keyword">CREATE TABLE</span> goods_history (<br>    hID NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>    gID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    oldQuantity NUMBER,<br>    newQuantity NUMBER,<br>    changeDate <span class="hljs-type">TIMESTAMP</span><br>);<br><br><span class="hljs-comment">-- 创建销售表</span><br><span class="hljs-keyword">CREATE TABLE</span> sales (<br>    saleID NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,      <span class="hljs-comment">-- 销售记录ID</span><br>    gID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),                    <span class="hljs-comment">-- 商品ID</span><br>    quantity NUMBER <span class="hljs-keyword">CHECK</span>(quantity <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>), <span class="hljs-comment">-- 销售数量</span><br>    salesPrice NUMBER <span class="hljs-keyword">CHECK</span>(salesPrice <span class="hljs-operator">&gt;=</span> <span class="hljs-number">0</span>), <span class="hljs-comment">-- 售价</span><br>    aID <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),                    <span class="hljs-comment">-- 营业员ID</span><br>    saleDate <span class="hljs-type">TIMESTAMP</span> <span class="hljs-keyword">DEFAULT</span> SYSTIMESTAMP, <span class="hljs-comment">-- 销售日期</span><br>    <span class="hljs-keyword">FOREIGN KEY</span> (gID) <span class="hljs-keyword">REFERENCES</span> goods(gID), <span class="hljs-comment">-- 外键关联商品</span><br>    <span class="hljs-keyword">FOREIGN KEY</span> (aID) <span class="hljs-keyword">REFERENCES</span> assistant(aID) <span class="hljs-comment">-- 外键关联营业员</span><br>);<br></code></pre></td></tr></table></figure>
-<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 在商品表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_goods_name <span class="hljs-keyword">ON</span> goods(gNAME);<br><br><span class="hljs-comment">-- 在供应商表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_provider_name <span class="hljs-keyword">ON</span> provider(pNAME);<br><span class="hljs-keyword">CREATE</span> INDEX idx_provider_acc <span class="hljs-keyword">ON</span> provider(pACC);<br><br><span class="hljs-comment">-- 在仓库表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_store_address <span class="hljs-keyword">ON</span> store(sADD);<br><br><span class="hljs-comment">-- 在门店表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_shop_name <span class="hljs-keyword">ON</span> shop(shNAME);<br><span class="hljs-keyword">CREATE</span> INDEX idx_shop_address <span class="hljs-keyword">ON</span> shop(shADD);<br><br><span class="hljs-comment">-- 在营业员表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_assistant_name <span class="hljs-keyword">ON</span> assistant(aNAME);<br><span class="hljs-keyword">CREATE</span> INDEX idx_assistant_store_id <span class="hljs-keyword">ON</span> assistant(shID);<br><br><span class="hljs-comment">-- 在管理员表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_manager_name <span class="hljs-keyword">ON</span> manager(mNAME);<br><br><span class="hljs-comment">-- 在采购员表上创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_shopper_name <span class="hljs-keyword">ON</span> shopper(shopperNAME);<br><br><span class="hljs-comment">-- 如果需要在采购员表上添加唯一索引</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">UNIQUE</span> INDEX idx_shopper_id <span class="hljs-keyword">ON</span> shopper(shopperID);<br></code></pre></td></tr></table></figure>
-<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_goods_suppliers <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    g.gID,<br>    g.gNAME,<br>    g.gKIDS,<br>    g.gUNIT,<br>    g.gPRICE,<br>    p.pID <span class="hljs-keyword">AS</span> supplier_id,<br>    p.pNAME <span class="hljs-keyword">AS</span> supplier_name<br><span class="hljs-keyword">FROM</span> <br>    goods g<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    provider p <span class="hljs-keyword">ON</span> g.gID <span class="hljs-operator">=</span> p.pID;<br>		<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_assistants_shops <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    a.aID,<br>    a.aNAME,<br>    a.aFEAT,<br>    s.shID <span class="hljs-keyword">AS</span> shop_id,<br>    s.shNAME <span class="hljs-keyword">AS</span> shop_name<br><span class="hljs-keyword">FROM</span> <br>    assistant a<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    shop s <span class="hljs-keyword">ON</span> a.shID <span class="hljs-operator">=</span> s.shID;<br>		<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_inventory_summary <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    g.gID,<br>    g.gNAME,<br>    g.gUNIT,<br>    <span class="hljs-built_in">SUM</span>(g.gPRICE) <span class="hljs-keyword">AS</span> total_value<br><span class="hljs-keyword">FROM</span> <br>    goods g<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <br>    g.gID, g.gNAME, g.gUNIT;<br>		<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_manager_performance <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    m.mID,<br>    m.mNAME,<br>    <span class="hljs-built_in">SUM</span>(m.mFEAT) <span class="hljs-keyword">AS</span> total_performance<br><span class="hljs-keyword">FROM</span> <br>    manager m<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <br>    m.mID, m.mNAME;<br>		<br>		<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> vw_shop_store_info <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>    sh.shID <span class="hljs-keyword">AS</span> shop_id,<br>    sh.shNAME <span class="hljs-keyword">AS</span> shop_name,<br>    sh.shADD <span class="hljs-keyword">AS</span> shop_address,<br>    st.sID <span class="hljs-keyword">AS</span> store_id,<br>    st.sADD <span class="hljs-keyword">AS</span> store_address<br><span class="hljs-keyword">FROM</span> <br>    shop sh<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br>    store st <span class="hljs-keyword">ON</span> sh.shID <span class="hljs-operator">=</span> st.sID;<br></code></pre></td></tr></table></figure>
-<h2 id="存储过程、函数"><a href="#存储过程、函数" class="headerlink" title="存储过程、函数"></a>存储过程、函数</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 1. 存储过程：添加新商品</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> add_new_goods (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    p_gNAME <span class="hljs-keyword">IN</span> VARCHAR2,<br>    p_gKIDS <span class="hljs-keyword">IN</span> VARCHAR2,<br>    p_gUNIT <span class="hljs-keyword">IN</span> NUMBER,<br>    p_gPRICE <span class="hljs-keyword">IN</span> NUMBER,<br>    p_pID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    p_pNAME <span class="hljs-keyword">IN</span> VARCHAR2,<br>    p_pACC <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">19</span>),<br>    p_pADD <span class="hljs-keyword">IN</span> VARCHAR2<br>) <span class="hljs-keyword">AS</span><br>    v_count NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 检查供应商是否存在</span><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">INTO</span> v_count<br>    <span class="hljs-keyword">FROM</span> provider<br>    <span class="hljs-keyword">WHERE</span> pID <span class="hljs-operator">=</span> p_pID;<br><br>    <span class="hljs-comment">-- 如果供应商不存在，则插入</span><br>    IF v_count <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">INSERT INTO</span> provider (pID, pNAME, pACC, pADD) <br>        <span class="hljs-keyword">VALUES</span> (p_pID, p_pNAME, p_pACC, p_pADD);<br>    <span class="hljs-keyword">END</span> IF;<br><br>    <span class="hljs-comment">-- 添加新商品</span><br>    <span class="hljs-keyword">INSERT INTO</span> goods (gID, gNAME, gKIDS, gUNIT, gPRICE)<br>    <span class="hljs-keyword">VALUES</span> (p_gID, p_gNAME, p_gKIDS, p_gUNIT, p_gPRICE);<br>    <br>    <span class="hljs-keyword">COMMIT</span>;  <span class="hljs-comment">-- 提交更改</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">ROLLBACK</span>;  <span class="hljs-comment">-- 出错时回滚</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发错误</span><br><span class="hljs-keyword">END</span> add_new_goods;<br><br><br><span class="hljs-comment">-- 2. 存储过程：更新商品库存</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> update_goods_stock (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),<br>    p_newQuantity <span class="hljs-keyword">IN</span> NUMBER<br>) <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 更新商品数量</span><br>    <span class="hljs-keyword">UPDATE</span> goods<br>    <span class="hljs-keyword">SET</span> gUNIT <span class="hljs-operator">=</span> p_newQuantity<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    IF <span class="hljs-keyword">SQL</span><span class="hljs-operator">%</span>ROWCOUNT <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20001</span>, <span class="hljs-string">&#x27;未找到该商品。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><br>    <span class="hljs-keyword">COMMIT</span>;  <span class="hljs-comment">-- 提交更改</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">ROLLBACK</span>;  <span class="hljs-comment">-- 出错时回滚</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发错误</span><br><span class="hljs-keyword">END</span> update_goods_stock;<br><br><br><span class="hljs-comment">-- 3. 存储过程：记录销售</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> record_sale (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>),                   <span class="hljs-comment">-- 商品ID</span><br>    p_quantity <span class="hljs-keyword">IN</span> NUMBER,               <span class="hljs-comment">-- 销售数量</span><br>    p_salesPrice <span class="hljs-keyword">IN</span> NUMBER,             <span class="hljs-comment">-- 销售价格</span><br>    p_aID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>)                    <span class="hljs-comment">-- 营业员ID</span><br>) <span class="hljs-keyword">AS</span><br>    v_current_stock NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 检查库存量</span><br>    <span class="hljs-keyword">SELECT</span> gUNIT <span class="hljs-keyword">INTO</span> v_current_stock<br>    <span class="hljs-keyword">FROM</span> goods<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    <span class="hljs-comment">-- 验证库存是否足够</span><br>    IF v_current_stock <span class="hljs-operator">&lt;</span> p_quantity <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20002</span>, <span class="hljs-string">&#x27;库存不足，无法完成销售。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><br>    <span class="hljs-comment">-- 扣减库存</span><br>    <span class="hljs-keyword">UPDATE</span> goods<br>    <span class="hljs-keyword">SET</span> gUNIT <span class="hljs-operator">=</span> gUNIT <span class="hljs-operator">-</span> p_quantity<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    <span class="hljs-comment">-- 记录销售详细信息（假设存在销售表）</span><br>    <span class="hljs-keyword">INSERT INTO</span> sales (saleID, gID, quantity, salesPrice, aID, saleDate)<br>    <span class="hljs-keyword">VALUES</span> (sales_seq.NEXTVAL, p_gID, p_quantity, p_salesPrice, p_aID, SYSDATE);<br>    <br>    <span class="hljs-keyword">COMMIT</span>;  <span class="hljs-comment">-- 提交更改</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">ROLLBACK</span>;  <span class="hljs-comment">-- 出错时回滚</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发错误</span><br><span class="hljs-keyword">END</span> record_sale;<br><br><br><span class="hljs-comment">-- 4. 函数：计算总库存价值</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> calculate_total_value (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>)<br>) <span class="hljs-keyword">RETURN</span> NUMBER <span class="hljs-keyword">IS</span><br>    v_total_value NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 计算库存总价值</span><br>    <span class="hljs-keyword">SELECT</span> gPRICE <span class="hljs-operator">*</span> gUNIT<br>    <span class="hljs-keyword">INTO</span> v_total_value<br>    <span class="hljs-keyword">FROM</span> goods<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    <span class="hljs-keyword">RETURN</span> v_total_value;  <span class="hljs-comment">-- 返回计算结果</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">RETURN</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">-- 如果未找到商品，返回0</span><br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发其他错误</span><br><span class="hljs-keyword">END</span> calculate_total_value;<br><br><br><span class="hljs-comment">-- 5. 函数：获取供应商信息</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> get_supplier_info (<br>    p_pID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>)<br>) <span class="hljs-keyword">RETURN</span> VARCHAR2 <span class="hljs-keyword">IS</span><br>    v_supplier_info VARCHAR2(<span class="hljs-number">100</span>);<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 检索供应商名称和账户</span><br>    <span class="hljs-keyword">SELECT</span> pNAME <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;, &#x27;</span> <span class="hljs-operator">||</span> pACC <br>    <span class="hljs-keyword">INTO</span> v_supplier_info<br>    <span class="hljs-keyword">FROM</span> provider<br>    <span class="hljs-keyword">WHERE</span> pID <span class="hljs-operator">=</span> p_pID;<br><br>    <span class="hljs-keyword">RETURN</span> v_supplier_info;  <span class="hljs-comment">-- 返回供应商信息</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">RETURN</span> <span class="hljs-string">&#x27;未找到该供应商。&#x27;</span>;<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发其他错误</span><br><span class="hljs-keyword">END</span> get_supplier_info;<br><br><br><span class="hljs-comment">-- 6. 计算总收入</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> calculate_total_revenue (<br>    p_gID <span class="hljs-keyword">IN</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">6</span>)<br>) <span class="hljs-keyword">RETURN</span> NUMBER <span class="hljs-keyword">IS</span><br>    v_total_revenue NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-comment">-- 计算该商品的总收入</span><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(quantity <span class="hljs-operator">*</span> salesPrice)<br>    <span class="hljs-keyword">INTO</span> v_total_revenue<br>    <span class="hljs-keyword">FROM</span> sales<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> p_gID;<br><br>    IF v_total_revenue <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">THEN</span><br>        <span class="hljs-keyword">RETURN</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">-- 如果没有销售记录，返回0</span><br>    <span class="hljs-keyword">END</span> IF;<br><br>    <span class="hljs-keyword">RETURN</span> v_total_revenue;  <span class="hljs-comment">-- 返回总收入</span><br>EXCEPTION<br>    <span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br>        RAISE;  <span class="hljs-comment">-- 重新引发其他错误</span><br><span class="hljs-keyword">END</span> calculate_total_revenue;<br></code></pre></td></tr></table></figure>
-<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 插入商品时检查商品数量的触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> trg_check_goods_quantity <br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> goods <br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span> <br><span class="hljs-keyword">BEGIN</span><br>    IF :NEW.gUNIT <span class="hljs-operator">&lt;=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20001</span>, <span class="hljs-string">&#x27;商品数量必须大于零。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span> trg_check_goods_quantity;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 更新库存时记录历史的触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> trg_update_goods_stock_history <br>AFTER <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> gUNIT <span class="hljs-keyword">ON</span> goods <br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span> <br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">INSERT INTO</span> goods_history (hID, gID, oldQuantity, newQuantity, changeDate)<br>    <span class="hljs-keyword">VALUES</span> (goods_history_seq.NEXTVAL, :OLD.gID, :OLD.gUNIT, :NEW.gUNIT, SYSTIMESTAMP);<br><span class="hljs-keyword">END</span> trg_update_goods_stock_history;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 插入销售记录后更新库存的触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> trg_update_stock_after_sale <br>AFTER <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> sales <br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span> <br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">UPDATE</span> goods<br>    <span class="hljs-keyword">SET</span> gUNIT <span class="hljs-operator">=</span> gUNIT <span class="hljs-operator">-</span> :NEW.quantity<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> :NEW.gID;<br><br>    IF <span class="hljs-keyword">SQL</span><span class="hljs-operator">%</span>ROWCOUNT <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20002</span>, <span class="hljs-string">&#x27;更新库存失败：未找到商品。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span> trg_update_stock_after_sale;<br><span class="hljs-operator">/</span><br><br><br><br><span class="hljs-comment">-- 插入销售记录后更新库存的触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> trg_update_stock_after_sale <br>AFTER <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> sales <br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span> <br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">UPDATE</span> goods<br>    <span class="hljs-keyword">SET</span> gUNIT <span class="hljs-operator">=</span> gUNIT <span class="hljs-operator">-</span> :NEW.quantity<br>    <span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> :NEW.gID;<br><br>    IF <span class="hljs-keyword">SQL</span><span class="hljs-operator">%</span>ROWCOUNT <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>        RAISE_APPLICATION_ERROR(<span class="hljs-number">-20002</span>, <span class="hljs-string">&#x27;更新库存失败：未找到商品。&#x27;</span>);<br>    <span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span> trg_update_stock_after_sale;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
-<h2 id="数据操纵"><a href="#数据操纵" class="headerlink" title="数据操纵"></a>数据操纵</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 插入产品数据</span><br><span class="hljs-keyword">INSERT INTO</span> goods (gID, gNAME, gKIDS, gUNIT, gPRICE) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;P001&#x27;</span>, <span class="hljs-string">&#x27;笔记本&#x27;</span>, <span class="hljs-string">&#x27;001&#x27;</span>, <span class="hljs-number">50</span>, <span class="hljs-number">20</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> goods (gID, gNAME, gKIDS, gUNIT, gPRICE) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;P002&#x27;</span>, <span class="hljs-string">&#x27;铅笔&#x27;</span>, <span class="hljs-string">&#x27;001&#x27;</span>, <span class="hljs-number">100</span>, <span class="hljs-number">5</span>);<br><br><span class="hljs-comment">-- 插入供应商数据</span><br><span class="hljs-keyword">INSERT INTO</span> provider (pID, pNAME, pACC, pADD) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;PR001&#x27;</span>, <span class="hljs-string">&#x27;供应商A&#x27;</span>, <span class="hljs-string">&#x27;1234567890123456789&#x27;</span>, <span class="hljs-string">&#x27;地址1&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> provider (pID, pNAME, pACC, pADD) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;PR002&#x27;</span>, <span class="hljs-string">&#x27;供应商B&#x27;</span>, <span class="hljs-string">&#x27;9876543210123456789&#x27;</span>, <span class="hljs-string">&#x27;地址2&#x27;</span>);<br><br><span class="hljs-comment">-- 插入门店数据</span><br><span class="hljs-keyword">INSERT INTO</span> shop (shID, shNAME, shADD) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;SH001&#x27;</span>, <span class="hljs-string">&#x27;商店A&#x27;</span>, <span class="hljs-string">&#x27;地址A&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> shop (shID, shNAME, shADD) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;SH002&#x27;</span>, <span class="hljs-string">&#x27;商店B&#x27;</span>, <span class="hljs-string">&#x27;地址B&#x27;</span>);<br><br><span class="hljs-comment">-- 插入营业员数据</span><br><span class="hljs-keyword">INSERT INTO</span> assistant (aID, aNAME, aFEAT, shID) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;A001&#x27;</span>, <span class="hljs-string">&#x27;11&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;SH001&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> assistant (aID, aNAME, aFEAT, shID) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-string">&#x27;A002&#x27;</span>, <span class="hljs-string">&#x27;12&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;SH002&#x27;</span>);<br><br><span class="hljs-comment">-- 插入销售记录</span><br><span class="hljs-keyword">INSERT INTO</span> sales (saleID, gID, quantity, salesPrice, aID) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;P001&#x27;</span>, <span class="hljs-number">5</span>, <span class="hljs-number">20</span>, <span class="hljs-string">&#x27;A001&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> sales (saleID, gID, quantity, salesPrice, aID) <span class="hljs-keyword">VALUES</span> <br>(<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;P002&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-string">&#x27;A002&#x27;</span>);<br><br><br><span class="hljs-comment">-- 删除指定的销售记录</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> sales <br><span class="hljs-keyword">WHERE</span> saleID <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">-- 删除指定的商品</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> goods <br><span class="hljs-keyword">WHERE</span> gID <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;P002&#x27;</span>;<br><br><span class="hljs-comment">-- 删除供应商</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> provider <br><span class="hljs-keyword">WHERE</span> pID <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;PR002&#x27;</span>;<br><br><span class="hljs-comment">-- 查询所有商品信息</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> goods;<br><br><span class="hljs-comment">-- 查询所有供应商的名称和地址</span><br><span class="hljs-keyword">SELECT</span> pNAME, pADD <span class="hljs-keyword">FROM</span> provider;<br><br><span class="hljs-comment">-- 查询门店信息</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> shop;<br><br><span class="hljs-comment">-- 查询所有营业员</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> assistant;<br><br><span class="hljs-comment">-- 查询销售记录及其对应的商品名称和营业员姓名</span><br><span class="hljs-keyword">SELECT</span> s.saleID, g.gNAME, s.quantity, s.salesPrice, a.aNAME <br><span class="hljs-keyword">FROM</span> sales s<br><span class="hljs-keyword">JOIN</span> goods g <span class="hljs-keyword">ON</span> s.gID <span class="hljs-operator">=</span> g.gID <br><span class="hljs-keyword">JOIN</span> assistant a <span class="hljs-keyword">ON</span> s.aID <span class="hljs-operator">=</span> a.aID;<br><br><span class="hljs-comment">-- 查询所有销售记录</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> sales;<br><br></code></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2025/zip/40495483/1749396805690-c1af9a80-0216-4580-bd38-42be1841eb53.zip">电脑销售系统oracle.zip</a></p>
+<h1 id="3-SQL-实现"><a href="#3-SQL-实现" class="headerlink" title="3 SQL****实现"></a><strong>3 SQL****实现</strong></h1><h2 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建商品表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> goods (</span><br><span class="line">    gID <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    gNAME VARCHAR2(<span class="number">10</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    gKIDS VARCHAR2(<span class="number">6</span>),</span><br><span class="line">    gUNIT NUMBER <span class="keyword">CHECK</span>(gUNIT <span class="operator">&gt;</span> <span class="number">0</span>),</span><br><span class="line">    gPRICE NUMBER <span class="keyword">CHECK</span>(gPRICE <span class="operator">&gt;=</span> <span class="number">0</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建供应商表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> provider (</span><br><span class="line">    pID <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    pNAME VARCHAR2(<span class="number">10</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    pACC <span class="type">CHAR</span>(<span class="number">19</span>),</span><br><span class="line">    pADD VARCHAR2(<span class="number">8</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建仓库表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> store (</span><br><span class="line">    sID <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    sADD VARCHAR2(<span class="number">8</span>),</span><br><span class="line">    sLEAD VARCHAR2(<span class="number">4</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建门店表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> shop (</span><br><span class="line">    shID <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    shNAME VARCHAR2(<span class="number">10</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    shADD VARCHAR2(<span class="number">8</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建营业员表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> assistant (</span><br><span class="line">    aID <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    aNAME VARCHAR2(<span class="number">4</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    aFEAT NUMBER,</span><br><span class="line">    shID <span class="type">CHAR</span>(<span class="number">6</span>),</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (shID) <span class="keyword">REFERENCES</span> shop(shID)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建管理员表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> manager (</span><br><span class="line">    mID <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    mNAME VARCHAR2(<span class="number">4</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    mFEAT NUMBER</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建采购员表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> shopper (</span><br><span class="line">    shopperID <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    shopperNAME VARCHAR2(<span class="number">4</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    shopperFEAT NUMBER</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建商品库存更新历史表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> goods_history (</span><br><span class="line">    hID NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    gID <span class="type">CHAR</span>(<span class="number">6</span>),</span><br><span class="line">    oldQuantity NUMBER,</span><br><span class="line">    newQuantity NUMBER,</span><br><span class="line">    changeDate <span class="type">TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建销售表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> sales (</span><br><span class="line">    saleID NUMBER <span class="keyword">PRIMARY KEY</span>,      <span class="comment">-- 销售记录ID</span></span><br><span class="line">    gID <span class="type">CHAR</span>(<span class="number">6</span>),                    <span class="comment">-- 商品ID</span></span><br><span class="line">    quantity NUMBER <span class="keyword">CHECK</span>(quantity <span class="operator">&gt;</span> <span class="number">0</span>), <span class="comment">-- 销售数量</span></span><br><span class="line">    salesPrice NUMBER <span class="keyword">CHECK</span>(salesPrice <span class="operator">&gt;=</span> <span class="number">0</span>), <span class="comment">-- 售价</span></span><br><span class="line">    aID <span class="type">CHAR</span>(<span class="number">6</span>),                    <span class="comment">-- 营业员ID</span></span><br><span class="line">    saleDate <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> SYSTIMESTAMP, <span class="comment">-- 销售日期</span></span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (gID) <span class="keyword">REFERENCES</span> goods(gID), <span class="comment">-- 外键关联商品</span></span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (aID) <span class="keyword">REFERENCES</span> assistant(aID) <span class="comment">-- 外键关联营业员</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 在商品表上创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_goods_name <span class="keyword">ON</span> goods(gNAME);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 在供应商表上创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_provider_name <span class="keyword">ON</span> provider(pNAME);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_provider_acc <span class="keyword">ON</span> provider(pACC);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 在仓库表上创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_store_address <span class="keyword">ON</span> store(sADD);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 在门店表上创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_shop_name <span class="keyword">ON</span> shop(shNAME);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_shop_address <span class="keyword">ON</span> shop(shADD);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 在营业员表上创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_assistant_name <span class="keyword">ON</span> assistant(aNAME);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_assistant_store_id <span class="keyword">ON</span> assistant(shID);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 在管理员表上创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_manager_name <span class="keyword">ON</span> manager(mNAME);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 在采购员表上创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_shopper_name <span class="keyword">ON</span> shopper(shopperNAME);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 如果需要在采购员表上添加唯一索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX idx_shopper_id <span class="keyword">ON</span> shopper(shopperID);</span><br></pre></td></tr></table></figure>
+
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> vw_goods_suppliers <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    g.gID,</span><br><span class="line">    g.gNAME,</span><br><span class="line">    g.gKIDS,</span><br><span class="line">    g.gUNIT,</span><br><span class="line">    g.gPRICE,</span><br><span class="line">    p.pID <span class="keyword">AS</span> supplier_id,</span><br><span class="line">    p.pNAME <span class="keyword">AS</span> supplier_name</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    goods g</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> </span><br><span class="line">    provider p <span class="keyword">ON</span> g.gID <span class="operator">=</span> p.pID;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> vw_assistants_shops <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    a.aID,</span><br><span class="line">    a.aNAME,</span><br><span class="line">    a.aFEAT,</span><br><span class="line">    s.shID <span class="keyword">AS</span> shop_id,</span><br><span class="line">    s.shNAME <span class="keyword">AS</span> shop_name</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    assistant a</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> </span><br><span class="line">    shop s <span class="keyword">ON</span> a.shID <span class="operator">=</span> s.shID;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> vw_inventory_summary <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    g.gID,</span><br><span class="line">    g.gNAME,</span><br><span class="line">    g.gUNIT,</span><br><span class="line">    <span class="built_in">SUM</span>(g.gPRICE) <span class="keyword">AS</span> total_value</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    goods g</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> </span><br><span class="line">    g.gID, g.gNAME, g.gUNIT;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> vw_manager_performance <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    m.mID,</span><br><span class="line">    m.mNAME,</span><br><span class="line">    <span class="built_in">SUM</span>(m.mFEAT) <span class="keyword">AS</span> total_performance</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    manager m</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> </span><br><span class="line">    m.mID, m.mNAME;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> vw_shop_store_info <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    sh.shID <span class="keyword">AS</span> shop_id,</span><br><span class="line">    sh.shNAME <span class="keyword">AS</span> shop_name,</span><br><span class="line">    sh.shADD <span class="keyword">AS</span> shop_address,</span><br><span class="line">    st.sID <span class="keyword">AS</span> store_id,</span><br><span class="line">    st.sADD <span class="keyword">AS</span> store_address</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    shop sh</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> </span><br><span class="line">    store st <span class="keyword">ON</span> sh.shID <span class="operator">=</span> st.sID;</span><br></pre></td></tr></table></figure>
+
+<h2 id="存储过程、函数"><a href="#存储过程、函数" class="headerlink" title="存储过程、函数"></a>存储过程、函数</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1. 存储过程：添加新商品</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> add_new_goods (</span><br><span class="line">    p_gID <span class="keyword">IN</span> <span class="type">CHAR</span>(<span class="number">6</span>),</span><br><span class="line">    p_gNAME <span class="keyword">IN</span> VARCHAR2,</span><br><span class="line">    p_gKIDS <span class="keyword">IN</span> VARCHAR2,</span><br><span class="line">    p_gUNIT <span class="keyword">IN</span> NUMBER,</span><br><span class="line">    p_gPRICE <span class="keyword">IN</span> NUMBER,</span><br><span class="line">    p_pID <span class="keyword">IN</span> <span class="type">CHAR</span>(<span class="number">6</span>),</span><br><span class="line">    p_pNAME <span class="keyword">IN</span> VARCHAR2,</span><br><span class="line">    p_pACC <span class="keyword">IN</span> <span class="type">CHAR</span>(<span class="number">19</span>),</span><br><span class="line">    p_pADD <span class="keyword">IN</span> VARCHAR2</span><br><span class="line">) <span class="keyword">AS</span></span><br><span class="line">    v_count NUMBER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 检查供应商是否存在</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">INTO</span> v_count</span><br><span class="line">    <span class="keyword">FROM</span> provider</span><br><span class="line">    <span class="keyword">WHERE</span> pID <span class="operator">=</span> p_pID;</span><br><span class="line"></span><br><span class="line">    <span class="comment">-- 如果供应商不存在，则插入</span></span><br><span class="line">    IF v_count <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">INSERT INTO</span> provider (pID, pNAME, pACC, pADD) </span><br><span class="line">        <span class="keyword">VALUES</span> (p_pID, p_pNAME, p_pACC, p_pADD);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line">    <span class="comment">-- 添加新商品</span></span><br><span class="line">    <span class="keyword">INSERT INTO</span> goods (gID, gNAME, gKIDS, gUNIT, gPRICE)</span><br><span class="line">    <span class="keyword">VALUES</span> (p_gID, p_gNAME, p_gKIDS, p_gUNIT, p_gPRICE);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;  <span class="comment">-- 提交更改</span></span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">ROLLBACK</span>;  <span class="comment">-- 出错时回滚</span></span><br><span class="line">        RAISE;  <span class="comment">-- 重新引发错误</span></span><br><span class="line"><span class="keyword">END</span> add_new_goods;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. 存储过程：更新商品库存</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> update_goods_stock (</span><br><span class="line">    p_gID <span class="keyword">IN</span> <span class="type">CHAR</span>(<span class="number">6</span>),</span><br><span class="line">    p_newQuantity <span class="keyword">IN</span> NUMBER</span><br><span class="line">) <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 更新商品数量</span></span><br><span class="line">    <span class="keyword">UPDATE</span> goods</span><br><span class="line">    <span class="keyword">SET</span> gUNIT <span class="operator">=</span> p_newQuantity</span><br><span class="line">    <span class="keyword">WHERE</span> gID <span class="operator">=</span> p_gID;</span><br><span class="line"></span><br><span class="line">    IF <span class="keyword">SQL</span><span class="operator">%</span>ROWCOUNT <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20001</span>, <span class="string">&#x27;未找到该商品。&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">COMMIT</span>;  <span class="comment">-- 提交更改</span></span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">ROLLBACK</span>;  <span class="comment">-- 出错时回滚</span></span><br><span class="line">        RAISE;  <span class="comment">-- 重新引发错误</span></span><br><span class="line"><span class="keyword">END</span> update_goods_stock;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3. 存储过程：记录销售</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> record_sale (</span><br><span class="line">    p_gID <span class="keyword">IN</span> <span class="type">CHAR</span>(<span class="number">6</span>),                   <span class="comment">-- 商品ID</span></span><br><span class="line">    p_quantity <span class="keyword">IN</span> NUMBER,               <span class="comment">-- 销售数量</span></span><br><span class="line">    p_salesPrice <span class="keyword">IN</span> NUMBER,             <span class="comment">-- 销售价格</span></span><br><span class="line">    p_aID <span class="keyword">IN</span> <span class="type">CHAR</span>(<span class="number">6</span>)                    <span class="comment">-- 营业员ID</span></span><br><span class="line">) <span class="keyword">AS</span></span><br><span class="line">    v_current_stock NUMBER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 检查库存量</span></span><br><span class="line">    <span class="keyword">SELECT</span> gUNIT <span class="keyword">INTO</span> v_current_stock</span><br><span class="line">    <span class="keyword">FROM</span> goods</span><br><span class="line">    <span class="keyword">WHERE</span> gID <span class="operator">=</span> p_gID;</span><br><span class="line"></span><br><span class="line">    <span class="comment">-- 验证库存是否足够</span></span><br><span class="line">    IF v_current_stock <span class="operator">&lt;</span> p_quantity <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20002</span>, <span class="string">&#x27;库存不足，无法完成销售。&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line">    <span class="comment">-- 扣减库存</span></span><br><span class="line">    <span class="keyword">UPDATE</span> goods</span><br><span class="line">    <span class="keyword">SET</span> gUNIT <span class="operator">=</span> gUNIT <span class="operator">-</span> p_quantity</span><br><span class="line">    <span class="keyword">WHERE</span> gID <span class="operator">=</span> p_gID;</span><br><span class="line"></span><br><span class="line">    <span class="comment">-- 记录销售详细信息（假设存在销售表）</span></span><br><span class="line">    <span class="keyword">INSERT INTO</span> sales (saleID, gID, quantity, salesPrice, aID, saleDate)</span><br><span class="line">    <span class="keyword">VALUES</span> (sales_seq.NEXTVAL, p_gID, p_quantity, p_salesPrice, p_aID, SYSDATE);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;  <span class="comment">-- 提交更改</span></span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">ROLLBACK</span>;  <span class="comment">-- 出错时回滚</span></span><br><span class="line">        RAISE;  <span class="comment">-- 重新引发错误</span></span><br><span class="line"><span class="keyword">END</span> record_sale;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 4. 函数：计算总库存价值</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> calculate_total_value (</span><br><span class="line">    p_gID <span class="keyword">IN</span> <span class="type">CHAR</span>(<span class="number">6</span>)</span><br><span class="line">) <span class="keyword">RETURN</span> NUMBER <span class="keyword">IS</span></span><br><span class="line">    v_total_value NUMBER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 计算库存总价值</span></span><br><span class="line">    <span class="keyword">SELECT</span> gPRICE <span class="operator">*</span> gUNIT</span><br><span class="line">    <span class="keyword">INTO</span> v_total_value</span><br><span class="line">    <span class="keyword">FROM</span> goods</span><br><span class="line">    <span class="keyword">WHERE</span> gID <span class="operator">=</span> p_gID;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">RETURN</span> v_total_value;  <span class="comment">-- 返回计算结果</span></span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">RETURN</span> <span class="number">0</span>;  <span class="comment">-- 如果未找到商品，返回0</span></span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        RAISE;  <span class="comment">-- 重新引发其他错误</span></span><br><span class="line"><span class="keyword">END</span> calculate_total_value;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 5. 函数：获取供应商信息</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> get_supplier_info (</span><br><span class="line">    p_pID <span class="keyword">IN</span> <span class="type">CHAR</span>(<span class="number">6</span>)</span><br><span class="line">) <span class="keyword">RETURN</span> VARCHAR2 <span class="keyword">IS</span></span><br><span class="line">    v_supplier_info VARCHAR2(<span class="number">100</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 检索供应商名称和账户</span></span><br><span class="line">    <span class="keyword">SELECT</span> pNAME <span class="operator">||</span> <span class="string">&#x27;, &#x27;</span> <span class="operator">||</span> pACC </span><br><span class="line">    <span class="keyword">INTO</span> v_supplier_info</span><br><span class="line">    <span class="keyword">FROM</span> provider</span><br><span class="line">    <span class="keyword">WHERE</span> pID <span class="operator">=</span> p_pID;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">RETURN</span> v_supplier_info;  <span class="comment">-- 返回供应商信息</span></span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">RETURN</span> <span class="string">&#x27;未找到该供应商。&#x27;</span>;</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        RAISE;  <span class="comment">-- 重新引发其他错误</span></span><br><span class="line"><span class="keyword">END</span> get_supplier_info;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 6. 计算总收入</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> calculate_total_revenue (</span><br><span class="line">    p_gID <span class="keyword">IN</span> <span class="type">CHAR</span>(<span class="number">6</span>)</span><br><span class="line">) <span class="keyword">RETURN</span> NUMBER <span class="keyword">IS</span></span><br><span class="line">    v_total_revenue NUMBER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 计算该商品的总收入</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="built_in">SUM</span>(quantity <span class="operator">*</span> salesPrice)</span><br><span class="line">    <span class="keyword">INTO</span> v_total_revenue</span><br><span class="line">    <span class="keyword">FROM</span> sales</span><br><span class="line">    <span class="keyword">WHERE</span> gID <span class="operator">=</span> p_gID;</span><br><span class="line"></span><br><span class="line">    IF v_total_revenue <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">RETURN</span> <span class="number">0</span>;  <span class="comment">-- 如果没有销售记录，返回0</span></span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">RETURN</span> v_total_revenue;  <span class="comment">-- 返回总收入</span></span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        RAISE;  <span class="comment">-- 重新引发其他错误</span></span><br><span class="line"><span class="keyword">END</span> calculate_total_revenue;</span><br></pre></td></tr></table></figure>
+
+<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 插入商品时检查商品数量的触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_check_goods_quantity </span><br><span class="line">BEFORE <span class="keyword">INSERT</span> <span class="keyword">ON</span> goods </span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span> </span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    IF :NEW.gUNIT <span class="operator">&lt;=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20001</span>, <span class="string">&#x27;商品数量必须大于零。&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span> trg_check_goods_quantity;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 更新库存时记录历史的触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_update_goods_stock_history </span><br><span class="line">AFTER <span class="keyword">UPDATE</span> <span class="keyword">OF</span> gUNIT <span class="keyword">ON</span> goods </span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span> </span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">INSERT INTO</span> goods_history (hID, gID, oldQuantity, newQuantity, changeDate)</span><br><span class="line">    <span class="keyword">VALUES</span> (goods_history_seq.NEXTVAL, :OLD.gID, :OLD.gUNIT, :NEW.gUNIT, SYSTIMESTAMP);</span><br><span class="line"><span class="keyword">END</span> trg_update_goods_stock_history;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入销售记录后更新库存的触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_update_stock_after_sale </span><br><span class="line">AFTER <span class="keyword">INSERT</span> <span class="keyword">ON</span> sales </span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span> </span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">UPDATE</span> goods</span><br><span class="line">    <span class="keyword">SET</span> gUNIT <span class="operator">=</span> gUNIT <span class="operator">-</span> :NEW.quantity</span><br><span class="line">    <span class="keyword">WHERE</span> gID <span class="operator">=</span> :NEW.gID;</span><br><span class="line"></span><br><span class="line">    IF <span class="keyword">SQL</span><span class="operator">%</span>ROWCOUNT <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20002</span>, <span class="string">&#x27;更新库存失败：未找到商品。&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span> trg_update_stock_after_sale;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入销售记录后更新库存的触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_update_stock_after_sale </span><br><span class="line">AFTER <span class="keyword">INSERT</span> <span class="keyword">ON</span> sales </span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span> </span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">UPDATE</span> goods</span><br><span class="line">    <span class="keyword">SET</span> gUNIT <span class="operator">=</span> gUNIT <span class="operator">-</span> :NEW.quantity</span><br><span class="line">    <span class="keyword">WHERE</span> gID <span class="operator">=</span> :NEW.gID;</span><br><span class="line"></span><br><span class="line">    IF <span class="keyword">SQL</span><span class="operator">%</span>ROWCOUNT <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20002</span>, <span class="string">&#x27;更新库存失败：未找到商品。&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span> trg_update_stock_after_sale;</span><br><span class="line"><span class="operator">/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数据操纵"><a href="#数据操纵" class="headerlink" title="数据操纵"></a>数据操纵</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 插入产品数据</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> goods (gID, gNAME, gKIDS, gUNIT, gPRICE) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">&#x27;P001&#x27;</span>, <span class="string">&#x27;笔记本&#x27;</span>, <span class="string">&#x27;001&#x27;</span>, <span class="number">50</span>, <span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> goods (gID, gNAME, gKIDS, gUNIT, gPRICE) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">&#x27;P002&#x27;</span>, <span class="string">&#x27;铅笔&#x27;</span>, <span class="string">&#x27;001&#x27;</span>, <span class="number">100</span>, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入供应商数据</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> provider (pID, pNAME, pACC, pADD) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">&#x27;PR001&#x27;</span>, <span class="string">&#x27;供应商A&#x27;</span>, <span class="string">&#x27;1234567890123456789&#x27;</span>, <span class="string">&#x27;地址1&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> provider (pID, pNAME, pACC, pADD) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">&#x27;PR002&#x27;</span>, <span class="string">&#x27;供应商B&#x27;</span>, <span class="string">&#x27;9876543210123456789&#x27;</span>, <span class="string">&#x27;地址2&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入门店数据</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> shop (shID, shNAME, shADD) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">&#x27;SH001&#x27;</span>, <span class="string">&#x27;商店A&#x27;</span>, <span class="string">&#x27;地址A&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> shop (shID, shNAME, shADD) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">&#x27;SH002&#x27;</span>, <span class="string">&#x27;商店B&#x27;</span>, <span class="string">&#x27;地址B&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入营业员数据</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> assistant (aID, aNAME, aFEAT, shID) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">&#x27;A001&#x27;</span>, <span class="string">&#x27;11&#x27;</span>, <span class="number">1</span>, <span class="string">&#x27;SH001&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> assistant (aID, aNAME, aFEAT, shID) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">&#x27;A002&#x27;</span>, <span class="string">&#x27;12&#x27;</span>, <span class="number">1</span>, <span class="string">&#x27;SH002&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入销售记录</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> sales (saleID, gID, quantity, salesPrice, aID) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="number">1</span>, <span class="string">&#x27;P001&#x27;</span>, <span class="number">5</span>, <span class="number">20</span>, <span class="string">&#x27;A001&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> sales (saleID, gID, quantity, salesPrice, aID) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="number">2</span>, <span class="string">&#x27;P002&#x27;</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="string">&#x27;A002&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除指定的销售记录</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> sales </span><br><span class="line"><span class="keyword">WHERE</span> saleID <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除指定的商品</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> goods </span><br><span class="line"><span class="keyword">WHERE</span> gID <span class="operator">=</span> <span class="string">&#x27;P002&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除供应商</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> provider </span><br><span class="line"><span class="keyword">WHERE</span> pID <span class="operator">=</span> <span class="string">&#x27;PR002&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询所有商品信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> goods;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询所有供应商的名称和地址</span></span><br><span class="line"><span class="keyword">SELECT</span> pNAME, pADD <span class="keyword">FROM</span> provider;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询门店信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> shop;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询所有营业员</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> assistant;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询销售记录及其对应的商品名称和营业员姓名</span></span><br><span class="line"><span class="keyword">SELECT</span> s.saleID, g.gNAME, s.quantity, s.salesPrice, a.aNAME </span><br><span class="line"><span class="keyword">FROM</span> sales s</span><br><span class="line"><span class="keyword">JOIN</span> goods g <span class="keyword">ON</span> s.gID <span class="operator">=</span> g.gID </span><br><span class="line"><span class="keyword">JOIN</span> assistant a <span class="keyword">ON</span> s.aID <span class="operator">=</span> a.aID;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询所有销售记录</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> sales;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2025/zip/40495483/1749396805690-c1af9a80-0216-4580-bd38-42be1841eb53.zip" >电脑销售系统oracle.zip<i class="fas fa-external-link-alt"></i></a></p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                电脑销售系统oracle
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/11/14/mywork/电脑销售系统oracle/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">tanyunhao</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2024-11-14 09:08</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
     </div>
-  </article>
-  <div class="ccbyncsa">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright">
-                    <div class="author">
-                        <p>作者</p>
-                        <p>谭云浩</p>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
                     </div>
-                    <div class="title">
-                        <p>标题</p>
-                        <p>电脑销售系统oracle</p>
-                    </div>
-                        <div class="publish">
-                            <p>发布于</p>
-                            <p>2024-11-14</p>
-                        </div>
-                    <div class="ccbyncsa-icon">
-                        <p>授权协议</p>
-                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
-                        <img src="/images/cc.svg" alt="cc">
-                        <img src="/images/by.svg" alt="by">
-                        <img src="/images/nc.svg" alt="nc">
-                        <img src="/images/sa.svg" alt="sa">
-                        </p>
-                        </a>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/14/mywork/%E6%B4%9B%E8%B0%B7/"
+                                   title="洛谷"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">洛谷</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/14/mywork/%E8%82%BE%E8%84%8F%E5%8A%9F%E8%83%BD%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"
+                                   title="肾脏功能数据分析报告"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">肾脏功能数据分析报告</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liaNlY4iGiutYiDg',
+                clientSecret: '62fe13dbbfc8308f06422c153ba1b94bcdec1788',
+                repo: 'hexo-site-comments',
+                owner: 'tanyunhaoyyds',
+                admin: 'tanyunhaoyyds',
+                id: gitalkPathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'en'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-text">1 需求分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-text">2 系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="nav-text">2.1 系统结构功能图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-text">2.2 功能流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">2.3 数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%95%86%E5%93%81%E8%A1%A8-goods"><span class="nav-text">1. 商品表 (goods)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BE%9B%E5%BA%94%E5%95%86%E8%A1%A8-provider"><span class="nav-text">2. 供应商表 (provider)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BB%93%E5%BA%93%E8%A1%A8-store"><span class="nav-text">3. 仓库表 (store)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%97%A8%E5%BA%97%E8%A1%A8-shop"><span class="nav-text">4. 门店表 (shop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%90%A5%E4%B8%9A%E5%91%98%E8%A1%A8-assistant"><span class="nav-text">5. 营业员表 (assistant)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%AE%A1%E7%90%86%E5%91%98%E8%A1%A8-manager"><span class="nav-text">6. 管理员表 (manager)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E9%87%87%E8%B4%AD%E5%91%98%E8%A1%A8-shopper"><span class="nav-text">7. 采购员表 (shopper)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%95%86%E5%93%81%E5%BA%93%E5%AD%98%E6%9B%B4%E6%96%B0%E5%8E%86%E5%8F%B2%E8%A1%A8-goods-history"><span class="nav-text">8. 商品库存更新历史表 (goods_history)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E9%94%80%E5%94%AE%E8%A1%A8-sales"><span class="nav-text">9. 销售表 (sales)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-SQL-%E5%AE%9E%E7%8E%B0"><span class="nav-text">3 SQL****实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E8%A1%A8"><span class="nav-text">建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-text">视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-text">存储过程、函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-text">触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E7%BA%B5"><span class="nav-text">数据操纵</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">tanyunhao</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
             </div>
         </div>
     </div>
 </div>
-  <nav class="post-pagination">
-    
-      <div class="post-prev">
-        <span class="nav-label">上一篇</span>
-        <a href="/2024/11/14/mywork/%E7%BD%91%E4%B8%8A%E8%B4%AD%E7%89%A9%E7%B3%BB%E7%BB%9Foracle/">网上购物系统oracle</a>
-      </div>
-    
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2024/11/14/mywork/%E6%B3%95%E5%AD%A6%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%8A%A5%E5%91%8A/">法学专业词汇检索系统项目报告</a>
-      </div>
-    
-  </nav>
-  
 
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-text">1 需求分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-text">2 系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="nav-text">2.1 系统结构功能图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-text">2.2 功能流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">2.3 数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%95%86%E5%93%81%E8%A1%A8-goods"><span class="nav-text">1. 商品表 (goods)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BE%9B%E5%BA%94%E5%95%86%E8%A1%A8-provider"><span class="nav-text">2. 供应商表 (provider)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BB%93%E5%BA%93%E8%A1%A8-store"><span class="nav-text">3. 仓库表 (store)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%97%A8%E5%BA%97%E8%A1%A8-shop"><span class="nav-text">4. 门店表 (shop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%90%A5%E4%B8%9A%E5%91%98%E8%A1%A8-assistant"><span class="nav-text">5. 营业员表 (assistant)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%AE%A1%E7%90%86%E5%91%98%E8%A1%A8-manager"><span class="nav-text">6. 管理员表 (manager)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E9%87%87%E8%B4%AD%E5%91%98%E8%A1%A8-shopper"><span class="nav-text">7. 采购员表 (shopper)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%95%86%E5%93%81%E5%BA%93%E5%AD%98%E6%9B%B4%E6%96%B0%E5%8E%86%E5%8F%B2%E8%A1%A8-goods-history"><span class="nav-text">8. 商品库存更新历史表 (goods_history)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E9%94%80%E5%94%AE%E8%A1%A8-sales"><span class="nav-text">9. 销售表 (sales)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-SQL-%E5%AE%9E%E7%8E%B0"><span class="nav-text">3 SQL****实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E8%A1%A8"><span class="nav-text">建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-text">视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-text">存储过程、函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-text">触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E7%BA%B5"><span class="nav-text">数据操纵</span></a></li></ol></li></ol>
+    </div>
 </div>
 
-<script src="/js/copy.js"></script>
-
-<aside class="sidebar-container sidebar-right">
-    <div class="sidebar-bg">
-        <p id="date"></p>
-<script>
-  function updateDate() {
-    var now = new Date();
-    var dateString = now.toISOString().slice(0, 10);
-    document.getElementById('date').textContent = dateString;
-  }
-
-  window.addEventListener('load', function() {
-    updateDate();
-    // 更新频率为每5分钟更新一次，减少不必要的更新
-    setInterval(updateDate, 300000);
-  });
-</script>
-        <span id="clock" role="timer" aria-live="polite"></span>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const clockElement = document.getElementById('clock');
-    let timerInterval;
-
-    // 格式化时间函数
-    function formatTime(unit) {
-      return unit < 10 ? '0' + unit : unit;
-    }
-
-    // 更新时钟 - 只显示小时和分钟
-    function updateClock() {
-      const now = new Date();
-      const hours = formatTime(now.getHours());
-      const minutes = formatTime(now.getMinutes());
-      clockElement.textContent = `${hours}:${minutes}`;
-    }
-
-    // 初始化时钟
-    function startClock() {
-      // 立即更新一次时间
-      updateClock();
-
-      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
-      const now = new Date();
-      const secondsToNextMinute = 60 - now.getSeconds();
-
-      // 先设置一个定时器到下一分钟
-      setTimeout(() => {
-        updateClock();
-        // 然后每分钟更新一次
-        timerInterval = setInterval(updateClock, 60000);
-      }, secondsToNextMinute * 1000);
-    }
-
-    // 页面可见性变化时的优化
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        // 页面不可见时停止更新
-        clearInterval(timerInterval);
-      } else {
-        // 页面重新可见时，重新开始
-        clearInterval(timerInterval);
-        startClock();
-      }
-    });
-
-    // 启动时钟
-    startClock();
-  });
-</script>
-
-
-    </div>
-    <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">1 需求分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">2 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 系统结构功能图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 功能流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%95%86%E5%93%81%E8%A1%A8-goods"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. 商品表 (goods)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BE%9B%E5%BA%94%E5%95%86%E8%A1%A8-provider"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. 供应商表 (provider)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BB%93%E5%BA%93%E8%A1%A8-store"><span class="toc-number">2.3.3.</span> <span class="toc-text">3. 仓库表 (store)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%97%A8%E5%BA%97%E8%A1%A8-shop"><span class="toc-number">2.3.4.</span> <span class="toc-text">4. 门店表 (shop)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%90%A5%E4%B8%9A%E5%91%98%E8%A1%A8-assistant"><span class="toc-number">2.3.5.</span> <span class="toc-text">5. 营业员表 (assistant)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%AE%A1%E7%90%86%E5%91%98%E8%A1%A8-manager"><span class="toc-number">2.3.6.</span> <span class="toc-text">6. 管理员表 (manager)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%87%87%E8%B4%AD%E5%91%98%E8%A1%A8-shopper"><span class="toc-number">2.3.7.</span> <span class="toc-text">7. 采购员表 (shopper)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%95%86%E5%93%81%E5%BA%93%E5%AD%98%E6%9B%B4%E6%96%B0%E5%8E%86%E5%8F%B2%E8%A1%A8-goods-history"><span class="toc-number">2.3.8.</span> <span class="toc-text">8. 商品库存更新历史表 (goods_history)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E9%94%80%E5%94%AE%E8%A1%A8-sales"><span class="toc-number">2.3.9.</span> <span class="toc-text">9. 销售表 (sales)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-SQL-%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">3 SQL**实现**</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8"><span class="toc-number">3.1.</span> <span class="toc-text">建表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">3.2.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-number">3.3.</span> <span class="toc-text">视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">存储过程、函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">3.5.</span> <span class="toc-text">触发器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E7%BA%B5"><span class="toc-number">3.6.</span> <span class="toc-text">数据操纵</span></a></li></ol></li></ol>
-    </div>
-    <div class="sidebar-bg">
-        <div class="card-tags">
-            
+            </div>
         </div>
-    </div>
-    <div>
-        <div class="categories-list">
-            
-                <div class="category-item">
-                    <a href="/categories/mywork/" aria-label="分类: mywork">
-                        mywork
-                        <span>(31)</span>
-                    </a>
-                </div>
-            
-        </div>
-    </div>
-</aside>
-
-    <!-- No categories available -->
-
-
-    <footer>
-    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
-    <span>👁<span id="busuanzi_value_site_pv"></span></span>
-    <div class="padding border border-sub border-dotted fadein-right">
-        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
-    </div>
-    <span>
-        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
-            <p class="hover-underline night" style="display: inline;">Hexo</p>
-        </a> 驱动
-        <p style="display: inline; color: red;">❤</p>
-        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
-            <p class="hover-underline night" style="display: inline;">Wang</p>
-        </a> 主题构建
-    </span>
-
-    <!-- 带图片的链接 -->
-    <div class="footer-links">
-        
-            
-                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
-                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
-                </a>
-            
-                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
-                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
-                </a>
-            
-        
-    </div>
-
-    <!-- 纯文本链接 -->
-    <div class="footer-text-links">
-        
-            
-                <a href="" target="_blank" rel="noopener">
-                    文字链接
-                </a>
-            
-        
-    </div>
-</footer>
-    
-<script src="/js/background.js"></script>
-    
-        
-<script src="/js/search.js"></script>
     
 </main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    <script id="pjax-script" src="/js/libs/pjax.min.js"></script>
+<script>
+  (function () {
+    const isGoogleTranslate = location.hostname.includes('.translate.goog')
+
+    if (isGoogleTranslate) {
+      document.getElementById('pjax-script')?.remove()
+      return
+    }
+
+    function initPjax () {
+      if (window.pjax) return
+
+      window.pjax = new Pjax({
+        selectors: [
+          'head title',
+          '.page-container',
+          '.pjax'
+        ],
+        history: true,
+        debug: false,
+        cacheBust: false,
+        timeout: 0,
+        analytics: false,
+        currentUrlFullReload: false,
+        scrollRestoration: false
+      })
+
+      document.addEventListener('pjax:send', onPjaxSend)
+      document.addEventListener('pjax:complete', onPjaxComplete)
+    }
+
+    function onPjaxSend () {
+      KEEP?.utils?.pjaxProgressBarStart()
+    }
+
+    function onPjaxComplete () {
+      KEEP?.utils?.pjaxProgressBarEnd()
+
+      window?.pjax?.executeScripts(
+        document.querySelectorAll('script[data-pjax], .pjax script')
+      )
+
+      KEEP?.initExecute()
+    }
+
+    // DOM Ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPjax)
+    } else {
+      initPjax()
+    }
+  })()
+</script>
+
+
+
+
 </body>
 </html>

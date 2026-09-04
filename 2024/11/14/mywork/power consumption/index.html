@@ -1,211 +1,499 @@
 <!DOCTYPE html>
-<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
-fb: http://ogp.me/ns/fb#
-article: http://ogp.me/ns/article#">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="tanyunhao">
+    
+    <title>
+        
+            power consumption |
+        
+        盗梦空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<title>power consumption || 盗梦空间</title>
-<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="power consumption">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/power%20consumption/index.html">
-<meta property="og:image" content="">
-<meta property="og:site_name" content="盗梦空间">
-<meta property="og:author" content="谭云浩">
+    
+        <link rel="shortcut icon" href="/images/avatar.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
-  
-  
-  
-  <meta name="description" content="1.实验背景与目标1.1.实验背景随着能源消耗的快速增长和智能电网的普及，准确预测电力需求已成为能源管理系统的核心任务。用电量预测不仅有助于电网运营商进行负荷调度和发电计划，还能为消费者提供节能建议，实现供需平衡和节能减排。本实验基于实际用电量数据集，探索多变量时间序列数据中的用电模式，旨在建立能够同时预测具">
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script>
+        (function () {
+            let theme = localStorage.getItem('KEEP-THEME-STATUS');
+            let classname = "";
+            if (!theme || (JSON.parse(theme).isAutoTheme)){
+                classname = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark-mode" : "light-mode";
+            }
+            else{
+                classname = JSON.parse(theme).isDark ? "dark-mode" : "light-mode";
+            }
+            document.documentElement.classList.add(classname);
+        })();
+    </script>
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"盗梦空间","author":"tanyunhao","avatar":"/images/avatar.jpg","logo":"/images/avatar.jpg","favicon":"/images/avatar.jpg"},"menu":{"home":"/                     || fa-solid fa-home","archives":"/archives         || fa-solid fa-box-archive","categories":"/categories     || fa-solid fa-layer-group","links":"/links               || fa-solid fa-link","tools":"/tools               || fa-solid fa-tools","about":"/about               || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"生活的热闹与生命的骄傲，一个都不能少","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"tanyunhaoyyds","github_admins":["tanyunhaoyyds"],"repository":"hexo-site-comments","client_id":"Ov23liaNlY4iGiutYiDg","client_secret":"62fe13dbbfc8308f06422c153ba1b94bcdec1788","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","search_db_path":"keep-search.json","source_data":{"links":[{"title":"朋友们 1"},{"name":"XPoet","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"不知名艺术家","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}],"tools":[{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk0"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},"......","......","......"]},"version":"4.3.0"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.2"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
-<script src="/js/wang.js"></script>
-
-<link rel="stylesheet" href="/css/wang.css">
-<script> console.log("Hello hexo-theme-wang"); </script>
-<meta name="generator" content="Hexo 8.1.2"></head>
 <body>
-<main>
-    <div id="agplAlert" style="z-index: 9999;">
-    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
 </div>
-    <header>
-    <nav>
-        <ul>
-            
-                <li>
-                    <a href="/" rel="noopener">
-                        
-                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
-                        
-                        首页
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/archives" rel="noopener">
-                        
-                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
-                        
-                        归档
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/categories" rel="noopener">
-                        
-                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
-                        
-                        分类
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/tags" rel="noopener">
-                        
-                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
-                        
-                        标签
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/about" rel="noopener">
-                        
-                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
-                        
-                        关于
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/links" rel="noopener">
-                        
-                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
-                        
-                        友链
-                    </a>
-                </li>
-            
-                <li>
-                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
-                        
-                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
-                        
-                        开往
-                    </a>
-                </li>
-            
-            
-                <li>
-                    <button class="search-toggle-btn" aria-label="打开搜索">
-                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
-                        搜索
-                    </button>
-                </li>
-            
-        </ul>
-    </nav>
-</header>
 
-<script src="/js/header.js"></script>
 
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
     
-<script src="/js/search.js"></script>
 
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
 
-    
-        <!-- 搜索模态框 -->
-        <div id="search-modal" class="search-modal">
-          <div class="search-modal-content">
-            <div class="search-header">
-              <form class="search-form" action="#" onsubmit="return false;">
-                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
-                <button type="button" class="search-close-btn" aria-label="关闭">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </form>
-            </div>
-            <div id="search-results"></div>
-          </div>
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/avatar.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               盗梦空间
+            </a>
         </div>
 
-        <script>
-        // 向全局对象添加i18n数据，以便search.js使用
-        window.WANG_THEME = window.WANG_THEME || {};
-        window.WANG_THEME.i18n = {
-          search: {
-            noResults: '没有找到相关结果',
-            loading: '正在加载...',
-            placeholder: '输入关键词搜索',
-            close: '关闭',
-            shortcut_tip: '按 ESC 关闭',
-            toggle_search: '打开搜索',
-            error_loading: '加载搜索数据失败'
-          }
-        };
-        </script>
-    
-    <aside class="sidebar-container sidebar-left">
-    <div class="sidebar-bg">
-        <h2 class="site-title">盗梦空间</h2>
-        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
-        <h2 class="site-author">谭云浩</h2>
-        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                LINKS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tools"></i>
+                                
+                                TOOLS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="sidebar-bg">
-        <ul class="social_links">
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
             
-                <li>
-                    <a target="_blank" rel="noopener" href="https://github.com/tanyunhao" aria-label="Github的链接">
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
                         
-                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
-                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
-                            </div>
-                        
-                    </a>
+                    </label>
+                    
                 </li>
             
-                <li>
-                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
                         
-                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
-                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
-                            </div>
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
                         
-                    </a>
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            LINKS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tools"></i>
+                                </span>
+                            
+                            TOOLS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
                 </li>
             
         </ul>
     </div>
-</aside>
-<div class="post-container">
-  <article class="post">
-    <h1 class="post-title">power consumption</h1>
 
-    <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
-      
-        <span class="post-categories">
-          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
-        </span>
-      
-      
-        <span class="post-updated">
-          最后更新于 <time datetime="2026-06-29T15:07:54.133Z">2026-06-29</time>
-        </span>
-      
-      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        power consumption
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Tan Yunhao</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-14 09:08:00</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Sep 04 2026 10:57:58 GMT+0000">2026-09-04 10:57:58</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/mywork/">mywork</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
-    <div class="post-content">
-      <h1 id="1-实验背景与目标"><a href="#1-实验背景与目标" class="headerlink" title="1. 实验背景与目标"></a>1. 实验背景与目标</h1><h2 id="1-1-实验背景"><a href="#1-1-实验背景" class="headerlink" title="1.1. 实验背景"></a>1.1. 实验背景</h2><p>随着能源消耗的快速增长和智能电网的普及，准确预测电力需求已成为能源管理系统的核心任务。用电量预测不仅有助于电网运营商进行负荷调度和发电计划，还能为消费者提供节能建议，实现供需平衡和节能减排。本实验基于实际用电量数据集，探索多变量时间序列数据中的用电模式，旨在建立能够同时预测具体用电量数值和识别用电等级的智能模型。</p>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="1-实验背景与目标"><a href="#1-实验背景与目标" class="headerlink" title="1. 实验背景与目标"></a>1. 实验背景与目标</h1><h2 id="1-1-实验背景"><a href="#1-1-实验背景" class="headerlink" title="1.1. 实验背景"></a>1.1. 实验背景</h2><p>随着能源消耗的快速增长和智能电网的普及，准确预测电力需求已成为能源管理系统的核心任务。用电量预测不仅有助于电网运营商进行负荷调度和发电计划，还能为消费者提供节能建议，实现供需平衡和节能减排。本实验基于实际用电量数据集，探索多变量时间序列数据中的用电模式，旨在建立能够同时预测具体用电量数值和识别用电等级的智能模型。</p>
 <h2 id="1-2-实验目标"><a href="#1-2-实验目标" class="headerlink" title="1.2. 实验目标"></a>1.2. 实验目标</h2><ol>
 <li><strong>回归分析</strong>：建立准确的用电量数值预测模型，预测未来时间点的总用电量</li>
 <li><strong>分类分析</strong>：将用电量分为低、中、高三个等级，构建分类识别模型</li>
@@ -220,22 +508,20 @@ article: http://ogp.me/ns/article#">
 <li><strong>时间跨度</strong>：以15分钟为间隔，覆盖多个月份，反映不同时间尺度的用电模式</li>
 <li><strong>数据格式</strong>：结构化CSV文件，包含数值型和文本型数据</li>
 </ul>
-<h2 id="2-3-特征说明"><a href="#2-3-特征说明" class="headerlink" title="2.3. 特征说明"></a>2.3. 特征说明</h2><div class="table-container">
-<table>
+<h2 id="2-3-特征说明"><a href="#2-3-特征说明" class="headerlink" title="2.3. 特征说明"></a>2.3. 特征说明</h2><table>
 <thead>
 <tr>
 <th>特征名称</th>
 <th>数据类型</th>
 <th>物理意义</th>
-<th>单位/说明</th>
+<th>单位&#x2F;说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>datetime</td>
 <td>文本</td>
 <td>采集时间</td>
-<td>年/月/日 时:分</td>
+<td>年&#x2F;月&#x2F;日 时:分</td>
 </tr>
 <tr>
 <td>temperature</td>
@@ -253,7 +539,7 @@ article: http://ogp.me/ns/article#">
 <td>wind_speed</td>
 <td>数值</td>
 <td>风速</td>
-<td>m/s</td>
+<td>m&#x2F;s</td>
 </tr>
 <tr>
 <td>gen_diffuse</td>
@@ -285,9 +571,7 @@ article: http://ogp.me/ns/article#">
 <td>区域3用电量</td>
 <td>kW</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h1 id="3-数据预处理与标准化"><a href="#3-数据预处理与标准化" class="headerlink" title="3. 数据预处理与标准化"></a>3. 数据预处理与标准化</h1><h2 id="3-1-时间特征编码"><a href="#3-1-时间特征编码" class="headerlink" title="3.1. 时间特征编码"></a>3.1. 时间特征编码</h2><p>从原始datetime字符串中提取丰富的时序特征：</p>
 <ul>
 <li><strong>基础时间特征</strong>：小时、分钟、日、月、年</li>
@@ -323,12 +607,12 @@ article: http://ogp.me/ns/article#">
 <h2 id="4-2-特征相关性分析"><a href="#4-2-特征相关性分析" class="headerlink" title="4.2. 特征相关性分析"></a>4.2. 特征相关性分析</h2><ol>
 <li><strong>特征间相关性矩阵</strong>：计算14个特征间的Pearson相关系数，通过热力图可视化</li>
 <li><strong>特征-目标相关性</strong>：<ul>
-<li>回归目标：与总用电量最相关的特征为滞后用电量（r=0.997）、滞后用电等级（r=0.911）、时间段（r=0.702）和小时（r=0.680）</li>
-<li>分类目标：与用电等级最相关的特征为滞后用电等级（点二列相关=0.563）、滞后用电量（0.548）、时间段（0.432）和小时（0.437）</li>
+<li>回归目标：与总用电量最相关的特征为滞后用电量（r&#x3D;0.997）、滞后用电等级（r&#x3D;0.911）、时间段（r&#x3D;0.702）和小时（r&#x3D;0.680）</li>
+<li>分类目标：与用电等级最相关的特征为滞后用电等级（点二列相关&#x3D;0.563）、滞后用电量（0.548）、时间段（0.432）和小时（0.437）</li>
 </ul>
 </li>
 <li><strong>强相关特征识别</strong>：筛选相关系数绝对值大于0.3的特征，发现时间相关特征和滞后特征与目标变量高度相关</li>
-<li><strong>多重共线性检测</strong>：滞后用电量与滞后用电等级高度相关（r=0.911），但考虑到两者包含不同信息（数值和等级），均予以保留</li>
+<li><strong>多重共线性检测</strong>：滞后用电量与滞后用电等级高度相关（r&#x3D;0.911），但考虑到两者包含不同信息（数值和等级），均予以保留</li>
 </ol>
 <h2 id="4-3-可视化分析"><a href="#4-3-可视化分析" class="headerlink" title="4.3. 可视化分析"></a>4.3. 可视化分析</h2><ol>
 <li><strong>相关系数热力图</strong>：展示特征间的相关性模式，发现时间特征与滞后特征之间的强相关性</li>
@@ -371,8 +655,8 @@ article: http://ogp.me/ns/article#">
 </ul>
 <h2 id="7-2-回归模型评估"><a href="#7-2-回归模型评估" class="headerlink" title="7.2. 回归模型评估"></a>7.2. 回归模型评估</h2><p>使用多种评估指标全面衡量回归性能，结果如下：</p>
 <ul>
-<li><strong>训练集</strong>：MSE=975,750.70，RMSE=987.80 kW，MAE=661.73 kW，R²=0.9970</li>
-<li><strong>测试集</strong>：MSE=865,758.75，RMSE=930.46 kW，MAE=626.91 kW，R²=0.9955</li>
+<li><strong>训练集</strong>：MSE&#x3D;975,750.70，RMSE&#x3D;987.80 kW，MAE&#x3D;661.73 kW，R²&#x3D;0.9970</li>
+<li><strong>测试集</strong>：MSE&#x3D;865,758.75，RMSE&#x3D;930.46 kW，MAE&#x3D;626.91 kW，R²&#x3D;0.9955</li>
 </ul>
 <h2 id="7-3-分类模型评估"><a href="#7-3-分类模型评估" class="headerlink" title="7.3. 分类模型评估"></a>7.3. 分类模型评估</h2><p>采用多维度评估分类性能，结果如下：</p>
 <ul>
@@ -388,9 +672,9 @@ article: http://ogp.me/ns/article#">
 <h2 id="7-4-训练结果分析"><a href="#7-4-训练结果分析" class="headerlink" title="7.4. 训练结果分析"></a>7.4. 训练结果分析</h2><p>两个模型在训练集上都表现出色，回归模型R²达到0.9970，分类模型准确率达到0.9809，表明模型能够很好地学习训练数据中的模式。</p>
 <h2 id="7-5-测试结果分析"><a href="#7-5-测试结果分析" class="headerlink" title="7.5. 测试结果分析"></a>7.5. 测试结果分析</h2><p>在测试集上，回归模型R²为0.9955，分类模型准确率为0.9807，与训练集性能接近，表明模型没有过拟合，具有良好的泛化能力。</p>
 <h1 id="8-结果分析与讨论"><a href="#8-结果分析与讨论" class="headerlink" title="8. 结果分析与讨论"></a>8. 结果分析与讨论</h1><h2 id="8-1-相关系数分析结果"><a href="#8-1-相关系数分析结果" class="headerlink" title="8.1. 相关系数分析结果"></a>8.1. 相关系数分析结果</h2><ol>
-<li><strong>强相关特征识别</strong>：滞后用电量（r=0.997）和滞后用电等级（r=0.911）与总用电量高度相关，表明用电量具有很强的自相关性</li>
-<li><strong>时间模式</strong>：时间段（r=0.702）和小时（r=0.680）与用电量高度相关，验证了用电量的时间依赖性</li>
-<li><strong>环境因素影响</strong>：温度（r=0.488）与用电量正相关，湿度（r=-0.299）与用电量负相关，符合物理直觉</li>
+<li><strong>强相关特征识别</strong>：滞后用电量（r&#x3D;0.997）和滞后用电等级（r&#x3D;0.911）与总用电量高度相关，表明用电量具有很强的自相关性</li>
+<li><strong>时间模式</strong>：时间段（r&#x3D;0.702）和小时（r&#x3D;0.680）与用电量高度相关，验证了用电量的时间依赖性</li>
+<li><strong>环境因素影响</strong>：温度（r&#x3D;0.488）与用电量正相关，湿度（r&#x3D;-0.299）与用电量负相关，符合物理直觉</li>
 </ol>
 <h2 id="8-2-回归模型性能分析"><a href="#8-2-回归模型性能分析" class="headerlink" title="8.2. 回归模型性能分析"></a>8.2. 回归模型性能分析</h2><ol>
 <li><strong>预测精度</strong>：测试集RMSE为930.46 kW，相对于均值71,222.89 kW，相对误差约为1.3%，预测精度很高</li>
@@ -456,207 +740,590 @@ article: http://ogp.me/ns/article#">
 <li><strong>系统集成</strong>：将预测模型嵌入能源管理系统，实现预测与控制的闭环，提高系统智能化水平</li>
 </ol>
 
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                power consumption
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/11/14/mywork/power consumption/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">tanyunhao</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2024-11-14 09:08</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
     </div>
-  </article>
-  <div class="ccbyncsa">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright">
-                    <div class="author">
-                        <p>作者</p>
-                        <p>谭云浩</p>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
                     </div>
-                    <div class="title">
-                        <p>标题</p>
-                        <p>power consumption</p>
-                    </div>
-                        <div class="publish">
-                            <p>发布于</p>
-                            <p>2024-11-14</p>
-                        </div>
-                    <div class="ccbyncsa-icon">
-                        <p>授权协议</p>
-                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
-                        <img src="/images/cc.svg" alt="cc">
-                        <img src="/images/by.svg" alt="by">
-                        <img src="/images/nc.svg" alt="nc">
-                        <img src="/images/sa.svg" alt="sa">
-                        </p>
-                        </a>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/14/mywork/linux%20server%E8%BF%9E%E6%8E%A5%E5%8D%8E%E7%A7%91%E6%A0%A1%E5%9B%AD%E7%BD%91/"
+                                   title="linux server连接华科校园网"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">linux server连接华科校园网</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/14/mywork/%E4%BF%A1%E7%94%A8%E5%8D%A1%E7%8A%B6%E6%80%81/"
+                                   title="信用卡状态"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">信用卡状态</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liaNlY4iGiutYiDg',
+                clientSecret: '62fe13dbbfc8308f06422c153ba1b94bcdec1788',
+                repo: 'hexo-site-comments',
+                owner: 'tanyunhaoyyds',
+                admin: 'tanyunhaoyyds',
+                id: gitalkPathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'en'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF%E4%B8%8E%E7%9B%AE%E6%A0%87"><span class="nav-text">1. 实验背景与目标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF"><span class="nav-text">1.1. 实验背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E6%A0%87"><span class="nav-text">1.2. 实验目标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8F%8F%E8%BF%B0"><span class="nav-text">2. 数据集描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><span class="nav-text">2.1. 数据来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E8%A7%84%E6%A0%BC"><span class="nav-text">2.2. 数据规格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E7%89%B9%E5%BE%81%E8%AF%B4%E6%98%8E"><span class="nav-text">2.3. 特征说明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E4%B8%8E%E6%A0%87%E5%87%86%E5%8C%96"><span class="nav-text">3. 数据预处理与标准化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%97%B6%E9%97%B4%E7%89%B9%E5%BE%81%E7%BC%96%E7%A0%81"><span class="nav-text">3.1. 时间特征编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E7%9B%AE%E6%A0%87%E5%8F%98%E9%87%8F%E6%9E%84%E9%80%A0"><span class="nav-text">3.2. 目标变量构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%BB%9E%E5%90%8E%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="nav-text">3.3. 滞后特征工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E6%9C%80%E7%BB%88%E7%89%B9%E5%BE%81%E7%9F%A9%E9%98%B5"><span class="nav-text">3.4. 最终特征矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">4. 数据探索性分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E7%94%A8%E7%94%B5%E9%87%8F%E5%88%86%E5%B8%83%E7%89%B9%E5%BE%81"><span class="nav-text">4.1. 用电量分布特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E7%89%B9%E5%BE%81%E7%9B%B8%E5%85%B3%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">4.2. 特征相关性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90"><span class="nav-text">4.3. 可视化分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%E5%9B%9E%E5%BD%92"><span class="nav-text">5. 回归模型：决策树回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E4%BE%9D%E6%8D%AE"><span class="nav-text">5.1. 模型选择依据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-text">5.2. 算法实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E8%B6%85%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="nav-text">5.3. 超参数设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="nav-text">5.4. 特征选择策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%E5%88%86%E7%B1%BB"><span class="nav-text">6. 分类模型：决策树分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-%E5%A4%9A%E5%88%86%E7%B1%BB%E7%AD%96%E7%95%A5"><span class="nav-text">6.1. 多分类策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-text">6.2. 算法实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-%E8%B6%85%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="nav-text">6.3. 超参数设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="nav-text">6.4. 特征选择策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E4%B8%8E%E8%AF%84%E4%BC%B0"><span class="nav-text">7. 模型训练与评估</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-%E6%95%B0%E6%8D%AE%E5%88%92%E5%88%86%E7%AD%96%E7%95%A5"><span class="nav-text">7.1. 数据划分策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-text">7.2. 回归模型评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-text">7.3. 分类模型评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4-%E8%AE%AD%E7%BB%83%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-text">7.4. 训练结果分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-5-%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-text">7.5. 测试结果分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%A8%E8%AE%BA"><span class="nav-text">8. 结果分析与讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C"><span class="nav-text">8.1. 相关系数分析结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-text">8.2. 回归模型性能分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-text">8.3. 分类模型性能分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-4-%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90"><span class="nav-text">8.4. 模型对比分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-5-%E7%89%B9%E5%BE%81%E9%87%8D%E8%A6%81%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">8.5. 特征重要性分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE%E4%B8%8E%E6%9C%AA%E6%9D%A5%E5%B7%A5%E4%BD%9C"><span class="nav-text">9. 改进建议与未来工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-%E6%95%B0%E6%8D%AE%E5%B1%82%E9%9D%A2%E6%94%B9%E8%BF%9B"><span class="nav-text">9.1. 数据层面改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2-%E6%A8%A1%E5%9E%8B%E5%B1%82%E9%9D%A2%E6%94%B9%E8%BF%9B"><span class="nav-text">9.2. 模型层面改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-%E8%AF%84%E4%BC%B0%E4%B8%8E%E8%A7%A3%E9%87%8A"><span class="nav-text">9.3. 评估与解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-4-%E5%BA%94%E7%94%A8%E6%89%A9%E5%B1%95"><span class="nav-text">9.4. 应用扩展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-%E7%BB%93%E8%AE%BA"><span class="nav-text">10. 结论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-1-%E4%B8%BB%E8%A6%81%E7%BB%93%E8%AE%BA"><span class="nav-text">10.1. 主要结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-2-%E7%A0%94%E7%A9%B6%E6%84%8F%E4%B9%89"><span class="nav-text">10.2. 研究意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-3-%E5%AE%9E%E8%B7%B5%E5%BB%BA%E8%AE%AE"><span class="nav-text">10.3. 实践建议</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">tanyunhao</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
             </div>
         </div>
     </div>
 </div>
-  <nav class="post-pagination">
-    
-      <div class="post-prev">
-        <span class="nav-label">上一篇</span>
-        <a href="/2024/11/14/mywork/%E4%BF%A1%E7%94%A8%E5%8D%A1%E7%8A%B6%E6%80%81/">信用卡状态</a>
-      </div>
-    
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2024/11/14/mywork/Calendar%EF%BC%88%E7%94%A8Python%E5%BC%80%E5%8F%91%E7%9A%84%E5%B8%A6%E6%9C%89%E5%A4%87%E5%BF%98%E5%BD%95%E3%80%81%E5%A4%A9%E6%B0%94%E4%BF%A1%E6%81%AF%E7%9A%84Calendar%EF%BC%89/">Calendar（用Python开发的带有备忘录、天气信息的Calendar）</a>
-      </div>
-    
-  </nav>
-  
 
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF%E4%B8%8E%E7%9B%AE%E6%A0%87"><span class="nav-text">1. 实验背景与目标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF"><span class="nav-text">1.1. 实验背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E6%A0%87"><span class="nav-text">1.2. 实验目标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8F%8F%E8%BF%B0"><span class="nav-text">2. 数据集描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><span class="nav-text">2.1. 数据来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E8%A7%84%E6%A0%BC"><span class="nav-text">2.2. 数据规格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E7%89%B9%E5%BE%81%E8%AF%B4%E6%98%8E"><span class="nav-text">2.3. 特征说明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E4%B8%8E%E6%A0%87%E5%87%86%E5%8C%96"><span class="nav-text">3. 数据预处理与标准化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%97%B6%E9%97%B4%E7%89%B9%E5%BE%81%E7%BC%96%E7%A0%81"><span class="nav-text">3.1. 时间特征编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E7%9B%AE%E6%A0%87%E5%8F%98%E9%87%8F%E6%9E%84%E9%80%A0"><span class="nav-text">3.2. 目标变量构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%BB%9E%E5%90%8E%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="nav-text">3.3. 滞后特征工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E6%9C%80%E7%BB%88%E7%89%B9%E5%BE%81%E7%9F%A9%E9%98%B5"><span class="nav-text">3.4. 最终特征矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">4. 数据探索性分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E7%94%A8%E7%94%B5%E9%87%8F%E5%88%86%E5%B8%83%E7%89%B9%E5%BE%81"><span class="nav-text">4.1. 用电量分布特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E7%89%B9%E5%BE%81%E7%9B%B8%E5%85%B3%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">4.2. 特征相关性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90"><span class="nav-text">4.3. 可视化分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%E5%9B%9E%E5%BD%92"><span class="nav-text">5. 回归模型：决策树回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E4%BE%9D%E6%8D%AE"><span class="nav-text">5.1. 模型选择依据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-text">5.2. 算法实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E8%B6%85%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="nav-text">5.3. 超参数设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="nav-text">5.4. 特征选择策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%E5%88%86%E7%B1%BB"><span class="nav-text">6. 分类模型：决策树分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-%E5%A4%9A%E5%88%86%E7%B1%BB%E7%AD%96%E7%95%A5"><span class="nav-text">6.1. 多分类策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-text">6.2. 算法实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-%E8%B6%85%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="nav-text">6.3. 超参数设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="nav-text">6.4. 特征选择策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E4%B8%8E%E8%AF%84%E4%BC%B0"><span class="nav-text">7. 模型训练与评估</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-%E6%95%B0%E6%8D%AE%E5%88%92%E5%88%86%E7%AD%96%E7%95%A5"><span class="nav-text">7.1. 数据划分策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-text">7.2. 回归模型评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-text">7.3. 分类模型评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4-%E8%AE%AD%E7%BB%83%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-text">7.4. 训练结果分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-5-%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-text">7.5. 测试结果分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%A8%E8%AE%BA"><span class="nav-text">8. 结果分析与讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C"><span class="nav-text">8.1. 相关系数分析结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-text">8.2. 回归模型性能分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-text">8.3. 分类模型性能分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-4-%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90"><span class="nav-text">8.4. 模型对比分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-5-%E7%89%B9%E5%BE%81%E9%87%8D%E8%A6%81%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-text">8.5. 特征重要性分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE%E4%B8%8E%E6%9C%AA%E6%9D%A5%E5%B7%A5%E4%BD%9C"><span class="nav-text">9. 改进建议与未来工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-%E6%95%B0%E6%8D%AE%E5%B1%82%E9%9D%A2%E6%94%B9%E8%BF%9B"><span class="nav-text">9.1. 数据层面改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2-%E6%A8%A1%E5%9E%8B%E5%B1%82%E9%9D%A2%E6%94%B9%E8%BF%9B"><span class="nav-text">9.2. 模型层面改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-%E8%AF%84%E4%BC%B0%E4%B8%8E%E8%A7%A3%E9%87%8A"><span class="nav-text">9.3. 评估与解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-4-%E5%BA%94%E7%94%A8%E6%89%A9%E5%B1%95"><span class="nav-text">9.4. 应用扩展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-%E7%BB%93%E8%AE%BA"><span class="nav-text">10. 结论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-1-%E4%B8%BB%E8%A6%81%E7%BB%93%E8%AE%BA"><span class="nav-text">10.1. 主要结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-2-%E7%A0%94%E7%A9%B6%E6%84%8F%E4%B9%89"><span class="nav-text">10.2. 研究意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-3-%E5%AE%9E%E8%B7%B5%E5%BB%BA%E8%AE%AE"><span class="nav-text">10.3. 实践建议</span></a></li></ol></li></ol>
+    </div>
 </div>
 
-<script src="/js/copy.js"></script>
-
-<aside class="sidebar-container sidebar-right">
-    <div class="sidebar-bg">
-        <p id="date"></p>
-<script>
-  function updateDate() {
-    var now = new Date();
-    var dateString = now.toISOString().slice(0, 10);
-    document.getElementById('date').textContent = dateString;
-  }
-
-  window.addEventListener('load', function() {
-    updateDate();
-    // 更新频率为每5分钟更新一次，减少不必要的更新
-    setInterval(updateDate, 300000);
-  });
-</script>
-        <span id="clock" role="timer" aria-live="polite"></span>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const clockElement = document.getElementById('clock');
-    let timerInterval;
-
-    // 格式化时间函数
-    function formatTime(unit) {
-      return unit < 10 ? '0' + unit : unit;
-    }
-
-    // 更新时钟 - 只显示小时和分钟
-    function updateClock() {
-      const now = new Date();
-      const hours = formatTime(now.getHours());
-      const minutes = formatTime(now.getMinutes());
-      clockElement.textContent = `${hours}:${minutes}`;
-    }
-
-    // 初始化时钟
-    function startClock() {
-      // 立即更新一次时间
-      updateClock();
-
-      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
-      const now = new Date();
-      const secondsToNextMinute = 60 - now.getSeconds();
-
-      // 先设置一个定时器到下一分钟
-      setTimeout(() => {
-        updateClock();
-        // 然后每分钟更新一次
-        timerInterval = setInterval(updateClock, 60000);
-      }, secondsToNextMinute * 1000);
-    }
-
-    // 页面可见性变化时的优化
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        // 页面不可见时停止更新
-        clearInterval(timerInterval);
-      } else {
-        // 页面重新可见时，重新开始
-        clearInterval(timerInterval);
-        startClock();
-      }
-    });
-
-    // 启动时钟
-    startClock();
-  });
-</script>
-
-
-    </div>
-    <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF%E4%B8%8E%E7%9B%AE%E6%A0%87"><span class="toc-number">1.</span> <span class="toc-text">1. 实验背景与目标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%AE%9E%E9%AA%8C%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 实验背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E6%A0%87"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 实验目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E9%9B%86%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">2. 数据集描述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 数据来源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E6%95%B0%E6%8D%AE%E8%A7%84%E6%A0%BC"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 数据规格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E7%89%B9%E5%BE%81%E8%AF%B4%E6%98%8E"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 特征说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E4%B8%8E%E6%A0%87%E5%87%86%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">3. 数据预处理与标准化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%97%B6%E9%97%B4%E7%89%B9%E5%BE%81%E7%BC%96%E7%A0%81"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 时间特征编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E7%9B%AE%E6%A0%87%E5%8F%98%E9%87%8F%E6%9E%84%E9%80%A0"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 目标变量构造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%BB%9E%E5%90%8E%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 滞后特征工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E6%9C%80%E7%BB%88%E7%89%B9%E5%BE%81%E7%9F%A9%E9%98%B5"><span class="toc-number">3.4.</span> <span class="toc-text">3.4. 最终特征矩阵</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">4. 数据探索性分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%94%A8%E7%94%B5%E9%87%8F%E5%88%86%E5%B8%83%E7%89%B9%E5%BE%81"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 用电量分布特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%89%B9%E5%BE%81%E7%9B%B8%E5%85%B3%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 特征相关性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 可视化分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%E5%9B%9E%E5%BD%92"><span class="toc-number">5.</span> <span class="toc-text">5. 回归模型：决策树回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E4%BE%9D%E6%8D%AE"><span class="toc-number">5.1.</span> <span class="toc-text">5.1. 模型选择依据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.2.</span> <span class="toc-text">5.2. 算法实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E8%B6%85%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="toc-number">5.3.</span> <span class="toc-text">5.3. 超参数设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="toc-number">5.4.</span> <span class="toc-text">5.4. 特征选择策略</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%E5%88%86%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text">6. 分类模型：决策树分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E5%A4%9A%E5%88%86%E7%B1%BB%E7%AD%96%E7%95%A5"><span class="toc-number">6.1.</span> <span class="toc-text">6.1. 多分类策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">6.2.</span> <span class="toc-text">6.2. 算法实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E8%B6%85%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="toc-number">6.3.</span> <span class="toc-text">6.3. 超参数设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="toc-number">6.4.</span> <span class="toc-text">6.4. 特征选择策略</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E4%B8%8E%E8%AF%84%E4%BC%B0"><span class="toc-number">7.</span> <span class="toc-text">7. 模型训练与评估</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E6%95%B0%E6%8D%AE%E5%88%92%E5%88%86%E7%AD%96%E7%95%A5"><span class="toc-number">7.1.</span> <span class="toc-text">7.1. 数据划分策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="toc-number">7.2.</span> <span class="toc-text">7.2. 回归模型评估</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="toc-number">7.3.</span> <span class="toc-text">7.3. 分类模型评估</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E8%AE%AD%E7%BB%83%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-number">7.4.</span> <span class="toc-text">7.4. 训练结果分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-5-%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-number">7.5.</span> <span class="toc-text">7.5. 测试结果分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%A8%E8%AE%BA"><span class="toc-number">8.</span> <span class="toc-text">8. 结果分析与讨论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C"><span class="toc-number">8.1.</span> <span class="toc-text">8.1. 相关系数分析结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">8.2.</span> <span class="toc-text">8.2. 回归模型性能分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">8.3.</span> <span class="toc-text">8.3. 分类模型性能分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90"><span class="toc-number">8.4.</span> <span class="toc-text">8.4. 模型对比分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-5-%E7%89%B9%E5%BE%81%E9%87%8D%E8%A6%81%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">8.5.</span> <span class="toc-text">8.5. 特征重要性分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE%E4%B8%8E%E6%9C%AA%E6%9D%A5%E5%B7%A5%E4%BD%9C"><span class="toc-number">9.</span> <span class="toc-text">9. 改进建议与未来工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E6%95%B0%E6%8D%AE%E5%B1%82%E9%9D%A2%E6%94%B9%E8%BF%9B"><span class="toc-number">9.1.</span> <span class="toc-text">9.1. 数据层面改进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E6%A8%A1%E5%9E%8B%E5%B1%82%E9%9D%A2%E6%94%B9%E8%BF%9B"><span class="toc-number">9.2.</span> <span class="toc-text">9.2. 模型层面改进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E8%AF%84%E4%BC%B0%E4%B8%8E%E8%A7%A3%E9%87%8A"><span class="toc-number">9.3.</span> <span class="toc-text">9.3. 评估与解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-4-%E5%BA%94%E7%94%A8%E6%89%A9%E5%B1%95"><span class="toc-number">9.4.</span> <span class="toc-text">9.4. 应用扩展</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E7%BB%93%E8%AE%BA"><span class="toc-number">10.</span> <span class="toc-text">10. 结论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E4%B8%BB%E8%A6%81%E7%BB%93%E8%AE%BA"><span class="toc-number">10.1.</span> <span class="toc-text">10.1. 主要结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E7%A0%94%E7%A9%B6%E6%84%8F%E4%B9%89"><span class="toc-number">10.2.</span> <span class="toc-text">10.2. 研究意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E5%AE%9E%E8%B7%B5%E5%BB%BA%E8%AE%AE"><span class="toc-number">10.3.</span> <span class="toc-text">10.3. 实践建议</span></a></li></ol></li></ol>
-    </div>
-    <div class="sidebar-bg">
-        <div class="card-tags">
-            
+            </div>
         </div>
-    </div>
-    <div>
-        <div class="categories-list">
-            
-                <div class="category-item">
-                    <a href="/categories/mywork/" aria-label="分类: mywork">
-                        mywork
-                        <span>(31)</span>
-                    </a>
-                </div>
-            
-        </div>
-    </div>
-</aside>
-
-    <!-- No categories available -->
-
-
-    <footer>
-    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
-    <span>👁<span id="busuanzi_value_site_pv"></span></span>
-    <div class="padding border border-sub border-dotted fadein-right">
-        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
-    </div>
-    <span>
-        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
-            <p class="hover-underline night" style="display: inline;">Hexo</p>
-        </a> 驱动
-        <p style="display: inline; color: red;">❤</p>
-        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
-            <p class="hover-underline night" style="display: inline;">Wang</p>
-        </a> 主题构建
-    </span>
-
-    <!-- 带图片的链接 -->
-    <div class="footer-links">
-        
-            
-                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
-                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
-                </a>
-            
-                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
-                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
-                </a>
-            
-        
-    </div>
-
-    <!-- 纯文本链接 -->
-    <div class="footer-text-links">
-        
-            
-                <a href="" target="_blank" rel="noopener">
-                    文字链接
-                </a>
-            
-        
-    </div>
-</footer>
-    
-<script src="/js/background.js"></script>
-    
-        
-<script src="/js/search.js"></script>
     
 </main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    <script id="pjax-script" src="/js/libs/pjax.min.js"></script>
+<script>
+  (function () {
+    const isGoogleTranslate = location.hostname.includes('.translate.goog')
+
+    if (isGoogleTranslate) {
+      document.getElementById('pjax-script')?.remove()
+      return
+    }
+
+    function initPjax () {
+      if (window.pjax) return
+
+      window.pjax = new Pjax({
+        selectors: [
+          'head title',
+          '.page-container',
+          '.pjax'
+        ],
+        history: true,
+        debug: false,
+        cacheBust: false,
+        timeout: 0,
+        analytics: false,
+        currentUrlFullReload: false,
+        scrollRestoration: false
+      })
+
+      document.addEventListener('pjax:send', onPjaxSend)
+      document.addEventListener('pjax:complete', onPjaxComplete)
+    }
+
+    function onPjaxSend () {
+      KEEP?.utils?.pjaxProgressBarStart()
+    }
+
+    function onPjaxComplete () {
+      KEEP?.utils?.pjaxProgressBarEnd()
+
+      window?.pjax?.executeScripts(
+        document.querySelectorAll('script[data-pjax], .pjax script')
+      )
+
+      KEEP?.initExecute()
+    }
+
+    // DOM Ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPjax)
+    } else {
+      initPjax()
+    }
+  })()
+</script>
+
+
+
+
 </body>
 </html>

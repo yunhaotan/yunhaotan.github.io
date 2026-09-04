@@ -1,291 +1,569 @@
 <!DOCTYPE html>
-<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
-fb: http://ogp.me/ns/fb#
-article: http://ogp.me/ns/article#">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="tanyunhao">
+    
+    <title>
+        
+            图书馆管理系统oracle |
+        
+        盗梦空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<title>图书馆管理系统oracle || 盗梦空间</title>
-<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="图书馆管理系统oracle">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/mywork/%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Foracle/index.html">
-<meta property="og:image" content="">
-<meta property="og:site_name" content="盗梦空间">
-<meta property="og:author" content="谭云浩">
+    
+        <link rel="shortcut icon" href="/images/avatar.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
-  
-  
-  
-  <meta name="description" content="1.图书馆管理系统姓名主要完成的工作备注2.需求分析1.1基础信息管理模块书架类型管理：通过shelf_types表定义书架类型（如“文学类”“科技类”等），便于分类管理书架。读者类型管理：利用reader_types表区分读者类型（如“学生”“教师”“普通读者”），可用于设定不同的借阅权限（如借阅时长、可借">
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script>
+        (function () {
+            let theme = localStorage.getItem('KEEP-THEME-STATUS');
+            let classname = "";
+            if (!theme || (JSON.parse(theme).isAutoTheme)){
+                classname = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark-mode" : "light-mode";
+            }
+            else{
+                classname = JSON.parse(theme).isDark ? "dark-mode" : "light-mode";
+            }
+            document.documentElement.classList.add(classname);
+        })();
+    </script>
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"盗梦空间","author":"tanyunhao","avatar":"/images/avatar.jpg","logo":"/images/avatar.jpg","favicon":"/images/avatar.jpg"},"menu":{"home":"/                     || fa-solid fa-home","archives":"/archives         || fa-solid fa-box-archive","categories":"/categories     || fa-solid fa-layer-group","links":"/links               || fa-solid fa-link","tools":"/tools               || fa-solid fa-tools","about":"/about               || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"生活的热闹与生命的骄傲，一个都不能少","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"tanyunhaoyyds","github_admins":["tanyunhaoyyds"],"repository":"hexo-site-comments","client_id":"Ov23liaNlY4iGiutYiDg","client_secret":"62fe13dbbfc8308f06422c153ba1b94bcdec1788","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","search_db_path":"keep-search.json","source_data":{"links":[{"title":"朋友们 1"},{"name":"XPoet","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"不知名艺术家","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}],"tools":[{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk0"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},"......","......","......"]},"version":"4.3.0"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.2"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
-<script src="/js/wang.js"></script>
-
-<link rel="stylesheet" href="/css/wang.css">
-<script> console.log("Hello hexo-theme-wang"); </script>
-<meta name="generator" content="Hexo 8.1.2"></head>
 <body>
-<main>
-    <div id="agplAlert" style="z-index: 9999;">
-    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
 </div>
-    <header>
-    <nav>
-        <ul>
-            
-                <li>
-                    <a href="/" rel="noopener">
-                        
-                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
-                        
-                        首页
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/archives" rel="noopener">
-                        
-                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
-                        
-                        归档
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/categories" rel="noopener">
-                        
-                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
-                        
-                        分类
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/tags" rel="noopener">
-                        
-                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
-                        
-                        标签
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/about" rel="noopener">
-                        
-                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
-                        
-                        关于
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/links" rel="noopener">
-                        
-                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
-                        
-                        友链
-                    </a>
-                </li>
-            
-                <li>
-                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
-                        
-                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
-                        
-                        开往
-                    </a>
-                </li>
-            
-            
-                <li>
-                    <button class="search-toggle-btn" aria-label="打开搜索">
-                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
-                        搜索
-                    </button>
-                </li>
-            
-        </ul>
-    </nav>
-</header>
 
-<script src="/js/header.js"></script>
 
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
     
-<script src="/js/search.js"></script>
 
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
 
-    
-        <!-- 搜索模态框 -->
-        <div id="search-modal" class="search-modal">
-          <div class="search-modal-content">
-            <div class="search-header">
-              <form class="search-form" action="#" onsubmit="return false;">
-                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
-                <button type="button" class="search-close-btn" aria-label="关闭">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </form>
-            </div>
-            <div id="search-results"></div>
-          </div>
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/avatar.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               盗梦空间
+            </a>
         </div>
 
-        <script>
-        // 向全局对象添加i18n数据，以便search.js使用
-        window.WANG_THEME = window.WANG_THEME || {};
-        window.WANG_THEME.i18n = {
-          search: {
-            noResults: '没有找到相关结果',
-            loading: '正在加载...',
-            placeholder: '输入关键词搜索',
-            close: '关闭',
-            shortcut_tip: '按 ESC 关闭',
-            toggle_search: '打开搜索',
-            error_loading: '加载搜索数据失败'
-          }
-        };
-        </script>
-    
-    <aside class="sidebar-container sidebar-left">
-    <div class="sidebar-bg">
-        <h2 class="site-title">盗梦空间</h2>
-        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
-        <h2 class="site-author">谭云浩</h2>
-        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                LINKS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tools"></i>
+                                
+                                TOOLS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="sidebar-bg">
-        <ul class="social_links">
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
             
-                <li>
-                    <a target="_blank" rel="noopener" href="https://github.com/tanyunhao" aria-label="Github的链接">
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
                         
-                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
-                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
-                            </div>
-                        
-                    </a>
+                    </label>
+                    
                 </li>
             
-                <li>
-                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
                         
-                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
-                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
-                            </div>
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
                         
-                    </a>
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            LINKS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tools"></i>
+                                </span>
+                            
+                            TOOLS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
                 </li>
             
         </ul>
     </div>
-</aside>
-<div class="post-container">
-  <article class="post">
-    <h1 class="post-title">图书馆管理系统oracle</h1>
 
-    <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
-      
-        <span class="post-categories">
-          分类：<a class="category-link" href="/categories/mywork/">mywork</a>
-        </span>
-      
-      
-        <span class="post-updated">
-          最后更新于 <time datetime="2026-06-29T15:07:54.134Z">2026-06-29</time>
-        </span>
-      
-      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        图书馆管理系统oracle
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Tan Yunhao</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-14 09:08:00</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Sep 04 2026 10:57:58 GMT+0000">2026-09-04 10:57:58</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/mywork/">mywork</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
-    <div class="post-content">
-      <h1 id="1-图书馆管理系统"><a href="#1-图书馆管理系统" class="headerlink" title="1. 图书馆管理系统"></a>1. 图书馆管理系统</h1><div class="table-container">
-<table>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="1-图书馆管理系统"><a href="#1-图书馆管理系统" class="headerlink" title="1. 图书馆管理系统"></a>1. 图书馆管理系统</h1><table>
 <thead>
 <tr>
-<th style="text-align:center">姓名</th>
-<th style="text-align:center">主要完成的工作</th>
-<th style="text-align:center">备注</th>
+<th align="center">姓名</th>
+<th align="center">主要完成的工作</th>
+<th align="center">备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<tbody><tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-</tbody>
-</table>
-</div>
-<h1 id="2-需求分析"><a href="#2-需求分析" class="headerlink" title="2. 需求分析"></a>2. 需求分析</h1><font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">1 </font><font style="color:rgb(0,0,0);">基础信息管理模块</font>
-
-<font style="color:rgb(0,0,0);">书架类型管理：通过</font><font style="color:rgb(0,0,0);">shelf_types </font><font style="color:rgb(0,0,0);">表定义书架类型（如 “文学类”“科技类” 等），便于分类管理书架。</font>
-
-<font style="color:rgb(0,0,0);">读者类型管理：利用</font><font style="color:rgb(0,0,0);">reader_types </font><font style="color:rgb(0,0,0);">表区分读者类型（如 “学生”“教师”“普通读者”），可用于设定不同的借阅权限（如借阅时长、可借数量等）。</font>
-
-<font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">2</font><font style="color:rgb(0,0,0);"> </font><font style="color:rgb(0,0,0);">资源与设施管理模块</font>
-
-<font style="color:rgb(0,0,0);">对图书馆的物理资源（书架、图书）和人力资源（工作人员）进行管理。</font>
-
-<font style="color:rgb(0,0,0);">书架管理：</font><font style="color:rgb(0,0,0);">shelves</font><font style="color:rgb(0,0,0);">表记录书架编号、类型及所属类型 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">，关联书架类型表，实现书架的分类定位和状态跟踪。</font>
-
-<font style="color:rgb(0,0,0);">图书管理：</font><font style="color:rgb(0,0,0);">books</font><font style="color:rgb(0,0,0);">表存储图书的核心信息，包括书名、作者、</font><font style="color:rgb(0,0,0);">ISBN</font><font style="color:rgb(0,0,0);">、出版年份及所在书架 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">，通过 </font><font style="color:rgb(0,0,0);">ISBN </font><font style="color:rgb(0,0,0);">唯一性约束避免重复录入，通过书架 </font><font style="color:rgb(0,0,0);">ID </font><font style="color:rgb(0,0,0);">关联书架表，实现图书的定位管理。</font>
-
-<font style="color:rgb(0,0,0);">工作人员管理：</font><font style="color:rgb(0,0,0);">staff </font><font style="color:rgb(0,0,0);">表记录工作人员的姓名、职位等信息，用于后续业务操作的责任追溯（如图书位置变更记录中的 </font><font style="color:rgb(0,0,0);">changed_by </font><font style="color:rgb(0,0,0);">字段）。</font>
-
-<font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">3</font><font style="color:rgb(0,0,0);"> </font><font style="color:rgb(0,0,0);">读者管理模块</font>
-
-<font style="color:rgb(0,0,0);">管理读者的基本信息和借阅权限。</font>
-
-<font style="color:rgb(0,0,0);">读者档案管理：</font><font style="color:rgb(0,0,0);">readers </font><font style="color:rgb(0,0,0);">表存储读者姓名、类型、联系电话等信息，通过读者类型 </font><font style="color:rgb(0,0,0);">ID </font><font style="color:rgb(0,0,0);">关联读者类型表，支持差异化服务（如学生读者可借阅更多书籍）。</font>
-
-<font style="color:rgb(0,0,0);">联系信息维护：新增的</font><font style="color:rgb(0,0,0);">contact_phone </font><font style="color:rgb(0,0,0);">字段便于图书馆发送借阅通知或逾期提醒。</font>
-
-<font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">4</font><font style="color:rgb(0,0,0);"> </font><font style="color:rgb(0,0,0);">借阅业务管理模块</font>
-
-<font style="color:rgb(0,0,0);">覆盖图书借阅的全流程，从借阅、续借到归还的自动化管理。</font>
-
-<font style="color:rgb(0,0,0);">借阅管理：</font><font style="color:rgb(0,0,0);">loans </font><font style="color:rgb(0,0,0);">表记录借阅记录，包含借阅图书 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">、读者 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">、借阅日期及应还日期（ </font><font style="color:rgb(0,0,0);">due_date </font><font style="color:rgb(0,0,0);">），通过外键关联图书和读者表，确保业务数据的一致性。</font>
-
-<font style="color:rgb(0,0,0);">归还管理：</font><font style="color:rgb(0,0,0);">returns </font><font style="color:rgb(0,0,0);">表记录归还信息，通过 </font><font style="color:rgb(0,0,0);">loan_id </font><font style="color:rgb(0,0,0);">关联借阅记录，记录归还日期，用于统计借阅时长和图书流通率。</font>
-
-<font style="color:rgb(0,0,0);">逾期管理：</font><font style="color:rgb(0,0,0);">overdue_notifications </font><font style="color:rgb(0,0,0);">表自动生成逾期通知记录，包含通知日期、读者 </font><font style="color:rgb(0,0,0);">ID </font><font style="color:rgb(0,0,0);">和提醒信息，支持定时触发通知机制（如短信、邮件），提升催还效率。</font>
-
-<font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">5</font><font style="color:rgb(0,0,0);"> </font><font style="color:rgb(0,0,0);">数据跟踪与审计模块</font>
-
-<font style="color:rgb(0,0,0);">用于记录业务操作的历史轨迹，便于追溯和数据分析。</font>
-
-<font style="color:rgb(0,0,0);">图书位置变更记录：</font><font style="color:rgb(0,0,0);">book_location_history </font><font style="color:rgb(0,0,0);">表跟踪图书的移动记录，记录旧书架 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">、新书架 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">、变更日期及操作人（工作人员 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">），帮助管理员追溯图书位置变化，优化书架布局。</font>
-
-<font style="color:rgb(0,0,0);">操作审计：通过历史记录表和通知记录表，可统计工作人员的操作日志（如图书移位）和读者的借阅行为（如逾期次数），为管理决策提供数据支持。。</font>
-
+</tbody></table>
+<h1 id="2-需求分析"><a href="#2-需求分析" class="headerlink" title="2. 需求分析"></a>2. 需求分析</h1><p><font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">1 </font><font style="color:rgb(0,0,0);">基础信息管理模块</font></p>
+<p><font style="color:rgb(0,0,0);">书架类型管理：通过</font><font style="color:rgb(0,0,0);">shelf_types </font><font style="color:rgb(0,0,0);">表定义书架类型（如 “文学类”“科技类” 等），便于分类管理书架。</font></p>
+<p><font style="color:rgb(0,0,0);">读者类型管理：利用</font><font style="color:rgb(0,0,0);">reader_types </font><font style="color:rgb(0,0,0);">表区分读者类型（如 “学生”“教师”“普通读者”），可用于设定不同的借阅权限（如借阅时长、可借数量等）。</font></p>
+<p><font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">2</font><font style="color:rgb(0,0,0);"> </font><font style="color:rgb(0,0,0);">资源与设施管理模块</font></p>
+<p><font style="color:rgb(0,0,0);">对图书馆的物理资源（书架、图书）和人力资源（工作人员）进行管理。</font></p>
+<p><font style="color:rgb(0,0,0);">书架管理：</font><font style="color:rgb(0,0,0);">shelves</font><font style="color:rgb(0,0,0);">表记录书架编号、类型及所属类型 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">，关联书架类型表，实现书架的分类定位和状态跟踪。</font></p>
+<p><font style="color:rgb(0,0,0);">图书管理：</font><font style="color:rgb(0,0,0);">books</font><font style="color:rgb(0,0,0);">表存储图书的核心信息，包括书名、作者、</font><font style="color:rgb(0,0,0);">ISBN</font><font style="color:rgb(0,0,0);">、出版年份及所在书架 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">，通过 </font><font style="color:rgb(0,0,0);">ISBN </font><font style="color:rgb(0,0,0);">唯一性约束避免重复录入，通过书架 </font><font style="color:rgb(0,0,0);">ID </font><font style="color:rgb(0,0,0);">关联书架表，实现图书的定位管理。</font></p>
+<p><font style="color:rgb(0,0,0);">工作人员管理：</font><font style="color:rgb(0,0,0);">staff </font><font style="color:rgb(0,0,0);">表记录工作人员的姓名、职位等信息，用于后续业务操作的责任追溯（如图书位置变更记录中的 </font><font style="color:rgb(0,0,0);">changed_by </font><font style="color:rgb(0,0,0);">字段）。</font></p>
+<p><font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">3</font><font style="color:rgb(0,0,0);"> </font><font style="color:rgb(0,0,0);">读者管理模块</font></p>
+<p><font style="color:rgb(0,0,0);">管理读者的基本信息和借阅权限。</font></p>
+<p><font style="color:rgb(0,0,0);">读者档案管理：</font><font style="color:rgb(0,0,0);">readers </font><font style="color:rgb(0,0,0);">表存储读者姓名、类型、联系电话等信息，通过读者类型 </font><font style="color:rgb(0,0,0);">ID </font><font style="color:rgb(0,0,0);">关联读者类型表，支持差异化服务（如学生读者可借阅更多书籍）。</font></p>
+<p><font style="color:rgb(0,0,0);">联系信息维护：新增的</font><font style="color:rgb(0,0,0);">contact_phone </font><font style="color:rgb(0,0,0);">字段便于图书馆发送借阅通知或逾期提醒。</font></p>
+<p><font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">4</font><font style="color:rgb(0,0,0);"> </font><font style="color:rgb(0,0,0);">借阅业务管理模块</font></p>
+<p><font style="color:rgb(0,0,0);">覆盖图书借阅的全流程，从借阅、续借到归还的自动化管理。</font></p>
+<p><font style="color:rgb(0,0,0);">借阅管理：</font><font style="color:rgb(0,0,0);">loans </font><font style="color:rgb(0,0,0);">表记录借阅记录，包含借阅图书 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">、读者 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">、借阅日期及应还日期（ </font><font style="color:rgb(0,0,0);">due_date </font><font style="color:rgb(0,0,0);">），通过外键关联图书和读者表，确保业务数据的一致性。</font></p>
+<p><font style="color:rgb(0,0,0);">归还管理：</font><font style="color:rgb(0,0,0);">returns </font><font style="color:rgb(0,0,0);">表记录归还信息，通过 </font><font style="color:rgb(0,0,0);">loan_id </font><font style="color:rgb(0,0,0);">关联借阅记录，记录归还日期，用于统计借阅时长和图书流通率。</font></p>
+<p><font style="color:rgb(0,0,0);">逾期管理：</font><font style="color:rgb(0,0,0);">overdue_notifications </font><font style="color:rgb(0,0,0);">表自动生成逾期通知记录，包含通知日期、读者 </font><font style="color:rgb(0,0,0);">ID </font><font style="color:rgb(0,0,0);">和提醒信息，支持定时触发通知机制（如短信、邮件），提升催还效率。</font></p>
+<p><font style="color:rgb(0,0,0);">1.</font><font style="color:rgb(0,0,0);">5</font><font style="color:rgb(0,0,0);"> </font><font style="color:rgb(0,0,0);">数据跟踪与审计模块</font></p>
+<p><font style="color:rgb(0,0,0);">用于记录业务操作的历史轨迹，便于追溯和数据分析。</font></p>
+<p><font style="color:rgb(0,0,0);">图书位置变更记录：</font><font style="color:rgb(0,0,0);">book_location_history </font><font style="color:rgb(0,0,0);">表跟踪图书的移动记录，记录旧书架 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">、新书架 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">、变更日期及操作人（工作人员 </font><font style="color:rgb(0,0,0);">ID</font><font style="color:rgb(0,0,0);">），帮助管理员追溯图书位置变化，优化书架布局。</font></p>
+<p><font style="color:rgb(0,0,0);">操作审计：通过历史记录表和通知记录表，可统计工作人员的操作日志（如图书移位）和读者的借阅行为（如逾期次数），为管理决策提供数据支持。。</font></p>
 <h1 id="3-系统设计"><a href="#3-系统设计" class="headerlink" title="3. 系统设计"></a>3. 系统设计</h1><h2 id="3-1-系统结构功能图"><a href="#3-1-系统结构功能图" class="headerlink" title="3.1. 系统结构功能图"></a>3.1. 系统结构功能图</h2><p>根据需求分析，确定系统结构功能如图2-1所示：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749108010308-fd889c0b-5840-466d-b05d-34cabab8e9e0.png" alt=""></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749108010308-fd889c0b-5840-466d-b05d-34cabab8e9e0.png"
+                       
+                 ></p>
 <p>图2-1 系统功能结构图</p>
 <h2 id="3-2-功能流程图"><a href="#3-2-功能流程图" class="headerlink" title="3.2. 功能流程图"></a>3.2. 功能流程图</h2><p>系统最主要的功能就是管理员登录之后对各种功能的使用。管理员登录过程流程如图4-2所示。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749107989071-3519f81f-dae8-40c9-9df5-f863f4241c65.png" alt=""></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749107989071-3519f81f-dae8-40c9-9df5-f863f4241c65.png"
+                       
+                 ></p>
 <p>图2-2 借阅还书流程</p>
 <h2 id="3-3-数据库设计"><a href="#3-3-数据库设计" class="headerlink" title="3.3. 数据库设计"></a>3.3. 数据库设计</h2><p>整体功能的E-R图如图2-3所示。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/jpeg/40495483/1749096492170-2f2e03ab-3ee0-4f8c-98f2-5c8b3206155c.jpeg" alt="画板"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2025/jpeg/40495483/1749096492170-2f2e03ab-3ee0-4f8c-98f2-5c8b3206155c.jpeg"
+                        alt="画板"
+                 ></p>
 <p>图2-3 系统E-R图</p>
 <p>本系统包含的数据表如下：</p>
-<p><strong>1**</strong>书架类型表<strong>** (shelf_types)</strong></p>
-<div class="table-container">
+<p><strong>1**<strong>书架类型表</strong></strong> (shelf_types)**</p>
 <table>
 <thead>
 <tr>
@@ -298,8 +576,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>shelf_type_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -317,11 +594,8 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>书架类型名称</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><strong>2**</strong>读者类型表<strong>** (reader_types)</strong></p>
-<div class="table-container">
+</tbody></table>
+<p><strong>2**<strong>读者类型表</strong></strong> (reader_types)**</p>
 <table>
 <thead>
 <tr>
@@ -334,8 +608,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>reader_type_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -353,11 +626,8 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>读者类型名称</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><strong>3**</strong>书架表<strong>** (shelves)</strong></p>
-<div class="table-container">
+</tbody></table>
+<p><strong>3**<strong>书架表</strong></strong> (shelves)**</p>
 <table>
 <thead>
 <tr>
@@ -370,8 +640,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>shelf_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -398,11 +667,8 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>书架类型ID</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><strong>4**</strong>工作人员表<strong>** (staff)</strong></p>
-<div class="table-container">
+</tbody></table>
+<p><strong>4**<strong>工作人员表</strong></strong> (staff)**</p>
 <table>
 <thead>
 <tr>
@@ -415,8 +681,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>staff_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -443,11 +708,8 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>工作人员职位</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><strong>5**</strong>图书表<strong>** (books)</strong></p>
-<div class="table-container">
+</tbody></table>
+<p><strong>5**<strong>图书表</strong></strong> (books)**</p>
 <table>
 <thead>
 <tr>
@@ -460,8 +722,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>book_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -515,11 +776,8 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>书架ID</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><strong>6**</strong>读者表<strong>** (readers)</strong></p>
-<div class="table-container">
+</tbody></table>
+<p><strong>6**<strong>读者表</strong></strong> (readers)**</p>
 <table>
 <thead>
 <tr>
@@ -532,8 +790,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>reader_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -569,11 +826,8 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>联系电话</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><strong>7**</strong>正借阅表<strong>** (loans)</strong></p>
-<div class="table-container">
+</tbody></table>
+<p><strong>7**<strong>正借阅表</strong></strong> (loans)**</p>
 <table>
 <thead>
 <tr>
@@ -586,8 +840,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>loan_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -632,11 +885,8 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>应还日期</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><strong>8**</strong>已还书籍表<strong>** (returns)</strong></p>
-<div class="table-container">
+</tbody></table>
+<p><strong>8**<strong>已还书籍表</strong></strong> (returns)**</p>
 <table>
 <thead>
 <tr>
@@ -649,8 +899,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>return_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -677,11 +926,8 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>还书日期</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><strong>9**</strong>通知记录表（<strong><strong>overdue_notifications</strong></strong>）**</p>
-<div class="table-container">
+</tbody></table>
+<p><strong>9****通知记录表（<strong><strong>overdue_notifications</strong></strong>）</strong></p>
 <table>
 <thead>
 <tr>
@@ -694,8 +940,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>notification_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -740,11 +985,8 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>通知内容</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><strong>10**</strong>历史记录表（<strong><strong>book_location_history</strong></strong>）**</p>
-<div class="table-container">
+</tbody></table>
+<p><strong>10****历史记录表（<strong><strong>book_location_history</strong></strong>）</strong></p>
 <table>
 <thead>
 <tr>
@@ -757,8 +999,7 @@ article: http://ogp.me/ns/article#">
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>history_id</td>
 <td>NUMBER</td>
 <td>主键</td>
@@ -812,217 +1053,605 @@ article: http://ogp.me/ns/article#">
 <td>-</td>
 <td>操作人 ID</td>
 </tr>
-</tbody>
-</table>
-</div>
-<h1 id="4-3-SQL-实现"><a href="#4-3-SQL-实现" class="headerlink" title="4. 3 SQL**实现"></a>4. <strong>3 SQL**</strong>实现</h1><h2 id="4-1-3-1创建数据库表对象"><a href="#4-1-3-1创建数据库表对象" class="headerlink" title="4.1. 3.1创建数据库表对象"></a>4.1. <strong>3.1创建数据库表对象</strong></h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 书架类型表</span><br><span class="hljs-keyword">CREATE TABLE</span> shelf_types (<br>  shelf_type_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  shelf_type_name VARCHAR2(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT NULL</span><br>);<br><br><span class="hljs-comment">-- 读者类型表</span><br><span class="hljs-keyword">CREATE TABLE</span> reader_types (<br>  reader_type_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  reader_type_name VARCHAR2(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT NULL</span><br>);<br><br><span class="hljs-comment">-- 书架表 (添加NOT NULL约束)</span><br><span class="hljs-keyword">CREATE TABLE</span> shelves (<br>  shelf_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  shelf_number VARCHAR2(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT NULL</span>,<br>  shelf_type_id NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>  <span class="hljs-keyword">FOREIGN KEY</span> (shelf_type_id) <span class="hljs-keyword">REFERENCES</span> shelf_types(shelf_type_id)<br>);<br><br><span class="hljs-comment">-- 工作人员表</span><br><span class="hljs-keyword">CREATE TABLE</span> staff (<br>  staff_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  staff_name VARCHAR2(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,<br>  staff_position VARCHAR2(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT NULL</span><br>);<br><br><span class="hljs-comment">-- 图书表 (添加出版年份和NOT NULL约束)</span><br><span class="hljs-keyword">CREATE TABLE</span> books (<br>  book_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  title VARCHAR2(<span class="hljs-number">200</span>) <span class="hljs-keyword">NOT NULL</span>,<br>  author VARCHAR2(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,<br>  isbn VARCHAR2(<span class="hljs-number">20</span>) <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">NOT NULL</span>,<br>  publication_year NUMBER,         <span class="hljs-comment">-- 新增出版年份</span><br>  shelf_id NUMBER <span class="hljs-keyword">NOT NULL</span>,        <span class="hljs-comment">-- 添加NOT NULL约束</span><br>  <span class="hljs-keyword">FOREIGN KEY</span> (shelf_id) <span class="hljs-keyword">REFERENCES</span> shelves(shelf_id)<br>);<br><br><span class="hljs-comment">-- 读者表 (添加联系电话和NOT NULL约束)</span><br><span class="hljs-keyword">CREATE TABLE</span> readers (<br>  reader_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  reader_name VARCHAR2(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,<br>  reader_type_id NUMBER <span class="hljs-keyword">NOT NULL</span>,  <span class="hljs-comment">-- 添加NOT NULL约束</span><br>  contact_phone VARCHAR2(<span class="hljs-number">15</span>),      <span class="hljs-comment">-- 新增联系电话</span><br>  <span class="hljs-keyword">FOREIGN KEY</span> (reader_type_id) <span class="hljs-keyword">REFERENCES</span> reader_types(reader_type_id)<br>);<br><br><span class="hljs-comment">-- 正借阅表 (添加应还日期)</span><br><span class="hljs-keyword">CREATE TABLE</span> loans (<br>  loan_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  book_id NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>  reader_id NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>  loan_date <span class="hljs-type">DATE</span> <span class="hljs-keyword">NOT NULL</span>,<br>  due_date <span class="hljs-type">DATE</span> <span class="hljs-keyword">NOT NULL</span>,          <span class="hljs-comment">-- 新增应还日期</span><br>  <span class="hljs-keyword">FOREIGN KEY</span> (book_id) <span class="hljs-keyword">REFERENCES</span> books(book_id),<br>  <span class="hljs-keyword">FOREIGN KEY</span> (reader_id) <span class="hljs-keyword">REFERENCES</span> readers(reader_id)<br>);<br><br><span class="hljs-comment">-- 已还表</span><br><span class="hljs-keyword">CREATE TABLE</span> <span class="hljs-keyword">returns</span> (<br>  return_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  loan_id NUMBER,<br>  return_date <span class="hljs-type">DATE</span> <span class="hljs-keyword">NOT NULL</span>,<br>  <span class="hljs-keyword">FOREIGN KEY</span> (loan_id) <span class="hljs-keyword">REFERENCES</span> loans(loan_id)<br>);<br><span class="hljs-comment">-- 创建通知记录表</span><br><span class="hljs-keyword">CREATE TABLE</span> overdue_notifications (<br>  notification_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  loan_id NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>  reader_id NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>  notification_date <span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> SYSDATE,<br>  message VARCHAR2(<span class="hljs-number">500</span>),<br>  <span class="hljs-keyword">FOREIGN KEY</span> (loan_id) <span class="hljs-keyword">REFERENCES</span> loans(loan_id),<br>  <span class="hljs-keyword">FOREIGN KEY</span> (reader_id) <span class="hljs-keyword">REFERENCES</span> readers(reader_id)<br>);<br><br><span class="hljs-comment">-- 创建历史记录表</span><br><span class="hljs-keyword">CREATE TABLE</span> book_location_history (<br>  history_id NUMBER <span class="hljs-keyword">PRIMARY KEY</span>,<br>  book_id NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>  old_shelf_id NUMBER,<br>  new_shelf_id NUMBER <span class="hljs-keyword">NOT NULL</span>,<br>  change_date <span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> SYSDATE,<br>  changed_by NUMBER, <span class="hljs-comment">-- 工作人员ID</span><br>  <span class="hljs-keyword">FOREIGN KEY</span> (book_id) <span class="hljs-keyword">REFERENCES</span> books(book_id),<br>  <span class="hljs-keyword">FOREIGN KEY</span> (old_shelf_id) <span class="hljs-keyword">REFERENCES</span> shelves(shelf_id),<br>  <span class="hljs-keyword">FOREIGN KEY</span> (new_shelf_id) <span class="hljs-keyword">REFERENCES</span> shelves(shelf_id),<br>  <span class="hljs-keyword">FOREIGN KEY</span> (changed_by) <span class="hljs-keyword">REFERENCES</span> staff(staff_id)<br>);<br></code></pre></td></tr></table></figure>
-<h2 id="4-2-3-2-创建索引"><a href="#4-2-3-2-创建索引" class="headerlink" title="4.2. 3.2**创建索引**"></a>4.2. <strong>3.2**</strong>创建索引**</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建索引提升查询性能</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_books_isbn <span class="hljs-keyword">ON</span> books(isbn);<br><span class="hljs-keyword">CREATE</span> INDEX idx_books_title <span class="hljs-keyword">ON</span> books(title);<br><span class="hljs-keyword">CREATE</span> INDEX idx_readers_name <span class="hljs-keyword">ON</span> readers(reader_name);<br><span class="hljs-keyword">CREATE</span> INDEX idx_loans_dates <span class="hljs-keyword">ON</span> loans(loan_date, due_date);<br><span class="hljs-keyword">CREATE</span> INDEX idx_returns_date <span class="hljs-keyword">ON</span> <span class="hljs-keyword">returns</span>(return_date);<br></code></pre></td></tr></table></figure>
-<h2 id="4-3-3-3创建视图"><a href="#4-3-3-3创建视图" class="headerlink" title="4.3. 3.3创建视图"></a>4.3. <strong>3.3创建视图</strong></h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 借阅详情视图：显示所有借阅记录及归还状态</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> loan_details <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>l.loan_id <span class="hljs-keyword">AS</span> 借阅ID,<br>b.book_id <span class="hljs-keyword">AS</span> 图书ID,<br>b.title <span class="hljs-keyword">AS</span> 图书标题,<br>r.reader_id <span class="hljs-keyword">AS</span> 读者ID,<br>r.reader_name <span class="hljs-keyword">AS</span> 读者姓名,<br>l.loan_date <span class="hljs-keyword">AS</span> 借阅日期,<br>l.due_date <span class="hljs-keyword">AS</span> 应还日期,<br><span class="hljs-keyword">CASE</span> <br><span class="hljs-keyword">WHEN</span> ret.return_id <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&#x27;已归还&#x27;</span><br><span class="hljs-keyword">ELSE</span> <span class="hljs-string">&#x27;未归还&#x27;</span> <br><span class="hljs-keyword">END</span> <span class="hljs-keyword">AS</span> 归还状态,<br>ret.return_date <span class="hljs-keyword">AS</span> 实际归还日期<br><span class="hljs-keyword">FROM</span> <br>loans l<br><span class="hljs-keyword">JOIN</span> <br>books b <span class="hljs-keyword">ON</span> l.book_id <span class="hljs-operator">=</span> b.book_id<br><span class="hljs-keyword">JOIN</span> <br>readers r <span class="hljs-keyword">ON</span> l.reader_id <span class="hljs-operator">=</span> r.reader_id<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br><span class="hljs-keyword">returns</span> ret <span class="hljs-keyword">ON</span> l.loan_id <span class="hljs-operator">=</span> ret.loan_id;<br><br><span class="hljs-comment">-- 图书库存视图：按书架类型分类显示图书数量</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> loan_details <span class="hljs-keyword">AS</span><br><span class="hljs-keyword">SELECT</span> <br>l.loan_id <span class="hljs-keyword">AS</span> 借阅ID,<br>b.book_id <span class="hljs-keyword">AS</span> 图书ID,<br>b.title <span class="hljs-keyword">AS</span> 图书标题,<br>r.reader_id <span class="hljs-keyword">AS</span> 读者ID,<br>r.reader_name <span class="hljs-keyword">AS</span> 读者姓名,<br>l.loan_date <span class="hljs-keyword">AS</span> 借阅日期,<br>l.due_date <span class="hljs-keyword">AS</span> 应还日期,<br><span class="hljs-keyword">CASE</span> <br><span class="hljs-keyword">WHEN</span> ret.return_id <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&#x27;已归还&#x27;</span><br><span class="hljs-keyword">ELSE</span> <span class="hljs-string">&#x27;未归还&#x27;</span> <br><span class="hljs-keyword">END</span> <span class="hljs-keyword">AS</span> 归还状态,<br>ret.return_date <span class="hljs-keyword">AS</span> 实际归还日期<br><span class="hljs-keyword">FROM</span> <br>loans l<br><span class="hljs-keyword">JOIN</span> <br>books b <span class="hljs-keyword">ON</span> l.book_id <span class="hljs-operator">=</span> b.book_id<br><span class="hljs-keyword">JOIN</span> <br>readers r <span class="hljs-keyword">ON</span> l.reader_id <span class="hljs-operator">=</span> r.reader_id<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <br><span class="hljs-keyword">returns</span> ret <span class="hljs-keyword">ON</span> l.loan_id <span class="hljs-operator">=</span> ret.loan_id;<br><span class="hljs-number">3.4</span>创建存储过程、函数<br><br><span class="hljs-comment">--借阅图书存储过程</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> borrow_book(<br>p_reader_id <span class="hljs-keyword">IN</span> NUMBER,<br>p_book_id <span class="hljs-keyword">IN</span> NUMBER,<br>p_loan_date <span class="hljs-keyword">IN</span> <span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> SYSDATE<br>)<br><span class="hljs-keyword">IS</span><br>v_reader_exists NUMBER;<br>v_book_status VARCHAR2(<span class="hljs-number">10</span>);<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 验证读者存在性</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">INTO</span> v_reader_exists<br><span class="hljs-keyword">FROM</span> readers <span class="hljs-keyword">WHERE</span> reader_id <span class="hljs-operator">=</span> p_reader_id;<br><br>IF v_reader_exists <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20010</span>, <span class="hljs-string">&#x27;读者ID不存在&#x27;</span>);<br><span class="hljs-keyword">END</span> IF;<br><br><span class="hljs-comment">-- 获取图书状态</span><br><span class="hljs-keyword">SELECT</span> book_status <span class="hljs-keyword">INTO</span> v_book_status<br><span class="hljs-keyword">FROM</span> books <span class="hljs-keyword">WHERE</span> book_id <span class="hljs-operator">=</span> p_book_id;<br><br><span class="hljs-comment">-- 检查图书可借性</span><br>IF v_book_status <span class="hljs-operator">!=</span> <span class="hljs-string">&#x27;在馆&#x27;</span> <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20011</span>, <span class="hljs-string">&#x27;图书当前不可借阅，状态：&#x27;</span> <span class="hljs-operator">||</span> v_book_status);<br><span class="hljs-keyword">END</span> IF;<br><br><span class="hljs-comment">-- 创建借阅记录</span><br><span class="hljs-keyword">INSERT INTO</span> loans (loan_id, book_id, reader_id, loan_date, due_date)<br><span class="hljs-keyword">VALUES</span> (loan_seq.NEXTVAL, p_book_id, p_reader_id, p_loan_date, <span class="hljs-keyword">NULL</span>);<br><br><span class="hljs-comment">-- 更新图书状态</span><br><span class="hljs-keyword">UPDATE</span> books <span class="hljs-keyword">SET</span> book_status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;借出&#x27;</span> <span class="hljs-keyword">WHERE</span> book_id <span class="hljs-operator">=</span> p_book_id;<br><br><span class="hljs-keyword">COMMIT</span>;<br>DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">&#x27;借阅操作成功完成&#x27;</span>);<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> OTHERS <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">ROLLBACK</span>;<br>RAISE;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">--归还图书存储过程</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> return_book(<br>p_loan_id <span class="hljs-keyword">IN</span> NUMBER,<br>p_return_date <span class="hljs-keyword">IN</span> <span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> SYSDATE<br>)<br><span class="hljs-keyword">IS</span><br>v_book_id NUMBER;<br>v_due_date <span class="hljs-type">DATE</span>;<br>v_fine_amount NUMBER :<span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 获取借阅信息</span><br><span class="hljs-keyword">SELECT</span> book_id, due_date <span class="hljs-keyword">INTO</span> v_book_id, v_due_date<br><span class="hljs-keyword">FROM</span> loans <span class="hljs-keyword">WHERE</span> loan_id <span class="hljs-operator">=</span> p_loan_id;<br><br><span class="hljs-comment">-- 检查是否已归还</span><br>IF <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-number">1</span> <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">returns</span> <span class="hljs-keyword">WHERE</span> loan_id <span class="hljs-operator">=</span> p_loan_id) <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20020</span>, <span class="hljs-string">&#x27;该借阅记录已归还&#x27;</span>);<br><span class="hljs-keyword">END</span> IF;<br><br><span class="hljs-comment">-- 创建归还记录</span><br><span class="hljs-keyword">INSERT INTO</span> <span class="hljs-keyword">returns</span> (return_id, loan_id, return_date)<br><span class="hljs-keyword">VALUES</span> (return_seq.NEXTVAL, p_loan_id, p_return_date);<br><br><span class="hljs-comment">-- 更新图书状态</span><br><span class="hljs-keyword">UPDATE</span> books <span class="hljs-keyword">SET</span> book_status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;在馆&#x27;</span> <span class="hljs-keyword">WHERE</span> book_id <span class="hljs-operator">=</span> v_book_id;<br><br><span class="hljs-comment">-- 计算逾期罚款（每天1元）</span><br>IF p_return_date <span class="hljs-operator">&gt;</span> v_due_date <span class="hljs-keyword">THEN</span><br>v_fine_amount :<span class="hljs-operator">=</span> (p_return_date <span class="hljs-operator">-</span> v_due_date) <span class="hljs-operator">*</span> <span class="hljs-number">1</span>;<br><span class="hljs-keyword">INSERT INTO</span> fines (fine_id, loan_id, amount, fine_date)<br><span class="hljs-keyword">VALUES</span> (fine_seq.NEXTVAL, p_loan_id, v_fine_amount, SYSDATE);<br><span class="hljs-keyword">END</span> IF;<br><br><span class="hljs-keyword">COMMIT</span>;<br>DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">&#x27;归还操作成功完成&#x27;</span> <span class="hljs-operator">||</span> <br><span class="hljs-keyword">CASE</span> <span class="hljs-keyword">WHEN</span> v_fine_amount <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&#x27;，产生逾期罚款：¥&#x27;</span> <span class="hljs-operator">||</span> v_fine_amount <span class="hljs-keyword">ELSE</span> <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-keyword">END</span>);<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20021</span>, <span class="hljs-string">&#x27;借阅ID不存在&#x27;</span>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">--图书搜索函数</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> search_books(<br>p_title <span class="hljs-keyword">IN</span> VARCHAR2 <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,<br>p_author <span class="hljs-keyword">IN</span> VARCHAR2 <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,<br>p_year_from <span class="hljs-keyword">IN</span> NUMBER <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,<br>p_year_to <span class="hljs-keyword">IN</span> NUMBER <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,<br>p_status <span class="hljs-keyword">IN</span> VARCHAR2 <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span><br>) <span class="hljs-keyword">RETURN</span> SYS_REFCURSOR<br><span class="hljs-keyword">IS</span><br>v_result SYS_REFCURSOR;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">OPEN</span> v_result <span class="hljs-keyword">FOR</span><br><span class="hljs-keyword">SELECT</span> b.book_id, b.title, b.author, b.isbn, <br>b.publication_year, s.shelf_number, <br>st.shelf_type_name, b.book_status<br><span class="hljs-keyword">FROM</span> books b<br><span class="hljs-keyword">JOIN</span> shelves s <span class="hljs-keyword">ON</span> b.shelf_id <span class="hljs-operator">=</span> s.shelf_id<br><span class="hljs-keyword">JOIN</span> shelf_types st <span class="hljs-keyword">ON</span> s.shelf_type_id <span class="hljs-operator">=</span> st.shelf_type_id<br><span class="hljs-keyword">WHERE</span> (p_title <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">OR</span> <span class="hljs-built_in">LOWER</span>(b.title) <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-operator">||</span> <span class="hljs-built_in">LOWER</span>(p_title) <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;%&#x27;</span>)<br><span class="hljs-keyword">AND</span> (p_author <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">OR</span> <span class="hljs-built_in">LOWER</span>(b.author) <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-operator">||</span> <span class="hljs-built_in">LOWER</span>(p_author) <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;%&#x27;</span>)<br><span class="hljs-keyword">AND</span> (p_year_from <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">OR</span> b.publication_year <span class="hljs-operator">&gt;=</span> p_year_from)<br><span class="hljs-keyword">AND</span> (p_year_to <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">OR</span> b.publication_year <span class="hljs-operator">&lt;=</span> p_year_to)<br><span class="hljs-keyword">AND</span> (p_status <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">OR</span> b.book_status <span class="hljs-operator">=</span> p_status)<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> b.title;<br><br><span class="hljs-keyword">RETURN</span> v_result;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 计算逾期天数函数</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">FUNCTION</span> calculate_overdue_days(<br>p_loan_id <span class="hljs-keyword">IN</span> NUMBER<br>) <span class="hljs-keyword">RETURN</span> NUMBER<br><span class="hljs-keyword">IS</span><br>v_due_date <span class="hljs-type">DATE</span>;<br>v_return_date <span class="hljs-type">DATE</span>;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 获取应还日期</span><br><span class="hljs-keyword">SELECT</span> due_date <span class="hljs-keyword">INTO</span> v_due_date<br><span class="hljs-keyword">FROM</span> loans <span class="hljs-keyword">WHERE</span> loan_id <span class="hljs-operator">=</span> p_loan_id;<br><br><span class="hljs-comment">-- 获取实际归还日期（如果已还）</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> return_date <span class="hljs-keyword">INTO</span> v_return_date<br><span class="hljs-keyword">FROM</span> <span class="hljs-keyword">returns</span> <span class="hljs-keyword">WHERE</span> loan_id <span class="hljs-operator">=</span> p_loan_id;<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br>v_return_date :<span class="hljs-operator">=</span> SYSDATE; <span class="hljs-comment">-- 未归还则使用当前日期</span><br><span class="hljs-keyword">END</span>;<br><br><span class="hljs-comment">-- 计算逾期天数（只算正数）</span><br><span class="hljs-keyword">RETURN</span> GREATEST(v_return_date <span class="hljs-operator">-</span> v_due_date, <span class="hljs-number">0</span>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 生成月度借阅报告存储过程</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> generate_monthly_report(<br>p_year <span class="hljs-keyword">IN</span> NUMBER,<br>p_month <span class="hljs-keyword">IN</span> NUMBER<br>)<br><span class="hljs-keyword">IS</span><br>v_report <span class="hljs-type">CLOB</span>;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> <br>XMLAGG(XMLELEMENT(&quot;row&quot;,<br>XMLFOREST(<br>TO_CHAR(loan_date, <span class="hljs-string">&#x27;YYYY-MM-DD&#x27;</span>) <span class="hljs-keyword">AS</span> &quot;借阅日期&quot;,<br><span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">AS</span> &quot;借阅量&quot;,<br><span class="hljs-built_in">COUNT</span>(<span class="hljs-keyword">CASE</span> <span class="hljs-keyword">WHEN</span> book_status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;借出&#x27;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-number">1</span> <span class="hljs-keyword">END</span>) <span class="hljs-keyword">AS</span> &quot;未归还量&quot;,<br><span class="hljs-built_in">SUM</span>(calculate_overdue_days(loan_id)) <span class="hljs-keyword">AS</span> &quot;总逾期天数&quot;<br>)<br>).<span class="hljs-built_in">EXTRACT</span>(<span class="hljs-string">&#x27;//row&#x27;</span>).GETCLOBVAL()<br><span class="hljs-keyword">INTO</span> v_report<br><span class="hljs-keyword">FROM</span> loans<br><span class="hljs-keyword">WHERE</span> <span class="hljs-built_in">EXTRACT</span>(<span class="hljs-keyword">YEAR</span> <span class="hljs-keyword">FROM</span> loan_date) <span class="hljs-operator">=</span> p_year<br><span class="hljs-keyword">AND</span> <span class="hljs-built_in">EXTRACT</span>(<span class="hljs-keyword">MONTH</span> <span class="hljs-keyword">FROM</span> loan_date) <span class="hljs-operator">=</span> p_month<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> loan_date;<br><br><span class="hljs-comment">-- 实际应用中可替换为文件写入或邮件发送</span><br>DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">&#x27;月度借阅报告:&#x27;</span>);<br>DBMS_OUTPUT.PUT_LINE(v_report);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">--图书位置转移存储过程</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> move_book(<br>p_book_id <span class="hljs-keyword">IN</span> NUMBER,<br>p_new_shelf_id <span class="hljs-keyword">IN</span> NUMBER,<br>p_staff_id <span class="hljs-keyword">IN</span> NUMBER<br>)<br><span class="hljs-keyword">IS</span><br>v_old_shelf_id NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 获取原书架ID</span><br><span class="hljs-keyword">SELECT</span> shelf_id <span class="hljs-keyword">INTO</span> v_old_shelf_id<br><span class="hljs-keyword">FROM</span> books <span class="hljs-keyword">WHERE</span> book_id <span class="hljs-operator">=</span> p_book_id;<br><br><span class="hljs-comment">-- 更新图书位置</span><br><span class="hljs-keyword">UPDATE</span> books <br><span class="hljs-keyword">SET</span> shelf_id <span class="hljs-operator">=</span> p_new_shelf_id<br><span class="hljs-keyword">WHERE</span> book_id <span class="hljs-operator">=</span> p_book_id;<br><br><span class="hljs-comment">-- 更新书架计数（通过触发器自动处理）</span><br><br><span class="hljs-keyword">COMMIT</span>;<br>DBMS_OUTPUT.PUT_LINE(<span class="hljs-string">&#x27;图书转移成功&#x27;</span>);<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20030</span>, <span class="hljs-string">&#x27;图书或书架不存在&#x27;</span>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
-<h2 id="4-4-3-5-创建触发器"><a href="#4-4-3-5-创建触发器" class="headerlink" title="4.4. 3.5**创建触发器**"></a>4.4. <strong>3.5**</strong>创建触发器**</h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">--借阅时自动设置应还日期 (基于读者类型)</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> set_due_date_before_loan<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> loans<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">DECLARE</span><br>v_loan_period NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 获取读者类型的借阅期限</span><br><span class="hljs-keyword">SELECT</span> loan_period <span class="hljs-keyword">INTO</span> v_loan_period<br><span class="hljs-keyword">FROM</span> reader_types<br><span class="hljs-keyword">WHERE</span> reader_type_id <span class="hljs-operator">=</span> (<br><span class="hljs-keyword">SELECT</span> reader_type_id <br><span class="hljs-keyword">FROM</span> readers <br><span class="hljs-keyword">WHERE</span> reader_id <span class="hljs-operator">=</span> :NEW.reader_id<br>);<br><br><span class="hljs-comment">-- 设置应还日期 = 借阅日期 + 借阅期限</span><br>:NEW.due_date :<span class="hljs-operator">=</span> :NEW.loan_date <span class="hljs-operator">+</span> v_loan_period;<br>EXCEPTION<br><span class="hljs-keyword">WHEN</span> NO_DATA_FOUND <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20001</span>, <span class="hljs-string">&#x27;读者类型未配置借阅期限&#x27;</span>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">--还书时自动更新图书状态</span><br><span class="hljs-comment">-- 先添加图书状态字段</span><br><span class="hljs-keyword">ALTER TABLE</span> books <span class="hljs-keyword">ADD</span> book_status VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;在馆&#x27;</span> <br><span class="hljs-keyword">CHECK</span> (book_status <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;在馆&#x27;</span>, <span class="hljs-string">&#x27;借出&#x27;</span>, <span class="hljs-string">&#x27;维护&#x27;</span>));<br><br><span class="hljs-comment">-- 创建状态更新触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> update_book_status<br>AFTER <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">returns</span><br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 更新图书状态为&quot;在馆&quot;</span><br><span class="hljs-keyword">UPDATE</span> books b<br><span class="hljs-keyword">SET</span> book_status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;在馆&#x27;</span><br><span class="hljs-keyword">WHERE</span> book_id <span class="hljs-operator">=</span> (<br><span class="hljs-keyword">SELECT</span> book_id<br><span class="hljs-keyword">FROM</span> loans<br><span class="hljs-keyword">WHERE</span> loan_id <span class="hljs-operator">=</span> :NEW.loan_id<br>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">--借书时检查图书可用性</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> check_book_availability<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> loans<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">DECLARE</span><br>v_book_status VARCHAR2(<span class="hljs-number">10</span>);<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-comment">-- 获取当前图书状态</span><br><span class="hljs-keyword">SELECT</span> book_status <span class="hljs-keyword">INTO</span> v_book_status<br><span class="hljs-keyword">FROM</span> books<br><span class="hljs-keyword">WHERE</span> book_id <span class="hljs-operator">=</span> :NEW.book_id;<br><br><span class="hljs-comment">-- 检查图书是否可借</span><br>IF v_book_status <span class="hljs-operator">!=</span> <span class="hljs-string">&#x27;在馆&#x27;</span> <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20002</span>, <br><span class="hljs-string">&#x27;图书不可借阅 - 当前状态: &#x27;</span> <span class="hljs-operator">||</span> v_book_status);<br><span class="hljs-keyword">END</span> IF;<br><br><span class="hljs-comment">-- 更新图书状态为&quot;借出&quot;</span><br><span class="hljs-keyword">UPDATE</span> books<br><span class="hljs-keyword">SET</span> book_status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;借出&#x27;</span><br><span class="hljs-keyword">WHERE</span> book_id <span class="hljs-operator">=</span> :NEW.book_id;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">-- 新书上架时验证书架容量</span><br><span class="hljs-comment">-- 添加书架容量字段</span><br><span class="hljs-keyword">ALTER TABLE</span> shelves <span class="hljs-keyword">ADD</span> capacity NUMBER <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">100</span>;<br><span class="hljs-keyword">ALTER TABLE</span> shelves <span class="hljs-keyword">ADD</span> current_count NUMBER <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span>;<br><br><span class="hljs-comment">-- 创建容量检查触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> check_shelf_capacity<br>BEFORE <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> shelf_id <span class="hljs-keyword">ON</span> books<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">DECLARE</span><br>v_current_count NUMBER;<br>v_capacity NUMBER;<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> current_count, capacity <br><span class="hljs-keyword">INTO</span> v_current_count, v_capacity<br><span class="hljs-keyword">FROM</span> shelves<br><span class="hljs-keyword">WHERE</span> shelf_id <span class="hljs-operator">=</span> :NEW.shelf_id;<br><br><span class="hljs-comment">-- 检查书架是否已满</span><br>IF v_current_count <span class="hljs-operator">&gt;=</span> v_capacity <span class="hljs-keyword">THEN</span><br>RAISE_APPLICATION_ERROR(<span class="hljs-number">-20003</span>, <br><span class="hljs-string">&#x27;书架已满! 最大容量: &#x27;</span> <span class="hljs-operator">||</span> v_capacity <span class="hljs-operator">||</span> <br><span class="hljs-string">&#x27;, 当前图书: &#x27;</span> <span class="hljs-operator">||</span> v_current_count);<br><span class="hljs-keyword">END</span> IF;<br><br><span class="hljs-comment">-- 更新书架图书计数</span><br><span class="hljs-keyword">UPDATE</span> shelves<br><span class="hljs-keyword">SET</span> current_count <span class="hljs-operator">=</span> current_count <span class="hljs-operator">+</span> <span class="hljs-number">1</span><br><span class="hljs-keyword">WHERE</span> shelf_id <span class="hljs-operator">=</span> :NEW.shelf_id;<br><br><span class="hljs-comment">-- 处理图书移动情况</span><br>IF UPDATING <span class="hljs-keyword">AND</span> :OLD.shelf_id <span class="hljs-operator">!=</span> :NEW.shelf_id <span class="hljs-keyword">THEN</span><br><span class="hljs-keyword">UPDATE</span> shelves<br><span class="hljs-keyword">SET</span> current_count <span class="hljs-operator">=</span> current_count <span class="hljs-operator">-</span> <span class="hljs-number">1</span><br><span class="hljs-keyword">WHERE</span> shelf_id <span class="hljs-operator">=</span> :OLD.shelf_id;<br><span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">--逾期未还自动通知</span><br><br><br><span class="hljs-comment">-- 创建逾期通知触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> generate_overdue_notice<br>AFTER <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">ON</span> loans<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">WHEN</span> (NEW.due_date <span class="hljs-operator">&lt;</span> SYSDATE) <span class="hljs-comment">-- 只处理逾期记录</span><br><span class="hljs-keyword">DECLARE</span><br>v_overdue_days NUMBER;<br><span class="hljs-keyword">BEGIN</span><br>v_overdue_days :<span class="hljs-operator">=</span> SYSDATE <span class="hljs-operator">-</span> :NEW.due_date;<br><br><span class="hljs-keyword">INSERT INTO</span> overdue_notifications (<br>notification_id, <br>loan_id,<br>reader_id,<br>message<br>) <span class="hljs-keyword">VALUES</span> (<br>notification_seq.NEXTVAL, <span class="hljs-comment">-- 需要创建序列</span><br>:NEW.loan_id,<br>:NEW.reader_id,<br><span class="hljs-string">&#x27;您借阅的图书已逾期 &#x27;</span> <span class="hljs-operator">||</span> v_overdue_days <span class="hljs-operator">||</span> <span class="hljs-string">&#x27; 天，请尽快归还！&#x27;</span><br>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br><br><span class="hljs-comment">--维护数据历史记录 (图书位置变更)</span><br><br><br><span class="hljs-comment">-- 创建历史记录触发器</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">TRIGGER</span> track_book_location<br>AFTER <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> shelf_id <span class="hljs-keyword">ON</span> books<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">INSERT INTO</span> book_location_history (<br>history_id,<br>book_id,<br>old_shelf_id,<br>new_shelf_id,<br>changed_by<br>) <span class="hljs-keyword">VALUES</span> (<br>history_seq.NEXTVAL, <span class="hljs-comment">-- 需要创建序列</span><br>:OLD.book_id,<br>:OLD.shelf_id,<br>:NEW.shelf_id,<br><span class="hljs-keyword">USER</span> <span class="hljs-comment">-- 假设使用数据库用户跟踪</span><br>);<br><span class="hljs-keyword">END</span>;<br><span class="hljs-operator">/</span><br></code></pre></td></tr></table></figure>
-<h2 id="4-5-3-6-数据的操纵"><a href="#4-5-3-6-数据的操纵" class="headerlink" title="4.5. 3.6 数据的操纵"></a>4.5. <strong>3.6 数据的操纵</strong></h2><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">数据插入<br><span class="hljs-comment">-- 插入书架类型</span><br><span class="hljs-keyword">INSERT INTO</span> shelf_types (shelf_type_id, shelf_type_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;文学类&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> shelf_types (shelf_type_id, shelf_type_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;科技类&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> shelf_types (shelf_type_id, shelf_type_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;历史类&#x27;</span>);<br><br><span class="hljs-comment">-- 插入书架</span><br><span class="hljs-keyword">INSERT INTO</span> shelves (shelf_id, shelf_number, shelf_type_id, capacity) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-number">101</span>, <span class="hljs-string">&#x27;A-101&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">150</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> shelves (shelf_id, shelf_number, shelf_type_id, capacity) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-number">102</span>, <span class="hljs-string">&#x27;B-201&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">200</span>);<br><br><span class="hljs-comment">-- 插入读者类型</span><br><span class="hljs-keyword">INSERT INTO</span> reader_types (reader_type_id, reader_type_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;学生&#x27;</span>);<br><span class="hljs-keyword">INSERT INTO</span> reader_types (reader_type_id, reader_type_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;教师&#x27;</span>);<br><br><span class="hljs-comment">-- 插入读者</span><br><span class="hljs-keyword">INSERT INTO</span> readers (reader_id, reader_name, reader_type_id, contact_phone) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1001</span>, <span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;13800138000&#x27;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> readers (reader_id, reader_name, reader_type_id, contact_phone) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1002</span>, <span class="hljs-string">&#x27;李教授&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;13900139000&#x27;</span>);<br><br><span class="hljs-comment">-- 插入图书</span><br><span class="hljs-keyword">INSERT INTO</span> books (book_id, title, author, isbn, publication_year, shelf_id) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-number">5001</span>, <span class="hljs-string">&#x27;数据库系统概论&#x27;</span>, <span class="hljs-string">&#x27;王珊&#x27;</span>, <span class="hljs-string">&#x27;978-7-04-019583-5&#x27;</span>, <span class="hljs-number">2014</span>, <span class="hljs-number">102</span>);<br><br><span class="hljs-keyword">INSERT INTO</span> books (book_id, title, author, isbn, publication_year, shelf_id, book_status) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-number">5002</span>, <span class="hljs-string">&#x27;三体&#x27;</span>, <span class="hljs-string">&#x27;刘慈欣&#x27;</span>, <span class="hljs-string">&#x27;978-7-5366-9293-0&#x27;</span>, <span class="hljs-number">2008</span>, <span class="hljs-number">101</span>, <span class="hljs-string">&#x27;在馆&#x27;</span>);<br><br><span class="hljs-comment">-- 插入员工</span><br><span class="hljs-keyword">INSERT INTO</span> staff (staff_id, staff_name, staff_position) <br><span class="hljs-keyword">VALUES</span> (<span class="hljs-number">9001</span>, <span class="hljs-string">&#x27;管理员小王&#x27;</span>, <span class="hljs-string">&#x27;图书管理员&#x27;</span>);<br><br>更新数据<br><span class="hljs-keyword">UPDATE</span> readers <br><span class="hljs-keyword">SET</span> contact_phone <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;13800138111&#x27;</span> <br><span class="hljs-keyword">WHERE</span> reader_id <span class="hljs-operator">=</span> <span class="hljs-number">1001</span>;<br><br>数据删除<br><span class="hljs-comment">-- 删除无效借阅记录（需先删除相关子表记录）</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">returns</span> <span class="hljs-keyword">WHERE</span> loan_id <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;<br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> loans <span class="hljs-keyword">WHERE</span> loan_id <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">-- 删除不存在的读者类型（无关联数据时）</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> reader_types <span class="hljs-keyword">WHERE</span> reader_type_id <span class="hljs-operator">=</span> <span class="hljs-number">99</span>;<br></code></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2025/zip/40495483/1749107805212-ef567e37-be99-4611-a9cb-9c7720f638bf.zip">图书管理系统.zip</a></p>
+</tbody></table>
+<h1 id="4-3-SQL-实现"><a href="#4-3-SQL-实现" class="headerlink" title="4. *3 SQL***实现"></a>4. *<em>3 SQL</em>***实现</h1><h2 id="4-1-3-1创建数据库表对象"><a href="#4-1-3-1创建数据库表对象" class="headerlink" title="4.1. 3.1创建数据库表对象"></a>4.1. <strong>3.1创建数据库表对象</strong></h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 书架类型表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> shelf_types (</span><br><span class="line">  shelf_type_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  shelf_type_name VARCHAR2(<span class="number">50</span>) <span class="keyword">NOT NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 读者类型表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> reader_types (</span><br><span class="line">  reader_type_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  reader_type_name VARCHAR2(<span class="number">50</span>) <span class="keyword">NOT NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 书架表 (添加NOT NULL约束)</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> shelves (</span><br><span class="line">  shelf_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  shelf_number VARCHAR2(<span class="number">20</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">  shelf_type_id NUMBER <span class="keyword">NOT NULL</span>,</span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (shelf_type_id) <span class="keyword">REFERENCES</span> shelf_types(shelf_type_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 工作人员表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> staff (</span><br><span class="line">  staff_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  staff_name VARCHAR2(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">  staff_position VARCHAR2(<span class="number">50</span>) <span class="keyword">NOT NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 图书表 (添加出版年份和NOT NULL约束)</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> books (</span><br><span class="line">  book_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  title VARCHAR2(<span class="number">200</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">  author VARCHAR2(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">  isbn VARCHAR2(<span class="number">20</span>) <span class="keyword">UNIQUE</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">  publication_year NUMBER,         <span class="comment">-- 新增出版年份</span></span><br><span class="line">  shelf_id NUMBER <span class="keyword">NOT NULL</span>,        <span class="comment">-- 添加NOT NULL约束</span></span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (shelf_id) <span class="keyword">REFERENCES</span> shelves(shelf_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 读者表 (添加联系电话和NOT NULL约束)</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> readers (</span><br><span class="line">  reader_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  reader_name VARCHAR2(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">  reader_type_id NUMBER <span class="keyword">NOT NULL</span>,  <span class="comment">-- 添加NOT NULL约束</span></span><br><span class="line">  contact_phone VARCHAR2(<span class="number">15</span>),      <span class="comment">-- 新增联系电话</span></span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (reader_type_id) <span class="keyword">REFERENCES</span> reader_types(reader_type_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 正借阅表 (添加应还日期)</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> loans (</span><br><span class="line">  loan_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  book_id NUMBER <span class="keyword">NOT NULL</span>,</span><br><span class="line">  reader_id NUMBER <span class="keyword">NOT NULL</span>,</span><br><span class="line">  loan_date <span class="type">DATE</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">  due_date <span class="type">DATE</span> <span class="keyword">NOT NULL</span>,          <span class="comment">-- 新增应还日期</span></span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (book_id) <span class="keyword">REFERENCES</span> books(book_id),</span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (reader_id) <span class="keyword">REFERENCES</span> readers(reader_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 已还表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> <span class="keyword">returns</span> (</span><br><span class="line">  return_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  loan_id NUMBER,</span><br><span class="line">  return_date <span class="type">DATE</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (loan_id) <span class="keyword">REFERENCES</span> loans(loan_id)</span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 创建通知记录表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> overdue_notifications (</span><br><span class="line">  notification_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  loan_id NUMBER <span class="keyword">NOT NULL</span>,</span><br><span class="line">  reader_id NUMBER <span class="keyword">NOT NULL</span>,</span><br><span class="line">  notification_date <span class="type">DATE</span> <span class="keyword">DEFAULT</span> SYSDATE,</span><br><span class="line">  message VARCHAR2(<span class="number">500</span>),</span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (loan_id) <span class="keyword">REFERENCES</span> loans(loan_id),</span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (reader_id) <span class="keyword">REFERENCES</span> readers(reader_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建历史记录表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> book_location_history (</span><br><span class="line">  history_id NUMBER <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  book_id NUMBER <span class="keyword">NOT NULL</span>,</span><br><span class="line">  old_shelf_id NUMBER,</span><br><span class="line">  new_shelf_id NUMBER <span class="keyword">NOT NULL</span>,</span><br><span class="line">  change_date <span class="type">DATE</span> <span class="keyword">DEFAULT</span> SYSDATE,</span><br><span class="line">  changed_by NUMBER, <span class="comment">-- 工作人员ID</span></span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (book_id) <span class="keyword">REFERENCES</span> books(book_id),</span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (old_shelf_id) <span class="keyword">REFERENCES</span> shelves(shelf_id),</span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (new_shelf_id) <span class="keyword">REFERENCES</span> shelves(shelf_id),</span><br><span class="line">  <span class="keyword">FOREIGN KEY</span> (changed_by) <span class="keyword">REFERENCES</span> staff(staff_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
+<h2 id="4-2-3-2-创建索引"><a href="#4-2-3-2-创建索引" class="headerlink" title="4.2. 3.2****创建索引"></a>4.2. <strong>3.2****创建索引</strong></h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建索引提升查询性能</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_books_isbn <span class="keyword">ON</span> books(isbn);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_books_title <span class="keyword">ON</span> books(title);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_readers_name <span class="keyword">ON</span> readers(reader_name);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_loans_dates <span class="keyword">ON</span> loans(loan_date, due_date);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_returns_date <span class="keyword">ON</span> <span class="keyword">returns</span>(return_date);</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-3-3-3创建视图"><a href="#4-3-3-3创建视图" class="headerlink" title="4.3. 3.3创建视图"></a>4.3. <strong>3.3创建视图</strong></h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 借阅详情视图：显示所有借阅记录及归还状态</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> loan_details <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">l.loan_id <span class="keyword">AS</span> 借阅ID,</span><br><span class="line">b.book_id <span class="keyword">AS</span> 图书ID,</span><br><span class="line">b.title <span class="keyword">AS</span> 图书标题,</span><br><span class="line">r.reader_id <span class="keyword">AS</span> 读者ID,</span><br><span class="line">r.reader_name <span class="keyword">AS</span> 读者姓名,</span><br><span class="line">l.loan_date <span class="keyword">AS</span> 借阅日期,</span><br><span class="line">l.due_date <span class="keyword">AS</span> 应还日期,</span><br><span class="line"><span class="keyword">CASE</span> </span><br><span class="line"><span class="keyword">WHEN</span> ret.return_id <span class="keyword">IS</span> <span class="keyword">NOT NULL</span> <span class="keyword">THEN</span> <span class="string">&#x27;已归还&#x27;</span></span><br><span class="line"><span class="keyword">ELSE</span> <span class="string">&#x27;未归还&#x27;</span> </span><br><span class="line"><span class="keyword">END</span> <span class="keyword">AS</span> 归还状态,</span><br><span class="line">ret.return_date <span class="keyword">AS</span> 实际归还日期</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">loans l</span><br><span class="line"><span class="keyword">JOIN</span> </span><br><span class="line">books b <span class="keyword">ON</span> l.book_id <span class="operator">=</span> b.book_id</span><br><span class="line"><span class="keyword">JOIN</span> </span><br><span class="line">readers r <span class="keyword">ON</span> l.reader_id <span class="operator">=</span> r.reader_id</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> </span><br><span class="line"><span class="keyword">returns</span> ret <span class="keyword">ON</span> l.loan_id <span class="operator">=</span> ret.loan_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 图书库存视图：按书架类型分类显示图书数量</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> loan_details <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">l.loan_id <span class="keyword">AS</span> 借阅ID,</span><br><span class="line">b.book_id <span class="keyword">AS</span> 图书ID,</span><br><span class="line">b.title <span class="keyword">AS</span> 图书标题,</span><br><span class="line">r.reader_id <span class="keyword">AS</span> 读者ID,</span><br><span class="line">r.reader_name <span class="keyword">AS</span> 读者姓名,</span><br><span class="line">l.loan_date <span class="keyword">AS</span> 借阅日期,</span><br><span class="line">l.due_date <span class="keyword">AS</span> 应还日期,</span><br><span class="line"><span class="keyword">CASE</span> </span><br><span class="line"><span class="keyword">WHEN</span> ret.return_id <span class="keyword">IS</span> <span class="keyword">NOT NULL</span> <span class="keyword">THEN</span> <span class="string">&#x27;已归还&#x27;</span></span><br><span class="line"><span class="keyword">ELSE</span> <span class="string">&#x27;未归还&#x27;</span> </span><br><span class="line"><span class="keyword">END</span> <span class="keyword">AS</span> 归还状态,</span><br><span class="line">ret.return_date <span class="keyword">AS</span> 实际归还日期</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">loans l</span><br><span class="line"><span class="keyword">JOIN</span> </span><br><span class="line">books b <span class="keyword">ON</span> l.book_id <span class="operator">=</span> b.book_id</span><br><span class="line"><span class="keyword">JOIN</span> </span><br><span class="line">readers r <span class="keyword">ON</span> l.reader_id <span class="operator">=</span> r.reader_id</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> </span><br><span class="line"><span class="keyword">returns</span> ret <span class="keyword">ON</span> l.loan_id <span class="operator">=</span> ret.loan_id;</span><br><span class="line"><span class="number">3.4</span>创建存储过程、函数</span><br><span class="line"></span><br><span class="line"><span class="comment">--借阅图书存储过程</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> borrow_book(</span><br><span class="line">p_reader_id <span class="keyword">IN</span> NUMBER,</span><br><span class="line">p_book_id <span class="keyword">IN</span> NUMBER,</span><br><span class="line">p_loan_date <span class="keyword">IN</span> <span class="type">DATE</span> <span class="keyword">DEFAULT</span> SYSDATE</span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">v_reader_exists NUMBER;</span><br><span class="line">v_book_status VARCHAR2(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 验证读者存在性</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">INTO</span> v_reader_exists</span><br><span class="line"><span class="keyword">FROM</span> readers <span class="keyword">WHERE</span> reader_id <span class="operator">=</span> p_reader_id;</span><br><span class="line"></span><br><span class="line">IF v_reader_exists <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">RAISE_APPLICATION_ERROR(<span class="number">-20010</span>, <span class="string">&#x27;读者ID不存在&#x27;</span>);</span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 获取图书状态</span></span><br><span class="line"><span class="keyword">SELECT</span> book_status <span class="keyword">INTO</span> v_book_status</span><br><span class="line"><span class="keyword">FROM</span> books <span class="keyword">WHERE</span> book_id <span class="operator">=</span> p_book_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 检查图书可借性</span></span><br><span class="line">IF v_book_status <span class="operator">!=</span> <span class="string">&#x27;在馆&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">RAISE_APPLICATION_ERROR(<span class="number">-20011</span>, <span class="string">&#x27;图书当前不可借阅，状态：&#x27;</span> <span class="operator">||</span> v_book_status);</span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建借阅记录</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> loans (loan_id, book_id, reader_id, loan_date, due_date)</span><br><span class="line"><span class="keyword">VALUES</span> (loan_seq.NEXTVAL, p_book_id, p_reader_id, p_loan_date, <span class="keyword">NULL</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 更新图书状态</span></span><br><span class="line"><span class="keyword">UPDATE</span> books <span class="keyword">SET</span> book_status <span class="operator">=</span> <span class="string">&#x27;借出&#x27;</span> <span class="keyword">WHERE</span> book_id <span class="operator">=</span> p_book_id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line">DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;借阅操作成功完成&#x27;</span>);</span><br><span class="line">EXCEPTION</span><br><span class="line"><span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line"><span class="keyword">ROLLBACK</span>;</span><br><span class="line">RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--归还图书存储过程</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> return_book(</span><br><span class="line">p_loan_id <span class="keyword">IN</span> NUMBER,</span><br><span class="line">p_return_date <span class="keyword">IN</span> <span class="type">DATE</span> <span class="keyword">DEFAULT</span> SYSDATE</span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">v_book_id NUMBER;</span><br><span class="line">v_due_date <span class="type">DATE</span>;</span><br><span class="line">v_fine_amount NUMBER :<span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 获取借阅信息</span></span><br><span class="line"><span class="keyword">SELECT</span> book_id, due_date <span class="keyword">INTO</span> v_book_id, v_due_date</span><br><span class="line"><span class="keyword">FROM</span> loans <span class="keyword">WHERE</span> loan_id <span class="operator">=</span> p_loan_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 检查是否已归还</span></span><br><span class="line">IF <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">FROM</span> <span class="keyword">returns</span> <span class="keyword">WHERE</span> loan_id <span class="operator">=</span> p_loan_id) <span class="keyword">THEN</span></span><br><span class="line">RAISE_APPLICATION_ERROR(<span class="number">-20020</span>, <span class="string">&#x27;该借阅记录已归还&#x27;</span>);</span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建归还记录</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> <span class="keyword">returns</span> (return_id, loan_id, return_date)</span><br><span class="line"><span class="keyword">VALUES</span> (return_seq.NEXTVAL, p_loan_id, p_return_date);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 更新图书状态</span></span><br><span class="line"><span class="keyword">UPDATE</span> books <span class="keyword">SET</span> book_status <span class="operator">=</span> <span class="string">&#x27;在馆&#x27;</span> <span class="keyword">WHERE</span> book_id <span class="operator">=</span> v_book_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 计算逾期罚款（每天1元）</span></span><br><span class="line">IF p_return_date <span class="operator">&gt;</span> v_due_date <span class="keyword">THEN</span></span><br><span class="line">v_fine_amount :<span class="operator">=</span> (p_return_date <span class="operator">-</span> v_due_date) <span class="operator">*</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">INSERT INTO</span> fines (fine_id, loan_id, amount, fine_date)</span><br><span class="line"><span class="keyword">VALUES</span> (fine_seq.NEXTVAL, p_loan_id, v_fine_amount, SYSDATE);</span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line">DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;归还操作成功完成&#x27;</span> <span class="operator">||</span> </span><br><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> v_fine_amount <span class="operator">&gt;</span> <span class="number">0</span> <span class="keyword">THEN</span> <span class="string">&#x27;，产生逾期罚款：¥&#x27;</span> <span class="operator">||</span> v_fine_amount <span class="keyword">ELSE</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">END</span>);</span><br><span class="line">EXCEPTION</span><br><span class="line"><span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">RAISE_APPLICATION_ERROR(<span class="number">-20021</span>, <span class="string">&#x27;借阅ID不存在&#x27;</span>);</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--图书搜索函数</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> search_books(</span><br><span class="line">p_title <span class="keyword">IN</span> VARCHAR2 <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">p_author <span class="keyword">IN</span> VARCHAR2 <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">p_year_from <span class="keyword">IN</span> NUMBER <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">p_year_to <span class="keyword">IN</span> NUMBER <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">p_status <span class="keyword">IN</span> VARCHAR2 <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span></span><br><span class="line">) <span class="keyword">RETURN</span> SYS_REFCURSOR</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">v_result SYS_REFCURSOR;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">OPEN</span> v_result <span class="keyword">FOR</span></span><br><span class="line"><span class="keyword">SELECT</span> b.book_id, b.title, b.author, b.isbn, </span><br><span class="line">b.publication_year, s.shelf_number, </span><br><span class="line">st.shelf_type_name, b.book_status</span><br><span class="line"><span class="keyword">FROM</span> books b</span><br><span class="line"><span class="keyword">JOIN</span> shelves s <span class="keyword">ON</span> b.shelf_id <span class="operator">=</span> s.shelf_id</span><br><span class="line"><span class="keyword">JOIN</span> shelf_types st <span class="keyword">ON</span> s.shelf_type_id <span class="operator">=</span> st.shelf_type_id</span><br><span class="line"><span class="keyword">WHERE</span> (p_title <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">OR</span> <span class="built_in">LOWER</span>(b.title) <span class="keyword">LIKE</span> <span class="string">&#x27;%&#x27;</span> <span class="operator">||</span> <span class="built_in">LOWER</span>(p_title) <span class="operator">||</span> <span class="string">&#x27;%&#x27;</span>)</span><br><span class="line"><span class="keyword">AND</span> (p_author <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">OR</span> <span class="built_in">LOWER</span>(b.author) <span class="keyword">LIKE</span> <span class="string">&#x27;%&#x27;</span> <span class="operator">||</span> <span class="built_in">LOWER</span>(p_author) <span class="operator">||</span> <span class="string">&#x27;%&#x27;</span>)</span><br><span class="line"><span class="keyword">AND</span> (p_year_from <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">OR</span> b.publication_year <span class="operator">&gt;=</span> p_year_from)</span><br><span class="line"><span class="keyword">AND</span> (p_year_to <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">OR</span> b.publication_year <span class="operator">&lt;=</span> p_year_to)</span><br><span class="line"><span class="keyword">AND</span> (p_status <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">OR</span> b.book_status <span class="operator">=</span> p_status)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> b.title;</span><br><span class="line"></span><br><span class="line"><span class="keyword">RETURN</span> v_result;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 计算逾期天数函数</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> calculate_overdue_days(</span><br><span class="line">p_loan_id <span class="keyword">IN</span> NUMBER</span><br><span class="line">) <span class="keyword">RETURN</span> NUMBER</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">v_due_date <span class="type">DATE</span>;</span><br><span class="line">v_return_date <span class="type">DATE</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 获取应还日期</span></span><br><span class="line"><span class="keyword">SELECT</span> due_date <span class="keyword">INTO</span> v_due_date</span><br><span class="line"><span class="keyword">FROM</span> loans <span class="keyword">WHERE</span> loan_id <span class="operator">=</span> p_loan_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 获取实际归还日期（如果已还）</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SELECT</span> return_date <span class="keyword">INTO</span> v_return_date</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">returns</span> <span class="keyword">WHERE</span> loan_id <span class="operator">=</span> p_loan_id;</span><br><span class="line">EXCEPTION</span><br><span class="line"><span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">v_return_date :<span class="operator">=</span> SYSDATE; <span class="comment">-- 未归还则使用当前日期</span></span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 计算逾期天数（只算正数）</span></span><br><span class="line"><span class="keyword">RETURN</span> GREATEST(v_return_date <span class="operator">-</span> v_due_date, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 生成月度借阅报告存储过程</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> generate_monthly_report(</span><br><span class="line">p_year <span class="keyword">IN</span> NUMBER,</span><br><span class="line">p_month <span class="keyword">IN</span> NUMBER</span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">v_report <span class="type">CLOB</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">XMLAGG(XMLELEMENT(&quot;row&quot;,</span><br><span class="line">XMLFOREST(</span><br><span class="line">TO_CHAR(loan_date, <span class="string">&#x27;YYYY-MM-DD&#x27;</span>) <span class="keyword">AS</span> &quot;借阅日期&quot;,</span><br><span class="line"><span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> &quot;借阅量&quot;,</span><br><span class="line"><span class="built_in">COUNT</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> book_status <span class="operator">=</span> <span class="string">&#x27;借出&#x27;</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">END</span>) <span class="keyword">AS</span> &quot;未归还量&quot;,</span><br><span class="line"><span class="built_in">SUM</span>(calculate_overdue_days(loan_id)) <span class="keyword">AS</span> &quot;总逾期天数&quot;</span><br><span class="line">)</span><br><span class="line">).<span class="built_in">EXTRACT</span>(<span class="string">&#x27;//row&#x27;</span>).GETCLOBVAL()</span><br><span class="line"><span class="keyword">INTO</span> v_report</span><br><span class="line"><span class="keyword">FROM</span> loans</span><br><span class="line"><span class="keyword">WHERE</span> <span class="built_in">EXTRACT</span>(<span class="keyword">YEAR</span> <span class="keyword">FROM</span> loan_date) <span class="operator">=</span> p_year</span><br><span class="line"><span class="keyword">AND</span> <span class="built_in">EXTRACT</span>(<span class="keyword">MONTH</span> <span class="keyword">FROM</span> loan_date) <span class="operator">=</span> p_month</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> loan_date;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 实际应用中可替换为文件写入或邮件发送</span></span><br><span class="line">DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;月度借阅报告:&#x27;</span>);</span><br><span class="line">DBMS_OUTPUT.PUT_LINE(v_report);</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--图书位置转移存储过程</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> move_book(</span><br><span class="line">p_book_id <span class="keyword">IN</span> NUMBER,</span><br><span class="line">p_new_shelf_id <span class="keyword">IN</span> NUMBER,</span><br><span class="line">p_staff_id <span class="keyword">IN</span> NUMBER</span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">v_old_shelf_id NUMBER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 获取原书架ID</span></span><br><span class="line"><span class="keyword">SELECT</span> shelf_id <span class="keyword">INTO</span> v_old_shelf_id</span><br><span class="line"><span class="keyword">FROM</span> books <span class="keyword">WHERE</span> book_id <span class="operator">=</span> p_book_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 更新图书位置</span></span><br><span class="line"><span class="keyword">UPDATE</span> books </span><br><span class="line"><span class="keyword">SET</span> shelf_id <span class="operator">=</span> p_new_shelf_id</span><br><span class="line"><span class="keyword">WHERE</span> book_id <span class="operator">=</span> p_book_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 更新书架计数（通过触发器自动处理）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line">DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;图书转移成功&#x27;</span>);</span><br><span class="line">EXCEPTION</span><br><span class="line"><span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">RAISE_APPLICATION_ERROR(<span class="number">-20030</span>, <span class="string">&#x27;图书或书架不存在&#x27;</span>);</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-4-3-5-创建触发器"><a href="#4-4-3-5-创建触发器" class="headerlink" title="4.4. 3.5****创建触发器"></a>4.4. <strong>3.5****创建触发器</strong></h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--借阅时自动设置应还日期 (基于读者类型)</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> set_due_date_before_loan</span><br><span class="line">BEFORE <span class="keyword">INSERT</span> <span class="keyword">ON</span> loans</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">v_loan_period NUMBER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 获取读者类型的借阅期限</span></span><br><span class="line"><span class="keyword">SELECT</span> loan_period <span class="keyword">INTO</span> v_loan_period</span><br><span class="line"><span class="keyword">FROM</span> reader_types</span><br><span class="line"><span class="keyword">WHERE</span> reader_type_id <span class="operator">=</span> (</span><br><span class="line"><span class="keyword">SELECT</span> reader_type_id </span><br><span class="line"><span class="keyword">FROM</span> readers </span><br><span class="line"><span class="keyword">WHERE</span> reader_id <span class="operator">=</span> :NEW.reader_id</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 设置应还日期 = 借阅日期 + 借阅期限</span></span><br><span class="line">:NEW.due_date :<span class="operator">=</span> :NEW.loan_date <span class="operator">+</span> v_loan_period;</span><br><span class="line">EXCEPTION</span><br><span class="line"><span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">RAISE_APPLICATION_ERROR(<span class="number">-20001</span>, <span class="string">&#x27;读者类型未配置借阅期限&#x27;</span>);</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--还书时自动更新图书状态</span></span><br><span class="line"><span class="comment">-- 先添加图书状态字段</span></span><br><span class="line"><span class="keyword">ALTER TABLE</span> books <span class="keyword">ADD</span> book_status VARCHAR2(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;在馆&#x27;</span> </span><br><span class="line"><span class="keyword">CHECK</span> (book_status <span class="keyword">IN</span> (<span class="string">&#x27;在馆&#x27;</span>, <span class="string">&#x27;借出&#x27;</span>, <span class="string">&#x27;维护&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建状态更新触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> update_book_status</span><br><span class="line">AFTER <span class="keyword">INSERT</span> <span class="keyword">ON</span> <span class="keyword">returns</span></span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 更新图书状态为&quot;在馆&quot;</span></span><br><span class="line"><span class="keyword">UPDATE</span> books b</span><br><span class="line"><span class="keyword">SET</span> book_status <span class="operator">=</span> <span class="string">&#x27;在馆&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> book_id <span class="operator">=</span> (</span><br><span class="line"><span class="keyword">SELECT</span> book_id</span><br><span class="line"><span class="keyword">FROM</span> loans</span><br><span class="line"><span class="keyword">WHERE</span> loan_id <span class="operator">=</span> :NEW.loan_id</span><br><span class="line">);</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--借书时检查图书可用性</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> check_book_availability</span><br><span class="line">BEFORE <span class="keyword">INSERT</span> <span class="keyword">ON</span> loans</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">v_book_status VARCHAR2(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 获取当前图书状态</span></span><br><span class="line"><span class="keyword">SELECT</span> book_status <span class="keyword">INTO</span> v_book_status</span><br><span class="line"><span class="keyword">FROM</span> books</span><br><span class="line"><span class="keyword">WHERE</span> book_id <span class="operator">=</span> :NEW.book_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 检查图书是否可借</span></span><br><span class="line">IF v_book_status <span class="operator">!=</span> <span class="string">&#x27;在馆&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">RAISE_APPLICATION_ERROR(<span class="number">-20002</span>, </span><br><span class="line"><span class="string">&#x27;图书不可借阅 - 当前状态: &#x27;</span> <span class="operator">||</span> v_book_status);</span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 更新图书状态为&quot;借出&quot;</span></span><br><span class="line"><span class="keyword">UPDATE</span> books</span><br><span class="line"><span class="keyword">SET</span> book_status <span class="operator">=</span> <span class="string">&#x27;借出&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> book_id <span class="operator">=</span> :NEW.book_id;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 新书上架时验证书架容量</span></span><br><span class="line"><span class="comment">-- 添加书架容量字段</span></span><br><span class="line"><span class="keyword">ALTER TABLE</span> shelves <span class="keyword">ADD</span> capacity NUMBER <span class="keyword">DEFAULT</span> <span class="number">100</span>;</span><br><span class="line"><span class="keyword">ALTER TABLE</span> shelves <span class="keyword">ADD</span> current_count NUMBER <span class="keyword">DEFAULT</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建容量检查触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> check_shelf_capacity</span><br><span class="line">BEFORE <span class="keyword">INSERT</span> <span class="keyword">OR</span> <span class="keyword">UPDATE</span> <span class="keyword">OF</span> shelf_id <span class="keyword">ON</span> books</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">v_current_count NUMBER;</span><br><span class="line">v_capacity NUMBER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SELECT</span> current_count, capacity </span><br><span class="line"><span class="keyword">INTO</span> v_current_count, v_capacity</span><br><span class="line"><span class="keyword">FROM</span> shelves</span><br><span class="line"><span class="keyword">WHERE</span> shelf_id <span class="operator">=</span> :NEW.shelf_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 检查书架是否已满</span></span><br><span class="line">IF v_current_count <span class="operator">&gt;=</span> v_capacity <span class="keyword">THEN</span></span><br><span class="line">RAISE_APPLICATION_ERROR(<span class="number">-20003</span>, </span><br><span class="line"><span class="string">&#x27;书架已满! 最大容量: &#x27;</span> <span class="operator">||</span> v_capacity <span class="operator">||</span> </span><br><span class="line"><span class="string">&#x27;, 当前图书: &#x27;</span> <span class="operator">||</span> v_current_count);</span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 更新书架图书计数</span></span><br><span class="line"><span class="keyword">UPDATE</span> shelves</span><br><span class="line"><span class="keyword">SET</span> current_count <span class="operator">=</span> current_count <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">WHERE</span> shelf_id <span class="operator">=</span> :NEW.shelf_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 处理图书移动情况</span></span><br><span class="line">IF UPDATING <span class="keyword">AND</span> :OLD.shelf_id <span class="operator">!=</span> :NEW.shelf_id <span class="keyword">THEN</span></span><br><span class="line"><span class="keyword">UPDATE</span> shelves</span><br><span class="line"><span class="keyword">SET</span> current_count <span class="operator">=</span> current_count <span class="operator">-</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">WHERE</span> shelf_id <span class="operator">=</span> :OLD.shelf_id;</span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--逾期未还自动通知</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建逾期通知触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> generate_overdue_notice</span><br><span class="line">AFTER <span class="keyword">INSERT</span> <span class="keyword">OR</span> <span class="keyword">UPDATE</span> <span class="keyword">ON</span> loans</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">WHEN</span> (NEW.due_date <span class="operator">&lt;</span> SYSDATE) <span class="comment">-- 只处理逾期记录</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">v_overdue_days NUMBER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">v_overdue_days :<span class="operator">=</span> SYSDATE <span class="operator">-</span> :NEW.due_date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> overdue_notifications (</span><br><span class="line">notification_id, </span><br><span class="line">loan_id,</span><br><span class="line">reader_id,</span><br><span class="line">message</span><br><span class="line">) <span class="keyword">VALUES</span> (</span><br><span class="line">notification_seq.NEXTVAL, <span class="comment">-- 需要创建序列</span></span><br><span class="line">:NEW.loan_id,</span><br><span class="line">:NEW.reader_id,</span><br><span class="line"><span class="string">&#x27;您借阅的图书已逾期 &#x27;</span> <span class="operator">||</span> v_overdue_days <span class="operator">||</span> <span class="string">&#x27; 天，请尽快归还！&#x27;</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--维护数据历史记录 (图书位置变更)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建历史记录触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> track_book_location</span><br><span class="line">AFTER <span class="keyword">UPDATE</span> <span class="keyword">OF</span> shelf_id <span class="keyword">ON</span> books</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> book_location_history (</span><br><span class="line">history_id,</span><br><span class="line">book_id,</span><br><span class="line">old_shelf_id,</span><br><span class="line">new_shelf_id,</span><br><span class="line">changed_by</span><br><span class="line">) <span class="keyword">VALUES</span> (</span><br><span class="line">history_seq.NEXTVAL, <span class="comment">-- 需要创建序列</span></span><br><span class="line">:OLD.book_id,</span><br><span class="line">:OLD.shelf_id,</span><br><span class="line">:NEW.shelf_id,</span><br><span class="line"><span class="keyword">USER</span> <span class="comment">-- 假设使用数据库用户跟踪</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-5-3-6-数据的操纵"><a href="#4-5-3-6-数据的操纵" class="headerlink" title="4.5. 3.6 数据的操纵"></a>4.5. <strong>3.6 数据的操纵</strong></h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">数据插入</span><br><span class="line"><span class="comment">-- 插入书架类型</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> shelf_types (shelf_type_id, shelf_type_name) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;文学类&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT INTO</span> shelf_types (shelf_type_id, shelf_type_name) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;科技类&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT INTO</span> shelf_types (shelf_type_id, shelf_type_name) <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">&#x27;历史类&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入书架</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> shelves (shelf_id, shelf_number, shelf_type_id, capacity) </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">101</span>, <span class="string">&#x27;A-101&#x27;</span>, <span class="number">1</span>, <span class="number">150</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> shelves (shelf_id, shelf_number, shelf_type_id, capacity) </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">102</span>, <span class="string">&#x27;B-201&#x27;</span>, <span class="number">2</span>, <span class="number">200</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入读者类型</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> reader_types (reader_type_id, reader_type_name) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;学生&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT INTO</span> reader_types (reader_type_id, reader_type_name) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;教师&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入读者</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> readers (reader_id, reader_name, reader_type_id, contact_phone) </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="string">&#x27;张三&#x27;</span>, <span class="number">1</span>, <span class="string">&#x27;13800138000&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> readers (reader_id, reader_name, reader_type_id, contact_phone) </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">1002</span>, <span class="string">&#x27;李教授&#x27;</span>, <span class="number">2</span>, <span class="string">&#x27;13900139000&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入图书</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> books (book_id, title, author, isbn, publication_year, shelf_id) </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">5001</span>, <span class="string">&#x27;数据库系统概论&#x27;</span>, <span class="string">&#x27;王珊&#x27;</span>, <span class="string">&#x27;978-7-04-019583-5&#x27;</span>, <span class="number">2014</span>, <span class="number">102</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> books (book_id, title, author, isbn, publication_year, shelf_id, book_status) </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">5002</span>, <span class="string">&#x27;三体&#x27;</span>, <span class="string">&#x27;刘慈欣&#x27;</span>, <span class="string">&#x27;978-7-5366-9293-0&#x27;</span>, <span class="number">2008</span>, <span class="number">101</span>, <span class="string">&#x27;在馆&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入员工</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> staff (staff_id, staff_name, staff_position) </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">9001</span>, <span class="string">&#x27;管理员小王&#x27;</span>, <span class="string">&#x27;图书管理员&#x27;</span>);</span><br><span class="line"></span><br><span class="line">更新数据</span><br><span class="line"><span class="keyword">UPDATE</span> readers </span><br><span class="line"><span class="keyword">SET</span> contact_phone <span class="operator">=</span> <span class="string">&#x27;13800138111&#x27;</span> </span><br><span class="line"><span class="keyword">WHERE</span> reader_id <span class="operator">=</span> <span class="number">1001</span>;</span><br><span class="line"></span><br><span class="line">数据删除</span><br><span class="line"><span class="comment">-- 删除无效借阅记录（需先删除相关子表记录）</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">returns</span> <span class="keyword">WHERE</span> loan_id <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> loans <span class="keyword">WHERE</span> loan_id <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除不存在的读者类型（无关联数据时）</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> reader_types <span class="keyword">WHERE</span> reader_type_id <span class="operator">=</span> <span class="number">99</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2025/zip/40495483/1749107805212-ef567e37-be99-4611-a9cb-9c7720f638bf.zip" >图书管理系统.zip<i class="fas fa-external-link-alt"></i></a></p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                图书馆管理系统oracle
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/11/14/mywork/图书馆管理系统oracle/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">tanyunhao</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2024-11-14 09:08</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
     </div>
-  </article>
-  <div class="ccbyncsa">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright">
-                    <div class="author">
-                        <p>作者</p>
-                        <p>谭云浩</p>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
                     </div>
-                    <div class="title">
-                        <p>标题</p>
-                        <p>图书馆管理系统oracle</p>
-                    </div>
-                        <div class="publish">
-                            <p>发布于</p>
-                            <p>2024-11-14</p>
-                        </div>
-                    <div class="ccbyncsa-icon">
-                        <p>授权协议</p>
-                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
-                        <img src="/images/cc.svg" alt="cc">
-                        <img src="/images/by.svg" alt="by">
-                        <img src="/images/nc.svg" alt="nc">
-                        <img src="/images/sa.svg" alt="sa">
-                        </p>
-                        </a>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/14/mywork/%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"
+                                   title="图书馆管理系统"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">图书馆管理系统</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/14/mywork/%E5%9F%BA%E4%BA%8E%E5%AE%A2%E6%88%B7%E7%BB%86%E5%88%86%E7%9A%84%E5%9C%A8%E7%BA%BF%E9%9B%B6%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%8A%E8%90%A5%E9%94%80%E7%AD%96%E7%95%A5/"
+                                   title="基于客户细分的在线零售数据分析及营销策略"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">基于客户细分的在线零售数据分析及营销策略</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liaNlY4iGiutYiDg',
+                clientSecret: '62fe13dbbfc8308f06422c153ba1b94bcdec1788',
+                repo: 'hexo-site-comments',
+                owner: 'tanyunhaoyyds',
+                admin: 'tanyunhaoyyds',
+                id: gitalkPathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'en'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-text">1. 图书馆管理系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-text">2. 需求分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-text">3. 系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="nav-text">3.1. 系统结构功能图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-text">3.2. 功能流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">3.3. 数据库设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-3-SQL-%E5%AE%9E%E7%8E%B0"><span class="nav-text">4. *3 SQL***实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-3-1%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%AF%B9%E8%B1%A1"><span class="nav-text">4.1. 3.1创建数据库表对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-3-2-%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="nav-text">4.2. 3.2****创建索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-3-3%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="nav-text">4.3. 3.3创建视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-3-5-%E5%88%9B%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-text">4.4. 3.5****创建触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-3-6-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%93%8D%E7%BA%B5"><span class="nav-text">4.5. 3.6 数据的操纵</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">tanyunhao</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
             </div>
         </div>
     </div>
 </div>
-  <nav class="post-pagination">
-    
-      <div class="post-prev">
-        <span class="nav-label">上一篇</span>
-        <a href="/2024/11/14/mywork/%E5%9F%BA%E4%BA%8E%E5%AE%A2%E6%88%B7%E7%BB%86%E5%88%86%E7%9A%84%E5%9C%A8%E7%BA%BF%E9%9B%B6%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%8A%E8%90%A5%E9%94%80%E7%AD%96%E7%95%A5/">基于客户细分的在线零售数据分析及营销策略</a>
-      </div>
-    
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2024/11/14/mywork/%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">图书馆管理系统</a>
-      </div>
-    
-  </nav>
-  
 
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-text">1. 图书馆管理系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-text">2. 需求分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-text">3. 系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="nav-text">3.1. 系统结构功能图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-text">3.2. 功能流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">3.3. 数据库设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-3-SQL-%E5%AE%9E%E7%8E%B0"><span class="nav-text">4. *3 SQL***实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-3-1%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%AF%B9%E8%B1%A1"><span class="nav-text">4.1. 3.1创建数据库表对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-3-2-%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="nav-text">4.2. 3.2****创建索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-3-3%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="nav-text">4.3. 3.3创建视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-3-5-%E5%88%9B%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-text">4.4. 3.5****创建触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-3-6-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%93%8D%E7%BA%B5"><span class="nav-text">4.5. 3.6 数据的操纵</span></a></li></ol></li></ol>
+    </div>
 </div>
 
-<script src="/js/copy.js"></script>
-
-<aside class="sidebar-container sidebar-right">
-    <div class="sidebar-bg">
-        <p id="date"></p>
-<script>
-  function updateDate() {
-    var now = new Date();
-    var dateString = now.toISOString().slice(0, 10);
-    document.getElementById('date').textContent = dateString;
-  }
-
-  window.addEventListener('load', function() {
-    updateDate();
-    // 更新频率为每5分钟更新一次，减少不必要的更新
-    setInterval(updateDate, 300000);
-  });
-</script>
-        <span id="clock" role="timer" aria-live="polite"></span>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const clockElement = document.getElementById('clock');
-    let timerInterval;
-
-    // 格式化时间函数
-    function formatTime(unit) {
-      return unit < 10 ? '0' + unit : unit;
-    }
-
-    // 更新时钟 - 只显示小时和分钟
-    function updateClock() {
-      const now = new Date();
-      const hours = formatTime(now.getHours());
-      const minutes = formatTime(now.getMinutes());
-      clockElement.textContent = `${hours}:${minutes}`;
-    }
-
-    // 初始化时钟
-    function startClock() {
-      // 立即更新一次时间
-      updateClock();
-
-      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
-      const now = new Date();
-      const secondsToNextMinute = 60 - now.getSeconds();
-
-      // 先设置一个定时器到下一分钟
-      setTimeout(() => {
-        updateClock();
-        // 然后每分钟更新一次
-        timerInterval = setInterval(updateClock, 60000);
-      }, secondsToNextMinute * 1000);
-    }
-
-    // 页面可见性变化时的优化
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        // 页面不可见时停止更新
-        clearInterval(timerInterval);
-      } else {
-        // 页面重新可见时，重新开始
-        clearInterval(timerInterval);
-        startClock();
-      }
-    });
-
-    // 启动时钟
-    startClock();
-  });
-</script>
-
-
-    </div>
-    <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">1. 图书馆管理系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2. 需求分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">3. 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 系统结构功能图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 功能流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 数据库设计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-3-SQL-%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">4. 3 SQL**实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-3-1%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 3.1创建数据库表对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-3-2-%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 3.2**创建索引**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-3-3%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 3.3创建视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-3-5-%E5%88%9B%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">4.4.</span> <span class="toc-text">4.4. 3.5**创建触发器**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-3-6-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%93%8D%E7%BA%B5"><span class="toc-number">4.5.</span> <span class="toc-text">4.5. 3.6 数据的操纵</span></a></li></ol></li></ol>
-    </div>
-    <div class="sidebar-bg">
-        <div class="card-tags">
-            
+            </div>
         </div>
-    </div>
-    <div>
-        <div class="categories-list">
-            
-                <div class="category-item">
-                    <a href="/categories/mywork/" aria-label="分类: mywork">
-                        mywork
-                        <span>(31)</span>
-                    </a>
-                </div>
-            
-        </div>
-    </div>
-</aside>
-
-    <!-- No categories available -->
-
-
-    <footer>
-    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
-    <span>👁<span id="busuanzi_value_site_pv"></span></span>
-    <div class="padding border border-sub border-dotted fadein-right">
-        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
-    </div>
-    <span>
-        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
-            <p class="hover-underline night" style="display: inline;">Hexo</p>
-        </a> 驱动
-        <p style="display: inline; color: red;">❤</p>
-        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
-            <p class="hover-underline night" style="display: inline;">Wang</p>
-        </a> 主题构建
-    </span>
-
-    <!-- 带图片的链接 -->
-    <div class="footer-links">
-        
-            
-                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
-                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
-                </a>
-            
-                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
-                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
-                </a>
-            
-        
-    </div>
-
-    <!-- 纯文本链接 -->
-    <div class="footer-text-links">
-        
-            
-                <a href="" target="_blank" rel="noopener">
-                    文字链接
-                </a>
-            
-        
-    </div>
-</footer>
-    
-<script src="/js/background.js"></script>
-    
-        
-<script src="/js/search.js"></script>
     
 </main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    <script id="pjax-script" src="/js/libs/pjax.min.js"></script>
+<script>
+  (function () {
+    const isGoogleTranslate = location.hostname.includes('.translate.goog')
+
+    if (isGoogleTranslate) {
+      document.getElementById('pjax-script')?.remove()
+      return
+    }
+
+    function initPjax () {
+      if (window.pjax) return
+
+      window.pjax = new Pjax({
+        selectors: [
+          'head title',
+          '.page-container',
+          '.pjax'
+        ],
+        history: true,
+        debug: false,
+        cacheBust: false,
+        timeout: 0,
+        analytics: false,
+        currentUrlFullReload: false,
+        scrollRestoration: false
+      })
+
+      document.addEventListener('pjax:send', onPjaxSend)
+      document.addEventListener('pjax:complete', onPjaxComplete)
+    }
+
+    function onPjaxSend () {
+      KEEP?.utils?.pjaxProgressBarStart()
+    }
+
+    function onPjaxComplete () {
+      KEEP?.utils?.pjaxProgressBarEnd()
+
+      window?.pjax?.executeScripts(
+        document.querySelectorAll('script[data-pjax], .pjax script')
+      )
+
+      KEEP?.initExecute()
+    }
+
+    // DOM Ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPjax)
+    } else {
+      initPjax()
+    }
+  })()
+</script>
+
+
+
+
 </body>
 </html>

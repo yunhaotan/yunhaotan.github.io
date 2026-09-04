@@ -1,226 +1,555 @@
 <!DOCTYPE html>
-<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
-fb: http://ogp.me/ns/fb#
-article: http://ogp.me/ns/article#">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="tanyunhao">
+    
+    <title>
+        
+            计算机网络实验二 |
+        
+        盗梦空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<title>计算机网络实验二 || 盗梦空间</title>
-<link rel="icon" href="https://yunhaotan.github.ioimages/wang.icon" type="image/x-icon">
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="计算机网络实验二">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yunhaotan.github.io/2024/11/14/curriculum/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C%E4%BA%8C/index.html">
-<meta property="og:image" content="">
-<meta property="og:site_name" content="盗梦空间">
-<meta property="og:author" content="谭云浩">
+    
+        <link rel="shortcut icon" href="/images/avatar.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
-  
-  
-  
-  <meta name="description" content="[实验名称]静态路由与默认路由配置。[实验过程]按照3.4进行实验，记录实验结果，并描述实验过程中遇到的问题以及解决问题的过程。配置R0：配置R1：配置R2:1、实验结果：要求使用ping命令观察主机PC1和PC0之间的连通情况：a.配置静态路由时主机的连通情况；从P1pingP0，两者可以连接b.配置默认路">
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script>
+        (function () {
+            let theme = localStorage.getItem('KEEP-THEME-STATUS');
+            let classname = "";
+            if (!theme || (JSON.parse(theme).isAutoTheme)){
+                classname = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark-mode" : "light-mode";
+            }
+            else{
+                classname = JSON.parse(theme).isDark ? "dark-mode" : "light-mode";
+            }
+            document.documentElement.classList.add(classname);
+        })();
+    </script>
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"盗梦空间","author":"tanyunhao","avatar":"/images/avatar.jpg","logo":"/images/avatar.jpg","favicon":"/images/avatar.jpg"},"menu":{"home":"/                     || fa-solid fa-home","archives":"/archives         || fa-solid fa-box-archive","categories":"/categories     || fa-solid fa-layer-group","links":"/links               || fa-solid fa-link","tools":"/tools               || fa-solid fa-tools","about":"/about               || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"生活的热闹与生命的骄傲，一个都不能少","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"tanyunhaoyyds","github_admins":["tanyunhaoyyds"],"repository":"hexo-site-comments","client_id":"Ov23liaNlY4iGiutYiDg","client_secret":"62fe13dbbfc8308f06422c153ba1b94bcdec1788","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","search_db_path":"keep-search.json","source_data":{"links":[{"title":"朋友们 1"},{"name":"XPoet","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"不知名艺术家","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}],"tools":[{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk0"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},"......","......","......"]},"version":"4.3.0"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.2"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
-<script src="/js/wang.js"></script>
-
-<link rel="stylesheet" href="/css/wang.css">
-<script> console.log("Hello hexo-theme-wang"); </script>
-<meta name="generator" content="Hexo 8.1.2"></head>
 <body>
-<main>
-    <div id="agplAlert" style="z-index: 9999;">
-    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
 </div>
-    <header>
-    <nav>
-        <ul>
-            
-                <li>
-                    <a href="/" rel="noopener">
-                        
-                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
-                        
-                        首页
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/archives" rel="noopener">
-                        
-                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
-                        
-                        归档
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/categories" rel="noopener">
-                        
-                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
-                        
-                        分类
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/tags" rel="noopener">
-                        
-                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
-                        
-                        标签
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/about" rel="noopener">
-                        
-                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
-                        
-                        关于
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/links" rel="noopener">
-                        
-                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
-                        
-                        友链
-                    </a>
-                </li>
-            
-                <li>
-                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener">
-                        
-                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
-                        
-                        开往
-                    </a>
-                </li>
-            
-            
-                <li>
-                    <button class="search-toggle-btn" aria-label="打开搜索">
-                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
-                        搜索
-                    </button>
-                </li>
-            
-        </ul>
-    </nav>
-</header>
 
-<script src="/js/header.js"></script>
 
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
     
-<script src="/js/search.js"></script>
 
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
 
-    
-        <!-- 搜索模态框 -->
-        <div id="search-modal" class="search-modal">
-          <div class="search-modal-content">
-            <div class="search-header">
-              <form class="search-form" action="#" onsubmit="return false;">
-                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
-                <button type="button" class="search-close-btn" aria-label="关闭">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </form>
-            </div>
-            <div id="search-results"></div>
-          </div>
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/avatar.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               盗梦空间
+            </a>
         </div>
 
-        <script>
-        // 向全局对象添加i18n数据，以便search.js使用
-        window.WANG_THEME = window.WANG_THEME || {};
-        window.WANG_THEME.i18n = {
-          search: {
-            noResults: '没有找到相关结果',
-            loading: '正在加载...',
-            placeholder: '输入关键词搜索',
-            close: '关闭',
-            shortcut_tip: '按 ESC 关闭',
-            toggle_search: '打开搜索',
-            error_loading: '加载搜索数据失败'
-          }
-        };
-        </script>
-    
-    <aside class="sidebar-container sidebar-left">
-    <div class="sidebar-bg">
-        <h2 class="site-title">盗梦空间</h2>
-        <img class="avatar avatar-round" src="/images/avatar.jpg" style="width:50px;" alt="网站头像">
-        <h2 class="site-author">谭云浩</h2>
-        <h3 class="site-subtitle">童话是一种生活态度，仅此而已。</h3>
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                LINKS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tools"></i>
+                                
+                                TOOLS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="sidebar-bg">
-        <ul class="social_links">
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
             
-                <li>
-                    <a target="_blank" rel="noopener" href="https://github.com/tanyunhao" aria-label="Github的链接">
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
                         
-                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
-                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
-                            </div>
-                        
-                    </a>
+                    </label>
+                    
                 </li>
             
-                <li>
-                    <a href="mailto:tanyunhao@proton.me" aria-label="Email的链接">
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
                         
-                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
-                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
-                            </div>
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
                         
-                    </a>
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            LINKS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tools"></i>
+                                </span>
+                            
+                            TOOLS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
                 </li>
             
         </ul>
     </div>
-</aside>
-<div class="post-container">
-  <article class="post">
-    <h1 class="post-title">计算机网络实验二</h1>
 
-    <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2024-11-14T01:08:00.000Z">2024-11-14</time></span>
-      
-        <span class="post-categories">
-          分类：<a class="category-link" href="/categories/curriculum/">curriculum</a>
-        </span>
-      
-      
-        <span class="post-updated">
-          最后更新于 <time datetime="2026-06-29T15:07:54.127Z">2026-06-29</time>
-        </span>
-      
-      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        计算机网络实验二
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Tan Yunhao</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-14 09:08:00</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Sep 04 2026 10:57:58 GMT+0000">2026-09-04 10:57:58</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/curriculum/">curriculum</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
-    <div class="post-content">
-      <h3 id="实验名称"><a href="#实验名称" class="headerlink" title="[实验名称]"></a>[实验名称]</h3><p>静态路由与默认路由配置。</p>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h3 id="实验名称"><a href="#实验名称" class="headerlink" title="[实验名称]"></a>[实验名称]</h3><p>静态路由与默认路由配置。</p>
 <h3 id="实验过程"><a href="#实验过程" class="headerlink" title="[实验过程]"></a>[实验过程]</h3><p>按照 <a href="#_bookmark1">3.4</a> 进行实验，记录实验结果，并描述实验过程中遇到的问题以及解决问题的过程。</p>
 <p>配置R0：</p>
-<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001155529.png" title="" alt="image-20231230001155529" data-align="center"></p>
-<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001247682.png" title="" alt="image-20231230001247682" data-align="center"></p>
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001155529.png"
+                         title="" alt="image-20231230001155529" data-align="center"
+                 >
+
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001247682.png"
+                         title="" alt="image-20231230001247682" data-align="center"
+                 >
+
 <p>配置R1：</p>
-<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001702774.png" title="" alt="image-20231230001702774" data-align="center"></p>
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001702774.png"
+                         title="" alt="image-20231230001702774" data-align="center"
+                 >
+
 <p>配置R2:</p>
-<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001934985.png" title="" alt="image-20231230001934985" data-align="center"></p>
-<p><img src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230002016683.png" title="" alt="image-20231230002016683" data-align="center"></p>
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230001934985.png"
+                         title="" alt="image-20231230001934985" data-align="center"
+                 >
+
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/image-20231230002016683.png"
+                         title="" alt="image-20231230002016683" data-align="center"
+                 >
+
 <h4 id="1、实验结果："><a href="#1、实验结果：" class="headerlink" title="1、实验结果："></a>1、实验结果：</h4><p>要求使用ping 命令观察主机 <code>PC1</code> 和<code>PC0</code> 之间的连通情况：</p>
-<p>a.   配置静态路由时主机的连通情况；</p>
+<p>a.   配置静态路由时主机的连通情况；</p>
 <p>从<code>P1 ping P0</code> ，两者可以连接</p>
-<p><img src="https://obsidian-1322115490.cos.ap-nanjing.myqcloud.com/image/202312300027898.png" title="" alt="" data-align="center"></p>
-<p>b.   配置默认路由时主机的连通情况。</p>
-<p>从<code>P0 ping P1</code>，两者可以连接<br><img title="" src="https://obsidian-1322115490.cos.ap-nanjing.myqcloud.com/image/202312300031741.png" alt="" data-align="center"></p>
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://obsidian-1322115490.cos.ap-nanjing.myqcloud.com/image/202312300027898.png"
+                         title="" alt="" data-align="center"
+                 >
+
+<p>b.   配置默认路由时主机的连通情况。</p>
+<p>从<code>P0 ping P1</code>，两者可以连接<br><img   title=""  
+                       lazyload
+                       alt="image"
+                       data-src="https://obsidian-1322115490.cos.ap-nanjing.myqcloud.com/image/202312300031741.png"
+                         alt="" data-align="center"
+                 ></p>
 <h4 id="2、问题及解决过程："><a href="#2、问题及解决过程：" class="headerlink" title="2、问题及解决过程："></a>2、问题及解决过程：</h4><h3 id="回答问题"><a href="#回答问题" class="headerlink" title="[回答问题]"></a>[回答问题]</h3><h4 id="1、简单讨论-192-168-1-0-和-192-168-1-255-这两个-IP-地址所代表的含义。"><a href="#1、简单讨论-192-168-1-0-和-192-168-1-255-这两个-IP-地址所代表的含义。" class="headerlink" title="1、简单讨论 192.168.1.0 和 192.168.1.255 这两个 IP 地址所代表的含义。"></a>1、简单讨论 192.168.1.0 和 192.168.1.255 这两个 IP 地址所代表的含义。</h4><p><strong>192.168.1.0：</strong> 是一个网络的起始地址，用于标识整个网络。</p>
 <p><strong>192.168.1.255：</strong> 是广播地址，用于向网络中的所有设备发送广播消息。广播地址是一个特殊的地址，表示发送到该地址的数据包将被发送到网络上的所有设备。</p>
 <h4 id="2、在配置-R0-静态路由时，命令“ip-route-192-168-3-0-255-255-255-0-192-168-2-2”中，192-168-3-0-和-192-168-2-2-分别代表什么？能不能用-192-168-3-1-代替-192-168-3-0，用192-168-2-1-代替-192-168-2-2？请测试并说明原因。"><a href="#2、在配置-R0-静态路由时，命令“ip-route-192-168-3-0-255-255-255-0-192-168-2-2”中，192-168-3-0-和-192-168-2-2-分别代表什么？能不能用-192-168-3-1-代替-192-168-3-0，用192-168-2-1-代替-192-168-2-2？请测试并说明原因。" class="headerlink" title="2、在配置 R0 静态路由时，命令“ip route 192.168.3.0 255.255.255.0 192.168.2.2”中，192.168.3.0 和 192.168.2.2 分别代表什么？能不能用 192.168.3.1 代替 192.168.3.0，用192.168.2.1 代替 192.168.2.2？请测试并说明原因。"></a>2、在配置 <code>R0</code> 静态路由时，命令“ip route 192.168.3.0 255.255.255.0 192.168.2.2”中，192.168.3.0 和 192.168.2.2 分别代表什么？能不能用 192.168.3.1 代替 192.168.3.0，用192.168.2.1 代替 192.168.2.2？请测试并说明原因。</h4><p><strong>192.168.3.0：</strong> 代表目标网络的地址。</p>
@@ -239,207 +568,590 @@ article: http://ogp.me/ns/article#">
 <p>4.默认路由可以大大简化路由器的项目数量及配置,减轻路由器和网络管理员的工作负担。静态路由优先级高于默认路由。</p>
 <p>通过本次实验，我深刻理解了静态路由配置的原理和实现方法，并对计算机网络的相关知识有了更加深入的认识。同时，实验过程中还锻炼了我的问题解决能力和实践操作能力，对我的专业学习和未来工作都具有积极意义。</p>
 
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                计算机网络实验二
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/11/14/curriculum/计算机网络实验二/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">tanyunhao</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2024-11-14 09:08</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
     </div>
-  </article>
-  <div class="ccbyncsa">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright">
-                    <div class="author">
-                        <p>作者</p>
-                        <p>谭云浩</p>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
                     </div>
-                    <div class="title">
-                        <p>标题</p>
-                        <p>计算机网络实验二</p>
-                    </div>
-                        <div class="publish">
-                            <p>发布于</p>
-                            <p>2024-11-14</p>
-                        </div>
-                    <div class="ccbyncsa-icon">
-                        <p>授权协议</p>
-                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
-                        <img src="/images/cc.svg" alt="cc">
-                        <img src="/images/by.svg" alt="by">
-                        <img src="/images/nc.svg" alt="nc">
-                        <img src="/images/sa.svg" alt="sa">
-                        </p>
-                        </a>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/14/curriculum/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C%E4%B8%80/"
+                                   title="计算机网络实验一"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">计算机网络实验一</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/14/curriculum/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%EF%BC%88Python%EF%BC%89/"
+                                   title="贝叶斯网络（Python）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">贝叶斯网络（Python）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liaNlY4iGiutYiDg',
+                clientSecret: '62fe13dbbfc8308f06422c153ba1b94bcdec1788',
+                repo: 'hexo-site-comments',
+                owner: 'tanyunhaoyyds',
+                admin: 'tanyunhaoyyds',
+                id: gitalkPathname,
+                proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+                language: 'en'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%90%8D%E7%A7%B0"><span class="nav-text">[实验名称]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="nav-text">[实验过程]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="nav-text">1、实验结果：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="nav-text">2、问题及解决过程：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E7%AD%94%E9%97%AE%E9%A2%98"><span class="nav-text">[回答问题]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E7%AE%80%E5%8D%95%E8%AE%A8%E8%AE%BA-192-168-1-0-%E5%92%8C-192-168-1-255-%E8%BF%99%E4%B8%A4%E4%B8%AA-IP-%E5%9C%B0%E5%9D%80%E6%89%80%E4%BB%A3%E8%A1%A8%E7%9A%84%E5%90%AB%E4%B9%89%E3%80%82"><span class="nav-text">1、简单讨论 192.168.1.0 和 192.168.1.255 这两个 IP 地址所代表的含义。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%9C%A8%E9%85%8D%E7%BD%AE-R0-%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%97%B6%EF%BC%8C%E5%91%BD%E4%BB%A4%E2%80%9Cip-route-192-168-3-0-255-255-255-0-192-168-2-2%E2%80%9D%E4%B8%AD%EF%BC%8C192-168-3-0-%E5%92%8C-192-168-2-2-%E5%88%86%E5%88%AB%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%9F%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8-192-168-3-1-%E4%BB%A3%E6%9B%BF-192-168-3-0%EF%BC%8C%E7%94%A8192-168-2-1-%E4%BB%A3%E6%9B%BF-192-168-2-2%EF%BC%9F%E8%AF%B7%E6%B5%8B%E8%AF%95%E5%B9%B6%E8%AF%B4%E6%98%8E%E5%8E%9F%E5%9B%A0%E3%80%82"><span class="nav-text">2、在配置 R0 静态路由时，命令“ip route 192.168.3.0 255.255.255.0 192.168.2.2”中，192.168.3.0 和 192.168.2.2 分别代表什么？能不能用 192.168.3.1 代替 192.168.3.0，用192.168.2.1 代替 192.168.2.2？请测试并说明原因。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%8B%A5PC-%E4%B8%8D%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3%EF%BC%8CPC0-%E5%92%8CPC1-%E6%98%AF%E5%90%A6%E8%83%BD%E5%A4%9F%E7%9B%B8%E4%BA%92-ping-%E9%80%9A%EF%BC%9F%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E5%B9%B6%E8%A7%A3%E9%87%8A%E5%8E%9F%E5%9B%A0%E3%80%82"><span class="nav-text">3、若PC 不配置默认网关，PC0 和PC1 是否能够相互 ping 通？进行测试并解释原因。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93"><span class="nav-text">[实验小结]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%BF%83%E5%BE%97"><span class="nav-text">[实验心得]</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">tanyunhao</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
             </div>
         </div>
     </div>
 </div>
-  <nav class="post-pagination">
-    
-      <div class="post-prev">
-        <span class="nav-label">上一篇</span>
-        <a href="/2024/11/14/curriculum/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%EF%BC%88Python%EF%BC%89/">贝叶斯网络（Python）</a>
-      </div>
-    
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2024/11/14/curriculum/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C%E4%B8%80/">计算机网络实验一</a>
-      </div>
-    
-  </nav>
-  
 
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%90%8D%E7%A7%B0"><span class="nav-text">[实验名称]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="nav-text">[实验过程]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="nav-text">1、实验结果：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="nav-text">2、问题及解决过程：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E7%AD%94%E9%97%AE%E9%A2%98"><span class="nav-text">[回答问题]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E7%AE%80%E5%8D%95%E8%AE%A8%E8%AE%BA-192-168-1-0-%E5%92%8C-192-168-1-255-%E8%BF%99%E4%B8%A4%E4%B8%AA-IP-%E5%9C%B0%E5%9D%80%E6%89%80%E4%BB%A3%E8%A1%A8%E7%9A%84%E5%90%AB%E4%B9%89%E3%80%82"><span class="nav-text">1、简单讨论 192.168.1.0 和 192.168.1.255 这两个 IP 地址所代表的含义。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%9C%A8%E9%85%8D%E7%BD%AE-R0-%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%97%B6%EF%BC%8C%E5%91%BD%E4%BB%A4%E2%80%9Cip-route-192-168-3-0-255-255-255-0-192-168-2-2%E2%80%9D%E4%B8%AD%EF%BC%8C192-168-3-0-%E5%92%8C-192-168-2-2-%E5%88%86%E5%88%AB%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%9F%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8-192-168-3-1-%E4%BB%A3%E6%9B%BF-192-168-3-0%EF%BC%8C%E7%94%A8192-168-2-1-%E4%BB%A3%E6%9B%BF-192-168-2-2%EF%BC%9F%E8%AF%B7%E6%B5%8B%E8%AF%95%E5%B9%B6%E8%AF%B4%E6%98%8E%E5%8E%9F%E5%9B%A0%E3%80%82"><span class="nav-text">2、在配置 R0 静态路由时，命令“ip route 192.168.3.0 255.255.255.0 192.168.2.2”中，192.168.3.0 和 192.168.2.2 分别代表什么？能不能用 192.168.3.1 代替 192.168.3.0，用192.168.2.1 代替 192.168.2.2？请测试并说明原因。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%8B%A5PC-%E4%B8%8D%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3%EF%BC%8CPC0-%E5%92%8CPC1-%E6%98%AF%E5%90%A6%E8%83%BD%E5%A4%9F%E7%9B%B8%E4%BA%92-ping-%E9%80%9A%EF%BC%9F%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E5%B9%B6%E8%A7%A3%E9%87%8A%E5%8E%9F%E5%9B%A0%E3%80%82"><span class="nav-text">3、若PC 不配置默认网关，PC0 和PC1 是否能够相互 ping 通？进行测试并解释原因。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93"><span class="nav-text">[实验小结]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%BF%83%E5%BE%97"><span class="nav-text">[实验心得]</span></a></li></ol>
+    </div>
 </div>
 
-<script src="/js/copy.js"></script>
-
-<aside class="sidebar-container sidebar-right">
-    <div class="sidebar-bg">
-        <p id="date"></p>
-<script>
-  function updateDate() {
-    var now = new Date();
-    var dateString = now.toISOString().slice(0, 10);
-    document.getElementById('date').textContent = dateString;
-  }
-
-  window.addEventListener('load', function() {
-    updateDate();
-    // 更新频率为每5分钟更新一次，减少不必要的更新
-    setInterval(updateDate, 300000);
-  });
-</script>
-        <span id="clock" role="timer" aria-live="polite"></span>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const clockElement = document.getElementById('clock');
-    let timerInterval;
-
-    // 格式化时间函数
-    function formatTime(unit) {
-      return unit < 10 ? '0' + unit : unit;
-    }
-
-    // 更新时钟 - 只显示小时和分钟
-    function updateClock() {
-      const now = new Date();
-      const hours = formatTime(now.getHours());
-      const minutes = formatTime(now.getMinutes());
-      clockElement.textContent = `${hours}:${minutes}`;
-    }
-
-    // 初始化时钟
-    function startClock() {
-      // 立即更新一次时间
-      updateClock();
-
-      // 如果不显示秒，同步到下一分钟然后每分钟更新一次
-      const now = new Date();
-      const secondsToNextMinute = 60 - now.getSeconds();
-
-      // 先设置一个定时器到下一分钟
-      setTimeout(() => {
-        updateClock();
-        // 然后每分钟更新一次
-        timerInterval = setInterval(updateClock, 60000);
-      }, secondsToNextMinute * 1000);
-    }
-
-    // 页面可见性变化时的优化
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        // 页面不可见时停止更新
-        clearInterval(timerInterval);
-      } else {
-        // 页面重新可见时，重新开始
-        clearInterval(timerInterval);
-        startClock();
-      }
-    });
-
-    // 启动时钟
-    startClock();
-  });
-</script>
-
-
-    </div>
-    <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%90%8D%E7%A7%B0"><span class="toc-number">1.</span> <span class="toc-text">[实验名称]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">[实验过程]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">1、实验结果：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">2、问题及解决过程：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E7%AD%94%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">[回答问题]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E5%8D%95%E8%AE%A8%E8%AE%BA-192-168-1-0-%E5%92%8C-192-168-1-255-%E8%BF%99%E4%B8%A4%E4%B8%AA-IP-%E5%9C%B0%E5%9D%80%E6%89%80%E4%BB%A3%E8%A1%A8%E7%9A%84%E5%90%AB%E4%B9%89%E3%80%82"><span class="toc-number">3.1.</span> <span class="toc-text">1、简单讨论 192.168.1.0 和 192.168.1.255 这两个 IP 地址所代表的含义。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E5%9C%A8%E9%85%8D%E7%BD%AE-R0-%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%97%B6%EF%BC%8C%E5%91%BD%E4%BB%A4%E2%80%9Cip-route-192-168-3-0-255-255-255-0-192-168-2-2%E2%80%9D%E4%B8%AD%EF%BC%8C192-168-3-0-%E5%92%8C-192-168-2-2-%E5%88%86%E5%88%AB%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%9F%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8-192-168-3-1-%E4%BB%A3%E6%9B%BF-192-168-3-0%EF%BC%8C%E7%94%A8192-168-2-1-%E4%BB%A3%E6%9B%BF-192-168-2-2%EF%BC%9F%E8%AF%B7%E6%B5%8B%E8%AF%95%E5%B9%B6%E8%AF%B4%E6%98%8E%E5%8E%9F%E5%9B%A0%E3%80%82"><span class="toc-number">3.2.</span> <span class="toc-text">2、在配置 R0 静态路由时，命令“ip route 192.168.3.0 255.255.255.0 192.168.2.2”中，192.168.3.0 和 192.168.2.2 分别代表什么？能不能用 192.168.3.1 代替 192.168.3.0，用192.168.2.1 代替 192.168.2.2？请测试并说明原因。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E8%8B%A5PC-%E4%B8%8D%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3%EF%BC%8CPC0-%E5%92%8CPC1-%E6%98%AF%E5%90%A6%E8%83%BD%E5%A4%9F%E7%9B%B8%E4%BA%92-ping-%E9%80%9A%EF%BC%9F%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E5%B9%B6%E8%A7%A3%E9%87%8A%E5%8E%9F%E5%9B%A0%E3%80%82"><span class="toc-number">3.3.</span> <span class="toc-text">3、若PC 不配置默认网关，PC0 和PC1 是否能够相互 ping 通？进行测试并解释原因。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%B0%8F%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">[实验小结]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%BF%83%E5%BE%97"><span class="toc-number">5.</span> <span class="toc-text">[实验心得]</span></a></li></ol>
-    </div>
-    <div class="sidebar-bg">
-        <div class="card-tags">
-            
+            </div>
         </div>
-    </div>
-    <div>
-        <div class="categories-list">
-            
-                <div class="category-item">
-                    <a href="/categories/curriculum/" aria-label="分类: curriculum">
-                        curriculum
-                        <span>(22)</span>
-                    </a>
-                </div>
-            
-        </div>
-    </div>
-</aside>
-
-    <!-- No categories available -->
-
-
-    <footer>
-    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
-    <span>👁<span id="busuanzi_value_site_pv"></span></span>
-    <div class="padding border border-sub border-dotted fadein-right">
-        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
-    </div>
-    <span>
-        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
-            <p class="hover-underline night" style="display: inline;">Hexo</p>
-        </a> 驱动
-        <p style="display: inline; color: red;">❤</p>
-        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
-            <p class="hover-underline night" style="display: inline;">Wang</p>
-        </a> 主题构建
-    </span>
-
-    <!-- 带图片的链接 -->
-    <div class="footer-links">
-        
-            
-                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
-                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
-                </a>
-            
-                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
-                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
-                </a>
-            
-        
-    </div>
-
-    <!-- 纯文本链接 -->
-    <div class="footer-text-links">
-        
-            
-                <a href="" target="_blank" rel="noopener">
-                    文字链接
-                </a>
-            
-        
-    </div>
-</footer>
-    
-<script src="/js/background.js"></script>
-    
-        
-<script src="/js/search.js"></script>
     
 </main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    <script id="pjax-script" src="/js/libs/pjax.min.js"></script>
+<script>
+  (function () {
+    const isGoogleTranslate = location.hostname.includes('.translate.goog')
+
+    if (isGoogleTranslate) {
+      document.getElementById('pjax-script')?.remove()
+      return
+    }
+
+    function initPjax () {
+      if (window.pjax) return
+
+      window.pjax = new Pjax({
+        selectors: [
+          'head title',
+          '.page-container',
+          '.pjax'
+        ],
+        history: true,
+        debug: false,
+        cacheBust: false,
+        timeout: 0,
+        analytics: false,
+        currentUrlFullReload: false,
+        scrollRestoration: false
+      })
+
+      document.addEventListener('pjax:send', onPjaxSend)
+      document.addEventListener('pjax:complete', onPjaxComplete)
+    }
+
+    function onPjaxSend () {
+      KEEP?.utils?.pjaxProgressBarStart()
+    }
+
+    function onPjaxComplete () {
+      KEEP?.utils?.pjaxProgressBarEnd()
+
+      window?.pjax?.executeScripts(
+        document.querySelectorAll('script[data-pjax], .pjax script')
+      )
+
+      KEEP?.initExecute()
+    }
+
+    // DOM Ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPjax)
+    } else {
+      initPjax()
+    }
+  })()
+</script>
+
+
+
+
 </body>
 </html>
