@@ -455,7 +455,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Sep 04 2026 17:02:17 GMT+0000">2026-09-04 17:02:17</span>
+                    <span class="datetime" data-updated="Fri Sep 04 2026 17:33:36 GMT+0000">2026-09-04 17:33:36</span>
                 </span>
             
         
@@ -647,77 +647,27 @@ mjx-container[display="true"] + br {
                     </div>
                     <div>
                         
-                            $share-item-width = 1.8rem
-
-.post-share-container {
-  flex-shrink 0
-
-  .share-list-wrap {
-    display flex
-    justify-content flex-end
-
-    .share-item {
-      width $share-item-width
-      height $share-item-width
-      margin-left 0.5rem
-      padding 0.4rem
-      border-style solid
-      border-width 0.1rem
-      border-radius 50%
-      cursor pointer
-      transition-t("background", "0", "0.3", "ease")
-
-
-      i {
-        color inherit
-        font-size 1rem
-      }
-
-
-      &.qq {
-        color var(--keep-primary-color)
-        border-color var(--keep-primary-color)
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--keep-primary-color)
-        }
-      }
-
-
-      &.wechat {
-        color var(--keep-success-color)
-        border-color var(--keep-success-color)
-
-        img {
-          filter brightness(1) !important
-
-          &[lazyload] {
-            &::before {
-              background #fff !important
-            }
-          }
-        }
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--keep-success-color)
-        }
-      }
-
-
-      &.weibo {
-        color var(--keep-danger-color)
-        border-color var(--keep-danger-color)
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--keep-danger-color)
-        }
-      }
-    }
-  }
-}
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
 
                         
                     </div>
@@ -731,14 +681,14 @@ mjx-container[display="true"] + br {
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/11/14/poem/%E9%9D%B6%E5%BF%83/"
-                                   title="靶心"
+                                   href="/2026/06/19/config/Obsidian%20+%20Hexo%20+%20GitHub%20Actions%20%E8%B7%A8%E8%B4%A6%E5%8F%B7%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/"
+                                   title="Obsidian + Hexo + GitHub Actions 跨账号自动部署博客完整教程"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">靶心</span>
+                                        <span class="post-nav-title-item text-ellipsis">Obsidian + Hexo + GitHub Actions 跨账号自动部署博客完整教程</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -748,11 +698,11 @@ mjx-container[display="true"] + br {
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/11/14/poem/%E9%BA%A6%E5%AD%90/"
-                                   title="麦子"
+                                   href="/2024/11/14/config/Diango%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+                                   title="Diango学习笔记"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">麦子</span>
+                                        <span class="post-nav-title-item text-ellipsis">Diango学习笔记</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

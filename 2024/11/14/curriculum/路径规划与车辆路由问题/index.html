@@ -455,7 +455,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Sep 04 2026 17:02:17 GMT+0000">2026-09-04 17:02:17</span>
+                    <span class="datetime" data-updated="Fri Sep 04 2026 17:33:36 GMT+0000">2026-09-04 17:33:36</span>
                 </span>
             
         
@@ -655,77 +655,27 @@ mjx-container[display="true"] + br {
                     </div>
                     <div>
                         
-                            $share-item-width = 1.8rem
-
-.post-share-container {
-  flex-shrink 0
-
-  .share-list-wrap {
-    display flex
-    justify-content flex-end
-
-    .share-item {
-      width $share-item-width
-      height $share-item-width
-      margin-left 0.5rem
-      padding 0.4rem
-      border-style solid
-      border-width 0.1rem
-      border-radius 50%
-      cursor pointer
-      transition-t("background", "0", "0.3", "ease")
-
-
-      i {
-        color inherit
-        font-size 1rem
-      }
-
-
-      &.qq {
-        color var(--keep-primary-color)
-        border-color var(--keep-primary-color)
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--keep-primary-color)
-        }
-      }
-
-
-      &.wechat {
-        color var(--keep-success-color)
-        border-color var(--keep-success-color)
-
-        img {
-          filter brightness(1) !important
-
-          &[lazyload] {
-            &::before {
-              background #fff !important
-            }
-          }
-        }
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--keep-success-color)
-        }
-      }
-
-
-      &.weibo {
-        color var(--keep-danger-color)
-        border-color var(--keep-danger-color)
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--keep-danger-color)
-        }
-      }
-    }
-  }
-}
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
 
                         
                     </div>
@@ -739,14 +689,14 @@ mjx-container[display="true"] + br {
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/11/14/goods/goods/"
-                                   title="资源下载链接"
+                                   href="/2024/11/14/curriculum/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%EF%BC%88Python%EF%BC%89/"
+                                   title="贝叶斯网络（Python）"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">资源下载链接</span>
+                                        <span class="post-nav-title-item text-ellipsis">贝叶斯网络（Python）</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -756,11 +706,11 @@ mjx-container[display="true"] + br {
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/11/14/mywork/Calendar%EF%BC%88%E7%94%A8Python%E5%BC%80%E5%8F%91%E7%9A%84%E5%B8%A6%E6%9C%89%E5%A4%87%E5%BF%98%E5%BD%95%E3%80%81%E5%A4%A9%E6%B0%94%E4%BF%A1%E6%81%AF%E7%9A%84Calendar%EF%BC%89/"
-                                   title="Calendar（用Python开发的带有备忘录、天气信息的Calendar）"
+                                   href="/2024/11/14/curriculum/%E7%BE%A4%E4%BD%93%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98/"
+                                   title="群体智能算法解决旅行商问题"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Calendar（用Python开发的带有备忘录、天气信息的Calendar）</span>
+                                        <span class="post-nav-title-item text-ellipsis">群体智能算法解决旅行商问题</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

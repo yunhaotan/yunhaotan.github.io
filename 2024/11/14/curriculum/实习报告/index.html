@@ -455,7 +455,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Sep 04 2026 17:02:17 GMT+0000">2026-09-04 17:02:17</span>
+                    <span class="datetime" data-updated="Fri Sep 04 2026 17:33:36 GMT+0000">2026-09-04 17:33:36</span>
                 </span>
             
         
@@ -664,77 +664,27 @@ mjx-container[display="true"] + br {
                     </div>
                     <div>
                         
-                            $share-item-width = 1.8rem
-
-.post-share-container {
-  flex-shrink 0
-
-  .share-list-wrap {
-    display flex
-    justify-content flex-end
-
-    .share-item {
-      width $share-item-width
-      height $share-item-width
-      margin-left 0.5rem
-      padding 0.4rem
-      border-style solid
-      border-width 0.1rem
-      border-radius 50%
-      cursor pointer
-      transition-t("background", "0", "0.3", "ease")
-
-
-      i {
-        color inherit
-        font-size 1rem
-      }
-
-
-      &.qq {
-        color var(--keep-primary-color)
-        border-color var(--keep-primary-color)
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--keep-primary-color)
-        }
-      }
-
-
-      &.wechat {
-        color var(--keep-success-color)
-        border-color var(--keep-success-color)
-
-        img {
-          filter brightness(1) !important
-
-          &[lazyload] {
-            &::before {
-              background #fff !important
-            }
-          }
-        }
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--keep-success-color)
-        }
-      }
-
-
-      &.weibo {
-        color var(--keep-danger-color)
-        border-color var(--keep-danger-color)
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--keep-danger-color)
-        }
-      }
-    }
-  }
-}
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
 
                         
                     </div>
@@ -765,11 +715,11 @@ mjx-container[display="true"] + br {
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/11/14/curriculum/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C/"
-                                   title="数据库操作实验"
+                                   href="/2024/11/14/curriculum/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E7%90%86%E7%AE%97%E6%B3%95%E5%8F%8A%E5%B7%A5%E5%85%B7%E5%BA%94%E7%94%A8/"
+                                   title="因果推理算法及工具应用"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">数据库操作实验</span>
+                                        <span class="post-nav-title-item text-ellipsis">因果推理算法及工具应用</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
