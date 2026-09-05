@@ -410,185 +410,108 @@ mjx-container[display="true"] + br {
             <div class="main-content border-box">
                 
 
-                    .home-content-container {
-  background var(--background-color-1)
+                    <div class="home-content-container fade-in-down-animation">
+    
+    <ul class="home-post-list border-box">
+        
+            <li class="home-post-item">
 
-  if (hexo-config('home') && hexo-config('home.announcement')) {
-    .website-announcement {
-      keep-container(var(--home-post-hover-scale), 1rem, 1.8rem)
-      display flex
-      align-items center
-      justify-content space-between
-      margin-top -0.6rem
+                
 
-      +keep-tablet() {
-        margin-top -0.4rem
-      }
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2024/11/14/mywork/C++/">
+                            C++
+                        </a>
+                    </h3>
 
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            第13章 C++基本语言1. 13.6　函数新特性、inline内联函数与const详解0.1. 13.6.1　函数回顾与后置返回类型在C语言部分学习到了函数，也掌握了什么叫函数声明、函数定义的 概念。请注意：函数定义中如果有形参则形参应该有名字，而...
+                        
+                    </div>
 
-      +keep-mobile() {
-        margin-top -0.2rem
+                    
 
-        .announcement {
-          font-size 0.9rem
-        }
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat Sep 05 2026 04:35:01 GMT+0000"
+                >2026-09-05 04:35:01</span>
+            </span>
+        
 
-        .icon {
-          font-size 1rem !important
-        }
-      }
+        
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/mywork/">mywork</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
-      .announcement {
-        width 100%
-        padding 0 0.5rem
-        color var(--text-color-3)
+        
 
-        p {
-          width 100%
-          overflow hidden
-          white-space nowrap
-          text-overflow ellipsis
-        }
-      }
+        
+        
+        
+        
+    </div>
 
+    
+        <a class="home-read-more" href="/2024/11/14/mywork/C++/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
 
-      .icon {
-        flex-shrink 0
-        padding 0.2rem
-        font-size 1.2rem
+                </div>
+            </li>
+        
+    </ul>
+    
+    <div class="paginator border-box flex-center">
+        <div class="border-box first-page paginator-btn allowed">
+            <a class="border-box"><i class="fa-solid fa-angle-double-left"></i></a>
+        </div>
 
-        &.left {
-          color var(--keep-danger-color)
-          font-size 1.5rem
-          transform-origin left bottom
-          animation shake 1s ease infinite
-        }
-
-        &.right {
-          color var(--text-color-4)
-          cursor pointer
-
-          &:hover {
-            color var(--text-color-3)
-          }
-        }
-      }
-    }
-  }
-
-  .home-post-list {
-
-    .home-post-item {
-      position relative
-
-      keep-container(var(--home-post-hover-scale), 0, 2.8rem)
-
-      .post-sticky-box {
-        position absolute
-        z-index $z-index-1
-        display flex
-        align-items center
-        box-sizing border-box
-        padding 0.1rem 0.4rem
-        color var(--text-color-4)
-        font-size 12px
-        letter-spacing 1px
-        background var(--background-color-3)
-        border-radius 0.3rem
-        transform scale(0.86)
-        cursor default
-        disable-user-select()
-
-        &.cover-offset {
-          top 0.6rem
-          right 0.6rem
-        }
-
-        &.card-offset {
-          top 0.8rem
-          right 0.8rem
-        }
-
-        +keep-mobile() {
-          padding 0
-          background none
-          transform rotate(45deg)
-
-          .sticky-name {
-            display none
-          }
-        }
-      }
+        <div class="border-box paginator-btn allowed">
+            <a class="border-box"
+               href="/page/10/"
+            ><i class="fa-solid fa-chevron-left"></i></a>
+        </div>
 
 
-      .home-post-item-top {
-        width 100%
-        overflow hidden
-        background-color var(--background-color-2)
-        border-top-left-radius var(--box-border-radius)
-        border-top-right-radius var(--box-border-radius)
-
-        +keep-mobile() {
-          height 8rem !important
-        }
-
-        .home-cover {
-          width 100%
-          height 100%
-          object-fit cover
-          transform-origin center center
-          transition-t("transform", "0", "1", "linear")
-
-          &:hover {
-            transform scale(1.03)
-          }
-        }
-      }
+        <div class="page-number-box border-box flex-center">
+            <input class="page-number-input border-box base-style"
+                   type="number"
+                   value="11"
+                   min="1"
+                   max="11"
+            /><span class="delimiter base-style">/</span><span class="base-style">11</span>
+        </div>
 
 
-      .home-post-item-bottom {
-        padding 2rem
+        <div class="border-box paginator-btn">
+            <a class="border-box"
+               href="/"
+            ><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
 
-        .sticky-icon {
-          position absolute
-          top 1.2rem
-          right 1.2rem
-          color var(--text-color-4)
-          font-size 1.2rem
-          transform rotate(45deg)
-        }
-
-
-        .home-post-title {
-          margin 0
-          color var(--text-color-2)
-          font-weight 600
-          font-size 1.4rem
-          line-height 1.5
+        <div class="border-box last-page paginator-btn not-allow">
+            <a class="border-box"><i class="fa-solid fa-angle-double-right"></i></a>
+        </div>
+    </div>
 
 
-          +keep-tablet() {
-            font-size 1.3rem
-          }
 
 
-          +keep-mobile() {
-            font-size 1.2rem
-          }
-        }
-
-
-        .home-post-content {
-          margin 1.8rem 0
-          color var(--text-color-3)
-          text-align justify
-          word-wrap break-word
-        }
-      }
-    }
-  }
-}
+</div>
 
 
                 
