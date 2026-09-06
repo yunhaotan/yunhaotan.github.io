@@ -9,7 +9,7 @@
     
     <title>
         
-            Ubuntu安装miniconda |
+            未命名 |
         
         盗梦空间
     </title>
@@ -421,7 +421,7 @@ mjx-container[display="true"] + br {
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Ubuntu安装miniconda
+                        未命名
                     </div>
                 
 
@@ -449,7 +449,7 @@ mjx-container[display="true"] + br {
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-11-14 09:08:00</span>
+                <span class="datetime">2026-09-07 00:00:00</span>
             </span>
 
             
@@ -464,7 +464,7 @@ mjx-container[display="true"] + br {
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/config/">config</a></li>
+                            <li class="category-item"><a href="/categories/poem/">poem</a></li>
                         
                     
                 </ul>
@@ -475,7 +475,7 @@ mjx-container[display="true"] + br {
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/config/">config</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/poem/">poem</a></li>
                         
                     
                 </ul>
@@ -504,28 +504,8 @@ mjx-container[display="true"] + br {
                     
 
                     
-                         <h1 id="1-一、下载安装miniconda"><a href="#1-一、下载安装miniconda" class="headerlink" title="1. 一、下载安装miniconda"></a>1. 一、下载安装miniconda</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="comment">//repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span></span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+                         <p>返回的d’f’h</p>
 
-<h1 id="2-二、安装-Miniconda-后设置环境变量"><a href="#2-二、安装-Miniconda-后设置环境变量" class="headerlink" title="2. 二、安装 Miniconda 后设置环境变量"></a>2. 二、安装 Miniconda 后设置环境变量</h1><h2 id="2-1-检查安装路径"><a href="#2-1-检查安装路径" class="headerlink" title="2.1. 检查安装路径"></a>2.1. 检查安装路径</h2><p>首先，确认 Miniconda 的安装路径。默认情况下，Miniconda 会安装在你的用户主目录下，路径通常是 <code>~/miniconda3</code>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> ~/miniconda3</span><br></pre></td></tr></table></figure>
-<p>如果路径不同，请替换下面的命令中的 <code>~/miniconda3</code> 为你实际的安装路径。</p>
-<h2 id="2-2-添加-Miniconda-到环境变量"><a href="#2-2-添加-Miniconda-到环境变量" class="headerlink" title="2.2. 添加 Miniconda 到环境变量"></a>2.2. 添加 Miniconda 到环境变量</h2><p>编辑你的 <code>.bashrc</code> 文件，添加 Miniconda 的路径到 <code>PATH</code> 环境变量中。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;/home/ubuntu/miniconda3/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
-<h2 id="2-3-重新加载-bashrc-文件"><a href="#2-3-重新加载-bashrc-文件" class="headerlink" title="2.3. 重新加载 .bashrc 文件"></a>2.3. 重新加载 <code>.bashrc</code> 文件</h2><p>重新加载 <code>.bashrc</code> 文件以使更改生效。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-<h2 id="2-4-验证-conda-命令"><a href="#2-4-验证-conda-命令" class="headerlink" title="2.4. 验证 conda 命令"></a>2.4. 验证 <code>conda</code> 命令</h2><p>再次尝试运行 <code>conda</code> 命令，看看是否已经可以正常使用。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
-<h2 id="2-5-初始化-Conda（可选）"><a href="#2-5-初始化-Conda（可选）" class="headerlink" title="2.5. 初始化 Conda（可选）"></a>2.5. 初始化 Conda（可选）</h2><p>如果你选择不在安装过程中初始化 Conda，可以手动初始化它。这将确保 Conda 的 shell 函数被正确加载。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda init</span><br></pre></td></tr></table></figure>
-<h2 id="2-6-重新启动终端"><a href="#2-6-重新启动终端" class="headerlink" title="2.6. 重新启动终端"></a>2.6. 重新启动终端</h2><p>有时，重新启动终端可以确保所有更改生效。</p>
-<h2 id="2-7-配置环境"><a href="#2-7-配置环境" class="headerlink" title="2.7. 配置环境"></a>2.7. 配置环境</h2><p>[[anaconda &amp; jupyter notebook使用技巧]]<br>[[pytorch和TensorFlow安装教程]]</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20260110100427236.png"
-                        alt="image.png"
-                 ></p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁止 conda 自动激活 base 环境</span></span><br><span class="line">conda config --<span class="built_in">set</span> auto_activate_base <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置镜像源（国内用户推荐）</span></span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls <span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 conda</span></span><br><span class="line">conda update conda -y</span><br></pre></td></tr></table></figure>
                     
                 </div>
 
@@ -535,11 +515,11 @@ mjx-container[display="true"] + br {
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                Ubuntu安装miniconda
+                未命名
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2024/11/14/config/Ubuntu安装miniconda/
+                2026/09/07/poem/未命名/
             </div>
         </div>
 
@@ -555,7 +535,7 @@ mjx-container[display="true"] + br {
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-11-14 09:08</div>
+                <div class="content">2026-09-07 00:00</div>
             </div>
 
 
@@ -591,7 +571,7 @@ mjx-container[display="true"] + br {
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/config/">config</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/poem/">poem</a>
                                     </li>
                                 
                             </ul>
@@ -633,14 +613,14 @@ mjx-container[display="true"] + br {
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/11/14/config/Syncthing%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
-                                   title="Syncthing使用教程"
+                                   href="/2026/09/07/config/%E7%AC%94%E6%A2%97/"
+                                   title="笔梗"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Syncthing使用教程</span>
+                                        <span class="post-nav-title-item text-ellipsis">笔梗</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -650,11 +630,11 @@ mjx-container[display="true"] + br {
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/11/14/config/VScode+MinGW%E7%BC%96%E5%86%99C++%E6%95%99%E7%A8%8B/"
-                                   title="VScode+MinGW编写C++教程"
+                                   href="/2026/09/05/config/%E6%B5%8B%E8%AF%95/"
+                                   title="测试"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">VScode+MinGW编写C++教程</span>
+                                        <span class="post-nav-title-item text-ellipsis">测试</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -783,7 +763,7 @@ mjx-container[display="true"] + br {
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%B8%80%E3%80%81%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85miniconda"><span class="nav-text">1. 一、下载安装miniconda</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-Miniconda-%E5%90%8E%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">2. 二、安装 Miniconda 后设置环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="nav-text">2.1. 检查安装路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%B7%BB%E5%8A%A0-Miniconda-%E5%88%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">2.2. 添加 Miniconda 到环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD-bashrc-%E6%96%87%E4%BB%B6"><span class="nav-text">2.3. 重新加载 .bashrc 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E9%AA%8C%E8%AF%81-conda-%E5%91%BD%E4%BB%A4"><span class="nav-text">2.4. 验证 conda 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E5%88%9D%E5%A7%8B%E5%8C%96-Conda%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-text">2.5. 初始化 Conda（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8%E7%BB%88%E7%AB%AF"><span class="nav-text">2.6. 重新启动终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="nav-text">2.7. 配置环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-text">配置</span></a></li></ol></li></ol>
+        
     </div>
 </div>
 
@@ -970,7 +950,7 @@ mjx-container[display="true"] + br {
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%B8%80%E3%80%81%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85miniconda"><span class="nav-text">1. 一、下载安装miniconda</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-Miniconda-%E5%90%8E%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">2. 二、安装 Miniconda 后设置环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="nav-text">2.1. 检查安装路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%B7%BB%E5%8A%A0-Miniconda-%E5%88%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">2.2. 添加 Miniconda 到环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD-bashrc-%E6%96%87%E4%BB%B6"><span class="nav-text">2.3. 重新加载 .bashrc 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E9%AA%8C%E8%AF%81-conda-%E5%91%BD%E4%BB%A4"><span class="nav-text">2.4. 验证 conda 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E5%88%9D%E5%A7%8B%E5%8C%96-Conda%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-text">2.5. 初始化 Conda（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8%E7%BB%88%E7%AB%AF"><span class="nav-text">2.6. 重新启动终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="nav-text">2.7. 配置环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-text">配置</span></a></li></ol></li></ol>
+        
     </div>
 </div>
 
