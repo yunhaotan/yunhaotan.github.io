@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="tanyunhao">
+    
+    <title>
+        
+            网上购物系统oracle |
+        
+        盗梦空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/avatar.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script>
+        (function () {
+            let theme = localStorage.getItem('KEEP-THEME-STATUS');
+            let classname = "";
+            if (!theme || (JSON.parse(theme).isAutoTheme)){
+                classname = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark-mode" : "light-mode";
+            }
+            else{
+                classname = JSON.parse(theme).isDark ? "dark-mode" : "light-mode";
+            }
+            document.documentElement.classList.add(classname);
+        })();
+    </script>
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yunhaotan.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"盗梦空间","author":"tanyunhao","avatar":"/images/avatar.jpg","logo":"/images/avatar.jpg","favicon":"/images/avatar.jpg"},"menu":{"home":"/                     || fa-solid fa-home","archives":"/archives         || fa-solid fa-box-archive","categories":"/categories     || fa-solid fa-layer-group","tools":"/tools               || fa-solid fa-cart-shopping","about":"/about               || fa-solid fa-user-graduate","links":"/links               || fa-solid fa-link"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"生活的热闹与生命的骄傲，一个都不能少","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"yunhaotan","github_admins":["yunhaotan"],"repository":"hexo-site-comments","client_id":"Ov23liDmdEHYEqQLDzKl","client_secret":"cba9ae93ad76e5a72a734bc8aca63ecfe66b8005","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":"yunhaotan/hexo-site-comments","repo_id":"R_kgDOUORZtg","category":"Announcements","category_id":"DIC_kwDOUORZts4DE3t-","reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2024,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","search_db_path":"keep-search.json","source_data":{"links":[{"title":"朋友们 1"},{"name":"XPoet","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"不知名艺术家","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}],"tools":[{"category":"资源下载链接","anchorId":"JUU4JUI1JTg0JUU2JUJBJTkwJUU0JUI4JThCJUU4JUJEJUJEJUU5JTkzJUJFJUU2JThFJUE10"},{"name":"计算机组成原理","link":"https://m.tb.cn/h.8nN8CfM?tk=96ptTgVM3EA","description":"【闲鱼】华中科技大学计算机组成原理实验","image":"https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251024175356125.png"},{"name":"备忘录下载","link":"https://m.tb.cn/h.8nNjheI?tk=dhbaTgVnrDp","description":"【闲鱼】Calendar（用Python开发的带有备忘录、天气信息的）","image":"https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20241025213618.png"},{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk3"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},"......","......","......"]},"version":"4.3.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.2"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/avatar.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               盗梦空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-cart-shopping"></i>
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-cart-shopping"></i>
+                                </span>
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        网上购物系统oracle
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Tan Yunhao</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-14 09:08:00</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sun Sep 06 2026 17:20:05 GMT+0000">2026-09-06 17:20:05</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/mywork/">mywork</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mywork/">mywork</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>用户表:编号，用户名，密码，邮箱，角色，用户头像；</p>
+<p>影片表：编号，影片名称，国外名称，演职人员，导演，电影详情，电影时长，电影类型，电影评分，票房，电影参评人数，上映时间，制片地区，电影海报地址，电影状态；</p>
+<p>影院表：编号，影院名称，影院地址；</p>
+<p>放映厅表：编号，放映厅名称，放映厅容量，所属影院编号；</p>
+<p>订单表：编号，所属用户编号，所属场次编号，电影票座位信息，订单状态，订单价格，订单支付时间，所属用户对象；</p>
+<p>订单详情表：编号，所属放映厅，放映的电影编号，电影放映时间，售价，剩余座位数，场次状态，所属放映厅对象，放映的电影；</p>
+<p>评论表：编号，所属用户编号，评论内容，所属电影编号，评论时间，所属用户，评分；</p>
+<p>影院票务管理系统</p>
+<table>
+<thead>
+<tr>
+<th align="center">姓名</th>
+<th align="center">主要完成的工作</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h1 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h1><p>1、用户管理模块</p>
+<p>1.1 用户信息管理</p>
+<p>用户表（users）用于存储用户的基础信息，包括用户 ID、用户名、密码、邮箱等字段。其中，用户 ID 作为主键，确保每个用户具有唯一标识；用户名和邮箱设置为唯一，避免重复注册；密码字段采用加密存储，保障用户信息安全。需求场景包括用户注册时新增数据、登录时验证用户名和密码、个人资料修改时更新信息，以及通过邮箱找回密码等功能。</p>
+<p>1.2 收货地址管理</p>
+<p>收货地址表（addresses）关联用户表，存储用户的收货地址信息。每个用户可拥有多个收货地址，通过 is_default 字段标记默认地址。需求场景包括用户添加新地址、修改已有地址、删除无效地址，以及在下单时选择默认或指定地址。</p>
+<p>2、商品管理模块</p>
+<p>2.1 商品类别管理</p>
+<p>商品类别表（categories）采用树状结构，通过 parent_id 字段关联父类别，实现商品的多级分类管理。需求场景包括添加新类别、修改类别名称、删除空类别（无下级类别和商品），以及按类别层级展示商品分类目录。</p>
+<p>2.2 商品信息管理</p>
+<p>商品表（products）存储商品的详细信息，包括商品 ID、名称、价格、库存等，通过外键关联商品类别表和供应商表。需求场景包括商品上架（插入新商品记录）、商品信息更新（如修改价格、库存）、商品下架（逻辑删除或标记状态），以及根据类别、价格、库存等条件查询商品。</p>
+<p>2.3 供应商管理</p>
+<p>供应商表（suppliers）记录供应商的基本信息，如供应商 ID、名称、联系方式等。商品表通过供应商 ID 与之关联，用于明确商品的供货来源。需求场景包括添加新供应商、更新供应商信息、删除不再合作的供应商，以及查询供应商提供的商品列表。</p>
+<p>3、购物车模块</p>
+<p>3.1 购物车管理</p>
+<p>购物车表（cart）为每个用户创建唯一的购物车记录，记录创建时间和最后修改时间。需求场景包括用户首次访问购物车时创建记录、清空购物车（删除关联的 cart_items 记录）、查询购物车基本信息（如创建时间）。</p>
+<p>3.2 购物车商品管理</p>
+<p>购物车商品表（cart_items）关联购物车表和商品表，记录用户加入购物车的商品及数量。需求场景包括用户添加商品到购物车（插入记录）、修改商品数量、删除购物车中的商品，以及统计购物车中商品的总价。</p>
+<p>4、订单管理模块</p>
+<p>4.1 订单管理</p>
+<p>订单表（orders）记录订单的核心信息，包括订单 ID、用户 ID、地址 ID、订单日期、总金额、订单状态等。通过外键关联用户表和收货地址表，明确订单归属和收货信息。需求场景包括用户下单时创建订单记录、更新订单状态（如待付款、已付款、已发货等）、查询订单列表（按用户、日期、状态筛选）。</p>
+<p>4.2 订单详情管理</p>
+<p>订单详情表（order_details）关联订单表和商品表，记录每个订单包含的商品信息、数量和单价。subtotal 字段作为虚拟列，自动计算商品小计。需求场景包括生成订单时插入订单详情、查询订单中商品明细、统计订单商品的总数量和总金额。</p>
+<h1 id="2-系统设计"><a href="#2-系统设计" class="headerlink" title="2. 系统设计"></a>2. 系统设计</h1><h2 id="2-1-系统结构功能图"><a href="#2-1-系统结构功能图" class="headerlink" title="2.1. 系统结构功能图"></a>2.1. 系统结构功能图</h2><p>根据需求分析，确定系统结构功能如图2-1所示：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749280381281-e77c3693-b4d3-426f-8c81-6f4bb92adcf5.png"
+                       
+                 ></p>
+<p>图2-1 系统功能结构图</p>
+<h2 id="2-2-功能流程图"><a href="#2-2-功能流程图" class="headerlink" title="2.2. 功能流程图"></a>2.2. 功能流程图</h2><p>系统最主要的功能就是管理员登录之后对各种功能的使用。管理员功能如图4-2所示。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2025/png/40495483/1749281503440-d69354e9-03b4-4a8f-a88b-b82d4e2b63c9.png"
+                       
+                 ></p>
+<p>图2-2 管理员登录管理流程</p>
+<h2 id="2-3-数据库设计"><a href="#2-3-数据库设计" class="headerlink" title="2.3. 数据库设计"></a>2.3. 数据库设计</h2><p>整体功能的E-R图如图2-4所示。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2025/jpeg/40495483/1749286443970-206e8285-9eae-448e-84ab-0e1cd131c12f.jpeg"
+                        alt="画板"
+                 ></p>
+<p>图2-4 系统E-R图</p>
+<p>本系统包含的数据表如下：</p>
+<p><strong>1**<strong>书架类型表</strong></strong> (shelf_types)**</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>shelf_type_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>书架类型ID</td>
+</tr>
+<tr>
+<td>shelf_type_name</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>50</td>
+<td>否</td>
+<td>-</td>
+<td>书架类型名称</td>
+</tr>
+</tbody></table>
+<p><strong>2**<strong>读者类型表</strong></strong> (reader_types)**</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>reader_type_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者类型ID</td>
+</tr>
+<tr>
+<td>reader_type_name</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>50</td>
+<td>否</td>
+<td>-</td>
+<td>读者类型名称</td>
+</tr>
+</tbody></table>
+<p><strong>3**<strong>书架表</strong></strong> (shelves)**</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>shelf_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>书架ID</td>
+</tr>
+<tr>
+<td>shelf_number</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>20</td>
+<td>否</td>
+<td>-</td>
+<td>书架编号</td>
+</tr>
+<tr>
+<td>shelf_type_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>书架类型ID</td>
+</tr>
+</tbody></table>
+<p><strong>4**<strong>工作人员表</strong></strong> (staff)**</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>staff_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>工作人员ID</td>
+</tr>
+<tr>
+<td>staff_name</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>100</td>
+<td>否</td>
+<td>-</td>
+<td>工作人员姓名</td>
+</tr>
+<tr>
+<td>staff_position</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>50</td>
+<td>否</td>
+<td>-</td>
+<td>工作人员职位</td>
+</tr>
+</tbody></table>
+<p><strong>5**<strong>图书表</strong></strong> (books)**</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>book_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>图书ID</td>
+</tr>
+<tr>
+<td>title</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>200</td>
+<td>否</td>
+<td>-</td>
+<td>图书标题</td>
+</tr>
+<tr>
+<td>author</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>100</td>
+<td>否</td>
+<td>-</td>
+<td>图书作者</td>
+</tr>
+<tr>
+<td>isbn</td>
+<td>VARCHAR2</td>
+<td>唯一且非空</td>
+<td>20</td>
+<td>否</td>
+<td>-</td>
+<td>图书国际标准书号</td>
+</tr>
+<tr>
+<td>publication_year</td>
+<td>NUMBER</td>
+<td>可空</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>出版年份</td>
+</tr>
+<tr>
+<td>shelf_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>书架ID</td>
+</tr>
+</tbody></table>
+<p><strong>6**<strong>读者表</strong></strong> (readers)**</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>reader_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者ID</td>
+</tr>
+<tr>
+<td>reader_name</td>
+<td>VARCHAR2</td>
+<td>非空</td>
+<td>100</td>
+<td>否</td>
+<td>-</td>
+<td>读者姓名</td>
+</tr>
+<tr>
+<td>reader_type_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者类型ID</td>
+</tr>
+<tr>
+<td>contact_phone</td>
+<td>VARCHAR2</td>
+<td>可空</td>
+<td>15</td>
+<td>是</td>
+<td>-</td>
+<td>联系电话</td>
+</tr>
+</tbody></table>
+<p><strong>7**<strong>正借阅表</strong></strong> (loans)**</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>loan_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>借阅记录ID</td>
+</tr>
+<tr>
+<td>book_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>图书ID</td>
+</tr>
+<tr>
+<td>reader_id</td>
+<td>NUMBER</td>
+<td>外键且非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者ID</td>
+</tr>
+<tr>
+<td>loan_date</td>
+<td>DATE</td>
+<td>非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>借书日期</td>
+</tr>
+<tr>
+<td>due_date</td>
+<td>DATE</td>
+<td>非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>应还日期</td>
+</tr>
+</tbody></table>
+<p><strong>8**<strong>已还书籍表</strong></strong> (returns)**</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>return_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>还书记录ID</td>
+</tr>
+<tr>
+<td>loan_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>借阅记录ID</td>
+</tr>
+<tr>
+<td>return_date</td>
+<td>DATE</td>
+<td>非空</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>还书日期</td>
+</tr>
+</tbody></table>
+<p><strong>9****通知记录表（<strong><strong>overdue_notifications</strong></strong>）</strong></p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>notification_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>通知记录</td>
+</tr>
+<tr>
+<td>loan_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>借阅记录 ID</td>
+</tr>
+<tr>
+<td>reader_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>读者 ID</td>
+</tr>
+<tr>
+<td>notification_date</td>
+<td>DATE</td>
+<td>日期</td>
+<td>-</td>
+<td>是</td>
+<td>SYSDATE</td>
+<td>通知日期</td>
+</tr>
+<tr>
+<td>message</td>
+<td>VARCHAR2</td>
+<td>字符串</td>
+<td>500</td>
+<td>是</td>
+<td>-</td>
+<td>通知内容</td>
+</tr>
+</tbody></table>
+<p><strong>10****历史记录表（<strong><strong>book_location_history</strong></strong>）</strong></p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>字段类型</th>
+<th>长度</th>
+<th>是否为空</th>
+<th>默认值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>history_id</td>
+<td>NUMBER</td>
+<td>主键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>历史记录</td>
+</tr>
+<tr>
+<td>book_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>图书 ID</td>
+</tr>
+<tr>
+<td>old_shelf_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>旧书架 ID</td>
+</tr>
+<tr>
+<td>new_shelf_id</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>否</td>
+<td>-</td>
+<td>新书架 ID</td>
+</tr>
+<tr>
+<td>change_date</td>
+<td>DATE</td>
+<td>日期</td>
+<td>-</td>
+<td>是</td>
+<td>SYSDATE</td>
+<td>变更日期</td>
+</tr>
+<tr>
+<td>changed_by</td>
+<td>NUMBER</td>
+<td>外键</td>
+<td>-</td>
+<td>是</td>
+<td>-</td>
+<td>操作人 ID</td>
+</tr>
+</tbody></table>
+<h1 id="3-3-SQL-实现"><a href="#3-3-SQL-实现" class="headerlink" title="3. 3 SQL****实现"></a>3. <strong>3 SQL****实现</strong></h1><h2 id="3-1-建表"><a href="#3-1-建表" class="headerlink" title="3.1. 建表"></a>3.1. 建表</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1. 用户表（基础表）</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> users (</span><br><span class="line">    user_id <span class="type">CHAR</span>(<span class="number">10</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    username VARCHAR2(<span class="number">30</span>) <span class="keyword">NOT NULL</span> <span class="keyword">UNIQUE</span>,</span><br><span class="line">    password VARCHAR2(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    email VARCHAR2(<span class="number">50</span>) <span class="keyword">NOT NULL</span> <span class="keyword">UNIQUE</span>,</span><br><span class="line">    full_name VARCHAR2(<span class="number">50</span>),</span><br><span class="line">    phone <span class="type">CHAR</span>(<span class="number">11</span>),</span><br><span class="line">    reg_date <span class="type">DATE</span> <span class="keyword">DEFAULT</span> SYSDATE <span class="keyword">NOT NULL</span>,</span><br><span class="line">    last_login <span class="type">DATE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. 商品类别表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> categories (</span><br><span class="line">    category_id <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    category_name VARCHAR2(<span class="number">50</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    parent_id <span class="type">CHAR</span>(<span class="number">6</span>),</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_parent_cat <span class="keyword">FOREIGN KEY</span> (parent_id) <span class="keyword">REFERENCES</span> categories(category_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3. 供应商表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> suppliers (</span><br><span class="line">    supplier_id <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    supplier_name VARCHAR2(<span class="number">50</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    contact_person VARCHAR2(<span class="number">30</span>),</span><br><span class="line">    phone VARCHAR2(<span class="number">20</span>),</span><br><span class="line">    bank_account VARCHAR2(<span class="number">25</span>),</span><br><span class="line">    address VARCHAR2(<span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 4. 商品表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> products (</span><br><span class="line">    product_id <span class="type">CHAR</span>(<span class="number">8</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    product_name VARCHAR2(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    category_id <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    description <span class="type">CLOB</span>,</span><br><span class="line">    price NUMBER(<span class="number">10</span>,<span class="number">2</span>) <span class="keyword">NOT NULL</span> <span class="keyword">CHECK</span>(price <span class="operator">&gt;</span> <span class="number">0</span>),</span><br><span class="line">    stock_quantity <span class="type">INT</span> <span class="keyword">NOT NULL</span> <span class="keyword">CHECK</span>(stock_quantity <span class="operator">&gt;=</span> <span class="number">0</span>),</span><br><span class="line">    supplier_id <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    create_date <span class="type">DATE</span> <span class="keyword">DEFAULT</span> SYSDATE <span class="keyword">NOT NULL</span>,</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_prod_category <span class="keyword">FOREIGN KEY</span> (category_id) <span class="keyword">REFERENCES</span> categories(category_id),</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_prod_supplier <span class="keyword">FOREIGN KEY</span> (supplier_id) <span class="keyword">REFERENCES</span> suppliers(supplier_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 5. 收货地址表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> addresses (</span><br><span class="line">    address_id <span class="type">CHAR</span>(<span class="number">8</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    user_id <span class="type">CHAR</span>(<span class="number">10</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    receiver_name VARCHAR2(<span class="number">30</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    phone <span class="type">CHAR</span>(<span class="number">11</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    province VARCHAR2(<span class="number">20</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    city VARCHAR2(<span class="number">20</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    district VARCHAR2(<span class="number">20</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    detail_address VARCHAR2(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    is_default <span class="type">CHAR</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;N&#x27;</span> <span class="keyword">CHECK</span>(is_default <span class="keyword">IN</span> (<span class="string">&#x27;Y&#x27;</span>,<span class="string">&#x27;N&#x27;</span>)),</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_addr_user <span class="keyword">FOREIGN KEY</span> (user_id) <span class="keyword">REFERENCES</span> users(user_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 6. 购物车表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> cart (</span><br><span class="line">    cart_id <span class="type">CHAR</span>(<span class="number">10</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    user_id <span class="type">CHAR</span>(<span class="number">10</span>) <span class="keyword">NOT NULL</span> <span class="keyword">UNIQUE</span>,</span><br><span class="line">    created_date <span class="type">DATE</span> <span class="keyword">DEFAULT</span> SYSDATE <span class="keyword">NOT NULL</span>,</span><br><span class="line">    modified_date <span class="type">DATE</span>,</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_cart_user <span class="keyword">FOREIGN KEY</span> (user_id) <span class="keyword">REFERENCES</span> users(user_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 7. 购物车商品表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> cart_items (</span><br><span class="line">    cart_id <span class="type">CHAR</span>(<span class="number">10</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    product_id <span class="type">CHAR</span>(<span class="number">8</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    quantity <span class="type">INT</span> <span class="keyword">NOT NULL</span> <span class="keyword">CHECK</span>(quantity <span class="operator">&gt;</span> <span class="number">0</span>),</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> pk_cart_items <span class="keyword">PRIMARY KEY</span> (cart_id, product_id),</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_ci_cart <span class="keyword">FOREIGN KEY</span> (cart_id) <span class="keyword">REFERENCES</span> cart(cart_id),</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_ci_product <span class="keyword">FOREIGN KEY</span> (product_id) <span class="keyword">REFERENCES</span> products(product_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 8. 订单表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> orders (</span><br><span class="line">    order_id <span class="type">CHAR</span>(<span class="number">12</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    user_id <span class="type">CHAR</span>(<span class="number">10</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    address_id <span class="type">CHAR</span>(<span class="number">8</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    order_date <span class="type">DATE</span> <span class="keyword">DEFAULT</span> SYSDATE <span class="keyword">NOT NULL</span>,</span><br><span class="line">    total_amount NUMBER(<span class="number">12</span>,<span class="number">2</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    status VARCHAR2(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;待付款&#x27;</span> </span><br><span class="line">        <span class="keyword">CHECK</span>(status <span class="keyword">IN</span> (<span class="string">&#x27;待付款&#x27;</span>,<span class="string">&#x27;已付款&#x27;</span>,<span class="string">&#x27;已发货&#x27;</span>,<span class="string">&#x27;已完成&#x27;</span>,<span class="string">&#x27;已取消&#x27;</span>)),</span><br><span class="line">    payment_method VARCHAR2(<span class="number">20</span>),</span><br><span class="line">    payment_id VARCHAR2(<span class="number">30</span>),</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_order_user <span class="keyword">FOREIGN KEY</span> (user_id) <span class="keyword">REFERENCES</span> users(user_id),</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_order_addr <span class="keyword">FOREIGN KEY</span> (address_id) <span class="keyword">REFERENCES</span> addresses(address_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 9. 订单详情表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> order_details (</span><br><span class="line">    order_id <span class="type">CHAR</span>(<span class="number">12</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    product_id <span class="type">CHAR</span>(<span class="number">8</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    quantity <span class="type">INT</span> <span class="keyword">NOT NULL</span> <span class="keyword">CHECK</span>(quantity <span class="operator">&gt;</span> <span class="number">0</span>),</span><br><span class="line">    unit_price NUMBER(<span class="number">10</span>,<span class="number">2</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    subtotal NUMBER(<span class="number">10</span>,<span class="number">2</span>) GENERATED ALWAYS <span class="keyword">AS</span> (quantity <span class="operator">*</span> unit_price) VIRTUAL,</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> pk_order_details <span class="keyword">PRIMARY KEY</span> (order_id, product_id),</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_od_order <span class="keyword">FOREIGN KEY</span> (order_id) <span class="keyword">REFERENCES</span> orders(order_id) <span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE,</span><br><span class="line">    <span class="keyword">CONSTRAINT</span> fk_od_product <span class="keyword">FOREIGN KEY</span> (product_id) <span class="keyword">REFERENCES</span> products(product_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-索引"><a href="#3-2-索引" class="headerlink" title="3.2. 索引"></a>3.2. 索引</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_products_name <span class="keyword">ON</span> products(product_name);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_orders_user <span class="keyword">ON</span> orders(user_id);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_orders_date <span class="keyword">ON</span> orders(order_date);</span><br><span class="line"><span class="keyword">CREATE</span> INDEX idx_address_user <span class="keyword">ON</span> addresses(user_id);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-视图"><a href="#3-3-视图" class="headerlink" title="3.3. 视图"></a>3.3. 视图</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建视图：用户订单历史</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">VIEW</span> user_order_history <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    u.user_id,</span><br><span class="line">    u.username,</span><br><span class="line">    o.order_id,</span><br><span class="line">    o.order_date,</span><br><span class="line">    o.total_amount,</span><br><span class="line">    o.status,</span><br><span class="line">    <span class="built_in">COUNT</span>(od.product_id) <span class="keyword">AS</span> product_count</span><br><span class="line"><span class="keyword">FROM</span> users u</span><br><span class="line"><span class="keyword">JOIN</span> orders o <span class="keyword">ON</span> u.user_id <span class="operator">=</span> o.user_id</span><br><span class="line"><span class="keyword">JOIN</span> order_details od <span class="keyword">ON</span> o.order_id <span class="operator">=</span> od.order_id</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> u.user_id, u.username, o.order_id, o.order_date, o.total_amount, o.status;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建视图：商品库存概览</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">VIEW</span> product_inventory <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    p.product_id,</span><br><span class="line">    p.product_name,</span><br><span class="line">    p.stock_quantity,</span><br><span class="line">    c.category_name,</span><br><span class="line">    s.supplier_name</span><br><span class="line"><span class="keyword">FROM</span> products p</span><br><span class="line"><span class="keyword">JOIN</span> categories c <span class="keyword">ON</span> p.category_id <span class="operator">=</span> c.category_id</span><br><span class="line"><span class="keyword">JOIN</span> suppliers s <span class="keyword">ON</span> p.supplier_id <span class="operator">=</span> s.supplier_id;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 新增视图1：用户活跃度报告</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">VIEW</span> user_activity_report <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    u.user_id,</span><br><span class="line">    u.username,</span><br><span class="line">    u.email,</span><br><span class="line">    u.reg_date,</span><br><span class="line">    u.last_login,</span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> orders o <span class="keyword">WHERE</span> o.user_id <span class="operator">=</span> u.user_id) <span class="keyword">AS</span> order_count,</span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="built_in">SUM</span>(total_amount) <span class="keyword">FROM</span> orders o <span class="keyword">WHERE</span> o.user_id <span class="operator">=</span> u.user_id) <span class="keyword">AS</span> total_spent,</span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="built_in">MAX</span>(order_date) <span class="keyword">FROM</span> orders o <span class="keyword">WHERE</span> o.user_id <span class="operator">=</span> u.user_id) <span class="keyword">AS</span> last_order_date,</span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> cart_items ci </span><br><span class="line">     <span class="keyword">JOIN</span> cart c <span class="keyword">ON</span> ci.cart_id <span class="operator">=</span> c.cart_id </span><br><span class="line">     <span class="keyword">WHERE</span> c.user_id <span class="operator">=</span> u.user_id) <span class="keyword">AS</span> cart_item_count</span><br><span class="line"><span class="keyword">FROM</span> users u;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 新增视图2：热销商品分析</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">VIEW</span> top_selling_products <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    p.product_id,</span><br><span class="line">    p.product_name,</span><br><span class="line">    p.price,</span><br><span class="line">    c.category_name,</span><br><span class="line">    s.supplier_name,</span><br><span class="line">    <span class="built_in">SUM</span>(od.quantity) <span class="keyword">AS</span> total_sold,</span><br><span class="line">    <span class="built_in">SUM</span>(od.quantity <span class="operator">*</span> od.unit_price) <span class="keyword">AS</span> total_revenue,</span><br><span class="line">    p.stock_quantity <span class="keyword">AS</span> current_stock,</span><br><span class="line">    ROUND(<span class="built_in">SUM</span>(od.quantity) <span class="operator">/</span> (<span class="keyword">SELECT</span> <span class="built_in">SUM</span>(quantity) <span class="keyword">FROM</span> order_details), <span class="number">4</span>) <span class="operator">*</span> <span class="number">100</span> <span class="keyword">AS</span> market_share</span><br><span class="line"><span class="keyword">FROM</span> products p</span><br><span class="line"><span class="keyword">JOIN</span> order_details od <span class="keyword">ON</span> p.product_id <span class="operator">=</span> od.product_id</span><br><span class="line"><span class="keyword">JOIN</span> categories c <span class="keyword">ON</span> p.category_id <span class="operator">=</span> c.category_id</span><br><span class="line"><span class="keyword">JOIN</span> suppliers s <span class="keyword">ON</span> p.supplier_id <span class="operator">=</span> s.supplier_id</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> p.product_id, p.product_name, p.price, c.category_name, s.supplier_name, p.stock_quantity</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> total_sold <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-存储过程、函数"><a href="#3-4-存储过程、函数" class="headerlink" title="3.4. 存储过程、函数"></a>3.4. 存储过程、函数</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 存储过程和函数</span></span><br><span class="line"><span class="comment">-- 1. 添加商品到购物车</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> add_to_cart(</span><br><span class="line">    p_user_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_product_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_quantity <span class="keyword">IN</span> <span class="type">INT</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">    v_cart_id <span class="type">CHAR</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 获取用户购物车</span></span><br><span class="line">    <span class="keyword">BEGIN</span></span><br><span class="line">        <span class="keyword">SELECT</span> cart_id <span class="keyword">INTO</span> v_cart_id <span class="keyword">FROM</span> cart <span class="keyword">WHERE</span> user_id <span class="operator">=</span> p_user_id;</span><br><span class="line">    EXCEPTION</span><br><span class="line">        <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">            <span class="comment">-- 创建新购物车</span></span><br><span class="line">            <span class="keyword">INSERT INTO</span> cart (cart_id, user_id) </span><br><span class="line">            <span class="keyword">VALUES</span> (<span class="string">&#x27;C&#x27;</span> <span class="operator">||</span> LPAD(seq_cart_id.NEXTVAL, <span class="number">9</span>, <span class="string">&#x27;0&#x27;</span>), p_user_id)</span><br><span class="line">            RETURNING cart_id <span class="keyword">INTO</span> v_cart_id;</span><br><span class="line">    <span class="keyword">END</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">-- 添加或更新商品</span></span><br><span class="line">    <span class="keyword">BEGIN</span></span><br><span class="line">        <span class="keyword">UPDATE</span> cart_items </span><br><span class="line">        <span class="keyword">SET</span> quantity <span class="operator">=</span> quantity <span class="operator">+</span> p_quantity</span><br><span class="line">        <span class="keyword">WHERE</span> cart_id <span class="operator">=</span> v_cart_id <span class="keyword">AND</span> product_id <span class="operator">=</span> p_product_id;</span><br><span class="line">        </span><br><span class="line">        IF <span class="keyword">SQL</span><span class="operator">%</span>ROWCOUNT <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">            <span class="keyword">INSERT INTO</span> cart_items (cart_id, product_id, quantity)</span><br><span class="line">            <span class="keyword">VALUES</span> (v_cart_id, p_product_id, p_quantity);</span><br><span class="line">        <span class="keyword">END</span> IF;</span><br><span class="line">    <span class="keyword">END</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 更新购物车修改时间</span></span><br><span class="line">    <span class="keyword">UPDATE</span> cart <span class="keyword">SET</span> modified_date <span class="operator">=</span> SYSDATE <span class="keyword">WHERE</span> cart_id <span class="operator">=</span> v_cart_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">        RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. 从购物车移除商品</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> remove_from_cart(</span><br><span class="line">    p_user_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_product_id <span class="keyword">IN</span> <span class="type">CHAR</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">    v_cart_id <span class="type">CHAR</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">SELECT</span> cart_id <span class="keyword">INTO</span> v_cart_id <span class="keyword">FROM</span> cart <span class="keyword">WHERE</span> user_id <span class="operator">=</span> p_user_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">DELETE</span> <span class="keyword">FROM</span> cart_items </span><br><span class="line">    <span class="keyword">WHERE</span> cart_id <span class="operator">=</span> v_cart_id <span class="keyword">AND</span> product_id <span class="operator">=</span> p_product_id;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 更新购物车修改时间</span></span><br><span class="line">    <span class="keyword">UPDATE</span> cart <span class="keyword">SET</span> modified_date <span class="operator">=</span> SYSDATE <span class="keyword">WHERE</span> cart_id <span class="operator">=</span> v_cart_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20002</span>, <span class="string">&#x27;购物车不存在&#x27;</span>);</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">        RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3. 更新购物车商品数量</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> update_cart_item(</span><br><span class="line">    p_user_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_product_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_quantity <span class="keyword">IN</span> <span class="type">INT</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">    v_cart_id <span class="type">CHAR</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    IF p_quantity <span class="operator">&lt;=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20003</span>, <span class="string">&#x27;数量必须大于0&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">SELECT</span> cart_id <span class="keyword">INTO</span> v_cart_id <span class="keyword">FROM</span> cart <span class="keyword">WHERE</span> user_id <span class="operator">=</span> p_user_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">UPDATE</span> cart_items </span><br><span class="line">    <span class="keyword">SET</span> quantity <span class="operator">=</span> p_quantity</span><br><span class="line">    <span class="keyword">WHERE</span> cart_id <span class="operator">=</span> v_cart_id <span class="keyword">AND</span> product_id <span class="operator">=</span> p_product_id;</span><br><span class="line">    </span><br><span class="line">    IF <span class="keyword">SQL</span><span class="operator">%</span>ROWCOUNT <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20004</span>, <span class="string">&#x27;商品不在购物车中&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 更新购物车修改时间</span></span><br><span class="line">    <span class="keyword">UPDATE</span> cart <span class="keyword">SET</span> modified_date <span class="operator">=</span> SYSDATE <span class="keyword">WHERE</span> cart_id <span class="operator">=</span> v_cart_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20002</span>, <span class="string">&#x27;购物车不存在&#x27;</span>);</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">        RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 4. 创建订单（从购物车）</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> create_order_from_cart(</span><br><span class="line">    p_user_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_address_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_payment_method <span class="keyword">IN</span> VARCHAR2,</span><br><span class="line">    p_payment_id <span class="keyword">IN</span> VARCHAR2,</span><br><span class="line">    p_order_id <span class="keyword">OUT</span> <span class="type">CHAR</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">    v_cart_id <span class="type">CHAR</span>(<span class="number">10</span>);</span><br><span class="line">    v_total NUMBER(<span class="number">12</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 获取购物车</span></span><br><span class="line">    <span class="keyword">SELECT</span> cart_id <span class="keyword">INTO</span> v_cart_id <span class="keyword">FROM</span> cart <span class="keyword">WHERE</span> user_id <span class="operator">=</span> p_user_id;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 计算总金额</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="built_in">SUM</span>(ci.quantity <span class="operator">*</span> p.price)</span><br><span class="line">    <span class="keyword">INTO</span> v_total</span><br><span class="line">    <span class="keyword">FROM</span> cart_items ci</span><br><span class="line">    <span class="keyword">JOIN</span> products p <span class="keyword">ON</span> ci.product_id <span class="operator">=</span> p.product_id</span><br><span class="line">    <span class="keyword">WHERE</span> ci.cart_id <span class="operator">=</span> v_cart_id;</span><br><span class="line">    </span><br><span class="line">    IF v_total <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20005</span>, <span class="string">&#x27;购物车为空&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 生成订单ID</span></span><br><span class="line">    p_order_id :<span class="operator">=</span> <span class="string">&#x27;O&#x27;</span> <span class="operator">||</span> LPAD(seq_order_id.NEXTVAL, <span class="number">11</span>, <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 创建订单</span></span><br><span class="line">    <span class="keyword">INSERT INTO</span> orders (order_id, user_id, address_id, total_amount, payment_method, payment_id)</span><br><span class="line">    <span class="keyword">VALUES</span> (p_order_id, p_user_id, p_address_id, v_total, p_payment_method, p_payment_id);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 添加订单详情</span></span><br><span class="line">    <span class="keyword">INSERT INTO</span> order_details (order_id, product_id, quantity, unit_price)</span><br><span class="line">    <span class="keyword">SELECT</span> p_order_id, ci.product_id, ci.quantity, p.price</span><br><span class="line">    <span class="keyword">FROM</span> cart_items ci</span><br><span class="line">    <span class="keyword">JOIN</span> products p <span class="keyword">ON</span> ci.product_id <span class="operator">=</span> p.product_id</span><br><span class="line">    <span class="keyword">WHERE</span> ci.cart_id <span class="operator">=</span> v_cart_id;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 清空购物车</span></span><br><span class="line">    <span class="keyword">DELETE</span> <span class="keyword">FROM</span> cart_items <span class="keyword">WHERE</span> cart_id <span class="operator">=</span> v_cart_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">        RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 5. 更新订单状态</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> update_order_status(</span><br><span class="line">    p_order_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_new_status <span class="keyword">IN</span> VARCHAR2</span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">    v_current_status VARCHAR2(<span class="number">20</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">SELECT</span> status <span class="keyword">INTO</span> v_current_status <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> order_id <span class="operator">=</span> p_order_id;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 状态转换验证</span></span><br><span class="line">    IF v_current_status <span class="operator">=</span> <span class="string">&#x27;已完成&#x27;</span> <span class="keyword">OR</span> v_current_status <span class="operator">=</span> <span class="string">&#x27;已取消&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20006</span>, <span class="string">&#x27;已完成或已取消的订单不能修改状态&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">    </span><br><span class="line">    IF v_current_status <span class="operator">=</span> <span class="string">&#x27;待付款&#x27;</span> <span class="keyword">AND</span> p_new_status <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="string">&#x27;已付款&#x27;</span>, <span class="string">&#x27;已取消&#x27;</span>) <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20007</span>, <span class="string">&#x27;待付款订单只能转为已付款或已取消&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">    </span><br><span class="line">    IF v_current_status <span class="operator">=</span> <span class="string">&#x27;已付款&#x27;</span> <span class="keyword">AND</span> p_new_status <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="string">&#x27;已发货&#x27;</span>, <span class="string">&#x27;已取消&#x27;</span>) <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20008</span>, <span class="string">&#x27;已付款订单只能转为已发货或已取消&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">    </span><br><span class="line">    IF v_current_status <span class="operator">=</span> <span class="string">&#x27;已发货&#x27;</span> <span class="keyword">AND</span> p_new_status <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="string">&#x27;已完成&#x27;</span>) <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20009</span>, <span class="string">&#x27;已发货订单只能转为已完成&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">UPDATE</span> orders <span class="keyword">SET</span> status <span class="operator">=</span> p_new_status <span class="keyword">WHERE</span> order_id <span class="operator">=</span> p_order_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">        RAISE_APPLICATION_ERROR(<span class="number">-20010</span>, <span class="string">&#x27;订单不存在&#x27;</span>);</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">        RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 6. 计算订单总金额（函数）</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> calculate_order_total(</span><br><span class="line">    p_order_id <span class="keyword">IN</span> <span class="type">CHAR</span></span><br><span class="line">) <span class="keyword">RETURN</span> NUMBER</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">    v_total NUMBER(<span class="number">12</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="built_in">SUM</span>(quantity <span class="operator">*</span> unit_price)</span><br><span class="line">    <span class="keyword">INTO</span> v_total</span><br><span class="line">    <span class="keyword">FROM</span> order_details</span><br><span class="line">    <span class="keyword">WHERE</span> order_id <span class="operator">=</span> p_order_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">RETURN</span> v_total;</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">RETURN</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 7. 检查库存可用性（函数）</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> check_stock_availability(</span><br><span class="line">    p_product_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_quantity <span class="keyword">IN</span> <span class="type">INT</span></span><br><span class="line">) <span class="keyword">RETURN</span> <span class="type">BOOLEAN</span></span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">    v_stock <span class="type">INT</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">SELECT</span> stock_quantity <span class="keyword">INTO</span> v_stock</span><br><span class="line">    <span class="keyword">FROM</span> products</span><br><span class="line">    <span class="keyword">WHERE</span> product_id <span class="operator">=</span> p_product_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">RETURN</span> (v_stock <span class="operator">&gt;=</span> p_quantity);</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">RETURN</span> <span class="literal">FALSE</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 8. 获取用户购物车详情（函数）</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> get_user_cart_details(</span><br><span class="line">    p_user_id <span class="keyword">IN</span> <span class="type">CHAR</span></span><br><span class="line">) <span class="keyword">RETURN</span> SYS_REFCURSOR</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">    v_cursor SYS_REFCURSOR;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">OPEN</span> v_cursor <span class="keyword">FOR</span></span><br><span class="line">    <span class="keyword">SELECT</span> </span><br><span class="line">        p.product_id,</span><br><span class="line">        p.product_name,</span><br><span class="line">        ci.quantity,</span><br><span class="line">        p.price,</span><br><span class="line">        (ci.quantity <span class="operator">*</span> p.price) <span class="keyword">AS</span> subtotal</span><br><span class="line">    <span class="keyword">FROM</span> cart_items ci</span><br><span class="line">    <span class="keyword">JOIN</span> products p <span class="keyword">ON</span> ci.product_id <span class="operator">=</span> p.product_id</span><br><span class="line">    <span class="keyword">JOIN</span> cart c <span class="keyword">ON</span> ci.cart_id <span class="operator">=</span> c.cart_id</span><br><span class="line">    <span class="keyword">WHERE</span> c.user_id <span class="operator">=</span> p_user_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">RETURN</span> v_cursor;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 9. 搜索商品（函数）</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> search_products(</span><br><span class="line">    p_keyword <span class="keyword">IN</span> VARCHAR2,</span><br><span class="line">    p_category_id <span class="keyword">IN</span> <span class="type">CHAR</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    p_min_price <span class="keyword">IN</span> NUMBER <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    p_max_price <span class="keyword">IN</span> NUMBER <span class="keyword">DEFAULT</span> <span class="number">9999999</span>,</span><br><span class="line">    p_sort_by <span class="keyword">IN</span> VARCHAR2 <span class="keyword">DEFAULT</span> <span class="string">&#x27;price&#x27;</span>,</span><br><span class="line">    p_sort_order <span class="keyword">IN</span> VARCHAR2 <span class="keyword">DEFAULT</span> <span class="string">&#x27;ASC&#x27;</span></span><br><span class="line">) <span class="keyword">RETURN</span> SYS_REFCURSOR</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line">    v_cursor SYS_REFCURSOR;</span><br><span class="line">    v_sql VARCHAR2(<span class="number">4000</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    v_sql :<span class="operator">=</span> <span class="string">&#x27;SELECT </span></span><br><span class="line"><span class="string">        product_id,</span></span><br><span class="line"><span class="string">        product_name,</span></span><br><span class="line"><span class="string">        price,</span></span><br><span class="line"><span class="string">        stock_quantity,</span></span><br><span class="line"><span class="string">        (SELECT category_name FROM categories WHERE category_id = p.category_id) AS category_name</span></span><br><span class="line"><span class="string">    FROM products p</span></span><br><span class="line"><span class="string">    WHERE (LOWER(product_name) LIKE &#x27;&#x27;%&#x27;&#x27; || LOWER(:keyword) || &#x27;&#x27;%&#x27;&#x27;</span></span><br><span class="line"><span class="string">           OR LOWER(description) LIKE &#x27;&#x27;%&#x27;&#x27; || LOWER(:keyword) || &#x27;&#x27;%&#x27;&#x27;)</span></span><br><span class="line"><span class="string">      AND (:category_id IS NULL OR category_id = :category_id)</span></span><br><span class="line"><span class="string">      AND price BETWEEN :min_price AND :max_price&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 添加排序</span></span><br><span class="line">    IF p_sort_by <span class="operator">=</span> <span class="string">&#x27;price&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">        v_sql :<span class="operator">=</span> v_sql <span class="operator">||</span> <span class="string">&#x27; ORDER BY price &#x27;</span>;</span><br><span class="line">    ELSIF p_sort_by <span class="operator">=</span> <span class="string">&#x27;name&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">        v_sql :<span class="operator">=</span> v_sql <span class="operator">||</span> <span class="string">&#x27; ORDER BY product_name &#x27;</span>;</span><br><span class="line">    ELSIF p_sort_by <span class="operator">=</span> <span class="string">&#x27;stock&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">        v_sql :<span class="operator">=</span> v_sql <span class="operator">||</span> <span class="string">&#x27; ORDER BY stock_quantity &#x27;</span>;</span><br><span class="line">    <span class="keyword">ELSE</span></span><br><span class="line">        v_sql :<span class="operator">=</span> v_sql <span class="operator">||</span> <span class="string">&#x27; ORDER BY product_id &#x27;</span>;</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">    </span><br><span class="line">    v_sql :<span class="operator">=</span> v_sql <span class="operator">||</span> p_sort_order;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">OPEN</span> v_cursor <span class="keyword">FOR</span> v_sql </span><br><span class="line">        <span class="keyword">USING</span> p_keyword, p_keyword, p_category_id, p_min_price, p_max_price;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">RETURN</span> v_sql;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 10. 获取用户订单历史（存储过程）</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">PROCEDURE</span> get_user_orders(</span><br><span class="line">    p_user_id <span class="keyword">IN</span> <span class="type">CHAR</span>,</span><br><span class="line">    p_start_date <span class="keyword">IN</span> <span class="type">DATE</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    p_end_date <span class="keyword">IN</span> <span class="type">DATE</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    p_status <span class="keyword">IN</span> VARCHAR2 <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    p_result <span class="keyword">OUT</span> SYS_REFCURSOR</span><br><span class="line">)</span><br><span class="line"><span class="keyword">IS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">OPEN</span> p_result <span class="keyword">FOR</span></span><br><span class="line">    <span class="keyword">SELECT</span> </span><br><span class="line">        order_id,</span><br><span class="line">        order_date,</span><br><span class="line">        total_amount,</span><br><span class="line">        status,</span><br><span class="line">        (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> order_details <span class="keyword">WHERE</span> order_id <span class="operator">=</span> o.order_id) <span class="keyword">AS</span> item_count</span><br><span class="line">    <span class="keyword">FROM</span> orders o</span><br><span class="line">    <span class="keyword">WHERE</span> user_id <span class="operator">=</span> p_user_id</span><br><span class="line">      <span class="keyword">AND</span> (p_start_date <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">OR</span> order_date <span class="operator">&gt;=</span> p_start_date)</span><br><span class="line">      <span class="keyword">AND</span> (p_end_date <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">OR</span> order_date <span class="operator">&lt;=</span> p_end_date)</span><br><span class="line">      <span class="keyword">AND</span> (p_status <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">OR</span> status <span class="operator">=</span> p_status)</span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">DESC</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-5-触发器"><a href="#3-5-触发器" class="headerlink" title="3.5. 触发器"></a>3.5. 触发器</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建触发器（自动生成ID）</span></span><br><span class="line"><span class="comment">-- 用户ID触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_users_id</span><br><span class="line">BEFORE <span class="keyword">INSERT</span> <span class="keyword">ON</span> users</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    IF :NEW.user_id <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">SELECT</span> <span class="string">&#x27;U&#x27;</span> <span class="operator">||</span> LPAD(seq_user_id.NEXTVAL, <span class="number">9</span>, <span class="string">&#x27;0&#x27;</span>) <span class="keyword">INTO</span> :NEW.user_id <span class="keyword">FROM</span> DUAL;</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 商品ID触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_products_id</span><br><span class="line">BEFORE <span class="keyword">INSERT</span> <span class="keyword">ON</span> products</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    IF :NEW.product_id <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">SELECT</span> <span class="string">&#x27;P&#x27;</span> <span class="operator">||</span> LPAD(seq_product_id.NEXTVAL, <span class="number">7</span>, <span class="string">&#x27;0&#x27;</span>) <span class="keyword">INTO</span> :NEW.product_id <span class="keyword">FROM</span> DUAL;</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 订单ID触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_orders_id</span><br><span class="line">BEFORE <span class="keyword">INSERT</span> <span class="keyword">ON</span> orders</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    IF :NEW.order_id <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">SELECT</span> <span class="string">&#x27;O&#x27;</span> <span class="operator">||</span> LPAD(seq_order_id.NEXTVAL, <span class="number">11</span>, <span class="string">&#x27;0&#x27;</span>) <span class="keyword">INTO</span> :NEW.order_id <span class="keyword">FROM</span> DUAL;</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 地址ID触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_addresses_id</span><br><span class="line">BEFORE <span class="keyword">INSERT</span> <span class="keyword">ON</span> addresses</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    IF :NEW.address_id <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">SELECT</span> <span class="string">&#x27;A&#x27;</span> <span class="operator">||</span> LPAD(seq_address_id.NEXTVAL, <span class="number">7</span>, <span class="string">&#x27;0&#x27;</span>) <span class="keyword">INTO</span> :NEW.address_id <span class="keyword">FROM</span> DUAL;</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 购物车ID触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_cart_id</span><br><span class="line">BEFORE <span class="keyword">INSERT</span> <span class="keyword">ON</span> cart</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    IF :NEW.cart_id <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">SELECT</span> <span class="string">&#x27;C&#x27;</span> <span class="operator">||</span> LPAD(seq_cart_id.NEXTVAL, <span class="number">9</span>, <span class="string">&#x27;0&#x27;</span>) <span class="keyword">INTO</span> :NEW.cart_id <span class="keyword">FROM</span> DUAL;</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 库存更新触发器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">TRIGGER</span> trg_update_stock</span><br><span class="line">AFTER <span class="keyword">INSERT</span> <span class="keyword">ON</span> order_details</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">UPDATE</span> products</span><br><span class="line">    <span class="keyword">SET</span> stock_quantity <span class="operator">=</span> stock_quantity <span class="operator">-</span> :NEW.quantity</span><br><span class="line">    <span class="keyword">WHERE</span> product_id <span class="operator">=</span> :NEW.product_id;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-6-数据操纵"><a href="#3-6-数据操纵" class="headerlink" title="3.6. 数据操纵"></a>3.6. 数据操纵</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line"><span class="comment">-- 用户管理操作</span></span><br><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 1. 用户注册</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> users (username, password, email, full_name, phone)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;alice_wong&#x27;</span>, <span class="string">&#x27;p@ssw0rd!&#x27;</span>, <span class="string">&#x27;alice@example.com&#x27;</span>, <span class="string">&#x27;Alice Wong&#x27;</span>, <span class="string">&#x27;13900139000&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. 更新用户信息</span></span><br><span class="line"><span class="keyword">UPDATE</span> users </span><br><span class="line"><span class="keyword">SET</span> phone <span class="operator">=</span> <span class="string">&#x27;13912345678&#x27;</span>, last_login <span class="operator">=</span> SYSDATE </span><br><span class="line"><span class="keyword">WHERE</span> username <span class="operator">=</span> <span class="string">&#x27;alice_wong&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3. 删除非活跃用户（超过1年未登录）</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> users </span><br><span class="line"><span class="keyword">WHERE</span> last_login <span class="operator">&lt;</span> ADD_MONTHS(SYSDATE, <span class="number">-12</span>) </span><br><span class="line">  <span class="keyword">AND</span> user_id <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> user_id <span class="keyword">FROM</span> orders);</span><br><span class="line"></span><br><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line"><span class="comment">-- 用户注册</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    v_user_id <span class="type">CHAR</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 生成用户ID</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="string">&#x27;U&#x27;</span> <span class="operator">||</span> LPAD(seq_user_id.NEXTVAL, <span class="number">9</span>, <span class="string">&#x27;0&#x27;</span>) <span class="keyword">INTO</span> v_user_id <span class="keyword">FROM</span> DUAL;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 插入用户</span></span><br><span class="line">    <span class="keyword">INSERT INTO</span> users (user_id, username, password, email, full_name, phone)</span><br><span class="line">    <span class="keyword">VALUES</span> (v_user_id, <span class="string">&#x27;alice_wong&#x27;</span>, <span class="string">&#x27;secure_pass123&#x27;</span>, <span class="string">&#x27;alice@example.com&#x27;</span>, <span class="string">&#x27;Alice Wong&#x27;</span>, <span class="string">&#x27;13900139000&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> DUP_VAL_ON_INDEX <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;用户名或邮箱已存在&#x27;</span>);</span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;注册失败: &#x27;</span> <span class="operator">||</span> SQLERRM);</span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">        RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 添加商品到购物车</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    v_user_id <span class="type">CHAR</span>(<span class="number">10</span>);</span><br><span class="line">    v_product1_id <span class="type">CHAR</span>(<span class="number">8</span>);</span><br><span class="line">    v_product2_id <span class="type">CHAR</span>(<span class="number">8</span>);</span><br><span class="line">    v_cart_exists NUMBER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 获取用户ID</span></span><br><span class="line">    <span class="keyword">SELECT</span> user_id <span class="keyword">INTO</span> v_user_id </span><br><span class="line">    <span class="keyword">FROM</span> users </span><br><span class="line">    <span class="keyword">WHERE</span> username <span class="operator">=</span> <span class="string">&#x27;alice_wong&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 检查购物车是否存在</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">INTO</span> v_cart_exists</span><br><span class="line">    <span class="keyword">FROM</span> cart </span><br><span class="line">    <span class="keyword">WHERE</span> user_id <span class="operator">=</span> v_user_id;</span><br><span class="line">    </span><br><span class="line">    IF v_cart_exists <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">        <span class="comment">-- 创建购物车</span></span><br><span class="line">        <span class="keyword">INSERT INTO</span> cart (cart_id, user_id)</span><br><span class="line">        <span class="keyword">VALUES</span> (<span class="string">&#x27;C&#x27;</span> <span class="operator">||</span> LPAD(seq_cart_id.NEXTVAL, <span class="number">9</span>, <span class="string">&#x27;0&#x27;</span>), v_user_id);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 获取商品ID</span></span><br><span class="line">    <span class="keyword">SELECT</span> product_id <span class="keyword">INTO</span> v_product1_id </span><br><span class="line">    <span class="keyword">FROM</span> products </span><br><span class="line">    <span class="keyword">WHERE</span> product_name <span class="operator">=</span> <span class="string">&#x27;平板电脑 Pro&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">SELECT</span> product_id <span class="keyword">INTO</span> v_product2_id </span><br><span class="line">    <span class="keyword">FROM</span> products </span><br><span class="line">    <span class="keyword">WHERE</span> product_name <span class="operator">=</span> <span class="string">&#x27;无线耳机&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 添加商品到购物车</span></span><br><span class="line">    add_to_cart(v_user_id, v_product1_id, <span class="number">1</span>);</span><br><span class="line">    add_to_cart(v_user_id, v_product2_id, <span class="number">2</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;商品已成功添加到购物车&#x27;</span>);</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;错误: 用户或商品不存在&#x27;</span>);</span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;添加失败: &#x27;</span> <span class="operator">||</span> SQLERRM);</span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">        RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建订单</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    v_user_id <span class="type">CHAR</span>(<span class="number">10</span>);</span><br><span class="line">    v_address_id <span class="type">CHAR</span>(<span class="number">8</span>);</span><br><span class="line">    v_order_id <span class="type">CHAR</span>(<span class="number">12</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 获取用户ID</span></span><br><span class="line">    <span class="keyword">SELECT</span> user_id <span class="keyword">INTO</span> v_user_id </span><br><span class="line">    <span class="keyword">FROM</span> users </span><br><span class="line">    <span class="keyword">WHERE</span> username <span class="operator">=</span> <span class="string">&#x27;alice_wong&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 获取默认地址ID</span></span><br><span class="line">    <span class="keyword">SELECT</span> address_id <span class="keyword">INTO</span> v_address_id </span><br><span class="line">    <span class="keyword">FROM</span> addresses </span><br><span class="line">    <span class="keyword">WHERE</span> user_id <span class="operator">=</span> v_user_id <span class="keyword">AND</span> is_default <span class="operator">=</span> <span class="string">&#x27;Y&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 创建订单</span></span><br><span class="line">    create_order_from_cart(</span><br><span class="line">        p_user_id <span class="operator">=</span><span class="operator">&gt;</span> v_user_id,</span><br><span class="line">        p_address_id <span class="operator">=</span><span class="operator">&gt;</span> v_address_id,</span><br><span class="line">        p_payment_method <span class="operator">=</span><span class="operator">&gt;</span> <span class="string">&#x27;微信支付&#x27;</span>,</span><br><span class="line">        p_payment_id <span class="operator">=</span><span class="operator">&gt;</span> <span class="string">&#x27;WXPAY20231003123456&#x27;</span>,</span><br><span class="line">        p_order_id <span class="operator">=</span><span class="operator">&gt;</span> v_order_id</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;订单创建成功: &#x27;</span> <span class="operator">||</span> v_order_id);</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> NO_DATA_FOUND <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;错误: 用户不存在或未设置默认地址&#x27;</span>);</span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;订单创建失败: &#x27;</span> <span class="operator">||</span> SQLERRM);</span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">        RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2.2 价格调整（基于类别的批量更新）</span></span><br><span class="line"><span class="keyword">UPDATE</span> products p</span><br><span class="line"><span class="keyword">SET</span> price <span class="operator">=</span> price <span class="operator">*</span> </span><br><span class="line">    <span class="keyword">CASE</span> </span><br><span class="line">        <span class="keyword">WHEN</span> (<span class="keyword">SELECT</span> category_name <span class="keyword">FROM</span> categories c <span class="keyword">WHERE</span> c.category_id <span class="operator">=</span> p.category_id) <span class="operator">=</span> <span class="string">&#x27;智能手机&#x27;</span> <span class="keyword">THEN</span> <span class="number">0.95</span></span><br><span class="line">        <span class="keyword">WHEN</span> price <span class="operator">&gt;</span> <span class="number">3000</span> <span class="keyword">THEN</span> <span class="number">0.90</span></span><br><span class="line">        <span class="keyword">ELSE</span> <span class="number">0.98</span></span><br><span class="line">    <span class="keyword">END</span></span><br><span class="line"><span class="keyword">WHERE</span> create_date <span class="operator">&lt;</span> ADD_MONTHS(SYSDATE, <span class="number">-6</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2.3 商品下架（转移历史数据）</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> archived_products <span class="keyword">AS</span> </span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> products </span><br><span class="line"><span class="keyword">WHERE</span> stock_quantity <span class="operator">=</span> <span class="number">0</span> <span class="keyword">AND</span> create_date <span class="operator">&lt;</span> ADD_MONTHS(SYSDATE, <span class="number">-12</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> products </span><br><span class="line"><span class="keyword">WHERE</span> product_id <span class="keyword">IN</span> (<span class="keyword">SELECT</span> product_id <span class="keyword">FROM</span> archived_products);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line"><span class="comment">-- 4. 订单处理</span></span><br><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 4.1 批量创建测试订单</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    <span class="keyword">CURSOR</span> user_cursor <span class="keyword">IS</span></span><br><span class="line">        <span class="keyword">SELECT</span> u.user_id, a.address_id</span><br><span class="line">        <span class="keyword">FROM</span> users u</span><br><span class="line">        <span class="keyword">JOIN</span> addresses a <span class="keyword">ON</span> u.user_id <span class="operator">=</span> a.user_id</span><br><span class="line">        <span class="keyword">WHERE</span> a.is_default <span class="operator">=</span> <span class="string">&#x27;Y&#x27;</span></span><br><span class="line">        <span class="keyword">FETCH</span> <span class="keyword">FIRST</span> <span class="number">20</span> <span class="keyword">ROWS</span> <span class="keyword">ONLY</span>;</span><br><span class="line">    </span><br><span class="line">    v_order_id <span class="type">CHAR</span>(<span class="number">12</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">FOR</span> user_rec <span class="keyword">IN</span> user_cursor LOOP</span><br><span class="line">        <span class="keyword">BEGIN</span></span><br><span class="line">            <span class="comment">-- 为每个用户创建1-3个订单</span></span><br><span class="line">            <span class="keyword">FOR</span> i <span class="keyword">IN</span> <span class="number">1.</span>.ROUND(DBMS_RANDOM.VALUE(<span class="number">1</span>, <span class="number">3</span>)) LOOP</span><br><span class="line">                create_order_from_cart(</span><br><span class="line">                    p_user_id <span class="operator">=</span><span class="operator">&gt;</span> user_rec.user_id,</span><br><span class="line">                    p_address_id <span class="operator">=</span><span class="operator">&gt;</span> user_rec.address_id,</span><br><span class="line">                    p_payment_method <span class="operator">=</span><span class="operator">&gt;</span> <span class="keyword">CASE</span> ROUND(DBMS_RANDOM.VALUE(<span class="number">1</span>,<span class="number">3</span>)) </span><br><span class="line">                                          <span class="keyword">WHEN</span> <span class="number">1</span> <span class="keyword">THEN</span> <span class="string">&#x27;支付宝&#x27;</span> </span><br><span class="line">                                          <span class="keyword">WHEN</span> <span class="number">2</span> <span class="keyword">THEN</span> <span class="string">&#x27;微信支付&#x27;</span> </span><br><span class="line">                                          <span class="keyword">ELSE</span> <span class="string">&#x27;银行卡&#x27;</span> <span class="keyword">END</span>,</span><br><span class="line">                    p_payment_id <span class="operator">=</span><span class="operator">&gt;</span> <span class="string">&#x27;PAY&#x27;</span> <span class="operator">||</span> TO_CHAR(SYSDATE, <span class="string">&#x27;YYYYMMDD&#x27;</span>) <span class="operator">||</span> LPAD(DBMS_RANDOM.VALUE(<span class="number">1</span>,<span class="number">99999</span>), <span class="number">5</span>, <span class="string">&#x27;0&#x27;</span>),</span><br><span class="line">                    p_order_id <span class="operator">=</span><span class="operator">&gt;</span> v_order_id</span><br><span class="line">                );</span><br><span class="line">                </span><br><span class="line">                <span class="comment">-- 随机更新订单状态</span></span><br><span class="line">                IF DBMS_RANDOM.VALUE <span class="operator">&gt;</span> <span class="number">0.3</span> <span class="keyword">THEN</span></span><br><span class="line">                    update_order_status(v_order_id, <span class="string">&#x27;已付款&#x27;</span>);</span><br><span class="line">                    IF DBMS_RANDOM.VALUE <span class="operator">&gt;</span> <span class="number">0.5</span> <span class="keyword">THEN</span></span><br><span class="line">                        update_order_status(v_order_id, <span class="string">&#x27;已发货&#x27;</span>);</span><br><span class="line">                        IF DBMS_RANDOM.VALUE <span class="operator">&gt;</span> <span class="number">0.7</span> <span class="keyword">THEN</span></span><br><span class="line">                            update_order_status(v_order_id, <span class="string">&#x27;已完成&#x27;</span>);</span><br><span class="line">                        <span class="keyword">END</span> IF;</span><br><span class="line">                    <span class="keyword">END</span> IF;</span><br><span class="line">                <span class="keyword">ELSE</span></span><br><span class="line">                    update_order_status(v_order_id, <span class="string">&#x27;已取消&#x27;</span>);</span><br><span class="line">                <span class="keyword">END</span> IF;</span><br><span class="line">            <span class="keyword">END</span> LOOP;</span><br><span class="line">        EXCEPTION</span><br><span class="line">            <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">                DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;用户 &#x27;</span> <span class="operator">||</span> user_rec.user_id <span class="operator">||</span> <span class="string">&#x27; 创建订单失败: &#x27;</span> <span class="operator">||</span> SQLERRM);</span><br><span class="line">        <span class="keyword">END</span>;</span><br><span class="line">    <span class="keyword">END</span> LOOP;</span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 4.2 处理退货</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    v_order_id orders.order_id<span class="operator">%</span>TYPE;</span><br><span class="line">    v_product_id products.product_id<span class="operator">%</span>TYPE;</span><br><span class="line">    v_quantity <span class="type">INT</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="comment">-- 随机选择一个已完成订单</span></span><br><span class="line">    <span class="keyword">SELECT</span> o.order_id, od.product_id, od.quantity </span><br><span class="line">    <span class="keyword">INTO</span> v_order_id, v_product_id, v_quantity</span><br><span class="line">    <span class="keyword">FROM</span> orders o</span><br><span class="line">    <span class="keyword">JOIN</span> order_details od <span class="keyword">ON</span> o.order_id <span class="operator">=</span> od.order_id</span><br><span class="line">    <span class="keyword">WHERE</span> o.status <span class="operator">=</span> <span class="string">&#x27;已完成&#x27;</span></span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span> DBMS_RANDOM.VALUE</span><br><span class="line">    <span class="keyword">FETCH</span> <span class="keyword">FIRST</span> <span class="number">1</span> <span class="type">ROW</span> <span class="keyword">ONLY</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 退货部分商品</span></span><br><span class="line">    v_quantity :<span class="operator">=</span> ROUND(v_quantity <span class="operator">*</span> <span class="number">0.5</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 开始退货流程</span></span><br><span class="line">    <span class="keyword">UPDATE</span> orders <span class="keyword">SET</span> status <span class="operator">=</span> <span class="string">&#x27;退货处理中&#x27;</span> <span class="keyword">WHERE</span> order_id <span class="operator">=</span> v_order_id;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 增加库存</span></span><br><span class="line">    <span class="keyword">UPDATE</span> products </span><br><span class="line">    <span class="keyword">SET</span> stock_quantity <span class="operator">=</span> stock_quantity <span class="operator">+</span> v_quantity </span><br><span class="line">    <span class="keyword">WHERE</span> product_id <span class="operator">=</span> v_product_id;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 添加退货记录</span></span><br><span class="line">    <span class="keyword">INSERT INTO</span> order_details (order_id, product_id, quantity, unit_price)</span><br><span class="line">    <span class="keyword">SELECT</span> v_order_id, v_product_id, <span class="operator">-</span>v_quantity, unit_price</span><br><span class="line">    <span class="keyword">FROM</span> order_details</span><br><span class="line">    <span class="keyword">WHERE</span> order_id <span class="operator">=</span> v_order_id <span class="keyword">AND</span> product_id <span class="operator">=</span> v_product_id;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 更新订单总金额</span></span><br><span class="line">    <span class="keyword">UPDATE</span> orders </span><br><span class="line">    <span class="keyword">SET</span> total_amount <span class="operator">=</span> total_amount <span class="operator">-</span> (v_quantity <span class="operator">*</span> (</span><br><span class="line">        <span class="keyword">SELECT</span> unit_price </span><br><span class="line">        <span class="keyword">FROM</span> order_details </span><br><span class="line">        <span class="keyword">WHERE</span> order_id <span class="operator">=</span> v_order_id <span class="keyword">AND</span> product_id <span class="operator">=</span> v_product_id</span><br><span class="line">    ))</span><br><span class="line">    <span class="keyword">WHERE</span> order_id <span class="operator">=</span> v_order_id;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">-- 完成退货</span></span><br><span class="line">    <span class="keyword">UPDATE</span> orders <span class="keyword">SET</span> status <span class="operator">=</span> <span class="string">&#x27;部分退货&#x27;</span> <span class="keyword">WHERE</span> order_id <span class="operator">=</span> v_order_id;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line">EXCEPTION</span><br><span class="line">    <span class="keyword">WHEN</span> OTHERS <span class="keyword">THEN</span></span><br><span class="line">        <span class="keyword">ROLLBACK</span>;</span><br><span class="line">        RAISE;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line"><span class="comment">-- 6. 数据分析与报表</span></span><br><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 6.1 用户购买行为分析</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    u.user_id,</span><br><span class="line">    u.username,</span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> o.order_id) <span class="keyword">AS</span> total_orders,</span><br><span class="line">    <span class="built_in">SUM</span>(o.total_amount) <span class="keyword">AS</span> total_spent,</span><br><span class="line">    ROUND(<span class="built_in">AVG</span>(o.total_amount), <span class="number">2</span>) <span class="keyword">AS</span> avg_order_value,</span><br><span class="line">    <span class="built_in">MAX</span>(o.order_date) <span class="keyword">AS</span> last_order_date,</span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> cart_items ci <span class="keyword">JOIN</span> cart c <span class="keyword">ON</span> ci.cart_id <span class="operator">=</span> c.cart_id <span class="keyword">WHERE</span> c.user_id <span class="operator">=</span> u.user_id) <span class="keyword">AS</span> cart_items,</span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> addresses a <span class="keyword">WHERE</span> a.user_id <span class="operator">=</span> u.user_id) <span class="keyword">AS</span> address_count,</span><br><span class="line">    <span class="keyword">CASE</span> </span><br><span class="line">        <span class="keyword">WHEN</span> <span class="built_in">SUM</span>(o.total_amount) <span class="operator">&gt;</span> <span class="number">10000</span> <span class="keyword">THEN</span> <span class="string">&#x27;VIP&#x27;</span></span><br><span class="line">        <span class="keyword">WHEN</span> <span class="built_in">SUM</span>(o.total_amount) <span class="operator">&gt;</span> <span class="number">5000</span> <span class="keyword">THEN</span> <span class="string">&#x27;忠诚&#x27;</span></span><br><span class="line">        <span class="keyword">WHEN</span> <span class="built_in">SUM</span>(o.total_amount) <span class="operator">&gt;</span> <span class="number">1000</span> <span class="keyword">THEN</span> <span class="string">&#x27;活跃&#x27;</span></span><br><span class="line">        <span class="keyword">ELSE</span> <span class="string">&#x27;普通&#x27;</span></span><br><span class="line">    <span class="keyword">END</span> <span class="keyword">AS</span> user_level</span><br><span class="line"><span class="keyword">FROM</span> users u</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> orders o <span class="keyword">ON</span> u.user_id <span class="operator">=</span> o.user_id</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> u.user_id, u.username</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> total_spent <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 6.2 商品销售漏斗分析</span></span><br><span class="line"><span class="keyword">WITH</span> cart_data <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> </span><br><span class="line">        p.product_id,</span><br><span class="line">        <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> ci.cart_id) <span class="keyword">AS</span> in_carts</span><br><span class="line">    <span class="keyword">FROM</span> cart_items ci</span><br><span class="line">    <span class="keyword">JOIN</span> products p <span class="keyword">ON</span> ci.product_id <span class="operator">=</span> p.product_id</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span> p.product_id</span><br><span class="line">),</span><br><span class="line">order_data <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> </span><br><span class="line">        od.product_id,</span><br><span class="line">        <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> o.order_id) <span class="keyword">AS</span> ordered,</span><br><span class="line">        <span class="built_in">SUM</span>(od.quantity) <span class="keyword">AS</span> total_ordered</span><br><span class="line">    <span class="keyword">FROM</span> order_details od</span><br><span class="line">    <span class="keyword">JOIN</span> orders o <span class="keyword">ON</span> od.order_id <span class="operator">=</span> o.order_id</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span> od.product_id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    p.product_id,</span><br><span class="line">    p.product_name,</span><br><span class="line">    NVL(c.in_carts, <span class="number">0</span>) <span class="keyword">AS</span> in_carts,</span><br><span class="line">    NVL(o.ordered, <span class="number">0</span>) <span class="keyword">AS</span> ordered,</span><br><span class="line">    NVL(o.total_ordered, <span class="number">0</span>) <span class="keyword">AS</span> total_ordered,</span><br><span class="line">    ROUND(NVL(o.ordered, <span class="number">0</span>) <span class="operator">/</span> <span class="built_in">NULLIF</span>(NVL(c.in_carts, <span class="number">0</span>), <span class="number">0</span>) <span class="operator">*</span> <span class="number">100</span> <span class="keyword">AS</span> conversion_rate</span><br><span class="line"><span class="keyword">FROM</span> products p</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> cart_data c <span class="keyword">ON</span> p.product_id <span class="operator">=</span> c.product_id</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> order_data o <span class="keyword">ON</span> p.product_id <span class="operator">=</span> o.product_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> conversion_rate <span class="keyword">DESC</span> <span class="keyword">NULLS LAST</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 6.3 月度销售报告（带同比环比）</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    TO_CHAR(order_date, <span class="string">&#x27;YYYY-MM&#x27;</span>) <span class="keyword">AS</span> sales_month,</span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> order_count,</span><br><span class="line">    <span class="built_in">SUM</span>(total_amount) <span class="keyword">AS</span> total_revenue,</span><br><span class="line">    <span class="built_in">LAG</span>(<span class="built_in">COUNT</span>(<span class="operator">*</span>), <span class="number">1</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> TO_CHAR(order_date, <span class="string">&#x27;YYYY-MM&#x27;</span>)) <span class="keyword">AS</span> prev_month_orders,</span><br><span class="line">    ROUND((<span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">-</span> <span class="built_in">LAG</span>(<span class="built_in">COUNT</span>(<span class="operator">*</span>), <span class="number">1</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> TO_CHAR(order_date, <span class="string">&#x27;YYYY-MM&#x27;</span>))) <span class="operator">/</span> </span><br><span class="line">        <span class="built_in">NULLIF</span>(<span class="built_in">LAG</span>(<span class="built_in">COUNT</span>(<span class="operator">*</span>), <span class="number">1</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> TO_CHAR(order_date, <span class="string">&#x27;YYYY-MM&#x27;</span>)), <span class="number">0</span>) <span class="operator">*</span> <span class="number">100</span>, <span class="number">2</span>) <span class="keyword">AS</span> order_growth,</span><br><span class="line">    <span class="built_in">LAG</span>(<span class="built_in">SUM</span>(total_amount), <span class="number">12</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> TO_CHAR(order_date, <span class="string">&#x27;YYYY-MM&#x27;</span>)) <span class="keyword">AS</span> prev_year_revenue,</span><br><span class="line">    ROUND((<span class="built_in">SUM</span>(total_amount) <span class="operator">-</span> <span class="built_in">LAG</span>(<span class="built_in">SUM</span>(total_amount), <span class="number">12</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> TO_CHAR(order_date, <span class="string">&#x27;YYYY-MM&#x27;</span>))) <span class="operator">/</span> </span><br><span class="line">        <span class="built_in">NULLIF</span>(<span class="built_in">LAG</span>(<span class="built_in">SUM</span>(total_amount), <span class="number">12</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> TO_CHAR(order_date, <span class="string">&#x27;YYYY-MM&#x27;</span>)), <span class="number">0</span>) <span class="operator">*</span> <span class="number">100</span>, <span class="number">2</span>) <span class="keyword">AS</span> yoy_growth</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">WHERE</span> order_date <span class="operator">&gt;</span> ADD_MONTHS(SYSDATE, <span class="number">-24</span>)</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(order_date, <span class="string">&#x27;YYYY-MM&#x27;</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> sales_month <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line"><span class="comment">-- 7. 系统维护操作</span></span><br><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 7.1 数据归档</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> archived_orders <span class="keyword">AS</span> </span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders </span><br><span class="line"><span class="keyword">WHERE</span> order_date <span class="operator">&lt;</span> ADD_MONTHS(SYSDATE, <span class="number">-24</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> archived_order_details <span class="keyword">AS</span> </span><br><span class="line"><span class="keyword">SELECT</span> od.<span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> order_details od</span><br><span class="line"><span class="keyword">JOIN</span> archived_orders ao <span class="keyword">ON</span> od.order_id <span class="operator">=</span> ao.order_id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> order_details </span><br><span class="line"><span class="keyword">WHERE</span> order_id <span class="keyword">IN</span> (<span class="keyword">SELECT</span> order_id <span class="keyword">FROM</span> archived_orders);</span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> orders </span><br><span class="line"><span class="keyword">WHERE</span> order_date <span class="operator">&lt;</span> ADD_MONTHS(SYSDATE, <span class="number">-24</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 7.2 重建索引</span></span><br><span class="line"><span class="keyword">ALTER</span> INDEX idx_orders_date REBUILD;</span><br><span class="line"><span class="keyword">ALTER</span> INDEX idx_products_name REBUILD;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 7.3 收集统计信息</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    DBMS_STATS.GATHER_SCHEMA_STATS(</span><br><span class="line">        ownname <span class="operator">=</span><span class="operator">&gt;</span> <span class="keyword">USER</span>,</span><br><span class="line">        estimate_percent <span class="operator">=</span><span class="operator">&gt;</span> DBMS_STATS.AUTO_SAMPLE_SIZE,</span><br><span class="line">        method_opt <span class="operator">=</span><span class="operator">&gt;</span> <span class="string">&#x27;FOR ALL COLUMNS SIZE AUTO&#x27;</span>,</span><br><span class="line">        degree <span class="operator">=</span><span class="operator">&gt;</span> DBMS_STATS.AUTO_DEGREE</span><br><span class="line">    );</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 7.4 数据库备份（模拟）</span></span><br><span class="line"><span class="keyword">CREATE</span> DATABASE LINK backup_link </span><br><span class="line"><span class="keyword">CONNECT</span> <span class="keyword">TO</span> backup_user IDENTIFIED <span class="keyword">BY</span> &quot;backup_pass&quot; </span><br><span class="line"><span class="keyword">USING</span> <span class="string">&#x27;backup_db&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> orders<span class="variable">@backup_link</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders </span><br><span class="line"><span class="keyword">WHERE</span> order_date <span class="operator">&gt;</span> SYSDATE <span class="operator">-</span> <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT INTO</span> order_details<span class="variable">@backup_link</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> order_details </span><br><span class="line"><span class="keyword">WHERE</span> order_id <span class="keyword">IN</span> (<span class="keyword">SELECT</span> order_id <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> order_date <span class="operator">&gt;</span> SYSDATE <span class="operator">-</span> <span class="number">7</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2025/zip/40495483/1749210952547-4bfc372e-daa5-4d33-a488-d4f438b0c8cd.zip" >学生宿舍管理系统.zip<i class="fas fa-external-link-alt"></i></a></p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                网上购物系统oracle
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/11/14/mywork/网上购物系统oracle/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">tanyunhao</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-11-14 09:08</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/mywork/">mywork</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/14/mywork/%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FC++%E7%89%88/"
+                                   title="学生信息管理系统C++版"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">学生信息管理系统C++版</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/14/mywork/%E8%82%BE%E8%84%8F%E5%8A%9F%E8%83%BD%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"
+                                   title="肾脏功能数据分析报告"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">肾脏功能数据分析报告</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script data-pjax
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'yunhaotan/hexo-site-comments')
+              script.setAttribute('data-repo-id', 'R_kgDOUORZtg')
+              script.setAttribute('data-category', 'Announcements')
+              script.setAttribute('data-category-id', 'DIC_kwDOUORZts4DE3t-')
+              script.setAttribute('data-reactions-enabled', '0')
+              script.setAttribute('data-lang', 'zh-CN')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('true' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-text">1. 需求分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-text">2. 系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="nav-text">2.1. 系统结构功能图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-text">2.2. 功能流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">2.3. 数据库设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-SQL-%E5%AE%9E%E7%8E%B0"><span class="nav-text">3. 3 SQL****实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%BB%BA%E8%A1%A8"><span class="nav-text">3.1. 建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E7%B4%A2%E5%BC%95"><span class="nav-text">3.2. 索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E8%A7%86%E5%9B%BE"><span class="nav-text">3.3. 视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-text">3.4. 存储过程、函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-text">3.5. 触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-%E6%95%B0%E6%8D%AE%E6%93%8D%E7%BA%B5"><span class="nav-text">3.6. 数据操纵</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2024</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">tanyunhao</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-text">1. 需求分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-text">2. 系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%8A%9F%E8%83%BD%E5%9B%BE"><span class="nav-text">2.1. 系统结构功能图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-text">2.2. 功能流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">2.3. 数据库设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-SQL-%E5%AE%9E%E7%8E%B0"><span class="nav-text">3. 3 SQL****实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%BB%BA%E8%A1%A8"><span class="nav-text">3.1. 建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E7%B4%A2%E5%BC%95"><span class="nav-text">3.2. 索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E8%A7%86%E5%9B%BE"><span class="nav-text">3.3. 视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-text">3.4. 存储过程、函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="nav-text">3.5. 触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-%E6%95%B0%E6%8D%AE%E6%93%8D%E7%BA%B5"><span class="nav-text">3.6. 数据操纵</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    <script id="pjax-script" src="/js/libs/pjax.min.js"></script>
+<script>
+  (function () {
+    const isGoogleTranslate = location.hostname.includes('.translate.goog')
+
+    if (isGoogleTranslate) {
+      document.getElementById('pjax-script')?.remove()
+      return
+    }
+
+    function initPjax () {
+      if (window.pjax) return
+
+      window.pjax = new Pjax({
+        selectors: [
+          'head title',
+          '.page-container',
+          '.pjax'
+        ],
+        history: true,
+        debug: false,
+        cacheBust: false,
+        timeout: 0,
+        analytics: false,
+        currentUrlFullReload: false,
+        scrollRestoration: false
+      })
+
+      document.addEventListener('pjax:send', onPjaxSend)
+      document.addEventListener('pjax:complete', onPjaxComplete)
+    }
+
+    function onPjaxSend () {
+      KEEP?.utils?.pjaxProgressBarStart()
+    }
+
+    function onPjaxComplete () {
+      KEEP?.utils?.pjaxProgressBarEnd()
+
+      window?.pjax?.executeScripts(
+        document.querySelectorAll('script[data-pjax], .pjax script')
+      )
+
+      KEEP?.initExecute()
+    }
+
+    // DOM Ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPjax)
+    } else {
+      initPjax()
+    }
+  })()
+</script>
+
+
+
+
+</body>
+</html>

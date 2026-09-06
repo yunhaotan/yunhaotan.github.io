@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="tanyunhao">
+    
+    <title>
+        
+            选课系统 |
+        
+        盗梦空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/avatar.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script>
+        (function () {
+            let theme = localStorage.getItem('KEEP-THEME-STATUS');
+            let classname = "";
+            if (!theme || (JSON.parse(theme).isAutoTheme)){
+                classname = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark-mode" : "light-mode";
+            }
+            else{
+                classname = JSON.parse(theme).isDark ? "dark-mode" : "light-mode";
+            }
+            document.documentElement.classList.add(classname);
+        })();
+    </script>
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yunhaotan.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"盗梦空间","author":"tanyunhao","avatar":"/images/avatar.jpg","logo":"/images/avatar.jpg","favicon":"/images/avatar.jpg"},"menu":{"home":"/                     || fa-solid fa-home","archives":"/archives         || fa-solid fa-box-archive","categories":"/categories     || fa-solid fa-layer-group","tools":"/tools               || fa-solid fa-cart-shopping","about":"/about               || fa-solid fa-user-graduate","links":"/links               || fa-solid fa-link"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"生活的热闹与生命的骄傲，一个都不能少","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"yunhaotan","github_admins":["yunhaotan"],"repository":"hexo-site-comments","client_id":"Ov23liDmdEHYEqQLDzKl","client_secret":"cba9ae93ad76e5a72a734bc8aca63ecfe66b8005","proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":"yunhaotan/hexo-site-comments","repo_id":"R_kgDOUORZtg","category":"Announcements","category_id":"DIC_kwDOUORZts4DE3t-","reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2024,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","search_db_path":"keep-search.json","source_data":{"links":[{"title":"朋友们 1"},{"name":"XPoet","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"不知名艺术家","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}],"tools":[{"category":"资源下载链接","anchorId":"JUU4JUI1JTg0JUU2JUJBJTkwJUU0JUI4JThCJUU4JUJEJUJEJUU5JTkzJUJFJUU2JThFJUE10"},{"name":"计算机组成原理","link":"https://m.tb.cn/h.8nN8CfM?tk=96ptTgVM3EA","description":"【闲鱼】华中科技大学计算机组成原理实验","image":"https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20251024175356125.png"},{"name":"备忘录下载","link":"https://m.tb.cn/h.8nNjheI?tk=dhbaTgVnrDp","description":"【闲鱼】Calendar（用Python开发的带有备忘录、天气信息的）","image":"https://raw.githubusercontent.com/tanyunhao/ImageHosting/master/20241025213618.png"},{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk3"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},"......","......","......"]},"version":"4.3.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.2"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/avatar.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               盗梦空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-cart-shopping"></i>
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-cart-shopping"></i>
+                                </span>
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        选课系统
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Tan Yunhao</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-14 09:08:00</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sun Sep 06 2026 17:20:05 GMT+0000">2026-09-06 17:20:05</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/mywork/">mywork</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mywork/">mywork</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建数据库  </span></span><br><span class="line"><span class="keyword">CREATE</span> DATABASE IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> course_selection_system;  </span><br><span class="line">USE course_selection_system;  </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建学生表  </span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> Student (  </span><br><span class="line">    student_id <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span> AUTO_INCREMENT,  </span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,  </span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">UNIQUE</span> <span class="keyword">NOT NULL</span>,  </span><br><span class="line">    phone <span class="type">VARCHAR</span>(<span class="number">15</span>),  </span><br><span class="line">    major <span class="type">VARCHAR</span>(<span class="number">50</span>),  </span><br><span class="line">    password <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT NULL</span>  </span><br><span class="line">);  </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建教师表  </span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> Teacher (  </span><br><span class="line">    teacher_id <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span> AUTO_INCREMENT,  </span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,  </span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">UNIQUE</span> <span class="keyword">NOT NULL</span>,  </span><br><span class="line">    department <span class="type">VARCHAR</span>(<span class="number">100</span>),  </span><br><span class="line">    password <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT NULL</span>  </span><br><span class="line">);  </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建课程表  </span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> Course (  </span><br><span class="line">    course_id <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span> AUTO_INCREMENT,  </span><br><span class="line">    course_name <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,  </span><br><span class="line">    course_code <span class="type">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">UNIQUE</span> <span class="keyword">NOT NULL</span>,  </span><br><span class="line">    credits <span class="type">INT</span>,  </span><br><span class="line">    max_students <span class="type">INT</span> <span class="keyword">DEFAULT</span> <span class="number">50</span>,  </span><br><span class="line">    current_students <span class="type">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,  </span><br><span class="line">    teacher_id <span class="type">INT</span>,  </span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (teacher_id) <span class="keyword">REFERENCES</span> Teacher(teacher_id)  </span><br><span class="line">);  </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建选课表  </span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> Enrollment (  </span><br><span class="line">    enrollment_id <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span> AUTO_INCREMENT,  </span><br><span class="line">    student_id <span class="type">INT</span>,  </span><br><span class="line">    course_id <span class="type">INT</span>,  </span><br><span class="line">    enrollment_date <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>,  </span><br><span class="line">    grade <span class="type">FLOAT</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,  </span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (student_id) <span class="keyword">REFERENCES</span> Student(student_id),  </span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (course_id) <span class="keyword">REFERENCES</span> Course(course_id)  </span><br><span class="line">);  </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建管理员表  </span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> Admin (  </span><br><span class="line">    admin_id <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span> AUTO_INCREMENT,  </span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,  </span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">UNIQUE</span> <span class="keyword">NOT NULL</span>,  </span><br><span class="line">    password <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT NULL</span>  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h1 id="1-一、绪论"><a href="#1-一、绪论" class="headerlink" title="1. 一、绪论"></a>1. 一、绪论</h1><h1 id="2-二、系统分析"><a href="#2-二、系统分析" class="headerlink" title="2. 二、系统分析"></a>2. 二、系统分析</h1><p>（一）用例图、分角色功能图</p>
+<p>用例图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735372058586-c98c1216-ed57-4d4e-b15b-b220bce13142.png"
+                       
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735372021899-44bcce83-f9da-4b68-9eee-6109294515dd.png"
+                       
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735372215639-fb4fe2dd-6bd3-4b90-94f1-b02550f37ca3.png"
+                       
+                 ></p>
+<p>分角色功能图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735371142793-29fac9cf-2f2b-4cef-a0fa-27ef02eee3d3.png"
+                       
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735372140863-9bb1f57d-61a4-4a6a-8459-9b3a0e22a75a.png"
+                       
+                 ></p>
+<p>（二)数据需求–数据流图</p>
+<h1 id="3-三、系统设计"><a href="#3-三、系统设计" class="headerlink" title="3. 三、系统设计"></a>3. 三、系统设计</h1><h3 id="3-1-1-一-概念结构设计-ER图系统功能模块图"><a href="#3-1-1-一-概念结构设计-ER图系统功能模块图" class="headerlink" title="3.1.1. (一)概念结构设计-ER图系统功能模块图"></a>3.1.1. (一)概念结构设计-ER图系统功能模块图</h3><p>er 图</p>
+<p>学生</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735398730388-65845a05-0f9f-497b-a367-94dc1f65d3ad.jpeg"
+                        alt="画板"
+                 ></p>
+<p>教师</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735398730467-613bc731-3a61-4bf1-96c6-62593b98fbb3.jpeg"
+                        alt="画板"
+                 ></p>
+<p>课程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735398731096-445a63ed-f606-4ad9-8e00-92d7db3a6d63.jpeg"
+                        alt="画板"
+                 ></p>
+<p>选课表</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735398730486-a1d12e73-73d2-497c-89e0-b8b7b31bd758.jpeg"
+                        alt="画板"
+                 ></p>
+<p>管理员表</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735398730468-970b0584-baf9-493b-ada7-1595d80ebb50.jpeg"
+                        alt="画板"
+                 ></p>
+<p>整体</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/jpeg/40495483/1735411032068-45ba986d-b379-4463-acc0-9abfe0801573.jpeg"
+                        alt="画板"
+                 ></p>
+<p>(二)系统功能模块图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735369044738-90b79a8e-1de9-4454-9ea0-bf23fa158963.png?x-oss-process=image/format,webp"
+                       
+                 ></p>
+<h4 id="3-1-1-1-用户注册流程"><a href="#3-1-1-1-用户注册流程" class="headerlink" title="3.1.1.1. 用户注册流程"></a>3.1.1.1. 用户注册流程</h4><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735369696655-d4d54d58-9b38-4488-b11f-8a73d851e959.png"
+                       
+                 ></p>
+<h4 id="3-1-1-2-选课流程"><a href="#3-1-1-2-选课流程" class="headerlink" title="3.1.1.2. 选课流程"></a>3.1.1.2. 选课流程</h4><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735370084065-5583a4f2-78b2-4f36-be60-2874353c64b7.png"
+                       
+                 ></p>
+<p>成绩管理流程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735370385159-c436ce06-a768-4196-9412-49bb42a39361.png"
+                       
+                 ></p>
+<p>课程管理流程图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735370496842-356dc55f-53c8-4397-9cad-7df1833613af.png"
+                       
+                 ></p>
+<h3 id="3-1-2-三-逻辑结构设计-关系模式-表"><a href="#3-1-2-三-逻辑结构设计-关系模式-表" class="headerlink" title="3.1.2. (三)逻辑结构设计-关系模式-表"></a>3.1.2. (三)逻辑结构设计-关系模式-表</h3><ol>
+<li>学生表（Student）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>学生编号</td>
+<td>INT</td>
+<td>-</td>
+<td>PRIMARY KEY, AUTO_INCREMENT</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>姓名</td>
+<td>VARCHAR</td>
+<td>100</td>
+<td>NOT NULL</td>
+<td>学生姓名</td>
+</tr>
+<tr>
+<td>邮箱</td>
+<td>VARCHAR</td>
+<td>100</td>
+<td>UNIQUE, NOT NULL</td>
+<td>登录账号</td>
+</tr>
+<tr>
+<td>电话</td>
+<td>VARCHAR</td>
+<td>15</td>
+<td>-</td>
+<td>联系方式</td>
+</tr>
+<tr>
+<td>专业</td>
+<td>VARCHAR</td>
+<td>50</td>
+<td>-</td>
+<td>所属专业</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NOT NULL</td>
+<td>登录密码</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>教师表（Teacher）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>教师编号</td>
+<td>INT</td>
+<td>-</td>
+<td>PRIMARY KEY, AUTO_INCREMENT</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>姓名</td>
+<td>VARCHAR</td>
+<td>100</td>
+<td>NOT NULL</td>
+<td>教师姓名</td>
+</tr>
+<tr>
+<td>邮箱</td>
+<td>VARCHAR</td>
+<td>100</td>
+<td>UNIQUE, NOT NULL</td>
+<td>登录账号</td>
+</tr>
+<tr>
+<td>所属院系</td>
+<td>VARCHAR</td>
+<td>100</td>
+<td>-</td>
+<td>院系信息</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NOT NULL</td>
+<td>登录密码</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>课程表（Course）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>课程编号</td>
+<td>INT</td>
+<td>-</td>
+<td>PRIMARY KEY, AUTO_INCREMENT</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>课程名称</td>
+<td>VARCHAR</td>
+<td>100</td>
+<td>NOT NULL</td>
+<td>课程名称</td>
+</tr>
+<tr>
+<td>课程代码</td>
+<td>VARCHAR</td>
+<td>10</td>
+<td>UNIQUE, NOT NULL</td>
+<td>唯一代码</td>
+</tr>
+<tr>
+<td>学分</td>
+<td>INT</td>
+<td>-</td>
+<td>-</td>
+<td>课程学分</td>
+</tr>
+<tr>
+<td>最大人数</td>
+<td>INT</td>
+<td>-</td>
+<td>DEFAULT 50</td>
+<td>课程容量</td>
+</tr>
+<tr>
+<td>当前人数</td>
+<td>INT</td>
+<td>-</td>
+<td>DEFAULT 0</td>
+<td>已选人数</td>
+</tr>
+<tr>
+<td>教师编号</td>
+<td>INT</td>
+<td>-</td>
+<td>FOREIGN KEY</td>
+<td>授课教师</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li>选课表（Enrollment）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>选课编号</td>
+<td>INT</td>
+<td>-</td>
+<td>PRIMARY KEY, AUTO_INCREMENT</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>学生编号</td>
+<td>INT</td>
+<td>-</td>
+<td>FOREIGN KEY</td>
+<td>选课学生</td>
+</tr>
+<tr>
+<td>课程编号</td>
+<td>INT</td>
+<td>-</td>
+<td>FOREIGN KEY</td>
+<td>所选课程</td>
+</tr>
+<tr>
+<td>选课时间</td>
+<td>TIMESTAMP</td>
+<td>-</td>
+<td>DEFAULT CURRENT_TIMESTAMP</td>
+<td>记录时间</td>
+</tr>
+<tr>
+<td>成绩</td>
+<td>FLOAT</td>
+<td>-</td>
+<td>DEFAULT NULL</td>
+<td>课程成绩</td>
+</tr>
+</tbody></table>
+<ol start="5">
+<li>管理员表（Admin）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>管理员编号</td>
+<td>INT</td>
+<td>-</td>
+<td>PRIMARY KEY, AUTO_INCREMENT</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>姓名</td>
+<td>VARCHAR</td>
+<td>100</td>
+<td>NOT NULL</td>
+<td>管理员姓名</td>
+</tr>
+<tr>
+<td>邮箱</td>
+<td>VARCHAR</td>
+<td>100</td>
+<td>UNIQUE, NOT NULL</td>
+<td>登录账号</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>VARCHAR</td>
+<td>255</td>
+<td>NOT NULL</td>
+<td>登录密码</td>
+</tr>
+</tbody></table>
+<p>表关系说明：</p>
+<ol>
+<li>一个学生可以选择多门课程（学生表和课程表是多对多关系）</li>
+<li>一个教师可以教授多门课程（教师表和课程表是一对多关系）</li>
+<li>选课表作为学生表和课程表的中间表，记录选课信息</li>
+</ol>
+<p>约束说明：</p>
+<ol>
+<li>所有编号字段都设置为自动递增的主键</li>
+<li>邮箱字段作为登录账号，需要唯一性约束</li>
+<li>选课表通过外键关联学生表和课程表</li>
+<li>课程表通过外键关联教师表</li>
+<li>关键信息（如姓名、邮箱、密码等）设置非空约束</li>
+</ol>
+<h2 id="3-2-四、系统实现-程序流程图，实现的界面-数据库连接"><a href="#3-2-四、系统实现-程序流程图，实现的界面-数据库连接" class="headerlink" title="3.2. 四、系统实现(程序流程图，实现的界面)数据库连接"></a>3.2. 四、系统实现(程序流程图，实现的界面)数据库连接</h2><p><font style="color:#DF2A3F;">代码下载链接</font></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2024/zip/40495483/1735371259273-3c4c1982-229b-4225-8155-334859548d3d.zip" >student_course_management.zip<i class="fas fa-external-link-alt"></i></a></p>
+<p><font style="color:#DF2A3F;">点击这个</font></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735370673841-8946b28e-20b4-416a-8cce-79e5feffc9a6.png"
+                       
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.nlark.com/yuque/0/2024/png/40495483/1735370689676-5ee86212-def1-4f71-bdd9-06437970487c.png"
+                       
+                 ></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/docs/200447718#Yp4Bp" >此处为语雀卡片，点击链接查看<i class="fas fa-external-link-alt"></i></a></p>
+<p>代码下载链接</p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                选课系统
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/11/14/mywork/选课系统/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">tanyunhao</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-11-14 09:08</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/mywork/">mywork</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/14/mywork/%E9%80%89%E8%AF%BE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"
+                                   title="选课管理系统"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">选课管理系统</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/14/mywork/%E9%97%A8%E6%8E%A7%E5%BE%AA%E7%8E%AF%E5%8D%95%E5%85%83%20(GRU)/"
+                                   title="门控循环单元 (GRU)"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">门控循环单元 (GRU)</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script data-pjax
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'yunhaotan/hexo-site-comments')
+              script.setAttribute('data-repo-id', 'R_kgDOUORZtg')
+              script.setAttribute('data-category', 'Announcements')
+              script.setAttribute('data-category-id', 'DIC_kwDOUORZts4DE3t-')
+              script.setAttribute('data-reactions-enabled', '0')
+              script.setAttribute('data-lang', 'zh-CN')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('true' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%B8%80%E3%80%81%E7%BB%AA%E8%AE%BA"><span class="nav-text">1. 一、绪论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%BA%8C%E3%80%81%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90"><span class="nav-text">2. 二、系统分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-text">3. 三、系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-%E4%B8%80-%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-ER%E5%9B%BE%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%9B%BE"><span class="nav-text">3.1.1. (一)概念结构设计-ER图系统功能模块图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-1-%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">3.1.1.1. 用户注册流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-2-%E9%80%89%E8%AF%BE%E6%B5%81%E7%A8%8B"><span class="nav-text">3.1.1.2. 选课流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-%E4%B8%89-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F-%E8%A1%A8"><span class="nav-text">3.1.2. (三)逻辑结构设计-关系模式-表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%9B%9B%E3%80%81%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%95%8C%E9%9D%A2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5"><span class="nav-text">3.2. 四、系统实现(程序流程图，实现的界面)数据库连接</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2024</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">tanyunhao</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%B8%80%E3%80%81%E7%BB%AA%E8%AE%BA"><span class="nav-text">1. 一、绪论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%BA%8C%E3%80%81%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90"><span class="nav-text">2. 二、系统分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-text">3. 三、系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-%E4%B8%80-%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-ER%E5%9B%BE%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%9B%BE"><span class="nav-text">3.1.1. (一)概念结构设计-ER图系统功能模块图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-1-%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">3.1.1.1. 用户注册流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-2-%E9%80%89%E8%AF%BE%E6%B5%81%E7%A8%8B"><span class="nav-text">3.1.1.2. 选课流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-%E4%B8%89-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1-%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F-%E8%A1%A8"><span class="nav-text">3.1.2. (三)逻辑结构设计-关系模式-表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%9B%9B%E3%80%81%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%95%8C%E9%9D%A2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5"><span class="nav-text">3.2. 四、系统实现(程序流程图，实现的界面)数据库连接</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    <script id="pjax-script" src="/js/libs/pjax.min.js"></script>
+<script>
+  (function () {
+    const isGoogleTranslate = location.hostname.includes('.translate.goog')
+
+    if (isGoogleTranslate) {
+      document.getElementById('pjax-script')?.remove()
+      return
+    }
+
+    function initPjax () {
+      if (window.pjax) return
+
+      window.pjax = new Pjax({
+        selectors: [
+          'head title',
+          '.page-container',
+          '.pjax'
+        ],
+        history: true,
+        debug: false,
+        cacheBust: false,
+        timeout: 0,
+        analytics: false,
+        currentUrlFullReload: false,
+        scrollRestoration: false
+      })
+
+      document.addEventListener('pjax:send', onPjaxSend)
+      document.addEventListener('pjax:complete', onPjaxComplete)
+    }
+
+    function onPjaxSend () {
+      KEEP?.utils?.pjaxProgressBarStart()
+    }
+
+    function onPjaxComplete () {
+      KEEP?.utils?.pjaxProgressBarEnd()
+
+      window?.pjax?.executeScripts(
+        document.querySelectorAll('script[data-pjax], .pjax script')
+      )
+
+      KEEP?.initExecute()
+    }
+
+    // DOM Ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPjax)
+    } else {
+      initPjax()
+    }
+  })()
+</script>
+
+
+
+
+</body>
+</html>
